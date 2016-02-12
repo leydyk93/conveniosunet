@@ -110,4 +110,8 @@ class SiteController extends Controller
 	public function actionConfiguracion(){
 		$this->render('configuracion');
 	}
+
+	public function actionInformacion(){
+		$this->render('informacion');
+	}
 }

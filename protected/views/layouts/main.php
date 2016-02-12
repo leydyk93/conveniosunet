@@ -16,24 +16,23 @@
 <body>
 	<header class="container-fluid">
 		<div class="row">
-			<div class="col-xs-1">
-				<img class="logoc" src="<?php echo yii::app()->bootstrap->obtenerUrl().'/img/LogoUnet.png'?>" alt="Logo UNET" width="60" height="60">
-			</div>
-			<div class="col-sm-5">
-				<h1 class="h1"><?php echo CHtml::encode(Yii::app()->name); ?> UNET </h1>	
-			</div >
-			<div class="col-sm-5">
-				<h2 class="text-right"><small>acuerdos que nos benefician a todos</small></h2>
-			</div>
-			<div class="col-xs-1">
+			<div id="dlogo" class="col-xs-2">
 				<div class="pull-right">
-				<img class="logoc" src="<?php echo yii::app()->bootstrap->obtenerUrl().'/img/manos3.png'?>" alt="manos" width="60" height="60">					
+				<img id="logo" src="<?php echo yii::app()->bootstrap->obtenerUrl().'/img/LogoUnet.png'?>" alt="Logo UNET" width="60" height="60">
+				</div>
+			</div>
+			<div class="col-xs-6">
+				<h1 class="h1 h1mod"><?php echo CHtml::encode(Yii::app()->name); ?> UNET </h1>	
+			</div >
+			<div id="dmanos" class="col-xs-4">
+				<div class="pull-right">
+				<img id="manos" src="<?php echo yii::app()->bootstrap->obtenerUrl().'/img/manos3.png'?>" alt="manos" width="60" height="60">					
 				</div>
 			</div>
 		</div>
 	</header>
 
-	<nav class="navbar navbar-default">
+<nav id="menuPrincipal" class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -51,7 +50,7 @@
 			'items'=>array(
 				array('label'=>'<span class="glyphicon glyphicon-home"></span>', 'url'=>array('/site/index')),
 				array('label'=>'<span class="glyphicon glyphicon-search"></span> Consultar Convenios', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'<span class="glyphicon glyphicon-book"></span> Información', 'url'=>array('/site/vista')),
+				array('label'=>'<span class="glyphicon glyphicon-book"></span> Información', 'url'=>array('/site/informacion')),
 				array('label'=>'<span class="glyphicon glyphicon-earphone"></span> Contactenos', 'url'=>array('/site/contact'),'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'<span class="glyphicon glyphicon-cog"></span> Configuración <span class="caret"></span>', 'url'=>array('/site/configuracion'), 'visible'=>!Yii::app()->user->isGuest,'items'=>array(
 		            array('label'=>'New Arrivals', 'url'=>array('product/new', 'tag'=>'new')),
@@ -80,19 +79,24 @@
   </div>
 </nav>
 
-	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
-	<?php endif?>
-
+	<div class="container-fluid">
+		<?php if(isset($this->breadcrumbs)):?>
+			<?php $this->widget('zii.widgets.CBreadcrumbs', array(
+				'links'=>$this->breadcrumbs,
+			)); ?><!-- breadcrumbs -->
+		<?php endif?>
+	</div> 
+	<main class="container">
 	<?php echo $content; ?>
-
-	<footer>
-		Universidad Nacional Experimental del Tachira
+	</main>
+	<footer id="foo" class="container-fluid text-center">
+		<div class="row">
+			<div class="col-md-12">
+				Universidad Nacional Experimental del Tachira		
+			</div>
+		</div>
+		
 	</footer><!-- footer -->
-
-
 
 </body>
 </html>

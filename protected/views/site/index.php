@@ -3,18 +3,32 @@
 
 $this->pageTitle=Yii::app()->name;
 ?>
+<!--<i><?php /*echo CHtml::encode(Yii::app()->name);*/ ?></i>-->
 
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
 
-<p>Congratulations! You have successfully created your Yii application.</p>
+<div class="container-fluid">
+	<h2> Acuerdos que nos benefician a TODOS</h2>
+  <div class="row">
+   <div class="col-sm-4">
+     <h3>¿Cómo Establecer un convenio?</h3>
+     <p>Debes llenar el Acta de intención, su formato esta disponible en <a>formato acta de intención</a>
+     Puedes leer las normas y procedimientos o tambien puedes contactarnos</p>
+     <button type="button" class="btn btn-conv">Ver Formatos</button>
+  </div>
 
-<p>You may change the content of this page by modifying the following two files:</p>
-<ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
-</ul>
+  <div class="col-sm-4">
+     <h3>Conoce nuestras normas y procedimientos</h3>
+    <p>Con la finalidad de estandarizar y facilitar el proceso de establecer un convenio se han creado las normas y procedimientos que los rigen</p>
+<button type="button" class="btn btn-conv">Leer Más</button>
 
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+  </div>
+
+  <div class="col-sm-4">
+     <h3>Encuentra el convenio que buscabas</h3>
+    <p>Consulta a partir de varios criterios como año, institución contraparte, pais y entre otras caracteristicas que te ofrecemos, de esta foma hallaras el convenio que buscabas</p>
+  
+   <button type="button" class="btn btn-conv">Consultar</button>      
+  </div>
+</div>
+
+</div>
