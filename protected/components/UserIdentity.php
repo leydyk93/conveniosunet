@@ -37,7 +37,7 @@ class UserIdentity extends CUserIdentity
 
 			$this->_id=$record->id; //bien
 			$role=Roles::model()->findByPk($record->IdRol);//bien
-			$this->setState('role',$role->NOMBRE);
+			$this->setState('role',$role->NOMBRE);//bien
 			return !$this->errorCode;
 		}
 		/*$users=array(
@@ -52,5 +52,8 @@ class UserIdentity extends CUserIdentity
 		else
 			$this->errorCode=self::ERROR_NONE;
 		return !$this->errorCode;*/
+	}
+	public function getId(){
+		return $this->_id;
 	}
 }
