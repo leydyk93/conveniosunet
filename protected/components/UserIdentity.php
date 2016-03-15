@@ -15,8 +15,12 @@ class UserIdentity extends CUserIdentity
 	 * against some persistent user identity storage (e.g. database).
 	 * @return boolean whether authentication succeeds.
 	 */
+	private $_id;
+
 	public function authenticate()
 	{
+
+		$record=Usuario::model()->findByAttributes(array('nombre'=>$this->username));
 
 		$conexion=Yii::app()->db;
 		$consulta="SELECT nombre, clave FROM usuario ";
@@ -30,6 +34,10 @@ class UserIdentity extends CUserIdentity
 
 		while ($resultado->read()!==false) {
 			$this->errorCode =self::ERROR_NONE;
+
+			$this->_id=$record->id; //bien
+			$role=Roles::model()->findByPk($record->IdRol);//bien
+			$this->setState('role',$role->NOMBRE);
 			return !$this->errorCode;
 		}
 		/*$users=array(
