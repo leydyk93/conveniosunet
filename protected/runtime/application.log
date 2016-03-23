@@ -688,6 +688,7 @@ Stack trace:
 REQUEST_URI=/UNETConvenios/index.php?r=product/index&tag=popular
 HTTP_REFERER=http://localhost:8080/UNETConvenios/index.php?r=product/new&tag=new
 ---
+<<<<<<< HEAD
 2016/02/12 02:55:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "product/new".' in C:\wamp\www\yii\framework\web\CWebApplication.php:286
 Stack trace:
 #0 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('product/new')
@@ -723,4 +724,198 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/UNETConvenios/index.php?r=product/new&tag=new
 HTTP_REFERER=http://localhost:8080/UNETConvenios/index.php?r=product/new&tag=new
+=======
+2016/03/02 20:28:53 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "product/new". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('product/new')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/conveniosunet/index.php?r=product/new&tag=new
+HTTP_REFERER=http://localhost/conveniosunet/index.php
+---
+2016/03/02 20:28:57 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "product/index". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('product/index')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/conveniosunet/index.php?r=product/index&tag=popular
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=product/new&tag=new
+---
+2016/03/14 23:23:15 [error] [php] Uninitialized string offset: 0 (C:\xampp\htdocs\yii\framework\web\CHttpRequest.php:478)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#1 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=site/logout
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/03/14 23:23:19 [error] [php] Uninitialized string offset: 0 (C:\xampp\htdocs\yii\framework\web\CHttpRequest.php:478)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#1 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/03/14 23:23:30 [error] [php] Uninitialized string offset: 0 (C:\xampp\htdocs\yii\framework\web\CHttpRequest.php:478)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#1 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/03/15 03:03:20 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "Authassignments". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Authassignments')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/conveniosunet/index.php?r=Authassignments
+---
+2016/03/15 03:05:15 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('authassignment/...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/conveniosunet/index.php?r=authassignment/admin
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=authassignment
+---
+2016/03/15 05:09:27 [error] [php] Undefined variable: record (C:\xampp\htdocs\conveniosunet\protected\components\UserIdentity.php:36)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute()
+#1 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CInlineValidator->validate()
+#2 C:\xampp\htdocs\conveniosunet\protected\controllers\SiteController.php(94): LoginForm->validate()
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=site/login
+in C:\xampp\htdocs\conveniosunet\protected\components\UserIdentity.php (36)
+in C:\xampp\htdocs\conveniosunet\protected\models\LoginForm.php (52)
+in C:\xampp\htdocs\conveniosunet\protected\controllers\SiteController.php (94)
+2016/03/15 05:25:12 [error] [exception.ParseError] ParseError: syntax error, unexpected 'return' (T_RETURN) in C:\xampp\htdocs\conveniosunet\protected\components\UserIdentity.php:40
+Stack trace:
+#0 [internal function]: YiiBase::autoload('UserIdentity')
+#1 C:\xampp\htdocs\conveniosunet\protected\models\LoginForm.php(51): spl_autoload_call('UserIdentity')
+#2 C:\xampp\htdocs\yii\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#3 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#4 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), Array)
+#5 C:\xampp\htdocs\conveniosunet\protected\controllers\SiteController.php(94): CModel->validate()
+#6 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('login')
+#11 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#12 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/conveniosunet/index.php?r=site/login
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=site/login
+---
+2016/03/15 06:44:14 [error] [exception.CException] CException: Either "superadmin" or "createUsers" does not exist. in C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php:170
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAuthItem.php(193): CDbAuthManager->addItemChild('superadmin', 'createUsers')
+#1 C:\xampp\htdocs\conveniosunet\protected\controllers\InitController.php(14): CAuthItem->addChild('createUsers')
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): InitController->actionRun()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Run')
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('init/Run')
+#8 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/conveniosunet/index.php?r=init/Run
+---
+2016/03/15 06:46:02 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'create Users' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES (:name, :type, :description, :bizrule, :data).
+in C:\xampp\htdocs\conveniosunet\protected\controllers\InitController.php (10)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/03/15 06:46:02 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'create Users' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES (:name, :type, :description, :bizrule, :data) in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(1278): CDbCommand->execute(Array)
+#1 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(443): CDbCommand->insert('AuthItem', Array)
+#2 C:\xampp\htdocs\yii\framework\web\auth\CAuthManager.php(100): CDbAuthManager->createAuthItem('create Users', 0, 'create a user', NULL, NULL)
+#3 C:\xampp\htdocs\conveniosunet\protected\controllers\InitController.php(10): CAuthManager->createOperation('create Users', 'create a user')
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): InitController->actionRun()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Run')
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('init/Run')
+#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/conveniosunet/index.php?r=init/Run
+---
+2016/03/15 06:46:35 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'create Users' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES (:name, :type, :description, :bizrule, :data).
+in C:\xampp\htdocs\conveniosunet\protected\controllers\InitController.php (10)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/03/15 06:46:35 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'create Users' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES (:name, :type, :description, :bizrule, :data) in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(1278): CDbCommand->execute(Array)
+#1 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(443): CDbCommand->insert('AuthItem', Array)
+#2 C:\xampp\htdocs\yii\framework\web\auth\CAuthManager.php(100): CDbAuthManager->createAuthItem('create Users', 0, 'create a user', NULL, NULL)
+#3 C:\xampp\htdocs\conveniosunet\protected\controllers\InitController.php(10): CAuthManager->createOperation('create Users', 'create a user')
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): InitController->actionRun()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Run')
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('init/Run')
+#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/conveniosunet/index.php?r=init/Run
+---
+2016/03/15 06:47:26 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'updateOwnPasswords' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES (:name, :type, :description, :bizrule, :data).
+in C:\xampp\htdocs\conveniosunet\protected\controllers\InitController.php (12)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/03/15 06:47:26 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'updateOwnPasswords' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES (:name, :type, :description, :bizrule, :data) in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(1278): CDbCommand->execute(Array)
+#1 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(443): CDbCommand->insert('AuthItem', Array)
+#2 C:\xampp\htdocs\yii\framework\web\auth\CAuthManager.php(86): CDbAuthManager->createAuthItem('updateOwnPasswo...', 1, 'update a post b...', 'return Yii::app...', NULL)
+#3 C:\xampp\htdocs\conveniosunet\protected\controllers\InitController.php(12): CAuthManager->createTask('updateOwnPasswo...', 'update a post b...', 'return Yii::app...')
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): InitController->actionRun()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Run')
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('init/Run')
+#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/conveniosunet/index.php?r=init/Run
+---
+2016/03/15 06:49:09 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'createUsers' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES (:name, :type, :description, :bizrule, :data).
+in C:\xampp\htdocs\conveniosunet\protected\controllers\InitController.php (10)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/03/15 06:49:09 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'createUsers' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES (:name, :type, :description, :bizrule, :data) in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(1278): CDbCommand->execute(Array)
+#1 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(443): CDbCommand->insert('AuthItem', Array)
+#2 C:\xampp\htdocs\yii\framework\web\auth\CAuthManager.php(100): CDbAuthManager->createAuthItem('createUsers', 0, 'create a user', NULL, NULL)
+#3 C:\xampp\htdocs\conveniosunet\protected\controllers\InitController.php(10): CAuthManager->createOperation('createUsers', 'create a user')
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): InitController->actionRun()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Run')
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Init/Run')
+#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/conveniosunet/index.php?r=Init/Run
+>>>>>>> 7407c6d40c2ddc1442a2751b1739fc09162fb796
 ---
