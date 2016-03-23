@@ -688,3 +688,39 @@ Stack trace:
 REQUEST_URI=/UNETConvenios/index.php?r=product/index&tag=popular
 HTTP_REFERER=http://localhost:8080/UNETConvenios/index.php?r=product/new&tag=new
 ---
+2016/02/12 02:55:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "product/new".' in C:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('product/new')
+#1 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=product/new&tag=new
+HTTP_REFERER=http://localhost:8080/UNETConvenios/index.php
+---
+2016/02/12 02:55:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "product/index".' in C:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('product/index')
+#1 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=product/index&tag=popular
+HTTP_REFERER=http://localhost:8080/UNETConvenios/index.php?r=product/new&tag=new
+---
+2016/03/23 17:45:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "product/new".' in C:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('product/new')
+#1 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=product/new&tag=new
+HTTP_REFERER=http://localhost:8080/UNETConvenios/index.php
+---
+2016/03/23 17:45:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "product/new".' in C:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('product/new')
+#1 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=product/new&tag=new
+HTTP_REFERER=http://localhost:8080/UNETConvenios/index.php?r=product/new&tag=new
+---
