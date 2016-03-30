@@ -1,0 +1,168 @@
+header{
+ background: url("../img/CabeceraA.png") no-repeat;
+}
+footer#foo{
+	background-color: #1b325f;
+	color: white;
+	margin-top: 1em;
+	padding-top: 70px;
+	padding-bottom: 150px;
+}
+img#manos{
+	display: block;
+    max-width: 100%;
+}
+nav#menuPrincipal{
+	background: #4c7eb1;
+	border-top: 3px solid #1b325f;
+}
+nav#menuPrincipal .icon-bar{
+	background-color: #1b325f;
+}
+nav#menuPrincipal  li a {
+	color: white;
+	font-size: 1em;
+}
+nav#menuPrincipal li a span{
+	color: #1b325f; 
+}
+.btn-conv{
+    color: #1b325f;
+    background-color: #3fb8af;
+  }
+ .btn-conv:hover{
+    color: #fff;
+    background-color: #3cc2b8; 
+ }
+
+@media screen and (max-width: 700px){
+	
+	.h1mod{
+		font-size: 1.5em;
+	}
+    
+	
+}
+@media screen and (max-width: 500px){
+	
+	/*#dlogo, #dlogo img{
+		display: none;
+	}*/
+	img#Logo{
+		max-width: 100%;
+		height: auto;
+	}
+	.h1mod{
+		font-size: 1.3em;
+	}
+	.col-xs-2, .col-xs-6{
+		width: 33.33333333%; 
+	}	
+	/*.col-xs-6{
+		width: 66.66666667%;
+	}*/
+
+}
+/*codigo leydy nuevo*/
+section#filtrado{
+	background-color: #e9f2f9;
+}
+section#filtrado ul{
+	background-color: #1b325f; 
+	padding: 0em;
+	 list-style: none;
+}
+section#filtrado ul li a{
+	padding: 0.5em;
+	/*background-color: #1b325f;*/
+}
+section#filtrado ul li,section#filtrado ul li ul li {
+	padding-top: 0.3em;
+	padding-bottom: 0.3em;
+	/*background-color: #1b325f;*/
+}
+section#filtrado ul li ul {
+	background-color: #e9f2f9;
+}
+h4{
+	color: #1b325f;
+}
+/*Empieza la parte derecha*/
+div#Resulconvenios ul{
+	 list-style: none;
+
+}
+/* ESTILOS PARA EL LAYOUUT CARGAR*/
+.datos{
+	/*background-color: #FF7F50;*/
+}
+
+.menu_pasos{
+	/*background-color: #008B8B;*/
+}
+
+#navi{
+	list-style: none;
+	margin: 0px -20px;
+	padding: 0;
+}
+#navi li{
+	width: 93%;
+	height: 70px;
+	padding: 0;
+	 background: url("../img/ImagenPaso1.png") no-repeat;
+	 background-size: 100% 100% ;
+	 display: table;
+	 margin: 5px;
+}
+#navi li:hover{
+	width: 93%;
+	height: 70px;
+	padding: 0;
+	 background: url("../img/ImagenPasoSeleccionada.png") no-repeat;
+	 background-size: 100% 100% ;
+}
+
+#navi li a{
+
+	margin: 10px;
+	display: block;
+	width: 170px;
+	height: 70px;
+	text-decoration: none;
+	display: table-cell;
+	vertical-align: middle;
+	font-weight: bold;
+	font-size: large;
+
+
+}
+
+.nuevo{
+	
+	height: 50px;
+	background-color: #E9F2F9;
+}
+.nuevo p{
+	font-size: x-large;
+	font-weight: bold;
+	color:#000080;
+	margin-left: 0px;
+}
+.info_usuario{
+	height: 40px;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	background-color: #000080;
+
+}
+
+/*Estilos para paso 3*/
+.datos_convenio{
+
+	background-color: #DCDCDC;
+}
+#paso3_nombre{
+	font-size: x-large;
+}

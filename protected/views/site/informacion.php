@@ -1,17 +1,20 @@
 <?php 
-		$this->pageTitle=Yii::app()->name . ' - About';
+		$this->pageTitle=Yii::app()->name . ' - informacion';
 	$this->breadcrumbs=array(
 		'Informacion',
 	);
 
  ?>
- <h1>Información</h1>
-
-
+ 
 <h2>Formatos</h2>
-<p>Acta de intencion</p>
-<p>Ejemplo de convenio Marco</p>
-<p>Ejemplo de convenio Especifico</p>
-<h2>Aspectos Legales</h2>
+
+<ol>
+	<li class="list-group-item"> 1- Acta de intencion</li>
+	<li class="list-group-item"> 2- Ejemplo de convenio Marco</li>
+	<li class="list-group-item"> 3- Ejemplo de convenio Especifico</li>
+	
+</ol>
+
+	<h2>Aspectos Legales</h2>
 <p>Normas y procedimientos</p>
 
