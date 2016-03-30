@@ -92,3 +92,77 @@ div#Resulconvenios ul{
 	 list-style: none;
 
 }
+/* ESTILOS PARA EL LAYOUUT CARGAR*/
+.datos{
+	/*background-color: #FF7F50;*/
+}
+
+.menu_pasos{
+	/*background-color: #008B8B;*/
+}
+
+#navi{
+	list-style: none;
+	margin: 0px -20px;
+	padding: 0;
+}
+#navi li{
+	width: 93%;
+	height: 70px;
+	padding: 0;
+	 background: url("../img/ImagenPaso1.png") no-repeat;
+	 background-size: 100% 100% ;
+	 display: table;
+	 margin: 5px;
+}
+#navi li:hover{
+	width: 93%;
+	height: 70px;
+	padding: 0;
+	 background: url("../img/ImagenPasoSeleccionada.png") no-repeat;
+	 background-size: 100% 100% ;
+}
+
+#navi li a{
+
+	margin: 10px;
+	display: block;
+	width: 170px;
+	height: 70px;
+	text-decoration: none;
+	display: table-cell;
+	vertical-align: middle;
+	font-weight: bold;
+	font-size: large;
+
+
+}
+
+.nuevo{
+	
+	height: 50px;
+	background-color: #E9F2F9;
+}
+.nuevo p{
+	font-size: x-large;
+	font-weight: bold;
+	color:#000080;
+	margin-left: 0px;
+}
+.info_usuario{
+	height: 40px;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	background-color: #000080;
+
+}
+
+/*Estilos para paso 3*/
+.datos_convenio{
+
+	background-color: #DCDCDC;
+}
+#paso3_nombre{
+	font-size: x-large;
+}
