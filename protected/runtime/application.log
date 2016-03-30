@@ -1083,3 +1083,33 @@ Stack trace:
 REQUEST_URI=/UNETConvenios/index.php?r=site/page&view=about
 HTTP_REFERER=http://localhost:8080/UNETConvenios/index.php?r=site/login
 ---
+2016/03/30 17:51:59 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "paso1". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('paso1')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('paso1')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cargar/paso1')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/conveniosunet/index.php?r=cargar/paso1
+---
+2016/03/30 20:04:13 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "index". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cargar/')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/conveniosunet/index.php?r=cargar/
+---
+2016/03/30 23:26:25 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "paso2". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('paso2')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('paso2')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cargar/paso2')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/conveniosunet/index.php?r=cargar/paso2
+---
