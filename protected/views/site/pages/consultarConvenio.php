@@ -178,7 +178,50 @@ $this->breadcrumbs=array(
 	</div>
 	<div id="Resulconvenios" class="col-sm-8">
 		 <div class="list-group">
-		 	<aside class="list-group-item">Marco Nombre del Convenio
+		 	<aside class="list-group-item"> 
+
+		 		<div class="row">
+		 			<div class="col-sm-2">
+		 			<p>Marco<p>	
+		 			</div>
+		 			<div class="col-sm-10">
+		 			 Diplomado en gestion integral de desechos y residuos solidos
+		 			</div> 
+		 		</div>
+		 		<div class="row">
+		 			<div class="col-sm-8">
+		 				<ul>
+						<li>Fecha Inicio: 10/08/2015</li>
+						<li>Fecha Caducidad: </li>
+						<li>Estado del Convenio: Activo</li>
+						<li>Institucion: Fundacion Catolica Norte</li>
+						<li>Responsable UNET: Raul Ostos</li>
+					</ul>	
+		 			</div>
+		 			
+		 			<div  class="col-sm-4"> 
+		 				<ul class="list-inline">
+							<li ><a href=""><span class="glyphicon glyphicon-plus"></span></a></li>
+							<li><a href=""><span class="glyphicon glyphicon-pencil"></span></a></li>
+							<li><a href=""><span class="glyphicon glyphicon-time"></span></a></li>
+							<li><a href=""><span class="glyphicon glyphicon-refresh"></span></a></li>
+							<li><a href=""><span class="glyphicon glyphicon-cloud-download"></a></span></li>
+							<li><a href=""><span class="glyphicon glyphicon-trash"></span></a></li>	
+					    </ul>
+		 			</div>
+		 			
+		 		</div>
+		 		
+		 	</aside>
+		 	<aside class="list-group-item">
+		 		<div class="row">
+		 			<div class="col-sm-2">
+		 			<p>Marco<p>	
+		 			</div>
+		 			<div class="col-sm-10">
+		 			 Diplomado en gestion integral de desechos y residuos solidos
+		 			</div> 
+		 		</div>
 		 		<div class="row">
 		 			<div class="col-sm-4">
 		 				<ul>
@@ -205,34 +248,15 @@ $this->breadcrumbs=array(
 		 		</div>
 		 		
 		 	</aside>
-		 	<aside class="list-group-item">Marco Nombre del Convenio
+		 	<aside class="list-group-item">
 		 		<div class="row">
-		 			<div class="col-sm-4">
-		 				<ul>
-						<li>Fecha Inicio: </li>
-						<li>Fecha Caducidad: </li>
-						<li>Estado del Convenio: </li>
-						<li>Institucion: </li>
-						<li>Responsable UNET: </li>
-					</ul>	
+		 			<div class="col-sm-2">
+		 			<p>Marco<p>	
 		 			</div>
-		 			<div class="col-sm-4">Clasificacion:
-		 			</div>
-		 			<div  class="col-sm-4"> 
-		 				<ul class="list-inline">
-							<li ><a href=""><span class="glyphicon glyphicon-plus"></span></a></li>
-							<li><a href=""><span class="glyphicon glyphicon-pencil"></span></a></li>
-							<li><a href=""><span class="glyphicon glyphicon-time"></span></a></li>
-							<li><a href=""><span class="glyphicon glyphicon-refresh"></span></a></li>
-							<li><a href=""><span class="glyphicon glyphicon-cloud-download"></a></span></li>
-							<li><a href=""><span class="glyphicon glyphicon-trash"></span></a></li>	
-					    </ul>
-		 			</div>
-		 			
+		 			<div class="col-sm-10">
+		 			 Diplomado en gestion integral de desechos y residuos solidos
+		 			</div> 
 		 		</div>
-		 		
-		 	</aside>
-		 	<aside class="list-group-item">Marco Nombre del Convenio
 		 		<div class="row">
 		 			<div class="col-sm-4">
 		 				<ul>
@@ -260,7 +284,15 @@ $this->breadcrumbs=array(
 		 		
 		 	</aside>
 
-		 	<aside class="list-group-item">Marco Nombre del Convenio
+		 	<aside class="list-group-item">
+		 		<div class="row">
+		 			<div class="col-sm-2">
+		 			<p>Marco<p>	
+		 			</div>
+		 			<div class="col-sm-10">
+		 			 Diplomado en gestion integral de desechos y residuos solidos
+		 			</div> 
+		 		</div>
 		 		<div class="row">
 		 			<div class="col-sm-4">
 		 				<ul>
@@ -288,7 +320,15 @@ $this->breadcrumbs=array(
 		 		
 		 	</aside>
 
-			<aside class="list-group-item">Marco Nombre del Convenio
+			<aside class="list-group-item">
+				<div class="row">
+		 			<div class="col-sm-2">
+		 			<p>Marco<p>	
+		 			</div>
+		 			<div class="col-sm-10">
+		 			 Diplomado en gestion integral de desechos y residuos solidos
+		 			</div> 
+		 		</div>
 		 		<div class="row">
 		 			<div class="col-sm-4">
 		 				<ul>
@@ -317,7 +357,15 @@ $this->breadcrumbs=array(
 		 	</aside>
 
 
-		 	<aside class="list-group-item">Marco Nombre del Convenio
+		 	<aside class="list-group-item">
+		 		<div class="row">
+		 			<div class="col-sm-2">
+		 			<p>Marco<p>	
+		 			</div>
+		 			<div class="col-sm-10">
+		 			 Diplomado en gestion integral de desechos y residuos solidos
+		 			</div> 
+		 		</div>
 		 		<div class="row">
 		 			<div class="col-sm-4">
 		 				<ul>

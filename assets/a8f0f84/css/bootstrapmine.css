@@ -89,10 +89,15 @@ h4{
 }
 /*Empieza la parte derecha*/
 div#Resulconvenios ul{
+	 font-size: 1em;
 	 list-style: none;
 
 }
 
+div#Resulconvenios p{
+	color: #1b325f;
+
+}
 
 
 
