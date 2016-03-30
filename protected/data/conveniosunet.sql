@@ -52,7 +52,6 @@ CREATE TABLE convenio (
 	institucion_UNET VARCHAR(50),
 	objetivo_covenio text,
 	cod_clasificacion VARCHAR(25),
-
 	CONSTRAINT fk_clasificacion_convenio FOREIGN KEY (cod_clasificacion)
     REFERENCES clasificacion(cod_clasificacion)
 );
