@@ -6,7 +6,7 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Acta de Intencion</h1>
+<h3>Acta de Intencion</h3>
 
 <section class="datos_convenio">
 	
@@ -25,7 +25,7 @@ $this->breadcrumbs=array(
 	</article>
 </div>
 </section>
-<h1>Datos de Acta de Intención </h1>
+<h3>Datos de Acta de Intención </h3>
 
 <section class="datos_acta">
 		<div class="form-group row">
