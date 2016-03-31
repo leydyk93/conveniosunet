@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 	<div class="col-sm-4">
 
 		<section>
-			<h4><a href=""><span class="glyphicon glyphicon-plus-sign"></span></a>Nuevo Convenio</h4>
+			<h4><a href="index.php?r=cargar/paso1"><span class="glyphicon glyphicon-plus-sign"></span></a>Nuevo Convenio</h4>
 			<h4><span class="glyphicon glyphicon-database-plus"></span>Agregar información</h4>
 		</section>
 
@@ -401,7 +401,7 @@ $this->breadcrumbs=array(
 		  <div class="row">
 			<ul class="pager">
 		    <li><a href="#">Anterior</a></li>
-		    <li><a href="#">Siguinete</a></li>
+		    <li><a href="#">Siguiente</a></li>
 		  </ul>
 		</div>
 
