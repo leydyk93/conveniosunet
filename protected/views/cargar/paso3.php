@@ -55,10 +55,11 @@ $this->breadcrumbs=array(
 </section>
 <h4><a href=""><span class="glyphicon glyphicon-plus-sign"></span></a>Adjuntar Archivo</h4>
 <p id="campos">(*) Campos Obligatorios</p>
- <div class="row">
+ 
+	<div class="row">
 			<ul class="pager">
-		    <li><a href="#">Anterior</a></li>
-		    <li><a href="#">Siguiente</a></li>
+		    <li><a href="index.php?r=cargar/paso2"><button type="button" class="btn btn-conv ">Anterior</button></a></li>
+		    <li><a href="index.php?r=cargar/paso4"><button type="button" class="btn btn-conv ">Siguiente</button></a></li>
 		  </ul>
 		</div>
 

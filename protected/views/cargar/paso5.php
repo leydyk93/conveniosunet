@@ -70,9 +70,8 @@ $this->breadcrumbs=array(
 	
 </div>
 </section>
- <div class="row">
+<div class="row">
 			<ul class="pager">
-		    <li><a href="#">Anterior</a></li>
-		    <li><a href="#">Siguiente</a></li>
+		    <li><a href="index.php?r=site/page&view=consultarConvenio"><button type="button" class="btn btn-conv ">Finalizar</button></a></li>
 		  </ul>
 		</div>

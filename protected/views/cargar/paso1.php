@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 ?>
 
 <div class="container-fluid">
-<h4>Datos Generales del connvenio</h4>
+<h4>Datos Generales del convenio</h4>
 <form class="form-horizontal" role="form">
   <div class="form-group">
     <label class="control-label col-sm-2" for="email">Codigo:</label>
@@ -48,9 +48,15 @@ $this->breadcrumbs=array(
   	
   	<div class="form-group">
     <label class="control-label col-sm-2" for="nomb2">Estado</label>
-    <div class="col-sm-10">
-      <a href=""><span class="glyphicon glyphicon-plus"></span></a>
-    </div>
+    <div class="col-sm-10"> 
+      <select class="form-control">
+                  <option>Memo S.C Juridica</option>
+                  <option>Memo R.C Juridica</option>
+                   <option>Memo C. Secretaria</option>
+                  <option>Resolucion C.U # 1</option>
+
+    </select>
+    
   </div>
 
    <div class="row">

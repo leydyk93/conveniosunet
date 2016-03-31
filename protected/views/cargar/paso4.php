@@ -107,7 +107,7 @@ $this->breadcrumbs=array(
 <p id="campos">(*) Campos Obligatorios</p>
  <div class="row">
 			<ul class="pager">
-		    <li><a href="#">Anterior</a></li>
-		    <li><a href="#">Siguiente</a></li>
+		    <li><a href="index.php?r=cargar/paso3"><button type="button" class="btn btn-conv ">Anterior</button></a></li>
+		    <li><a href="index.php?r=cargar/paso5"><button type="button" class="btn btn-conv ">Siguiente</button></a></li>
 		  </ul>
 		</div>
