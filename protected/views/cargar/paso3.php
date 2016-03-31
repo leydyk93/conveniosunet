@@ -53,5 +53,13 @@ $this->breadcrumbs=array(
 			</div>
 		</div>
 </section>
+<h4><a href=""><span class="glyphicon glyphicon-plus-sign"></span></a>Adjuntar Archivo</h4>
+<p id="campos">(*) Campos Obligatorios</p>
+ <div class="row">
+			<ul class="pager">
+		    <li><a href="#">Anterior</a></li>
+		    <li><a href="#">Siguiente</a></li>
+		  </ul>
+		</div>
 
 

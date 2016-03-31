@@ -1,3 +1,12 @@
+.contenedor{
+	background-color: 	#FFFFFF;
+	width: 95%;
+	margin: 0px 2% ;
+	padding: 0px;
+}
+body{
+	/*background-color: #000080;*/
+}
 header{
  background: url("../img/CabeceraA.png") no-repeat;
 }

@@ -14,7 +14,7 @@
 </head> 
 
 <body>
-	<div class="contenedor container-fluid">
+	<div class="contenedor container-fluid"><!--contenedor para le margen-->
 
 	<header class="container-fluid">
 		<div class="row">
@@ -86,7 +86,7 @@
 		</div>
 		
 	</footer><!-- footer -->
-</div>
+</div><!--fin contenedor-->
 
 </body>
 </html>
