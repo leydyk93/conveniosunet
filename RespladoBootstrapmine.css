@@ -175,3 +175,33 @@ div#Resulconvenios ul{
 #paso3_nombre{
 	font-size: x-large;
 }
+
+#campos{
+margin-top: 5px;
+font-weight: bold;
+}
+#adjuntar{
+margin-top: 2px;
+	font-weight: bold;
+}
+/*Estilos paso 4*/
+.imageninstituciones{
+margin-left: 30%;
+height: 100px;
+width: 300px;
+background: url("../img/ImagenInstituciones.png") no-repeat;
+background-size: 100% 100%;
+}
+.imagenactividades{
+margin-left: 30%;
+height: 100px;
+width: 300px;
+background: url("../img/ImagenActividades.png") no-repeat;
+background-size: 100% 100%;
+}
+.denom{
+	margin-left: 10%;
+}
+.cost{
+	margin-left: 20%;
+}
