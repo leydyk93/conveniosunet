@@ -1124,6 +1124,7 @@ REQUEST_URI=/UNETConvenios/index.php?r=product/index&tag=popular
 HTTP_REFERER=http://localhost:8080/UNETConvenios/index.php?r=convenio/index&tag=new
 >>>>>>> 11676b4ca2a69197931058daa44883d5205506cd
 ---
+<<<<<<< HEAD
 2016/04/14 06:27:26 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "view.php". in C:\xampp\htdocs\yii\framework\web\CController.php:483
 Stack trace:
 #0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('view.php')
@@ -1221,4 +1222,71 @@ Stack trace:
 #4 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
 #5 {main}
 REQUEST_URI=/conveniosunet/index.php?r=convenios/prueba
+=======
+2016/04/14 04:54:16 [error] [php] Missing argument 3 for CHtml::listData(), called in C:\wamp\www\UNETConvenios\protected\views\convenios\_form.php on line 60 and defined (C:\wamp\www\yii\framework\web\helpers\CHtml.php:2073)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CBaseController.php(95): ConveniosController->renderInternal()
+#1 C:\wamp\www\yii\framework\web\CController.php(869): ConveniosController->renderFile()
+#2 C:\wamp\www\UNETConvenios\protected\views\convenios\create.php(18): ConveniosController->renderPartial()
+#3 C:\wamp\www\yii\framework\web\CBaseController.php(126): require()
+#4 C:\wamp\www\yii\framework\web\CBaseController.php(95): ConveniosController->renderInternal()
+#5 C:\wamp\www\yii\framework\web\CController.php(869): ConveniosController->renderFile()
+#6 C:\wamp\www\yii\framework\web\CController.php(782): ConveniosController->renderPartial()
+#7 C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php(79): ConveniosController->render()
+#8 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): ConveniosController->actionCreate()
+#9 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#10 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#11 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#13 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#14 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#15 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\wamp\www\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#17 C:\wamp\www\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#18 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#19 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#20 C:\wamp\www\UNETConvenios\index.php(13): CWebApplication->run()
+REQUEST_URI=/UNETConvenios/index.php?r=convenios/create
+in C:\wamp\www\UNETConvenios\protected\views\convenios\_form.php (60)
+in C:\wamp\www\UNETConvenios\protected\views\convenios\create.php (18)
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (79)
+2016/04/14 05:11:51 [error] [php] Invalid argument supplied for foreach() (C:\wamp\www\yii\framework\web\helpers\CHtml.php:2325)
+Stack trace:
+#0 C:\wamp\www\UNETConvenios\protected\views\convenios\_form.php(60): CActiveForm->dropDownList()
+#1 C:\wamp\www\yii\framework\web\CBaseController.php(126): require()
+#2 C:\wamp\www\yii\framework\web\CBaseController.php(95): ConveniosController->renderInternal()
+#3 C:\wamp\www\yii\framework\web\CController.php(869): ConveniosController->renderFile()
+#4 C:\wamp\www\UNETConvenios\protected\views\convenios\create.php(18): ConveniosController->renderPartial()
+#5 C:\wamp\www\yii\framework\web\CBaseController.php(126): require()
+#6 C:\wamp\www\yii\framework\web\CBaseController.php(95): ConveniosController->renderInternal()
+#7 C:\wamp\www\yii\framework\web\CController.php(869): ConveniosController->renderFile()
+#8 C:\wamp\www\yii\framework\web\CController.php(782): ConveniosController->renderPartial()
+#9 C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php(79): ConveniosController->render()
+#10 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): ConveniosController->actionCreate()
+#11 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#12 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#13 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#14 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#15 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#16 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#17 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#18 C:\wamp\www\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#19 C:\wamp\www\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#20 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#21 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#22 C:\wamp\www\UNETConvenios\index.php(13): CWebApplication->run()
+REQUEST_URI=/UNETConvenios/index.php?r=convenios/create
+in C:\wamp\www\UNETConvenios\protected\views\convenios\_form.php (60)
+in C:\wamp\www\UNETConvenios\protected\views\convenios\create.php (18)
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (79)
+2016/04/14 05:49:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\wamp\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('')
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cargar')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=cargar
+>>>>>>> b060efd65d5894f1f67cd9282fcdd53a4d4e0637
 ---

@@ -72,6 +72,11 @@ CREATE TABLE IF NOT EXISTS clasificacionConvenios (
   nombreClasificacionConvenio VARCHAR(150) NOT NULL,
   descripcionClasificacionConvenio VARCHAR(200) NOT NULL,
   PRIMARY KEY (idClasificacionConvenio));
+
+INSERT INTO clasificacionConvenios (idClasificacionConvenio,nombreClasificacionConvenio, descripcionClasificacionConvenio) VALUES
+('M', 'Marco','convenios generales'),
+('E', 'Especifico' 'son  kmckmck');
+
 -- -----------------------------------------------------
 -- Table `mydb`.`alcanceConvenios`
 -- -----------------------------------------------------

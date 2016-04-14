@@ -1,3 +1,12 @@
+.contenedor{
+	background-color: 	#FFFFFF;
+	width: 95%;
+	margin: 0px 2% ;
+	padding: 0px;
+}
+body{
+	/*background-color: #000080;*/
+}
 header{
  background: url("../img/CabeceraA.png") no-repeat;
 }
@@ -89,16 +98,9 @@ h4{
 }
 /*Empieza la parte derecha*/
 div#Resulconvenios ul{
-	 font-size: 1em;
 	 list-style: none;
 
 }
-
-div#Resulconvenios p{
-	color: #1b325f;
-
-}
-
 /* ESTILOS PARA EL LAYOUUT CARGAR*/
 .datos{
 	/*background-color: #FF7F50;*/
@@ -174,6 +176,32 @@ div#Resulconvenios p{
 	font-size: x-large;
 }
 
-
-
-
+#campos{
+margin-top: 5px;
+font-weight: bold;
+}
+#adjuntar{
+margin-top: 2px;
+	font-weight: bold;
+}
+/*Estilos paso 4*/
+.imageninstituciones{
+margin-left: 30%;
+height: 100px;
+width: 300px;
+background: url("../img/ImagenInstituciones.png") no-repeat;
+background-size: 100% 100%;
+}
+.imagenactividades{
+margin-left: 30%;
+height: 100px;
+width: 300px;
+background: url("../img/ImagenActividades.png") no-repeat;
+background-size: 100% 100%;
+}
+.denom{
+	margin-left: 10%;
+}
+.cost{
+	margin-left: 20%;
+}

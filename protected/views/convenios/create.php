@@ -3,7 +3,7 @@
 /* @var $model Convenios */
 
 $this->breadcrumbs=array(
-	'Convenioses'=>array('index'),
+	'Convenios'=>array('index'),
 	'Create',
 );
 
@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Convenios</h1>
+<h1>Crear Convenios</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

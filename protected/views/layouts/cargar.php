@@ -14,8 +14,7 @@
 </head> 
 
 <body>
-	<!--<div class="contenedor container-fluid">!-->
-
+	<!--<div class="contenedor container-fluid">-->
 	<header class="container-fluid">
 		<div class="row">
 			<div id="dlogo" class="col-xs-2">
@@ -86,7 +85,6 @@
 		</div>
 		
 	</footer><!-- footer -->
-<!--</div>-->
-
+ <!--</div>-->
 </body>
 </html>
