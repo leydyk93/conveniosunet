@@ -54,7 +54,7 @@
 				array('label'=>'<span class="glyphicon glyphicon-earphone"></span> Contactenos', 'url'=>array('/site/contact'),'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'<span class="glyphicon glyphicon-cog"></span> Configuración <span class="caret"></span>', 'url'=>array('/site/configuracion'), 'visible'=>!Yii::app()->user->isGuest,'items'=>array(
 		            array('label'=>'Convenios', 'url'=>array('/convenio/index', 'tag'=>'new')),
-		            array('label'=>'Most Popular', 'url'=>array('product/index', 'tag'=>'popular')),
+		            array('label'=>'Most Popular', 'url'=>array('convenios/create', 'tag'=>'popular')),
 		        ),
 
 				 'submenuOptions'=>array('class'=>'dropdown-menu'), 
