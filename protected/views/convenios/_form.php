@@ -19,6 +19,12 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+  	
+  </div>
+  </form>
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'idConvenio'); ?>
 		<?php echo $form->textField($model,'idConvenio',array('size'=>50,'maxlength'=>50)); ?>
@@ -57,9 +63,15 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'clasificacionConvenios_idTipoConvenio'); ?>
-		<?php echo $form->textField($model,'clasificacionConvenios_idTipoConvenio',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->dropDownList($model,'clasificacionConvenios_idTipoConvenio',CHtml::listData( Clasificacionconvenios::model()->findAll(), 'idClasificacionConvenio', 'nombreClasificacionConvenio'),''); ?>
 		<?php echo $form->error($model,'clasificacionConvenios_idTipoConvenio'); ?>
 	</div>
+
+	<!--<div class="row">
+		<?php /*echo $form->labelEx($model,'clasificacionConvenios_idTipoConvenio'); */?>
+		<?php /*echo $form->textField($model,'clasificacionConvenios_idTipoConvenio',array('size'=>10,'maxlength'=>10));*/ ?>
+		<?php /*echo $form->error($model,'clasificacionConvenios_idTipoConvenio'); */?>
+	 </div>-->
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'tipoConvenios_idTipoConvenio'); ?>
@@ -85,11 +97,11 @@
 		<?php echo $form->error($model,'dependencias_idDependencia'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'convenios_idConvenio'); ?>
-		<?php echo $form->textField($model,'convenios_idConvenio',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'convenios_idConvenio'); ?>
-	</div>
+	<!--<div class="row">
+		<?php /*echo $form->labelEx($model,'convenios_idConvenio'); */?>
+		<?php /*echo $form->textField($model,'convenios_idConvenio',array('size'=>50,'maxlength'=>50));*/ ?>
+		<?php /*echo $form->error($model,'convenios_idConvenio'); */?>
+	</div>-->
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

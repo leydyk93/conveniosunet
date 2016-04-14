@@ -97,17 +97,17 @@ class Convenios extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'idConvenio' => 'Id Convenio',
-			'nombreConvenio' => 'Nombre Convenio',
-			'fechaCaducidadConvenio' => 'Fecha Caducidad Convenio',
-			'objetivoConvenio' => 'Objetivo Convenio',
-			'institucionUNET' => 'Institucion Unet',
-			'urlConvenio' => 'Url Convenio',
-			'clasificacionConvenios_idTipoConvenio' => 'Clasificacion Convenios Id Tipo Convenio',
-			'tipoConvenios_idTipoConvenio' => 'Tipo Convenios Id Tipo Convenio',
-			'alcanceConvenios_idAlcanceConvenio' => 'Alcance Convenios Id Alcance Convenio',
-			'formaConvenios_idFormaConvenio' => 'Forma Convenios Id Forma Convenio',
-			'dependencias_idDependencia' => 'Dependencias Id Dependencia',
+			'idConvenio' => 'Codigo: ',
+			'nombreConvenio' => 'Nombre: ',
+			'fechaCaducidadConvenio' => 'Fecha Caducidad: ',
+			'objetivoConvenio' => 'Objeto: ',
+			'institucionUNET' => 'Institucion: ',
+			'urlConvenio' => 'Url: ',
+			'clasificacionConvenios_idTipoConvenio' => 'Clasificacion: ',
+			'tipoConvenios_idTipoConvenio' => 'Tipo: ',
+			'alcanceConvenios_idAlcanceConvenio' => 'Alcance: ',
+			'formaConvenios_idFormaConvenio' => 'Forma: ',
+			'dependencias_idDependencia' => 'Dependencia: ',
 			'convenios_idConvenio' => 'Convenios Id Convenio',
 		);
 	}
