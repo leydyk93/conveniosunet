@@ -466,3 +466,15 @@ CREATE TABLE IF NOT EXISTS    convenio_criterios  (
     REFERENCES    unidades  ( idUnidad )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+/* INSERSIONES*/
+INSERT INTO `tipoconvenios` (`idTipoConvenio`, `descripcionTipoConvenio`) VALUES ('1', 'marco');
+INSERT INTO `tipoconvenios` (`idTipoConvenio`, `descripcionTipoConvenio`) VALUES ('2', 'especifico');
+
+INSERT INTO `clasificacionconvenios` (`idClasificacionConvenio`, `nombreClasificacionConvenio`, `descripcionClasificacionConvenio`) VALUES ('1', 'academico', '');
+INSERT INTO `clasificacionconvenios` (`idClasificacionConvenio`, `nombreClasificacionConvenio`, `descripcionClasificacionConvenio`) VALUES ('2', 'cultural', '');
+
+INSERT INTO `alcanceconvenios` (`idAlcanceConvenio`, `descripcionAlcanceConvenio`) VALUES ('1', 'Global');
+INSERT INTO `alcanceconvenios` (`idAlcanceConvenio`, `descripcionAlcanceConvenio`) VALUES ('2', 'Local');
+
+INSERT INTO `formaconvenios` (`idFormaConvenio`, `descripcionFormaConvenio`) VALUES ('1', 'Unilateral');
+INSERT INTO `formaconvenios` (`idFormaConvenio`, `descripcionFormaConvenio`) VALUES ('2', 'Bilateral');
