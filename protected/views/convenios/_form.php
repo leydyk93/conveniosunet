@@ -75,19 +75,19 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'tipoConvenios_idTipoConvenio'); ?>
-		<?php echo $form->textField($model,'tipoConvenios_idTipoConvenio',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->dropDownList($model,'tipoConvenios_idTipoConvenio',CHtml::listData( Tipoconvenios::model()->findAll(), 'idTipoConvenio', 'descripcionTipoConvenio'),''); ?>
 		<?php echo $form->error($model,'tipoConvenios_idTipoConvenio'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'alcanceConvenios_idAlcanceConvenio'); ?>
-		<?php echo $form->textField($model,'alcanceConvenios_idAlcanceConvenio',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->dropDownList($model,'alcanceConvenios_idAlcanceConvenio',CHtml::listData( AlcanceConvenios::model()->findAll(), 'idAlcanceConvenio', 'descripcionAlcanceConvenio'),''); ?>
 		<?php echo $form->error($model,'alcanceConvenios_idAlcanceConvenio'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'formaConvenios_idFormaConvenio'); ?>
-		<?php echo $form->textField($model,'formaConvenios_idFormaConvenio',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->dropDownList($model,'formaConvenios_idFormaConvenio',CHtml::listData( Formaconvenios::model()->findAll(), 'idFormaConvenio', 'descripcionFormaConvenio'),''); ?>
 		<?php echo $form->error($model,'formaConvenios_idFormaConvenio'); ?>
 	</div>
 
