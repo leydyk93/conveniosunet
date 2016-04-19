@@ -16,6 +16,7 @@
  * @property string $formaConvenios_idFormaConvenio
  * @property string $dependencias_idDependencia
  * @property string $convenios_idConvenio
+ * @property string $fechaInicioConvenio
  *
  * The followings are the available model relations:
  * @property Actaintencion[] $actaintencions
@@ -53,14 +54,14 @@ class Convenios extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idConvenio, nombreConvenio, fechaCaducidadConvenio, objetivoConvenio, institucionUNET, urlConvenio, clasificacionConvenios_idTipoConvenio, tipoConvenios_idTipoConvenio, alcanceConvenios_idAlcanceConvenio, formaConvenios_idFormaConvenio, dependencias_idDependencia, convenios_idConvenio', 'required'),
+			array('idConvenio, nombreConvenio, fechaCaducidadConvenio, objetivoConvenio, institucionUNET, urlConvenio, clasificacionConvenios_idTipoConvenio, tipoConvenios_idTipoConvenio, alcanceConvenios_idAlcanceConvenio, formaConvenios_idFormaConvenio, dependencias_idDependencia, fechaInicioConvenio', 'required'),
 			array('idConvenio, institucionUNET, convenios_idConvenio', 'length', 'max'=>50),
 			array('nombreConvenio', 'length', 'max'=>200),
 			array('urlConvenio', 'length', 'max'=>100),
 			array('clasificacionConvenios_idTipoConvenio, tipoConvenios_idTipoConvenio, alcanceConvenios_idAlcanceConvenio, formaConvenios_idFormaConvenio, dependencias_idDependencia', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idConvenio, nombreConvenio, fechaCaducidadConvenio, objetivoConvenio, institucionUNET, urlConvenio, clasificacionConvenios_idTipoConvenio, tipoConvenios_idTipoConvenio, alcanceConvenios_idAlcanceConvenio, formaConvenios_idFormaConvenio, dependencias_idDependencia, convenios_idConvenio', 'safe', 'on'=>'search'),
+			array('idConvenio, nombreConvenio, fechaCaducidadConvenio, objetivoConvenio, institucionUNET, urlConvenio, clasificacionConvenios_idTipoConvenio, tipoConvenios_idTipoConvenio, alcanceConvenios_idAlcanceConvenio, formaConvenios_idFormaConvenio, dependencias_idDependencia, convenios_idConvenio, fechaInicioConvenio', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -97,18 +98,19 @@ class Convenios extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'idConvenio' => 'Codigo: ',
-			'nombreConvenio' => 'Nombre: ',
-			'fechaCaducidadConvenio' => 'Fecha Caducidad: ',
-			'objetivoConvenio' => 'Objeto: ',
-			'institucionUNET' => 'Institucion: ',
-			'urlConvenio' => 'Url: ',
-			'clasificacionConvenios_idTipoConvenio' => 'Clasificacion: ',
-			'tipoConvenios_idTipoConvenio' => 'Tipo: ',
-			'alcanceConvenios_idAlcanceConvenio' => 'Alcance: ',
-			'formaConvenios_idFormaConvenio' => 'Forma: ',
-			'dependencias_idDependencia' => 'Dependencia: ',
+			'idConvenio' => 'Id Convenio',
+			'nombreConvenio' => 'Nombre Convenio',
+			'fechaCaducidadConvenio' => 'Fecha Caducidad Convenio',
+			'objetivoConvenio' => 'Objetivo Convenio',
+			'institucionUNET' => 'Institucion Unet',
+			'urlConvenio' => 'Url Convenio',
+			'clasificacionConvenios_idTipoConvenio' => 'Clasificacion Convenios Id Tipo Convenio',
+			'tipoConvenios_idTipoConvenio' => 'Tipo Convenios Id Tipo Convenio',
+			'alcanceConvenios_idAlcanceConvenio' => 'Alcance Convenios Id Alcance Convenio',
+			'formaConvenios_idFormaConvenio' => 'Forma Convenios Id Forma Convenio',
+			'dependencias_idDependencia' => 'Dependencias Id Dependencia',
 			'convenios_idConvenio' => 'Convenios Id Convenio',
+			'fechaInicioConvenio' => 'Fecha Inicio Convenio',
 		);
 	}
 
@@ -142,6 +144,7 @@ class Convenios extends CActiveRecord
 		$criteria->compare('formaConvenios_idFormaConvenio',$this->formaConvenios_idFormaConvenio,true);
 		$criteria->compare('dependencias_idDependencia',$this->dependencias_idDependencia,true);
 		$criteria->compare('convenios_idConvenio',$this->convenios_idConvenio,true);
+		$criteria->compare('fechaInicioConvenio',$this->fechaInicioConvenio,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 	<div class="col-sm-4">
 
 		<section>
-			<h4><a href="index.php?r=cargar/paso1"><span class="glyphicon glyphicon-plus-sign"></span></a>Nuevo Convenio</h4>
+			<h4><a href="index.php?r=convenios/create"><span class="glyphicon glyphicon-plus-sign"></span></a>Nuevo Convenio</h4>
 			<h4><span class="glyphicon glyphicon-database-plus"></span>Agregar información</h4>
 		</section>
 

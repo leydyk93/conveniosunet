@@ -162,7 +162,7 @@ CREATE TABLE IF NOT EXISTS convenios (
   alcanceConvenios_idAlcanceConvenio VARCHAR(10) NOT NULL,
   formaConvenios_idFormaConvenio VARCHAR(10) NOT NULL,
   dependencias_idDependencia VARCHAR(10) NOT NULL,
-  convenios_idConvenio VARCHAR(50) NOT NULL,
+  convenios_idConvenio VARCHAR(50) NOT NULL, /*Este atributo puede ser nulo*/
 
   PRIMARY KEY (idConvenio),
   CONSTRAINT fk_convenios_clasificacionConvenios1

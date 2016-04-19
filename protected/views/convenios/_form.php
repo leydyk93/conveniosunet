@@ -6,6 +6,8 @@
 
 <div class="form">
 
+
+
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'convenios-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
@@ -15,12 +17,14 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
+
 	
 
 	<?php echo $form->errorSummary($model); ?>
 
 <h4>Datos Generales del convenio</h4>
-<form class="form-horizontal" role="form">
+<form class="form-horizontal" role="form" action="index.php?r=convenios/create" method="post">
+
   <div class="form-group">
 	
 	<div class="row">
@@ -29,6 +33,11 @@
 		<?php echo $form->error($model,'idConvenio'); ?>
 	</div>
   </div>
+  	<div class="row">
+		<?php echo $form->labelEx($model,'tipoConvenios_idTipoConvenio'); ?>
+		<?php echo $form->dropDownList($model,'tipoConvenios_idTipoConvenio',CHtml::listData( Tipoconvenios::model()->findAll(), 'idTipoConvenio', 'descripcionTipoConvenio'),''); ?>
+		<?php echo $form->error($model,'tipoConvenios_idTipoConvenio'); ?>
+	</div>
 
   <div class="form-group">
 	<div class="row">
@@ -37,6 +46,16 @@
 		<?php echo $form->error($model,'nombreConvenio'); ?>
 	</div>
 
+  </div>
+	
+	<div class="form-group">
+
+  	<div class="row">
+  		<label class="control-label col-sm-2" for="fechainicio"><?php echo $form->labelEx($model,'fechaInicioConvenio'); ?></label>
+		
+		<?php echo $form->textField($model,'fechaInicioConvenio'); ?>
+		<?php echo $form->error($model,'fechaInicioConvenio'); ?>
+	</div>
   </div>
 
   <div class="form-group">
@@ -56,10 +75,15 @@
 		<label class="control-label col-sm-2" for="objetivo"> <?php echo $form->labelEx($model,'objetivoConvenio'); ?> </label>
 		<?php echo $form->textArea($model,'objetivoConvenio',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'objetivoConvenio'); ?>
+		<?php $_SESSION['variable']="aqui va el texto del campo " ?>
 	</div>
   	
   </div>
-
+	<div class="row">
+		<?php echo $form->labelEx($model,'dependencias_idDependencia'); ?>
+		<?php echo $form->textField($model,'dependencias_idDependencia',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->error($model,'dependencias_idDependencia'); ?>
+	</div>	
   <h4>Datos de las Partes</h4>
 
   <div class="form-group">
@@ -90,11 +114,7 @@
   </div>
 
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'tipoConvenios_idTipoConvenio'); ?>
-		<?php echo $form->dropDownList($model,'tipoConvenios_idTipoConvenio',CHtml::listData( Tipoconvenios::model()->findAll(), 'idTipoConvenio', 'descripcionTipoConvenio'),''); ?>
-		<?php echo $form->error($model,'tipoConvenios_idTipoConvenio'); ?>
-	</div>
+
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'alcanceConvenios_idAlcanceConvenio'); ?>
@@ -108,39 +128,38 @@
 
 		<?php echo $form->error($model,'formaConvenios_idFormaConvenio'); ?>
 	</div>
+	
 
-  </div>
-
-  </form>
-
-	<!--<div class="row">
-		<?php /*echo $form->labelEx($model,'clasificacionConvenios_idTipoConvenio'); */?>
-		<?php /*echo $form->textField($model,'clasificacionConvenios_idTipoConvenio',array('size'=>10,'maxlength'=>10));*/ ?>
-		<?php /*echo $form->error($model,'clasificacionConvenios_idTipoConvenio'); */?>
-	 </div>-->
-
-<p class="note">los campos con <span class="required">*</span> son obligatorios</p>
 	<div class="row">
+		
+		<?php echo $model->convenios_idConvenio ?>
+		<?php echo $form->labelEx($model,'convenios_idConvenio'); ?>
+		<?php echo $form->textField($model,'convenios_idConvenio',array('size'=>0,'maxlength'=>50)); ?>
+		<?php echo $form->error($model,'convenios_idConvenio'); ?>
+
 		
 	</div>
 
-	<!--<div class="row">
-		<?php /*echo $form->labelEx($model,'dependencias_idDependencia'); */?>
-		<?php /*echo $form->textField($model,'dependencias_idDependencia',array('size'=>10,'maxlength'=>10));*/ ?>
-		<?php /*echo $form->error($model,'dependencias_idDependencia'); */?>
-	</div>-->
-
-	<!--<div class="row">
-		<?php /*echo $form->labelEx($model,'convenios_idConvenio'); */?>
-		<?php /*echo $form->textField($model,'convenios_idConvenio',array('size'=>50,'maxlength'=>50));*/ ?>
-		<?php /*echo $form->error($model,'convenios_idConvenio'); */?>
-	</div>-->
-
+  </div>
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Save', array('class'=>"btn btn-conv")); ?>
+		 <input type="submit" value="confirmar">
+		<!-- <?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Save'); ?> -->
 	</div>
 
 
-<?php $this->endWidget(); ?>
+
+  	<p class="note">los campos con <span class="required">*</span> son obligatorios</p>
+	<?php if (isset($_SESSION['variable'])){
+			echo $_SESSION['variable'];
+			}
+			if(isset($_REQUEST)){
+				echo $_REQUEST;
+			}
+
+	 ?>	
+	<?php $this->endWidget(); ?> <!-- 	FIN DEL WIDGET DEL FORMULARIO-->
+
+  </form> <!--FIN DEL  DEL FORMULARIO-->
+
 
 </div><!-- form -->
