@@ -23,7 +23,7 @@
 	<?php echo $form->errorSummary($model); ?>
 
 <h4>Datos Generales del convenio</h4>
-<form class="form-horizontal" role="form" action="index.php?r=convenios/create" method="post">
+<form class="form-horizontal" role="form" 	>
 
   <div class="form-group">
 	
@@ -71,11 +71,12 @@
 
   <div class="form-group">
 
-  	<div class="row">
+  	<div class="row" name="objeto">
 		<label class="control-label col-sm-2" for="objetivo"> <?php echo $form->labelEx($model,'objetivoConvenio'); ?> </label>
 		<?php echo $form->textArea($model,'objetivoConvenio',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'objetivoConvenio'); ?>
-		<?php $_SESSION['variable']="aqui va el texto del campo " ?>
+		<?php $_SESSION['variable']=$form->objetivoConvenio?>
+	 	<?php $_SESSION['varprueba']="Hola" ?>
 	</div>
   	
   </div>
@@ -143,7 +144,7 @@
   </div>
 	<div class="row buttons">
 		 <input type="submit" value="confirmar">
-		<!-- <?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Save'); ?> -->
+		<!-- <?php /*echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Save'); */ ?> -->
 	</div>
 
 
@@ -152,9 +153,9 @@
 	<?php if (isset($_SESSION['variable'])){
 			echo $_SESSION['variable'];
 			}
-			if(isset($_REQUEST)){
-				echo $_REQUEST;
-			}
+		//	if(isset($_REQUEST)){
+		//		echo $_REQUEST;
+		//	}
 
 	 ?>	
 	<?php $this->endWidget(); ?> <!-- 	FIN DEL WIDGET DEL FORMULARIO-->

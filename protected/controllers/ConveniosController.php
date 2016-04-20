@@ -69,13 +69,9 @@ class ConveniosController extends Controller
 
 		if(isset($_POST['Convenios']))
 		{
-			/*$model->attributes=$_POST['Convenios'];
+			$model->attributes=$_POST['Convenios'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idConvenio));
-			*/
-		$this->render('create',array(//eliminar esto lo duplique y colocar lo que esta en comentarios
-			'model'=>$model,
-		));
 		}
 
 		$this->render('create',array(
