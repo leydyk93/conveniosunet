@@ -73,7 +73,11 @@ class ConveniosController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idConvenio));
 		}
-		this->render('create',array('model'=>$model,));
+		
+
+		$this->render('create',array(
+			'model'=>$model,
+		));
 	}
 
 
