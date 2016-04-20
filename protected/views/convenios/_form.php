@@ -55,6 +55,7 @@
 		
 		<?php echo $form->textField($model,'fechaInicioConvenio'); ?>
 		<?php echo $form->error($model,'fechaInicioConvenio'); ?>
+
 	</div>
   </div>
 
@@ -75,7 +76,8 @@
 		<label class="control-label col-sm-2" for="objetivo"> <?php echo $form->labelEx($model,'objetivoConvenio'); ?> </label>
 		<?php echo $form->textArea($model,'objetivoConvenio',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'objetivoConvenio'); ?>
-		<?php $_SESSION['variable']="aqui va el texto del campo " ?>
+		<?php $_SESSION['variable']="aqui va el texto del campo "?>
+	
 	</div>
   	
   </div>
@@ -143,7 +145,9 @@
   </div>
 	<div class="row buttons">
 		 <input type="submit" value="confirmar">
-		<!-- <?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Save'); ?> -->
+
+
+		<!-- <?php /*echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Save'); */?> -->
 	</div>
 
 

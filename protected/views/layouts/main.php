@@ -26,7 +26,7 @@
 			</div >
 			<div id="dmanos" class="col-xs-4">
 				<div class="pull-right">
-				<img id="manos" src="<?php echo yii::app()->bootstrap->obtenerUrl().'/img/manos3.png'?>" alt="manos" width="60" height="60">					
+				<img id="manos" src="<?php echo yii::app()->bootstrap->obtenerUrl().'/img/Manos3.png'?>" alt="manos" width="60" height="60">					
 				</div>
 			</div>
 		</div>
