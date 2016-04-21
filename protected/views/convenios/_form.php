@@ -159,9 +159,9 @@
 		//	}
 
 	 ?>	
-	<?php $this->endWidget(); ?> <!-- 	FIN DEL WIDGET DEL FORMULARIO-->
+
 
   </form> <!--FIN DEL  DEL FORMULARIO-->
-
+	<?php $this->endWidget(); ?> <!-- 	FIN DEL WIDGET DEL FORMULARIO-->
 
 </div><!-- form -->
