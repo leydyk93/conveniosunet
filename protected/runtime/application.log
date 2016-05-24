@@ -1976,3 +1976,71 @@ Stack trace:
 #23 {main}
 REQUEST_URI=/UNETConvenios/index.php?r=convenios/create
 ---
+2016/05/16 12:22:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "informacion".' in C:\wamp\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('informacion')
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('informacion')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/infor...')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=convenios/informacion
+---
+2016/05/23 16:37:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "page".' in C:\wamp\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('page')
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('page')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/page')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=convenios/page&view=index
+---
+2016/05/23 17:42:31 [error] [php] Use of undefined constant hola - assumed 'hola' (C:\wamp\www\UNETConvenios\protected\views\layouts\main.php:95)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\widgets\CContentDecorator.php(76): SiteController->renderFile()
+#1 C:\wamp\www\yii\framework\web\widgets\CContentDecorator.php(54): CContentDecorator->decorate()
+#2 C:\wamp\www\yii\framework\web\widgets\COutputProcessor.php(44): CContentDecorator->processOutput()
+#3 C:\wamp\www\yii\framework\web\CBaseController.php(206): CContentDecorator->run()
+#4 C:\wamp\www\yii\framework\web\CBaseController.php(300): SiteController->endWidget()
+#5 C:\wamp\www\UNETConvenios\protected\views\layouts\column1.php(6): SiteController->endContent()
+#6 C:\wamp\www\yii\framework\web\CBaseController.php(126): require()
+#7 C:\wamp\www\yii\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#8 C:\wamp\www\yii\framework\web\CController.php(784): SiteController->renderFile()
+#9 C:\wamp\www\yii\framework\web\actions\CViewAction.php(140): SiteController->render()
+#10 C:\wamp\www\yii\framework\web\actions\CAction.php(76): CViewAction->run()
+#11 C:\wamp\www\yii\framework\web\CController.php(308): CViewAction->runWithParams()
+#12 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#13 C:\wamp\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#14 C:\wamp\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#15 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#17 C:\wamp\www\UNETConvenios\index.php(13): CWebApplication->run()
+REQUEST_URI=/UNETConvenios/index.php?r=site/page&view=consultarConvenio
+in C:\wamp\www\UNETConvenios\protected\views\layouts\main.php (95)
+in C:\wamp\www\UNETConvenios\protected\views\layouts\column1.php (6)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/05/23 17:43:00 [error] [php] Use of undefined constant hola - assumed 'hola' (C:\wamp\www\UNETConvenios\protected\views\layouts\main.php:95)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\widgets\CContentDecorator.php(76): SiteController->renderFile()
+#1 C:\wamp\www\yii\framework\web\widgets\CContentDecorator.php(54): CContentDecorator->decorate()
+#2 C:\wamp\www\yii\framework\web\widgets\COutputProcessor.php(44): CContentDecorator->processOutput()
+#3 C:\wamp\www\yii\framework\web\CBaseController.php(206): CContentDecorator->run()
+#4 C:\wamp\www\yii\framework\web\CBaseController.php(300): SiteController->endWidget()
+#5 C:\wamp\www\UNETConvenios\protected\views\layouts\column1.php(6): SiteController->endContent()
+#6 C:\wamp\www\yii\framework\web\CBaseController.php(126): require()
+#7 C:\wamp\www\yii\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#8 C:\wamp\www\yii\framework\web\CController.php(784): SiteController->renderFile()
+#9 C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php(32): SiteController->render()
+#10 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#11 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#12 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#13 C:\wamp\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#14 C:\wamp\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#15 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#17 C:\wamp\www\UNETConvenios\index.php(13): CWebApplication->run()
+REQUEST_URI=/UNETConvenios/
+in C:\wamp\www\UNETConvenios\protected\views\layouts\main.php (95)
+in C:\wamp\www\UNETConvenios\protected\views\layouts\column1.php (6)
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (32)
