@@ -15,7 +15,7 @@ $this->menu=array(
 	array('label'=>'Manage Convenios', 'url'=>array('admin')),
 );
 ?>
-<h1>Variables de Sesion<?php echo $_SESSION['Variable']; echo $model->objetivoConvenio ?></h1>
+<!-- <h1>Variables de Sesion<?php /*echo $_SESSION['Variable']; echo $model->objetivoConvenio*/ ?></h1>-->
 <h1>View Convenios #<?php echo $model->idConvenio; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
