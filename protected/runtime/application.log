@@ -1124,574 +1124,6 @@ REQUEST_URI=/UNETConvenios/index.php?r=product/index&tag=popular
 HTTP_REFERER=http://localhost:8080/UNETConvenios/index.php?r=convenio/index&tag=new
 >>>>>>> 11676b4ca2a69197931058daa44883d5205506cd
 ---
-<<<<<<< HEAD
-2016/04/14 06:27:26 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "view.php". in C:\xampp\htdocs\yii\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('view.php')
-#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view.php')
-#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/view....')
-#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/conveniosunet/index.php?r=convenios/view.php
----
-2016/04/14 06:27:47 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "index.php". in C:\xampp\htdocs\yii\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('index.php')
-#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('index.php')
-#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/index...')
-#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/conveniosunet/index.php?r=convenios/index.php
----
-2016/04/14 06:28:25 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in C:\xampp\htdocs\yii\framework\web\CController.php:336
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
-#1 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#2 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#3 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#4 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
-#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/view')
-#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#11 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
-#12 {main}
-REQUEST_URI=/conveniosunet/index.php?r=convenios/view
----
-2016/04/14 06:29:05 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in C:\xampp\htdocs\yii\framework\web\CController.php:336
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
-#1 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#2 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#3 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#4 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
-#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/view')
-#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#11 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
-#12 {main}
-REQUEST_URI=/conveniosunet/index.php?r=convenios/view
----
-2016/04/14 07:09:11 [error] [php] Undefined variable: form (C:\xampp\htdocs\conveniosunet\protected\views\cargar\paso1.php:63)
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): CargarController->renderFile()
-#1 C:\xampp\htdocs\yii\framework\web\CController.php(782): CargarController->renderPartial()
-#2 C:\xampp\htdocs\conveniosunet\protected\controllers\CargarController.php(9): CargarController->render()
-#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): CargarController->actionPaso1()
-#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CargarController->runAction()
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CargarController->runActionWithFilters()
-#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CargarController->run()
-#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
-REQUEST_URI=/conveniosunet/index.php?r=cargar/paso1
-in C:\xampp\htdocs\conveniosunet\protected\views\cargar\paso1.php (63)
-in C:\xampp\htdocs\conveniosunet\protected\controllers\CargarController.php (9)
-in C:\xampp\htdocs\conveniosunet\index.php (13)
-2016/04/14 07:10:19 [error] [php] Undefined variable: model (C:\xampp\htdocs\conveniosunet\protected\views\cargar\paso1.php:63)
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): CargarController->renderFile()
-#1 C:\xampp\htdocs\yii\framework\web\CController.php(782): CargarController->renderPartial()
-#2 C:\xampp\htdocs\conveniosunet\protected\controllers\CargarController.php(9): CargarController->render()
-#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): CargarController->actionPaso1()
-#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CargarController->runAction()
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CargarController->runActionWithFilters()
-#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CargarController->run()
-#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
-REQUEST_URI=/conveniosunet/index.php?r=cargar/paso1
-in C:\xampp\htdocs\conveniosunet\protected\views\cargar\paso1.php (63)
-in C:\xampp\htdocs\conveniosunet\protected\controllers\CargarController.php (9)
-in C:\xampp\htdocs\conveniosunet\index.php (13)
-2016/04/14 07:30:12 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "prueba". in C:\xampp\htdocs\yii\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('prueba')
-#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('prueba')
-#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/prueb...')
-#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/conveniosunet/index.php?r=convenios/prueba
-=======
-2016/04/14 04:54:16 [error] [php] Missing argument 3 for CHtml::listData(), called in C:\wamp\www\UNETConvenios\protected\views\convenios\_form.php on line 60 and defined (C:\wamp\www\yii\framework\web\helpers\CHtml.php:2073)
-Stack trace:
-#0 C:\wamp\www\yii\framework\web\CBaseController.php(95): ConveniosController->renderInternal()
-#1 C:\wamp\www\yii\framework\web\CController.php(869): ConveniosController->renderFile()
-#2 C:\wamp\www\UNETConvenios\protected\views\convenios\create.php(18): ConveniosController->renderPartial()
-#3 C:\wamp\www\yii\framework\web\CBaseController.php(126): require()
-#4 C:\wamp\www\yii\framework\web\CBaseController.php(95): ConveniosController->renderInternal()
-#5 C:\wamp\www\yii\framework\web\CController.php(869): ConveniosController->renderFile()
-#6 C:\wamp\www\yii\framework\web\CController.php(782): ConveniosController->renderPartial()
-#7 C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php(79): ConveniosController->render()
-#8 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): ConveniosController->actionCreate()
-#9 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#10 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
-#11 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#12 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#13 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
-#14 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#15 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
-#16 C:\wamp\www\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
-#17 C:\wamp\www\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
-#18 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#19 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#20 C:\wamp\www\UNETConvenios\index.php(13): CWebApplication->run()
-REQUEST_URI=/UNETConvenios/index.php?r=convenios/create
-in C:\wamp\www\UNETConvenios\protected\views\convenios\_form.php (60)
-in C:\wamp\www\UNETConvenios\protected\views\convenios\create.php (18)
-in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (79)
-2016/04/14 05:11:51 [error] [php] Invalid argument supplied for foreach() (C:\wamp\www\yii\framework\web\helpers\CHtml.php:2325)
-Stack trace:
-#0 C:\wamp\www\UNETConvenios\protected\views\convenios\_form.php(60): CActiveForm->dropDownList()
-#1 C:\wamp\www\yii\framework\web\CBaseController.php(126): require()
-#2 C:\wamp\www\yii\framework\web\CBaseController.php(95): ConveniosController->renderInternal()
-#3 C:\wamp\www\yii\framework\web\CController.php(869): ConveniosController->renderFile()
-#4 C:\wamp\www\UNETConvenios\protected\views\convenios\create.php(18): ConveniosController->renderPartial()
-#5 C:\wamp\www\yii\framework\web\CBaseController.php(126): require()
-#6 C:\wamp\www\yii\framework\web\CBaseController.php(95): ConveniosController->renderInternal()
-#7 C:\wamp\www\yii\framework\web\CController.php(869): ConveniosController->renderFile()
-#8 C:\wamp\www\yii\framework\web\CController.php(782): ConveniosController->renderPartial()
-#9 C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php(79): ConveniosController->render()
-#10 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): ConveniosController->actionCreate()
-#11 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#12 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
-#13 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#14 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#15 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
-#16 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#17 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
-#18 C:\wamp\www\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
-#19 C:\wamp\www\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
-#20 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#21 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#22 C:\wamp\www\UNETConvenios\index.php(13): CWebApplication->run()
-REQUEST_URI=/UNETConvenios/index.php?r=convenios/create
-in C:\wamp\www\UNETConvenios\protected\views\convenios\_form.php (60)
-in C:\wamp\www\UNETConvenios\protected\views\convenios\create.php (18)
-in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (79)
-2016/04/14 05:49:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\wamp\www\yii\framework\web\CController.php:483
-Stack trace:
-#0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('')
-#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('')
-#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cargar')
-#3 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/UNETConvenios/index.php?r=cargar
->>>>>>> b060efd65d5894f1f67cd9282fcdd53a4d4e0637
----
-2016/04/14 07:10:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "product/index".' in C:\wamp\www\yii\framework\web\CWebApplication.php:286
-Stack trace:
-#0 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('product/index')
-#1 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#2 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/UNETConvenios/index.php?r=product/index&tag=popular
-HTTP_REFERER=http://localhost:8080/UNETConvenios/index.php?r=convenio/index&tag=new
----
-2016/04/14 07:10:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "product/index".' in C:\wamp\www\yii\framework\web\CWebApplication.php:286
-Stack trace:
-#0 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('product/index')
-#1 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#2 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/UNETConvenios/index.php?r=product/index&tag=popular
-HTTP_REFERER=http://localhost:8080/UNETConvenios/index.php?r=convenio/index&tag=new
----
-2016/04/14 07:12:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "product/index".' in C:\wamp\www\yii\framework\web\CWebApplication.php:286
-Stack trace:
-#0 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('product/index')
-#1 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#2 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/UNETConvenios/index.php?r=product/index&tag=popular
-HTTP_REFERER=http://localhost:8080/UNETConvenios/index.php?r=convenio/index&tag=new
----
-2016/04/14 07:12:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "product/index".' in C:\wamp\www\yii\framework\web\CWebApplication.php:286
-Stack trace:
-#0 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('product/index')
-#1 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#2 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/UNETConvenios/index.php?r=product/index&tag=popular
----
-2016/04/19 06:53:02 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conveniosunet.convenio' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `convenio`.
-in C:\xampp\htdocs\conveniosunet\protected\controllers\ConvenioController.php (65)
-in C:\xampp\htdocs\conveniosunet\index.php (13)
-2016/04/19 06:53:02 [error] [exception.CDbException] CDbException: The table "convenio" for active record class "Convenio" cannot be found in the database. in C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php:2385
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Convenio))
-#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(79): CActiveRecord->getMetaData()
-#2 C:\xampp\htdocs\conveniosunet\protected\controllers\ConvenioController.php(65): CActiveRecord->__construct()
-#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ConvenioController->actionCreate()
-#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#8 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#10 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
-#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenio/create')
-#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#15 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
-#16 {main}
-REQUEST_URI=/conveniosunet/index.php?r=convenio/create
----
-2016/04/19 16:15:46 [error] [exception.ParseError] ParseError: syntax error, unexpected '*', expecting end of file in C:\xampp\htdocs\conveniosunet\protected\views\convenios\_form.php:113
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
-#1 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
-#2 C:\xampp\htdocs\conveniosunet\protected\views\convenios\create.php(18): CController->renderPartial('_form', Array)
-#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
-#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
-#7 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(78): CController->render('create', Array)
-#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ConveniosController->actionCreate()
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#13 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#15 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#16 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
-#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/creat...')
-#19 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#20 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
-#21 {main}
-REQUEST_URI=/conveniosunet/index.php?r=convenios/create
----
-2016/04/19 16:16:06 [error] [exception.ParseError] ParseError: syntax error, unexpected '*', expecting end of file in C:\xampp\htdocs\conveniosunet\protected\views\convenios\_form.php:119
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
-#1 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
-#2 C:\xampp\htdocs\conveniosunet\protected\views\convenios\create.php(18): CController->renderPartial('_form', Array)
-#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
-#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
-#7 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(78): CController->render('create', Array)
-#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ConveniosController->actionCreate()
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#13 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#15 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#16 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
-#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/creat...')
-#19 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#20 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
-#21 {main}
-REQUEST_URI=/conveniosunet/index.php?r=convenios/create
----
-2016/04/19 16:17:09 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`conveniosunet`.`convenios`, CONSTRAINT `fk_convenios_dependencias1` FOREIGN KEY (`dependencias_idDependencia`) REFERENCES `dependencias` (`idDependencia`)). The SQL statement executed was: INSERT INTO `convenios` (`idConvenio`, `nombreConvenio`, `fechaCaducidadConvenio`, `objetivoConvenio`, `institucionUNET`, `urlConvenio`, `clasificacionConvenios_idTipoConvenio`, `tipoConvenios_idTipoConvenio`, `alcanceConvenios_idAlcanceConvenio`, `formaConvenios_idFormaConvenio`, `dependencias_idDependencia`, `convenios_idConvenio`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11).
-in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (73)
-in C:\xampp\htdocs\conveniosunet\index.php (13)
-2016/04/19 16:17:09 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`conveniosunet`.`convenios`, CONSTRAINT `fk_convenios_dependencias1` FOREIGN KEY (`dependencias_idDependencia`) REFERENCES `dependencias` (`idDependencia`)). The SQL statement executed was: INSERT INTO `convenios` (`idConvenio`, `nombreConvenio`, `fechaCaducidadConvenio`, `objetivoConvenio`, `institucionUNET`, `urlConvenio`, `clasificacionConvenios_idTipoConvenio`, `tipoConvenios_idTipoConvenio`, `alcanceConvenios_idAlcanceConvenio`, `formaConvenios_idFormaConvenio`, `dependencias_idDependencia`, `convenios_idConvenio`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11) in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1080): CDbCommand->execute()
-#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(809): CActiveRecord->insert(NULL)
-#2 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(73): CActiveRecord->save()
-#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ConveniosController->actionCreate()
-#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#8 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#10 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
-#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/creat...')
-#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#15 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
-#16 {main}
-REQUEST_URI=/conveniosunet/index.php?r=convenios/create
-HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/create
----
-2016/04/19 18:26:29 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `convenios` (`idConvenio`, `tipoConvenios_idTipoConvenio`, `nombreConvenio`, `fechaInicioConvenio`, `fechaCaducidadConvenio`, `objetivoConvenio`, `dependencias_idDependencia`, `institucionUNET`, `urlConvenio`, `clasificacionConvenios_idTipoConvenio`, `alcanceConvenios_idAlcanceConvenio`, `formaConvenios_idFormaConvenio`, `convenios_idConvenio`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12).
-in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (73)
-in C:\xampp\htdocs\conveniosunet\index.php (13)
-2016/04/19 18:26:29 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `convenios` (`idConvenio`, `tipoConvenios_idTipoConvenio`, `nombreConvenio`, `fechaInicioConvenio`, `fechaCaducidadConvenio`, `objetivoConvenio`, `dependencias_idDependencia`, `institucionUNET`, `urlConvenio`, `clasificacionConvenios_idTipoConvenio`, `alcanceConvenios_idAlcanceConvenio`, `formaConvenios_idFormaConvenio`, `convenios_idConvenio`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12) in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1080): CDbCommand->execute()
-#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(809): CActiveRecord->insert(NULL)
-#2 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(73): CActiveRecord->save()
-#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ConveniosController->actionCreate()
-#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#8 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#10 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
-#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/creat...')
-#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#15 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
-#16 {main}
-REQUEST_URI=/conveniosunet/index.php?r=convenios/create
-HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/create
----
-2016/04/19 18:53:36 [error] [exception.ParseError] ParseError: syntax error, unexpected 'echo' (T_ECHO) in C:\xampp\htdocs\conveniosunet\protected\views\convenios\_form.php:130
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
-#1 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
-#2 C:\xampp\htdocs\conveniosunet\protected\views\convenios\create.php(18): CController->renderPartial('_form', Array)
-#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
-#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
-#7 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(78): CController->render('create', Array)
-#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ConveniosController->actionCreate()
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#13 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#15 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#16 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
-#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/creat...')
-#19 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#20 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
-#21 {main}
-REQUEST_URI=/conveniosunet/index.php?r=convenios/create
----
-2016/04/19 19:44:26 [error] [php] A session had already been started - ignoring session_start() (C:\xampp\htdocs\conveniosunet\protected\views\convenios\_form.php:6)
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ConveniosController->renderInternal()
-#1 C:\xampp\htdocs\yii\framework\web\CController.php(869): ConveniosController->renderFile()
-#2 C:\xampp\htdocs\conveniosunet\protected\views\convenios\create.php(18): ConveniosController->renderPartial()
-#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ConveniosController->renderInternal()
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): ConveniosController->renderFile()
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): ConveniosController->renderPartial()
-#7 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(78): ConveniosController->render()
-#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ConveniosController->actionCreate()
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#13 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
-#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#15 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#16 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
-#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
-#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#19 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#20 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
-REQUEST_URI=/conveniosunet/index.php?r=convenios/create
-in C:\xampp\htdocs\conveniosunet\protected\views\convenios\_form.php (6)
-in C:\xampp\htdocs\conveniosunet\protected\views\convenios\create.php (18)
-in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (78)
-2016/04/19 19:44:42 [error] [php] A session had already been started - ignoring session_start() (C:\xampp\htdocs\conveniosunet\protected\views\convenios\_form.php:6)
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ConveniosController->renderInternal()
-#1 C:\xampp\htdocs\yii\framework\web\CController.php(869): ConveniosController->renderFile()
-#2 C:\xampp\htdocs\conveniosunet\protected\views\convenios\create.php(18): ConveniosController->renderPartial()
-#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ConveniosController->renderInternal()
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): ConveniosController->renderFile()
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): ConveniosController->renderPartial()
-#7 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(78): ConveniosController->render()
-#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ConveniosController->actionCreate()
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#13 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
-#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#15 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#16 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
-#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
-#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#19 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#20 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
-REQUEST_URI=/conveniosunet/index.php?r=convenios/create
-in C:\xampp\htdocs\conveniosunet\protected\views\convenios\_form.php (6)
-in C:\xampp\htdocs\conveniosunet\protected\views\convenios\create.php (18)
-in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (78)
-2016/04/19 19:44:57 [error] [php] Undefined index: variable (C:\xampp\htdocs\conveniosunet\protected\views\convenios\_form.php:131)
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): ConveniosController->renderFile()
-#1 C:\xampp\htdocs\conveniosunet\protected\views\convenios\create.php(18): ConveniosController->renderPartial()
-#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ConveniosController->renderInternal()
-#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): ConveniosController->renderFile()
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(782): ConveniosController->renderPartial()
-#6 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(78): ConveniosController->render()
-#7 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ConveniosController->actionCreate()
-#8 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#12 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
-#13 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#14 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#15 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
-#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
-#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#18 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#19 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
-REQUEST_URI=/conveniosunet/index.php?r=convenios/create
-in C:\xampp\htdocs\conveniosunet\protected\views\convenios\_form.php (131)
-in C:\xampp\htdocs\conveniosunet\protected\views\convenios\create.php (18)
-in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (78)
-2016/04/19 19:45:15 [error] [php] Undefined index: variable (C:\xampp\htdocs\conveniosunet\protected\views\convenios\_form.php:131)
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): ConveniosController->renderFile()
-#1 C:\xampp\htdocs\conveniosunet\protected\views\convenios\create.php(18): ConveniosController->renderPartial()
-#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ConveniosController->renderInternal()
-#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): ConveniosController->renderFile()
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(782): ConveniosController->renderPartial()
-#6 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(78): ConveniosController->render()
-#7 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ConveniosController->actionCreate()
-#8 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#12 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
-#13 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#14 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#15 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
-#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
-#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#18 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#19 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
-REQUEST_URI=/conveniosunet/index.php?r=convenios/create
-in C:\xampp\htdocs\conveniosunet\protected\views\convenios\_form.php (131)
-in C:\xampp\htdocs\conveniosunet\protected\views\convenios\create.php (18)
-in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (78)
-2016/04/19 19:45:19 [error] [php] Undefined index: variable (C:\xampp\htdocs\conveniosunet\protected\views\convenios\_form.php:131)
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): ConveniosController->renderFile()
-#1 C:\xampp\htdocs\conveniosunet\protected\views\convenios\create.php(18): ConveniosController->renderPartial()
-#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
-#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ConveniosController->renderInternal()
-#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): ConveniosController->renderFile()
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(782): ConveniosController->renderPartial()
-#6 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(78): ConveniosController->render()
-#7 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ConveniosController->actionCreate()
-#8 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
-#10 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#12 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
-#13 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#14 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#15 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
-#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
-#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#18 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#19 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
-REQUEST_URI=/conveniosunet/index.php?r=convenios/create
-in C:\xampp\htdocs\conveniosunet\protected\views\convenios\_form.php (131)
-in C:\xampp\htdocs\conveniosunet\protected\views\convenios\create.php (18)
-in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (78)
-2016/04/19 20:05:16 [error] [exception.ParseError] ParseError: syntax error, unexpected 'isset' (T_ISSET), expecting '(' in C:\xampp\htdocs\conveniosunet\protected\views\convenios\_form.php:149
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
-#1 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
-#2 C:\xampp\htdocs\conveniosunet\protected\views\convenios\create.php(18): CController->renderPartial('_form', Array)
-#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
-#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
-#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
-#7 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(82): CController->render('create', Array)
-#8 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ConveniosController->actionCreate()
-#9 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#11 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#13 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#15 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#16 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
-#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/creat...')
-#19 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#20 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
-#21 {main}
-REQUEST_URI=/conveniosunet/index.php?r=convenios/create
----
-2016/04/19 20:34:07 [error] [exception.CException] CException: Property "CActiveForm.objetivoConvenio" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
-Stack trace:
-#0 C:\xampp\htdocs\conveniosunet\protected\views\convenios\_form.php(78): CComponent->__get('objetivoConveni...')
-#1 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
-#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
-#3 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
-#4 C:\xampp\htdocs\conveniosunet\protected\views\convenios\create.php(18): CController->renderPartial('_form', Array)
-#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
-#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
-#8 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
-#9 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(82): CController->render('create', Array)
-#10 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ConveniosController->actionCreate()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#13 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#14 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#15 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#16 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#17 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#18 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
-#20 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/creat...')
-#21 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#22 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
-#23 {main}
-REQUEST_URI=/conveniosunet/index.php?r=convenios/create
----
-2016/04/19 20:34:37 [error] [exception.CException] CException: Property "CActiveForm.textArea" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
-Stack trace:
-#0 C:\xampp\htdocs\conveniosunet\protected\views\convenios\_form.php(78): CComponent->__get('textArea')
-#1 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
-#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
-#3 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
-#4 C:\xampp\htdocs\conveniosunet\protected\views\convenios\create.php(18): CController->renderPartial('_form', Array)
-#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
-#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
-#8 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
-#9 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(82): CController->render('create', Array)
-#10 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ConveniosController->actionCreate()
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#13 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#14 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#15 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#16 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#17 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
-#18 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
-#20 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/creat...')
-#21 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#22 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
-#23 {main}
-REQUEST_URI=/conveniosunet/index.php?r=convenios/create
----
-<<<<<<< HEAD
 2016/04/20 01:27:58 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Host desconocido. ' in C:\wamp\www\yii\framework\db\CDbConnection.php:382
 Stack trace:
 #0 C:\wamp\www\yii\framework\db\CDbConnection.php(330): CDbConnection->open()
@@ -2124,3 +1556,119 @@ REQUEST_URI=/conveniosunet/index.php?r=convenios/view&id=20
 in C:\xampp\htdocs\conveniosunet\protected\views\convenios\view.php (18)
 in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (55)
 in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/04/21 14:25:15 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Host desconocido.  in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(458): CModule->getComponent('db')
+#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1433): CActiveRecord->getDbConnection()
+#6 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1489): CActiveRecord->getTableAlias(true)
+#7 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(157): CActiveRecord->findByPk('21')
+#8 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(55): ConveniosController->loadModel('21')
+#9 [internal function]: ConveniosController->actionView('21')
+#10 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ConveniosController), Array)
+#11 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ConveniosController), Object(ReflectionMethod), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#16 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#18 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/view')
+#22 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#23 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/view&id=21
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/create
+---
+2016/04/21 15:59:40 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Host desconocido.  in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(458): CModule->getComponent('db')
+#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(2384): CActiveRecord->getDbConnection()
+#6 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Convenios))
+#7 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(79): CActiveRecord->getMetaData()
+#8 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(65): CActiveRecord->__construct()
+#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ConveniosController->actionCreate()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/creat...')
+#20 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/create
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=site/page&view=consultarConvenio
+---
+2016/04/21 16:01:54 [error] [exception.CException] CException: Property "CActiveForm.convenios_idConvenio" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\conveniosunet\protected\views\convenios\_form.php(141): CComponent->__get('convenios_idCon...')
+#1 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#4 C:\xampp\htdocs\conveniosunet\protected\views\convenios\create.php(18): CController->renderPartial('_form', Array)
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
+#9 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(79): CController->render('create', Array)
+#10 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ConveniosController->actionCreate()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#13 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#16 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#18 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#20 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/creat...')
+#21 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#22 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#23 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/create
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=site/page&view=consultarConvenio
+---
+2016/04/21 16:02:47 [error] [exception.CException] CException: Property "CActiveForm.textField" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\conveniosunet\protected\views\convenios\_form.php(141): CComponent->__get('textField')
+#1 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#4 C:\xampp\htdocs\conveniosunet\protected\views\convenios\create.php(18): CController->renderPartial('_form', Array)
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
+#9 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(79): CController->render('create', Array)
+#10 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ConveniosController->actionCreate()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#13 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#16 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#18 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#20 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/creat...')
+#21 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#22 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#23 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/create
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=site/page&view=consultarConvenio
+---
