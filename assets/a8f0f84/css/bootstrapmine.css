@@ -4,14 +4,16 @@
 	margin: 0px 2% ;
 	padding: 0px;
 }
-body{
-	/*background-color: #000080;*/
-}
 header{
  background: url("../img/CabeceraA.png") no-repeat;
 }
+<<<<<<< HEAD
+body{
+/*	background-color: #000080;*/
+=======
 .h1c{
 	color: #1b325f;
+>>>>>>> 4defdab6acb61a6d2fe26babcf9a364d2e8a3aa6
 }
 footer#foo{
 	background-color: #1b325f;

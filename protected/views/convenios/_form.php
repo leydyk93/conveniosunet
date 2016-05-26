@@ -138,7 +138,7 @@
 		<?php echo $form->labelEx($model,'convenios_idConvenio'); ?>
 		<?php echo $form->textField($model,'convenios_idConvenio',array('size'=>0,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'convenios_idConvenio'); ?>
-
+		
 		
 	</div>
 
