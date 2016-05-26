@@ -102,15 +102,14 @@ class SiteController extends Controller
 
 	public function actionConvenioConsultar(){
 
-		/*$conexion=Yii::app()->db;
-		$consulta="SELECT nombreClasificacionConvenio FROM clasificacionconvenios ";
-
-		$resultado=$conexion->createCommand($consulta)->query();	
-        */
-
+	
         $modelClass=clasificacionconvenios::model()->findAll();
+        
+        //$modelo= new ConsultarConvenios;
 
-		
+
+       /* $model=new ConsultarConvenio;
+        $form = new CForm('application.views.site.convenioConsultar',$model);*/
 		$this->render('convenioConsultar',array('clasif'=>$modelClass));
 	}
 
