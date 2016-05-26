@@ -104,7 +104,7 @@
 			<aside class="menu_pasos col-md-3">
 			
 					<ul id="navi">
-						<li><a href="index.php?r=cargar/paso1" class="text-center">Paso 1</a></li>
+						<li><a href="index.php?r=convenios/_paso1" class="text-center">Paso 1</a></li>
 						<li><a href="index.php?r=cargar/paso2" class="text-center" >Paso 2</a></li>
 						<li><a href="index.php?r=cargar/paso3" class="text-center">Paso 3</a></li>
 						<li><a href="index.php?r=cargar/paso4" class="text-center">Paso 4</a></li>

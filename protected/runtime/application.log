@@ -1324,3 +1324,384 @@ Stack trace:
 REQUEST_URI=/UNETConvenios/index.php?r=convenios/create
 
 
+2016/05/24 18:14:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\wamp\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('')
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cargar')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=cargar
+---
+2016/05/24 18:57:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "_paso1".' in C:\wamp\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('_paso1')
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('_paso1')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/_paso...')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=convenios/_paso1
+HTTP_REFERER=http://localhost:8080/UNETConvenios/index.php?r=convenios/create&tag=popular
+---
+2016/05/25 04:40:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "_paso1".' in C:\wamp\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('_paso1')
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('_paso1')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/_paso...')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=convenios/_paso1
+HTTP_REFERER=http://localhost:8080/UNETConvenios/index.php?r=convenios/create&tag=popular
+---
+2016/05/25 18:15:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "convenioConsultar".' in C:\wamp\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('convenioConsult...')
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('convenioConsult...')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/convenioCo...')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+HTTP_REFERER=http://localhost:8080/UNETConvenios/index.php?r=site/login
+---
+2016/05/25 18:18:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "convenioConsultar".' in C:\wamp\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('convenioConsult...')
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('convenioConsult...')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/convenioCo...')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+HTTP_REFERER=http://localhost:8080/UNETConvenios/index.php?r=site/login
+---
+2016/05/25 18:53:34 [error] [system.db.CDbCommand] CDbCommand::() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM clasificacionconvenios' at line 1. The SQL statement executed was: SELECT all FROM clasificacionconvenios .
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (109)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/05/25 18:53:34 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM clasificacionconvenios' at line 1. The SQL statement executed was: SELECT all FROM clasificacionconvenios ' in C:\wamp\www\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\CDbCommand.php(377): CDbCommand->queryInternal('', 0, Array)
+#1 C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php(109): CDbCommand->query()
+#2 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionConvenioConsultar()
+#3 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('convenioConsult...')
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/convenioCo...')
+#8 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+HTTP_REFERER=http://localhost:8080/UNETConvenios/index.php?r=site/login
+---
+2016/05/25 18:53:54 [error] [system.db.CDbCommand] CDbCommand::() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM clasificacionconvenios' at line 1. The SQL statement executed was: SELECT all FROM clasificacionconvenios .
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (109)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/05/25 18:53:54 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM clasificacionconvenios' at line 1. The SQL statement executed was: SELECT all FROM clasificacionconvenios ' in C:\wamp\www\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\CDbCommand.php(377): CDbCommand->queryInternal('', 0, Array)
+#1 C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php(109): CDbCommand->query()
+#2 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionConvenioConsultar()
+#3 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('convenioConsult...')
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/convenioCo...')
+#8 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+---
+2016/05/25 19:01:24 [error] [system.db.CDbCommand] CDbCommand::() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM clasificacionconvenios' at line 1. The SQL statement executed was: SELECT all FROM clasificacionconvenios .
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (109)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/05/25 19:01:24 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM clasificacionconvenios' at line 1. The SQL statement executed was: SELECT all FROM clasificacionconvenios ' in C:\wamp\www\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\CDbCommand.php(377): CDbCommand->queryInternal('', 0, Array)
+#1 C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php(109): CDbCommand->query()
+#2 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionConvenioConsultar()
+#3 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('convenioConsult...')
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/convenioCo...')
+#8 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+---
+2016/05/25 19:02:19 [error] [php] Object of class CDbDataReader could not be converted to string (C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php:111)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\wamp\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\UNETConvenios\index.php(13): CWebApplication->run()
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (111)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/05/25 20:54:24 [error] [php] Undefined variable: resultado (C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php:2)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\wamp\www\yii\framework\web\CController.php(782): SiteController->renderPartial()
+#2 C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php(117): SiteController->render()
+#3 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionConvenioConsultar()
+#4 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#6 C:\wamp\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\wamp\www\UNETConvenios\index.php(13): CWebApplication->run()
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+in C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php (2)
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (117)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/05/25 20:56:15 [error] [php] Undefined variable: form (C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php:8)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\wamp\www\yii\framework\web\CController.php(782): SiteController->renderPartial()
+#2 C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php(117): SiteController->render()
+#3 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionConvenioConsultar()
+#4 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#6 C:\wamp\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\wamp\www\UNETConvenios\index.php(13): CWebApplication->run()
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+in C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php (8)
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (117)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/05/25 20:56:17 [error] [php] Undefined variable: form (C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php:8)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\wamp\www\yii\framework\web\CController.php(782): SiteController->renderPartial()
+#2 C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php(117): SiteController->render()
+#3 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionConvenioConsultar()
+#4 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#6 C:\wamp\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\wamp\www\UNETConvenios\index.php(13): CWebApplication->run()
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+in C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php (8)
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (117)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/05/25 20:56:48 [error] [php] Undefined variable: resultado (C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php:8)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\wamp\www\yii\framework\web\CController.php(782): SiteController->renderPartial()
+#2 C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php(117): SiteController->render()
+#3 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionConvenioConsultar()
+#4 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#6 C:\wamp\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\wamp\www\UNETConvenios\index.php(13): CWebApplication->run()
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+in C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php (8)
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (117)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/05/25 20:56:49 [error] [php] Undefined variable: resultado (C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php:8)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\wamp\www\yii\framework\web\CController.php(782): SiteController->renderPartial()
+#2 C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php(117): SiteController->render()
+#3 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionConvenioConsultar()
+#4 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#6 C:\wamp\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\wamp\www\UNETConvenios\index.php(13): CWebApplication->run()
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+in C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php (8)
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (117)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/05/25 20:59:04 [error] [php] Object of class CDbDataReader could not be converted to string (C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php:8)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\wamp\www\yii\framework\web\CController.php(782): SiteController->renderPartial()
+#2 C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php(117): SiteController->render()
+#3 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionConvenioConsultar()
+#4 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#6 C:\wamp\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\wamp\www\UNETConvenios\index.php(13): CWebApplication->run()
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+in C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php (8)
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (117)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/05/25 20:59:26 [error] [php] Object of class CDbDataReader could not be converted to string (C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php:8)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\wamp\www\yii\framework\web\CController.php(782): SiteController->renderPartial()
+#2 C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php(117): SiteController->render()
+#3 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionConvenioConsultar()
+#4 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#6 C:\wamp\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\wamp\www\UNETConvenios\index.php(13): CWebApplication->run()
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+in C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php (8)
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (117)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/05/25 21:04:41 [error] [exception.CException] exception 'CException' with message 'CDbDataReader and its behaviors do not have a method or closure named "isAttributeRequired".' in C:\wamp\www\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\helpers\CHtml.php(1414): CComponent->__call('isAttributeRequ...', Array)
+#1 C:\wamp\www\yii\framework\web\helpers\CHtml.php(1414): CDbDataReader->isAttributeRequired('nombreClasifica...')
+#2 C:\wamp\www\yii\framework\web\widgets\CActiveForm.php(597): CHtml::activeLabelEx(Object(CDbDataReader), 'nombreClasifica...', Array)
+#3 C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php(20): CActiveForm->labelEx(Object(CDbDataReader), 'nombreClasifica...')
+#4 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\wamp\www\UNE...')
+#5 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\www\UNE...', Array, true)
+#6 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\www\UNE...', Array, true)
+#7 C:\wamp\www\yii\framework\web\CController.php(782): CController->renderPartial('convenioConsult...', Array, true)
+#8 C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php(117): CController->render('convenioConsult...', Array)
+#9 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionConvenioConsultar()
+#10 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\wamp\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#12 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('convenioConsult...')
+#14 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/convenioCo...')
+#15 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#16 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+---
+2016/05/25 21:05:22 [error] [exception.CException] exception 'CException' with message 'CDbDataReader and its behaviors do not have a method or closure named "isAttributeRequired".' in C:\wamp\www\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\helpers\CHtml.php(1414): CComponent->__call('isAttributeRequ...', Array)
+#1 C:\wamp\www\yii\framework\web\helpers\CHtml.php(1414): CDbDataReader->isAttributeRequired('nombreClasifica...')
+#2 C:\wamp\www\yii\framework\web\widgets\CActiveForm.php(597): CHtml::activeLabelEx(Object(CDbDataReader), 'nombreClasifica...', Array)
+#3 C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php(20): CActiveForm->labelEx(Object(CDbDataReader), 'nombreClasifica...')
+#4 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\wamp\www\UNE...')
+#5 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\www\UNE...', Array, true)
+#6 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\www\UNE...', Array, true)
+#7 C:\wamp\www\yii\framework\web\CController.php(782): CController->renderPartial('convenioConsult...', Array, true)
+#8 C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php(117): CController->render('convenioConsult...', Array)
+#9 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionConvenioConsultar()
+#10 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\wamp\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#12 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('convenioConsult...')
+#14 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/convenioCo...')
+#15 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#16 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+---
+2016/05/25 21:07:20 [error] [exception.CException] exception 'CException' with message 'SiteController contains improperly nested widget tags in its view "C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php". A CActiveForm widget does not have an endWidget() call.' in C:\wamp\www\yii\framework\web\CBaseController.php:101
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\www\UNE...', Array, true)
+#1 C:\wamp\www\yii\framework\web\CController.php(782): CController->renderPartial('convenioConsult...', Array, true)
+#2 C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php(117): CController->render('convenioConsult...', Array)
+#3 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionConvenioConsultar()
+#4 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('convenioConsult...')
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/convenioCo...')
+#9 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+---
+2016/05/25 21:07:22 [error] [exception.CException] exception 'CException' with message 'SiteController contains improperly nested widget tags in its view "C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php". A CActiveForm widget does not have an endWidget() call.' in C:\wamp\www\yii\framework\web\CBaseController.php:101
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\www\UNE...', Array, true)
+#1 C:\wamp\www\yii\framework\web\CController.php(782): CController->renderPartial('convenioConsult...', Array, true)
+#2 C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php(117): CController->render('convenioConsult...', Array)
+#3 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionConvenioConsultar()
+#4 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('convenioConsult...')
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/convenioCo...')
+#9 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+---
+2016/05/25 21:22:51 [error] [php] Undefined variable: hola (C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php:3)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\wamp\www\yii\framework\web\CController.php(782): SiteController->renderPartial()
+#2 C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php(121): SiteController->render()
+#3 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionConvenioConsultar()
+#4 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#6 C:\wamp\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\wamp\www\UNETConvenios\index.php(13): CWebApplication->run()
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+in C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php (3)
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (121)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/05/25 21:23:14 [error] [php] Undefined variable: hola (C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php:3)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\wamp\www\yii\framework\web\CController.php(782): SiteController->renderPartial()
+#2 C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php(121): SiteController->render()
+#3 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionConvenioConsultar()
+#4 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#6 C:\wamp\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\wamp\www\UNETConvenios\index.php(13): CWebApplication->run()
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+in C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php (3)
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (121)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/05/25 21:25:51 [error] [exception.CException] exception 'CException' with message 'SiteController contains improperly nested widget tags in its view "C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php". A CActiveForm widget does not have an endWidget() call.' in C:\wamp\www\yii\framework\web\CBaseController.php:101
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\www\UNE...', Array, true)
+#1 C:\wamp\www\yii\framework\web\CController.php(782): CController->renderPartial('convenioConsult...', Array, true)
+#2 C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php(121): CController->render('convenioConsult...', Array)
+#3 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionConvenioConsultar()
+#4 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('convenioConsult...')
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/convenioCo...')
+#9 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+---
+2016/05/26 02:24:22 [error] [exception.CException] exception 'CException' with message 'SiteController contains improperly nested widget tags in its view "C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php". A CActiveForm widget does not have an endWidget() call.' in C:\wamp\www\yii\framework\web\CBaseController.php:101
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\www\UNE...', Array, true)
+#1 C:\wamp\www\yii\framework\web\CController.php(782): CController->renderPartial('convenioConsult...', Array, true)
+#2 C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php(114): CController->render('convenioConsult...', Array)
+#3 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionConvenioConsultar()
+#4 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('convenioConsult...')
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/convenioCo...')
+#9 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\wamp\www\UNETConvenios\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
+---
