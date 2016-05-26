@@ -22,7 +22,7 @@
 				</div>
 			</div>
 			<div class="col-xs-6">
-				<h1 class="h1 h1mod"><?php echo CHtml::encode(Yii::app()->name); ?> UNET </h1>	
+				<h1 class="h1c"><?php echo CHtml::encode(Yii::app()->name); ?> UNET </h1>	
 			</div >
 			<div id="dmanos" class="col-xs-4">
 				<div class="pull-right">
@@ -80,12 +80,25 @@
 </nav>
 
 	<div class="container-fluid">
+
+	<div class="row">
+		<div class="col-md-6">
 		<?php if(isset($this->breadcrumbs)):?>
 			<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 				'links'=>$this->breadcrumbs,
 			)); ?><!-- breadcrumbs -->
 		<?php endif?>
+       </div>
+
+       <div class="col-md-6">
+
+       	<?php if(!Yii::app()->user->isGuest):?>
+			<p class="text-right" id="fecha"></p>
+		<?php endif?>
+       </div>
+	</div>   
 	</div> 
+
 	<main class="container">
 	<?php echo $content; ?>
 	</main>
@@ -97,6 +110,16 @@
 		</div>
 		
 	</footer><!-- footer -->
+
+	<script>
+      var d = new Date();
+      var dia=d.getDate().toString();
+      var mes=(d.getMonth()+1).toString();
+      var anio=d.getFullYear().toString();
+      var fecha1=dia.concat("/",mes,"/",anio);
+      var fecha2=d.toDateString();
+      document.getElementById("fecha").innerHTML = fecha1;
+   </script>
 
 </body>
 </html>

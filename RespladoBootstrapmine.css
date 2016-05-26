@@ -10,6 +10,9 @@ body{
 header{
  background: url("../img/CabeceraA.png") no-repeat;
 }
+.h1c{
+	color: #1b325f;
+}
 footer#foo{
 	background-color: #1b325f;
 	color: white;
@@ -107,7 +110,7 @@ div#Resulconvenios ul{
 }
 
 .menu_pasos{
-	/*background-color: #008B8B;*/
+	background-color: #E9F2F9;
 }
 
 #navi{
@@ -119,8 +122,8 @@ div#Resulconvenios ul{
 	width: 93%;
 	height: 70px;
 	padding: 0;
-	 background: url("../img/ImagenPaso1.png") no-repeat;
-	 background-size: 100% 100% ;
+	 background: url("../img/botoncarga.png") no-repeat;
+	 background-size: 80% 90% ;
 	 display: table;
 	 margin: 5px;
 }
@@ -128,8 +131,8 @@ div#Resulconvenios ul{
 	width: 93%;
 	height: 70px;
 	padding: 0;
-	 background: url("../img/ImagenPasoSeleccionada.png") no-repeat;
-	 background-size: 100% 100% ;
+	 background: url("../img/botoncargaselec.png") no-repeat;
+	 background-size: 80% 90% ;
 }
 
 #navi li a{
@@ -147,16 +150,18 @@ div#Resulconvenios ul{
 
 }
 
-.nuevo{
-	
-	height: 50px;
+.nuevo{	
+	height: 40px;
 	background-color: #E9F2F9;
+	border-bottom: 3px solid #4c7eb1;
+
 }
 .nuevo p{
 	font-size: x-large;
 	font-weight: bold;
 	color:#000080;
 	margin-left: 0px;
+	color: #1b325f;
 }
 .info_usuario{
 	height: 40px;

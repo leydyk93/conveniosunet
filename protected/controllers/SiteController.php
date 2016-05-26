@@ -92,11 +92,26 @@ class SiteController extends Controller
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
-				$this->redirect('index.php?r=site/page&view=consultarConvenio');
-				//$this->redirect(Yii::app()->user->returnUrl);
+				$this->redirect('index.php?r=site/convenioConsultar');
+				//$this->redirect('index.php?r=site/page&view=consultarConvenio'); la estatica
+				//$this->redirect(Yii::app()->user->returnUrl); la por defecto
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
+	}
+
+	public function actionConvenioConsultar(){
+
+		/*$conexion=Yii::app()->db;
+		$consulta="SELECT nombreClasificacionConvenio FROM clasificacionconvenios ";
+
+		$resultado=$conexion->createCommand($consulta)->query();	
+        */
+
+        $modelClass=clasificacionconvenios::model()->findAll();
+
+		
+		$this->render('convenioConsultar',array('clasif'=>$modelClass));
 	}
 
 	/**
