@@ -4,7 +4,7 @@
  * ConsultarConvenio class.
  *  It is used by the 'convenioConsultar' action of 'SiteController'.
  */
-class ConsultarConvenio extends CFormModel
+class ConsultasConvenios extends CFormModel
 {
 	public $anio;
 	public $tipo;
@@ -23,18 +23,15 @@ class ConsultarConvenio extends CFormModel
 	 */
 	public function rules()
 	{
-		/*
+		
 		return array(
 			
 			// username and password are required
-			array('username, password', 'required'),
-			// rememberMe needs to be a boolean
-			array('rememberMe', 'boolean'),
-			// password needs to be authenticated
-			array('password', 'authenticate'),
+			array('anio, tipo', 'required'),
+			
 			
 		);
-		*/
+		
 	}
 
 	/**
