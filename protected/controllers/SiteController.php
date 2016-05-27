@@ -103,14 +103,19 @@ class SiteController extends Controller
 	public function actionConvenioConsultar(){
 
 	
-        $modelClass=clasificacionconvenios::model()->findAll();
+       $modelClass=clasificacionconvenios::model()->findAll();
+       
+       $formConv =new ConsultasConvenios;
+       $form = new CForm('application.views.site.consultaForm',$formConv);
+
+       $this->render('convenioConsultar',array('clasif'=>$modelClass,'formu'=>$form));
         
-        //$modelo= new ConsultarConvenios;
+        
 
+       
+		
+	  
 
-       /* $model=new ConsultarConvenio;
-        $form = new CForm('application.views.site.convenioConsultar',$model);*/
-		$this->render('convenioConsultar',array('clasif'=>$modelClass));
 	}
 
 	/**
