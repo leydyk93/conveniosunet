@@ -2496,3 +2496,14 @@ Stack trace:
 REQUEST_URI=/conveniosunet/index.php?r=convenios/_paso1
 HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/create
 ---
+2016/05/28 05:15:37 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "_paso1". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('_paso1')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('_paso1')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/_paso...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/_paso1
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/create
+---

@@ -153,7 +153,8 @@
 
   </div>
 	<div class="row buttons">
-		 <input type="submit" value="confirmar">
+		<!-- <input type="submit" value="confirmar">-->
+		 <input type="button" value="enviar" onclick = "location='http://localhost/conveniosunet/index.php'"/>
 		<!-- <?php /*echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Save'); */ ?> -->
 	</div>
 

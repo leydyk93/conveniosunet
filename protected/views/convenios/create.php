@@ -15,4 +15,4 @@ $this->menu=array(
 
 <!--<h1>Crear Convenios</h1>-->
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_paso1', array('model'=>$model)); ?>
