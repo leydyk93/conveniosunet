@@ -104,18 +104,21 @@ class SiteController extends Controller
 
 	
        $modelClass=clasificacionconvenios::model()->findAll();
-       
+       $modelConv=convenios::model()->findAll();
+       $modelTipo=tipoconvenios::model()->findAll();
+       $modelPais=paises::model()->findAll();
+       $modelTipoIns=tiposinstituciones::model()->findAll();
+
        $formConv =new ConsultasConvenios;
        $form = new CForm('application.views.site.consultaForm',$formConv);
-
-       $this->render('convenioConsultar',array('clasif'=>$modelClass,'formu'=>$form));
+       $this->render('convenioConsultar',array('clasif'=>$modelClass,
+       	'conve'=>$modelConv,
+       	'tipoconve'=>$modelTipo,
+       	'paisesconve'=>$modelPais,
+       	'tiposinst'=>$modelTipoIns,
+       	'formu'=>$form));
         
-        
-
-       
-		
-	  
-
+      
 	}
 
 	/**
