@@ -112,11 +112,20 @@
     <div class="form-group" >
   	<div class="row">
 		<label class="control-label col-sm-2" for="clasificacionConvenio"><?php echo $form->labelEx($model,'clasificacionConvenios_idTipoConvenio'); ?></label>
+
 		<?php echo $form->dropDownList($model,'clasificacionConvenios_idTipoConvenio',CHtml::listData( Clasificacionconvenios::model()->findAll(), 'idClasificacionConvenio', 'nombreClasificacionConvenio'),''); ?>
 		<?php echo $form->error($model,'clasificacionConvenios_idTipoConvenio'); ?>
 	</div>
-
   </div>
+  	    
+
+  	<div class="row">
+		<label class="control-label col-sm-2" for="tipoConvenio"><?php echo $form->labelEx($model,'tipoConvenios_idTipoConvenio'); ?></label>
+
+		<?php echo $form->dropDownList($model,'tipoConvenios_idTipoConvenio',CHtml::listData( Tipoconvenios::model()->findAll(), 'idTipoConvenio', 'descripcionTipoConvenio'),''); ?>
+		<?php echo $form->error($model,'tipoConvenios_idTipoConvenio'); ?>
+	</div>
+
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'alcanceConvenios_idAlcanceConvenio'); ?>
@@ -144,7 +153,8 @@
 
   </div>
 	<div class="row buttons">
-		 <input type="submit" value="confirmar">
+		<!-- <input type="submit" value="confirmar">-->
+		 <input type="button" value="enviar" onclick = "location='http://localhost/conveniosunet/index.php'"/>
 		<!-- <?php /*echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Save'); */ ?> -->
 	</div>
 

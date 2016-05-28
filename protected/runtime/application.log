@@ -2036,6 +2036,62 @@ Stack trace:
 REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
 >>>>>>> 4defdab6acb61a6d2fe26babcf9a364d2e8a3aa6
 ---
+<<<<<<< HEAD
+2016/05/26 18:05:11 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Host desconocido.  in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(458): CModule->getComponent('db')
+#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1433): CActiveRecord->getDbConnection()
+#6 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1522): CActiveRecord->getTableAlias(true)
+#7 C:\xampp\htdocs\conveniosunet\protected\components\UserIdentity.php(23): CActiveRecord->findByAttributes(Array)
+#8 C:\xampp\htdocs\conveniosunet\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#9 C:\xampp\htdocs\yii\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#10 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#11 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), Array)
+#12 C:\xampp\htdocs\conveniosunet\protected\controllers\SiteController.php(94): CModel->validate()
+#13 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('login')
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#19 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/conveniosunet/index.php?r=site/login
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=site/login
+---
+2016/05/26 18:05:42 [error] [exception.CDbException] CDbException: CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Host desconocido.  in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(458): CModule->getComponent('db')
+#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1433): CActiveRecord->getDbConnection()
+#6 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1522): CActiveRecord->getTableAlias(true)
+#7 C:\xampp\htdocs\conveniosunet\protected\components\UserIdentity.php(23): CActiveRecord->findByAttributes(Array)
+#8 C:\xampp\htdocs\conveniosunet\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#9 C:\xampp\htdocs\yii\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#10 C:\xampp\htdocs\yii\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#11 C:\xampp\htdocs\yii\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), Array)
+#12 C:\xampp\htdocs\conveniosunet\protected\controllers\SiteController.php(94): CModel->validate()
+#13 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('login')
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#19 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/conveniosunet/index.php?r=site/login
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=site/login
+---
+=======
 2016/05/26 05:56:47 [error] [php] include(ConsultarConvenio.php): failed to open stream: No such file or directory (C:\wamp\www\yii\framework\YiiBase.php:427)
 Stack trace:
 #0 C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php(107): spl_autoload_call()
@@ -2348,6 +2404,7 @@ REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
 in C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php (19)
 in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (111)
 in C:\wamp\www\UNETConvenios\index.php (13)
+<<<<<<< HEAD
 2016/05/27 04:53:37 [error] [php] Undefined variable: form (C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php:113)
 Stack trace:
 #0 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
@@ -2752,3 +2809,108 @@ REQUEST_URI=/UNETConvenios/index.php?r=site/convenioConsultar
 in C:\wamp\www\UNETConvenios\protected\views\site\convenioConsultar.php (72)
 in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (119)
 in C:\wamp\www\UNETConvenios\index.php (13)
+=======
+>>>>>>> d93ed8031409fe07c3622c2a4b6391044df2078b
+2016/05/27 18:09:00 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "_paso1". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('_paso1')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('_paso1')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/_paso...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/_paso1
+---
+2016/05/27 18:09:07 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "_paso1.php". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('_paso1.php')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('_paso1.php')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/_paso...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/_paso1.php
+---
+2016/05/27 18:09:43 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "_paso1". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('_paso1')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('_paso1')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/_paso...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/_paso1
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/
+---
+2016/05/27 18:11:25 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "_form.php". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('_form.php')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('_form.php')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/_form...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/_form.php
+---
+2016/05/27 18:11:53 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'conveniosunet.convenio' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `convenio`.
+in C:\xampp\htdocs\conveniosunet\protected\views\convenio\index.php (19)
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConvenioController.php (127)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/05/27 18:11:53 [error] [exception.CDbException] CDbException: The table "convenio" for active record class "Convenio" cannot be found in the database. in C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php:2385
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Convenio))
+#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(661): CActiveRecord->getMetaData()
+#2 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1606): CActiveRecord->getTableSchema()
+#3 C:\xampp\htdocs\yii\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#4 C:\xampp\htdocs\yii\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#5 C:\xampp\htdocs\yii\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#6 C:\xampp\htdocs\yii\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#7 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(125): CDataProvider->getData()
+#8 C:\xampp\htdocs\yii\framework\zii\widgets\CListView.php(211): CBaseListView->init()
+#9 C:\xampp\htdocs\yii\framework\web\CBaseController.php(147): CListView->init()
+#10 C:\xampp\htdocs\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#11 C:\xampp\htdocs\conveniosunet\protected\views\convenio\index.php(19): CBaseController->widget('zii.widgets.CLi...', Array)
+#12 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#13 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#16 C:\xampp\htdocs\conveniosunet\protected\controllers\ConvenioController.php(127): CController->render('index', Array)
+#17 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): ConvenioController->actionIndex()
+#18 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#19 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#20 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#21 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#22 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#23 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#24 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#25 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#26 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
+#27 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenio')
+#28 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#29 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#30 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenio
+---
+2016/05/27 23:50:10 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "_paso1". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('_paso1')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('_paso1')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/_paso...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/_paso1
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/create
+---
+2016/05/28 05:15:37 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "_paso1". in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('_paso1')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('_paso1')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/_paso...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/_paso1
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/create
+---
+>>>>>>> b260fde19f3b61910039092582edaba0d8c930e1
