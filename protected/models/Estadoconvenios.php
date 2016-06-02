@@ -1,28 +1,24 @@
 <?php
 
 /**
- * This is the model class for table "instituciones".
+ * This is the model class for table "estadoconvenios".
  *
- * The followings are the available columns in table 'instituciones':
- * @property string $idInstitucion
- * @property string $nombreInstitucion
- * @property string $estados_idEstado
- * @property string $tiposInstituciones_idTipoInstitucion
+ * The followings are the available columns in table 'estadoconvenios':
+ * @property string $idEstadoConvenio
+ * @property string $nombreEstadoConvenio
+ * @property string $descripcionEstadoConvenio
  *
  * The followings are the available model relations:
  * @property Convenios[] $convenioses
- * @property Estados $estadosIdEstado
- * @property Tiposinstituciones $tiposInstitucionesIdTipoInstitucion
- * @property Responsables[] $responsables
  */
-class Instituciones extends CActiveRecord
+class Estadoconvenios extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'instituciones';
+		return 'estadoconvenios';
 	}
 
 	/**
@@ -33,12 +29,12 @@ class Instituciones extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idInstitucion, nombreInstitucion, estados_idEstado, tiposInstituciones_idTipoInstitucion', 'required'),
-			array('idInstitucion, estados_idEstado, tiposInstituciones_idTipoInstitucion', 'length', 'max'=>10),
-			array('nombreInstitucion', 'length', 'max'=>200),
+			array('idEstadoConvenio, nombreEstadoConvenio, descripcionEstadoConvenio', 'required'),
+			array('idEstadoConvenio', 'length', 'max'=>10),
+			array('nombreEstadoConvenio, descripcionEstadoConvenio', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idInstitucion, nombreInstitucion, estados_idEstado, tiposInstituciones_idTipoInstitucion', 'safe', 'on'=>'search'),
+			array('idEstadoConvenio, nombreEstadoConvenio, descripcionEstadoConvenio', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,10 +46,7 @@ class Instituciones extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'convenioses' => array(self::MANY_MANY, 'Convenios', 'institucion_convenios(instituciones_idInstitucion, convenios_idConvenio)'),
-			'estadosIdEstado' => array(self::BELONGS_TO, 'Estados', 'estados_idEstado'),
-			'tiposInstitucionesIdTipoInstitucion' => array(self::BELONGS_TO, 'Tiposinstituciones', 'tiposInstituciones_idTipoInstitucion'),
-			'responsables' => array(self::HAS_MANY, 'Responsables', 'instituciones_idInstitucion'),
+			'convenioses' => array(self::MANY_MANY, 'Convenios', 'convenio_estados(estadoConvenios_idEstadoConvenio, convenios_idConvenio)'),
 		);
 	}
 
@@ -63,10 +56,9 @@ class Instituciones extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'idInstitucion' => 'Id Institucion',
-			'nombreInstitucion' => 'Nombre Institucion',
-			'estados_idEstado' => 'Estados Id Estado',
-			'tiposInstituciones_idTipoInstitucion' => 'Tipos Instituciones Id Tipo Institucion',
+			'idEstadoConvenio' => 'Id Estado Convenio',
+			'nombreEstadoConvenio' => 'Nombre Estado Convenio',
+			'descripcionEstadoConvenio' => 'Descripcion Estado Convenio',
 		);
 	}
 
@@ -88,10 +80,9 @@ class Instituciones extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('idInstitucion',$this->idInstitucion,true);
-		$criteria->compare('nombreInstitucion',$this->nombreInstitucion,true);
-		$criteria->compare('estados_idEstado',$this->estados_idEstado,true);
-		$criteria->compare('tiposInstituciones_idTipoInstitucion',$this->tiposInstituciones_idTipoInstitucion,true);
+		$criteria->compare('idEstadoConvenio',$this->idEstadoConvenio,true);
+		$criteria->compare('nombreEstadoConvenio',$this->nombreEstadoConvenio,true);
+		$criteria->compare('descripcionEstadoConvenio',$this->descripcionEstadoConvenio,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -102,7 +93,7 @@ class Instituciones extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Instituciones the static model class
+	 * @return Estadoconvenios the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

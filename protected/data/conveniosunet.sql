@@ -204,6 +204,12 @@ CREATE TABLE IF NOT EXISTS instituciones (
   CONSTRAINT fk_instituciones_tiposInstituciones1
     FOREIGN KEY (tiposInstituciones_idTipoInstitucion)
     REFERENCES tiposInstituciones (idTipoInstitucion));
+
+INSERT INTO instituciones (idInstitucion,nombreInstitucion,estados_idEstado,tiposInstituciones_idTipoInstitucion) VALUES
+('1','ULA','935','1'),
+('2','UCV','335','1'),
+('3','UNA','335','1');
+
 -- -----------------------------------------------------
 -- Table `mydb`.`tipoConvenios`
 -- -----------------------------------------------------
@@ -223,6 +229,12 @@ CREATE TABLE IF NOT EXISTS dependencias (
   nombreDependencia VARCHAR(100) NULL,
   telefonoDependencia VARCHAR(50) NULL,
   PRIMARY KEY (idDependencia));
+
+INSERT INTO dependencias (idDependencia,nombreDependencia,telefonoDependencia) VALUES
+('1', 'Rectorado','0276-3335553'),
+('2', 'Secretaria','0276-4445552'),
+('3', 'Docencia','0276-3234567');
+-- ------------------
 -- -----------------------------------------------------
 -- Table `mydb`.`convenios`
 -- -----------------------------------------------------
@@ -291,6 +303,15 @@ CREATE TABLE IF NOT EXISTS  estadoConvenios  (
    nombreEstadoConvenio  VARCHAR(100) NOT NULL,
    descripcionEstadoConvenio  VARCHAR(100) NOT NULL,
   PRIMARY KEY ( idEstadoConvenio ));
+
+INSERT INTO estadoConvenios (idEstadoConvenio,nombreEstadoConvenio,descripcionEstadoConvenio) VALUES
+('1', 'Memo S.C Juridica',''),
+('2', 'Memo R.C Juridica',''),
+('3', 'Resolucion C.U Nro1',''),
+('4', 'Memo DICIPREP',''),
+('5', 'Resolucion C.U Aprobado','');
+
+
 -- -----------------------------------------------------
 -- Table    presupuestos 
 -- -----------------------------------------------------

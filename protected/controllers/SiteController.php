@@ -108,15 +108,38 @@ class SiteController extends Controller
        $modelTipo=tipoconvenios::model()->findAll();
        $modelPais=paises::model()->findAll();
        $modelTipoIns=tiposinstituciones::model()->findAll();
+       $modelInst=instituciones::model()->findAll();
+       $modelEdoConve=estadoconvenios::model()->findAll();
 
-       $formConv =new ConsultasConvenios;
-       $form = new CForm('application.views.site.consultaForm',$formConv);
+       $formConsulta = new ConsultasConvenios;
+
+
+       if(isset($_POST["ajax"]) && $_POST["ajax"]==='form'){
+
+       	echo CActiveForm::validate($formConsulta);
+       	Yii::app()->end();
+       }
+     
+       if(isset($_POST["ConsultasConvenios"]))
+       {
+       	$formConsulta->attributes=$_POST["ConsultasConvenios"];
+        
+       	if(!$formConsulta->validate()){
+       		$this->redirect($this->createUrl('site/convenioConsultar'));	
+       	}
+
+       }
+
+
        $this->render('convenioConsultar',array('clasif'=>$modelClass,
        	'conve'=>$modelConv,
        	'tipoconve'=>$modelTipo,
        	'paisesconve'=>$modelPais,
        	'tiposinst'=>$modelTipoIns,
-       	'formu'=>$form));
+       	'institucionconve'=>$modelInst,
+        'estadoconve'=>$modelEdoConve,
+        'model'=>$formConsulta
+       	));
         
       
 	}

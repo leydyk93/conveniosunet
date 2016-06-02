@@ -8,6 +8,7 @@ class ConsultasConvenios extends CFormModel
 {
 	public $anio;
 	public $tipo;
+	public $clasificacion;
 	public $pais;
 	public $tipo_institucion;
 	public $institucion;
@@ -27,22 +28,48 @@ class ConsultasConvenios extends CFormModel
 		return array(
 			
 			// username and password are required
-			array('anio, tipo', 'required'),
-			
-			
+			array('anio',
+				'match',
+				'pattern'=>'/^[0-9]+$/',
+				'message'=>'El formato es de año ejem: 2016'
+				),
+			/*array('anio',
+				  'length',
+				  'min'=>4,
+				  'tooShort'=>'El año no es valido'
+				),*/
+			array('anio','ValidarAnio'),
+
 		);
 		
 	}
 
+	public function ValidarAnio($attributes,$params){
+
+		$anios=convenios::model()->findAll();
+
+		foreach ($anios as $a) {
+			if($this->anio==$a){
+				$this->addError('anio','año encontrado en la base de datos');
+			}
+		}
+
+	}
 	/**
 	 * Declares attribute labels.
 	 */
 	public function attributeLabels()
-	{
-		/*
+	{		
 		return array(
-			'rememberMe'=>'Remember me next time',
-		);*/
+			 'anio'=>'Año',
+			 'tipo'=>'Tipo de convenio',
+			 'clasificacion'=>'Clasificacion del Convenio',
+			 'pais'=>'Pais',
+			 'tipo_institucion'=>'Tipo de Institución',
+			 'institucion'=>'Institución',
+			 'estadoConv'=>'Estado del convenio',
+			 'responsable'=>'Responsable',
+		);
 	}
 
 	
