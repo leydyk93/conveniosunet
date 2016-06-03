@@ -75,8 +75,9 @@ CREATE TABLE IF NOT EXISTS clasificacionConvenios (
   PRIMARY KEY (idClasificacionConvenio));
 
 INSERT INTO clasificacionConvenios (idClasificacionConvenio,nombreClasificacionConvenio, descripcionClasificacionConvenio) VALUES
-('M', 'Marco','convenios generales'),
-('E', 'Especifico' 'son  kmckmck');
+('1', 'Academico',''),
+ ('2', 'Intercambio', ''),
+('3', 'Cultural','');
 
 -- -----------------------------------------------------
 -- Table `mydb`.`alcanceConvenios`
@@ -100,6 +101,13 @@ CREATE TABLE IF NOT EXISTS tiposInstituciones (
   idTipoInstitucion VARCHAR(10) NOT NULL,
   nombreTipoInstitucion VARCHAR(50) NOT NULL,
   PRIMARY KEY (idTipoInstitucion));
+
+
+INSERT INTO tiposInstituciones (idTipoInstitucion,nombreTipoInstitucion) VALUES
+('1', 'Educativa'),
+('2', 'Salud'),
+('3', 'Economica'),
+('4', 'Gubernamental');
 -- -----------------------------------------------------
 -- Table `mydb`.`paises`
 -- -----------------------------------------------------
@@ -107,6 +115,43 @@ CREATE TABLE IF NOT EXISTS paises (
   idPais VARCHAR(10) NOT NULL,
   nombrePais VARCHAR(100) NOT NULL,
   PRIMARY KEY (idPais));
+
+INSERT INTO paises (idPais,nombrePais) VALUES
+('1', 'Antigua y Barbuda'), 
+('2', 'Argentina'), 
+('3', 'Bahamas'), 
+('4' ,'Barbados'), 
+('5' ,'Belice'), 
+('6' ,'Bolivia'), 
+('7' ,'Brasil'),
+('8' ,'Canadá'), 
+('9' ,'Chile'), 
+('10', 'Colombia'), 
+('11','Costa Rica'), 
+('12', 'Cuba'), 
+('13', 'Dominica'), 
+('14', 'Ecuador'), 
+('15', 'El Salvador'),
+('16', 'Estados Unidos'), 
+('17', 'Granada'), 
+('18', 'Guatemala'), 
+('19', 'Guyana'), 
+('20', 'Haití'), 
+('21', 'Honduras'), 
+('22', 'Jamaica'), 
+('23', 'México'), 
+('24', 'Nicaragua'),
+('25', 'Panamá'),
+('26', 'Paraguay'), 
+('27', 'Perú'), 
+('28', 'República Dominicana'), 
+('29', 'San Cristóbal y Nieves'), 
+('30', 'San Vicente y las Granadinas'), 
+('31', 'Santa Lucía'), 
+('32', 'Surinam'), 
+('33','Trinidad y Tobago'), 
+('34','Uruguay'), 
+('35', 'Venezuela'); 
 -- -----------------------------------------------------
 -- Table `mydb`.`estados`
 -- -----------------------------------------------------
@@ -118,6 +163,32 @@ CREATE TABLE IF NOT EXISTS estados (
   CONSTRAINT fk_estados_paises
     FOREIGN KEY (paises_idPais)
     REFERENCES paises (idPais));
+
+INSERT INTO estados (idEstado,nombreEstado,paises_idPais) VALUES
+('135', 'Zulia', '35'), 
+('235', 'Miranda', '35'), 
+('335', 'Distrito Capital', '35'),  
+('435', 'Carabobo', '35'), 
+('535','Lara', '35'),  
+('635','Aragua', '35'),  
+('735','Bolívar', '35'), 
+('835','Anzoátegui', '35'),  
+('935','Táchira', '35'),   
+('1035','Sucre', '35'),   
+('1135','Falcón', '35'),   
+('1235','Portuguesa', '35'),    
+('1335','Monagas', '35'),   
+('1435','Mérida', '35'),   
+('1535','Barinas', '35'),   
+('1635','Guárico', '35'),   
+('1735','Trujillo', '35'),   
+('1835','Yaracuy', '35'),   
+('1935','Apure', '35'),   
+('2035','Nueva Esparta', '35'),   
+('2135','Vargas', '35'),   
+('2235','Cojedes', '35'),   
+('2335','Delta Amacuro', '35'),   
+('2435', 'Amazonas', '35');  
 -- -----------------------------------------------------
 -- Table `mydb`.`instituciones`
 -- -----------------------------------------------------
@@ -133,6 +204,12 @@ CREATE TABLE IF NOT EXISTS instituciones (
   CONSTRAINT fk_instituciones_tiposInstituciones1
     FOREIGN KEY (tiposInstituciones_idTipoInstitucion)
     REFERENCES tiposInstituciones (idTipoInstitucion));
+
+INSERT INTO instituciones (idInstitucion,nombreInstitucion,estados_idEstado,tiposInstituciones_idTipoInstitucion) VALUES
+('1','ULA','935','1'),
+('2','UCV','335','1'),
+('3','UNA','335','1');
+
 -- -----------------------------------------------------
 -- Table `mydb`.`tipoConvenios`
 -- -----------------------------------------------------
@@ -140,6 +217,10 @@ CREATE TABLE IF NOT EXISTS tipoConvenios (
   idTipoConvenio VARCHAR(10) NOT NULL,
   descripcionTipoConvenio VARCHAR(100) NOT NULL,
   PRIMARY KEY (idTipoConvenio));
+
+INSERT INTO tipoConvenios (idTipoConvenio,descripcionTipoConvenio) VALUES
+('1', 'Marco'),
+('2', 'Especifico');
 -- -----------------------------------------------------
 -- Table `mydb`.`dependencias`
 -- -----------------------------------------------------
@@ -148,6 +229,12 @@ CREATE TABLE IF NOT EXISTS dependencias (
   nombreDependencia VARCHAR(100) NULL,
   telefonoDependencia VARCHAR(50) NULL,
   PRIMARY KEY (idDependencia));
+
+INSERT INTO dependencias (idDependencia,nombreDependencia,telefonoDependencia) VALUES
+('1', 'Rectorado','0276-3335553'),
+('2', 'Secretaria','0276-4445552'),
+('3', 'Docencia','0276-3234567');
+-- ------------------
 -- -----------------------------------------------------
 -- Table `mydb`.`convenios`
 -- -----------------------------------------------------
@@ -216,6 +303,15 @@ CREATE TABLE IF NOT EXISTS  estadoConvenios  (
    nombreEstadoConvenio  VARCHAR(100) NOT NULL,
    descripcionEstadoConvenio  VARCHAR(100) NOT NULL,
   PRIMARY KEY ( idEstadoConvenio ));
+
+INSERT INTO estadoConvenios (idEstadoConvenio,nombreEstadoConvenio,descripcionEstadoConvenio) VALUES
+('1', 'Memo S.C Juridica',''),
+('2', 'Memo R.C Juridica',''),
+('3', 'Resolucion C.U Nro1',''),
+('4', 'Memo DICIPREP',''),
+('5', 'Resolucion C.U Aprobado','');
+
+
 -- -----------------------------------------------------
 -- Table    presupuestos 
 -- -----------------------------------------------------
