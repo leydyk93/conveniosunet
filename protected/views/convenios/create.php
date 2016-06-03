@@ -13,6 +13,18 @@ $this->menu=array(
 );
 ?>
 
+<?php   $this->renderPartial('_paso1', array("pasouno"=>$pasouno));?>
 <!--<h1>Crear Convenios</h1>-->
 
-<?php $this->renderPartial('_paso1', array('model'=>$model)); ?>
+<!-- 
+esta linea es 
+<?//php $this->renderPartial('_paso1', array("pasouno"=>$pasouno));
+//if(isset($pasouno)){
+
+//	 $this->renderPartial('_paso2', array("pasouno"=>$pasouno));
+//}
+	
+	//if (isset($_SESSION['variable'])){
+	//	$this->renderPartial('_paso2', array('model'=>$model)); 
+	//}
+?>-->

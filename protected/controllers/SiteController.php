@@ -44,6 +44,7 @@ class SiteController extends Controller
 			else
 				$this->render('error', $error);
 		}
+	
 	}
 
 	/**

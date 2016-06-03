@@ -7,6 +7,15 @@ $this->pageTitle=Yii::app()->name;
 
 
 <div class="container-fluid">
+  <?php 
+     // $_SESSION['variable']="blabla";
+     // echo $_SESSION['variable'];
+
+    
+    if(isset($_POST['enviar']))
+    {
+      echo "presiono el boton ";
+    } ?>
 	<h2> Acuerdos que nos benefician a TODOS</h2>
   <div class="row">
    <div class="col-sm-4">
