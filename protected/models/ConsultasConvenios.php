@@ -46,7 +46,8 @@ class ConsultasConvenios extends CFormModel
 
 	public function ValidarAnio($attributes,$params){
 
-		$anios=convenios::model()->findAll();
+		/*$anios=convenios::model()->findAll();*/
+		$anios=array('2010','2011','2012');
 
 		foreach ($anios as $a) {
 			if($this->anio==$a){
