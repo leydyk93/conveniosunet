@@ -296,7 +296,7 @@ CREATE TABLE IF NOT EXISTS  responsables  (
    telefonoResponsable  VARCHAR(50) NULL,
    instituciones_idInstitucion  VARCHAR(10) NOT NULL,
    dependencias_idDependencia  VARCHAR(10) NOT NULL,
-  PRIMARY KEY ( idResponsable ,  dependencias_idDependencia ),
+  PRIMARY KEY ( idResponsable ),
   CONSTRAINT  fk_responsables_instituciones1 
     FOREIGN KEY ( instituciones_idInstitucion )
     REFERENCES  instituciones  ( idInstitucion ),
@@ -399,19 +399,21 @@ CREATE TABLE IF NOT EXISTS    institucion_convenios  (
     FOREIGN KEY ( convenios_idConvenio )
     REFERENCES    convenios  ( idConvenio )
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON UPDATE NO ACTION,
+  CONSTRAINT uk_institucion_convenios  UNIQUE (instituciones_idInstitucion,convenios_idConvenio)
+    );
 
 -- -----------------------------------------------------
 -- Table    historicoResponsables 
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS    historicoResponsables  (
-   idHistoricoResponsables  VARCHAR(10) NOT NULL,
+CREATE TABLE IF NOT EXISTS   historicoResponsables  (
+   idHistoricoResponsable  VARCHAR(10) NOT NULL,
    responsables_idResponsable  VARCHAR(10) NOT NULL,
    convenios_idConvenio  VARCHAR(50) NULL,
    institucion_convenios_idInstitucionConvenio VARCHAR(10) NULL,
    fechaAsignacionResponsable  DATE NOT NULL,
    fechaRetiroResponsable  DATE NULL,
-  PRIMARY KEY ( idHistoricoResponsables ),
+  PRIMARY KEY ( idHistoricoResponsable ),
   INDEX  fk_historicoResponsables_responsables1_idx  ( responsables_idResponsable  ASC),
   INDEX  fk_historicoResponsables_convenios1_idx  ( convenios_idConvenio  ASC),
   INDEX  fk_historicoResponsables_institucion_convenios1_idx  (institucion_convenios_idInstitucionConvenio ASC),
@@ -429,12 +431,12 @@ CREATE TABLE IF NOT EXISTS    historicoResponsables  (
     FOREIGN KEY ( institucion_convenios_idInstitucionConvenio )
     REFERENCES    institucion_convenios  ( idInstitucionConvenio )
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-
-ALTER TABLE historicoResponsables 
-ADD CHECK((convenios_idConvenio IS NULL  AND institucion_convenios_idInstitucionConvenio IS NOT NULL ) OR 
+    ON UPDATE NO ACTION,
+  CONSTRAINT uk_historicoResponsables  UNIQUE (convenios_idConvenio,institucion_convenios_idInstitucionConvenio),
+  CONSTRAINT chk_historicoResponsables CHECK((convenios_idConvenio IS NULL  AND institucion_convenios_idInstitucionConvenio IS NOT NULL ) OR 
           (convenios_idConvenio IS NOT NULL  AND institucion_convenios_idInstitucionConvenio IS NULL)
-          );
+          )
+  );
 -- -----------------------------------------------------
 -- Table    convenio_Estados 
 -- -----------------------------------------------------
@@ -442,7 +444,7 @@ CREATE TABLE IF NOT EXISTS    convenio_Estados  (
    id_convenio_estado VARCHAR(10) NOT NULL,
    convenios_idConvenio  VARCHAR(50) NOT NULL,
    estadoConvenios_idEstadoConvenio  VARCHAR(10) NOT NULL,
-   fechaCambioEstado  DATETIME NOT NULL,
+   fechaCambioEstado  DATE NOT NULL,
    numeroReporte  VARCHAR(10) NULL,
    observacionCambioEstado  TEXT NULL,
    dependencias_idDependencia  VARCHAR(10) NOT NULL,
