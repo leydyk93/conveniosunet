@@ -242,7 +242,8 @@ INSERT INTO dependencias (idDependencia,nombreDependencia,telefonoDependencia) V
 CREATE TABLE IF NOT EXISTS convenios (
   idConvenio VARCHAR(50) NOT NULL,
   nombreConvenio VARCHAR(200) NOT NULL,
-  fechaCaducidadConvenio DATETIME NOT NULL,
+  fechaInicioConvenio DATE NOT NULL,
+  fechaCaducidadConvenio DATE NOT NULL,
   objetivoConvenio TEXT NOT NULL,
   institucionUNET VARCHAR(50) NOT NULL,
   urlConvenio VARCHAR(100) NOT NULL,
@@ -251,7 +252,8 @@ CREATE TABLE IF NOT EXISTS convenios (
   alcanceConvenios_idAlcanceConvenio VARCHAR(10) NOT NULL,
   formaConvenios_idFormaConvenio VARCHAR(10) NOT NULL,
   dependencias_idDependencia VARCHAR(10) NOT NULL,
-  convenios_idConvenio VARCHAR(50) NOT NULL, /*Este atributo puede ser nulo*/
+  convenios_idConvenio VARCHAR(50)  NULL, /*Este atributo puede ser nulo*/
+
 
   PRIMARY KEY (idConvenio),
   CONSTRAINT fk_convenios_clasificacionConvenios1
@@ -272,6 +274,8 @@ CONSTRAINT fk_convenios_dependencias1
   CONSTRAINT fk_convenios_convenios1
     FOREIGN KEY (convenios_idConvenio)
     REFERENCES convenios (idConvenio));
+
+ALTER TABLE `convenios` ADD `ventajasBeneficiosConvenio` TEXT NOT NULL AFTER `objetivoConvenio`;
 -- -----------------------------------------------------
 -- Table `mydb`.`actividades`
 -- -----------------------------------------------------
