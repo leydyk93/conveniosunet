@@ -195,6 +195,7 @@ INSERT INTO estados (idEstado,nombreEstado,paises_idPais) VALUES
 CREATE TABLE IF NOT EXISTS instituciones (
   idInstitucion VARCHAR(10) NOT NULL,
   nombreInstitucion VARCHAR(200) NOT NULL,
+  siglasInstitucion VARCHAR(50) NULL,
   estados_idEstado VARCHAR(10) NOT NULL,
   tiposInstituciones_idTipoInstitucion VARCHAR(10) NOT NULL,
   PRIMARY KEY (idInstitucion),
@@ -283,7 +284,10 @@ CREATE TABLE IF NOT EXISTS actividades (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS  responsables  (
    idResponsable  VARCHAR(10) NOT NULL,
-   nombreResponsable  VARCHAR(100) NULL,
+   primerNombreResponsable  VARCHAR(40) NOT NULL,
+   segundoNombreResponsable VARCHAR(40) NULL,
+   primerApellidoResponsable VARCHAR(60) NOT NULL,
+   segundoApellidoResponsable VARCHAR(60) NULL,
    correoElectronicoResponsable  VARCHAR(100) NULL,
    telefonoResponsable  VARCHAR(50) NULL,
    instituciones_idInstitucion  VARCHAR(10) NOT NULL,
@@ -375,10 +379,11 @@ CREATE TABLE IF NOT EXISTS    renovacionProrrogas  (
 -- Table    institucion_convenios 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS    institucion_convenios  (
+   idInstitucionConvenio VARCHAR(10) NOT NULL,
    instituciones_idInstitucion  VARCHAR(10) NOT NULL,
    convenios_idConvenio  VARCHAR(50) NOT NULL,
-   fechaIncorporacion  DATETIME NOT NULL,
-  PRIMARY KEY ( instituciones_idInstitucion ,  convenios_idConvenio ),
+   fechaIncorporacion  DATE NOT NULL,
+  PRIMARY KEY ( idInstitucionConvenio ),
   INDEX  fk_instituciones_has_convenios_convenios1_idx  ( convenios_idConvenio  ASC),
   INDEX  fk_instituciones_has_convenios_instituciones1_idx  ( instituciones_idInstitucion  ASC),
   CONSTRAINT  fk_instituciones_has_convenios_instituciones1 
@@ -399,14 +404,13 @@ CREATE TABLE IF NOT EXISTS    historicoResponsables  (
    idHistoricoResponsables  VARCHAR(10) NOT NULL,
    responsables_idResponsable  VARCHAR(10) NOT NULL,
    convenios_idConvenio  VARCHAR(50) NULL,
-   institucion_convenios_instituciones_idInstitucion  VARCHAR(10) NULL,
-   institucion_convenios_convenios_idConvenio  VARCHAR(50) NULL,
-   fechaAsignacionResponsable  DATETIME NOT NULL,
-   fechaRetiroResponsable  DATETIME NULL,
+   institucion_convenios_idInstitucionConvenio VARCHAR(10) NULL,
+   fechaAsignacionResponsable  DATE NOT NULL,
+   fechaRetiroResponsable  DATE NULL,
   PRIMARY KEY ( idHistoricoResponsables ),
   INDEX  fk_historicoResponsables_responsables1_idx  ( responsables_idResponsable  ASC),
   INDEX  fk_historicoResponsables_convenios1_idx  ( convenios_idConvenio  ASC),
-  INDEX  fk_historicoResponsables_institucion_convenios1_idx  ( institucion_convenios_instituciones_idInstitucion  ASC,  institucion_convenios_convenios_idConvenio  ASC),
+  INDEX  fk_historicoResponsables_institucion_convenios1_idx  (institucion_convenios_idInstitucionConvenio ASC),
   CONSTRAINT  fk_historicoResponsables_responsables1 
     FOREIGN KEY ( responsables_idResponsable )
     REFERENCES    responsables  ( idResponsable )
@@ -418,10 +422,15 @@ CREATE TABLE IF NOT EXISTS    historicoResponsables  (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT  fk_historicoResponsables_institucion_convenios1 
-    FOREIGN KEY ( institucion_convenios_instituciones_idInstitucion  ,  institucion_convenios_convenios_idConvenio )
-    REFERENCES    institucion_convenios  ( instituciones_idInstitucion  ,  convenios_idConvenio )
+    FOREIGN KEY ( institucion_convenios_idInstitucionConvenio )
+    REFERENCES    institucion_convenios  ( idInstitucionConvenio )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+ALTER TABLE historicoResponsables 
+ADD CHECK((convenios_idConvenio IS NULL  AND institucion_convenios_idInstitucionConvenio IS NOT NULL ) OR 
+          (convenios_idConvenio IS NOT NULL  AND institucion_convenios_idInstitucionConvenio IS NULL)
+          );
 -- -----------------------------------------------------
 -- Table    convenio_Estados 
 -- -----------------------------------------------------
