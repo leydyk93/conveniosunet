@@ -8405,3 +8405,21 @@ in C:\wamp\www\UNETConvenios\index.php (13)
 in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (119)
 in C:\wamp\www\UNETConvenios\index.php (13)
 >>>>>>> f7376ee0da1e594e17a57a15e7b968bb4443124a
+2016/06/03 03:53:50 [warning] [application] Failed to set unsafe attribute "tipo" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\SiteController.php (120)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/06/03 03:53:50 [warning] [application] Failed to set unsafe attribute "clasificacion" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\SiteController.php (120)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/06/03 03:53:50 [warning] [application] Failed to set unsafe attribute "pais" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\SiteController.php (120)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/06/03 03:53:50 [warning] [application] Failed to set unsafe attribute "tipo_institucion" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\SiteController.php (120)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/06/03 03:53:50 [warning] [application] Failed to set unsafe attribute "institucion" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\SiteController.php (120)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/06/03 03:53:50 [warning] [application] Failed to set unsafe attribute "estadoConv" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\SiteController.php (120)
+in C:\xampp\htdocs\conveniosunet\index.php (13)

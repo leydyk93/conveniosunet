@@ -426,13 +426,14 @@ CREATE TABLE IF NOT EXISTS    historicoResponsables  (
 -- Table    convenio_Estados 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS    convenio_Estados  (
+   id_convenio_estado VARCHAR(10) NOT NULL,
    convenios_idConvenio  VARCHAR(50) NOT NULL,
    estadoConvenios_idEstadoConvenio  VARCHAR(10) NOT NULL,
    fechaCambioEstado  DATETIME NOT NULL,
    numeroReporte  VARCHAR(10) NULL,
    observacionCambioEstado  TEXT NULL,
    dependencias_idDependencia  VARCHAR(10) NOT NULL,
-  PRIMARY KEY ( convenios_idConvenio ,  estadoConvenios_idEstadoConvenio ),
+  PRIMARY KEY ( id_convenio_estado ),
   INDEX  fk_convenios_has_estadoConvenios_estadoConvenios1_idx  ( estadoConvenios_idEstadoConvenio  ASC),
   INDEX  fk_convenios_has_estadoConvenios_convenios1_idx  ( convenios_idConvenio  ASC),
   INDEX  fk_convenio_Estados_dependencias1_idx  ( dependencias_idDependencia  ASC),
@@ -450,14 +451,17 @@ CREATE TABLE IF NOT EXISTS    convenio_Estados  (
     FOREIGN KEY ( dependencias_idDependencia )
     REFERENCES    dependencias  ( idDependencia )
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON UPDATE NO ACTION,
+    CONSTRAINT uk_convenio_estados  UNIQUE (convenios_idConvenio,id_convenio_estado)
+    );
 -- -----------------------------------------------------
 -- Table    convenio_actividades 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS    convenio_actividades  (
+   id_convenio_actividades VARCHAR(10) NOT NULL,
    convenios_idConvenio  VARCHAR(50) NOT NULL,
    actividades_idActividad  VARCHAR(10) NOT NULL,
-  PRIMARY KEY ( convenios_idConvenio ,  actividades_idActividad ),
+  PRIMARY KEY (id_convenio_actividades),
   INDEX  fk_convenios_has_actividades_actividades1_idx  ( actividades_idActividad  ASC),
   INDEX  fk_convenios_has_actividades_convenios1_idx  ( convenios_idConvenio  ASC),
   CONSTRAINT  fk_convenios_has_actividades_convenios1 
@@ -469,15 +473,17 @@ CREATE TABLE IF NOT EXISTS    convenio_actividades  (
     FOREIGN KEY ( actividades_idActividad )
     REFERENCES    actividades  ( idActividad )
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON UPDATE NO ACTION,
+    CONSTRAINT uk_convenio_actividades  UNIQUE (convenios_idConvenio,actividades_idActividad));
 -- -----------------------------------------------------
 -- Table    convenio_presupuestos 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS    convenio_presupuestos  (
+   id_convenio_presupuesto VARCHAR (10) NOT NULL,
    convenios_idConvenio  VARCHAR(50) NOT NULL,
    presupuestos_idPresupuesto  VARCHAR(10) NOT NULL,
    costo  DOUBLE NOT NULL,
-  PRIMARY KEY ( convenios_idConvenio ,  presupuestos_idPresupuesto ),
+  PRIMARY KEY (id_convenio_presupuesto),
   INDEX  fk_convenios_has_presupuestos_presupuestos1_idx  ( presupuestos_idPresupuesto  ASC),
   INDEX  fk_convenios_has_presupuestos_convenios1_idx  ( convenios_idConvenio  ASC),
   CONSTRAINT  fk_convenios_has_presupuestos_convenios1 
@@ -489,19 +495,22 @@ CREATE TABLE IF NOT EXISTS    convenio_presupuestos  (
     FOREIGN KEY ( presupuestos_idPresupuesto )
     REFERENCES    presupuestos  ( idPresupuesto )
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON UPDATE NO ACTION,
+    CONSTRAINT uk_convenio_presupuesto  UNIQUE (convenios_idConvenio,presupuestos_idPresupuesto));
 -- -----------------------------------------------------
 -- Table    convenio_aportes 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS    convenio_aportes  (
+   id_convenio_aporte VARCHAR(10) NOT NULL,
    convenios_idConvenio  VARCHAR(50) NOT NULL,
    aportes_idAporte  VARCHAR(10) NOT NULL,
    valor  VARCHAR(45) NULL,
    monedas_idMoneda  INT NOT NULL,
-  PRIMARY KEY ( convenios_idConvenio ,  aportes_idAporte ),
+  PRIMARY KEY ( id_convenio_aporte),
   INDEX  fk_convenios_has_aportes_aportes1_idx  ( aportes_idAporte  ASC),
   INDEX  fk_convenios_has_aportes_convenios1_idx  ( convenios_idConvenio  ASC),
   INDEX  fk_convenio_aportes_monedas1_idx  ( monedas_idMoneda  ASC),
+  
   CONSTRAINT  fk_convenios_has_aportes_convenios1 
     FOREIGN KEY ( convenios_idConvenio )
     REFERENCES    convenios  ( idConvenio )
@@ -516,7 +525,9 @@ CREATE TABLE IF NOT EXISTS    convenio_aportes  (
     FOREIGN KEY ( monedas_idMoneda )
     REFERENCES    monedas  ( idMoneda )
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON UPDATE NO ACTION,
+    CONSTRAINT uk_convenio_aporte  UNIQUE (convenios_idConvenio,aportes_idAporte)),
+  
 -- -----------------------------------------------------
 -- Table    informes 
 -- -----------------------------------------------------
