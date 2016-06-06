@@ -276,6 +276,8 @@ CONSTRAINT fk_convenios_dependencias1
     REFERENCES convenios (idConvenio));
 
 ALTER TABLE `convenios` ADD `ventajasBeneficiosConvenio` TEXT NOT NULL AFTER `objetivoConvenio`;
+ALTER TABLE `convenios` CHANGE `fechaCaducidadConvenio` `fechaCaducidadConvenio` DATE NOT NULL;
+ALTER TABLE `convenios` CHANGE `fechaInicioConvenio` `fechaInicioConvenio` DATE NOT NULL;
 -- -----------------------------------------------------
 -- Table `mydb`.`actividades`
 -- -----------------------------------------------------
