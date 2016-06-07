@@ -9,7 +9,7 @@
  * @property string $descripcionEstadoConvenio
  *
  * The followings are the available model relations:
- * @property Convenios[] $convenioses
+ * @property ConvenioEstados[] $convenioEstadoses
  */
 class Estadoconvenios extends CActiveRecord
 {
@@ -46,7 +46,7 @@ class Estadoconvenios extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'convenioses' => array(self::MANY_MANY, 'Convenios', 'convenio_estados(estadoConvenios_idEstadoConvenio, convenios_idConvenio)'),
+			'convenioEstadoses' => array(self::HAS_MANY, 'ConvenioEstados', 'estadoConvenios_idEstadoConvenio'),
 		);
 	}
 

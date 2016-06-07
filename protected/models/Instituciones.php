@@ -6,11 +6,12 @@
  * The followings are the available columns in table 'instituciones':
  * @property string $idInstitucion
  * @property string $nombreInstitucion
+ * @property string $siglasInstitucion
  * @property string $estados_idEstado
  * @property string $tiposInstituciones_idTipoInstitucion
  *
  * The followings are the available model relations:
- * @property Convenios[] $convenioses
+ * @property InstitucionConvenios[] $institucionConvenioses
  * @property Estados $estadosIdEstado
  * @property Tiposinstituciones $tiposInstitucionesIdTipoInstitucion
  * @property Responsables[] $responsables
@@ -36,9 +37,10 @@ class Instituciones extends CActiveRecord
 			array('idInstitucion, nombreInstitucion, estados_idEstado, tiposInstituciones_idTipoInstitucion', 'required'),
 			array('idInstitucion, estados_idEstado, tiposInstituciones_idTipoInstitucion', 'length', 'max'=>10),
 			array('nombreInstitucion', 'length', 'max'=>200),
+			array('siglasInstitucion', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idInstitucion, nombreInstitucion, estados_idEstado, tiposInstituciones_idTipoInstitucion', 'safe', 'on'=>'search'),
+			array('idInstitucion, nombreInstitucion, siglasInstitucion, estados_idEstado, tiposInstituciones_idTipoInstitucion', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,7 +52,7 @@ class Instituciones extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'convenioses' => array(self::MANY_MANY, 'Convenios', 'institucion_convenios(instituciones_idInstitucion, convenios_idConvenio)'),
+			'institucionConvenioses' => array(self::HAS_MANY, 'InstitucionConvenios', 'instituciones_idInstitucion'),
 			'estadosIdEstado' => array(self::BELONGS_TO, 'Estados', 'estados_idEstado'),
 			'tiposInstitucionesIdTipoInstitucion' => array(self::BELONGS_TO, 'Tiposinstituciones', 'tiposInstituciones_idTipoInstitucion'),
 			'responsables' => array(self::HAS_MANY, 'Responsables', 'instituciones_idInstitucion'),
@@ -65,6 +67,7 @@ class Instituciones extends CActiveRecord
 		return array(
 			'idInstitucion' => 'Id Institucion',
 			'nombreInstitucion' => 'Nombre Institucion',
+			'siglasInstitucion' => 'Siglas Institucion',
 			'estados_idEstado' => 'Estados Id Estado',
 			'tiposInstituciones_idTipoInstitucion' => 'Tipos Instituciones Id Tipo Institucion',
 		);
@@ -90,6 +93,7 @@ class Instituciones extends CActiveRecord
 
 		$criteria->compare('idInstitucion',$this->idInstitucion,true);
 		$criteria->compare('nombreInstitucion',$this->nombreInstitucion,true);
+		$criteria->compare('siglasInstitucion',$this->siglasInstitucion,true);
 		$criteria->compare('estados_idEstado',$this->estados_idEstado,true);
 		$criteria->compare('tiposInstituciones_idTipoInstitucion',$this->tiposInstituciones_idTipoInstitucion,true);
 

@@ -206,10 +206,10 @@ CREATE TABLE IF NOT EXISTS instituciones (
     FOREIGN KEY (tiposInstituciones_idTipoInstitucion)
     REFERENCES tiposInstituciones (idTipoInstitucion));
 
-INSERT INTO instituciones (idInstitucion,nombreInstitucion,estados_idEstado,tiposInstituciones_idTipoInstitucion) VALUES
-('1','ULA','935','1'),
-('2','UCV','335','1'),
-('3','UNA','335','1');
+INSERT INTO instituciones (idInstitucion,nombreInstitucion,siglasInstitucion,estados_idEstado,tiposInstituciones_idTipoInstitucion) VALUES
+('1','Universidad de los Andes','ULA','935','1'),
+('2','Universidad Central de Venezuela','UCV','335','1'),
+('3','Universidad Nacional Abierta','UNA','335','1');
 
 -- -----------------------------------------------------
 -- Table `mydb`.`tipoConvenios`
@@ -543,7 +543,7 @@ CREATE TABLE IF NOT EXISTS    convenio_aportes  (
     REFERENCES    monedas  ( idMoneda )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-    CONSTRAINT uk_convenio_aporte  UNIQUE (convenios_idConvenio,aportes_idAporte)),
+    CONSTRAINT uk_convenio_aporte  UNIQUE (convenios_idConvenio,aportes_idAporte));
   
 -- -----------------------------------------------------
 -- Table    informes 
