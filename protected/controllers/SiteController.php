@@ -93,7 +93,8 @@ class SiteController extends Controller
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
-				$this->redirect('index.php?r=site/convenioConsultar');
+				$this->redirect($this->createUrl('site/convenioConsultar'));	
+				//$this->redirect('index.php?r=site/convenioConsultar');
 				//$this->redirect('index.php?r=site/page&view=consultarConvenio'); la estatica
 				//$this->redirect(Yii::app()->user->returnUrl); la por defecto
 		}
@@ -121,7 +122,7 @@ class SiteController extends Controller
        	Yii::app()->end();
        }
      
-       if(isset($_POST["ConsultasConvenios"]))
+      if(isset($_POST["ConsultasConvenios"]))
        {
        	$formConsulta->attributes=$_POST["ConsultasConvenios"];
         
@@ -130,7 +131,6 @@ class SiteController extends Controller
        	}
 
        }
-
 
        $this->render('convenioConsultar',array('clasif'=>$modelClass,
        	'conve'=>$modelConv,
@@ -141,8 +141,9 @@ class SiteController extends Controller
         'estadoconve'=>$modelEdoConve,
         'model'=>$formConsulta
        	));
-        
-      
+
+
+             
 	}
 
 	/**
