@@ -9,33 +9,37 @@
 
 if(isset($model->anio)){
   echo $model->anio;
-  
+
+if($resultado!=null){
+  echo $resultado->idConvenio;
+  echo $resultado->tipoConvenios_idTipoConvenio; 
+  }
 }
-if(isset($_POST['ConsultasConvenios']['tipo'])){
+if(isset($_POST['ConsultasConvenios']['tipo'])&&$_POST['ConsultasConvenios']['tipo']!=null){
   /*echo $_POST['ConsultasConvenios']['tipo'];*/
   
   $cadena = implode($_POST['ConsultasConvenios']['tipo']);
  echo "tipo es".$cadena;
 }
-if(isset($_POST['ConsultasConvenios']['clasificacion'])){
+if(isset($_POST['ConsultasConvenios']['clasificacion'])&&$_POST['ConsultasConvenios']['clasificacion']!=null){
   
   $cadena3 = implode($_POST['ConsultasConvenios']['clasificacion']);
 
   echo "clasificacion ".$cadena3;
 }
-if(isset($_POST['ConsultasConvenios']['pais'])){
+if(isset($_POST['ConsultasConvenios']['pais'])&&$_POST['ConsultasConvenios']['pais']!=null){
   echo "Pais".$_POST['ConsultasConvenios']['pais'];
 }
-if(isset($_POST['ConsultasConvenios']['tipo_institucion'])){
+if(isset($_POST['ConsultasConvenios']['tipo_institucion'])&&$_POST['ConsultasConvenios']['tipo_institucion']!=null){
 
   $cadena2 = implode($_POST['ConsultasConvenios']['tipo_institucion']);
  echo " tipo de Institucion es".$cadena2;
  
 }
-if(isset($_POST['ConsultasConvenios']['institucion'])){
+if(isset($_POST['ConsultasConvenios']['institucion'])&&$_POST['ConsultasConvenios']['institucion']!=null){
   echo "institucion".$_POST['ConsultasConvenios']['institucion'];
 }
-if(isset($_POST['ConsultasConvenios']['estadoConv'])){
+if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios']['estadoConv']!=null){
   $cadena2 = implode($_POST['ConsultasConvenios']['estadoConv']);
  echo " tipo de Institucion es".$cadena2;
 }
@@ -137,13 +141,12 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])){
       </ul>
      
   </div>
-  <div id="Resulconvenios" class="col-sm-8">
-                
+     
             <div id="Resulconvenios" class="col-sm-8">
                  <div class="list-group">
                  <aside>
                    <div class="row">
-                      <div class="col-sm-2"><p>Marco<p> </div>
+                      <div class="col-sm-2"><p>Marco <p> </div>
                       <div class="col-sm-10">
                        Diplomado en gestion
                       </div> 
@@ -176,8 +179,6 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])){
                  </aside> 
               </div>
             </div>    
-
-  </div>
 </div>
 
  <?php $this->endWidget(); ?>

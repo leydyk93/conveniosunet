@@ -86,6 +86,13 @@ CREATE TABLE IF NOT EXISTS alcanceConvenios (
   idAlcanceConvenio VARCHAR(10) NOT NULL,
   descripcionAlcanceConvenio VARCHAR(50) NOT NULL,
   PRIMARY KEY (idAlcanceConvenio));
+
+INSERT INTO alcanceConvenios (idAlcanceConvenio,descripcionAlcanceConvenio) VALUES
+('1', 'General'),
+ ('2', 'Especifico'),
+('3', 'Mixto');
+
+
 -- -----------------------------------------------------
 -- Table `mydb`.`formaConvenios`
 -- -----------------------------------------------------
@@ -93,6 +100,11 @@ CREATE TABLE IF NOT EXISTS formaConvenios (
   idFormaConvenio VARCHAR(10) NOT NULL,
   descripcionFormaConvenio VARCHAR(50) NOT NULL,
   PRIMARY KEY (idFormaConvenio));
+
+INSERT INTO formaConvenios (idFormaConvenio,descripcionFormaConvenio) VALUES
+('1', 'Unica'),
+ ('2', 'Bilateral'),
+('3', 'Multilateral');
 
 -- -----------------------------------------------------
 -- Table `mydb`.`tiposInstituciones`
@@ -278,6 +290,13 @@ CONSTRAINT fk_convenios_dependencias1
 ALTER TABLE `convenios` ADD `ventajasBeneficiosConvenio` TEXT NOT NULL AFTER `objetivoConvenio`;
 ALTER TABLE `convenios` CHANGE `fechaCaducidadConvenio` `fechaCaducidadConvenio` DATE NOT NULL;
 ALTER TABLE `convenios` CHANGE `fechaInicioConvenio` `fechaInicioConvenio` DATE NOT NULL;
+
+INSERT INTO convenios (idConvenio,nombreConvenio,fechaInicioConvenio,fechaCaducidadConvenio,
+                       objetivoConvenio,institucionUNET,urlConvenio,clasificacionConvenios_idTipoConvenio,
+                       tipoConvenios_idTipoConvenio,alcanceConvenios_idAlcanceConvenio,formaConvenios_idFormaConvenio,
+                        dependencias_idDependencia) VALUES
+('01', 'convenio 1','2015/01/01','2016/01/01','ejemplo 1','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','1','2','1'),
+('02', 'convenio 2','2014/01/01','2015/01/01','ejemplo 2','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','1','2','1');
 -- -----------------------------------------------------
 -- Table `mydb`.`actividades`
 -- -----------------------------------------------------

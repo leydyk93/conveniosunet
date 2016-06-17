@@ -112,20 +112,45 @@ class SiteController extends Controller
        $modelTipoIns=tiposinstituciones::model()->findAll();
        $modelInst=instituciones::model()->findAll();
        $modelEdoConve=estadoconvenios::model()->findAll();
-
+       
        $formConsulta = new ConsultasConvenios;
+       $resull= new convenios;
 
 
        if(isset($_POST["ajax"]) && $_POST["ajax"]==='form'){
 
        	echo CActiveForm::validate($formConsulta);
        	Yii::app()->end();
-       }
+        }
      
       if(isset($_POST["ConsultasConvenios"]))
        {
        	$formConsulta->attributes=$_POST["ConsultasConvenios"];
-        
+
+       	if(isset($formConsulta->anio)){
+
+       		$criteria=new CDbCriteria;
+			$criteria->select='idConvenio';  // seleccionar solo la columna 'cod'
+			$criteria->condition='YEAR(fechaInicioConvenio)=:fechaInicioConvenio';
+			$criteria->params=array(':fechaInicioConvenio'=>$formConsulta->anio);
+			$resull=convenios::model()->find($criteria); // $params no es necesario
+
+       		//$resulConv=convenios::model()->findAll();
+
+
+
+       		/*$conexion=Yii::app()->db;
+       		$sql="SELECT fechaInicioConvenio FROM convenios";
+       		$resultado=$conexion->createCommand($sql)->query();
+
+		 */
+       		/* $resulConv=convenios::model()->find('idProfesor=:idProfesor',
+                               array(':idProfesor'=>$id));*/
+       	}
+                 
+
+       // $convenioMostrar=convenios::model()->findByPk($formConsulta->anio);
+
        	if(!$formConsulta->validate()){
        		$this->redirect($this->createUrl('site/convenioConsultar'));	
        	}
@@ -139,7 +164,8 @@ class SiteController extends Controller
        	'tiposinst'=>$modelTipoIns,
        	'institucionconve'=>$modelInst,
         'estadoconve'=>$modelEdoConve,
-        'model'=>$formConsulta
+        'model'=>$formConsulta,
+        'resultado'=>$resull
        	));
 
 
