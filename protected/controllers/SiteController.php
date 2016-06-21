@@ -130,27 +130,13 @@ class SiteController extends Controller
        	if(isset($formConsulta->anio)){
 
        		$criteria=new CDbCriteria;
-			$criteria->select='idConvenio';  // seleccionar solo la columna 'cod'
+			$criteria->select='idConvenio,nombreConvenio,fechaInicioConvenio,fechaCaducidadConvenio';  // seleccionar solo la columna 'cod'
 			$criteria->condition='YEAR(fechaInicioConvenio)=:fechaInicioConvenio';
 			$criteria->params=array(':fechaInicioConvenio'=>$formConsulta->anio);
-			$resull=convenios::model()->find($criteria); // $params no es necesario
+			$resull=convenios::model()->find($criteria); 
 
-       		//$resulConv=convenios::model()->findAll();
-
-
-
-       		/*$conexion=Yii::app()->db;
-       		$sql="SELECT fechaInicioConvenio FROM convenios";
-       		$resultado=$conexion->createCommand($sql)->query();
-
-		 */
-       		/* $resulConv=convenios::model()->find('idProfesor=:idProfesor',
-                               array(':idProfesor'=>$id));*/
        	}
-                 
-
-       // $convenioMostrar=convenios::model()->findByPk($formConsulta->anio);
-
+                
        	if(!$formConsulta->validate()){
        		$this->redirect($this->createUrl('site/convenioConsultar'));	
        	}
