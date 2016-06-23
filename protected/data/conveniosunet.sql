@@ -294,9 +294,10 @@ ALTER TABLE `convenios` CHANGE `fechaInicioConvenio` `fechaInicioConvenio` DATE 
 INSERT INTO convenios (idConvenio,nombreConvenio,fechaInicioConvenio,fechaCaducidadConvenio,
                        objetivoConvenio,institucionUNET,urlConvenio,clasificacionConvenios_idTipoConvenio,
                        tipoConvenios_idTipoConvenio,alcanceConvenios_idAlcanceConvenio,formaConvenios_idFormaConvenio,
-                        dependencias_idDependencia) VALUES
-('01', 'convenio 1','2015/01/01','2016/01/01','ejemplo 1','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','1','2','1'),
-('02', 'convenio 2','2014/01/01','2015/01/01','ejemplo 2','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','1','2','1');
+                        dependencias_idDependencia,convenios_idConvenio) VALUES
+('01', 'convenio 1','2015/01/01','2016/01/01','ejemplo 1','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','1','2','1',null),
+('02', 'convenio 2','2014/01/01','2015/01/01','ejemplo 2','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','1','2','1',null);
+('03', 'convenio 3','2015/02/01','2017/01/01','ejemplo 3','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio3/djndkjaskd.pdf','1','2','2','2','2','01'),
 -- -----------------------------------------------------
 -- Table `mydb`.`actividades`
 -- -----------------------------------------------------
@@ -424,6 +425,13 @@ CREATE TABLE IF NOT EXISTS    institucion_convenios  (
   CONSTRAINT uk_institucion_convenios  UNIQUE (instituciones_idInstitucion,convenios_idConvenio)
     );
 
+INSERT INTO institucion_convenios (idInstitucionConvenio,instituciones_idInstitucion,convenios_idConvenio, fechaIncorporacion) VALUES
+('101', '1','01','2016/01/01'),
+('201', '2','01','2016/01/01');
+
+
+
+
 -- -----------------------------------------------------
 -- Table    historicoResponsables 
 -- -----------------------------------------------------
@@ -468,7 +476,7 @@ CREATE TABLE IF NOT EXISTS    convenio_Estados  (
    fechaCambioEstado  DATE NOT NULL,
    numeroReporte  VARCHAR(10) NULL,
    observacionCambioEstado  TEXT NULL,
-   dependencias_idDependencia  VARCHAR(10) NOT NULL,
+   dependencias_idDependencia  VARCHAR(10) NULL,
   PRIMARY KEY ( id_convenio_estado ),
   INDEX  fk_convenios_has_estadoConvenios_estadoConvenios1_idx  ( estadoConvenios_idEstadoConvenio  ASC),
   INDEX  fk_convenios_has_estadoConvenios_convenios1_idx  ( convenios_idConvenio  ASC),
@@ -490,6 +498,20 @@ CREATE TABLE IF NOT EXISTS    convenio_Estados  (
     ON UPDATE NO ACTION,
     CONSTRAINT uk_convenio_estados  UNIQUE (convenios_idConvenio,id_convenio_estado)
     );
+
+
+INSERT INTO convenio_Estados (id_convenio_estado,convenios_idConvenio,estadoConvenios_idEstadoConvenio,fechaCambioEstado,dependencias_idDependencia) VALUES
+('101','01','1','2015/02/02','2'),
+('201','01','2','2015/03/02','2'),
+('301','01','3','2015/03/5','1'),
+('401','01','4','2015/03/6','1'),
+('501','01','5','2015/03/10','1'),
+('102','02','1','2014/02/02','2'),
+('202','02','2','2014/03/02','2'),
+('302','02','3','2014/03/5','1'),
+('402','02','4','2014/03/6','1'),
+('502','02','5','2014/03/12','1');
+
 -- -----------------------------------------------------
 -- Table    convenio_actividades 
 -- -----------------------------------------------------
@@ -622,3 +644,40 @@ INSERT INTO `alcanceconvenios` (`idAlcanceConvenio`, `descripcionAlcanceConvenio
 
 INSERT INTO `formaconvenios` (`idFormaConvenio`, `descripcionFormaConvenio`) VALUES ('1', 'Unilateral');
 INSERT INTO `formaconvenios` (`idFormaConvenio`, `descripcionFormaConvenio`) VALUES ('2', 'Bilateral');
+
+/*Pruebas de consultas*/
+
+/*validar que la fecha de los cambios de estado esten entre la fecha de inscripcion del convenio y la fecha de 
+caducidad*/
+
+SELECT c.nombreConvenio, ec.nombreEstadoConvenio
+FROM convenios c
+join convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio
+join estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio;
+
+SELECT MAX(ce.fechaCambioEstado),c.nombreConvenio, ec.nombreEstadoConvenio
+FROM convenios c
+join convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio
+join estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio;
+
+SELECT MAX(ce.fechaCambioEstado),c.nombreConvenio, ec.nombreEstadoConvenio
+FROM convenios c
+join convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio
+join estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio
+where c.idConvenio="01";
+
+SELECT MAX( ce.fechaCambioEstado ) , c.nombreConvenio, tc.descripcionTipoConvenio, ec.nombreEstadoConvenio
+FROM convenios c
+JOIN tipoconvenios tc ON tc.idTipoConvenio=c.tipoConvenios_idTipoConvenio
+JOIN convenio_estados ce ON ce.convenios_idConvenio = c.idConvenio
+JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio = ec.idEstadoConvenio
+WHERE c.idConvenio =  "01"
+
+
+SELECT c.nombreConvenio, tc.descripcionTipoConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio, c.objetivoConvenio, ec.nombreEstadoConvenio
+FROM convenios c
+JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio
+JOIN convenio_estados ce ON ce.convenios_idConvenio = c.idConvenio
+JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio = ec.idEstadoConvenio
+
+

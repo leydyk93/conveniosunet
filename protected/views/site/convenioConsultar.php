@@ -7,11 +7,13 @@
 <?php 
 
 if(isset($model->anio)){
-  echo $model->anio;
+  /*echo $model->anio;*/
 
 if($resultado!=null){
-  echo $resultado->idConvenio;
-  echo $resultado->nombreConvenio; 
+  /*echo $resultado->idConvenio;
+  echo $resultado->nombreConvenio;*/
+
+  
   }
 }
 if(isset($_POST['ConsultasConvenios']['tipo'])&&$_POST['ConsultasConvenios']['tipo']!=null){
@@ -141,25 +143,29 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
      
   </div>
      
+     <?php  ?>
             <div id="Resulconvenios" class="col-sm-8">
                  <div class="list-group">
-                  <?php $count=0; ?>
-                  <?php while($count<2) {?>
+                  <?php $count=0; 
+                  if(isset($model->anio)&&$resultado!=null){ 
+                  ?>
+                  <?php while($ojo->read()!==false) {?>
                  <aside>
                    <div class="row">
-                      <div class="col-sm-2"><p>Marco <p> </div>
+                      <div class="col-sm-2"><p><?php  echo $resultado3->tipo_convenio." ";  ?><p> </div>
                       <div class="col-sm-10">
-                      <?php echo $resultado->nombreConvenio." ".$count; ?> 
+                      <?php echo $resultado3->nombre_convenio." ".$count; ?> 
                       </div> 
                   </div>
 
-
+       
                   <div class="row">
                     <div class="col-sm-8">
                         <ul>
-                        <li>Fecha Inicio: <?php  echo $resultado->fechaInicioConvenio ?></li>
-                        <li>Fecha Caducidad: <?php  echo $resultado->fechaCaducidadConvenio?></li>
-                        <li>Estado del Convenio: </li>
+                        <li>Fecha Inicio: <?php  echo $resultado3->fecha_inicio." "; ?></li>
+                        <li>Fecha Caducidad: <?php echo $resultado3->fecha_caducidad." "; ?></li>
+                        <li>objetivo: <?php echo $resultado3->objetivo_convenio." "; ?></li>
+                        <li>Estado del Convenio:<?php echo $resultado3->estado_actual_convenio." ";?> </li>
                         <li>Institucion: </li>
                         <li>Responsable UNET: </li>
                       </ul> 
@@ -180,6 +186,7 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
                  </aside>
                  <?php $count=$count+1;
                  } 
+               }
                  ?> 
               </div>
             </div>    
