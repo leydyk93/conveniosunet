@@ -511,6 +511,8 @@ INSERT INTO convenio_Estados (id_convenio_estado,convenios_idConvenio,estadoConv
 ('302','02','3','2014/03/5','1'),
 ('402','02','4','2014/03/6','1'),
 ('502','02','5','2014/03/12','1');
+('103','03','5','2015/03/10','1');
+
 
 -- -----------------------------------------------------
 -- Table    convenio_actividades 
@@ -648,7 +650,7 @@ INSERT INTO `formaconvenios` (`idFormaConvenio`, `descripcionFormaConvenio`) VAL
 /*Pruebas de consultas*/
 
 /*validar que la fecha de los cambios de estado esten entre la fecha de inscripcion del convenio y la fecha de 
-caducidad*/
+caducidad ojo con esto*/
 
 SELECT c.nombreConvenio, ec.nombreEstadoConvenio
 FROM convenios c
@@ -673,11 +675,36 @@ JOIN convenio_estados ce ON ce.convenios_idConvenio = c.idConvenio
 JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio = ec.idEstadoConvenio
 WHERE c.idConvenio =  "01"
 
+SELECT c.nombreConvenio, tc.descripcionTipoConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio, c.objetivoConvenio, ec.nombreEstadoConvenio
+FROM convenios c
+JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio
+JOIN convenio_estados ce ON ce.convenios_idConvenio = c.idConvenio
+JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio = ec.idEstadoConvenio
+
+la subconsulta jeje REVISAR. 
 
 SELECT c.nombreConvenio, tc.descripcionTipoConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio, c.objetivoConvenio, ec.nombreEstadoConvenio
 FROM convenios c
 JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio
 JOIN convenio_estados ce ON ce.convenios_idConvenio = c.idConvenio
 JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio = ec.idEstadoConvenio
+WHERE ce.fechaCambioEstado = (
+
+SELECT MAX( fechaCambioEstado ) 
+FROM convenio_estados
+WHERE convenios_idConvenio = c.idConvenio
+)
+
+SELECT c.nombreConvenio, tc.descripcionTipoConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio, c.objetivoConvenio, ec.nombreEstadoConvenio
+FROM convenios c
+JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio
+JOIN convenio_estados ce ON ce.convenios_idConvenio = c.idConvenio
+JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio = ec.idEstadoConvenio
+WHERE ce.fechaCambioEstado = (
+
+SELECT MAX( fechaCambioEstado ) 
+FROM convenio_estados
+WHERE convenios_idConvenio = c.idConvenio
+) and  c.idConvenio IN ("01","03");
 
 
