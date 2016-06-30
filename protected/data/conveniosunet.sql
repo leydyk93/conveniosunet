@@ -649,9 +649,39 @@ INSERT INTO `formaconvenios` (`idFormaConvenio`, `descripcionFormaConvenio`) VAL
 
 /*Pruebas de consultas*/
 
+/*$criteria=new CDbCriteria;
+      $criteria->select='idConvenio,nombreConvenio,fechaInicioConvenio,fechaCaducidadConvenio,objetivoConvenio';  
+      $criteria->condition='YEAR(fechaInicioConvenio)=:fechaInicioConvenio';
+      $criteria->params=array(':fechaInicioConvenio'=>$formConsulta->anio);
+      $resull=convenios::model()->findAll($criteria);
+*/
+/* otra opcion para buscar ya que al obtener los datos de un modelo que no era convenios como los paso
+      a la vista. Imposible.aunque si puedo hacer join. :/ 
+      $criteria=new CDbCriteria;
+      $criteria->select='idConvenio,nombreConvenio,fechaInicioConvenio,fechaCaducidadConvenio,objetivoConvenio, tipoConvenios_idTipoConvenio,tp.descripcionTipoConvenio';
+      $criteria->join='INNER JOIN tipoconvenios tp ON tp.idTipoConvenio = tipoConvenios_idTipoConvenio';  
+      $criteria->condition='YEAR(fechaInicioConvenio)=:fechaInicioConvenio';
+      $criteria->params=array(':fechaInicioConvenio'=>$formConsulta->anio);
+      $resull=convenios::model()->find($criteria);*/
+
+
+    /*Para obtener el tipo. $resull2=tipoconvenios::model()->find('idTipoConvenio=:idTipoConvenio', array(':idTipoConvenio'=>$resull->tipoConvenios_idTipoConvenio));
+
 /*validar que la fecha de los cambios de estado esten entre la fecha de inscripcion del convenio y la fecha de 
 caducidad ojo con esto*/
 
+
+ /* $consulta  = "SELECT c.nombreConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio, tc.descripcionTipoConvenio, ec.nombreEstadoConvenio FROM convenios c ";
+        $consulta .= "JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio ";
+        $consulta .= "JOIN convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio ";
+        $consulta .= "JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio ";
+        $consulta .= "WHERE ce.fechaCambioEstado = (
+              SELECT MAX( fechaCambioEstado ) 
+              FROM convenio_estados
+              WHERE convenios_idConvenio = c.idConvenio
+              ) and c.idConvenio IN (".$rest.")";
+
+*/
 SELECT c.nombreConvenio, ec.nombreEstadoConvenio
 FROM convenios c
 join convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio

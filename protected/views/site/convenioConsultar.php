@@ -5,19 +5,7 @@
 ?>
 
 <?php 
-$i=1;
-if(isset($model->anio)){
-  /*echo $model->anio;*/
-
-if($resultado!=null){
-  //echo $resultado->idConvenio;
-  //echo $resultado->nombreConvenio;
- 
-
-   foreach($resultado as $row) { 
-           echo $row->idConvenio;
-    }
-
+if($ojo!=null){
           while(($row=$ojo->read())!==false) { 
               echo $resultado3->nombre_convenio." ";
               echo $resultado3->fecha_inicio." ";
@@ -26,14 +14,15 @@ if($resultado!=null){
               echo $resultado3->estado_actual_convenio;
               echo "<br>";
            }
-
-  }
 }
 if(isset($_POST['ConsultasConvenios']['tipo'])&&$_POST['ConsultasConvenios']['tipo']!=null){
   /*echo $_POST['ConsultasConvenios']['tipo'];*/
-  
-  $cadena = implode($_POST['ConsultasConvenios']['tipo']);
- echo "tipo es".$cadena;
+  foreach ($_POST['ConsultasConvenios']['tipo'] as $key) {
+    echo "tipo ".$key;
+  }
+
+  /*$cadena = implode($_POST['ConsultasConvenios']['tipo']);
+ echo "tipo es".$cadena;*/
 }
 if(isset($_POST['ConsultasConvenios']['clasificacion'])&&$_POST['ConsultasConvenios']['clasificacion']!=null){
   
