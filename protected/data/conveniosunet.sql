@@ -200,7 +200,8 @@ INSERT INTO estados (idEstado,nombreEstado,paises_idPais) VALUES
 ('2135','Vargas', '35'),   
 ('2235','Cojedes', '35'),   
 ('2335','Delta Amacuro', '35'),   
-('2435', 'Amazonas', '35');  
+('2435', 'Amazonas', '35'),
+('19','Santiago de Chile','9');
 -- -----------------------------------------------------
 -- Table `mydb`.`instituciones`
 -- -----------------------------------------------------
@@ -221,7 +222,8 @@ CREATE TABLE IF NOT EXISTS instituciones (
 INSERT INTO instituciones (idInstitucion,nombreInstitucion,siglasInstitucion,estados_idEstado,tiposInstituciones_idTipoInstitucion) VALUES
 ('1','Universidad de los Andes','ULA','935','1'),
 ('2','Universidad Central de Venezuela','UCV','335','1'),
-('3','Universidad Nacional Abierta','UNA','335','1');
+('3','Universidad Nacional Abierta','UNA','335','1')
+('4','Universidad de Chile','UCHILE','19','1');
 
 -- -----------------------------------------------------
 -- Table `mydb`.`tipoConvenios`
@@ -427,7 +429,11 @@ CREATE TABLE IF NOT EXISTS    institucion_convenios  (
 
 INSERT INTO institucion_convenios (idInstitucionConvenio,instituciones_idInstitucion,convenios_idConvenio, fechaIncorporacion) VALUES
 ('101', '1','01','2016/01/01'),
-('201', '2','01','2016/01/01');
+('201', '2','01','2016/01/01'),
+('102', '1','02','2016/01/01'),
+('202', '3','02','2016/01/01'),
+('103', '1','03','2016/01/01');
+
 
 
 
@@ -713,11 +719,17 @@ JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio = ec.idEstadoConv
 
 la subconsulta jeje REVISAR. 
 
-SELECT c.nombreConvenio, tc.descripcionTipoConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio, c.objetivoConvenio, ec.nombreEstadoConvenio
+SELECT c.nombreConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio, tc.descripcionTipoConvenio, ec.nombreEstadoConvenio, 
+inst.siglasInstitucion, tinst.nombreTipoInstitucion, edo.nombreEstado, ps.nombrePais
 FROM convenios c
 JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio
 JOIN convenio_estados ce ON ce.convenios_idConvenio = c.idConvenio
 JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio = ec.idEstadoConvenio
+JOIN institucion_convenios ic ON c.idConvenio = ic.convenios_idConvenio
+JOIN instituciones inst ON inst.idInstitucion=ic.instituciones_idInstitucion
+JOIN tiposInstituciones tinst ON  tinst.idTipoInstitucion=inst.tiposInstituciones_idTipoInstitucion 
+JOIN estados edo ON edo.idEstado = inst.estados_idEstado
+JOIN paises ps ON ps.idPais=edo.paises_idPais
 WHERE ce.fechaCambioEstado = (
 
 SELECT MAX( fechaCambioEstado ) 

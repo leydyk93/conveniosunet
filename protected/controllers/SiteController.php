@@ -94,7 +94,7 @@ class SiteController extends Controller
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
 				$this->redirect($this->createUrl('site/convenioConsultar'));	
-				//$this->redirect('index.php?r=site/convenioConsultar');
+				
 				//$this->redirect('index.php?r=site/page&view=consultarConvenio'); la estatica
 				//$this->redirect(Yii::app()->user->returnUrl); la por defecto
 		}
@@ -117,22 +117,17 @@ class SiteController extends Controller
      
        $resull3= new ResultadoConvenios;
        $resultados=null;
-       $n=null;
-
+      
 
        if(isset($_POST["ajax"]) && $_POST["ajax"]==='form'){
 
        	echo CActiveForm::validate($formConsulta);
        	Yii::app()->end();
         }
-     
-      if(isset($_POST["ConsultasConvenios"]))
-       {
-       	$formConsulta->attributes=$_POST["ConsultasConvenios"];
-          					
-				$conexion=Yii::app()->db;
 
-				$consulta  = "SELECT c.nombreConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio, tc.descripcionTipoConvenio, ec.nombreEstadoConvenio FROM convenios c ";
+     			$conexion=Yii::app()->db;
+
+				$consulta  = "SELECT DISTINCT c.nombreConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio,c.objetivoConvenio,tc.descripcionTipoConvenio, ec.nombreEstadoConvenio FROM convenios c ";
 				$consulta .= "JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio ";
 				$consulta .= "JOIN convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio ";
 				$consulta .= "JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio ";
@@ -140,7 +135,30 @@ class SiteController extends Controller
 							SELECT MAX( fechaCambioEstado ) 
 							FROM convenio_estados
 							WHERE convenios_idConvenio = c.idConvenio
+							) ORDER BY YEAR(ce.fechaCambioEstado) ";
+     
+      if(isset($_POST["ConsultasConvenios"]))
+       {
+       	$formConsulta->attributes=$_POST["ConsultasConvenios"];
+          					
+				$conexion=Yii::app()->db;
+
+
+				$consulta  = "SELECT DISTINCT c.nombreConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio,c.objetivoConvenio,tc.descripcionTipoConvenio, ec.nombreEstadoConvenio FROM convenios c ";
+				$consulta .= "JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio ";
+				$consulta .= "JOIN convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio ";
+				$consulta .= "JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio ";
+				$consulta .= "JOIN institucion_convenios ic ON c.idConvenio = ic.convenios_idConvenio ";
+				$consulta .= "JOIN instituciones inst ON inst.idInstitucion = ic.instituciones_idInstitucion ";
+				$consulta .= "JOIN tiposinstituciones tinst ON  tinst.idTipoInstitucion = inst.tiposInstituciones_idTipoInstitucion ";
+				$consulta .= "JOIN estados edo ON edo.idEstado = inst.estados_idEstado ";
+				$consulta .= "JOIN paises ps ON ps.idPais=edo.paises_idPais ";
+				$consulta .= "WHERE ce.fechaCambioEstado = (
+							SELECT MAX( fechaCambioEstado ) 
+							FROM convenio_estados
+							WHERE convenios_idConvenio = c.idConvenio
 							) ";
+				
 				if(isset($formConsulta->anio) && $formConsulta->anio!=null){
 				 $consulta .="and YEAR(c.fechaInicioConvenio)=".$formConsulta->anio." ";	
 				}
@@ -165,20 +183,55 @@ class SiteController extends Controller
 					$consulta .="and c.clasificacionConvenios_idTipoConvenio IN (".$cclasif.") ";		
    
 				}
+				if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios']['estadoConv']!=null){
+								  $cestado=null;
+									foreach ($_POST['ConsultasConvenios']['estadoConv'] as $row) {
+										$cestado=$row.",".$cestado;
+									}
+									$cestado=substr($cestado, 0, -1);
 
-				$resultados=$conexion->createCommand($consulta)->query();
+									$consulta .="and ec.idEstadoConvenio IN (".$cestado.") ";
+				}
+				if(isset($_POST['ConsultasConvenios']['pais'])&&$_POST['ConsultasConvenios']['pais']!=null){
+  						$consulta .="and ps.idPais=".$_POST['ConsultasConvenios']['pais']." ";	
+				}
+				if(isset($_POST['ConsultasConvenios']['tipo_institucion'])&&$_POST['ConsultasConvenios']['tipo_institucion']!=null){
+						$ctinst=null;
+									foreach ($_POST['ConsultasConvenios']['tipo_institucion'] as $row) {
+										$ctinst=$row.",".$ctinst;
+									}
+									$ctinst=substr($ctinst, 0, -1);
+
+									$consulta .="and tinst.idTipoInstitucion IN (".$ctinst.") ";
+				}
+				if(isset($_POST['ConsultasConvenios']['institucion'])&&$_POST['ConsultasConvenios']['institucion']!=null){
+				  
+				  		$consulta .="and inst.idInstitucion=".$_POST['ConsultasConvenios']['institucion']." ";
+				  
+				}
+
+                $consulta .="ORDER BY YEAR(ce.fechaCambioEstado) ";
+						
 				
-				$resultados->bindColumn(1,$resull3->nombre_convenio);
-				$resultados->bindColumn(2,$resull3->fecha_inicio);
-				$resultados->bindColumn(3,$resull3->fecha_caducidad);
-				$resultados->bindColumn(4,$resull3->tipo_convenio);
-				$resultados->bindColumn(5,$resull3->estado_actual_convenio);
+				
+
+			
          
        	if(!$formConsulta->validate()){
        		$this->redirect($this->createUrl('site/convenioConsultar'));	
        	}
 
-       }
+        }
+
+       			$resultados=$conexion->createCommand($consulta)->query();
+				
+				$resultados->bindColumn(1,$resull3->nombre_convenio);
+				$resultados->bindColumn(2,$resull3->fecha_inicio);
+				$resultados->bindColumn(3,$resull3->fecha_caducidad);
+				$resultados->bindColumn(4,$resull3->objetivo_convenio);
+				$resultados->bindColumn(5,$resull3->tipo_convenio);
+				$resultados->bindColumn(6,$resull3->estado_actual_convenio);
+         
 
        $this->render('convenioConsultar',array('clasif'=>$modelClass,
        	'conve'=>$modelConv,

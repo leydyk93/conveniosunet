@@ -5,7 +5,7 @@
 ?>
 
 <?php 
-if($ojo!=null){
+/*if($ojo!=null){
           while(($row=$ojo->read())!==false) { 
               echo $resultado3->nombre_convenio." ";
               echo $resultado3->fecha_inicio." ";
@@ -14,20 +14,16 @@ if($ojo!=null){
               echo $resultado3->estado_actual_convenio;
               echo "<br>";
            }
-}
-if(isset($_POST['ConsultasConvenios']['tipo'])&&$_POST['ConsultasConvenios']['tipo']!=null){
-  /*echo $_POST['ConsultasConvenios']['tipo'];*/
+}*/
+/*if(isset($_POST['ConsultasConvenios']['tipo'])&&$_POST['ConsultasConvenios']['tipo']!=null){
+ 
   foreach ($_POST['ConsultasConvenios']['tipo'] as $key) {
     echo "tipo ".$key;
   }
-
-  /*$cadena = implode($_POST['ConsultasConvenios']['tipo']);
- echo "tipo es".$cadena;*/
 }
 if(isset($_POST['ConsultasConvenios']['clasificacion'])&&$_POST['ConsultasConvenios']['clasificacion']!=null){
   
   $cadena3 = implode($_POST['ConsultasConvenios']['clasificacion']);
-
   echo "clasificacion ".$cadena3;
 }
 if(isset($_POST['ConsultasConvenios']['pais'])&&$_POST['ConsultasConvenios']['pais']!=null){
@@ -44,8 +40,8 @@ if(isset($_POST['ConsultasConvenios']['institucion'])&&$_POST['ConsultasConvenio
 }
 if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios']['estadoConv']!=null){
   $cadena2 = implode($_POST['ConsultasConvenios']['estadoConv']);
- echo " tipo de Institucion es".$cadena2;
-}
+ echo " Estado es".$cadena2;
+}*/
  ?>
 
 <?php 
@@ -147,15 +143,13 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
     
             <div id="Resulconvenios" class="col-sm-8">
                  <div class="list-group">
-                 <!-- <?php /*$count=0; 
-                  if(isset($model->anio)&&$resultado!=null){*/ 
-                  ?>-->
-                  <!--<?php /*while($ojo->read()!==false) {*/?>-->
+                 
+                  <?php while((($row=$ojo->read())!==false)&& $ojo!=null) {?>
                  <aside>
                    <div class="row">
-                      <div class="col-sm-2"><p><?php /* echo $resultado3->tipo_convenio." ";*/  ?><p> </div>
+                      <div class="col-sm-2"><p><?php  echo $resultado3->tipo_convenio." ";  ?><p> </div>
                       <div class="col-sm-10">
-                      <?php /*echo $resultado3->nombre_convenio." ".$count;*/ ?> 
+                      <?php echo $resultado3->nombre_convenio; ?> 
                       </div> 
                   </div>
 
@@ -163,10 +157,10 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
                   <div class="row">
                     <div class="col-sm-8">
                         <ul>
-                        <li>Fecha Inicio: <?php  /*echo $resultado3->fecha_inicio." ";*/ ?></li>
-                        <li>Fecha Caducidad: <?php /*echo $resultado3->fecha_caducidad." ";*/ ?></li>
-                        <li>objetivo: <?php /*echo $resultado3->objetivo_convenio." ";*/ ?></li>
-                        <li>Estado del Convenio:<?php /*echo $resultado3->estado_actual_convenio." ";*/?> </li>
+                        <li>Fecha Inicio: <?php  echo $resultado3->fecha_inicio." "; ?></li>
+                        <li>Fecha Caducidad: <?php echo $resultado3->fecha_caducidad." "; ?></li>
+                        <li>objetivo: <?php echo $resultado3->objetivo_convenio." "; ?></li>
+                        <li>Estado del Convenio:<?php echo $resultado3->estado_actual_convenio." ";?> </li>
                         <li>Institucion: </li>
                         <li>Responsable UNET: </li>
                       </ul> 
@@ -185,9 +179,8 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
                     
                   </div>
                  </aside>
-                 <?php /*$count=$count+1;
+                 <?php 
                  } 
-               }*/
                  ?> 
               </div>
             </div>    
