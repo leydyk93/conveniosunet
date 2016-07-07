@@ -1,15 +1,15 @@
 <?php 
 	class PasotresForm extends CFormModel{
 
-		public $fechacaducidadconvenio;
-		public $objetivoconvenio;
-		public $dependenciaconvenio;
+		public $nro_acta;
+		public $fecha_acta;
+		public $url_acta;
 		
 
 		public function rules (){
 
 			return array(
-				array("fechacaducidadconvenio,objetivoconvenio,dependenciaconvenio","required"),
+				array("nro_acta,fecha_acta,url_acta","required"),
 				//safe se le coloca a los datos que no se quieren validar 
 			);
 		}

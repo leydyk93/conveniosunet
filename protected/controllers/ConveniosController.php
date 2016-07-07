@@ -80,6 +80,12 @@ class ConveniosController extends Controller
 
 				$_SESSION['idconvenio']=$pasouno->idconvenio;
 				$_SESSION['nombreconvenio']=$pasouno->nombreconvenio;
+				$_SESSION['fechainicioconvenio']=$pasouno->fechainicio;
+				$_SESSION['fechacaducidadconvenio']=$pasouno->fechacaducidad;
+				$_SESSION['objetivo']=$pasouno->objetivo;
+				$_SESSION['dependenciaconvenio']=$pasouno->dependencia;
+				$_SESSION['tipo']=$pasouno->tipo;
+				$_SESSION['estado']=$pasouno->estado;
 				//$pasouno->idconvenio;
 				//$pasouno->nombreconvenio;
 			//	$this->redirect(array("create"));
@@ -104,8 +110,12 @@ class ConveniosController extends Controller
 
 			$pasodos->attributes=$_POST["PasodosForm"];
 			if($pasodos->validate()){
-				$_SESSION['tipoconvenio']=$pasodos->tipoconvenio;
-				$_SESSION['fechainicioconvenio']=$pasodos->fechainicioconvenio;
+
+				$_SESSION['instanciaunet']=$pasodos->instanciaunet;
+				$_SESSION['responsableunet']=$pasodos->responsableunet;
+				$_SESSION['institucion']=$pasodos->institucion;
+				$_SESSION['instancia_contraparte']=$pasodos->instancia_contraparte;
+				$_SESSION['responsable_contraparte']=$pasodos->responsable_contraparte;
 
 				$this->redirect(array('convenios/pasotres',
 				"idconvenio"=>$_SESSION['idconvenio']
@@ -126,9 +136,9 @@ class ConveniosController extends Controller
 			$pasotres->attributes=$_POST["PasotresForm"];
 			if($pasotres->validate()){
 
-				$_SESSION['fechacaducidadconvenio']=$pasotres->fechacaducidadconvenio;
-				$_SESSION['objetivoconvenio']=$pasotres->objetivoconvenio;
-				$_SESSION['dependenciaconvenio']=$pasotres->dependenciaconvenio;
+				$_SESSION['nro_acta']=$pasotres->nro_acta;
+				$_SESSION['fecha_acta']=$pasotres->fecha_acta;
+				$_SESSION['url_acta']=$pasotres->url_acta;
 				$this->redirect(array('convenios/pasocuatro',"idconvenio"=>$_SESSION['idconvenio']));
 			}
 		}
@@ -144,9 +154,12 @@ class ConveniosController extends Controller
 			$pasocuatro->attributes=$_POST["PasocuatroForm"];
 			if($pasocuatro->validate()){
 
-				$_SESSION['institucionconvenio']=$pasocuatro->institucionconvenio;
-				$_SESSION['urlconvenio']=$pasocuatro->urlconvenio;
-				$_SESSION['clasificacionconvenio']=$pasocuatro->clasificacionconvenio;
+				$_SESSION['ventajas']=$pasocuatro->ventajas;
+				$_SESSION['clasificacion']=$pasocuatro->clasificacion;
+				$_SESSION['alcance']=$pasocuatro->alcance;
+				$_SESSION['forma']=$pasocuatro->forma;
+				$_SESSION['actividades']=$pasocuatro->actividades;
+				$_SESSION['otras_instituciones']=$pasocuatro->otras_instituciones;
 				$this->redirect(array('convenios/pasocinco',"idconvenio"=>$_SESSION['idconvenio']));
 			}
 		}
@@ -163,9 +176,12 @@ class ConveniosController extends Controller
 			$pasocinco->attributes=$_POST["PasocincoForm"];
 			if($pasocinco->validate()){
 
-				$_SESSION['alcanceconvenio']=$pasocinco->alcanceconvenio;
-				$_SESSION['formaconvenio']=$pasocinco->formaconvenio;
-				$_SESSION['idmarcoconvenio']=$pasocinco->idmarcoconvenio;
+				$_SESSION['aporte']=$pasocinco->aporte;
+				$_SESSION['moneda']=$pasocinco->moneda;
+				$_SESSION['aporte_valor']=$pasocinco->aporte_valor;
+				$_SESSION['presupuesto']=$pasocinco->presupuesto;
+				$_SESSION['presupuesto_costo']=$pasocinco->presupuesto_costo;
+
 				$this->redirect(array('convenios/pasoseis',"idconvenio"=>$_SESSION['idconvenio']));
 				
 		
@@ -179,25 +195,43 @@ class ConveniosController extends Controller
 
 	public function actionPasoseis($idconvenio){
 		$model= new Convenios;
-
+		$model_ic= new InstitucionConvenios;
+		$model_ce= new ConvenioEstados;
 	
 		if (isset($_REQUEST['enviar'])) 
 		{ 
 				$model->idConvenio=$_SESSION['idconvenio'];
 				$model->nombreConvenio=$_SESSION['nombreconvenio'];
 				$model->fechaCaducidadConvenio=$_SESSION['fechacaducidadconvenio'];
-				$model->objetivoConvenio=$_SESSION['objetivoconvenio'];
-				$model->institucionUNET=$_SESSION['institucionconvenio'];
-				$model->urlConvenio=$_SESSION['urlconvenio'];
-				$model->clasificacionConvenios_idTipoConvenio=$_SESSION['clasificacionconvenio'];
-				$model->tipoConvenios_idTipoConvenio=$_SESSION['tipoconvenio'];
-				$model->alcanceConvenios_idAlcanceConvenio=$_SESSION['alcanceconvenio'];
-				$model->formaConvenios_idFormaConvenio=$_SESSION['formaconvenio'];
+				$model->objetivoConvenio=$_SESSION['objetivo'];
+				$model->institucionUNET=$_SESSION['institucion'];
+				$model->urlConvenio=$_SESSION['url_acta'];
+				$model->clasificacionConvenios_idTipoConvenio=$_SESSION['clasificacion'];
+				$model->tipoConvenios_idTipoConvenio=$_SESSION['tipo'];
+				$model->alcanceConvenios_idAlcanceConvenio=$_SESSION['alcance'];
+				$model->formaConvenios_idFormaConvenio=$_SESSION['forma'];
 				$model->dependencias_idDependencia=$_SESSION['dependenciaconvenio'];
-				$model->convenios_idConvenio=$_SESSION['idmarcoconvenio'];
+				$model->convenios_idConvenio=$_SESSION['idconvenio'];
 				$model->fechaInicioConvenio=$_SESSION['fechainicioconvenio'];
- 				if($model->save())
-					$this->redirect(array('view','id'=>$model->idConvenio));
+				//Guardando en la tabla convenios
+ 				if($model->save()){
+					
+ 					$model_ic->idInstitucionConvenio=$_SESSION['idconvenio'];
+ 					$model_ic->instituciones_idInstitucion=$_SESSION['institucion'];
+ 					$model_ic->convenios_idConvenio=$_SESSION['idconvenio'];
+ 					$model_ic->fechaIncorporacion=$_SESSION['fechainicioconvenio'];
+ 					//Guardando en la tabla institucion convenios
+ 					if($model_ic->save()){
+ 						$model_ce->id_convenio_estado=$_SESSION['idconvenio'];
+ 						$model_ce->convenios_idConvenio=$_SESSION['idconvenio'];
+ 						$model_ce->estadoConvenios_idEstadoConvenio=$_SESSION['estado'];
+ 						$model_ce->fechaCambioEstado=$_SESSION['fechainicioconvenio'];
+ 						$model_ce->dependencias_idDependencia=$_SESSION['dependenciaconvenio'];
+ 						//Guardando en la tabla convenio estados 
+ 						if($model_ce->save())
+						$this->redirect(array('view','id'=>$model->idConvenio));
+					}
+				}
 		}
 
 		$this->render('pasoseis',array("model"=>$model));
