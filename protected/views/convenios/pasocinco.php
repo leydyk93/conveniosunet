@@ -3,7 +3,7 @@
  ?>
 
 <?php 
-				echo $_SESSION['idconvenio'];
+				/*echo $_SESSION['idconvenio'];
 				echo "<br>";
 				echo $_SESSION['nombreconvenio'];
 				echo "<br>";
@@ -42,31 +42,40 @@
 				echo $_SESSION['actividades'];
 				echo "<br>";
 				echo $_SESSION['otras_instituciones'];
-				echo "<br>";
+				echo "<br>";*/
 //campos del formulario 
  ?>
 
  <?php echo "<br>"; ?>
-<?php echo $form->labelEx($pasocinco,'aporte'); ?>
+ <div>
+<?php echo $form->labelEx($pasocinco,'aporte',array('class'=>'col-md-3')); ?>
 <?php echo $form->dropDownList($pasocinco,'aporte',CHtml::listData(Aportes::model()->findAll(), 'idAporte', 'descripcionAporte'),''); ?>
 <?php echo $form->error($pasocinco,'aporte'); ?>
+</div>
 <?php echo "<br>"; ?>
-<?php echo $form->labelEx($pasocinco,'moneda'); ?>
+<div>
+<?php echo $form->labelEx($pasocinco,'moneda',array('class'=>'col-md-3')); ?>
 <?php echo $form->dropDownList($pasocinco,'moneda',CHtml::listData(Monedas::model()->findAll(), 'idMoneda', 'descripcionMoneda'),''); ?>
 <?php echo $form->error($pasocinco,'moneda'); ?>
+</div>
 <?php echo "<br>"; ?>
-<?php echo $form->labelEx($pasocinco,'aporte_valor'); ?>
+<div>
+<?php echo $form->labelEx($pasocinco,'aporte_valor',array('class'=>'col-md-3')); ?>
 <?php echo $form->textField($pasocinco,'aporte_valor'); ?>
 <?php echo $form->error($pasocinco,'aporte_valor'); ?>
+</div>
 <?php echo "<br>"; ?>
-<?php echo $form->labelEx($pasocinco,'presupuesto'); ?>
+<div>
+<?php echo $form->labelEx($pasocinco,'presupuesto',array('class'=>'col-md-3')); ?>
 <?php echo $form->dropDownList($pasocinco,'presupuesto',CHtml::listData(Presupuestos::model()->findAll(), 'idPresupuesto', 'descripcionPresupuesto'),''); ?>
 <?php echo $form->error($pasocinco,'presupuesto'); ?>
+</div>
 <?php echo "<br>"; ?>
-<?php echo $form->labelEx($pasocinco,'presupuesto_costo'); ?>
+<?php echo $form->labelEx($pasocinco,'presupuesto_costo',array('class'=>'col-md-3')); ?>
 <?php echo $form->textField($pasocinco,'presupuesto_costo'); ?>
 <?php echo $form->error($pasocinco,'presupuesto_costo'); ?>
-
+<br>
+<br>
  <?php echo CHtml::submitButton("siguiente",array("class"=>"btn btn-primary")); ?>
 
 <?php $this->endWidget(); ?>

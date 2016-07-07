@@ -2,7 +2,7 @@
 	$form=$this->beginWidget("CActiveForm");
  ?>
 
-Este es el paso dos 
+
 <?php 
 //igualando y mostrando variables del paso aterior a modelo 
 /*	$model->idConvenio=$_SESSION['idconvenio'];
@@ -14,7 +14,7 @@ Este es el paso dos
 	 echo "<br>";*/
 
 //campos del formulario 
-	 			echo "<br>";
+	 			/*echo "<br>";
 	 			echo $_SESSION['idconvenio'];
 	 			echo "<br>";
 				echo $_SESSION['nombreconvenio'];
@@ -27,7 +27,7 @@ Este es el paso dos
 				echo "<br>";
 				echo $_SESSION['dependenciaconvenio'];
 				echo "<br>";
-
+*/
 ?>
 		<br>
 		Información de las Partes
@@ -37,34 +37,44 @@ Este es el paso dos
 		Institución: Universidad Nacional Experimental del Táchira
 		<br>
 		<br>
-		<?php echo $form->labelEx($pasodos,'instanciaunet'); ?>
-		<?php echo $form->dropDownList($pasodos,'instanciaunet',CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),''); ?>
+		<div class="row">
+		<?php echo $form->labelEx($pasodos,'instanciaunet',array('class'=>'col-md-3')); ?>
+		<?php echo $form->dropDownList($pasodos,'instanciaunet',CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),'',array('style'=>'width:200px;','class'=>'col-md-5')); ?>
 		<?php echo $form->error($pasodos,'instanciaunet'); ?>
+		</div>
 		<br>
-		<br>
-		<?php echo $form->labelEx($pasodos,"responsableunet"); ?>
+		
+		<div class="row">
+		<?php echo $form->labelEx($pasodos,"responsableunet",array('class'=>'col-md-3')); ?>
 		<?php echo $form->textField($pasodos,"responsableunet",array('size'=>60,'maxlength'=>200)); ?>
 		<?php echo $form->error($pasodos,"responsableunet"); ?>
+		</div>
 		<br>
-		<br>
+	
 		Contraparte
 		<br>
 		<br>
-		<?php echo $form->labelEx($pasodos,'institucion'); ?>
+		<div class="row">
+		<?php echo $form->labelEx($pasodos,'institucion',array('class'=>'col-md-3')); ?>
 		<?php echo $form->dropDownList($pasodos,'institucion',CHtml::listData(Instituciones::model()->findAll(), 'idInstitucion', 'nombreInstitucion'),''); ?>
 		<?php echo $form->error($pasodos,'institucion'); ?>
+		</div>
 		<br>
 		<br>
-		<?php echo $form->labelEx($pasodos,'instancia_contraparte'); ?>
+		<div class="row">
+		<?php echo $form->labelEx($pasodos,'instancia_contraparte',array('class'=>'col-md-3')); ?>
 		<?php echo $form->dropDownList($pasodos,'instancia_contraparte',CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),''); ?>
 		<?php echo $form->error($pasodos,'instancia_contraparte'); ?>
+		</div>
 		<br>
-		<br>
-		<?php echo $form->labelEx($pasodos,"responsable_contraparte"); ?>
+	
+		<div class="row">
+		<?php echo $form->labelEx($pasodos,"responsable_contraparte",array('class'=>'col-md-3')); ?>
 		<?php echo $form->textField($pasodos,"responsable_contraparte",array('size'=>60,'maxlength'=>200)); ?>
 		<?php echo $form->error($pasodos,"responsable_contraparte"); ?>
+		</div>
 		<br>
-		<br>
+	
 		<?php echo CHtml::submitButton("siguiente",array("class"=>"btn btn-primary")); ?>
 
 <?php $this->endWidget(); ?>
