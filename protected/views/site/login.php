@@ -20,8 +20,6 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
-	
-
 	<div class="row">
 		<?php echo $form->labelEx($model,'username'); ?>
 		<?php echo $form->textField($model,'username'); ?>
@@ -40,10 +38,10 @@ $this->breadcrumbs=array(
 		<?php echo $form->error($model,'rememberMe'); ?>
 	</div>
 	
-	<p class="note"><span class="required">*</span>campo es requerido.</p>
+	<p class="note">(<span class="required">*</span>) indica que el campo es requerido.</p>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Login'); ?>
+		<?php echo CHtml::submitButton('Login',array('class'=>'btn btn-conv')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

@@ -61,6 +61,7 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
  ?>
 
 
+      
 <div class="row">
   <div class="col-sm-4">
        <section>
@@ -68,36 +69,54 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
         <h4><span class="glyphicon glyphicon-database-plus"></span>Agregar información</h4>
        </section> 
 
+        <div class="row">
+          <div class="col-sm-6">
         <h4>Filtrar Por:</h4>
-         <?php 
-    echo CHtml::submitButton('Consultar');
-      ?>
+          </div>
+          <div class="col-sm-6">
+          <?php 
+          echo CHtml::submitButton('Consultar', array('class'=>'btn btn-conv'));
+          ?>
+          </div>
+        </div>
 
-      <ul>
-        <li> <?php echo $form->labelEx($model,'anio'); ?>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a> <?php echo $form->labelEx($model,'anio'); ?>
             <?php 
               echo $form->textField($model,'anio');
               echo $form->error($model,'anio');
-             ?>    
+             ?>  
+             </a>  
         </li> 
-        <li>
-           <div><?php echo $form->labelEx($model,'tipo'); ?></div>
+        <li >
+          <a ><?php echo $form->labelEx($model,'tipo'); ?></a>
+          
              <?php 
                $list=CHtml::listData($tipoconve,'idTipoConvenio','descripcionTipoConvenio');
                echo $form->checkBoxList($model,'tipo',$list/*,
-                array('labelOptions'=>array('class'=>'checkbox'))*/
+                 
+                array('template'=>'<li><a> {input}{label} </a></li>')*/
+               
                 );
-              ?>
+              ?> 
+              
+
         </li>
-        <li> <div><?php  echo $form->labelEx($model,'clasificacion'); ?></div>
+        <li  ><!--<a > <div><?php  /*echo $form->labelEx($model,'clasificacion');*/ ?></div></a>-->
+          <a ><?php echo $form->labelEx($model,'clasificacion'); ?> </a>
+           
            <?php  
             $list2=CHtml::listData($clasif,'idClasificacionConvenio','nombreClasificacionConvenio');
             echo $form->checkBoxList($model,'clasificacion', 
-                      $list2);
+                      $list2/*,
+                      array('template'=>'<li><a> {input}{label} </a></li>')*/
+                      );
            ?>
+          
         </li>
-        <li><div>Datos de la contraparte</div>
-          <ul>
+        <li ><a><div><?php echo $form->labelEx($model,'contraparte'); ?> </div></a>
+         
+         <ul >
             <li>
               <?php  
                   echo $form->labelEx($model,'pais');
@@ -106,8 +125,9 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
                             $list3,
                             array('empty' => 'Todos'));
               ?>
+              
             </li>
-            <li><div><?php echo $form->labelEx($model,'tipo_institucion'); ?></div>
+            <li><div><?php echo $form->labelEx($model,'tipo_institucion'); ?></div></a>
                <?php 
                  $list4=CHtml::listData($tiposinst,'idTipoInstitucion','nombreTipoInstitucion');
                  echo $form->checkBoxList($model,'tipo_institucion', $list4
@@ -125,9 +145,9 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
             ?>
             </li>
           </ul>
-          
+         
         </li>
-        <li><div><?php echo $form->labelEx($model,'estadoConv'); ?></div>
+        <li><a><div><?php echo $form->labelEx($model,'estadoConv'); ?></div></a>
            <?php 
            
            $list6=CHtml::listData($estadoconve,'idEstadoConvenio','nombreEstadoConvenio');   
@@ -145,9 +165,9 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
                  <div class="list-group">
                  
                   <?php while((($row=$ojo->read())!==false)&& $ojo!=null) {?>
-                 <aside>
+                 <aside class="list-group-item" >
                    <div class="row">
-                      <div class="col-sm-2"><p><?php  echo $resultado3->tipo_convenio." ";  ?><p> </div>
+                      <div class="col-sm-2"><p class="text-info"><?php  echo $resultado3->tipo_convenio." ";  ?><p> </div>
                       <div class="col-sm-10">
                       <?php echo $resultado3->nombre_convenio; ?> 
                       </div> 
@@ -157,10 +177,10 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
                   <div class="row">
                     <div class="col-sm-8">
                         <ul>
-                        <li>Fecha Inicio: <?php  echo $resultado3->fecha_inicio." "; ?></li>
-                        <li>Fecha Caducidad: <?php echo $resultado3->fecha_caducidad." "; ?></li>
-                        <li>objetivo: <?php echo $resultado3->objetivo_convenio." "; ?></li>
-                        <li>Estado del Convenio:<?php echo $resultado3->estado_actual_convenio." ";?> </li>
+                        <li>Fecha Inicio: <span class="text-muted"><?php  echo $resultado3->fecha_inicio." "; ?></span></li>
+                        <li>Fecha Caducidad:<span class="text-muted"> <?php echo $resultado3->fecha_caducidad." "; ?></span></li>
+                        <li>objetivo: <span class="text-muted"> <?php echo $resultado3->objetivo_convenio." "; ?></span></li>
+                        <li>Estado del Convenio:<span class="text-muted"> <?php echo $resultado3->estado_actual_convenio." ";?></span> </li>
                         <li>Institucion: </li>
                         <li>Responsable UNET: </li>
                       </ul> 
@@ -185,6 +205,8 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
               </div>
             </div>    
 </div>
+
+
 
  <?php $this->endWidget(); ?>
 

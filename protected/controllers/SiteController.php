@@ -212,11 +212,7 @@ class SiteController extends Controller
 
                 $consulta .="ORDER BY YEAR(ce.fechaCambioEstado) ";
 						
-				
-				
-
-			
-         
+			         
        	if(!$formConsulta->validate()){
        		$this->redirect($this->createUrl('site/convenioConsultar'));	
        	}
@@ -243,10 +239,7 @@ class SiteController extends Controller
         'model'=>$formConsulta,
         'ojo'=>$resultados,
         'resultado3'=>$resull3
-       	));
-
-
-             
+       	)); 
 	}
 
 	/**

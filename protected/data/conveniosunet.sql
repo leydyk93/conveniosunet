@@ -297,6 +297,7 @@ INSERT INTO convenios (idConvenio,nombreConvenio,fechaInicioConvenio,fechaCaduci
                        objetivoConvenio,institucionUNET,urlConvenio,clasificacionConvenios_idTipoConvenio,
                        tipoConvenios_idTipoConvenio,alcanceConvenios_idAlcanceConvenio,formaConvenios_idFormaConvenio,
                         dependencias_idDependencia,convenios_idConvenio) VALUES
+('04', 'convenio 4','2014/01/01','2018/01/01','ejemplo 4','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio4/djndkjaskd.pdf','2','1','1','2','1',null),
 ('01', 'convenio 1','2015/01/01','2016/01/01','ejemplo 1','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','1','2','1',null),
 ('02', 'convenio 2','2014/01/01','2015/01/01','ejemplo 2','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','1','2','1',null);
 ('03', 'convenio 3','2015/02/01','2017/01/01','ejemplo 3','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio3/djndkjaskd.pdf','1','2','2','2','2','01'),
@@ -342,6 +343,7 @@ INSERT INTO estadoConvenios (idEstadoConvenio,nombreEstadoConvenio,descripcionEs
 ('3', 'Resolucion C.U Nro1',''),
 ('4', 'Memo DICIPREP',''),
 ('5', 'Resolucion C.U Aprobado','');
+
 
 
 -- -----------------------------------------------------
@@ -432,11 +434,8 @@ INSERT INTO institucion_convenios (idInstitucionConvenio,instituciones_idInstitu
 ('201', '2','01','2016/01/01'),
 ('102', '1','02','2016/01/01'),
 ('202', '3','02','2016/01/01'),
-('103', '1','03','2016/01/01');
-
-
-
-
+('103', '1','03','2016/01/01'),
+('104', '4','04','2016/01/01');
 
 -- -----------------------------------------------------
 -- Table    historicoResponsables 
@@ -516,9 +515,9 @@ INSERT INTO convenio_Estados (id_convenio_estado,convenios_idConvenio,estadoConv
 ('202','02','2','2014/03/02','2'),
 ('302','02','3','2014/03/5','1'),
 ('402','02','4','2014/03/6','1'),
-('502','02','5','2014/03/12','1');
-('103','03','5','2015/03/10','1');
-
+('502','02','5','2014/03/12','1'),
+('103','03','5','2015/03/10','1'),
+('104','04','4','2015/03/10','1');
 
 -- -----------------------------------------------------
 -- Table    convenio_actividades 
@@ -676,18 +675,7 @@ INSERT INTO `formaconvenios` (`idFormaConvenio`, `descripcionFormaConvenio`) VAL
 /*validar que la fecha de los cambios de estado esten entre la fecha de inscripcion del convenio y la fecha de 
 caducidad ojo con esto*/
 
-
- /* $consulta  = "SELECT c.nombreConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio, tc.descripcionTipoConvenio, ec.nombreEstadoConvenio FROM convenios c ";
-        $consulta .= "JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio ";
-        $consulta .= "JOIN convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio ";
-        $consulta .= "JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio ";
-        $consulta .= "WHERE ce.fechaCambioEstado = (
-              SELECT MAX( fechaCambioEstado ) 
-              FROM convenio_estados
-              WHERE convenios_idConvenio = c.idConvenio
-              ) and c.idConvenio IN (".$rest.")";
-
-*/
+ 
 SELECT c.nombreConvenio, ec.nombreEstadoConvenio
 FROM convenios c
 join convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio
@@ -730,6 +718,8 @@ JOIN instituciones inst ON inst.idInstitucion=ic.instituciones_idInstitucion
 JOIN tiposInstituciones tinst ON  tinst.idTipoInstitucion=inst.tiposInstituciones_idTipoInstitucion 
 JOIN estados edo ON edo.idEstado = inst.estados_idEstado
 JOIN paises ps ON ps.idPais=edo.paises_idPais
+
+
 WHERE ce.fechaCambioEstado = (
 
 SELECT MAX( fechaCambioEstado ) 

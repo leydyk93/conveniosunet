@@ -14,6 +14,7 @@ class ConsultasConvenios extends CFormModel
 	public $institucion;
 	public $estadoConv;
 	public $responsable;
+	public $contraparte;
 
 	private $_identity;
 
@@ -70,6 +71,7 @@ class ConsultasConvenios extends CFormModel
 			 'institucion'=>'Institución',
 			 'estadoConv'=>'Estado del convenio',
 			 'responsable'=>'Responsable',
+			 'contraparte'=>'Datos de la Contraparte',
 		);
 	}
 
