@@ -372,6 +372,8 @@ CREATE TABLE IF NOT EXISTS    monedas  (
    idMoneda  INT NOT NULL,
    descripcionMoneda  VARCHAR(50) NULL,
   PRIMARY KEY ( idMoneda ));
+
+INSERT INTO `monedas` (`idMoneda`, `descripcionMoneda`) VALUES ('1', 'Bolivares'), ('2', 'Dolares');
 -- -----------------------------------------------------
 -- Table    actaIntencion 
 -- -----------------------------------------------------
@@ -516,7 +518,7 @@ INSERT INTO convenio_Estados (id_convenio_estado,convenios_idConvenio,estadoConv
 ('202','02','2','2014/03/02','2'),
 ('302','02','3','2014/03/5','1'),
 ('402','02','4','2014/03/6','1'),
-('502','02','5','2014/03/12','1');
+('502','02','5','2014/03/12','1'),
 ('103','03','5','2015/03/10','1');
 
 
@@ -652,6 +654,9 @@ INSERT INTO `alcanceconvenios` (`idAlcanceConvenio`, `descripcionAlcanceConvenio
 
 INSERT INTO `formaconvenios` (`idFormaConvenio`, `descripcionFormaConvenio`) VALUES ('1', 'Unilateral');
 INSERT INTO `formaconvenios` (`idFormaConvenio`, `descripcionFormaConvenio`) VALUES ('2', 'Bilateral');
+
+/*AUTO INCREMENT ESTE NO */
+ALTER TABLE `institucion_convenios` CHANGE `idInstitucionConvenio` `idInstitucionConvenio` VARCHAR(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL AUTO_INCREMENT;
 
 /*Pruebas de consultas*/
 
