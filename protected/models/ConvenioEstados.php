@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "convenio_Estados".
+ * This is the model class for table "convenio_estados".
  *
- * The followings are the available columns in table 'convenio_Estados':
+ * The followings are the available columns in table 'convenio_estados':
  * @property string $id_convenio_estado
  * @property string $convenios_idConvenio
  * @property string $estadoConvenios_idEstadoConvenio
@@ -24,7 +24,7 @@ class ConvenioEstados extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'convenio_Estados';
+		return 'convenio_estados';
 	}
 
 	/**

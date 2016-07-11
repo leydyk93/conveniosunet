@@ -15,7 +15,7 @@ Datos Generales del Convenio
 
 <div class="row">
 <?php echo $form->labelEx($pasouno,"tipo",array('class'=>'col-md-3')); ?>
-<?php echo $form->dropDownList($pasouno,"tipo",CHtml::listData(TipoConvenios::model()->findAll(), 'idTipoConvenio', 'descripcionTipoConvenio'),'',array('style'=>'width:200px;','class'=>'col-md-5')); ?>
+<?php echo $form->dropDownList($pasouno,"tipo",CHtml::listData(Tipoconvenios::model()->findAll(), 'idTipoConvenio', 'descripcionTipoConvenio'),'',array('style'=>'width:200px;','class'=>'col-md-5')); ?>
 <?php echo $form->error($pasouno,"tipo"); ?>
 </div>
 <br>

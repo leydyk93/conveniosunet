@@ -13,5 +13,14 @@
 				//safe se le coloca a los datos que no se quieren validar 
 			);
 		}
+		public function attributeLabels()
+			{
+				return array(
+					'nro_acta' => 'Nro Acta Intencion',
+					'fecha_acta' => 'Fecha del Acta',
+					'url_acta' => 'Url del Acta',
+					
+					);
+			}
 	}
  ?>

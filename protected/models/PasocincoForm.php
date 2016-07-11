@@ -15,5 +15,15 @@
 				//safe se le coloca a los datos que no se quieren validar 
 			);
 		}
+		public function attributeLabels()
+			{
+				return array(
+					'aporte' => 'Aporte',
+					'moneda' => 'Moneda',
+					'aporte_valor' => 'Valor de Aporte',
+					'presupuesto' => 'Presupuesto',
+					'presupuesto_costo' => 'Costo de Presupuesto',
+					);
+			}
 	}
  ?>
