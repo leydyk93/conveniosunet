@@ -3,7 +3,7 @@
  ?>
 
 <?php 
-	            echo $_SESSION['idconvenio'];
+	           /* echo $_SESSION['idconvenio'];
 				echo "<br>";
 				echo $_SESSION['nombreconvenio'];
 				echo "<br>";
@@ -58,7 +58,32 @@
 				echo $_SESSION['presupuesto_costo'];
 				echo "<br>";
 
-
+*/
+				echo $_SESSION['idconvenio'];
+				echo "<br>";
+				echo $_SESSION['nombreconvenio'];
+				echo "<br>";
+				echo $_SESSION['fechacaducidadconvenio'];
+				echo "<br>";
+				echo $_SESSION['objetivo'];
+				echo "<br>";
+				echo $_SESSION['institucion'];
+				echo "<br>";
+				echo $_SESSION['url_acta'];
+				echo "<br>";
+				echo $_SESSION['clasificacion'];
+				echo "<br>";
+				echo $_SESSION['tipo'];
+				echo "<br>";
+				echo $_SESSION['alcance'];
+				echo "<br>";
+				echo $_SESSION['forma'];
+				echo "<br>";
+				echo $_SESSION['dependenciaconvenio'];
+				echo "<br>";
+				echo $_SESSION['idconvenio'];
+				echo "<br>";
+				echo $_SESSION['fechainicioconvenio'];
  ?>
  <!--<?php //echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Save');  ?>-->
 <input type="submit" name="enviar" value="confirmar" >
