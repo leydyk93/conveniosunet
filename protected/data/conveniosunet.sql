@@ -268,6 +268,8 @@ CREATE TABLE IF NOT EXISTS actividades (
   idActividad INT AUTO_INCREMENT NOT NULL,
   descripcionActividad VARCHAR(200) NULL,
   PRIMARY KEY (idActividad));
+
+INSERT INTO `actividades` (`idActividad`, `descripcionActividad`) VALUES (NULL, 'extension'), (NULL, 'investigacion');
 -- -----------------------------------------------------
 -- Table  mydb . responsables 
 -- -----------------------------------------------------
@@ -311,6 +313,8 @@ CREATE TABLE IF NOT EXISTS    presupuestos  (
    idPresupuesto  INT AUTO_INCREMENT NOT NULL,
    descripcionPresupuesto  VARCHAR(50) NULL,
   PRIMARY KEY ( idPresupuesto ));
+
+INSERT INTO `presupuestos` (`idPresupuesto`, `descripcionPresupuesto`) VALUES (NULL, 'presupuesto 1'), (NULL, 'presupuesto 2');
 -- -----------------------------------------------------
 -- Table    unidades 
 -- -----------------------------------------------------
@@ -325,6 +329,8 @@ CREATE TABLE IF NOT EXISTS  aportes  (
    idAporte  INT AUTO_INCREMENT NOT NULL,
    descripcionAporte  VARCHAR(50) NULL,
   PRIMARY KEY ( idAporte ));
+
+INSERT INTO `aportes` (`idAporte`, `descripcionAporte`) VALUES (NULL, 'Aporte 1'), (NULL, 'Aporte 2');
 -- -----------------------------------------------------
 -- Table    monedas 
 -- -----------------------------------------------------
