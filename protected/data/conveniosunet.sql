@@ -429,8 +429,8 @@ CREATE TABLE IF NOT EXISTS   historicoResponsables  (
 CONSTRAINT uk_historicoResponsables  UNIQUE (convenios_idConvenio,institucion_convenios_idInstitucionConvenio)
   );
 
-/*CONSTRAINT chk_historicoResponsables CHECK((convenios_idConvenio IS NULL  AND institucion_convenios_idInstitucionConvenio IS NOT NULL ) OR 
-          (convenios_idConvenio IS NOT NULL  AND institucion_convenios_idInstitucionConvenio IS NULL))*/
+ALTER TABLE historicoresponsables ADD CONSTRAINT chk_historicoResponsables CHECK((convenios_idConvenio IS NULL  AND institucion_convenios_idInstitucionConvenio IS NOT NULL ) OR 
+          (convenios_idConvenio IS NOT NULL  AND institucion_convenios_idInstitucionConvenio IS NULL));
 -- -----------------------------------------------------
 -- Table    convenio_Estados 
 -- -----------------------------------------------------
