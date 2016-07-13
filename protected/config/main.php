@@ -70,13 +70,13 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-		   /*	
-			'connectionString' => 'mysql:host=mysql.hostinger.es;dbname=u525387098_conv',
+		   	
+			/*'connectionString' => 'mysql:host=mysql.hostinger.es;dbname=u525387098_conv',
 			'emulatePrepare' => true,
 			'username' => 'u525387098_leydy',
-			'password' => 'pebHzFO7nu',
-			'charset' => 'utf8',
-			*/
+			'password' => 'leydyk93',
+			'charset' => 'utf8',*/
+			
 			'connectionString' => 'mysql:host=localhost;dbname=conveniosunet',
 			'emulatePrepare' => true,
 			'username' => 'root',

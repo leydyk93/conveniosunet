@@ -46294,3 +46294,129 @@ HTTP_REFERER=http://localhost/conveniosunet/index.php?r=site/convenioConsultar
 =======
 >>>>>>> 07620b0fc54ff1191ab2245f10024b36534490f7
 >>>>>>> bb77b5f8a29f4b229280e1a567dd39c7e8d19fe6
+2016/07/07 17:18:18 [warning] [application] Failed to set unsafe attribute "tipo" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/07 17:18:18 [warning] [application] Failed to set unsafe attribute "clasificacion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/07 17:18:18 [warning] [application] Failed to set unsafe attribute "pais" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/07 17:18:18 [warning] [application] Failed to set unsafe attribute "tipo_institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/07 17:18:18 [warning] [application] Failed to set unsafe attribute "institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/07 17:18:18 [warning] [application] Failed to set unsafe attribute "estadoConv" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/07 17:18:23 [warning] [application] Failed to set unsafe attribute "tipo" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/07 17:18:23 [warning] [application] Failed to set unsafe attribute "clasificacion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/07 17:18:23 [warning] [application] Failed to set unsafe attribute "pais" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/07 17:18:23 [warning] [application] Failed to set unsafe attribute "tipo_institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/07 17:18:23 [warning] [application] Failed to set unsafe attribute "institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/07 17:18:23 [warning] [application] Failed to set unsafe attribute "estadoConv" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/07 17:18:24 [warning] [application] Failed to set unsafe attribute "tipo" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (142)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/07 17:18:24 [warning] [application] Failed to set unsafe attribute "clasificacion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (142)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/07 17:18:24 [warning] [application] Failed to set unsafe attribute "pais" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (142)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/07 17:18:24 [warning] [application] Failed to set unsafe attribute "tipo_institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (142)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/07 17:18:24 [warning] [application] Failed to set unsafe attribute "institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (142)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/07 17:18:24 [warning] [application] Failed to set unsafe attribute "estadoConv" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (142)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:40 [warning] [application] Failed to set unsafe attribute "tipo" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:40 [warning] [application] Failed to set unsafe attribute "clasificacion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:40 [warning] [application] Failed to set unsafe attribute "pais" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:40 [warning] [application] Failed to set unsafe attribute "tipo_institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:40 [warning] [application] Failed to set unsafe attribute "institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:40 [warning] [application] Failed to set unsafe attribute "estadoConv" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:41 [warning] [application] Failed to set unsafe attribute "tipo" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:41 [warning] [application] Failed to set unsafe attribute "clasificacion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:41 [warning] [application] Failed to set unsafe attribute "pais" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:41 [warning] [application] Failed to set unsafe attribute "tipo_institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:41 [warning] [application] Failed to set unsafe attribute "institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:41 [warning] [application] Failed to set unsafe attribute "estadoConv" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:58 [warning] [application] Failed to set unsafe attribute "tipo" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:58 [warning] [application] Failed to set unsafe attribute "clasificacion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:58 [warning] [application] Failed to set unsafe attribute "pais" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:58 [warning] [application] Failed to set unsafe attribute "tipo_institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:58 [warning] [application] Failed to set unsafe attribute "institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:58 [warning] [application] Failed to set unsafe attribute "estadoConv" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (124)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:58 [warning] [application] Failed to set unsafe attribute "tipo" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (142)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:58 [warning] [application] Failed to set unsafe attribute "clasificacion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (142)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:58 [warning] [application] Failed to set unsafe attribute "pais" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (142)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:58 [warning] [application] Failed to set unsafe attribute "tipo_institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (142)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:58 [warning] [application] Failed to set unsafe attribute "institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (142)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/07/13 21:59:58 [warning] [application] Failed to set unsafe attribute "estadoConv" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\SiteController.php (142)
+in C:\wamp\www\UNETConvenios\index.php (13)

@@ -65,8 +65,8 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
 <div class="row">
   <div class="col-sm-4">
        <section>
-        <h4><a href="index.php?r=convenios/create"><span class="glyphicon glyphicon-plus-sign"></span></a>Nuevo Convenio Marco</h4>
-        <h4><span class="glyphicon glyphicon-database-plus"></span>Agregar información</h4>
+        <h4><a href="index.php?r=convenios/create"><span class="glyphicon glyphicon-plus-sign"></span></a>Nuevo Convenio </h4>
+        
        </section> 
 
         <div class="row">
@@ -188,12 +188,14 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
                       
                       <div  class="col-sm-4"> 
                         <ul class="list-inline">
-                          <li ><a href=""><span class="glyphicon glyphicon-plus"></span></a></li>
-                          <li><a href=""><span class="glyphicon glyphicon-pencil"></span></a></li>
-                          <li><a href=""><span class="glyphicon glyphicon-time"></span></a></li>
-                          <li><a href=""><span class="glyphicon glyphicon-refresh"></span></a></li>
-                          <li><a href=""><span class="glyphicon glyphicon-cloud-download"></a></span></li>
-                          <li><a href=""><span class="glyphicon glyphicon-trash"></span></a></li> 
+                          <?php if(strcmp($resultado3->tipo_convenio,"Marco")==0){ ?> 
+                          <li><a href="" data-toggle="tooltip" title="Agregar Específico"><span class="glyphicon glyphicon-plus"></span></a></li>
+                          <?php } ?>
+                          <li><a href="" data-toggle="tooltip" title="Editar"><span class="glyphicon glyphicon-pencil"></span></a></li>
+                          <li><a href="" data-toggle="tooltip" title="Renovar"><span class="glyphicon glyphicon-time"></span></a></li>
+                          <li><a href="" data-toggle="tooltip" title="Cambiar Estado"><span class="glyphicon glyphicon-refresh"></span></a></li>
+                          <li><a href="" data-toggle="tooltip" title="Descargar"><span class="glyphicon glyphicon-cloud-download"></a></span></li>
+                          <li><a href="" data-toggle="tooltip" title="Eliminar"><span class="glyphicon glyphicon-trash"></span></a></li> 
                           </ul>
                       </div>
                     
@@ -206,6 +208,12 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
             </div>    
 </div>
 
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
 
 
  <?php $this->endWidget(); ?>

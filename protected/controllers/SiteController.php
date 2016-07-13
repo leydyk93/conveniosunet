@@ -105,13 +105,13 @@ class SiteController extends Controller
 	public function actionConvenioConsultar(){
 
 	
-       $modelClass=clasificacionconvenios::model()->findAll();
-       $modelConv=convenios::model()->findAll();
-       $modelTipo=tipoconvenios::model()->findAll();
-       $modelPais=paises::model()->findAll();
-       $modelTipoIns=tiposinstituciones::model()->findAll();
-       $modelInst=instituciones::model()->findAll();
-       $modelEdoConve=estadoconvenios::model()->findAll();
+       $modelClass=Clasificacionconvenios::model()->findAll();
+       $modelConv=Convenios::model()->findAll();
+       $modelTipo=Tipoconvenios::model()->findAll();
+       $modelPais=Paises::model()->findAll();
+       $modelTipoIns=Tiposinstituciones::model()->findAll();
+       $modelInst=Instituciones::model()->findAll();
+       $modelEdoConve=Estadoconvenios::model()->findAll();
        
        $formConsulta = new ConsultasConvenios;
      
