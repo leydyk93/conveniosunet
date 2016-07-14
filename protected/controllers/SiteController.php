@@ -127,7 +127,7 @@ class SiteController extends Controller
 
      			$conexion=Yii::app()->db;
 
-				$consulta  = "SELECT DISTINCT c.nombreConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio,c.objetivoConvenio,tc.descripcionTipoConvenio, ec.nombreEstadoConvenio FROM convenios c ";
+				$consulta  = "SELECT DISTINCT c.nombreConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio,c.objetivoConvenio,tc.descripcionTipoConvenio, ec.nombreEstadoConvenio, c.idConvenio FROM convenios c ";
 				$consulta .= "JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio ";
 				$consulta .= "JOIN convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio ";
 				$consulta .= "JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio ";
@@ -144,7 +144,7 @@ class SiteController extends Controller
 				$conexion=Yii::app()->db;
 
 
-				$consulta  = "SELECT DISTINCT c.nombreConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio,c.objetivoConvenio,tc.descripcionTipoConvenio, ec.nombreEstadoConvenio FROM convenios c ";
+				$consulta  = "SELECT DISTINCT c.nombreConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio,c.objetivoConvenio,tc.descripcionTipoConvenio, ec.nombreEstadoConvenio, c.idConvenio FROM convenios c ";
 				$consulta .= "JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio ";
 				$consulta .= "JOIN convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio ";
 				$consulta .= "JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio ";
@@ -227,6 +227,8 @@ class SiteController extends Controller
 				$resultados->bindColumn(4,$resull3->objetivo_convenio);
 				$resultados->bindColumn(5,$resull3->tipo_convenio);
 				$resultados->bindColumn(6,$resull3->estado_actual_convenio);
+				$resultados->bindColumn(7,$resull3->id_convenio);
+
          
 
        $this->render('convenioConsultar',array('clasif'=>$modelClass,

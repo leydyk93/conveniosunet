@@ -30,7 +30,14 @@ Datos Generales del Convenio
 <br>
 <br>
 
+<<<<<<< HEAD
 
+=======
+<?php echo $form->labelEx($pasouno,"idconvenio", array('class'=>'col-xs-3')); ?>
+<?php echo $form->textField($pasouno,"idconvenio",array('style'=>'width:200px;','class'=>'col-xs-5')); ?>
+<?php echo $form->error($pasouno,"idconvenio"); ?>
+</div>
+>>>>>>> 21c2a83a9ba4f32842852bdcbbed4bff0f8ca6b3
 <br>
 
 <div class="row">

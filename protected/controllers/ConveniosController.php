@@ -6,7 +6,7 @@ class ConveniosController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/cargar';
+	public $layout='//layouts/column1';
 	public $pasouno;
 	
 	/**
@@ -29,7 +29,7 @@ class ConveniosController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','pasodos','pasotres','pasocuatro','pasocinco','pasoseis'),
+				'actions'=>array('index','view','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -342,6 +342,11 @@ class ConveniosController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+	}
+
+	public function actionConsultar()
+	{
+	   $this->render('consultar');	
 	}
 
 	/**

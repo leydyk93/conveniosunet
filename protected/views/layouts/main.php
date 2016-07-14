@@ -53,8 +53,9 @@
 				array('label'=>'<span class="glyphicon glyphicon-book"></span> Información', 'url'=>array('/site/informacion')),
 				array('label'=>'<span class="glyphicon glyphicon-earphone"></span> Contactenos', 'url'=>array('/site/contact'),'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'<span class="glyphicon glyphicon-cog"></span> Configuración <span class="caret"></span>', 'url'=>array('/site/configuracion'), 'visible'=>!Yii::app()->user->isGuest,'items'=>array(
-		            array('label'=>'Convenios', 'url'=>array('/site/configuracion', 'tag'=>'new')),
-		            array('label'=>'Most Popular', 'url'=>array('convenios/create', 'tag'=>'popular')),
+		           // array('label'=>'Convenios', 'url'=>array('/site/configuracion', 'tag'=>'Estatica')),
+		            array('label'=>'Administrar Usuarios', 'url'=>array('usuario/admin', 'tag'=>'Aministrar Usuarios')),
+		            array('label'=>'Administrar Información Base de Datos', 'url'=>array('convenios/consultar', 'tag'=>'popular')),
 		        ),
 
 				 'submenuOptions'=>array('class'=>'dropdown-menu'), 
