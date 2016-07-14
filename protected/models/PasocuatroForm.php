@@ -12,7 +12,7 @@
 		public function rules (){
 
 			return array(
-				array("ventajas,clasificacion,alcance,forma,actividades,otras_instituciones","required"),
+				array("ventajas,clasificacion,alcance,forma,actividades","required"),
 				//safe se le coloca a los datos que no se quieren validar 
 			);
 		}
