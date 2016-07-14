@@ -4,7 +4,7 @@
  * This is the model class for table "roles".
  *
  * The followings are the available columns in table 'roles':
- * @property string $ID
+ * @property integer $ID
  * @property string $NOMBRE
  *
  * The followings are the available model relations:
@@ -28,8 +28,7 @@ class Roles extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('ID, NOMBRE', 'required'),
-			array('ID, NOMBRE', 'length', 'max'=>10),
+			array('NOMBRE', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('ID, NOMBRE', 'safe', 'on'=>'search'),
@@ -77,7 +76,7 @@ class Roles extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('ID',$this->ID,true);
+		$criteria->compare('ID',$this->ID);
 		$criteria->compare('NOMBRE',$this->NOMBRE,true);
 
 		return new CActiveDataProvider($this, array(

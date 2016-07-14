@@ -14,6 +14,7 @@ class ResultadoConvenios extends CFormModel
 	public $fecha_estado_actual;
 	public $estado_actual_convenio;
 	public $responsable_Unet;
+	public $id_convenio;
 
 
 	/**

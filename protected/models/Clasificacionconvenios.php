@@ -4,7 +4,7 @@
  * This is the model class for table "clasificacionconvenios".
  *
  * The followings are the available columns in table 'clasificacionconvenios':
- * @property string $idClasificacionConvenio
+ * @property integer $idClasificacionConvenio
  * @property string $nombreClasificacionConvenio
  * @property string $descripcionClasificacionConvenio
  *
@@ -29,8 +29,7 @@ class Clasificacionconvenios extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idClasificacionConvenio, nombreClasificacionConvenio, descripcionClasificacionConvenio', 'required'),
-			array('idClasificacionConvenio', 'length', 'max'=>10),
+			array('nombreClasificacionConvenio, descripcionClasificacionConvenio', 'required'),
 			array('nombreClasificacionConvenio', 'length', 'max'=>150),
 			array('descripcionClasificacionConvenio', 'length', 'max'=>200),
 			// The following rule is used by search().
@@ -81,7 +80,7 @@ class Clasificacionconvenios extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('idClasificacionConvenio',$this->idClasificacionConvenio,true);
+		$criteria->compare('idClasificacionConvenio',$this->idClasificacionConvenio);
 		$criteria->compare('nombreClasificacionConvenio',$this->nombreClasificacionConvenio,true);
 		$criteria->compare('descripcionClasificacionConvenio',$this->descripcionClasificacionConvenio,true);
 

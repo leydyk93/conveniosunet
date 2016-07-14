@@ -4,7 +4,7 @@
  * This is the model class for table "tipoconvenios".
  *
  * The followings are the available columns in table 'tipoconvenios':
- * @property string $idTipoConvenio
+ * @property integer $idTipoConvenio
  * @property string $descripcionTipoConvenio
  *
  * The followings are the available model relations:
@@ -28,8 +28,7 @@ class Tipoconvenios extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idTipoConvenio, descripcionTipoConvenio', 'required'),
-			array('idTipoConvenio', 'length', 'max'=>10),
+			array('descripcionTipoConvenio', 'required'),
 			array('descripcionTipoConvenio', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -78,7 +77,7 @@ class Tipoconvenios extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('idTipoConvenio',$this->idTipoConvenio,true);
+		$criteria->compare('idTipoConvenio',$this->idTipoConvenio);
 		$criteria->compare('descripcionTipoConvenio',$this->descripcionTipoConvenio,true);
 
 		return new CActiveDataProvider($this, array(

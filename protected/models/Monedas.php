@@ -28,8 +28,6 @@ class Monedas extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idMoneda', 'required'),
-			array('idMoneda', 'numerical', 'integerOnly'=>true),
 			array('descripcionMoneda', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

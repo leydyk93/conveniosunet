@@ -9,6 +9,10 @@
  * @property string $clave
  * @property string $correo
  * @property string $fecha_creacion
+ * @property integer $IdRol
+ *
+ * The followings are the available model relations:
+ * @property Roles $idRol
  */
 class Usuario extends CActiveRecord
 {
@@ -28,11 +32,12 @@ class Usuario extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre, clave, correo, fecha_creacion', 'required'),
+			array('nombre, clave, correo, fecha_creacion, IdRol', 'required'),
+			array('IdRol', 'numerical', 'integerOnly'=>true),
 			array('nombre, clave, correo', 'length', 'max'=>128),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, nombre, clave, correo, fecha_creacion', 'safe', 'on'=>'search'),
+			array('id, nombre, clave, correo, fecha_creacion, IdRol', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -44,6 +49,7 @@ class Usuario extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'idRol' => array(self::BELONGS_TO, 'Roles', 'IdRol'),
 		);
 	}
 
@@ -58,6 +64,7 @@ class Usuario extends CActiveRecord
 			'clave' => 'Clave',
 			'correo' => 'Correo',
 			'fecha_creacion' => 'Fecha Creacion',
+			'IdRol' => 'Id Rol',
 		);
 	}
 
@@ -84,6 +91,7 @@ class Usuario extends CActiveRecord
 		$criteria->compare('clave',$this->clave,true);
 		$criteria->compare('correo',$this->correo,true);
 		$criteria->compare('fecha_creacion',$this->fecha_creacion,true);
+		$criteria->compare('IdRol',$this->IdRol);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

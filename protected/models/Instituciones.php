@@ -4,11 +4,11 @@
  * This is the model class for table "instituciones".
  *
  * The followings are the available columns in table 'instituciones':
- * @property string $idInstitucion
+ * @property integer $idInstitucion
  * @property string $nombreInstitucion
  * @property string $siglasInstitucion
- * @property string $estados_idEstado
- * @property string $tiposInstituciones_idTipoInstitucion
+ * @property integer $estados_idEstado
+ * @property integer $tiposInstituciones_idTipoInstitucion
  *
  * The followings are the available model relations:
  * @property InstitucionConvenios[] $institucionConvenioses
@@ -34,8 +34,8 @@ class Instituciones extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idInstitucion, nombreInstitucion, estados_idEstado, tiposInstituciones_idTipoInstitucion', 'required'),
-			array('idInstitucion, estados_idEstado, tiposInstituciones_idTipoInstitucion', 'length', 'max'=>10),
+			array('nombreInstitucion, estados_idEstado, tiposInstituciones_idTipoInstitucion', 'required'),
+			array('estados_idEstado, tiposInstituciones_idTipoInstitucion', 'numerical', 'integerOnly'=>true),
 			array('nombreInstitucion', 'length', 'max'=>200),
 			array('siglasInstitucion', 'length', 'max'=>50),
 			// The following rule is used by search().
@@ -91,11 +91,11 @@ class Instituciones extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('idInstitucion',$this->idInstitucion,true);
+		$criteria->compare('idInstitucion',$this->idInstitucion);
 		$criteria->compare('nombreInstitucion',$this->nombreInstitucion,true);
 		$criteria->compare('siglasInstitucion',$this->siglasInstitucion,true);
-		$criteria->compare('estados_idEstado',$this->estados_idEstado,true);
-		$criteria->compare('tiposInstituciones_idTipoInstitucion',$this->tiposInstituciones_idTipoInstitucion,true);
+		$criteria->compare('estados_idEstado',$this->estados_idEstado);
+		$criteria->compare('tiposInstituciones_idTipoInstitucion',$this->tiposInstituciones_idTipoInstitucion);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

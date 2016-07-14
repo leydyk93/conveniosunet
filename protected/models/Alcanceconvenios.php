@@ -1,25 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "authassignment".
+ * This is the model class for table "alcanceconvenios".
  *
- * The followings are the available columns in table 'authassignment':
- * @property string $itemname
- * @property string $userid
- * @property string $bizrule
- * @property string $data
+ * The followings are the available columns in table 'alcanceconvenios':
+ * @property integer $idAlcanceConvenio
+ * @property string $descripcionAlcanceConvenio
  *
  * The followings are the available model relations:
- * @property Authitem $itemname0
+ * @property Convenios[] $convenioses
  */
-class Authassignment extends CActiveRecord
+class Alcanceconvenios extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'authassignment';
+		return 'alcanceconvenios';
 	}
 
 	/**
@@ -30,12 +28,11 @@ class Authassignment extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('itemname, userid', 'required'),
-			array('itemname, userid', 'length', 'max'=>64),
-			array('bizrule, data', 'safe'),
+			array('descripcionAlcanceConvenio', 'required'),
+			array('descripcionAlcanceConvenio', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('itemname, userid, bizrule, data', 'safe', 'on'=>'search'),
+			array('idAlcanceConvenio, descripcionAlcanceConvenio', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -47,7 +44,7 @@ class Authassignment extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'itemname0' => array(self::BELONGS_TO, 'Authitem', 'itemname'),
+			'convenioses' => array(self::HAS_MANY, 'Convenios', 'alcanceConvenios_idAlcanceConvenio'),
 		);
 	}
 
@@ -57,10 +54,8 @@ class Authassignment extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'itemname' => 'Itemname',
-			'userid' => 'Userid',
-			'bizrule' => 'Bizrule',
-			'data' => 'Data',
+			'idAlcanceConvenio' => 'Id Alcance Convenio',
+			'descripcionAlcanceConvenio' => 'Descripcion Alcance Convenio',
 		);
 	}
 
@@ -82,10 +77,8 @@ class Authassignment extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('itemname',$this->itemname,true);
-		$criteria->compare('userid',$this->userid,true);
-		$criteria->compare('bizrule',$this->bizrule,true);
-		$criteria->compare('data',$this->data,true);
+		$criteria->compare('idAlcanceConvenio',$this->idAlcanceConvenio);
+		$criteria->compare('descripcionAlcanceConvenio',$this->descripcionAlcanceConvenio,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -96,7 +89,7 @@ class Authassignment extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Authassignment the static model class
+	 * @return Alcanceconvenios the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

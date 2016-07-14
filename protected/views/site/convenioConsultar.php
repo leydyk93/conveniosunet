@@ -65,7 +65,9 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
 <div class="row">
   <div class="col-sm-4">
        <section>
-        <h4><a href="index.php?r=convenios/create"><span class="glyphicon glyphicon-plus-sign"></span></a>Nuevo Convenio </h4>
+        <!--<h4><a href="index.php?r=convenios/create"><span class="glyphicon glyphicon-plus-sign"></span></a>Nuevo Convenio </h4>-->
+        <h4><a href="<?php echo $this->createUrl( '/convenios/create' ); ?>"><span class="glyphicon glyphicon-plus-sign"></span></a>Nuevo Convenio </h4>
+
         
        </section> 
 
@@ -169,7 +171,7 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
                    <div class="row">
                       <div class="col-sm-2"><p class="text-info"><?php  echo $resultado3->tipo_convenio." ";  ?><p> </div>
                       <div class="col-sm-10">
-                      <?php echo $resultado3->nombre_convenio; ?> 
+                      <a href="<?php echo $this->createUrl( '/convenios/view' )."&id=".$resultado3->id_convenio; ?>"><?php echo $resultado3->nombre_convenio; ?></a> 
                       </div> 
                   </div>
 
@@ -191,16 +193,17 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
                           <?php if(strcmp($resultado3->tipo_convenio,"Marco")==0){ ?> 
                           <li><a href="" data-toggle="tooltip" title="Agregar Específico"><span class="glyphicon glyphicon-plus"></span></a></li>
                           <?php } ?>
-                          <li><a href="" data-toggle="tooltip" title="Editar"><span class="glyphicon glyphicon-pencil"></span></a></li>
+                          <li><a href="<?php echo $this->createUrl( '/convenios/update' )."&id=".$resultado3->id_convenio; ?>" data-toggle="tooltip" title="Editar"><span class="glyphicon glyphicon-pencil"></span></a></li>
                           <li><a href="" data-toggle="tooltip" title="Renovar"><span class="glyphicon glyphicon-time"></span></a></li>
                           <li><a href="" data-toggle="tooltip" title="Cambiar Estado"><span class="glyphicon glyphicon-refresh"></span></a></li>
                           <li><a href="" data-toggle="tooltip" title="Descargar"><span class="glyphicon glyphicon-cloud-download"></a></span></li>
                           <li><a href="" data-toggle="tooltip" title="Eliminar"><span class="glyphicon glyphicon-trash"></span></a></li> 
                           </ul>
-                      </div>
-                    
+                      </div> 
+                <!--  convenios/view&id=01  -->
                   </div>
                  </aside>
+
                  <?php 
                  } 
                  ?> 

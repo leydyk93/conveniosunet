@@ -4,7 +4,7 @@
  * This is the model class for table "actividades".
  *
  * The followings are the available columns in table 'actividades':
- * @property string $idActividad
+ * @property integer $idActividad
  * @property string $descripcionActividad
  *
  * The followings are the available model relations:
@@ -28,8 +28,6 @@ class Actividades extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idActividad', 'required'),
-			array('idActividad', 'length', 'max'=>10),
 			array('descripcionActividad', 'length', 'max'=>200),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -78,7 +76,7 @@ class Actividades extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('idActividad',$this->idActividad,true);
+		$criteria->compare('idActividad',$this->idActividad);
 		$criteria->compare('descripcionActividad',$this->descripcionActividad,true);
 
 		return new CActiveDataProvider($this, array(

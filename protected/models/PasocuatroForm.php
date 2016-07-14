@@ -16,5 +16,15 @@
 				//safe se le coloca a los datos que no se quieren validar 
 			);
 		}
+		public function attributeLabels()
+			{
+				return array(
+					'ventajas' => 'Ventajas',
+					'clasificacion' => 'Clasificacion',
+					'alcance' => 'Alcance',
+					'actividades' => 'Actividades Vinculadas',
+					'otras_instituciones' => 'Instituciones Vinculadas',
+					);
+			}
 	}
  ?>

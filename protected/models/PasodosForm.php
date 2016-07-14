@@ -17,5 +17,15 @@
 				//safe se le coloca a los datos que no se quieren validar 
 			);
 		}
+		public function attributeLabels()
+			{
+				return array(
+					'instanciaunet' => 'Instancia Unet',
+					'responsableunet' => 'Responsable Unet',
+					'institucion' => 'Contraparte',
+					'instancia_contraparte' => 'instancia Contraparte',
+					'responsable_contraparte' => 'Responsable Contraparte',
+					);
+			}
 	}
  ?>

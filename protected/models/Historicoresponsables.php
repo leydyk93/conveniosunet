@@ -1,30 +1,29 @@
 <?php
 
 /**
- * This is the model class for table "convenio_estados".
+ * This is the model class for table "historicoresponsables".
  *
- * The followings are the available columns in table 'convenio_estados':
- * @property integer $id_convenio_estado
+ * The followings are the available columns in table 'historicoresponsables':
+ * @property integer $idHistoricoResponsable
+ * @property integer $responsables_idResponsable
  * @property string $convenios_idConvenio
- * @property integer $estadoConvenios_idEstadoConvenio
- * @property string $fechaCambioEstado
- * @property string $numeroReporte
- * @property string $observacionCambioEstado
- * @property integer $dependencias_idDependencia
+ * @property integer $institucion_convenios_idInstitucionConvenio
+ * @property string $fechaAsignacionResponsable
+ * @property string $fechaRetiroResponsable
  *
  * The followings are the available model relations:
- * @property Dependencias $dependenciasIdDependencia
  * @property Convenios $conveniosIdConvenio
- * @property Estadoconvenios $estadoConveniosIdEstadoConvenio
+ * @property InstitucionConvenios $institucionConveniosIdInstitucionConvenio
+ * @property Responsables $responsablesIdResponsable
  */
-class ConvenioEstados extends CActiveRecord
+class Historicoresponsables extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'convenio_estados';
+		return 'historicoresponsables';
 	}
 
 	/**
@@ -35,14 +34,13 @@ class ConvenioEstados extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('convenios_idConvenio, estadoConvenios_idEstadoConvenio, fechaCambioEstado', 'required'),
-			array('estadoConvenios_idEstadoConvenio, dependencias_idDependencia', 'numerical', 'integerOnly'=>true),
+			array('responsables_idResponsable, fechaAsignacionResponsable', 'required'),
+			array('responsables_idResponsable, institucion_convenios_idInstitucionConvenio', 'numerical', 'integerOnly'=>true),
 			array('convenios_idConvenio', 'length', 'max'=>50),
-			array('numeroReporte', 'length', 'max'=>10),
-			array('observacionCambioEstado', 'safe'),
+			array('fechaRetiroResponsable', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_convenio_estado, convenios_idConvenio, estadoConvenios_idEstadoConvenio, fechaCambioEstado, numeroReporte, observacionCambioEstado, dependencias_idDependencia', 'safe', 'on'=>'search'),
+			array('idHistoricoResponsable, responsables_idResponsable, convenios_idConvenio, institucion_convenios_idInstitucionConvenio, fechaAsignacionResponsable, fechaRetiroResponsable', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,9 +52,9 @@ class ConvenioEstados extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'dependenciasIdDependencia' => array(self::BELONGS_TO, 'Dependencias', 'dependencias_idDependencia'),
 			'conveniosIdConvenio' => array(self::BELONGS_TO, 'Convenios', 'convenios_idConvenio'),
-			'estadoConveniosIdEstadoConvenio' => array(self::BELONGS_TO, 'Estadoconvenios', 'estadoConvenios_idEstadoConvenio'),
+			'institucionConveniosIdInstitucionConvenio' => array(self::BELONGS_TO, 'InstitucionConvenios', 'institucion_convenios_idInstitucionConvenio'),
+			'responsablesIdResponsable' => array(self::BELONGS_TO, 'Responsables', 'responsables_idResponsable'),
 		);
 	}
 
@@ -66,13 +64,12 @@ class ConvenioEstados extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_convenio_estado' => 'Id Convenio Estado',
+			'idHistoricoResponsable' => 'Id Historico Responsable',
+			'responsables_idResponsable' => 'Responsables Id Responsable',
 			'convenios_idConvenio' => 'Convenios Id Convenio',
-			'estadoConvenios_idEstadoConvenio' => 'Estado Convenios Id Estado Convenio',
-			'fechaCambioEstado' => 'Fecha Cambio Estado',
-			'numeroReporte' => 'Numero Reporte',
-			'observacionCambioEstado' => 'Observacion Cambio Estado',
-			'dependencias_idDependencia' => 'Dependencias Id Dependencia',
+			'institucion_convenios_idInstitucionConvenio' => 'Institucion Convenios Id Institucion Convenio',
+			'fechaAsignacionResponsable' => 'Fecha Asignacion Responsable',
+			'fechaRetiroResponsable' => 'Fecha Retiro Responsable',
 		);
 	}
 
@@ -94,13 +91,12 @@ class ConvenioEstados extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id_convenio_estado',$this->id_convenio_estado);
+		$criteria->compare('idHistoricoResponsable',$this->idHistoricoResponsable);
+		$criteria->compare('responsables_idResponsable',$this->responsables_idResponsable);
 		$criteria->compare('convenios_idConvenio',$this->convenios_idConvenio,true);
-		$criteria->compare('estadoConvenios_idEstadoConvenio',$this->estadoConvenios_idEstadoConvenio);
-		$criteria->compare('fechaCambioEstado',$this->fechaCambioEstado,true);
-		$criteria->compare('numeroReporte',$this->numeroReporte,true);
-		$criteria->compare('observacionCambioEstado',$this->observacionCambioEstado,true);
-		$criteria->compare('dependencias_idDependencia',$this->dependencias_idDependencia);
+		$criteria->compare('institucion_convenios_idInstitucionConvenio',$this->institucion_convenios_idInstitucionConvenio);
+		$criteria->compare('fechaAsignacionResponsable',$this->fechaAsignacionResponsable,true);
+		$criteria->compare('fechaRetiroResponsable',$this->fechaRetiroResponsable,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -111,7 +107,7 @@ class ConvenioEstados extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return ConvenioEstados the static model class
+	 * @return Historicoresponsables the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

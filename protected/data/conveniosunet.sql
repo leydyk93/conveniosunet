@@ -1,11 +1,12 @@
+/*`idRenovacionProrroga` INT NOT NULL AUTO_INCREMENT ,*/
 /*TABLA DE ROLES Y USUARIOS QUE YA TENEMOS CREADA CON LAS QUE HACEMOS LA AUTENTICACION*/
 CREATE TABLE roles(
-ID VARCHAR(10) NOT NULL PRIMARY KEY,
+ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 NOMBRE VARCHAR(10)
 );
 
-INSERT INTO roles(ID,NOMBRE) VALUES('1','Admin');
-INSERT INTO roles(ID,NOMBRE) VALUES('2','Usuario');
+INSERT INTO roles(NOMBRE) VALUES('Admin');
+INSERT INTO roles(NOMBRE) VALUES('Usuario');
 
 CREATE TABLE usuario (
     id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -13,118 +14,74 @@ CREATE TABLE usuario (
     clave VARCHAR(128) NOT NULL,
     correo VARCHAR(128) NOT NULL,
     fecha_creacion DATETIME NOT NULL,
-    IdRol VARCHAR(10) NOT NULL,
+    IdRol INT NOT NULL,
     foreign key (`IdRol`) references `roles` (`id`) on delete cascade on update cascade
 
 );
-
 
 INSERT INTO usuario (nombre, clave, correo, fecha_creacion,IdRol) VALUES ('admin', '1234', 'admin@example.com','2016/01/01','1');
 INSERT INTO usuario (nombre, clave, correo, fecha_creacion,IdRol) VALUES ('leydy', '1234', 'leydy@example.com','2016/01/01','1');
 INSERT INTO usuario (nombre, clave, correo, fecha_creacion,IdRol) VALUES ('tyson', '1234', 'tyson@example.com','2016/01/01','1');
 
  
-/* TABLAS DE PRUEBA QUE CREAMOS PARA PROBAR LA GENERACIÓN DE LOS CRUD CON CLAVES COMPUESTAS
-CREATE TABLE clasificacion (
-	cod_clasificacion VARCHAR(25) PRIMARY KEY NOT NULL,
-	descripcion VARCHAR(100) NOT NULL
-);
-INSERT INTO clasificacion (cod_clasificacion, descripcion) VALUES
-('M', 'Marco'),
-('E', 'Especifico');
-
-CREATE TABLE convenio (
-	cod_convenio VARCHAR(50) PRIMARY KEY NOT NULL,
-	nombre_convenio VARCHAR(100) NOT NULL,
-	fecha_creacion DATETIME NOT NULL,
-	fecha_caducidad DATETIME NOT NULL,
-	institucion_UNET VARCHAR(50),
-	objetivo_covenio text,
-	cod_clasificacion VARCHAR(25),
-	CONSTRAINT fk_clasificacion_convenio FOREIGN KEY (cod_clasificacion)
-    REFERENCES clasificacion(cod_clasificacion)
-);
-
-INSERT INTO convenio (cod_convenio, nombre_convenio, fecha_creacion, fecha_caducidad, cod_clasificacion) VALUES
-('1', 'ejemplo', '2016-01-01 00:00:00', '2017-01-01 00:00:00','M');
-
-CREATE TABLE instituciones (
-	idInstitucion VARCHAR(10) PRIMARY KEY NOT NULL,
-	nombre_institucion VARCHAR(200) NOT NULL
-);
-CREATE TABLE institucion_convenios (
-	 instituciones_idInstitucion VARCHAR(10) NOT NULL,
-      convenios_idConvenio VARCHAR(50) NOT NULL,
-      fechaIncorporacion DATETIME NOT NULL,
-      PRIMARY KEY (instituciones_idInstitucion, convenios_idConvenio),
-    FOREIGN KEY (instituciones_idInstitucion)
-    REFERENCES instituciones (idInstitucion),
-    FOREIGN KEY (convenios_idConvenio)
-    REFERENCES convenio (cod_convenio)
-
-);
-*/
-/* DESDE AQUI SCRIPT PARA EL PROYECTO*/
 -- -----------------------------------------------------
 -- Table `mydb`.`clasificacionConvenios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS clasificacionConvenios (
-  idClasificacionConvenio VARCHAR(10) NOT NULL,
+  idClasificacionConvenio INT AUTO_INCREMENT NOT NULL,
   nombreClasificacionConvenio VARCHAR(150) NOT NULL,
   descripcionClasificacionConvenio VARCHAR(200) NOT NULL,
   PRIMARY KEY (idClasificacionConvenio));
 
-INSERT INTO clasificacionConvenios (idClasificacionConvenio,nombreClasificacionConvenio, descripcionClasificacionConvenio) VALUES
-('1', 'Academico',''),
- ('2', 'Intercambio', ''),
-('3', 'Cultural','');
+INSERT INTO clasificacionConvenios (nombreClasificacionConvenio, descripcionClasificacionConvenio) VALUES
+('Academico',''),
+('Intercambio', ''),
+('Cultural','');
 
 -- -----------------------------------------------------
 -- Table `mydb`.`alcanceConvenios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS alcanceConvenios (
-  idAlcanceConvenio VARCHAR(10) NOT NULL,
+  idAlcanceConvenio INT AUTO_INCREMENT NOT NULL,
   descripcionAlcanceConvenio VARCHAR(50) NOT NULL,
   PRIMARY KEY (idAlcanceConvenio));
 
-INSERT INTO alcanceConvenios (idAlcanceConvenio,descripcionAlcanceConvenio) VALUES
-('1', 'General'),
- ('2', 'Especifico'),
-('3', 'Mixto');
-
+INSERT INTO alcanceConvenios (descripcionAlcanceConvenio) VALUES
+('General'),
+('Especifico'),
+('Mixto');
 
 -- -----------------------------------------------------
 -- Table `mydb`.`formaConvenios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS formaConvenios (
-  idFormaConvenio VARCHAR(10) NOT NULL,
+  idFormaConvenio INT AUTO_INCREMENT NOT NULL,
   descripcionFormaConvenio VARCHAR(50) NOT NULL,
   PRIMARY KEY (idFormaConvenio));
 
-INSERT INTO formaConvenios (idFormaConvenio,descripcionFormaConvenio) VALUES
-('1', 'Unica'),
- ('2', 'Bilateral'),
-('3', 'Multilateral');
+INSERT INTO formaConvenios (descripcionFormaConvenio) VALUES
+('Unica'),
+ ('Bilateral'),
+( 'Multilateral');
 
 -- -----------------------------------------------------
 -- Table `mydb`.`tiposInstituciones`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS tiposInstituciones (
-  idTipoInstitucion VARCHAR(10) NOT NULL,
+  idTipoInstitucion INT AUTO_INCREMENT NOT NULL,
   nombreTipoInstitucion VARCHAR(50) NOT NULL,
   PRIMARY KEY (idTipoInstitucion));
 
-
-INSERT INTO tiposInstituciones (idTipoInstitucion,nombreTipoInstitucion) VALUES
-('1', 'Educativa'),
-('2', 'Salud'),
-('3', 'Economica'),
-('4', 'Gubernamental');
+INSERT INTO tiposInstituciones (nombreTipoInstitucion) VALUES
+('Educativa'),
+('Salud'),
+('Economica'),
+('Gubernamental');
 -- -----------------------------------------------------
 -- Table `mydb`.`paises`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS paises (
-  idPais VARCHAR(10) NOT NULL,
+  idPais INT AUTO_INCREMENT NOT NULL,
   nombrePais VARCHAR(100) NOT NULL,
   PRIMARY KEY (idPais));
 
@@ -168,49 +125,49 @@ INSERT INTO paises (idPais,nombrePais) VALUES
 -- Table `mydb`.`estados`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS estados (
-  idEstado VARCHAR(10) NOT NULL,
+  idEstado INT AUTO_INCREMENT NOT NULL,
   nombreEstado VARCHAR(100) NOT NULL,
-  paises_idPais VARCHAR(10) NOT NULL,
+  paises_idPais INT NOT NULL,
   PRIMARY KEY (idEstado),
   CONSTRAINT fk_estados_paises
     FOREIGN KEY (paises_idPais)
     REFERENCES paises (idPais));
 
-INSERT INTO estados (idEstado,nombreEstado,paises_idPais) VALUES
-('135', 'Zulia', '35'), 
-('235', 'Miranda', '35'), 
-('335', 'Distrito Capital', '35'),  
-('435', 'Carabobo', '35'), 
-('535','Lara', '35'),  
-('635','Aragua', '35'),  
-('735','Bolívar', '35'), 
-('835','Anzoátegui', '35'),  
-('935','Táchira', '35'),   
-('1035','Sucre', '35'),   
-('1135','Falcón', '35'),   
-('1235','Portuguesa', '35'),    
-('1335','Monagas', '35'),   
-('1435','Mérida', '35'),   
-('1535','Barinas', '35'),   
-('1635','Guárico', '35'),   
-('1735','Trujillo', '35'),   
-('1835','Yaracuy', '35'),   
-('1935','Apure', '35'),   
-('2035','Nueva Esparta', '35'),   
-('2135','Vargas', '35'),   
-('2235','Cojedes', '35'),   
-('2335','Delta Amacuro', '35'),   
-('2435', 'Amazonas', '35'),
-('19','Santiago de Chile','9');
+INSERT INTO estados (nombreEstado,paises_idPais) VALUES
+('Zulia', '35'), 
+('Miranda', '35'), 
+('Distrito Capital', '35'),  
+('Carabobo', '35'), 
+('Lara', '35'),  
+('Aragua', '35'),  
+('Bolívar', '35'), 
+('Anzoátegui', '35'),  
+('Táchira', '35'),   
+('Sucre', '35'),   
+('Falcón', '35'),   
+('Portuguesa', '35'),    
+('Monagas', '35'),   
+('Mérida', '35'),   
+('Barinas', '35'),   
+('Guárico', '35'),   
+('Trujillo', '35'),   
+('Yaracuy', '35'),   
+('Apure', '35'),   
+('Nueva Esparta', '35'),   
+('Vargas', '35'),   
+('Cojedes', '35'),   
+('Delta Amacuro', '35'),   
+('Amazonas', '35'),
+('Santiago de Chile','9');
 -- -----------------------------------------------------
 -- Table `mydb`.`instituciones`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS instituciones (
-  idInstitucion VARCHAR(10) NOT NULL,
+  idInstitucion INT AUTO_INCREMENT NOT NULL,
   nombreInstitucion VARCHAR(200) NOT NULL,
   siglasInstitucion VARCHAR(50) NULL,
-  estados_idEstado VARCHAR(10) NOT NULL,
-  tiposInstituciones_idTipoInstitucion VARCHAR(10) NOT NULL,
+  estados_idEstado INT NOT NULL,
+  tiposInstituciones_idTipoInstitucion INT NOT NULL,
   PRIMARY KEY (idInstitucion),
   CONSTRAINT fk_instituciones_estados1
     FOREIGN KEY (estados_idEstado)
@@ -219,17 +176,17 @@ CREATE TABLE IF NOT EXISTS instituciones (
     FOREIGN KEY (tiposInstituciones_idTipoInstitucion)
     REFERENCES tiposInstituciones (idTipoInstitucion));
 
-INSERT INTO instituciones (idInstitucion,nombreInstitucion,siglasInstitucion,estados_idEstado,tiposInstituciones_idTipoInstitucion) VALUES
-('1','Universidad de los Andes','ULA','935','1'),
-('2','Universidad Central de Venezuela','UCV','335','1'),
-('3','Universidad Nacional Abierta','UNA','335','1')
-('4','Universidad de Chile','UCHILE','19','1');
+INSERT INTO instituciones (nombreInstitucion,siglasInstitucion,estados_idEstado,tiposInstituciones_idTipoInstitucion) 
+VALUES ('Universidad de los Andes','ULA','9','1'), 
+('Universidad Central de Venezuela','UCV','3','1'), 
+('Universidad Nacional Abierta','UNA','9','1'),
+ ('Universidad de Chile','UCHILE','25','1');
 
 -- -----------------------------------------------------
 -- Table `mydb`.`tipoConvenios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS tipoConvenios (
-  idTipoConvenio VARCHAR(10) NOT NULL,
+  idTipoConvenio INT AUTO_INCREMENT NOT NULL,
   descripcionTipoConvenio VARCHAR(100) NOT NULL,
   PRIMARY KEY (idTipoConvenio));
 
@@ -240,15 +197,15 @@ INSERT INTO tipoConvenios (idTipoConvenio,descripcionTipoConvenio) VALUES
 -- Table `mydb`.`dependencias`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS dependencias (
-  idDependencia VARCHAR(10) NOT NULL,
+  idDependencia VARCHAR(10) AUTO_INCREMENT NOT NULL,
   nombreDependencia VARCHAR(100) NULL,
   telefonoDependencia VARCHAR(50) NULL,
   PRIMARY KEY (idDependencia));
 
-INSERT INTO dependencias (idDependencia,nombreDependencia,telefonoDependencia) VALUES
-('1', 'Rectorado','0276-3335553'),
-('2', 'Secretaria','0276-4445552'),
-('3', 'Docencia','0276-3234567');
+INSERT INTO dependencias (nombreDependencia,telefonoDependencia) VALUES
+('Rectorado','0276-3335553'),
+('Secretaria','0276-4445552'),
+('Docencia','0276-3234567');
 -- ------------------
 -- -----------------------------------------------------
 -- Table `mydb`.`convenios`
@@ -261,12 +218,12 @@ CREATE TABLE IF NOT EXISTS convenios (
   objetivoConvenio TEXT NOT NULL,
   institucionUNET VARCHAR(50) NOT NULL,
   urlConvenio VARCHAR(100) NOT NULL,
-  clasificacionConvenios_idTipoConvenio VARCHAR(10) NOT NULL,
-  tipoConvenios_idTipoConvenio VARCHAR(10) NOT NULL,
-  alcanceConvenios_idAlcanceConvenio VARCHAR(10) NOT NULL,
-  formaConvenios_idFormaConvenio VARCHAR(10) NOT NULL,
-  dependencias_idDependencia VARCHAR(10) NOT NULL,
-  convenios_idConvenio VARCHAR(50)  NULL, /*Este atributo puede ser nulo*/
+  clasificacionConvenios_idTipoConvenio INT NOT NULL,
+  tipoConvenios_idTipoConvenio INT NOT NULL,
+  alcanceConvenios_idAlcanceConvenio INT NOT NULL,
+  formaConvenios_idFormaConvenio INT NOT NULL,
+  dependencias_idDependencia INT NOT NULL,
+  convenios_idConvenio VARCHAR(50)  NULL, 
 
 
   PRIMARY KEY (idConvenio),
@@ -287,11 +244,9 @@ CONSTRAINT fk_convenios_dependencias1
     REFERENCES dependencias (idDependencia),
   CONSTRAINT fk_convenios_convenios1
     FOREIGN KEY (convenios_idConvenio)
-    REFERENCES convenios (idConvenio));
+    REFERENCES convenios (idConvenio))
 
 ALTER TABLE `convenios` ADD `ventajasBeneficiosConvenio` TEXT NOT NULL AFTER `objetivoConvenio`;
-ALTER TABLE `convenios` CHANGE `fechaCaducidadConvenio` `fechaCaducidadConvenio` DATE NOT NULL;
-ALTER TABLE `convenios` CHANGE `fechaInicioConvenio` `fechaInicioConvenio` DATE NOT NULL;
 
 INSERT INTO convenios (idConvenio,nombreConvenio,fechaInicioConvenio,fechaCaducidadConvenio,
                        objetivoConvenio,institucionUNET,urlConvenio,clasificacionConvenios_idTipoConvenio,
@@ -300,27 +255,34 @@ INSERT INTO convenios (idConvenio,nombreConvenio,fechaInicioConvenio,fechaCaduci
 ('04', 'convenio 4','2014/01/01','2018/01/01','ejemplo 4','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio4/djndkjaskd.pdf','2','1','1','2','1',null),
 ('01', 'convenio 1','2015/01/01','2016/01/01','ejemplo 1','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','1','2','1',null),
 ('02', 'convenio 2','2014/01/01','2015/01/01','ejemplo 2','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','1','2','1',null);
-('03', 'convenio 3','2015/02/01','2017/01/01','ejemplo 3','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio3/djndkjaskd.pdf','1','2','2','2','2','01'),
+
+INSERT INTO convenios (idConvenio,nombreConvenio,fechaInicioConvenio,fechaCaducidadConvenio,
+                       objetivoConvenio,institucionUNET,urlConvenio,clasificacionConvenios_idTipoConvenio,
+                       tipoConvenios_idTipoConvenio,alcanceConvenios_idAlcanceConvenio,formaConvenios_idFormaConvenio,
+                        dependencias_idDependencia,convenios_idConvenio) VALUES
+('03', 'convenio 3','2015/02/01','2017/01/01','ejemplo 3','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio3/djndkjaskd.pdf','1','2','2','2','2','01');
 -- -----------------------------------------------------
 -- Table `mydb`.`actividades`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS actividades (
-  idActividad VARCHAR(10) NOT NULL,
+  idActividad INT AUTO_INCREMENT NOT NULL,
   descripcionActividad VARCHAR(200) NULL,
   PRIMARY KEY (idActividad));
+
+INSERT INTO `actividades` (`idActividad`, `descripcionActividad`) VALUES (NULL, 'extension'), (NULL, 'investigacion');
 -- -----------------------------------------------------
 -- Table  mydb . responsables 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS  responsables  (
-   idResponsable  VARCHAR(10) NOT NULL,
+   idResponsable  INT AUTO_INCREMENT NOT NULL,
    primerNombreResponsable  VARCHAR(40) NOT NULL,
    segundoNombreResponsable VARCHAR(40) NULL,
    primerApellidoResponsable VARCHAR(60) NOT NULL,
    segundoApellidoResponsable VARCHAR(60) NULL,
    correoElectronicoResponsable  VARCHAR(100) NULL,
    telefonoResponsable  VARCHAR(50) NULL,
-   instituciones_idInstitucion  VARCHAR(10) NOT NULL,
-   dependencias_idDependencia  VARCHAR(10) NOT NULL,
+   instituciones_idInstitucion  INT NOT NULL,
+   dependencias_idDependencia  INT NOT NULL,
   PRIMARY KEY ( idResponsable ),
   CONSTRAINT  fk_responsables_instituciones1 
     FOREIGN KEY ( instituciones_idInstitucion )
@@ -332,55 +294,57 @@ CREATE TABLE IF NOT EXISTS  responsables  (
 -- Table  mydb . estadoConvenios 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS  estadoConvenios  (
-   idEstadoConvenio  VARCHAR(10) NOT NULL,
+   idEstadoConvenio  INT AUTO_INCREMENT NOT NULL,
    nombreEstadoConvenio  VARCHAR(100) NOT NULL,
    descripcionEstadoConvenio  VARCHAR(100) NOT NULL,
   PRIMARY KEY ( idEstadoConvenio ));
 
-INSERT INTO estadoConvenios (idEstadoConvenio,nombreEstadoConvenio,descripcionEstadoConvenio) VALUES
-('1', 'Memo S.C Juridica',''),
-('2', 'Memo R.C Juridica',''),
-('3', 'Resolucion C.U Nro1',''),
-('4', 'Memo DICIPREP',''),
-('5', 'Resolucion C.U Aprobado','');
-
-
+INSERT INTO estadoConvenios (nombreEstadoConvenio,descripcionEstadoConvenio) VALUES
+('Memo S.C Juridica',''),
+('Memo R.C Juridica',''),
+('Resolucion C.U Nro1',''),
+('Memo DICIPREP',''),
+('Resolucion C.U Aprobado','');
 
 -- -----------------------------------------------------
 -- Table    presupuestos 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS    presupuestos  (
-   idPresupuesto  VARCHAR(10) NOT NULL,
+   idPresupuesto  INT AUTO_INCREMENT NOT NULL,
    descripcionPresupuesto  VARCHAR(50) NULL,
   PRIMARY KEY ( idPresupuesto ));
+
+INSERT INTO `presupuestos` (`idPresupuesto`, `descripcionPresupuesto`) VALUES (NULL, 'presupuesto 1'), (NULL, 'presupuesto 2');
 -- -----------------------------------------------------
 -- Table    unidades 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS    unidades  (
-   idUnidad  VARCHAR(10) NOT NULL,
+   idUnidad  INT AUTO_INCREMENT NOT NULL,
    descripcionUnidad  VARCHAR(100) NULL,
   PRIMARY KEY ( idUnidad ));
 -- -----------------------------------------------------
 -- Table    aportes 
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS    aportes  (
-   idAporte  VARCHAR(10) NOT NULL,
+CREATE TABLE IF NOT EXISTS  aportes  (
+   idAporte  INT AUTO_INCREMENT NOT NULL,
    descripcionAporte  VARCHAR(50) NULL,
   PRIMARY KEY ( idAporte ));
+
+INSERT INTO `aportes` (`idAporte`, `descripcionAporte`) VALUES (NULL, 'Aporte 1'), (NULL, 'Aporte 2');
 -- -----------------------------------------------------
 -- Table    monedas 
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS    monedas  (
-   idMoneda  INT NOT NULL,
-   descripcionMoneda  VARCHAR(50) NULL,
-  PRIMARY KEY ( idMoneda ));
+CREATE TABLE IF NOT EXISTS monedas ( 
+  idMoneda INT AUTO_INCREMENT NOT NULL, 
+  descripcionMoneda VARCHAR(50) NULL,
+   PRIMARY KEY ( idMoneda ));
 
 INSERT INTO `monedas` (`idMoneda`, `descripcionMoneda`) VALUES ('1', 'Bolivares'), ('2', 'Dolares');
 -- -----------------------------------------------------
 -- Table    actaIntencion 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS    actaIntencion  (
-   idActaIntencion  VARCHAR(10) NOT NULL,
+   idActaIntencion  INT AUTO_INCREMENT NOT NULL,
    fechaActaIntencion  DATE NULL,
    urlActaIntencion  VARCHAR(200) NULL,
    convenios_idConvenio  VARCHAR(50) NOT NULL,
@@ -395,7 +359,7 @@ CREATE TABLE IF NOT EXISTS    actaIntencion  (
 -- Table    renovacionProrrogas 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS    renovacionProrrogas  (
-   idRenovacionProrroga  VARCHAR(10) NOT NULL,
+   idRenovacionProrroga  INT AUTO_INCREMENT NOT NULL,
    fechaInicioProrroga  DATE NULL,
    fechaFinProrroga  DATE NULL,
    observacionProrroga  VARCHAR(200) NULL,
@@ -411,8 +375,8 @@ CREATE TABLE IF NOT EXISTS    renovacionProrrogas  (
 -- Table    institucion_convenios 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS    institucion_convenios  (
-   idInstitucionConvenio VARCHAR(10) NOT NULL,
-   instituciones_idInstitucion  VARCHAR(10) NOT NULL,
+   idInstitucionConvenio INT AUTO_INCREMENT NOT NULL,
+   instituciones_idInstitucion  INT NOT NULL,
    convenios_idConvenio  VARCHAR(50) NOT NULL,
    fechaIncorporacion  DATE NOT NULL,
   PRIMARY KEY ( idInstitucionConvenio ),
@@ -431,59 +395,59 @@ CREATE TABLE IF NOT EXISTS    institucion_convenios  (
   CONSTRAINT uk_institucion_convenios  UNIQUE (instituciones_idInstitucion,convenios_idConvenio)
     );
 
-INSERT INTO institucion_convenios (idInstitucionConvenio,instituciones_idInstitucion,convenios_idConvenio, fechaIncorporacion) VALUES
-('101', '1','01','2016/01/01'),
-('201', '2','01','2016/01/01'),
-('102', '1','02','2016/01/01'),
-('202', '3','02','2016/01/01'),
-('103', '1','03','2016/01/01'),
-('104', '4','04','2016/01/01');
+INSERT INTO institucion_convenios (instituciones_idInstitucion,convenios_idConvenio, fechaIncorporacion) VALUES
+('1','01','2016/01/01'),
+('2','01','2016/01/01'),
+('1','02','2016/01/01'),
+('3','02','2016/01/01'),
+('1','03','2016/01/01'),
+('4','04','2016/01/01');
 
 -- -----------------------------------------------------
 -- Table    historicoResponsables 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS   historicoResponsables  (
-   idHistoricoResponsable  VARCHAR(10) NOT NULL,
-   responsables_idResponsable  VARCHAR(10) NOT NULL,
+   idHistoricoResponsable  INT AUTO_INCREMENT NOT NULL,
+   responsables_idResponsable  INT NOT NULL,
    convenios_idConvenio  VARCHAR(50) NULL,
-   institucion_convenios_idInstitucionConvenio VARCHAR(10) NULL,
+   institucion_convenios_idInstitucionConvenio INT NULL,
    fechaAsignacionResponsable  DATE NOT NULL,
    fechaRetiroResponsable  DATE NULL,
-  PRIMARY KEY ( idHistoricoResponsable ),
-  INDEX  fk_historicoResponsables_responsables1_idx  ( responsables_idResponsable  ASC),
+   PRIMARY KEY ( idHistoricoResponsable ),
+    INDEX  fk_historicoResponsables_responsables1_idx  ( responsables_idResponsable  ASC),
   INDEX  fk_historicoResponsables_convenios1_idx  ( convenios_idConvenio  ASC),
   INDEX  fk_historicoResponsables_institucion_convenios1_idx  (institucion_convenios_idInstitucionConvenio ASC),
-  CONSTRAINT  fk_historicoResponsables_responsables1 
+    CONSTRAINT  fk_historicoResponsables_responsables1 
     FOREIGN KEY ( responsables_idResponsable )
     REFERENCES    responsables  ( idResponsable )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT  fk_historicoResponsables_convenios1 
+      CONSTRAINT  fk_historicoResponsables_convenios1 
     FOREIGN KEY ( convenios_idConvenio )
     REFERENCES    convenios  ( idConvenio )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT  fk_historicoResponsables_institucion_convenios1 
+     CONSTRAINT  fk_historicoResponsables_institucion_convenios1 
     FOREIGN KEY ( institucion_convenios_idInstitucionConvenio )
     REFERENCES    institucion_convenios  ( idInstitucionConvenio )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT uk_historicoResponsables  UNIQUE (convenios_idConvenio,institucion_convenios_idInstitucionConvenio),
-  CONSTRAINT chk_historicoResponsables CHECK((convenios_idConvenio IS NULL  AND institucion_convenios_idInstitucionConvenio IS NOT NULL ) OR 
-          (convenios_idConvenio IS NOT NULL  AND institucion_convenios_idInstitucionConvenio IS NULL)
-          )
+CONSTRAINT uk_historicoResponsables  UNIQUE (convenios_idConvenio,institucion_convenios_idInstitucionConvenio)
   );
+
+ALTER TABLE historicoresponsables ADD CONSTRAINT chk_historicoResponsables CHECK((convenios_idConvenio IS NULL  AND institucion_convenios_idInstitucionConvenio IS NOT NULL ) OR 
+          (convenios_idConvenio IS NOT NULL  AND institucion_convenios_idInstitucionConvenio IS NULL));
 -- -----------------------------------------------------
 -- Table    convenio_Estados 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS    convenio_Estados  (
-   id_convenio_estado VARCHAR(10) NOT NULL,
+   id_convenio_estado INT AUTO_INCREMENT NOT NULL,
    convenios_idConvenio  VARCHAR(50) NOT NULL,
-   estadoConvenios_idEstadoConvenio  VARCHAR(10) NOT NULL,
+   estadoConvenios_idEstadoConvenio  INT NOT NULL,
    fechaCambioEstado  DATE NOT NULL,
    numeroReporte  VARCHAR(10) NULL,
    observacionCambioEstado  TEXT NULL,
-   dependencias_idDependencia  VARCHAR(10) NULL,
+   dependencias_idDependencia  INT NULL,
   PRIMARY KEY ( id_convenio_estado ),
   INDEX  fk_convenios_has_estadoConvenios_estadoConvenios1_idx  ( estadoConvenios_idEstadoConvenio  ASC),
   INDEX  fk_convenios_has_estadoConvenios_convenios1_idx  ( convenios_idConvenio  ASC),
@@ -507,28 +471,28 @@ CREATE TABLE IF NOT EXISTS    convenio_Estados  (
     );
 
 
-INSERT INTO convenio_Estados (id_convenio_estado,convenios_idConvenio,estadoConvenios_idEstadoConvenio,fechaCambioEstado,dependencias_idDependencia) VALUES
-('101','01','1','2015/02/02','2'),
-('201','01','2','2015/03/02','2'),
-('301','01','3','2015/03/5','1'),
-('401','01','4','2015/03/6','1'),
-('501','01','5','2015/03/10','1'),
-('102','02','1','2014/02/02','2'),
-('202','02','2','2014/03/02','2'),
-('302','02','3','2014/03/5','1'),
-('402','02','4','2014/03/6','1'),
-('502','02','5','2014/03/12','1'),
-('103','03','5','2015/03/10','1'),
-('104','04','4','2015/03/10','1');
+INSERT INTO convenio_Estados (convenios_idConvenio,estadoConvenios_idEstadoConvenio,fechaCambioEstado,dependencias_idDependencia) VALUES
+('01','1','2015/02/02','2'),
+('01','2','2015/03/02','2'),
+('01','3','2015/03/5','1'),
+('01','4','2015/03/6','1'),
+('01','5','2015/03/10','1'),
+('02','1','2014/02/02','2'),
+('02','2','2014/03/02','2'),
+('02','3','2014/03/5','1'),
+('02','4','2014/03/6','1'),
+('02','5','2014/03/12','1'),
+('03','5','2015/03/10','1'),
+('04','4','2015/03/10','1');
 
 
 -- -----------------------------------------------------
 -- Table    convenio_actividades 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS    convenio_actividades  (
-   id_convenio_actividades VARCHAR(10) NOT NULL,
+   id_convenio_actividades INT AUTO_INCREMENT NOT NULL,
    convenios_idConvenio  VARCHAR(50) NOT NULL,
-   actividades_idActividad  VARCHAR(10) NOT NULL,
+   actividades_idActividad  INT NOT NULL,
   PRIMARY KEY (id_convenio_actividades),
   INDEX  fk_convenios_has_actividades_actividades1_idx  ( actividades_idActividad  ASC),
   INDEX  fk_convenios_has_actividades_convenios1_idx  ( convenios_idConvenio  ASC),
@@ -569,9 +533,9 @@ CREATE TABLE IF NOT EXISTS    convenio_presupuestos  (
 -- Table    convenio_aportes 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS    convenio_aportes  (
-   id_convenio_aporte VARCHAR(10) NOT NULL,
+   id_convenio_aporte INT AUTO_INCREMENT NOT NULL,
    convenios_idConvenio  VARCHAR(50) NOT NULL,
-   aportes_idAporte  VARCHAR(10) NOT NULL,
+   aportes_idAporte  INT NOT NULL,
    valor  VARCHAR(45) NULL,
    monedas_idMoneda  INT NOT NULL,
   PRIMARY KEY ( id_convenio_aporte),
@@ -600,7 +564,7 @@ CREATE TABLE IF NOT EXISTS    convenio_aportes  (
 -- Table    informes 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS    informes  (
-   idInforme  VARCHAR(10) NOT NULL,
+   idInforme  INT AUTO_INCREMENT NOT NULL,
    convenios_idConvenio  VARCHAR(50) NOT NULL,
   PRIMARY KEY ( idInforme ),
   INDEX  fk_informes_convenios1_idx  ( convenios_idConvenio  ASC),
@@ -613,17 +577,18 @@ CREATE TABLE IF NOT EXISTS    informes  (
 -- Table    criterios 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS    criterios  (
-   idCriterio  VARCHAR(10) NOT NULL,
+   idCriterio  INT AUTO_INCREMENT NOT NULL,
    descripcionCriterio  VARCHAR(50) NOT NULL,
   PRIMARY KEY ( idCriterio ));
 -- -----------------------------------------------------
 -- Table    convenio_criterios 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS    convenio_criterios  (
-   informes_idInforme  VARCHAR(10) NOT NULL,
-   criterios_idCriterio  VARCHAR(10) NOT NULL,
-   unidades_idUnidad  VARCHAR(10) NOT NULL,
-  PRIMARY KEY ( informes_idInforme ,  criterios_idCriterio ),
+   id_convenio_criterios INT AUTO_INCREMENT NOT NULL,
+   informes_idInforme  INT NOT NULL,
+   criterios_idCriterio INT NOT NULL,
+   unidades_idUnidad  INT NOT NULL,
+  PRIMARY KEY (id_convenio_criterios),
   INDEX  fk_informes_has_criterios_criterios1_idx  ( criterios_idCriterio  ASC),
   INDEX  fk_informes_has_criterios_informes1_idx  ( informes_idInforme  ASC),
   INDEX  fk_convenio_criterios_unidades1_idx  ( unidades_idUnidad  ASC),
@@ -641,22 +606,10 @@ CREATE TABLE IF NOT EXISTS    convenio_criterios  (
     FOREIGN KEY ( unidades_idUnidad )
     REFERENCES    unidades  ( idUnidad )
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON UPDATE NO ACTION,
+CONSTRAINT uk_convenio_criterios  UNIQUE (informes_idInforme,criterios_idCriterio)
+);
 /* INSERSIONES*/
-INSERT INTO `tipoconvenios` (`idTipoConvenio`, `descripcionTipoConvenio`) VALUES ('1', 'marco');
-INSERT INTO `tipoconvenios` (`idTipoConvenio`, `descripcionTipoConvenio`) VALUES ('2', 'especifico');
-
-INSERT INTO `clasificacionconvenios` (`idClasificacionConvenio`, `nombreClasificacionConvenio`, `descripcionClasificacionConvenio`) VALUES ('1', 'academico', '');
-INSERT INTO `clasificacionconvenios` (`idClasificacionConvenio`, `nombreClasificacionConvenio`, `descripcionClasificacionConvenio`) VALUES ('2', 'cultural', '');
-
-INSERT INTO `alcanceconvenios` (`idAlcanceConvenio`, `descripcionAlcanceConvenio`) VALUES ('1', 'Global');
-INSERT INTO `alcanceconvenios` (`idAlcanceConvenio`, `descripcionAlcanceConvenio`) VALUES ('2', 'Local');
-
-INSERT INTO `formaconvenios` (`idFormaConvenio`, `descripcionFormaConvenio`) VALUES ('1', 'Unilateral');
-INSERT INTO `formaconvenios` (`idFormaConvenio`, `descripcionFormaConvenio`) VALUES ('2', 'Bilateral');
-
-/*AUTO INCREMENT ESTE NO */
-ALTER TABLE `institucion_convenios` CHANGE `idInstitucionConvenio` `idInstitucionConvenio` VARCHAR(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL AUTO_INCREMENT;
 
 /*Pruebas de consultas*/
 

@@ -4,15 +4,15 @@
  * This is the model class for table "institucion_convenios".
  *
  * The followings are the available columns in table 'institucion_convenios':
- * @property string $idInstitucionConvenio
- * @property string $instituciones_idInstitucion
+ * @property integer $idInstitucionConvenio
+ * @property integer $instituciones_idInstitucion
  * @property string $convenios_idConvenio
  * @property string $fechaIncorporacion
  *
  * The followings are the available model relations:
  * @property Historicoresponsables[] $historicoresponsables
- * @property Instituciones $institucionesIdInstitucion
  * @property Convenios $conveniosIdConvenio
+ * @property Instituciones $institucionesIdInstitucion
  */
 class InstitucionConvenios extends CActiveRecord
 {
@@ -32,8 +32,8 @@ class InstitucionConvenios extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idInstitucionConvenio, instituciones_idInstitucion, convenios_idConvenio, fechaIncorporacion', 'required'),
-			array('idInstitucionConvenio, instituciones_idInstitucion', 'length', 'max'=>10),
+			array('instituciones_idInstitucion, convenios_idConvenio, fechaIncorporacion', 'required'),
+			array('instituciones_idInstitucion', 'numerical', 'integerOnly'=>true),
 			array('convenios_idConvenio', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -50,8 +50,8 @@ class InstitucionConvenios extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'historicoresponsables' => array(self::HAS_MANY, 'Historicoresponsables', 'institucion_convenios_idInstitucionConvenio'),
-			'institucionesIdInstitucion' => array(self::BELONGS_TO, 'Instituciones', 'instituciones_idInstitucion'),
 			'conveniosIdConvenio' => array(self::BELONGS_TO, 'Convenios', 'convenios_idConvenio'),
+			'institucionesIdInstitucion' => array(self::BELONGS_TO, 'Instituciones', 'instituciones_idInstitucion'),
 		);
 	}
 
@@ -86,8 +86,8 @@ class InstitucionConvenios extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('idInstitucionConvenio',$this->idInstitucionConvenio,true);
-		$criteria->compare('instituciones_idInstitucion',$this->instituciones_idInstitucion,true);
+		$criteria->compare('idInstitucionConvenio',$this->idInstitucionConvenio);
+		$criteria->compare('instituciones_idInstitucion',$this->instituciones_idInstitucion);
 		$criteria->compare('convenios_idConvenio',$this->convenios_idConvenio,true);
 		$criteria->compare('fechaIncorporacion',$this->fechaIncorporacion,true);
 

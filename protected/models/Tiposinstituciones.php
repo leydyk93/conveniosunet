@@ -4,7 +4,7 @@
  * This is the model class for table "tiposinstituciones".
  *
  * The followings are the available columns in table 'tiposinstituciones':
- * @property string $idTipoInstitucion
+ * @property integer $idTipoInstitucion
  * @property string $nombreTipoInstitucion
  *
  * The followings are the available model relations:
@@ -28,8 +28,7 @@ class Tiposinstituciones extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idTipoInstitucion, nombreTipoInstitucion', 'required'),
-			array('idTipoInstitucion', 'length', 'max'=>10),
+			array('nombreTipoInstitucion', 'required'),
 			array('nombreTipoInstitucion', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -78,7 +77,7 @@ class Tiposinstituciones extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('idTipoInstitucion',$this->idTipoInstitucion,true);
+		$criteria->compare('idTipoInstitucion',$this->idTipoInstitucion);
 		$criteria->compare('nombreTipoInstitucion',$this->nombreTipoInstitucion,true);
 
 		return new CActiveDataProvider($this, array(

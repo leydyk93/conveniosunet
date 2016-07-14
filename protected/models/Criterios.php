@@ -1,28 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "authitem".
+ * This is the model class for table "criterios".
  *
- * The followings are the available columns in table 'authitem':
- * @property string $name
- * @property integer $type
- * @property string $description
- * @property string $bizrule
- * @property string $data
+ * The followings are the available columns in table 'criterios':
+ * @property integer $idCriterio
+ * @property string $descripcionCriterio
  *
  * The followings are the available model relations:
- * @property Authassignment $authassignment
- * @property Authitemchild $authitemchild
- * @property Authitemchild[] $authitemchildren
+ * @property ConvenioCriterios[] $convenioCriterioses
  */
-class Authitem extends CActiveRecord
+class Criterios extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'authitem';
+		return 'criterios';
 	}
 
 	/**
@@ -33,13 +28,11 @@ class Authitem extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, type', 'required'),
-			array('type', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>64),
-			array('description, bizrule, data', 'safe'),
+			array('descripcionCriterio', 'required'),
+			array('descripcionCriterio', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('name, type, description, bizrule, data', 'safe', 'on'=>'search'),
+			array('idCriterio, descripcionCriterio', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -51,9 +44,7 @@ class Authitem extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'authassignment' => array(self::HAS_ONE, 'Authassignment', 'itemname'),
-			'authitemchild' => array(self::HAS_ONE, 'Authitemchild', 'parent'),
-			'authitemchildren' => array(self::HAS_MANY, 'Authitemchild', 'child'),
+			'convenioCriterioses' => array(self::HAS_MANY, 'ConvenioCriterios', 'criterios_idCriterio'),
 		);
 	}
 
@@ -63,11 +54,8 @@ class Authitem extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'name' => 'Name',
-			'type' => 'Type',
-			'description' => 'Description',
-			'bizrule' => 'Bizrule',
-			'data' => 'Data',
+			'idCriterio' => 'Id Criterio',
+			'descripcionCriterio' => 'Descripcion Criterio',
 		);
 	}
 
@@ -89,11 +77,8 @@ class Authitem extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('type',$this->type);
-		$criteria->compare('description',$this->description,true);
-		$criteria->compare('bizrule',$this->bizrule,true);
-		$criteria->compare('data',$this->data,true);
+		$criteria->compare('idCriterio',$this->idCriterio);
+		$criteria->compare('descripcionCriterio',$this->descripcionCriterio,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -104,7 +89,7 @@ class Authitem extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Authitem the static model class
+	 * @return Criterios the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

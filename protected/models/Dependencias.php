@@ -4,7 +4,7 @@
  * This is the model class for table "dependencias".
  *
  * The followings are the available columns in table 'dependencias':
- * @property string $idDependencia
+ * @property integer $idDependencia
  * @property string $nombreDependencia
  * @property string $telefonoDependencia
  *
@@ -31,8 +31,6 @@ class Dependencias extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idDependencia', 'required'),
-			array('idDependencia', 'length', 'max'=>10),
 			array('nombreDependencia', 'length', 'max'=>100),
 			array('telefonoDependencia', 'length', 'max'=>50),
 			// The following rule is used by search().
@@ -85,7 +83,7 @@ class Dependencias extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('idDependencia',$this->idDependencia,true);
+		$criteria->compare('idDependencia',$this->idDependencia);
 		$criteria->compare('nombreDependencia',$this->nombreDependencia,true);
 		$criteria->compare('telefonoDependencia',$this->telefonoDependencia,true);
 

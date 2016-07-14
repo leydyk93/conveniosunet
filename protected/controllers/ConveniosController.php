@@ -6,7 +6,7 @@ class ConveniosController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/cargar';
+	public $layout='//layouts/column1';
 	public $pasouno;
 	
 	/**
@@ -29,7 +29,7 @@ class ConveniosController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','pasodos','pasotres','pasocuatro','pasocinco','pasoseis'),
+				'actions'=>array('index','view','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -211,12 +211,29 @@ class ConveniosController extends Controller
 				$model->alcanceConvenios_idAlcanceConvenio=$_SESSION['alcance'];
 				$model->formaConvenios_idFormaConvenio=$_SESSION['forma'];
 				$model->dependencias_idDependencia=$_SESSION['dependenciaconvenio'];
-				$model->convenios_idConvenio=$_SESSION['idconvenio'];
+				//$model->convenios_idConvenio=$_SESSION['idconvenio'];
 				$model->fechaInicioConvenio=$_SESSION['fechainicioconvenio'];
+				$model->ventajasBeneficiosConvenio=$_SESSION['ventajas'];
+
+				echo $model->idConvenio;
+				echo $model->nombreConvenio;
+				echo $model->fechaInicioConvenio;
+				echo $model->fechaCaducidadConvenio;
+				echo $model->objetivoConvenio;
+				echo $model->institucionUNET;
+				echo $model->urlConvenio;
+				echo $model->clasificacionConvenios_idTipoConvenio;
+				echo $model->tipoConvenios_idTipoConvenio;
+				echo $model->alcanceConvenios_idAlcanceConvenio;
+				echo $model->formaConvenios_idFormaConvenio;
+				echo $model->dependencias_idDependencia;
+				//$model->convenios_idConvenio=$_SESSION['idconvenio'];
+			
 				//Guardando en la tabla convenios
+				//if($model->validate()){}
  				if($model->save()){
-					
- 					$model_ic->idInstitucionConvenio=$_SESSION['idconvenio'];
+					$this->redirect(array('view','id'=>$model->idConvenio));
+ 				/*	$model_ic->idInstitucionConvenio=$_SESSION['idconvenio'];
  					$model_ic->instituciones_idInstitucion=$_SESSION['institucion'];
  					$model_ic->convenios_idConvenio=$_SESSION['idconvenio'];
  					$model_ic->fechaIncorporacion=$_SESSION['fechainicioconvenio'];
@@ -230,7 +247,10 @@ class ConveniosController extends Controller
  						//Guardando en la tabla convenio estados 
  						if($model_ce->save())
 						$this->redirect(array('view','id'=>$model->idConvenio));
-					}
+					}*/
+				}
+				else{
+					print_r($model->getErrors());
 				}
 		}
 
@@ -299,6 +319,11 @@ class ConveniosController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+	}
+
+	public function actionConsultar()
+	{
+	   $this->render('consultar');	
 	}
 
 	/**

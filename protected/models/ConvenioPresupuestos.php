@@ -1,24 +1,26 @@
 <?php
 
 /**
- * This is the model class for table "authitemchild".
+ * This is the model class for table "convenio_presupuestos".
  *
- * The followings are the available columns in table 'authitemchild':
- * @property string $parent
- * @property string $child
+ * The followings are the available columns in table 'convenio_presupuestos':
+ * @property integer $id_convenio_presupuesto
+ * @property string $convenios_idConvenio
+ * @property integer $presupuestos_idPresupuesto
+ * @property double $costo
  *
  * The followings are the available model relations:
- * @property Authitem $parent0
- * @property Authitem $child0
+ * @property Convenios $conveniosIdConvenio
+ * @property Presupuestos $presupuestosIdPresupuesto
  */
-class Authitemchild extends CActiveRecord
+class ConvenioPresupuestos extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'authitemchild';
+		return 'convenio_presupuestos';
 	}
 
 	/**
@@ -29,11 +31,13 @@ class Authitemchild extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('parent, child', 'required'),
-			array('parent, child', 'length', 'max'=>64),
+			array('id_convenio_presupuesto, convenios_idConvenio, presupuestos_idPresupuesto, costo', 'required'),
+			array('id_convenio_presupuesto, presupuestos_idPresupuesto', 'numerical', 'integerOnly'=>true),
+			array('costo', 'numerical'),
+			array('convenios_idConvenio', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('parent, child', 'safe', 'on'=>'search'),
+			array('id_convenio_presupuesto, convenios_idConvenio, presupuestos_idPresupuesto, costo', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -45,8 +49,8 @@ class Authitemchild extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'parent0' => array(self::BELONGS_TO, 'Authitem', 'parent'),
-			'child0' => array(self::BELONGS_TO, 'Authitem', 'child'),
+			'conveniosIdConvenio' => array(self::BELONGS_TO, 'Convenios', 'convenios_idConvenio'),
+			'presupuestosIdPresupuesto' => array(self::BELONGS_TO, 'Presupuestos', 'presupuestos_idPresupuesto'),
 		);
 	}
 
@@ -56,8 +60,10 @@ class Authitemchild extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'parent' => 'Parent',
-			'child' => 'Child',
+			'id_convenio_presupuesto' => 'Id Convenio Presupuesto',
+			'convenios_idConvenio' => 'Convenios Id Convenio',
+			'presupuestos_idPresupuesto' => 'Presupuestos Id Presupuesto',
+			'costo' => 'Costo',
 		);
 	}
 
@@ -79,8 +85,10 @@ class Authitemchild extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('parent',$this->parent,true);
-		$criteria->compare('child',$this->child,true);
+		$criteria->compare('id_convenio_presupuesto',$this->id_convenio_presupuesto);
+		$criteria->compare('convenios_idConvenio',$this->convenios_idConvenio,true);
+		$criteria->compare('presupuestos_idPresupuesto',$this->presupuestos_idPresupuesto);
+		$criteria->compare('costo',$this->costo);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -91,7 +99,7 @@ class Authitemchild extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Authitemchild the static model class
+	 * @return ConvenioPresupuestos the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

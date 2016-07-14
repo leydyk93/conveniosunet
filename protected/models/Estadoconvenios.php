@@ -4,7 +4,7 @@
  * This is the model class for table "estadoconvenios".
  *
  * The followings are the available columns in table 'estadoconvenios':
- * @property string $idEstadoConvenio
+ * @property integer $idEstadoConvenio
  * @property string $nombreEstadoConvenio
  * @property string $descripcionEstadoConvenio
  *
@@ -29,8 +29,7 @@ class Estadoconvenios extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idEstadoConvenio, nombreEstadoConvenio, descripcionEstadoConvenio', 'required'),
-			array('idEstadoConvenio', 'length', 'max'=>10),
+			array('nombreEstadoConvenio, descripcionEstadoConvenio', 'required'),
 			array('nombreEstadoConvenio, descripcionEstadoConvenio', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -80,7 +79,7 @@ class Estadoconvenios extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('idEstadoConvenio',$this->idEstadoConvenio,true);
+		$criteria->compare('idEstadoConvenio',$this->idEstadoConvenio);
 		$criteria->compare('nombreEstadoConvenio',$this->nombreEstadoConvenio,true);
 		$criteria->compare('descripcionEstadoConvenio',$this->descripcionEstadoConvenio,true);
 

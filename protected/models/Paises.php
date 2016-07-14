@@ -4,7 +4,7 @@
  * This is the model class for table "paises".
  *
  * The followings are the available columns in table 'paises':
- * @property string $idPais
+ * @property integer $idPais
  * @property string $nombrePais
  *
  * The followings are the available model relations:
@@ -28,8 +28,7 @@ class Paises extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idPais, nombrePais', 'required'),
-			array('idPais', 'length', 'max'=>10),
+			array('nombrePais', 'required'),
 			array('nombrePais', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -78,7 +77,7 @@ class Paises extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('idPais',$this->idPais,true);
+		$criteria->compare('idPais',$this->idPais);
 		$criteria->compare('nombrePais',$this->nombrePais,true);
 
 		return new CActiveDataProvider($this, array(

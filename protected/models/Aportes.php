@@ -4,7 +4,7 @@
  * This is the model class for table "aportes".
  *
  * The followings are the available columns in table 'aportes':
- * @property string $idAporte
+ * @property integer $idAporte
  * @property string $descripcionAporte
  *
  * The followings are the available model relations:
@@ -28,8 +28,6 @@ class Aportes extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idAporte', 'required'),
-			array('idAporte', 'length', 'max'=>10),
 			array('descripcionAporte', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -78,7 +76,7 @@ class Aportes extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('idAporte',$this->idAporte,true);
+		$criteria->compare('idAporte',$this->idAporte);
 		$criteria->compare('descripcionAporte',$this->descripcionAporte,true);
 
 		return new CActiveDataProvider($this, array(

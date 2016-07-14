@@ -1,23 +1,26 @@
 <?php
 
 /**
- * This is the model class for table "presupuestos".
+ * This is the model class for table "renovacionprorrogas".
  *
- * The followings are the available columns in table 'presupuestos':
- * @property integer $idPresupuesto
- * @property string $descripcionPresupuesto
+ * The followings are the available columns in table 'renovacionprorrogas':
+ * @property integer $idRenovacionProrroga
+ * @property string $fechaInicioProrroga
+ * @property string $fechaFinProrroga
+ * @property string $observacionProrroga
+ * @property string $convenios_idConvenio
  *
  * The followings are the available model relations:
- * @property ConvenioPresupuestos[] $convenioPresupuestoses
+ * @property Convenios $conveniosIdConvenio
  */
-class Presupuestos extends CActiveRecord
+class Renovacionprorrogas extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'presupuestos';
+		return 'renovacionprorrogas';
 	}
 
 	/**
@@ -28,10 +31,13 @@ class Presupuestos extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('descripcionPresupuesto', 'length', 'max'=>50),
+			array('convenios_idConvenio', 'required'),
+			array('observacionProrroga', 'length', 'max'=>200),
+			array('convenios_idConvenio', 'length', 'max'=>50),
+			array('fechaInicioProrroga, fechaFinProrroga', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idPresupuesto, descripcionPresupuesto', 'safe', 'on'=>'search'),
+			array('idRenovacionProrroga, fechaInicioProrroga, fechaFinProrroga, observacionProrroga, convenios_idConvenio', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -43,7 +49,7 @@ class Presupuestos extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'convenioPresupuestoses' => array(self::HAS_MANY, 'ConvenioPresupuestos', 'presupuestos_idPresupuesto'),
+			'conveniosIdConvenio' => array(self::BELONGS_TO, 'Convenios', 'convenios_idConvenio'),
 		);
 	}
 
@@ -53,8 +59,11 @@ class Presupuestos extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'idPresupuesto' => 'Id Presupuesto',
-			'descripcionPresupuesto' => 'Descripcion Presupuesto',
+			'idRenovacionProrroga' => 'Id Renovacion Prorroga',
+			'fechaInicioProrroga' => 'Fecha Inicio Prorroga',
+			'fechaFinProrroga' => 'Fecha Fin Prorroga',
+			'observacionProrroga' => 'Observacion Prorroga',
+			'convenios_idConvenio' => 'Convenios Id Convenio',
 		);
 	}
 
@@ -76,8 +85,11 @@ class Presupuestos extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('idPresupuesto',$this->idPresupuesto);
-		$criteria->compare('descripcionPresupuesto',$this->descripcionPresupuesto,true);
+		$criteria->compare('idRenovacionProrroga',$this->idRenovacionProrroga);
+		$criteria->compare('fechaInicioProrroga',$this->fechaInicioProrroga,true);
+		$criteria->compare('fechaFinProrroga',$this->fechaFinProrroga,true);
+		$criteria->compare('observacionProrroga',$this->observacionProrroga,true);
+		$criteria->compare('convenios_idConvenio',$this->convenios_idConvenio,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -88,7 +100,7 @@ class Presupuestos extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Presupuestos the static model class
+	 * @return Renovacionprorrogas the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

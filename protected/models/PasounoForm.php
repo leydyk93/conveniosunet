@@ -17,5 +17,18 @@
 				//safe se le coloca a los datos que no se quieren validar 
 			);
 		}
+		public function attributeLabels()
+			{
+				return array(
+					'idconvenio' => 'Id de Convenio',
+					'tipo' => 'Tipo',
+					'nombreconvenio' => 'Nombre de Convenio',
+					'fechainicio' => 'Fecha de Inicio',
+					'fechacaducidad' => 'Fecha de Caducidad',
+					'objetivo' => 'Objetivo',
+					'dependencia' => 'dependencia',
+					'estado' => 'Estado Inicial',
+				);
+			}
 	}
  ?>

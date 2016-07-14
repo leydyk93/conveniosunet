@@ -1,20 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "alcanceConvenios".
+ * This is the model class for table "unidades".
  *
- * The followings are the available columns in table 'alcanceConvenios':
- * @property string $idAlcanceConvenio
- * @property string $descripcionAlcanceConvenio
+ * The followings are the available columns in table 'unidades':
+ * @property integer $idUnidad
+ * @property string $descripcionUnidad
+ *
+ * The followings are the available model relations:
+ * @property ConvenioCriterios[] $convenioCriterioses
  */
-class AlcanceConvenios extends CActiveRecord
+class Unidades extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'alcanceConvenios';
+		return 'unidades';
 	}
 
 	/**
@@ -25,12 +28,10 @@ class AlcanceConvenios extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idAlcanceConvenio, descripcionAlcanceConvenio', 'required'),
-			array('idAlcanceConvenio', 'length', 'max'=>10),
-			array('descripcionAlcanceConvenio', 'length', 'max'=>50),
+			array('descripcionUnidad', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idAlcanceConvenio, descripcionAlcanceConvenio', 'safe', 'on'=>'search'),
+			array('idUnidad, descripcionUnidad', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -42,6 +43,7 @@ class AlcanceConvenios extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'convenioCriterioses' => array(self::HAS_MANY, 'ConvenioCriterios', 'unidades_idUnidad'),
 		);
 	}
 
@@ -51,8 +53,8 @@ class AlcanceConvenios extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'idAlcanceConvenio' => 'Id Alcance Convenio',
-			'descripcionAlcanceConvenio' => 'Descripcion Alcance Convenio',
+			'idUnidad' => 'Id Unidad',
+			'descripcionUnidad' => 'Descripcion Unidad',
 		);
 	}
 
@@ -74,8 +76,8 @@ class AlcanceConvenios extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('idAlcanceConvenio',$this->idAlcanceConvenio,true);
-		$criteria->compare('descripcionAlcanceConvenio',$this->descripcionAlcanceConvenio,true);
+		$criteria->compare('idUnidad',$this->idUnidad);
+		$criteria->compare('descripcionUnidad',$this->descripcionUnidad,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -86,7 +88,7 @@ class AlcanceConvenios extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return AlcanceConvenios the static model class
+	 * @return Unidades the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
