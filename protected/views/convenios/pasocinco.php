@@ -58,10 +58,10 @@
             
                     <ul id="navi">
                         <li><a href="index.php?r=convenios/_paso1" class="text-center">Paso 1</a></li>
-                        <li><a href="index.php?r=cargar/paso2" class="text-center" >Paso 2</a></li>
-                        <li><a href="index.php?r=cargar/paso3" class="text-center">Paso 3</a></li>
-                        <li><a href="index.php?r=cargar/paso4" class="text-center">Paso 4</a></li>
-                        <li><a href="index.php?r=cargar/paso5" class="text-center">Paso 5</a></li>
+                        <li><a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center" >Paso 2</a></li>
+                        <li><a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center">Paso 3</a></li>
+                        <li><a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>">Paso 4</a></li>
+                        <li><a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>">Paso 5</a></li>
                         <li><a href="#" class="text-center">Paso 6</a></li>
                         
                     </ul>
@@ -101,7 +101,7 @@
 <?php echo $form->error($pasocinco,'presupuesto_costo'); ?>
 <br>
 <br>
- <?php echo CHtml::submitButton("siguiente",array("class"=>"btn btn-primary")); ?>
+ <?php echo CHtml::submitButton("siguiente",array("class"=>'btn btn-conv')); ?>
 
 <?php $this->endWidget(); ?>
 </section>

@@ -98,12 +98,12 @@
 <div class="row">
 <aside class="menu_pasos col-xs-3">
             
-                    <ul id="navi">
+                     <ul id="navi">
                         <li><a href="index.php?r=convenios/_paso1" class="text-center">Paso 1</a></li>
-                        <li><a href="index.php?r=cargar/paso2" class="text-center" >Paso 2</a></li>
-                        <li><a href="index.php?r=cargar/paso3" class="text-center">Paso 3</a></li>
-                        <li><a href="index.php?r=cargar/paso4" class="text-center">Paso 4</a></li>
-                        <li><a href="index.php?r=cargar/paso5" class="text-center">Paso 5</a></li>
+                        <li><a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center" >Paso 2</a></li>
+                        <li><a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center">Paso 3</a></li>
+                        <li><a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>">Paso 4</a></li>
+                        <li><a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>">Paso 5</a></li>
                         <li><a href="#" class="text-center">Paso 6</a></li>
                         
                     </ul>
@@ -113,7 +113,7 @@
 
 <section class="datos col-xs-9">    
 
-<input class="btn btn-primary" type="submit" name="enviar" value="confirmar" >
+<input class='btn btn-conv' type="submit" name="enviar" value="confirmar" >
 
 
 <?php $this->endWidget(); ?>
