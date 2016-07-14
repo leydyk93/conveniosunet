@@ -13,7 +13,7 @@
 		public function rules (){
 
 			return array(
-				array("idconvenio,tipo,nombreconvenio,fechainicio,fechacaducidad,objetivo,dependencia,estado","required"),
+				array("tipo,nombreconvenio,fechainicio,fechacaducidad,objetivo,dependencia,estado","required"),
 				//safe se le coloca a los datos que no se quieren validar 
 			);
 		}

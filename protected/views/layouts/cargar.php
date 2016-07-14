@@ -32,7 +32,7 @@
 			</div>
 		</div>
 	</header>
-
+ 
 
 	<nav id="menuPrincipal" class="navbar navbar-default">
   <div class="container-fluid">
@@ -75,7 +75,7 @@
 	<div class="container-fluid">
 
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-xs-6">
 		<?php if(isset($this->breadcrumbs)):?>
 			<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 				'links'=>$this->breadcrumbs,
@@ -83,7 +83,7 @@
 		<?php endif?>
        </div>
 
-       <div class="col-md-6">
+       <div class="col-xs-6">
 
        	<?php if(!Yii::app()->user->isGuest):?>
 			<p class="text-right" id="fecha"></p>
@@ -92,16 +92,19 @@
 	</div>   
 	</div> 
 	
-	<main class="container-fluid">
+	<!--<main class="container-fluid">
 		<div class "row">
 			
-			<div  class="nuevo col-md-12 text-left">
+			<div  class="nuevo col-xs-12 text-left">
 				<p ><span class="glyphicon glyphicon-th-list"></span> Nuevo Convenio Marco</p>
 			</div>
+		</div>-->
+
+		<div class="row">
+			<?php echo $content; ?>
 		</div>
-		
-		<div class "row ">
-			<aside class="menu_pasos col-md-3">
+	<!--	<div class "row ">
+			<aside class="menu_pasos col-xs-3">
 			
 					<ul id="navi">
 						<li><a href="index.php?r=convenios/_paso1" class="text-center">Paso 1</a></li>
@@ -116,14 +119,14 @@
 				
 			</aside>
 
-			<section class="datos col-md-9"> 
+			<section class="datos col-xs-9"> 
 			
 				<?php echo $content; ?>
 			</section>	
 
 		
-		</div>
-	</main>
+		</div>-->
+	<!--</main>-->
 
 	<footer id="foo" class="container-fluid text-center">
 		<div class="row">
@@ -141,6 +144,8 @@
       var anio=d.getFullYear().toString();
       var fecha1=dia.concat("/",mes,"/",anio);
       var fecha2=d.toDateString();
+      //var fecha3=anio.concat("-",mes,"-",dia);
+
       document.getElementById("fecha").innerHTML = fecha1;
    </script>
 

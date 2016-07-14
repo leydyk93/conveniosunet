@@ -28,6 +28,31 @@
 				echo "<br>";*/
 //campos del formulario 
  ?>
+ <main class="container-fluid">
+        <div class "row">
+            
+            <div  class="nuevo col-xs-12 text-left">
+                <p ><span class="glyphicon glyphicon-th-list"></span> Nuevo Convenio Marco</p>
+            </div>
+        </div>
+
+<div class="row">
+<aside class="menu_pasos col-xs-3">
+            
+                    <ul id="navi">
+                        <li><a href="index.php?r=convenios/_paso1" class="text-center">Paso 1</a></li>
+                        <li><a href="index.php?r=cargar/paso2" class="text-center" >Paso 2</a></li>
+                        <li><a href="index.php?r=cargar/paso3" class="text-center">Paso 3</a></li>
+                        <li><a href="index.php?r=cargar/paso4" class="text-center">Paso 4</a></li>
+                        <li><a href="index.php?r=cargar/paso5" class="text-center">Paso 5</a></li>
+                        <li><a href="#" class="text-center">Paso 6</a></li>
+                        
+                    </ul>
+                    
+                
+            </aside>
+
+<section class="datos col-xs-9">     
 
  Acta de Intención 
 
@@ -55,3 +80,6 @@
 <?php echo CHtml::submitButton("siguiente",array("class"=>"btn btn-primary")); ?>
 
 <?php $this->endWidget(); ?>
+</section>
+</div><!--contenido-->
+</main>

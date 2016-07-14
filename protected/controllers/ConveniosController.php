@@ -69,12 +69,17 @@ class ConveniosController extends Controller
 
 		$pasouno=new PasounoForm;
 
+		$resp=new Responsables;
+
 		//logic del formulario 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if (isset($_POST["PasounoForm"])){
 			$pasouno->attributes=$_POST["PasounoForm"];
+			
+			$count = Convenios::model()->countBySql("select COUNT(*) from convenios"); 
+	  		$pasouno->idconvenio=$count+1;
 
 			if($pasouno->validate()){
 
@@ -96,8 +101,17 @@ class ConveniosController extends Controller
 			}
 			}
 
+			if (isset($_POST["Responsables"])){
+			$resp->attributes=$_POST["Responsables"];
+
+			if($resp->save()){
+
+				echo "responsable guardado";	
+			}
+			}
+
 		$this->render('create',array(
-			"pasouno"=>$pasouno,
+			"pasouno"=>$pasouno,"resp"=>$resp
 		));
 
 	}
@@ -232,22 +246,31 @@ class ConveniosController extends Controller
 				//Guardando en la tabla convenios
 				//if($model->validate()){}
  				if($model->save()){
-					$this->redirect(array('view','id'=>$model->idConvenio));
- 				/*	$model_ic->idInstitucionConvenio=$_SESSION['idconvenio'];
+				//	$this->redirect(array('view','id'=>$model->idConvenio));
+ 					//$model_ic->idInstitucionConvenio=$_SESSION['idconvenio'];
  					$model_ic->instituciones_idInstitucion=$_SESSION['institucion'];
  					$model_ic->convenios_idConvenio=$_SESSION['idconvenio'];
  					$model_ic->fechaIncorporacion=$_SESSION['fechainicioconvenio'];
  					//Guardando en la tabla institucion convenios
  					if($model_ic->save()){
- 						$model_ce->id_convenio_estado=$_SESSION['idconvenio'];
+ 						//$this->redirect(array('view','id'=>$model->idConvenio));
+ 						
+ 						//$model_ce->id_convenio_estado=$_SESSION['idconvenio'];
  						$model_ce->convenios_idConvenio=$_SESSION['idconvenio'];
  						$model_ce->estadoConvenios_idEstadoConvenio=$_SESSION['estado'];
- 						$model_ce->fechaCambioEstado=$_SESSION['fechainicioconvenio'];
+ 						$model_ce->fechaCambioEstado=new CDbExpression('NOW()');
  						$model_ce->dependencias_idDependencia=$_SESSION['dependenciaconvenio'];
  						//Guardando en la tabla convenio estados 
- 						if($model_ce->save())
+ 						if($model_ce->save()){
 						$this->redirect(array('view','id'=>$model->idConvenio));
-					}*/
+						}
+						else{
+							print_r($model_ce->getErrors());
+						}
+					}
+					else{
+						print_r($model_ic->getErrors());
+					}
 				}
 				else{
 					print_r($model->getErrors());
