@@ -77,8 +77,8 @@ return array(
 			'username' => 'u525387098_leydy',
 			'password' => 'leydyk93',
 			'charset' => 'utf8',*/
-			
-		   /*
+			/*
+		   
 			'connectionString' => 'mysql:host=mysql.hostinger.es;dbname=u525387098_conv',
 			'emulatePrepare' => true,
 			'username' => 'u525387098_leydy',
