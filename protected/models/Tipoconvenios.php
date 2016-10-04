@@ -58,7 +58,6 @@ class Tipoconvenios extends CActiveRecord
 			'descripcionTipoConvenio' => 'Descripcion Tipo Convenio',
 		);
 	}
-
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *

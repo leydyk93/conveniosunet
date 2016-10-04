@@ -13,11 +13,13 @@
  * @property string $telefonoResponsable
  * @property integer $instituciones_idInstitucion
  * @property integer $dependencias_idDependencia
+ * @property integer $tipoResponsable_idTipoResponsable
  *
  * The followings are the available model relations:
  * @property Historicoresponsables[] $historicoresponsables
  * @property Dependencias $dependenciasIdDependencia
  * @property Instituciones $institucionesIdInstitucion
+ * @property Tiporesponsable $tipoResponsableIdTipoResponsable
  */
 class Responsables extends CActiveRecord
 {
@@ -37,15 +39,15 @@ class Responsables extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('primerNombreResponsable, primerApellidoResponsable, instituciones_idInstitucion, dependencias_idDependencia', 'required'),
-			array('instituciones_idInstitucion, dependencias_idDependencia', 'numerical', 'integerOnly'=>true),
+			array('primerNombreResponsable, primerApellidoResponsable, instituciones_idInstitucion, dependencias_idDependencia, tipoResponsable_idTipoResponsable', 'required'),
+			array('instituciones_idInstitucion, dependencias_idDependencia, tipoResponsable_idTipoResponsable', 'numerical', 'integerOnly'=>true),
 			array('primerNombreResponsable, segundoNombreResponsable', 'length', 'max'=>40),
 			array('primerApellidoResponsable, segundoApellidoResponsable', 'length', 'max'=>60),
 			array('correoElectronicoResponsable', 'length', 'max'=>100),
 			array('telefonoResponsable', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idResponsable, primerNombreResponsable, segundoNombreResponsable, primerApellidoResponsable, segundoApellidoResponsable, correoElectronicoResponsable, telefonoResponsable, instituciones_idInstitucion, dependencias_idDependencia', 'safe', 'on'=>'search'),
+			array('idResponsable, primerNombreResponsable, segundoNombreResponsable, primerApellidoResponsable, segundoApellidoResponsable, correoElectronicoResponsable, telefonoResponsable, instituciones_idInstitucion, dependencias_idDependencia, tipoResponsable_idTipoResponsable', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,6 +62,7 @@ class Responsables extends CActiveRecord
 			'historicoresponsables' => array(self::HAS_MANY, 'Historicoresponsables', 'responsables_idResponsable'),
 			'dependenciasIdDependencia' => array(self::BELONGS_TO, 'Dependencias', 'dependencias_idDependencia'),
 			'institucionesIdInstitucion' => array(self::BELONGS_TO, 'Instituciones', 'instituciones_idInstitucion'),
+			'tipoResponsableIdTipoResponsable' => array(self::BELONGS_TO, 'Tiporesponsable', 'tipoResponsable_idTipoResponsable'),
 		);
 	}
 
@@ -78,6 +81,7 @@ class Responsables extends CActiveRecord
 			'telefonoResponsable' => 'Telefono Responsable',
 			'instituciones_idInstitucion' => 'Instituciones Id Institucion',
 			'dependencias_idDependencia' => 'Dependencias Id Dependencia',
+			'tipoResponsable_idTipoResponsable' => 'Tipo Responsable Id Tipo Responsable',
 		);
 	}
 
@@ -108,6 +112,7 @@ class Responsables extends CActiveRecord
 		$criteria->compare('telefonoResponsable',$this->telefonoResponsable,true);
 		$criteria->compare('instituciones_idInstitucion',$this->instituciones_idInstitucion);
 		$criteria->compare('dependencias_idDependencia',$this->dependencias_idDependencia);
+		$criteria->compare('tipoResponsable_idTipoResponsable',$this->tipoResponsable_idTipoResponsable);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

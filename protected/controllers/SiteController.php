@@ -46,7 +46,6 @@ class SiteController extends Controller
 		}
 	
 	}
-
 	/**
 	 * Displays the contact page
 	 */
@@ -72,7 +71,6 @@ class SiteController extends Controller
 		}
 		$this->render('contact',array('model'=>$model));
 	}
-
 	/**
 	 * Displays the login page
 	 */
@@ -93,7 +91,10 @@ class SiteController extends Controller
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
-				$this->redirect($this->createUrl('site/convenioConsultar'));	
+				
+				$this->redirect($this->createUrl('convenios/consultar'));
+
+				//$this->redirect($this->createUrl('site/convenioConsultar'));la consulta sin ajax y desde el controlador site
 				
 				//$this->redirect('index.php?r=site/page&view=consultarConvenio'); la estatica
 				//$this->redirect(Yii::app()->user->returnUrl); la por defecto
@@ -116,10 +117,12 @@ class SiteController extends Controller
        $formConsulta = new ConsultasConvenios;
      
        $resull3= new ResultadoConvenios;
+
+       
        $resultados=null;
       
 
-       if(isset($_POST["ajax"]) && $_POST["ajax"]==='form'){
+      if(isset($_POST["ajax"]) && $_POST["ajax"]==='form'){
 
        	echo CActiveForm::validate($formConsulta);
        	Yii::app()->end();
@@ -196,7 +199,7 @@ class SiteController extends Controller
   						$consulta .="and ps.idPais=".$_POST['ConsultasConvenios']['pais']." ";	
 				}
 				if(isset($_POST['ConsultasConvenios']['tipo_institucion'])&&$_POST['ConsultasConvenios']['tipo_institucion']!=null){
-						$ctinst=null;
+								$ctinst=null;
 									foreach ($_POST['ConsultasConvenios']['tipo_institucion'] as $row) {
 										$ctinst=$row.",".$ctinst;
 									}
@@ -243,10 +246,6 @@ class SiteController extends Controller
         'resultado3'=>$resull3
        	)); 
 	}
-
-	/**
-	 * Logs out the current user and redirect to homepage.
-	 */
 	public function actionLogout()
 	{
 		Yii::app()->user->logout();

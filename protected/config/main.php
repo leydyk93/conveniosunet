@@ -86,7 +86,7 @@ return array(
 			'charset' => 'utf8',
 			*/
 
-			'connectionString' => 'mysql:host=localhost;dbname=conveniosunet',
+			'connectionString' => 'mysql:host=localhost;dbname=unetconvenios',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',

@@ -49,13 +49,13 @@
 			'encodeLabel' => false,
 			'items'=>array(
 				array('label'=>'<span class="glyphicon glyphicon-home"></span>', 'url'=>array('/site/index')),
-				array('label'=>'<span class="glyphicon glyphicon-search"></span> Consultar Convenios', 'url'=>array('/site/convenioConsultar')),
+				array('label'=>'<span class="glyphicon glyphicon-search"></span> Consultar Convenios', 'url'=>array('/convenios/consultar')),
 				array('label'=>'<span class="glyphicon glyphicon-book"></span> Información', 'url'=>array('/site/informacion')),
 				array('label'=>'<span class="glyphicon glyphicon-earphone"></span> Contactenos', 'url'=>array('/site/contact'),'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'<span class="glyphicon glyphicon-cog"></span> Configuración <span class="caret"></span>', 'url'=>array('/site/configuracion'), 'visible'=>!Yii::app()->user->isGuest,'items'=>array(
 		           // array('label'=>'Convenios', 'url'=>array('/site/configuracion', 'tag'=>'Estatica')),
 		            array('label'=>'Administrar Usuarios', 'url'=>array('usuario/admin', 'tag'=>'Aministrar Usuarios')),
-		            array('label'=>'Administrar Información Base de Datos', 'url'=>array('convenios/consultar', 'tag'=>'popular')),
+		            array('label'=>'Administrar Información Base de Datos', 'url'=>array('site/configuracion', 'tag'=>'popular')),
 		        ),
 
 				 'submenuOptions'=>array('class'=>'dropdown-menu'), 
@@ -94,7 +94,8 @@
        <div class="col-md-6">
 
        	<?php if(!Yii::app()->user->isGuest):?>
-			<p class="text-right" id="fecha"></p>
+       	<p  class="text-right"> <?php echo Date("d-m-Y"); ?></p>
+			
 		<?php endif?>
        </div>
 	</div>   
@@ -111,16 +112,6 @@
 		</div>
 		
 	</footer><!-- footer -->
-
-	<script>
-      var d = new Date();
-      var dia=d.getDate().toString();
-      var mes=(d.getMonth()+1).toString();
-      var anio=d.getFullYear().toString();
-      var fecha1=dia.concat("/",mes,"/",anio);
-      var fecha2=d.toDateString();
-      document.getElementById("fecha").innerHTML = fecha1;
-   </script>
 
 </body>
 </html>

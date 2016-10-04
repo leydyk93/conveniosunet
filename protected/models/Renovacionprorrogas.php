@@ -5,10 +5,10 @@
  *
  * The followings are the available columns in table 'renovacionprorrogas':
  * @property integer $idRenovacionProrroga
- * @property string $fechaInicioProrroga
  * @property string $fechaFinProrroga
  * @property string $observacionProrroga
  * @property string $convenios_idConvenio
+ * @property string $fechaRenovacion
  *
  * The followings are the available model relations:
  * @property Convenios $conveniosIdConvenio
@@ -34,11 +34,32 @@ class Renovacionprorrogas extends CActiveRecord
 			array('convenios_idConvenio', 'required'),
 			array('observacionProrroga', 'length', 'max'=>200),
 			array('convenios_idConvenio', 'length', 'max'=>50),
-			array('fechaInicioProrroga, fechaFinProrroga', 'safe'),
+			array('fechaFinProrroga, fechaRenovacion', 'safe'),
+			array('fechaFinProrroga','ValidarAnio'),
+			/*array('fechaFinProrroga',
+				 'date', 
+				 'format'=>'yyyy',
+				 'message'=>'el formato es de año ejem:2016'),*/
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idRenovacionProrroga, fechaInicioProrroga, fechaFinProrroga, observacionProrroga, convenios_idConvenio', 'safe', 'on'=>'search'),
+			array('idRenovacionProrroga, fechaFinProrroga, observacionProrroga, convenios_idConvenio, fechaRenovacion', 'safe', 'on'=>'search'),
 		);
+	}
+
+	public function ValidarAnio($attributes,$params){
+
+
+	  $criteria=new CDbCriteria;
+      $criteria->select='fechaCaducidadConvenio';  
+      $criteria->condition='idConvenio=:convenio';
+      $criteria->params=array(':convenio'=>$this->convenios_idConvenio);
+      $convenio=convenios::model()->find($criteria);
+
+      if($convenio->fechaCaducidadConvenio>$this->fechaFinProrroga){
+
+      			$this->addError('fechaFinProrroga','debe ser superior a la fecha de vencimiento '.$convenio->fechaCaducidadConvenio);
+      }
+
 	}
 
 	/**
@@ -60,10 +81,10 @@ class Renovacionprorrogas extends CActiveRecord
 	{
 		return array(
 			'idRenovacionProrroga' => 'Id Renovacion Prorroga',
-			'fechaInicioProrroga' => 'Fecha Inicio Prorroga',
-			'fechaFinProrroga' => 'Fecha Fin Prorroga',
-			'observacionProrroga' => 'Observacion Prorroga',
+			'fechaFinProrroga' => 'Nueva Fecha Caducidad',
+			'observacionProrroga' => 'Justificación',
 			'convenios_idConvenio' => 'Convenios Id Convenio',
+			'fechaRenovacion' => 'Fecha Renovacion',
 		);
 	}
 
@@ -86,10 +107,10 @@ class Renovacionprorrogas extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('idRenovacionProrroga',$this->idRenovacionProrroga);
-		$criteria->compare('fechaInicioProrroga',$this->fechaInicioProrroga,true);
 		$criteria->compare('fechaFinProrroga',$this->fechaFinProrroga,true);
 		$criteria->compare('observacionProrroga',$this->observacionProrroga,true);
 		$criteria->compare('convenios_idConvenio',$this->convenios_idConvenio,true);
+		$criteria->compare('fechaRenovacion',$this->fechaRenovacion,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

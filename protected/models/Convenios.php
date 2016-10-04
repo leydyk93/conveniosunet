@@ -9,31 +9,24 @@
  * @property string $fechaInicioConvenio
  * @property string $fechaCaducidadConvenio
  * @property string $objetivoConvenio
- * @property string $ventajasBeneficiosConvenio
  * @property string $institucionUNET
  * @property string $urlConvenio
  * @property integer $clasificacionConvenios_idTipoConvenio
  * @property integer $tipoConvenios_idTipoConvenio
- * @property integer $alcanceConvenios_idAlcanceConvenio
- * @property integer $formaConvenios_idFormaConvenio
+ * @property string $alcanceConvenios
  * @property integer $dependencias_idDependencia
  * @property string $convenios_idConvenio
  *
  * The followings are the available model relations:
  * @property Actaintencion[] $actaintencions
- * @property ConvenioActividades[] $convenioActividades
  * @property ConvenioAportes[] $convenioAportes
  * @property ConvenioEstados[] $convenioEstadoses
- * @property ConvenioPresupuestos[] $convenioPresupuestoses
- * @property Alcanceconvenios $alcanceConveniosIdAlcanceConvenio
  * @property Clasificacionconvenios $clasificacionConveniosIdTipoConvenio
  * @property Convenios $conveniosIdConvenio
  * @property Convenios[] $convenioses
  * @property Dependencias $dependenciasIdDependencia
- * @property Formaconvenios $formaConveniosIdFormaConvenio
  * @property Tipoconvenios $tipoConveniosIdTipoConvenio
  * @property Historicoresponsables[] $historicoresponsables
- * @property Informes[] $informes
  * @property InstitucionConvenios[] $institucionConvenioses
  * @property Renovacionprorrogas[] $renovacionprorrogases
  */
@@ -55,14 +48,14 @@ class Convenios extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idConvenio, nombreConvenio, fechaInicioConvenio, fechaCaducidadConvenio, objetivoConvenio, ventajasBeneficiosConvenio, institucionUNET, urlConvenio, clasificacionConvenios_idTipoConvenio, tipoConvenios_idTipoConvenio, alcanceConvenios_idAlcanceConvenio, formaConvenios_idFormaConvenio, dependencias_idDependencia', 'required'),
-			array('clasificacionConvenios_idTipoConvenio, tipoConvenios_idTipoConvenio, alcanceConvenios_idAlcanceConvenio, formaConvenios_idFormaConvenio, dependencias_idDependencia', 'numerical', 'integerOnly'=>true),
+			array('idConvenio, nombreConvenio, fechaInicioConvenio, fechaCaducidadConvenio, objetivoConvenio, institucionUNET, urlConvenio, clasificacionConvenios_idTipoConvenio, tipoConvenios_idTipoConvenio, alcanceConvenios, dependencias_idDependencia', 'required'),
+			array('clasificacionConvenios_idTipoConvenio, tipoConvenios_idTipoConvenio, dependencias_idDependencia', 'numerical', 'integerOnly'=>true),
 			array('idConvenio, institucionUNET, convenios_idConvenio', 'length', 'max'=>50),
 			array('nombreConvenio', 'length', 'max'=>200),
 			array('urlConvenio', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idConvenio, nombreConvenio, fechaInicioConvenio, fechaCaducidadConvenio, objetivoConvenio, ventajasBeneficiosConvenio, institucionUNET, urlConvenio, clasificacionConvenios_idTipoConvenio, tipoConvenios_idTipoConvenio, alcanceConvenios_idAlcanceConvenio, formaConvenios_idFormaConvenio, dependencias_idDependencia, convenios_idConvenio', 'safe', 'on'=>'search'),
+			array('idConvenio, nombreConvenio, fechaInicioConvenio, fechaCaducidadConvenio, objetivoConvenio, institucionUNET, urlConvenio, clasificacionConvenios_idTipoConvenio, tipoConvenios_idTipoConvenio, alcanceConvenios, dependencias_idDependencia, convenios_idConvenio', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -75,19 +68,14 @@ class Convenios extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'actaintencions' => array(self::HAS_MANY, 'Actaintencion', 'convenios_idConvenio'),
-			'convenioActividades' => array(self::HAS_MANY, 'ConvenioActividades', 'convenios_idConvenio'),
 			'convenioAportes' => array(self::HAS_MANY, 'ConvenioAportes', 'convenios_idConvenio'),
 			'convenioEstadoses' => array(self::HAS_MANY, 'ConvenioEstados', 'convenios_idConvenio'),
-			'convenioPresupuestoses' => array(self::HAS_MANY, 'ConvenioPresupuestos', 'convenios_idConvenio'),
-			'alcanceConveniosIdAlcanceConvenio' => array(self::BELONGS_TO, 'Alcanceconvenios', 'alcanceConvenios_idAlcanceConvenio'),
 			'clasificacionConveniosIdTipoConvenio' => array(self::BELONGS_TO, 'Clasificacionconvenios', 'clasificacionConvenios_idTipoConvenio'),
 			'conveniosIdConvenio' => array(self::BELONGS_TO, 'Convenios', 'convenios_idConvenio'),
 			'convenioses' => array(self::HAS_MANY, 'Convenios', 'convenios_idConvenio'),
 			'dependenciasIdDependencia' => array(self::BELONGS_TO, 'Dependencias', 'dependencias_idDependencia'),
-			'formaConveniosIdFormaConvenio' => array(self::BELONGS_TO, 'Formaconvenios', 'formaConvenios_idFormaConvenio'),
 			'tipoConveniosIdTipoConvenio' => array(self::BELONGS_TO, 'Tipoconvenios', 'tipoConvenios_idTipoConvenio'),
 			'historicoresponsables' => array(self::HAS_MANY, 'Historicoresponsables', 'convenios_idConvenio'),
-			'informes' => array(self::HAS_MANY, 'Informes', 'convenios_idConvenio'),
 			'institucionConvenioses' => array(self::HAS_MANY, 'InstitucionConvenios', 'convenios_idConvenio'),
 			'renovacionprorrogases' => array(self::HAS_MANY, 'Renovacionprorrogas', 'convenios_idConvenio'),
 		);
@@ -104,13 +92,11 @@ class Convenios extends CActiveRecord
 			'fechaInicioConvenio' => 'Fecha Inicio Convenio',
 			'fechaCaducidadConvenio' => 'Fecha Caducidad Convenio',
 			'objetivoConvenio' => 'Objetivo Convenio',
-			'ventajasBeneficiosConvenio' => 'Ventajas Beneficios Convenio',
 			'institucionUNET' => 'Institucion Unet',
 			'urlConvenio' => 'Url Convenio',
 			'clasificacionConvenios_idTipoConvenio' => 'Clasificacion Convenios Id Tipo Convenio',
 			'tipoConvenios_idTipoConvenio' => 'Tipo Convenios Id Tipo Convenio',
-			'alcanceConvenios_idAlcanceConvenio' => 'Alcance Convenios Id Alcance Convenio',
-			'formaConvenios_idFormaConvenio' => 'Forma Convenios Id Forma Convenio',
+			'alcanceConvenios' => 'Alcance Convenios',
 			'dependencias_idDependencia' => 'Dependencias Id Dependencia',
 			'convenios_idConvenio' => 'Convenios Id Convenio',
 		);
@@ -139,13 +125,11 @@ class Convenios extends CActiveRecord
 		$criteria->compare('fechaInicioConvenio',$this->fechaInicioConvenio,true);
 		$criteria->compare('fechaCaducidadConvenio',$this->fechaCaducidadConvenio,true);
 		$criteria->compare('objetivoConvenio',$this->objetivoConvenio,true);
-		$criteria->compare('ventajasBeneficiosConvenio',$this->ventajasBeneficiosConvenio,true);
 		$criteria->compare('institucionUNET',$this->institucionUNET,true);
 		$criteria->compare('urlConvenio',$this->urlConvenio,true);
 		$criteria->compare('clasificacionConvenios_idTipoConvenio',$this->clasificacionConvenios_idTipoConvenio);
 		$criteria->compare('tipoConvenios_idTipoConvenio',$this->tipoConvenios_idTipoConvenio);
-		$criteria->compare('alcanceConvenios_idAlcanceConvenio',$this->alcanceConvenios_idAlcanceConvenio);
-		$criteria->compare('formaConvenios_idFormaConvenio',$this->formaConvenios_idFormaConvenio);
+		$criteria->compare('alcanceConvenios',$this->alcanceConvenios,true);
 		$criteria->compare('dependencias_idDependencia',$this->dependencias_idDependencia);
 		$criteria->compare('convenios_idConvenio',$this->convenios_idConvenio,true);
 
