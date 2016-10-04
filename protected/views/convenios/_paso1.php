@@ -141,19 +141,7 @@ CARACTERISTICAS DEL CONVENIO
 <?php 
 echo "<br>";
 echo "<br>";
-$this->widget('zii.widgets.jui.CJuiAutoComplete',array(
-    'name'=>'ciudad',
-    'source'=>array('ciudad1','ciudad2','ciudad3'),
-    // Opciones javascript adicionales para el plugin
-    'options'=>array(
-        'minLength'=>'2',
-    ),
-    'htmlOptions'=>array(
-        'style'=>'height:20px;',
-    ),
-));
-echo "<br>";
-echo "<br>";
+
  ?>
  
  

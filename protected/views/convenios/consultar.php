@@ -11,7 +11,7 @@
       $form=$this->beginWidget('CActiveForm',
         array(
           'method' =>'POST',
-          'action' =>Yii::app()->createUrl('convenios/consultar'),
+          'action' =>Yii::app()->createUrl('convenios/consultara'),
           'id' => 'form',
             'enableAjaxValidation' => true,
             'enableClientValidation' => true,
@@ -381,7 +381,9 @@ function  limpiarFiltros(){
 
 function send()
  {
+  
   var anio = document.getElementById("ConsultasConvenios_anio").value;
+
   var tipo = document.getElementsByName("ConsultasConvenios[tipo][]");
   var clasifi= document.getElementsByName("ConsultasConvenios[clasificacion][]");
   var ambito=$('#ConsultasConvenios_ambitoGeografico option:selected').val();

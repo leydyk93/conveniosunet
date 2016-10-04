@@ -671,6 +671,8 @@ class ConveniosController extends Controller
 				
 				if(isset($_POST['anio']) && $_POST['anio']!=null){
 				 $consulta .="and YEAR(c.fechaInicioConvenio)=".$_POST['anio']." ";	
+
+			
 				}
 
 				if(isset($_POST['tipo'])){
