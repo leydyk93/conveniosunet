@@ -9,7 +9,7 @@
 		public function rules (){
 
 			return array(
-				//array("nro_acta,fecha_acta,url_acta","required"),
+				array("nro_acta,fecha_acta,url_acta","safe"),
 				//safe se le coloca a los datos que no se quieren validar 
 			);
 		}

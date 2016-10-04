@@ -109,6 +109,12 @@
 <?php echo $form->dropDownList($pasouno,'dependencia',CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),''); ?>
 <?php echo $form->error($pasouno,'dependencia'); ?>
 </div>
+
+<a href="#" data-toggle="modal" data-target="#miventana">
+    Abrir ventana 
+</a>
+
+
 <br>	
 <p>Estado Inicial</p>
 <br>
@@ -125,3 +131,39 @@
 </div><!--contenido-->
 </main>
 <?php $this->endWidget(); ?>
+
+<div class="modal fade" id="miventana" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog"> 
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4>Agregar Nueva Dependencia</h4>
+                </div>            
+                <div class="modal-body">
+                    
+                    <p>Todo el contenido de la ventana modal</p>
+                    <?php 
+                         $formd=$this->beginWidget("CActiveForm");
+                    ?>
+
+                    <div class="row">
+                    <?php echo $formd->labelEx($dep,'nombreDependencia',array('class'=>'col-md-3')); ?>
+                    <?php echo $form->textField($dep,"nombreDependencia",array('style'=>'width:200px;','class'=>'col-md-5'));?>
+                    <?php echo $form->error($dep,"nombreDependencia"); ?>
+                    </div>
+                    <div class="row">
+                    <?php echo $formd->labelEx($dep,'telefonoDependencia',array('class'=>'col-md-3')); ?>
+                    <?php echo $form->textField($dep,"telefonoDependencia",array('style'=>'width:200px;','class'=>'col-md-5'));?>
+                    <?php echo $form->error($dep,"telefonoDependencia"); ?>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button  type="button" class="btn btn-conv" data-dismiss="modal"> Cerrar</button>
+                    <?php echo CHtml::submitButton("Guardar",array("class"=>'btn btn-conv')); ?>
+                <?php $this->endWidget(); ?>
+                </div>
+
+        </div>
+    </div>
+</div>

@@ -13,7 +13,7 @@ $this->menu=array(
 );
 ?>
 
-<?php   $this->renderPartial('_paso1', array("pasouno"=>$pasouno,"resp"=>$resp));?>
+<?php   $this->renderPartial('_paso1', array("pasouno"=>$pasouno,"dep"=>$dep));?>
 <!--<h1>Crear Convenios</h1>-->
 
 <!-- 

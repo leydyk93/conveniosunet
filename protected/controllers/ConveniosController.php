@@ -299,7 +299,7 @@ class ConveniosController extends Controller
 
 		$pasouno=new PasounoForm;
 
-		$resp=new Responsables;
+		$dep=new Dependencias;
 
 		//logic del formulario 
 		// Uncomment the following line if AJAX validation is needed
@@ -331,17 +331,17 @@ class ConveniosController extends Controller
 			}
 			}
 
-			if (isset($_POST["Responsables"])){
-			$resp->attributes=$_POST["Responsables"];
+			if (isset($_POST["Dependencias"])){
+			$dep->attributes=$_POST["Dependencias"];
 
-			if($resp->save()){
+			if($dep->save()){
 
-				echo "responsable guardado";	
+				echo "dependencia guardado";	
 			}
 			}
 
 		$this->render('create',array(
-			"pasouno"=>$pasouno,"resp"=>$resp
+			"pasouno"=>$pasouno,"dep"=>$dep
 		));
 
 	}
