@@ -1,7 +1,7 @@
 <?php
 
 /**
- * resultadoConvenio class.
+ * resultadoConvenio class permite almacenar los resultado de las diferentes consultas para las diferentes vistas
  *  it is used for to show the results of a query. 
  */
 class ResultadoConvenios extends CFormModel

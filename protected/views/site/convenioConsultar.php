@@ -15,7 +15,8 @@
               echo "<br>";
            }
 }*/
-/*if(isset($_POST['ConsultasConvenios']['tipo'])&&$_POST['ConsultasConvenios']['tipo']!=null){
+
+if(isset($_POST['ConsultasConvenios']['tipo'])&&$_POST['ConsultasConvenios']['tipo']!=null){
  
   foreach ($_POST['ConsultasConvenios']['tipo'] as $key) {
     echo "tipo ".$key;
@@ -41,8 +42,9 @@ if(isset($_POST['ConsultasConvenios']['institucion'])&&$_POST['ConsultasConvenio
 if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios']['estadoConv']!=null){
   $cadena2 = implode($_POST['ConsultasConvenios']['estadoConv']);
  echo " Estado es".$cadena2;
-}*/
+}
  ?>
+
 
 <?php 
   $form=$this->beginWidget('CActiveForm',
@@ -59,8 +61,7 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
         ),
       ));
  ?>
-
-
+ 
       
 <div class="row">
   <div class="col-sm-4">
@@ -85,8 +86,10 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
       <ul class="nav nav-pills nav-stacked">
         <li><a> <?php echo $form->labelEx($model,'anio'); ?>
             <?php 
-              echo $form->textField($model,'anio');
+             /* echo $form->textField($model,'anio',/*array('onclick'=>'send();'));*/
+               echo $form->textField($model,'anio');
               echo $form->error($model,'anio');
+
              ?>  
              </a>  
         </li> 
@@ -125,7 +128,9 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
                   $list3=CHtml::listData($paisesconve,'idPais', 'nombrePais');
                   echo $form->dropDownList($model,'pais', 
                             $list3,
-                            array('empty' => 'Todos'));
+                            array('empty' => 'Todos')/*,
+                            array('onclick'=>'send();')*/
+                            );
               ?>
               
             </li>
@@ -164,12 +169,13 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
   </div>
     
             <div id="Resulconvenios" class="col-sm-8">
+  
                  <div class="list-group">
                  
                   <?php while((($row=$ojo->read())!==false)&& $ojo!=null) {?>
-                 <aside class="list-group-item" >
+                 <aside id="prueba" class="list-group-item" >
                    <div class="row">
-                      <div class="col-sm-2"><p class="text-info"><?php  echo $resultado3->tipo_convenio." ";  ?><p> </div>
+                      <div class="col-sm-2"><p class="text-info"><?php  echo $resultado3->tipo_convenio." ";  ?></p> </div>
                       <div class="col-sm-10">
                       <a href="<?php echo $this->createUrl( '/convenios/view' )."&id=".$resultado3->id_convenio; ?>"><?php echo $resultado3->nombre_convenio; ?></a> 
                       </div> 
@@ -210,12 +216,40 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
               </div>
             </div>    
 </div>
-
-
 <script>
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
+</script>
+
+
+<script type="text/javascript">
+ 
+function send()
+ { 
+   var data=$("#form").serialize();
+  $.ajax({
+   type: 'POST',
+    url: '<?php Yii::app()->createUrl("site/convenioConsultar"); ?>',
+   data:data,
+success:function(data){
+                alert(data); 
+                
+                //document.getElementById("Resulconvenios").innerHTML = data;
+                 
+                // document.getElementById("Resulconvenios").innerHTML = "Hello World";
+
+              },
+   error: function(data) { // if error occured
+         alert("Error occured.please try again");
+         alert(data);
+    },
+ 
+  dataType:'html'
+  });
+ 
+}
+ 
 </script>
 
 

@@ -49,12 +49,12 @@ INSERT INTO clasificacionConvenios (nombreClasificacionConvenio, descripcionClas
 INSERT INTO alcanceConvenios (descripcionAlcanceConvenio) VALUES
 ('General'),
 ('Especifico'),
-('Mixto');
+('Mixto');*/
 
 -- -----------------------------------------------------
 -- Table `mydb`.`formaConvenios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS formaConvenios (
+/*CREATE TABLE IF NOT EXISTS formaConvenios (
   idFormaConvenio INT AUTO_INCREMENT NOT NULL,
   descripcionFormaConvenio VARCHAR(50) NOT NULL,
   PRIMARY KEY (idFormaConvenio));
@@ -62,8 +62,10 @@ CREATE TABLE IF NOT EXISTS formaConvenios (
 INSERT INTO formaConvenios (descripcionFormaConvenio) VALUES
 ('Unica'),
  ('Bilateral'),
-( 'Multilateral');
-*/
+
+( 'Multilateral');*/
+
+
 -- -----------------------------------------------------
 -- Table `mydb`.`tiposInstituciones`
 -- -----------------------------------------------------
@@ -220,8 +222,10 @@ CREATE TABLE IF NOT EXISTS convenios (
   urlConvenio VARCHAR(100) NOT NULL,
   clasificacionConvenios_idTipoConvenio INT NOT NULL,
   tipoConvenios_idTipoConvenio INT NOT NULL,
-  alcanceConvenioS TEXT NOT NULL,
-  --formaConvenios_idFormaConvenio INT NOT NULL,
+
+  alcanceConvenios TEXT NOT NULL,
+  /*formaConvenios_idFormaConvenio INT NOT NULL,*/
+
   dependencias_idDependencia INT NOT NULL,
   convenios_idConvenio VARCHAR(50)  NULL, 
 
@@ -233,12 +237,12 @@ CREATE TABLE IF NOT EXISTS convenios (
   CONSTRAINT fk_convenios_tipoConvenios1
     FOREIGN KEY (tipoConvenios_idTipoConvenio)
     REFERENCES tipoConvenios (idTipoConvenio),
- -- CONSTRAINT fk_convenios_alcanceConvenios1
-   -- FOREIGN KEY (alcanceConvenios_idAlcanceConvenio)
-    --REFERENCES alcanceConvenios(idAlcanceConvenio),
-  --CONSTRAINT fk_convenios_formaConvenios1
-   -- FOREIGN KEY (formaConvenios_idFormaConvenio)
-    --REFERENCES formaConvenios (idFormaConvenio),
+  /*CONSTRAINT fk_convenios_alcanceConvenios1
+    FOREIGN KEY (alcanceConvenios_idAlcanceConvenio)
+    REFERENCES alcanceConvenios(idAlcanceConvenio),
+  CONSTRAINT fk_convenios_formaConvenios1
+    FOREIGN KEY (formaConvenios_idFormaConvenio)
+    REFERENCES formaConvenios (idFormaConvenio),*/
 CONSTRAINT fk_convenios_dependencias1
     FOREIGN KEY (dependencias_idDependencia)
     REFERENCES dependencias (idDependencia),
@@ -246,12 +250,14 @@ CONSTRAINT fk_convenios_dependencias1
     FOREIGN KEY (convenios_idConvenio)
     REFERENCES convenios (idConvenio))
 
---ALTER TABLE `convenios` ADD `ventajasBeneficiosConvenio` TEXT NOT NULL AFTER `objetivoConvenio`;
+
+/*ALTER TABLE `convenios` ADD `ventajasBeneficiosConvenio` TEXT NOT NULL AFTER `objetivoConvenio`;*/
 
 /*INSERT INTO convenios (idConvenio,nombreConvenio,fechaInicioConvenio,fechaCaducidadConvenio,
                        objetivoConvenio,institucionUNET,urlConvenio,clasificacionConvenios_idTipoConvenio,
-                       tipoConvenios_idTipoConvenio,alcanceConvenios_idAlcanceConvenio,formaConvenios_idFormaConvenio,
+                       tipoConvenios_idTipoConvenio,alcanceConvenios,/*formaConvenios_idFormaConvenio,
                         dependencias_idDependencia,convenios_idConvenio) VALUES
+
 ('04', 'convenio 4','2014/01/01','2018/01/01','ejemplo 4','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio4/djndkjaskd.pdf','2','1','1','2','1',null),
 ('01', 'convenio 1','2015/01/01','2016/01/01','ejemplo 1','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','1','2','1',null),
 ('02', 'convenio 2','2014/01/01','2015/01/01','ejemplo 2','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','1','2','1',null);
@@ -265,8 +271,6 @@ INSERT INTO convenios (idConvenio,nombreConvenio,fechaInicioConvenio,fechaCaduci
 ('02', 'convenio 2','2014/01/01','2015/01/01','ejemplo 2','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','fmkmfkkfm','1',null);
 ('03', 'convenio 3','2015/02/01','2017/01/01','ejemplo 3','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio3/djndkjaskd.pdf','1','2','sdfgsgfdd','2','01');
 
-
-
 -- -----------------------------------------------------
 -- Table `mydb`.`actividades`
 -- -----------------------------------------------------
@@ -275,9 +279,16 @@ INSERT INTO convenios (idConvenio,nombreConvenio,fechaInicioConvenio,fechaCaduci
   descripcionActividad VARCHAR(200) NULL,
   PRIMARY KEY (idActividad));
 
+<<<<<<< HEAD
 INSERT INTO `actividades` (`idActividad`, `descripcionActividad`) VALUES (NULL, 'extension'), (NULL, 'investigacion');
 */
 
+=======
+INSERT INTO `actividades` (`idActividad`, `descripcionActividad`) VALUES (NULL, 'extension'), (NULL, 'investigacion');*/
+-- -----------------------------------------------------
+-- Table  mydb . tipoResponsable
+-- -----------------------------------------------------
+>>>>>>> 1e65f14e43e93af06111af659d0828dc6952f885
 CREATE TABLE IF NOT EXISTS tipoResponsable (
   idTipoResponsable INT AUTO_INCREMENT NOT NULL,
   descripcionTipoResponsable VARCHAR(50) NOT NULL,
@@ -286,9 +297,12 @@ CREATE TABLE IF NOT EXISTS tipoResponsable (
 INSERT INTO tipoResponsable (descripcionTipoResponsable) VALUES
 ('Legal'),
 ('Contacto');
+<<<<<<< HEAD
 -- -----------------------------------------------------
 -- Table  mydb . responsables 
 -- -----------------------------------------------------
+=======
+>>>>>>> 1e65f14e43e93af06111af659d0828dc6952f885
 -- -----------------------------------------------------
 -- Table  mydb . responsables 
 -- -----------------------------------------------------
@@ -348,12 +362,12 @@ CREATE TABLE IF NOT EXISTS    unidades  (
 -- -----------------------------------------------------
 -- Table    aportes 
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS  aportes  (
+/*CREATE TABLE IF NOT EXISTS  aportes  (
    idAporte  INT AUTO_INCREMENT NOT NULL,
    descripcionAporte  VARCHAR(50) NULL,
   PRIMARY KEY ( idAporte ));
 
-INSERT INTO `aportes` (`idAporte`, `descripcionAporte`) VALUES (NULL, 'Aporte 1'), (NULL, 'Aporte 2');
+INSERT INTO `aportes` (`idAporte`, `descripcionAporte`) VALUES (NULL, 'Aporte 1'), (NULL, 'Aporte 2');*/
 -- -----------------------------------------------------
 -- Table    monedas 
 -- -----------------------------------------------------
@@ -383,7 +397,7 @@ CREATE TABLE IF NOT EXISTS    actaIntencion  (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS    renovacionProrrogas  (
    idRenovacionProrroga  INT AUTO_INCREMENT NOT NULL,
-   fechaInicioProrroga  DATE NULL,
+   /*fechaInicioProrroga  DATE NULL,*/
    fechaFinProrroga  DATE NULL,
    observacionProrroga  VARCHAR(200) NULL,
    convenios_idConvenio  VARCHAR(50) NOT NULL,
@@ -512,7 +526,7 @@ INSERT INTO convenio_Estados (convenios_idConvenio,estadoConvenios_idEstadoConve
 -- -----------------------------------------------------
 -- Table    convenio_actividades 
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS    convenio_actividades  (
+/*CREATE TABLE IF NOT EXISTS    convenio_actividades  (
    id_convenio_actividades INT AUTO_INCREMENT NOT NULL,
    convenios_idConvenio  VARCHAR(50) NOT NULL,
    actividades_idActividad  INT NOT NULL,
@@ -529,7 +543,7 @@ CREATE TABLE IF NOT EXISTS    convenio_actividades  (
     REFERENCES    actividades  ( idActividad )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-    CONSTRAINT uk_convenio_actividades  UNIQUE (convenios_idConvenio,actividades_idActividad));
+    CONSTRAINT uk_convenio_actividades  UNIQUE (convenios_idConvenio,actividades_idActividad));*/
 -- -----------------------------------------------------
 -- Table    convenio_presupuestos 
 -- -----------------------------------------------------
@@ -558,11 +572,13 @@ CREATE TABLE IF NOT EXISTS    convenio_actividades  (
 CREATE TABLE IF NOT EXISTS    convenio_aportes  (
    id_convenio_aporte INT AUTO_INCREMENT NOT NULL,
    convenios_idConvenio  VARCHAR(50) NOT NULL,
-   aportes_idAporte  INT NOT NULL,
+   /*aportes_idAporte  INT NOT NULL,*/
+   descripcion_aporte VARCHAR(100) NOT NULL,
+   monedas_idMoneda  INT NULL,
    valor  VARCHAR(45) NULL,
-   monedas_idMoneda  INT NOT NULL,
+   cantidad INT NULL,
+
   PRIMARY KEY ( id_convenio_aporte),
-  INDEX  fk_convenios_has_aportes_aportes1_idx  ( aportes_idAporte  ASC),
   INDEX  fk_convenios_has_aportes_convenios1_idx  ( convenios_idConvenio  ASC),
   INDEX  fk_convenio_aportes_monedas1_idx  ( monedas_idMoneda  ASC),
   
@@ -571,17 +587,17 @@ CREATE TABLE IF NOT EXISTS    convenio_aportes  (
     REFERENCES    convenios  ( idConvenio )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT  fk_convenios_has_aportes_aportes1 
+ /* CONSTRAINT  fk_convenios_has_aportes_aportes1 
     FOREIGN KEY ( aportes_idAporte )
     REFERENCES    aportes  ( idAporte )
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON UPDATE NO ACTION,*/
   CONSTRAINT  fk_convenio_aportes_monedas1 
     FOREIGN KEY ( monedas_idMoneda )
     REFERENCES    monedas  ( idMoneda )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-    CONSTRAINT uk_convenio_aporte  UNIQUE (convenios_idConvenio,aportes_idAporte));
+   /* CONSTRAINT uk_convenio_aporte  UNIQUE (convenios_idConvenio,aportes_idAporte)*/);
   
 -- -----------------------------------------------------
 -- Table    informes 
@@ -720,5 +736,91 @@ SELECT MAX( fechaCambioEstado )
 FROM convenio_estados
 WHERE convenios_idConvenio = c.idConvenio
 ) and  c.idConvenio IN ("01","03");
+
+/*Para Obtener las instituciones ok si son varias y llenar la tabla*/
+
+SELECT c.nombreConvenio, inst.siglasInstitucion, inst.nombreInstitucion, tinst.nombreTipoInstitucion, edo.nombreEstado, ps.nombrePais
+FROM convenios c
+JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio
+JOIN institucion_convenios ic ON c.idConvenio = ic.convenios_idConvenio
+JOIN instituciones inst ON inst.idInstitucion = ic.instituciones_idInstitucion
+JOIN tiposInstituciones tinst ON tinst.idTipoInstitucion = inst.tiposInstituciones_idTipoInstitucion
+JOIN estados edo ON edo.idEstado = inst.estados_idEstado
+JOIN paises ps ON ps.idPais = edo.paises_idPais
+WHERE c.idConvenio =  "01"
+
+*/
+
+/* para obtener todos los estados del convenio y llenar la tabla de la vista*/
+
+SELECT ec.nombreEstadoConvenio, ce.fechaCambioEstado, ce.numeroReporte, ce.observacionCambioEstado, d.nombreDependencia FROM convenios c
+    JOIN convenio_estados ce ON ce.convenios_idConvenio = c.idConvenio 
+    JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio = ec.idEstadoConvenio 
+     JOIN dependencias d ON d.idDependencia=ce.dependencias_idDependencia 
+     WHERE c.idConvenio = 01
+
+/*Obtener los datos del responsable legal y de contacto por parte de la UNET*/
+
+SELECT c.idConvenio, r.primerNombreResponsable, r.primerApellidoResponsable, r.correoElectronicoResponsable, r.telefonoResponsable, tr.descripcionTipoResponsable FROM convenios c
+    JOIN historicoresponsables hr ON c.idConvenio = hr.convenios_idConvenio
+    JOIN responsables r ON r.idResponsable  = hr.responsables_idResponsable
+    JOIN tiporesponsable tr ON tr.idTipoResponsable= r.tipoResponsable_idTipoResponsable
+    Where upper(tr.descripcionTipoResponsable)="LEGAL";
+
+/*Obtener  los datos del responsable legal y de contacto por la contraparte*/
+SELECT c.idConvenio, inst.siglasInstitucion, r.primerNombreResponsable, r.primerApellidoResponsable, r.correoElectronicoResponsable, r.telefonoResponsable, tr.descripcionTipoResponsable FROM  responsables r 
+  JOIN historicoresponsables hr ON r.idResponsable  = hr.responsables_idResponsable
+  JOIN institucion_convenios ic ON ic.idInstitucionConvenio=hr.institucion_convenios_idInstitucionConvenio
+  JOIN convenios c ON c.idConvenio = ic.convenios_idConvenio
+  JOIN instituciones inst ON inst.idInstitucion=ic.instituciones_idInstitucion
+  JOIN tiporesponsable tr ON tr.idTipoResponsable= r.tipoResponsable_idTipoResponsable;
+
+/*La consulta para el generar los convenios en la vista consultar*/
+
+SELECT DISTINCT c.nombreConvenio, tc.descripcionTipoConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio, c.objetivoConvenio, ec.nombreEstadoConvenio,r.correoElectronicoResponsable
+FROM convenios c
+JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio
+JOIN convenio_estados ce ON ce.convenios_idConvenio = c.idConvenio
+JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio = ec.idEstadoConvenio
+JOIN institucion_convenios ic ON c.idConvenio = ic.convenios_idConvenio
+JOIN instituciones inst ON inst.idInstitucion=ic.instituciones_idInstitucion
+JOIN tiposInstituciones tinst ON  tinst.idTipoInstitucion=inst.tiposInstituciones_idTipoInstitucion 
+JOIN estados edo ON edo.idEstado = inst.estados_idEstado
+JOIN paises ps ON ps.idPais=edo.paises_idPais
+JOIN historicoresponsables hr ON c.idConvenio = hr.convenios_idConvenio
+JOIN responsables r ON r.idResponsable  = hr.responsables_idResponsable
+JOIN tiporesponsable tr ON tr.idTipoResponsable= r.tipoResponsable_idTipoResponsable
+WHERE ce.fechaCambioEstado = (
+SELECT MAX( fechaCambioEstado ) 
+FROM convenio_estados
+WHERE convenios_idConvenio = c.idConvenio
+) and upper(tr.descripcionTipoResponsable)="CONTACTO";
+
+SELECT c.idConvenio, inst.siglasInstitucion, r.primerNombreResponsable, r.primerApellidoResponsable, r.correoElectronicoResponsable, r.telefonoResponsable, tr.descripcionTipoResponsable
+FROM responsables r
+JOIN historicoresponsables hr ON r.idResponsable = hr.responsables_idResponsable
+JOIN institucion_convenios ic ON ic.idInstitucionConvenio = hr.institucion_convenios_idInstitucionConvenio
+JOIN convenios c ON c.idConvenio = ic.convenios_idConvenio
+JOIN instituciones inst ON inst.idInstitucion = ic.instituciones_idInstitucion
+JOIN tiporesponsable tr ON tr.idTipoResponsable = r.tipoResponsable_idTipoResponsable
+WHERE c.idConvenio =  "02" and upper(tr.descripcionTipoResponsable)="LEGAL";
+
+SELECT c.idConvenio, r.primerNombreResponsable, r.primerApellidoResponsable, r.correoElectronicoResponsable, r.telefonoResponsable, tr.descripcionTipoResponsable
+FROM responsables r
+JOIN historicoresponsables hr ON r.idResponsable = hr.responsables_idResponsable
+JOIN convenios c ON c.idConvenio = hr.convenios_idConvenio
+JOIN tiporesponsable tr ON tr.idTipoResponsable = r.tipoResponsable_idTipoResponsable
+WHERE c.idConvenio =  "02" and upper(tr.descripcionTipoResponsable)="LEGAL";
+
+
+
+
+
+
+
+
+
+
+
 
 

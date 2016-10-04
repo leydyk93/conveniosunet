@@ -210,3 +210,23 @@ background-size: 100% 100%;
 .cost{
 	margin-left: 20%;
 }
+
+ .glyphicon-plus:before {
+   content: "\2212";
+}
+
+.collapsed .glyphicon-plus:before {
+    content: "\2b";
+}
+/*Nuevos estilos para la pagina consultar*/
+.collapsed .glyphicon-plus-sign:before { 
+    
+    content: "\e081";
+}
+
+ .glyphicon-plus-sign:before {
+    content: "\e082";
+}
+br {
+display: none;
+}

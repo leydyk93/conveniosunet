@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2016/01/16 18:00:03 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.components.Bootstrap" is invalid. Make sure it points to an existing PHP file and the file is readable.' in C:\wamp\www\yii\framework\YiiBase.php:322
 Stack trace:
 #0 C:\wamp\www\yii\framework\YiiBase.php(196): YiiBase::import('bootstrap.compo...', true)
@@ -49942,3 +49943,5 @@ Stack trace:
 REQUEST_URI=/conveniosunet/index.php?r=Convenios/autocomplete&term=carre%C3%B1o+pe
 HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/pasodos&idconvenio=14
 ---
+=======
+>>>>>>> 1e65f14e43e93af06111af659d0828dc6952f885

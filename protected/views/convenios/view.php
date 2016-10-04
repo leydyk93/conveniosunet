@@ -4,7 +4,8 @@
 
 $this->breadcrumbs=array(
 	'Convenios'=>array('index'),
-	$model->idConvenio,
+	'Detalle de convenio',
+	//$model->idConvenio,
 );
 
 $this->menu=array(
@@ -17,86 +18,174 @@ $this->menu=array(
 ?>
 
 
-  <div class="row">
+<div class="row">
 	<div  class="nuevo col-md-12 text-left">
-		
-		 <p> Convenio <?php echo $model->nombreConvenio; ?></p>
+		 <h4>Convenio: <span><?php echo $model->nombreConvenio; ?></span></h4>
+
 	</div>
 
  </div>
 
-  <div class="panel-group">
-    <div class="panel panel-default">
-      <div class="panel-heading"><h4>Datos Generales del convenio</h4></div>
-      <div class="panel-body">
-
-	      
-	      	<p>Codigo: <?php echo $model->idConvenio; ?> </p>
-	      	<p>Nombre: <?php echo $model->nombreConvenio; ?></p>
-	      	<p>Objetivo:<?php echo $model->objetivoConvenio; ?></p>
-	      	<p>Clasificacion: <?php 
-
-	      	 $modelClass=Clasificacionconvenios::model()->findByPk($model->clasificacionConvenios_idTipoConvenio);
-	      	 echo $modelClass->nombreClasificacionConvenio;
-
-
-	      	 ?></p>
-	      	<p>Fecha Inicio: <?php echo $model->fechaInicioConvenio; ?> </p>
-	      	<p>Fecha Caducidad:<?php echo $model->fechaCaducidadConvenio; ?></p>
-	      
-
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading"><h4>Información de las Partes</h4></div>
-      <div class="panel-body">
-      	 	<h4>UNET </h4>
-	      	<p>Institucion: <?php echo $model->institucionUNET ?></p>
-	      	<p>Responsable: </p>
-	      	<h4>Contraparte </h4>
-	      	<p>Pais: 
-                   <?php  
+ <div class="list-group panel">
+	<a href="#demo1" class="list-group-item" data-toggle="collapse"><h4>Datos generales del Convenio<span class="glyphicon glyphicon-plus-sign pull-right"></span></h4></a>
+	<div class="collapse" id="demo1">
+	 	<div class="list-group-item">
+	 		<ul>
+		  		<!--<li>Codigo: <?php /*echo $model->idConvenio; */?></li>
+		  		<li>Nombre: <?php /*echo $model->nombreConvenio; */?></li>-->
+		  		<li>Objetivo:<?php echo $model->objetivoConvenio; ?></li>
+		  		<li>Tipo: <?php 
+		  			 $modelTipo=Tipoconvenios::model()->findByPk($model->tipoConvenios_idTipoConvenio);
+			      	 echo  $modelTipo->descripcionTipoConvenio;
+			      	 ?>
+			    </li>
+			    <li>Fecha Inicio: <?php echo $model->fechaInicioConvenio; ?></li>
+			    <li>Fecha Caducidad:<?php echo $model->fechaCaducidadConvenio; ?></li>
+			    <li>Estado Actual: <?php echo $estado; ?><?php 
 
 
-                    //$modelInst=Instituciones::model()->findByPk($model->clasificacionConvenios_idTipoConvenio); 
+			     ?>
+			 	</li>
+		  	</ul>
+
+	 	</div>
+	</div>
 
 
-                //  $posts=Paises::model()->with('estadoconvenios','Instituciones','institucion_convenios','Convenios')->findAll();
-                  
+	<a href="#demo2" class="list-group-item" data-toggle="collapse"><h4>Información de las Partes<span class="glyphicon glyphicon-plus-sign pull-right"></span></h4></a>
+	<div class="collapse" id="demo2">
+		<div  class="list-group-item">
+			
+			<h5>UNET </h5>
+		  	<ul>
+		  		<li>
+			      	Institucion: <?php echo $model->institucionUNET ?>	
+				</li>
+		  		<li>Responsables
+		  			<div class="table-responsive">
+		  			<table class="table table-bordered">
+					    <thead>
+					      <tr>
+					        <th>Tipo </th>
+					        <th>Responsable</th>
+					        <th>Información de Contacto</th>
+					        
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <?php while((($resulRespContUNET->read())!==false)){ ?>
+					      <tr>
+					        <td><?php echo $resullRespUNET->estado_actual_convenio ?></td>
+					        <td><?php echo $resullRespUNET->fecha_inicio." ".$resullRespUNET->fecha_caducidad; ?></td>
+					        <td><?php echo $resullRespUNET->objetivo_convenio." </br> Telf. ".$resullRespUNET->tipo_convenio; ?></td>
+					        
+					      </tr>
+					     <?php } ?>
+					    </tbody>
+					  </table>
+					</div>
+		  		</li>
+		  		
+		  	</ul>
+		  	<h5>Contraparte </h5>
+		  	<ul>
+		  		<li> Ubicación
+		  			<div class="table-responsive">
+					 <table class="table table-bordered">
+					    <thead>
+					      <tr>
+					        <th>Pais</th>
+					        <th>Estado</th>
+					        <th>Institución</th>
+					        
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <?php while((($resulConsulta->read())!==false)) { ?>
+					      <tr>
+					        <td><?php  echo $resullInfo->estado_actual_convenio; ?></td>
+					        <td><?php  echo $resullInfo->tipo_convenio; ?></td>
+					        <td><?php  echo $resullInfo->fecha_caducidad." (".$resullInfo->fecha_inicio.")"; ?></td>
+					      	<!--<td><button  type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="<?php /*echo '#'.$resullInfo->fecha_inicio */?>">Ver información</button></td>-->
+					      </tr>
+					     <?php } ?>
+					    </tbody>
+					  </table>
+					</div>
+		  		</li> 
 
-                 // $posts=institucion_convenios::model()->with('convenios','Instituciones','estadoconvenios','paises')->findAll();
-                  
-                   ?>
+		  		<li>Responsable Legal
+		  			<div class="table-responsive">
+		  			<table class="table table-bordered">
+					    <thead>
+					      <tr>
+					        <th>Institucion</th>
+					        <th>Responsable</th>
+					        <th>Información de Contacto</th>
+					        
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <?php while((($resulConResp->read())!==false)){ ?>
+					      <tr>
+					        <td><?php echo $resullResp->nombre_convenio ?></td>
+					        <td><?php echo $resullResp->fecha_inicio." ".$resullResp->fecha_caducidad; ?></td>
+					        <td><?php echo $resullResp->objetivo_convenio." </br> Telf. ".$resullResp->tipo_convenio; ?></td>
+					        
+					      </tr>
+					     <?php } ?>
+					    </tbody>
+					  </table>
+					</div>
+		  		</li>
 
-	      		<p>
-	      	<p>Responsable: </p>
+		  		<li>Responsable Contacto
+		  			<div class="table-responsive">
+		  			<table class="table table-bordered">
+					    <thead>
+					      <tr>
+					        <th>Institucion</th>
+					        <th>Responsable</th>
+					        <th>Información de Contacto</th>
+					        
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <?php while((($resulRespCont->read())!==false)){ ?>
+					      <tr>
+					        <td><?php echo $resullRespC->nombre_convenio ?></td>
+					        <td><?php echo $resullRespC->fecha_inicio." ".$resullResp->fecha_caducidad; ?></td>
+					        <td><?php echo $resullRespC->objetivo_convenio." </br> Telf. ".$resullResp->tipo_convenio; ?></td>
+					        
+					      </tr>
+					     <?php } ?>
+					    </tbody>
+					  </table>
+					</div>
+		  		</li>
+		  		
+		  	</ul>
+
+		</div>		
+	</div>
+
+    <a href="#demo3" class="list-group-item" data-toggle="collapse"><h4>Características del convenio<span class="glyphicon glyphicon-plus-sign pull-right"></span></h4></a>
+	<div class="collapse" id="demo3">
+		<div  class="list-group-item">
+			<ul>
+				<li>Clasificación: 
+					<?php 
+					 $modelClass=Clasificacionconvenios::model()->findByPk($model->clasificacionConvenios_idTipoConvenio);
+			      	 echo $modelClass->nombreClasificacionConvenio; 	
+			      	 ?>
+				</li>
+				<li>Alcance: </li>
+				
+			</ul>
+		</div>
+	</div>
+</div>
 
 
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading"><h4>Características del Convenio</h4></div>
-      <div class="panel-body"> </div>
-    </div>
-  </div>
 
 
-
-
-<!--<?php /*$this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'idConvenio',
-		'nombreConvenio',
-		'fechaCaducidadConvenio',
-		'objetivoConvenio',
-		'institucionUNET',
-		'urlConvenio',
-		'clasificacionConvenios_idTipoConvenio',
-		'tipoConvenios_idTipoConvenio',
-		'alcanceConvenios_idAlcanceConvenio',
-		'formaConvenios_idFormaConvenio',
-		'dependencias_idDependencia',
-		'convenios_idConvenio',
-	),
-)); */?>-->

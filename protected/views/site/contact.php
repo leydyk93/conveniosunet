@@ -3,7 +3,7 @@
 /* @var $model ContactForm */
 /* @var $form CActiveForm */
 
-$this->pageTitle=Yii::app()->name . ' - Contact Us';
+$this->pageTitle=Yii::app()->name . ' - Contacto';
 $this->breadcrumbs=array(
 	'Contacto',
 );
@@ -20,7 +20,8 @@ $this->breadcrumbs=array(
 <?php else: ?>
 
 <p>
-If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
+
+Si tiene alguna pregunta, por favor llene el siguiente formulario para contactarnos. Gracias.
 </p>
 
 <div class="form">
@@ -83,3 +84,58 @@ If you have business inquiries or other questions, please fill out the following
 </div><!-- form -->
 
 <?php endif; ?>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <form class="form-horizontal" method="post">
+                    <fieldset>
+                        <legend class="text-center header">Contactanos</legend>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center">Nombre</span>
+                            <div class="col-md-8">
+                            	<?php echo $form->textField($model,'name',array('class'=>"form-control")); ?>
+								<?php echo $form->error($model,'name'); ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center">Correo</span>
+                            <div class="col-md-8">
+                                <?php echo $form->textField($model,'email',array('class'=>"form-control")); ?>
+								<?php echo $form->error($model,'email'); ?>
+                            </div>
+                        </div>
+
+                          <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center">Asunto</span>
+                            <div class="col-md-8">
+                             	<?php echo $form->textField($model,'subject',array('class'=>"form-control")); ?>
+								<?php echo $form->error($model,'subject'); ?>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center">Mensaje</span>
+                            <div class="col-md-8">
+                                	<!--<?php /*echo $form->labelEx($model,'body'); */?>-->
+									<?php echo $form->textArea($model,'body',array('class'=>"form-control", 'rows'=>"7" )); ?>
+									<?php echo $form->error($model,'body'); ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12 text-center">
+                                	<?php echo CHtml::submitButton('Enviar',array('class'=>'btn btn-conv btn-lg')); ?>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

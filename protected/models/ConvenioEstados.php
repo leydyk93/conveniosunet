@@ -13,9 +13,9 @@
  * @property integer $dependencias_idDependencia
  *
  * The followings are the available model relations:
- * @property Dependencias $dependenciasIdDependencia
  * @property Convenios $conveniosIdConvenio
  * @property Estadoconvenios $estadoConveniosIdEstadoConvenio
+ * @property Dependencias $dependenciasIdDependencia
  */
 class ConvenioEstados extends CActiveRecord
 {
@@ -39,11 +39,38 @@ class ConvenioEstados extends CActiveRecord
 			array('estadoConvenios_idEstadoConvenio, dependencias_idDependencia', 'numerical', 'integerOnly'=>true),
 			array('convenios_idConvenio', 'length', 'max'=>50),
 			array('numeroReporte', 'length', 'max'=>10),
+			array('fechaCambioEstado', 'ValidarFecha'),
 			array('observacionCambioEstado', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_convenio_estado, convenios_idConvenio, estadoConvenios_idEstadoConvenio, fechaCambioEstado, numeroReporte, observacionCambioEstado, dependencias_idDependencia', 'safe', 'on'=>'search'),
 		);
+	}
+
+	public function ValidarFecha($attributes,$params){
+
+		$conexion=Yii::app()->db;
+
+			$consulta="SELECT MAX(ce.fechaCambioEstado) FROM convenios c ";
+			$consulta.="JOIN convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio ";
+			$consulta.="JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio ";
+			$consulta.="WHERE c.idConvenio=".$this->convenios_idConvenio;
+
+		$resultados=$conexion->createCommand($consulta)->query();
+
+		$resultados->bindColumn(1,$maxFecha); //nombre del convenio
+
+		foreach ($resultados as $fila) {
+
+			if($this->fechaCambioEstado < $maxFecha){
+				$this->addError('fechaCambioEstado','debe ser superior a la ultima fecha de cambio de estado '.$maxFecha);	
+				
+			}
+			
+
+		}
+
+
 	}
 
 	/**
@@ -54,9 +81,9 @@ class ConvenioEstados extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'dependenciasIdDependencia' => array(self::BELONGS_TO, 'Dependencias', 'dependencias_idDependencia'),
 			'conveniosIdConvenio' => array(self::BELONGS_TO, 'Convenios', 'convenios_idConvenio'),
 			'estadoConveniosIdEstadoConvenio' => array(self::BELONGS_TO, 'Estadoconvenios', 'estadoConvenios_idEstadoConvenio'),
+			'dependenciasIdDependencia' => array(self::BELONGS_TO, 'Dependencias', 'dependencias_idDependencia'),
 		);
 	}
 
@@ -68,11 +95,11 @@ class ConvenioEstados extends CActiveRecord
 		return array(
 			'id_convenio_estado' => 'Id Convenio Estado',
 			'convenios_idConvenio' => 'Convenios Id Convenio',
-			'estadoConvenios_idEstadoConvenio' => 'Estado Convenios Id Estado Convenio',
+			'estadoConvenios_idEstadoConvenio' => 'Nuevo Estado',
 			'fechaCambioEstado' => 'Fecha Cambio Estado',
 			'numeroReporte' => 'Numero Reporte',
-			'observacionCambioEstado' => 'Observacion Cambio Estado',
-			'dependencias_idDependencia' => 'Dependencias Id Dependencia',
+			'observacionCambioEstado' => 'Justificación',
+			'dependencias_idDependencia' => 'Dependencia',
 		);
 	}
 
