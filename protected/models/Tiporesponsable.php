@@ -1,28 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "convenio_aportes".
+ * This is the model class for table "tiporesponsable".
  *
- * The followings are the available columns in table 'convenio_aportes':
- * @property integer $id_convenio_aporte
- * @property string $convenios_idConvenio
- * @property string $descripcion_aporte
- * @property integer $monedas_idMoneda
- * @property string $valor
- * @property integer $cantidad
+ * The followings are the available columns in table 'tiporesponsable':
+ * @property integer $idTipoResponsable
+ * @property string $descripcionTipoResponsable
  *
  * The followings are the available model relations:
- * @property Monedas $monedasIdMoneda
- * @property Convenios $conveniosIdConvenio
+ * @property Responsables[] $responsables
  */
-class ConvenioAportes extends CActiveRecord
+class Tiporesponsable extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'convenio_aportes';
+		return 'tiporesponsable';
 	}
 
 	/**
@@ -33,14 +28,11 @@ class ConvenioAportes extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('convenios_idConvenio, descripcion_aporte', 'required'),
-			array('monedas_idMoneda, cantidad', 'numerical', 'integerOnly'=>true),
-			array('convenios_idConvenio', 'length', 'max'=>50),
-			array('descripcion_aporte', 'length', 'max'=>100),
-			array('valor', 'length', 'max'=>45),
+			array('descripcionTipoResponsable', 'required'),
+			array('descripcionTipoResponsable', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_convenio_aporte, convenios_idConvenio, descripcion_aporte, monedas_idMoneda, valor, cantidad', 'safe', 'on'=>'search'),
+			array('idTipoResponsable, descripcionTipoResponsable', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,8 +44,7 @@ class ConvenioAportes extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'monedasIdMoneda' => array(self::BELONGS_TO, 'Monedas', 'monedas_idMoneda'),
-			'conveniosIdConvenio' => array(self::BELONGS_TO, 'Convenios', 'convenios_idConvenio'),
+			'responsables' => array(self::HAS_MANY, 'Responsables', 'tipoResponsable_idTipoResponsable'),
 		);
 	}
 
@@ -63,12 +54,8 @@ class ConvenioAportes extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_convenio_aporte' => 'Id Convenio Aporte',
-			'convenios_idConvenio' => 'Convenios Id Convenio',
-			'descripcion_aporte' => 'Descripcion Aporte',
-			'monedas_idMoneda' => 'Monedas Id Moneda',
-			'valor' => 'Valor',
-			'cantidad' => 'Cantidad',
+			'idTipoResponsable' => 'Id Tipo Responsable',
+			'descripcionTipoResponsable' => 'Descripcion Tipo Responsable',
 		);
 	}
 
@@ -90,12 +77,8 @@ class ConvenioAportes extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id_convenio_aporte',$this->id_convenio_aporte);
-		$criteria->compare('convenios_idConvenio',$this->convenios_idConvenio,true);
-		$criteria->compare('descripcion_aporte',$this->descripcion_aporte,true);
-		$criteria->compare('monedas_idMoneda',$this->monedas_idMoneda);
-		$criteria->compare('valor',$this->valor,true);
-		$criteria->compare('cantidad',$this->cantidad);
+		$criteria->compare('idTipoResponsable',$this->idTipoResponsable);
+		$criteria->compare('descripcionTipoResponsable',$this->descripcionTipoResponsable,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -106,7 +89,7 @@ class ConvenioAportes extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return ConvenioAportes the static model class
+	 * @return Tiporesponsable the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

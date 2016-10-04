@@ -1,28 +1,25 @@
 <?php
 
 /**
- * This is the model class for table "convenio_aportes".
+ * This is the model class for table "estados".
  *
- * The followings are the available columns in table 'convenio_aportes':
- * @property integer $id_convenio_aporte
- * @property string $convenios_idConvenio
- * @property string $descripcion_aporte
- * @property integer $monedas_idMoneda
- * @property string $valor
- * @property integer $cantidad
+ * The followings are the available columns in table 'estados':
+ * @property integer $idEstado
+ * @property string $nombreEstado
+ * @property integer $paises_idPais
  *
  * The followings are the available model relations:
- * @property Monedas $monedasIdMoneda
- * @property Convenios $conveniosIdConvenio
+ * @property Paises $paisesIdPais
+ * @property Instituciones[] $instituciones
  */
-class ConvenioAportes extends CActiveRecord
+class Estados extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'convenio_aportes';
+		return 'estados';
 	}
 
 	/**
@@ -33,14 +30,12 @@ class ConvenioAportes extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('convenios_idConvenio, descripcion_aporte', 'required'),
-			array('monedas_idMoneda, cantidad', 'numerical', 'integerOnly'=>true),
-			array('convenios_idConvenio', 'length', 'max'=>50),
-			array('descripcion_aporte', 'length', 'max'=>100),
-			array('valor', 'length', 'max'=>45),
+			array('nombreEstado, paises_idPais', 'required'),
+			array('paises_idPais', 'numerical', 'integerOnly'=>true),
+			array('nombreEstado', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_convenio_aporte, convenios_idConvenio, descripcion_aporte, monedas_idMoneda, valor, cantidad', 'safe', 'on'=>'search'),
+			array('idEstado, nombreEstado, paises_idPais', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,8 +47,8 @@ class ConvenioAportes extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'monedasIdMoneda' => array(self::BELONGS_TO, 'Monedas', 'monedas_idMoneda'),
-			'conveniosIdConvenio' => array(self::BELONGS_TO, 'Convenios', 'convenios_idConvenio'),
+			'paisesIdPais' => array(self::BELONGS_TO, 'Paises', 'paises_idPais'),
+			'instituciones' => array(self::HAS_MANY, 'Instituciones', 'estados_idEstado'),
 		);
 	}
 
@@ -63,12 +58,9 @@ class ConvenioAportes extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_convenio_aporte' => 'Id Convenio Aporte',
-			'convenios_idConvenio' => 'Convenios Id Convenio',
-			'descripcion_aporte' => 'Descripcion Aporte',
-			'monedas_idMoneda' => 'Monedas Id Moneda',
-			'valor' => 'Valor',
-			'cantidad' => 'Cantidad',
+			'idEstado' => 'Id Estado',
+			'nombreEstado' => 'Nombre Estado',
+			'paises_idPais' => 'Paises Id Pais',
 		);
 	}
 
@@ -90,12 +82,9 @@ class ConvenioAportes extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id_convenio_aporte',$this->id_convenio_aporte);
-		$criteria->compare('convenios_idConvenio',$this->convenios_idConvenio,true);
-		$criteria->compare('descripcion_aporte',$this->descripcion_aporte,true);
-		$criteria->compare('monedas_idMoneda',$this->monedas_idMoneda);
-		$criteria->compare('valor',$this->valor,true);
-		$criteria->compare('cantidad',$this->cantidad);
+		$criteria->compare('idEstado',$this->idEstado);
+		$criteria->compare('nombreEstado',$this->nombreEstado,true);
+		$criteria->compare('paises_idPais',$this->paises_idPais);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -106,7 +95,7 @@ class ConvenioAportes extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return ConvenioAportes the static model class
+	 * @return Estados the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
