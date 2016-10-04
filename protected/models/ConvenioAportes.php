@@ -53,10 +53,7 @@ class ConvenioAportes extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-<<<<<<< HEAD
-			'monedasIdMoneda' => array(self::BELONGS_TO, 'Monedas', 'monedas_idMoneda'),
-=======
->>>>>>> 1e65f14e43e93af06111af659d0828dc6952f885
+
 			'conveniosIdConvenio' => array(self::BELONGS_TO, 'Convenios', 'convenios_idConvenio'),
 			'monedasIdMoneda' => array(self::BELONGS_TO, 'Monedas', 'monedas_idMoneda'),
 		);
