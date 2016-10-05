@@ -11,7 +11,7 @@
       $form=$this->beginWidget('CActiveForm',
         array(
           'method' =>'POST',
-          'action' =>Yii::app()->createUrl('convenios/consultara'),
+          'action' =>Yii::app()->createUrl('convenios/consultar'),
           'id' => 'form',
             'enableAjaxValidation' => true,
             'enableClientValidation' => true,

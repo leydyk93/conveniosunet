@@ -210,6 +210,8 @@
                     ?>
 					<div class="row">
                     <?php echo $formi->labelEx($paises,'idPais',array('class'=>'col-md-3')); ?>
+                    
+<!--++++++++++++++++++++++++++++++++++++++++++++++++validacion para dropdownlist dependiente ++++++++++++++++++++ -->
                     <?php echo $formi->dropDownList($paises,"idPais",
                     	CHtml::listData(Paises::model()->findAll(),'idPais','nombrePais'), 
                     	array(
@@ -220,10 +222,10 @@
                     			),'prompt'=>'Seleccione'
                     	)
                     );?>
-                    <?php echo $formi->error($paises,"idPais"); ?>
-
-                     
+                   <?php echo $formi->error($paises,"idPais"); ?>
                     </div>
+
+
                     <br>
                     <div class="row">
 						<?php echo $formi->labelEx($instituciones,'estados_idEstado'); ?>

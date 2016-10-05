@@ -30,7 +30,7 @@ class ConveniosController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 
-				'actions'=>array('index','view','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete'),
+				'actions'=>array('index','view','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','guardardependencia'),
 
 				'users'=>array('*'),
 			),
@@ -672,7 +672,7 @@ class ConveniosController extends Controller
 				if(isset($_POST['anio']) && $_POST['anio']!=null){
 				 $consulta .="and YEAR(c.fechaInicioConvenio)=".$_POST['anio']." ";	
 
-			
+
 				}
 
 				if(isset($_POST['tipo'])){
@@ -915,6 +915,29 @@ class ConveniosController extends Controller
 	foreach ($lista as $valor => $descripcion) {
 			echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion), true);
 		}
+	}
+
+	public function actionGuardardependencia(){
+
+		$dependencia= new Dependencias;
+		$dependencia->nombreDependencia=$_POST['nombre'];
+		$dependencia->telefonoDependencia=$_POST['telefono'];
+		 
+		
+		  
+			if($dependencia->save()){
+
+				//echo $_POST['nombre'];
+		 	    //echo $_POST['telefono'];
+
+		 	    $lista= Dependencias::model()->findAll();
+		 	    $lista=CHtml::listData($lista,'idDependencia','nombreDependencia');
+
+				foreach ($lista as $valor => $descripcion) {
+						echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion), true);
+				}	
+			}	
+			
 	}
 
 			public function actionAutocomplete($term) 

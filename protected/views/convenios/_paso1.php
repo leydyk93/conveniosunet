@@ -137,7 +137,6 @@ CARACTERISTICAS DEL CONVENIO
 <?php echo $form->error($pasouno,'alcance'); ?>
 </div>
 
-<!-- CODIGO DE PRUEBA PARA EL AUTOMPLETE-->
 <?php 
 echo "<br>";
 echo "<br>";
@@ -163,25 +162,61 @@ echo "<br>";
                     
                     <p>Todo el contenido de la ventana modal</p>
                     <?php 
-                         $formd=$this->beginWidget("CActiveForm");
-                    ?>
+                     //    $formd=$this->beginWidget("CActiveForm",
+                       //         array(
+                         //       'method' =>'POST',
+                           //     'action' =>Yii::app()->createUrl('convenios/create'),
+                            //    'id' => 'form',
+                            //       'enableAjaxValidation' => true,
+                              //  'enableClientValidation' => true,
+                               // 'clientOptions' => array(
+                                /*'validateOnSubmit' => true,*/
+                                //'validateOnChange' => true,
+                                 //'validateOnType' => true,
+                                   //                  ) ,
+                                    //));
 
-                    <div class="row">
-                    <?php echo $formd->labelEx($dep,'nombreDependencia',array('class'=>'col-md-3')); ?>
-                    <?php echo $form->textField($dep,"nombreDependencia",array('style'=>'width:200px;','class'=>'col-md-5'));?>
-                    <?php echo $form->error($dep,"nombreDependencia"); ?>
+                            echo CHtml:: form();
+                            echo "Dependencia ";
+                          
+                            echo CHtml:: textField('nombre');
+                            echo "<br>";
+                            echo "<br>";
+                            echo "Telefono ";
+                  
+                            echo CHtml:: textField('telefono');
+                             echo "<br>";
+                            echo CHtml:: ajaxSubmitButton(
+                                'Guardar', array('convenios/guardardependencia'),array(
+                                'update'=>'#PasounoForm_dependencia'
+                                    )
+                            );
+
+                            echo CHtml::endForm();
+                    ?>
+                    <div id="resultado"></div>
+
+            <!--        <div class="row">
+                    <?php // echo $formd->labelEx($dep,'nombreDependencia',array('class'=>'col-md-3')); ?>
+                    <?php // echo $formd->textField($dep,"nombreDependencia",array('style'=>'width:200px;','class'=>'col-md-5'));?>
+                    <?php // echo $formd->error($dep,"nombreDependencia"); ?>
                     </div>
                     <div class="row">
-                    <?php echo $formd->labelEx($dep,'telefonoDependencia',array('class'=>'col-md-3')); ?>
-                    <?php echo $form->textField($dep,"telefonoDependencia",array('style'=>'width:200px;','class'=>'col-md-5'));?>
-                    <?php echo $form->error($dep,"telefonoDependencia"); ?>
+                    <?php // echo $formd->labelEx($dep,'telefonoDependencia',array('class'=>'col-md-3')); ?>
+                    <?php // echo $formd->textField($dep,"telefonoDependencia",array('style'=>'width:200px;','class'=>'col-md-5'));?>
+                    <?php //echo $formd->error($dep,"telefonoDependencia"); ?>
                     </div>
+-->
 
                 </div>
                 <div class="modal-footer">
                     <button  type="button" class="btn btn-conv" data-dismiss="modal"> Cerrar</button>
-                    <a  type "button" onclick="mens()" >Boton</a>
-                    <?php echo CHtml::submitButton("Guardar",array("class"=>'btn btn-conv')); ?>
+                   
+                   
+                    <?php //echo CHtml::button('Guardar',array('onclick'=>'guard();','class'=>'btn btn-conv btn-sm')); ?>
+                   
+                  
+
                     <?php 
                     $value=0;
                     $value1="";
@@ -191,7 +226,7 @@ echo "<br>";
                     setcookie("aportes",$value1);
                      ?>
 
-                <?php $this->endWidget(); ?>
+                <?php //$this->endWidget(); ?>
                 </div>
 
            
@@ -201,8 +236,28 @@ echo "<br>";
 </div>
 <script type="text/javascript">
 
-        function mens(){
-            alert("hola");
+        function guard(){
+            alert('funcion guardar');
+          
+          var url= '<?php echo Yii::app()->createUrl("convenios/guardardependencia"); ?>'
+          var prueba;
+          var nombre= document.getElementById("Dependencias_nombreDependencia");
+          var telefono= document.getElementById("Dependencias_telefonoDependencia");
+ 
+        $.ajax({
+
+            type:"post",
+            url: url,
+            data:{nombre:nombre , telefono:telefono},//,
+            success: function (){
+                prueba="hola";
+            }
+            //success:function (datos){
+                //document.getElementById("resul").innerHTML=datos;
+              // document.getElementById()
+             }
+
+            );
         }
         
 </script>
