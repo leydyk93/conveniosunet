@@ -300,7 +300,7 @@
              ?> 
         </a>
       </div>
-      <a  class="list-group-item">
+      <a  class="list-group-item text-center">
          <?php      
               echo CHtml::button('Desmarcar filtros',array('onclick'=>'limpiarFiltros();','class'=>'btn btn-conv btn-md')/*,'class'=>'btn btn-conv')*/);
              ?> 

@@ -28,7 +28,7 @@ class Tipoconvenios extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('descripcionTipoConvenio', 'required'),
+			array('descripcionTipoConvenio', 'required', 'message'=>'La descripcion no puede estar vacia'),
 			array('descripcionTipoConvenio', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -55,7 +55,7 @@ class Tipoconvenios extends CActiveRecord
 	{
 		return array(
 			'idTipoConvenio' => 'Id Tipo Convenio',
-			'descripcionTipoConvenio' => 'Descripcion Tipo Convenio',
+			'descripcionTipoConvenio' => 'Descripción ',
 		);
 	}
 	/**
