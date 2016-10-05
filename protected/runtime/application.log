@@ -1,0 +1,162 @@
+2016/10/05 00:15:54 [warning] [application] Failed to set unsafe attribute "tipo" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:54 [warning] [application] Failed to set unsafe attribute "clasificacion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:54 [warning] [application] Failed to set unsafe attribute "ambitoGeografico" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:54 [warning] [application] Failed to set unsafe attribute "pais" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:54 [warning] [application] Failed to set unsafe attribute "tipo_institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:54 [warning] [application] Failed to set unsafe attribute "institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:54 [warning] [application] Failed to set unsafe attribute "estadoConv" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:54 [warning] [application] Failed to set unsafe attribute "fechaVencimiento1" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:54 [warning] [application] Failed to set unsafe attribute "fechaVencimiento2" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:56 [warning] [application] Failed to set unsafe attribute "tipo" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:56 [warning] [application] Failed to set unsafe attribute "clasificacion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:56 [warning] [application] Failed to set unsafe attribute "ambitoGeografico" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:56 [warning] [application] Failed to set unsafe attribute "pais" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:56 [warning] [application] Failed to set unsafe attribute "tipo_institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:56 [warning] [application] Failed to set unsafe attribute "institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:56 [warning] [application] Failed to set unsafe attribute "estadoConv" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:56 [warning] [application] Failed to set unsafe attribute "fechaVencimiento1" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:56 [warning] [application] Failed to set unsafe attribute "fechaVencimiento2" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:58 [warning] [application] Failed to set unsafe attribute "tipo" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:58 [warning] [application] Failed to set unsafe attribute "clasificacion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:58 [warning] [application] Failed to set unsafe attribute "ambitoGeografico" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:58 [warning] [application] Failed to set unsafe attribute "pais" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:58 [warning] [application] Failed to set unsafe attribute "tipo_institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:58 [warning] [application] Failed to set unsafe attribute "institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:58 [warning] [application] Failed to set unsafe attribute "estadoConv" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:58 [warning] [application] Failed to set unsafe attribute "fechaVencimiento1" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:58 [warning] [application] Failed to set unsafe attribute "fechaVencimiento2" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:59 [warning] [application] Failed to set unsafe attribute "tipo" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:59 [warning] [application] Failed to set unsafe attribute "clasificacion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:59 [warning] [application] Failed to set unsafe attribute "ambitoGeografico" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:59 [warning] [application] Failed to set unsafe attribute "pais" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:59 [warning] [application] Failed to set unsafe attribute "tipo_institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:59 [warning] [application] Failed to set unsafe attribute "institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:59 [warning] [application] Failed to set unsafe attribute "estadoConv" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:59 [warning] [application] Failed to set unsafe attribute "fechaVencimiento1" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:15:59 [warning] [application] Failed to set unsafe attribute "fechaVencimiento2" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:16:01 [warning] [application] Failed to set unsafe attribute "tipo" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:16:01 [warning] [application] Failed to set unsafe attribute "clasificacion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:16:01 [warning] [application] Failed to set unsafe attribute "ambitoGeografico" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:16:01 [warning] [application] Failed to set unsafe attribute "pais" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:16:01 [warning] [application] Failed to set unsafe attribute "tipo_institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:16:01 [warning] [application] Failed to set unsafe attribute "institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:16:01 [warning] [application] Failed to set unsafe attribute "estadoConv" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:16:01 [warning] [application] Failed to set unsafe attribute "fechaVencimiento1" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:16:01 [warning] [application] Failed to set unsafe attribute "fechaVencimiento2" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:16:01 [warning] [application] Failed to set unsafe attribute "tipo" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:16:01 [warning] [application] Failed to set unsafe attribute "clasificacion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:16:01 [warning] [application] Failed to set unsafe attribute "ambitoGeografico" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:16:01 [warning] [application] Failed to set unsafe attribute "pais" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:16:01 [warning] [application] Failed to set unsafe attribute "tipo_institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:16:01 [warning] [application] Failed to set unsafe attribute "institucion" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:16:01 [warning] [application] Failed to set unsafe attribute "estadoConv" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:16:01 [warning] [application] Failed to set unsafe attribute "fechaVencimiento1" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
+2016/10/05 00:16:01 [warning] [application] Failed to set unsafe attribute "fechaVencimiento2" of "ConsultasConvenios".
+in C:\wamp\www\UNETConvenios\protected\controllers\ConveniosController.php (796)
+in C:\wamp\www\UNETConvenios\index.php (13)
