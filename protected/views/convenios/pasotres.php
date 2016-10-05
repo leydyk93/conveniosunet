@@ -3,31 +3,59 @@
 	$form=$this->beginWidget("CActiveForm");
  ?>
 
+ <?php if(isset($_COOKIE['contra']))
+			echo " cookie ";
+		   echo $_COOKIE['contra'];
+		   $_SESSION['institucion']=explode('-',$_COOKIE['contra']);	
+		   echo " Variable de Sesion ";
+		   print_r($_SESSION['institucion']) ;
+		  //print_r($_SESSION['institucion']) ;
+		  //echo " nueva";
+		  //echo $_SESSION['institucion'][0];
+		 // print_r($_SESSION['institucion']);
+?>
+
 <?php 
-			/*	echo $_SESSION['idconvenio'];
-				echo "<br>";
-				echo $_SESSION['nombreconvenio'];
-				echo "<br>";
-				echo $_SESSION['fechainicioconvenio'];
-				echo "<br>";
-				echo $_SESSION['fechacaducidadconvenio'];
-				echo "<br>";
-				echo $_SESSION['objetivo'];
-				echo "<br>";
-				echo $_SESSION['dependenciaconvenio'];
-				echo "<br>";
-				echo $_SESSION['instanciaunet'];
-				echo "<br>";
-				echo $_SESSION['responsableunet'];
-				echo "<br>";
-				echo $_SESSION['institucion'];
-				echo "<br>";
-				echo $_SESSION['instancia_contraparte'];
-				echo "<br>";
-				echo $_SESSION['responsable_contraparte'];
-				echo "<br>";*/
 //campos del formulario 
- ?>
+	 			echo "<br>";
+	 			echo "id_convenio: ".$_SESSION['idconvenio'];
+	 			echo "<br>";
+	 			echo "tipo : ".$_SESSION['tipo'];
+	 			echo "<br>";
+				echo "nombre_convenio: ".$_SESSION['nombreconvenio'];
+				echo "<br>";
+				echo "fecha_inicio: ".$_SESSION['fechainicioconvenio'];
+				echo "<br>";
+				echo "fecha_caducidad: ".$_SESSION['fechacaducidadconvenio'];
+				echo "<br>";
+				echo "objetivo: ".$_SESSION['objetivo'];
+				echo "<br>";
+				echo "dependencia: ".$_SESSION['dependenciaconvenio'];
+				echo "<br>";
+				echo "estado: ".$_SESSION['estado'];
+				echo "<br>";
+				echo "clasificacion: ".$_SESSION['clasificacion'];
+				echo "<br>";
+				echo "alcance: ".$_SESSION['alcance'];
+				echo "<br>";
+				//variables del paso dos
+				echo "PASO DOS ";
+				echo "<br>";
+				echo "instanciaunet: ".$_SESSION['instanciaunet'];
+				echo "<br>";
+				echo "responsable_legal_unet: ".$_SESSION['responsable_legal_unet'];
+				echo "<br>";
+				echo "responsable_contacto_unet: ".$_SESSION['responsable_contacto_unet'];
+				echo "<br>";
+				print_r($_SESSION['institucion']) ;
+				echo "<br>";
+				echo "instancia contraparte: ".$_SESSION['instancia_contraparte'];
+				echo "<br>";
+				echo "responsable legal contraparte: ".$_SESSION['responsable_legal_contraparte'];
+				echo "<br>";
+				echo "responsable contacto contraparte ".$_SESSION['responsable_contacto_contraparte'];
+
+?>
  <main class="container-fluid">
         <div class "row">
             
@@ -55,6 +83,7 @@
 <section class="datos col-xs-9">     
 
 <h4>Acta de Intención </h4> 
+	
 
 <div class="row">
 <?php echo $form->labelEx($pasotres,'nro_acta',array('class'=>'col-md-3')); ?>

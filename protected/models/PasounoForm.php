@@ -8,12 +8,14 @@
 		public $fechacaducidad;
 		public $objetivo;
 		public $dependencia;
-		PUBLIC $estado;
+		public $estado;
+		public $alcance;
+		public $clasificacion; 
 
 		public function rules (){
 
 			return array(
-				array("tipo,nombreconvenio,fechainicio,fechacaducidad,objetivo,dependencia,estado","required"),
+				array("tipo,nombreconvenio,fechainicio,fechacaducidad,objetivo,dependencia,estado,alcance,clasificacion","required"),
 				//safe se le coloca a los datos que no se quieren validar 
 			);
 		}
@@ -28,6 +30,8 @@
 					'objetivo' => 'Objetivo',
 					'dependencia' => 'dependencia',
 					'estado' => 'Estado Inicial',
+					'alcance'=>'Alcance',
+					'clasificacion'=>'Clasificacion'
 				);
 			}
 	}

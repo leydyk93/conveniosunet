@@ -62,7 +62,9 @@ INSERT INTO alcanceConvenios (descripcionAlcanceConvenio) VALUES
 INSERT INTO formaConvenios (descripcionFormaConvenio) VALUES
 ('Unica'),
  ('Bilateral'),
+
 ( 'Multilateral');*/
+
 
 -- -----------------------------------------------------
 -- Table `mydb`.`tiposInstituciones`
@@ -220,8 +222,10 @@ CREATE TABLE IF NOT EXISTS convenios (
   urlConvenio VARCHAR(100) NOT NULL,
   clasificacionConvenios_idTipoConvenio INT NOT NULL,
   tipoConvenios_idTipoConvenio INT NOT NULL,
+
   alcanceConvenios TEXT NOT NULL,
   /*formaConvenios_idFormaConvenio INT NOT NULL,*/
+
   dependencias_idDependencia INT NOT NULL,
   convenios_idConvenio VARCHAR(50)  NULL, 
 
@@ -246,22 +250,27 @@ CONSTRAINT fk_convenios_dependencias1
     FOREIGN KEY (convenios_idConvenio)
     REFERENCES convenios (idConvenio))
 
-/*ALTER TABLE `convenios` ADD `ventajasBeneficiosConvenio` TEXT NOT NULL AFTER `objetivoConvenio`;*/
 
-INSERT INTO convenios (idConvenio,nombreConvenio,fechaInicioConvenio,fechaCaducidadConvenio,
-                       objetivoConvenio,institucionUNET,urlConvenio,clasificacionConvenios_idTipoConvenio,
-                       tipoConvenios_idTipoConvenio,alcanceConvenios,/*formaConvenios_idFormaConvenio,*/
-                        dependencias_idDependencia,convenios_idConvenio) VALUES
-('04', 'convenio 4','2014/01/01','2018/01/01','ejemplo 4','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio4/djndkjaskd.pdf','2','1','jknjnfkvm','1',null),
-('01', 'convenio 1','2015/01/01','2016/01/01','ejemplo 1','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','lfklekfle','1',null),
-('02', 'convenio 2','2014/01/01','2015/01/01','ejemplo 2','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','fmkmfkkfm','1',null),
-('03', 'convenio 3','2015/02/01','2017/01/01','ejemplo 3','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio3/djndkjaskd.pdf','1','2','fmkmfkkfm','2','01');
+/*ALTER TABLE `convenios` ADD `ventajasBeneficiosConvenio` TEXT NOT NULL AFTER `objetivoConvenio`;*/
 
 /*INSERT INTO convenios (idConvenio,nombreConvenio,fechaInicioConvenio,fechaCaducidadConvenio,
                        objetivoConvenio,institucionUNET,urlConvenio,clasificacionConvenios_idTipoConvenio,
-                       tipoConvenios_idTipoConvenio,alcanceConvenios,formaConvenios_idFormaConvenio,
+                       tipoConvenios_idTipoConvenio,alcanceConvenios,/*formaConvenios_idFormaConvenio,
                         dependencias_idDependencia,convenios_idConvenio) VALUES
-('03', 'convenio 3','2015/02/01','2017/01/01','ejemplo 3','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio3/djndkjaskd.pdf','1','2','fmkmfkkfm','2','01');*/
+
+('04', 'convenio 4','2014/01/01','2018/01/01','ejemplo 4','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio4/djndkjaskd.pdf','2','1','1','2','1',null),
+('01', 'convenio 1','2015/01/01','2016/01/01','ejemplo 1','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','1','2','1',null),
+('02', 'convenio 2','2014/01/01','2015/01/01','ejemplo 2','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','1','2','1',null);
+*/
+INSERT INTO convenios (idConvenio,nombreConvenio,fechaInicioConvenio,fechaCaducidadConvenio,
+                      objetivoConvenio,institucionUNET,urlConvenio,clasificacionConvenios_idTipoConvenio,
+                      tipoConvenios_idTipoConvenio,alcanceConvenios,/*formaConvenios_idFormaConvenio,*/
+                       dependencias_idDependencia,convenios_idConvenio) VALUES
+('04', 'convenio 4','2014/01/01','2018/01/01','ejemplo 4','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio4/djndkjaskd.pdf','2','1','jknjnfkvm','1',null),
+('01', 'convenio 1','2015/01/01','2016/01/01','ejemplo 1','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','lfklekfle','1',null),
+('02', 'convenio 2','2014/01/01','2015/01/01','ejemplo 2','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','fmkmfkkfm','1',null);
+('03', 'convenio 3','2015/02/01','2017/01/01','ejemplo 3','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio3/djndkjaskd.pdf','1','2','sdfgsgfdd','2','01');
+
 -- -----------------------------------------------------
 -- Table `mydb`.`actividades`
 -- -----------------------------------------------------
@@ -270,10 +279,16 @@ INSERT INTO convenios (idConvenio,nombreConvenio,fechaInicioConvenio,fechaCaduci
   descripcionActividad VARCHAR(200) NULL,
   PRIMARY KEY (idActividad));
 
+<<<<<<< HEAD
+INSERT INTO `actividades` (`idActividad`, `descripcionActividad`) VALUES (NULL, 'extension'), (NULL, 'investigacion');
+*/
+
+=======
 INSERT INTO `actividades` (`idActividad`, `descripcionActividad`) VALUES (NULL, 'extension'), (NULL, 'investigacion');*/
 -- -----------------------------------------------------
 -- Table  mydb . tipoResponsable
 -- -----------------------------------------------------
+>>>>>>> 1e65f14e43e93af06111af659d0828dc6952f885
 CREATE TABLE IF NOT EXISTS tipoResponsable (
   idTipoResponsable INT AUTO_INCREMENT NOT NULL,
   descripcionTipoResponsable VARCHAR(50) NOT NULL,
@@ -282,6 +297,12 @@ CREATE TABLE IF NOT EXISTS tipoResponsable (
 INSERT INTO tipoResponsable (descripcionTipoResponsable) VALUES
 ('Legal'),
 ('Contacto');
+<<<<<<< HEAD
+-- -----------------------------------------------------
+-- Table  mydb . responsables 
+-- -----------------------------------------------------
+=======
+>>>>>>> 1e65f14e43e93af06111af659d0828dc6952f885
 -- -----------------------------------------------------
 -- Table  mydb . responsables 
 -- -----------------------------------------------------

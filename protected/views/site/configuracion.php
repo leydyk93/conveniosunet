@@ -37,7 +37,7 @@ $this->breadcrumbs=array(
 
 
   
- <h5>Instituciones</h5>
+ <!--<h5>Instituciones</h5>
  <ul>
  	<li>Tipos de institucion
 	<p> Permite clasificar las instituciones de acuerdo a las actividades que desempeñan </p>
@@ -73,4 +73,4 @@ $this->breadcrumbs=array(
 	<li>Responsables Contraparte
 	<p>Son todos los docentes o directivos de otras instituciones responsables de contacto para los convenios  </p>
 	</li>
-</ul>
+</ul>-->

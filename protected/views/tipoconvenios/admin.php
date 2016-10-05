@@ -3,14 +3,14 @@
 /* @var $model Tipoconvenios */
 
 $this->breadcrumbs=array(
-	'Tipoconvenioses'=>array('index'),
-	'Manage',
+	'Tipo Convenios'=>array('index'),
+	'Gestionar',
 );
 
-$this->menu=array(
+/*$this->menu=array(
 	array('label'=>'List Tipoconvenios', 'url'=>array('index')),
 	array('label'=>'Create Tipoconvenios', 'url'=>array('create')),
-);
+);*/
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
@@ -26,29 +26,47 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Tipoconvenioses</h1>
+<div class="row">
+	<div  class="nuevo col-md-12 text-center">
+		 <h4>Tipos de Convenio</h4>
+	</div>
+</div>
 
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
+ <div class="row">
+	  <div class="col-sm-3">
+			 <ul class="nav nav-pills nav-stacked">
+			  <li><a href="#">Tipo de Convenio</a></li>
+			  <li><a href="<?php echo $this->createUrl('/tipoconvenios/create'); ?>">Crear </a></li>
+			  <li><a href="<?php echo $this->createUrl('/tipoconvenios/index'); ?>">Listar</a></li>
+			  <li><a href="<?php echo $this->createUrl('/tipoconvenios/admin'); ?>">Gestionar</a></li>
+			</ul>
+	</div>  
+	<div class="col-sm-9">
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
-<?php $this->renderPartial('_search',array(
-	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
+		<?php echo CHtml::link('Busqueda Avanzada','#',array('class'=>'search-button')); ?>
+		<div class="search-form" style="display:none">
+		<?php $this->renderPartial('_search',array(
+			'model'=>$model,
+		)); ?>
+		</div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'tipoconvenios-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-		'idTipoConvenio',
-		'descripcionTipoConvenio',
-		array(
-			'class'=>'CButtonColumn',
-		),
-	),
-)); ?>
+		<?php $this->widget('zii.widgets.grid.CGridView', array(
+			'id'=>'tipoconvenios-grid',
+			'dataProvider'=>$model->search(),
+			'filter'=>$model,
+			'columns'=>array(
+				'idTipoConvenio',
+				'descripcionTipoConvenio',
+				array(
+					'class'=>'CButtonColumn',
+				),
+			),
+		)); ?>
+	
+	</div>
+</div>
+
+
+
+
+

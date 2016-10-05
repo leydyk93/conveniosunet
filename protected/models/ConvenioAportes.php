@@ -12,6 +12,7 @@
  * @property integer $cantidad
  *
  * The followings are the available model relations:
+ * @property Monedas $monedasIdMoneda
  * @property Convenios $conveniosIdConvenio
  * @property Monedas $monedasIdMoneda
  */
@@ -52,6 +53,7 @@ class ConvenioAportes extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+
 			'conveniosIdConvenio' => array(self::BELONGS_TO, 'Convenios', 'convenios_idConvenio'),
 			'monedasIdMoneda' => array(self::BELONGS_TO, 'Monedas', 'monedas_idMoneda'),
 		);

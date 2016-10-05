@@ -29,7 +29,9 @@ class ConveniosController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara'),
+
+				'actions'=>array('index','view','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete'),
+
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -321,6 +323,8 @@ class ConveniosController extends Controller
 				$_SESSION['dependenciaconvenio']=$pasouno->dependencia;
 				$_SESSION['tipo']=$pasouno->tipo;
 				$_SESSION['estado']=$pasouno->estado;
+				$_SESSION['clasificacion']=$pasouno->clasificacion;
+				$_SESSION['alcance']=$pasouno->alcance;
 				//$pasouno->idconvenio;
 				//$pasouno->nombreconvenio;
 			//	$this->redirect(array("create"));
@@ -349,6 +353,10 @@ class ConveniosController extends Controller
 		
 		$model=new Convenios;
 		$pasodos=new PasodosForm;
+		$instituciones= new Instituciones;
+		$paises = new Paises;
+		$estados= new Estados;
+		$responsable= new Responsables;
 		
 		if(isset($_POST["PasodosForm"])){
 
@@ -356,18 +364,21 @@ class ConveniosController extends Controller
 			if($pasodos->validate()){
 
 				$_SESSION['instanciaunet']=$pasodos->instanciaunet;
-				$_SESSION['responsableunet']=$pasodos->responsableunet;
-				$_SESSION['institucion']=$pasodos->institucion;
+				$_SESSION['responsable_legal_unet']=$pasodos->responsable_legal_unet;
+				$_SESSION['responsable_contacto_unet']=$pasodos->responsable_contacto_unet;
+				//$_SESSION['institucion']=$pasodos->institucion;
 				$_SESSION['instancia_contraparte']=$pasodos->instancia_contraparte;
-				$_SESSION['responsable_contraparte']=$pasodos->responsable_contraparte;
-
+				$_SESSION['responsable_legal_contraparte']=$pasodos->responsable_legal_contraparte;
+				$_SESSION['responsable_contacto_contraparte']=$pasodos->responsable_contacto_contraparte;
+				//en el paso tambien se llena la variable de sesioin de las instituciones (revisar esto )
 				$this->redirect(array('convenios/pasotres',
 				"idconvenio"=>$_SESSION['idconvenio']
 				));
 			}
 		}
 
-		$this->render('pasodos',array("model"=>$model,"pasodos"=>$pasodos));
+		$this->render('pasodos',array(
+			"model"=>$model,"pasodos"=>$pasodos,"instituciones"=>$instituciones,"paises"=>$paises,"estados"=>$estados, "responsable"=>$responsable));
 
 
 	}
@@ -398,12 +409,12 @@ class ConveniosController extends Controller
 			$pasocuatro->attributes=$_POST["PasocuatroForm"];
 			if($pasocuatro->validate()){
 
-				$_SESSION['ventajas']=$pasocuatro->ventajas;
-				$_SESSION['clasificacion']=$pasocuatro->clasificacion;
-				$_SESSION['alcance']=$pasocuatro->alcance;
-				$_SESSION['forma']=$pasocuatro->forma;
-				$_SESSION['actividades']=$pasocuatro->actividades;
-				$_SESSION['otras_instituciones']=$pasocuatro->otras_instituciones;
+			//	$_SESSION['ventajas']=$pasocuatro->ventajas;
+			//	$_SESSION['clasificacion']=$pasocuatro->clasificacion;
+			//	$_SESSION['alcance']=$pasocuatro->alcance;
+			//	$_SESSION['forma']=$pasocuatro->forma;
+			//	$_SESSION['actividades']=$pasocuatro->actividades;
+			//	$_SESSION['otras_instituciones']=$pasocuatro->otras_instituciones;
 				$this->redirect(array('convenios/pasocinco',"idconvenio"=>$_SESSION['idconvenio']));
 			}
 		}
@@ -413,27 +424,83 @@ class ConveniosController extends Controller
 
 	public function actionPasocinco($idconvenio){
 
-		$pasocinco= new PasocincoForm;
 		$model= new Convenios;
+		$model_ic= new InstitucionConvenios;
+		$model_ce= new ConvenioEstados;
+	
 
-		if(isset($_POST["PasocincoForm"])){
-			$pasocinco->attributes=$_POST["PasocincoForm"];
-			if($pasocinco->validate()){
+//-------------------------GUARDANDO EN LA TABLA CONVENIOS---------------------------------
+		if (isset($_REQUEST['enviar'])) 
+		{ 
+			$model->idConvenio=$_SESSION['idconvenio'];
+			$model->nombreConvenio=$_SESSION['nombreconvenio'];
+			$model->fechaInicioConvenio=$_SESSION['fechainicioconvenio'];
+			$model->fechaCaducidadConvenio=$_SESSION['fechacaducidadconvenio'];
+			$model->objetivoConvenio=$_SESSION['objetivo'];
+			$model->institucionUNET="UNET";
+			$model->urlConvenio=$_SESSION['url_acta'];//colocar direccion del archivo real pdf 
+			$model->clasificacionConvenios_idTipoConvenio=$_SESSION['clasificacion'];
+			$model->tipoConvenios_idTipoConvenio=$_SESSION['tipo'];
+			$model->alcanceConvenios=$_SESSION['alcance'];
+			$model->dependencias_idDependencia=$_SESSION['dependenciaconvenio'];
+			//$model->convenios_idConvenio=$_SESSION['idconvenio']; //aqui va el id si es especifico
+			
+			//Si guarda en la tabla convenios entonces guarde en la tabla Institución convenios
+			if($model->save()){
+//-----------------------------GUARDANDO EN INSTITUCIOIN CONVENIOS----------------------------
+				for ($i=1; $i <count($_SESSION['institucion']) ; $i++) { 
+					$model_ic= new InstitucionConvenios;
+					$model_ic->convenios_idConvenio=$_SESSION['idconvenio'];
+					$model_ic->fechaIncorporacion=$_SESSION['fechainicioconvenio'];//la fecha de incorporacion es cuando inicia el convenio?
+					$model_ic->instituciones_idInstitucion=$_SESSION['institucion'][$i];
+					if($model_ic->save()){
+						echo "guardo";
+					}
+					else{
+						print_r($model_ic->getErrors());
+					}
+					# code...
+				}
+//---------------------------------------------- GUARDANDO EN CONVENI-ESTADOS-------------------				
+					$model_ce->convenios_idConvenio=$_SESSION['idconvenio'];
+ 					$model_ce->estadoConvenios_idEstadoConvenio=$_SESSION['estado'];
+ 					$model_ce->fechaCambioEstado=new CDbExpression('NOW()');
+ 					$model_ce->dependencias_idDependencia=$_SESSION['dependenciaconvenio'];
+ 					
+ 					if($model_ce->save()){
+						echo "guardo";
+					}
+					else{
+						print_r($model_ce->getErrors());
+					}
+	//--------------------------------------------GUARDANDO EN CONVENIO APORTES ---------------------------------------------			
+				   for ($j=1; $j < count($_SESSION['aporte']); $j++) { 
+				   	# code...
+				   	$model_ca= new ConvenioAportes;
+				   	$aporte_esp;
+				   	$aporte_esp=explode('.',$_SESSION['aporte'][$j]);	
+				    $model_ca->convenios_idConvenio=$_SESSION['idconvenio'];
+				    $model_ca->descripcion_aporte=$aporte_esp[0];
+				    $model_ca->monedas_idMoneda=$aporte_esp[1];
+				    $model_ca->valor=$aporte_esp[2];
+				    $model_ca->cantidad=$aporte_esp[3];
+				    if($model_ca->save()){
+				    	echo "guardo";
+				    }
+				    else{
+				    	print_r($model_ca->getErrors());
+				    }
+				   }
+				   $this->redirect(array('view','id'=>$model->idConvenio));
 
-				$_SESSION['aporte']=$pasocinco->aporte;
-				$_SESSION['moneda']=$pasocinco->moneda;
-				$_SESSION['aporte_valor']=$pasocinco->aporte_valor;
-				$_SESSION['presupuesto']=$pasocinco->presupuesto;
-				$_SESSION['presupuesto_costo']=$pasocinco->presupuesto_costo;
 
-				$this->redirect(array('convenios/pasoseis',"idconvenio"=>$_SESSION['idconvenio']));
-				
-		
+			}
+			else{
+					print_r($model->getErrors());
 			}
 		}
 
-
-		$this->render('pasocinco',array("pasocinco"=>$pasocinco));
+		$this->render('pasocinco',array("model"=>$model));
 
 	}
 
@@ -483,13 +550,13 @@ class ConveniosController extends Controller
  					$model_ic->fechaIncorporacion=$_SESSION['fechainicioconvenio'];
  					//Guardando en la tabla institucion convenios
  					if($model_ic->save()){
- 						//$this->redirect(array('view','id'=>$model->idConvenio));
+ 						//
  						
  						//$model_ce->id_convenio_estado=$_SESSION['idconvenio'];
  						$model_ce->convenios_idConvenio=$_SESSION['idconvenio'];
  						$model_ce->estadoConvenios_idEstadoConvenio=$_SESSION['estado'];
  						$model_ce->fechaCambioEstado=new CDbExpression('NOW()');
- 						$model_ce->dependencias_idDependencia=$_SESSION['dependenciaconvenio'];
+ 						$model_ce->dependencias_idDependencia=$_SESSION['dependenciaconvenio']; //definir estado inicial y cual dependencia lo coloca
  						//Guardando en la tabla convenio estados 
  						if($model_ce->save()){
 						$this->redirect(array('view','id'=>$model->idConvenio));
@@ -497,6 +564,7 @@ class ConveniosController extends Controller
 						else{
 							print_r($model_ce->getErrors());
 						}
+
 					}
 					else{
 						print_r($model_ic->getErrors());
@@ -603,6 +671,8 @@ class ConveniosController extends Controller
 				
 				if(isset($_POST['anio']) && $_POST['anio']!=null){
 				 $consulta .="and YEAR(c.fechaInicioConvenio)=".$_POST['anio']." ";	
+
+			
 				}
 
 				if(isset($_POST['tipo'])){
@@ -836,4 +906,48 @@ class ConveniosController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+	public function actionSelectdos(){
+		$id_uno=$_POST['Paises']['idPais'];
+		$lista=Estados::model()->findAll('paises_idPais=:id_uno',array(':id_uno'=>$id_uno));
+		$lista=CHtml::listData($lista,'idEstado','nombreEstado');
+
+	foreach ($lista as $valor => $descripcion) {
+			echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion), true);
+		}
+	}
+
+			public function actionAutocomplete($term) 
+			{
+			 $criteria = new CDbCriteria;
+			 $criteria->compare('LOWER(primerApellidoResponsable)', strtolower($_GET['term']), true);
+			 $criteria->compare('LOWER(primerNombreResponsable)', strtolower($_GET['term']), true, 'OR');
+			 $criteria->order = 'primerApellidoResponsable';
+			 $criteria->limit = 30; 
+			 $data = Responsables::model()->findAll($criteria);
+
+			 if (!empty($data))
+			 {
+			  $arr = array();
+			  foreach ($data as $item) {
+			   $arr[] = array(
+			    'id' => $item->idResponsable,
+			    'value' => $item->primerApellidoResponsable.' '.$item->primerNombreResponsable,
+			    'label' => $item->primerApellidoResponsable.' '.$item->primerNombreResponsable,
+			   );
+			  }
+			 }
+			 else
+			 {
+			  $arr = array();
+			  $arr[] = array(
+			   'id' => '',
+			   'value' => 'No se han encontrado resultados para su búsqueda',
+			   'label' => 'No se han encontrado resultados para su búsqueda',
+			  );
+			 }
+			  
+			 echo CJSON::encode($arr);
+			}
+
 }

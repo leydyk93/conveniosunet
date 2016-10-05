@@ -111,20 +111,40 @@
 </div>
 
 <a href="#" data-toggle="modal" data-target="#miventana">
-    Abrir ventana 
+    Nueva Dependenia
 </a>
 
-
-<br>	
-<p>Estado Inicial</p>
 <br>
+<br>	
+
 <div class="row">
 <?php echo $form->labelEx($pasouno,'estado',array('class'=>'col-md-3')); ?>
 <?php echo $form->dropDownList($pasouno,'estado',CHtml::listData(Estadoconvenios::model()->findAll(), 'idEstadoConvenio', 'nombreEstadoConvenio'),''); ?>
 <?php echo $form->error($pasouno,'estado'); ?>
 </div>
 <br>
+CARACTERISTICAS DEL CONVENIO
+<br>
+<div class="row">
+<?php echo $form->labelEx($pasouno,'clasiicacion',array('class'=>'col-md-3')); ?>
+<?php echo $form->dropDownList($pasouno,'clasificacion',CHtml::listData(Clasificacionconvenios::model()->findAll(), 'idClasificacionConvenio', 'nombreClasificacionConvenio'),''); ?>
+<?php echo $form->error($pasouno,'clasificacion'); ?>
+</div>
+<?php echo "<br>"; ?>
+<div class="row">
+<?php echo $form->labelEx($pasouno,'alcance',array('class'=>'col-md-3')); ?>
+<?php echo $form->textField($pasouno,"alcance",array('style'=>'width:200px;','class'=>'col-md-5')); ?>
+<?php echo $form->error($pasouno,'alcance'); ?>
+</div>
 
+<!-- CODIGO DE PRUEBA PARA EL AUTOMPLETE-->
+<?php 
+echo "<br>";
+echo "<br>";
+
+ ?>
+ 
+ 
 <?php echo CHtml::submitButton("Siguiente",array("class"=>'btn btn-conv')); ?>
 </section>
 
@@ -160,10 +180,30 @@
                 </div>
                 <div class="modal-footer">
                     <button  type="button" class="btn btn-conv" data-dismiss="modal"> Cerrar</button>
+                    <a  type "button" onclick="mens()" >Boton</a>
                     <?php echo CHtml::submitButton("Guardar",array("class"=>'btn btn-conv')); ?>
+                    <?php 
+                    $value=0;
+                    $value1="";
+                    setcookie("nrofila", $value);
+                    setcookie("contra",$value1);
+                    setcookie("nrofilap",$value);
+                    setcookie("aportes",$value1);
+                     ?>
+
                 <?php $this->endWidget(); ?>
                 </div>
+
+           
 
         </div>
     </div>
 </div>
+<script type="text/javascript">
+
+        function mens(){
+            alert("hola");
+        }
+        
+</script>
+
