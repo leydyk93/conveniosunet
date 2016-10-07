@@ -21,7 +21,7 @@ $this->breadcrumbs=array(
   		<ul class="list-group">
 			  <li class="list-group-item list-group-item-success">Convenios</li>
 			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/tipoconvenios/admin' ) ?>">Tipos de Convenio</a></li>
-			  <li class="list-group-item">Clasificacion de los convenios</li>
+			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/clasificacionconvenios/admin' ) ?>">Clasificación de los convenios</a></li>
 			  <li class="list-group-item">Estados para los convenios</li>
 		</ul>
   </div>

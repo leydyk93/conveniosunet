@@ -117,62 +117,13 @@
 		<?php echo $form->dropDownList($pasodos,'institucion',CHtml::listData(Instituciones::model()->findAll(), 'idInstitucion', 'nombreInstitucion'),''); ?>
 		<?php echo $form->error($pasodos,'institucion'); ?>
 		</div>
-		<a onclick="fagregar()"> Agregar</a>
+	
 		<a href="#" data-toggle="modal" data-target="#miventana2">
    		 Nueva Institucion 
 		</a>
+
 		<br>
 		<br>
-		<?php //$_SESSION['hola']="PROBANDOOO"; echo $_SESSION['hola'];
-
-		if(isset($_COOKIE['contra'])){
-			
-			unset($_COOKIE['contra']);
-			//echo $_COOKIE['contra'];
-			
-	
-		}
-			//print_r($contrapartes);
-			//=$contrapartes;
-		 ?>
-	
-
-		
-	
-		  <table class="table table-bordered" id="tablai">
-		      <thead>
-		      <tr>
-		        <th>Institución</th>
-		        <th>Nro Institucion</th>
-		      </tr>
-		    </thead>
-		  <tbody id="bodyt">
-		       <!--<tr>
-		       
-		        <td>Universidad de los Andes</td>
-		         <td>1</td>
-		      </tr>
-		      <tr>
-		        
-		        <td>Universidad Catolica</td>
-		        <td>2</td>
-		      </tr>
-		      <tr>
-		        
-		        <td>Universidad Simon Bolivar</td>
-		        <td>3</td>
-		      </tr>-->
-		    </tbody>
-		  </table>
-		
-
-		<div class="row">
-		<?php echo $form->labelEx($pasodos,'instancia_contraparte',array('class'=>'col-md-3')); ?>
-		<?php echo $form->dropDownList($pasodos,'instancia_contraparte',CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),''); ?>
-		<?php echo $form->error($pasodos,'instancia_contraparte'); ?>
-		</div>
-		<br>
-	
 		<div class="row">
 		<?php echo $form->labelEx($pasodos,"responsable_legal_contraparte",array('class'=>'col-md-3')); ?>
 		<?php echo $form->textField($pasodos,"responsable_legal_contraparte",array('size'=>60,'maxlength'=>200)); ?>
@@ -184,6 +135,69 @@
 		<?php echo $form->textField($pasodos,"responsable_contacto_contraparte",array('size'=>60,'maxlength'=>200)); ?>
 		<?php echo $form->error($pasodos,"responsable_contacto_contraparte"); ?>
 		</div>
+		<br>
+		<div class="row">
+		<?php echo $form->labelEx($pasodos,'instancia_contraparte',array('class'=>'col-md-3')); ?>
+		<?php echo $form->dropDownList($pasodos,'instancia_contraparte',CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),''); ?>
+		<?php echo $form->error($pasodos,'instancia_contraparte'); ?>
+		</div>
+
+		<?php 
+		if(isset($_COOKIE['contra'])){
+			unset($_COOKIE['contra']);
+	
+		}
+			//print_r($contrapartes);
+		 ?>	
+		 <br>
+		<a onclick="fagregar()"> Agregar</a>	
+		<br>
+		<br>
+
+		  <table class="table table-bordered" id="tablai">
+		      <thead>
+		      <tr>
+		        <th>Insttitucion</th>
+		        <th>Responsable legal</th>
+		        <th>Responsable Contacto</th>
+		        <th>Instancia Contraparte</th>
+		        <th>Operaciones </th>
+		      </tr>
+		    </thead>
+		  <tbody id="bodyt">
+		     <!-- ESTRUCTURA DE LA TABLA -->
+		       <tr>
+		       
+		        <td>Universidad de los Andes</td>
+		         <td>Pedro Perez</td>
+		         <td>Carlos hernandez</td>
+		         <td>Rectorado</td>
+		         <td>Eliminar</td>
+		      </tr>
+		      <tr>
+		        
+		        <td>Universidad Catolica</td>
+		        <td>Jose Suarez</td>
+		        <td>Josue Cardenaz</td>
+		        <td>Decanato de Docencia </td>
+		        <td>Eliminar </td>
+		      </tr>
+		      <tr>
+		        
+		        <td>Universidad Simon Bolivar</td>
+		        <td>Maria peña</td>
+		        <td>jesus Medina </td>
+		        <td>Departamento de Sociales </td>
+		        <td>Eliminar</td>
+		      </tr>
+		    </tbody>
+		  </table>
+	
+
+	
+		<br>
+	
+		
 		<br>
 		<?php echo CHtml::submitButton("siguiente",array("class"=>'btn btn-conv')); ?>
 
@@ -210,6 +224,8 @@
                     ?>
 					<div class="row">
                     <?php echo $formi->labelEx($paises,'idPais',array('class'=>'col-md-3')); ?>
+                    
+<!--++++++++++++++++++++++++++++++++++++++++++++++++validacion para dropdownlist dependiente ++++++++++++++++++++ -->
                     <?php echo $formi->dropDownList($paises,"idPais",
                     	CHtml::listData(Paises::model()->findAll(),'idPais','nombrePais'), 
                     	array(
@@ -220,10 +236,10 @@
                     			),'prompt'=>'Seleccione'
                     	)
                     );?>
-                    <?php echo $formi->error($paises,"idPais"); ?>
-
-                     
+                   <?php echo $formi->error($paises,"idPais"); ?>
                     </div>
+
+
                     <br>
                     <div class="row">
 						<?php echo $formi->labelEx($instituciones,'estados_idEstado'); ?>
