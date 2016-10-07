@@ -32,7 +32,7 @@ class TipoconveniosController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','admin'),
+				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -71,7 +71,8 @@ class TipoconveniosController extends Controller
 		{
 			$model->attributes=$_POST['Tipoconvenios'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->idTipoConvenio));
+				//$this->redirect(array('view','id'=>$model->idTipoConvenio));
+				$this->redirect(array('admin'));
 		}
 
 		$this->render('create',array(
@@ -95,7 +96,7 @@ class TipoconveniosController extends Controller
 		{
 			$model->attributes=$_POST['Tipoconvenios'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->idTipoConvenio));
+				$this->redirect(array('admin'));
 		}
 
 		$this->render('update',array(

@@ -4,33 +4,33 @@ $this->breadcrumbs=array(
 	'Configuración',
 );
  ?>
- <h4>Gestión de Información</h4>  
-
+ <h4>Gestión de Información en la Base de Datos </h4> 
+ <p>Seleccione la tabla que desea modificar</p>
 
 
 <div class="row">
   <div class="col-sm-4"> 
   	<ul class="list-group">
 			  <li class="list-group-item list-group-item-success">Instituciones</li>
-			  <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-plus"></span></a>Tipos de Instituciones</li>
-			  <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-plus"></span></a> Instituciones </li>
-			  <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-plus"></span></a>Dependencias</li>
+			  <li class="list-group-item">Tipos de Instituciones</li>
+			  <li class="list-group-item">Instituciones </li>
+			  <li class="list-group-item">Dependencias</li>
 	</ul>
   </div>
   <div class="col-sm-4">
   		<ul class="list-group">
 			  <li class="list-group-item list-group-item-success">Convenios</li>
-			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/tipoconvenios/create' ) ?>"><span class="glyphicon glyphicon-plus"></span></a><a  href="<?php echo $this->createUrl( '/tipoconvenios/index' ) ?>">Tipos de Convenio</a></li>
-			  <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-plus"></span></a>Clasificacion de los convenios</li>
-			  <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-plus"></span></a>Estados para los convenios</li>
+			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/tipoconvenios/admin' ) ?>">Tipos de Convenio</a></li>
+			  <li class="list-group-item">Clasificacion de los convenios</li>
+			  <li class="list-group-item">Estados para los convenios</li>
 		</ul>
   </div>
   <div class="col-sm-4">
   		<ul class="list-group">
 			  <li class="list-group-item list-group-item-success">Responsables</li>
-			  <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-plus"></span></a>Tipos de Responsables</li>
-			  <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-plus"></span></a>Responsables UNET</li>
-			  <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-plus"></span></a>Responsables Contraparte</li>
+			  <li class="list-group-item">Tipos de Responsables</li>
+			  <li class="list-group-item">Responsables UNET</li>
+			  <li class="list-group-item">Responsables Contraparte</li>
 		</ul>
   </div>
 </div>

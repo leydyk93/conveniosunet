@@ -7,40 +7,18 @@ $this->breadcrumbs=array(
 	'Crear',
 );
 
-
+/*$this->menu=array(
+	array('label'=>'List Tipoconvenios', 'url'=>array('index')),
+	array('label'=>'Manage Tipoconvenios', 'url'=>array('admin')),
+);*/
 ?>
 
 <div class="row">
-	<div  class="nuevo col-md-12 text-center">
-		 <h4>Tipos de Convenio</h4>
+	<div  class="nuevo col-md-12 text-left">
+		 <h4>Tabla: Tipo de convenio</h4>
 	</div>
 </div>
 
-<div class="row">
-  <div class="col-sm-3">
- <ul class="nav nav-pills nav-stacked">
-   			  <li><a href="#">Tipo de Convenio</a></li>
-			  <li><a href="<?php echo $this->createUrl('/tipoconvenios/create'); ?>">Crear </a></li>
-			  <li><a href="<?php echo $this->createUrl('/tipoconvenios/index'); ?>">Listar</a></li>
-			  <li><a href="<?php echo $this->createUrl('/tipoconvenios/admin'); ?>">Gestionar</a></li>
-</ul>
-  	
-  	<?php 
 
-  	/* $this->menu=array(
-	array('label'=>'Lista Tipos de Convenios', 'url'=>array('index')),
-	array('label'=>'Gestion Tipos de Convenio', 'url'=>array('admin')),
-	);*/
-
-  	?>
-  </div>
-  <div class="col-sm-9">
-  	
-		  	<!--<h1>Crear un nuevo Tipo de convenio</h1>-->
-
-		<?php $this->renderPartial('_form', array('model'=>$model)); ?>
-  </div>
-</div>
-
-
+<?php $this->renderPartial('_form', array('model'=>$model)); ?>
 
