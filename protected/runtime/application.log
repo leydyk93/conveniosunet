@@ -1,0 +1,1037 @@
+2016/10/08 02:28:57 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('tipoconvenios/a...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/conveniosunet/index.php?r=tipoconvenios/admin
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=site/configuracion&tag=popular
+---
+2016/10/08 02:29:14 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('clasificacionco...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/conveniosunet/index.php?r=clasificacionconvenios/admin
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=site/configuracion&tag=popular
+---
+2016/10/08 02:29:33 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('tipoconvenios/a...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/conveniosunet/index.php?r=tipoconvenios/admin
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=site/configuracion&tag=popular
+---
+2016/10/08 02:44:37 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('tipoconvenios/a...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/conveniosunet/index.php?r=tipoconvenios/admin
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=site/configuracion&tag=popular
+---
+2016/10/08 02:45:39 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('tipoconvenios/a...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/conveniosunet/index.php?r=tipoconvenios/admin
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=site/configuracion&tag=popular
+---
+2016/10/08 07:35:21 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('tipoconvenios/a...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/conveniosunet/index.php?r=tipoconvenios/admin
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=site/configuracion&tag=popular
+---
+2016/10/09 21:52:42 [error] [php] Undefined index: contra (C:\xampp\htdocs\conveniosunet\protected\views\convenios\pasotres.php:8)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): ConveniosController->renderFile()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(782): ConveniosController->renderPartial()
+#2 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(400): ConveniosController->render()
+#3 unknown(0): ConveniosController->actionPasotres()
+#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=convenios/pasotres&idconvenio=7
+in C:\xampp\htdocs\conveniosunet\protected\views\convenios\pasotres.php (8)
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (400)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/09 22:58:03 [error] [exception.ParseError] ParseError: syntax error, unexpected ';' in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:464
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('pasotres/')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/pasot...')
+#2 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/pasotres&idconvenio=7
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/pasotres&idconvenio=7
+---
+2016/10/09 22:58:27 [error] [exception.ParseError] ParseError: syntax error, unexpected '$criteria' (T_VARIABLE) in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:466
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('pasotres/')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/pasot...')
+#2 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/pasotres&idconvenio=7
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/pasodos&idconvenio=7
+---
+2016/10/09 23:00:01 [error] [php] Undefined index: contra (C:\xampp\htdocs\conveniosunet\protected\views\convenios\pasotres.php:8)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): ConveniosController->renderFile()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(782): ConveniosController->renderPartial()
+#2 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(400): ConveniosController->render()
+#3 unknown(0): ConveniosController->actionPasotres()
+#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=convenios/pasotres&idconvenio=7
+in C:\xampp\htdocs\conveniosunet\protected\views\convenios\pasotres.php (8)
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (400)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/09 23:32:57 [error] [php] Object of class InstitucionConvenios could not be converted to string (C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:469)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=convenios/pasocinco&idconvenio=7
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (469)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 00:04:55 [error] [exception.CException] CException: Property "Historicoresponsables.resresponsables_idResponsable" is not defined. in C:\xampp\htdocs\yii\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(161): CComponent->__set('resresponsables...', '5')
+#1 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(475): CActiveRecord->__set('resresponsables...', '5')
+#2 [internal function]: ConveniosController->actionPasocinco('10')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ConveniosController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ConveniosController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('pasocinco')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/pasoc...')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/pasocinco&idconvenio=10
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/pasocinco&idconvenio=10
+---
+2016/10/10 01:28:03 [error] [exception.ParseError] ParseError: syntax error, unexpected '$model_hr4' (T_VARIABLE) in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:510
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('consultar/')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/consu...')
+#2 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/consultar
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/pasocinco&idconvenio=11
+---
+2016/10/10 01:28:49 [error] [exception.ParseError] ParseError: syntax error, unexpected '$model_hr4' (T_VARIABLE) in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:510
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('pasocinco/')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/pasoc...')
+#2 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/pasocinco&idconvenio=11
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/pasocuatro&idconvenio=11
+---
+2016/10/10 01:29:06 [error] [exception.ParseError] ParseError: syntax error, unexpected '$model_hr4' (T_VARIABLE) in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:510
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('consultar/')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/consu...')
+#2 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/consultar
+HTTP_REFERER=http://localhost/conveniosunet/index.php
+---
+2016/10/10 01:31:40 [error] [php] Undefined variable: nodel_hr3 (C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:503)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=convenios/pasocinco&idconvenio=12
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (503)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:33:34 [error] [php] Undefined variable: nodel_hr4 (C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:511)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=convenios/pasocinco&idconvenio=13
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (511)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:37:05 [warning] [application] Failed to set unsafe attribute "tipo" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:37:05 [warning] [application] Failed to set unsafe attribute "clasificacion" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:37:05 [warning] [application] Failed to set unsafe attribute "ambitoGeografico" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:37:05 [warning] [application] Failed to set unsafe attribute "pais" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:37:05 [warning] [application] Failed to set unsafe attribute "tipo_institucion" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:37:05 [warning] [application] Failed to set unsafe attribute "institucion" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:37:05 [warning] [application] Failed to set unsafe attribute "estadoConv" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:37:05 [warning] [application] Failed to set unsafe attribute "fechaVencimiento1" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:37:05 [warning] [application] Failed to set unsafe attribute "fechaVencimiento2" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:37:06 [warning] [application] Failed to set unsafe attribute "tipo" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:37:06 [warning] [application] Failed to set unsafe attribute "clasificacion" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:37:06 [warning] [application] Failed to set unsafe attribute "ambitoGeografico" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:37:06 [warning] [application] Failed to set unsafe attribute "pais" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:37:06 [warning] [application] Failed to set unsafe attribute "tipo_institucion" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:37:06 [warning] [application] Failed to set unsafe attribute "institucion" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:37:06 [warning] [application] Failed to set unsafe attribute "estadoConv" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:37:06 [warning] [application] Failed to set unsafe attribute "fechaVencimiento1" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:37:06 [warning] [application] Failed to set unsafe attribute "fechaVencimiento2" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:38:56 [error] [php] include(AlcanceConvenios.php): failed to open stream: No such file or directory (C:\xampp\htdocs\yii\framework\YiiBase.php:432)
+Stack trace:
+#0 C:\xampp\htdocs\conveniosunet\protected\views\convenios\_form.php(132): spl_autoload_call()
+#1 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ConveniosController->renderInternal()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(869): ConveniosController->renderFile()
+#4 C:\xampp\htdocs\conveniosunet\protected\views\convenios\update.php(21): ConveniosController->renderPartial()
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): ConveniosController->renderInternal()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(869): ConveniosController->renderFile()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(782): ConveniosController->renderPartial()
+#9 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(652): ConveniosController->render()
+#10 unknown(0): ConveniosController->actionUpdate()
+#11 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#12 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#17 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#23 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=convenios/update&id=14
+in C:\xampp\htdocs\conveniosunet\protected\views\convenios\_form.php (132)
+in C:\xampp\htdocs\conveniosunet\protected\views\convenios\update.php (21)
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (652)
+2016/10/10 01:39:16 [warning] [application] Failed to set unsafe attribute "tipo" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:39:16 [warning] [application] Failed to set unsafe attribute "clasificacion" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:39:16 [warning] [application] Failed to set unsafe attribute "ambitoGeografico" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:39:16 [warning] [application] Failed to set unsafe attribute "pais" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:39:16 [warning] [application] Failed to set unsafe attribute "tipo_institucion" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:39:16 [warning] [application] Failed to set unsafe attribute "institucion" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:39:16 [warning] [application] Failed to set unsafe attribute "estadoConv" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:39:16 [warning] [application] Failed to set unsafe attribute "fechaVencimiento1" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 01:39:16 [warning] [application] Failed to set unsafe attribute "fechaVencimiento2" of "ConsultasConvenios".
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (917)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 02:29:01 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1-15' for key 'uk_institucion_convenios'. The SQL statement executed was: INSERT INTO `institucion_convenios` (`convenios_idConvenio`, `fechaIncorporacion`, `instituciones_idInstitucion`) VALUES (:yp0, :yp1, :yp2).
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (464)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 02:29:01 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1-15' for key 'uk_institucion_convenios'. The SQL statement executed was: INSERT INTO `institucion_convenios` (`convenios_idConvenio`, `fechaIncorporacion`, `instituciones_idInstitucion`) VALUES (:yp0, :yp1, :yp2) in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1080): CDbCommand->execute()
+#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(464): CActiveRecord->save()
+#3 [internal function]: ConveniosController->actionPasocinco('15')
+#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ConveniosController), Array)
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ConveniosController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('pasocinco')
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/pasoc...')
+#16 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/pasocinco&idconvenio=15
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/pasocinco&idconvenio=15
+---
+2016/10/10 02:37:13 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY000]: General error: 1267 Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation 'like'. The SQL statement executed was: SELECT * FROM `responsables` `t` WHERE (LOWER(primerApellidoResponsable) LIKE :ycp0) OR (LOWER(primerNombreResponsable) LIKE :ycp1) ORDER BY primerApellidoResponsable LIMIT 30.
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (1009)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/10 02:37:13 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 1267 Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation 'like'. The SQL statement executed was: SELECT * FROM `responsables` `t` WHERE (LOWER(primerApellidoResponsable) LIKE :ycp0) OR (LOWER(primerNombreResponsable) LIKE :ycp1) ORDER BY primerApellidoResponsable LIMIT 30 in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1356): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1475): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(1009): CActiveRecord->findAll(Object(CDbCriteria))
+#4 [internal function]: ConveniosController->actionAutocomplete('Ostos Ra\xC3\xBA')
+#5 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ConveniosController), Array)
+#6 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ConveniosController), Object(ReflectionMethod), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('autocomplete')
+#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Convenios/autoc...')
+#17 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/conveniosunet/index.php?r=Convenios/autocomplete&term=Ostos+Ra%C3%BA
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/pasodos&idconvenio=16
+---
+2016/10/13 04:45:43 [error] [exception.ParseError] ParseError: syntax error, unexpected '[', expecting variable (T_VARIABLE) or '{' or '$' in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:1005
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('pasodos/')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/pasod...')
+#2 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/pasodos&idconvenio=17
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/create
+---
+2016/10/13 04:45:51 [error] [exception.ParseError] ParseError: syntax error, unexpected '[', expecting variable (T_VARIABLE) or '{' or '$' in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:1005
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('create/')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/creat...')
+#2 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/create
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/consultar
+---
+2016/10/13 04:46:13 [error] [exception.ParseError] ParseError: syntax error, unexpected '[', expecting variable (T_VARIABLE) or '{' or '$' in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:1005
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('consultar/')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/consu...')
+#2 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/consultar
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=site/login
+---
+2016/10/13 04:49:44 [error] [exception.ParseError] ParseError: syntax error, unexpected '?>', expecting ',' or ')' in C:\xampp\htdocs\conveniosunet\protected\views\convenios\pasodos.php:351
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('pasodos', Array, true)
+#3 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(381): CController->render('pasodos', Array)
+#4 [internal function]: ConveniosController->actionPasodos('17')
+#5 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ConveniosController), Array)
+#6 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ConveniosController), Object(ReflectionMethod), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('pasodos')
+#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/pasod...')
+#17 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/pasodos&idconvenio=17
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/create
+---
+2016/10/13 04:50:31 [error] [exception.ParseError] ParseError: syntax error, unexpected '?>', expecting ',' or ')' in C:\xampp\htdocs\conveniosunet\protected\views\convenios\pasodos.php:351
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('pasodos', Array, true)
+#3 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(381): CController->render('pasodos', Array)
+#4 [internal function]: ConveniosController->actionPasodos('17')
+#5 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ConveniosController), Array)
+#6 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ConveniosController), Object(ReflectionMethod), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('pasodos')
+#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/pasod...')
+#17 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/pasodos&idconvenio=17
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/create
+---
+2016/10/13 04:50:52 [error] [exception.ParseError] ParseError: syntax error, unexpected '?>', expecting ',' or ')' in C:\xampp\htdocs\conveniosunet\protected\views\convenios\pasodos.php:351
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('pasodos', Array, true)
+#3 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(381): CController->render('pasodos', Array)
+#4 [internal function]: ConveniosController->actionPasodos('17')
+#5 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ConveniosController), Array)
+#6 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ConveniosController), Object(ReflectionMethod), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('pasodos')
+#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/pasod...')
+#17 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/pasodos&idconvenio=17
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/create
+---
+2016/10/13 04:54:47 [error] [exception.ParseError] ParseError: syntax error, unexpected ':' in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:1004
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('create/')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/creat...')
+#2 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/create
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/consultar
+---
+2016/10/13 04:55:55 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('guardarinstituc...')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/guard...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/pasodos&idconvenio=17
+---
+2016/10/13 05:00:56 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('guardarinstituc...')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/guard...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/pasodos&idconvenio=17
+---
+2016/10/13 05:01:59 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('guardarinstituc...')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/guard...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/pasodos&idconvenio=17
+---
+2016/10/13 05:03:48 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('Guardarinstituc...')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/Guard...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/Guardarinstitucion
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/pasodos&idconvenio=17
+---
+2016/10/13 05:05:08 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('guardarinstituc...')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/guard...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/pasodos&idconvenio=17
+---
+2016/10/13 05:07:25 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('guardarinstituc...')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/guard...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/pasodos&idconvenio=17
+---
+2016/10/13 05:09:29 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('guardarinstituc...')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/guard...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/pasodos&idconvenio=17
+---
+2016/10/13 05:12:01 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('guardarinstituc...')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/guard...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/pasodos&idconvenio=17
+---
+2016/10/13 05:16:15 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('guardarinstituc...')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/guard...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/pasodos&idconvenio=17
+---
+2016/10/13 05:19:12 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('guardarinstituc...')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/guard...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/pasodos&idconvenio=17
+---
+2016/10/13 05:19:36 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('guardarinstituc...')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/guard...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/pasodos&idconvenio=17
+---
+2016/10/13 05:23:40 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('guardarinstituc...')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/guard...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/pasodos&idconvenio=17
+---
+2016/10/13 05:32:46 [error] [php] Undefined variable: tiposInstituciones_idTipoInstitucion (C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:1008)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (1008)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/13 05:34:39 [error] [php] Undefined variable: tiposInstituciones_idTipoInstitucion (C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:1008)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (1008)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/13 05:38:22 [error] [php] Undefined variable: tiposInstituciones_idTipoInstitucion (C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:1008)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (1008)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/13 05:42:33 [error] [php] Undefined variable: tiposInstituciones_idTipoInstitucion (C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:1008)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (1008)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/13 05:44:38 [error] [exception.ParseError] ParseError: syntax error, unexpected '?', expecting end of file in C:\xampp\htdocs\conveniosunet\protected\views\convenios\pasodos.php:332
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('pasodos', Array, true)
+#3 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(381): CController->render('pasodos', Array)
+#4 [internal function]: ConveniosController->actionPasodos('17')
+#5 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ConveniosController), Array)
+#6 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ConveniosController), Object(ReflectionMethod), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('pasodos')
+#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/pasod...')
+#17 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/pasodos&idconvenio=17
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/create
+---
+2016/10/13 05:45:08 [error] [exception.ParseError] ParseError: syntax error, unexpected '?', expecting end of file in C:\xampp\htdocs\conveniosunet\protected\views\convenios\pasodos.php:332
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('pasodos', Array, true)
+#3 C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php(381): CController->render('pasodos', Array)
+#4 [internal function]: ConveniosController->actionPasodos('17')
+#5 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ConveniosController), Array)
+#6 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ConveniosController), Object(ReflectionMethod), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('pasodos')
+#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('convenios/pasod...')
+#17 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\conveniosunet\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/conveniosunet/index.php?r=convenios/pasodos&idconvenio=17
+HTTP_REFERER=http://localhost/conveniosunet/index.php?r=convenios/create
+---
+2016/10/13 05:47:47 [error] [php] Undefined variable: tiposInstituciones_idTipoInstitucion (C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:1008)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (1008)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/13 05:52:56 [error] [php] Undefined variable: tiposInstituciones_idTipoInstitucion (C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:1008)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (1008)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/13 06:16:17 [error] [php] Undefined index: Insituciones_nombreInstitucion (C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:1005)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (1005)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/13 06:19:06 [error] [php] Undefined index: Instituciones_nombreInstitucion (C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:1005)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (1005)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/13 06:19:08 [error] [php] Undefined index: Instituciones_nombreInstitucion (C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:1005)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (1005)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/13 06:20:45 [error] [php] Undefined index: Instituciones[nombreInstitucion] (C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:1005)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (1005)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/13 06:20:46 [error] [php] Undefined index: Instituciones[nombreInstitucion] (C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:1005)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (1005)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/13 06:22:07 [error] [php] Undefined index: Instituciones[nombreInstitucion] (C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:1005)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (1005)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/13 06:24:48 [error] [php] Undefined index: Instituciones[nombreInstitucion] (C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:1005)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (1005)
+in C:\xampp\htdocs\conveniosunet\index.php (13)
+2016/10/13 06:26:25 [error] [php] Undefined index: nombreInstitucion (C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php:1005)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): ConveniosController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): ConveniosController->filterAccessControl()
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): ConveniosController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): ConveniosController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\conveniosunet\index.php(13): CWebApplication->run()
+REQUEST_URI=/conveniosunet/index.php?r=convenios/guardarinstitucion
+in C:\xampp\htdocs\conveniosunet\protected\controllers\ConveniosController.php (1005)
+in C:\xampp\htdocs\conveniosunet\index.php (13)

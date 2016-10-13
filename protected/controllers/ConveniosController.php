@@ -30,7 +30,7 @@ class ConveniosController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 
-				'actions'=>array('index','view','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','guardardependencia'),
+				'actions'=>array('index','view','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','guardardependencia','guardarinstitucion'),
 
 				'users'=>array('*'),
 			),
@@ -448,19 +448,69 @@ class ConveniosController extends Controller
 			//Si guarda en la tabla convenios entonces guarde en la tabla Institución convenios
 			if($model->save()){
 //-----------------------------GUARDANDO EN INSTITUCIOIN CONVENIOS----------------------------
-				for ($i=1; $i <count($_SESSION['institucion']) ; $i++) { 
+				for ($i=1; $i <count($_SESSION['institucion']) ; $i++) {
+
+					$institucion_contraparte=explode('.',$_SESSION['institucion'][$i]);	
+
 					$model_ic= new InstitucionConvenios;
+					
+					$model_hr1= new Historicoresponsables; //responsable legal
+					$model_hr2= new Historicoresponsables;//responsable de contacto
+
 					$model_ic->convenios_idConvenio=$_SESSION['idconvenio'];
 					$model_ic->fechaIncorporacion=$_SESSION['fechainicioconvenio'];//la fecha de incorporacion es cuando inicia el convenio?
-					$model_ic->instituciones_idInstitucion=$_SESSION['institucion'][$i];
+					$model_ic->instituciones_idInstitucion=$institucion_contraparte[0];
+
 					if($model_ic->save()){
-						echo "guardo";
+//------------------------------------------GUARDANDO EN HISTORICO DE RESPONSABLES-----CONTRAPARTE------------------//
+						//buscando id de institucion
+						
+						$criteria= new CDbCriteria();
+						$criteria->select='idInstitucionConvenio';
+						$criteria->condition='instituciones_idInstitucion=:ins AND convenios_idConvenio=:conv';
+						$criteria->params= array(':ins'=>$institucion_contraparte[0],':conv'=>$_SESSION['idconvenio']);
+						$result= InstitucionConvenios::model()->find($criteria);
+						echo $result['idInstitucionConvenio'];
+
+
+						//guardando en historico de responsable
+						//responsable legal
+						$model_hr1->responsables_idResponsable=$institucion_contraparte[1];
+						$model_hr1->institucion_convenios_idInstitucionConvenio=$result['idInstitucionConvenio'];
+						$model_hr1->fechaAsignacionResponsable=$_SESSION['fechainicioconvenio']; //revisar fecha
+						if($model_hr1->save()){
+							echo "guardo responsable 1";
+						}
+						//responsable contacto
+						$model_hr2->responsables_idResponsable=$institucion_contraparte[2];
+						$model_hr2->institucion_convenios_idInstitucionConvenio=$result['idInstitucionConvenio'];
+						$model_hr2->fechaAsignacionResponsable=$_SESSION['fechainicioconvenio']; //revisar fecha
+						if($model_hr2->save()){
+							echo "guardo responsable 2";
+						}
+						//echo "guardo";
 					}
 					else{
 						print_r($model_ic->getErrors());
 					}
 					# code...
 				}
+//-----------------------------------------------GUARDANDO EN HISTORICO DE RESPONSABLES----- UNET------
+					$model_hr3= new Historicoresponsables; //responsable legal 
+					$model_hr3->responsables_idResponsable=$_SESSION['responsable_legal_unet'];
+					$model_hr3->convenios_idConvenio=$_SESSION['idconvenio'];
+					$model_hr3->fechaAsignacionResponsable=$_SESSION['fechainicioconvenio'];
+					if($model_hr3->save()){
+						echo "guardo responsable legal unet";
+					}
+
+					$model_hr4= new Historicoresponsables;//responsable de contacto
+					$model_hr4->responsables_idResponsable=$_SESSION['responsable_contacto_unet'];
+					$model_hr4->convenios_idConvenio=$_SESSION['idconvenio'];
+					$model_hr4->fechaAsignacionResponsable=$_SESSION['fechainicioconvenio'];;
+					if($model_hr4->save()){
+						echo "guardo responsable contacto unet";
+					}
 //---------------------------------------------- GUARDANDO EN CONVENI-ESTADOS-------------------				
 					$model_ce->convenios_idConvenio=$_SESSION['idconvenio'];
  					$model_ce->estadoConvenios_idEstadoConvenio=$_SESSION['estado'];
@@ -491,10 +541,19 @@ class ConveniosController extends Controller
 				    	print_r($model_ca->getErrors());
 				    }
 				   }
-				   $this->redirect(array('view','id'=>$model->idConvenio));
+//------------------------------------------GUARDANDO ACTA DE INTENCIÓN-----------------------------------
+				   $acta = new Actaintencion;
+				   
+				   $acta->fechaActaIntencion=$_SESSION['fecha_acta'];
+				   $acta->urlActaIntencion=$_SESSION['url_acta'];
+				   $acta->convenios_idConvenio=$_SESSION['idconvenio'];
+				   if($acta->save()){
+				   		echo "guardo";
+				   }
+				   //redireccionando a la vista dle convenio 
+				  // $this->redirect(array('view','id'=>$model->idConvenio));
 
-
-			}
+			} //model->save
 			else{
 					print_r($model->getErrors());
 			}
@@ -921,15 +980,12 @@ class ConveniosController extends Controller
 
 		$dependencia= new Dependencias;
 		$dependencia->nombreDependencia=$_POST['nombre'];
-		$dependencia->telefonoDependencia=$_POST['telefono'];
-		 
-		
-		  
+		$dependencia->telefonoDependencia=$_POST['telefono'];		
+
 			if($dependencia->save()){
 
 				//echo $_POST['nombre'];
 		 	    //echo $_POST['telefono'];
-
 		 	    $lista= Dependencias::model()->findAll();
 		 	    $lista=CHtml::listData($lista,'idDependencia','nombreDependencia');
 
@@ -939,6 +995,29 @@ class ConveniosController extends Controller
 			}	
 			
 	}
+
+	public function actionGuardarinstitucion(){
+
+		// echo("<script>console.log('Extension ".$e."');</script>"); 
+		 echo("<script>console.log('Entrooo');</script>"); 
+		 
+		 $institucion= new Instituciones;
+		 
+		 if(isset($_POST["Instituciones"])){
+			$institucion->attributes=$_POST["Instituciones"];
+			$institucion->save();
+
+			$lista= Instituciones::model()->findAll();
+		 	$lista=CHtml::listData($lista,'idInstitucion','nombreInstitucion');
+
+				foreach ($lista as $valor => $descripcion) {
+						echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion), true);
+				}	
+		 }
+		
+	}
+
+
 
 			public function actionAutocomplete($term) 
 			{
