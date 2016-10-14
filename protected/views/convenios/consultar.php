@@ -39,7 +39,7 @@
            <div class="input-group">
             <?php echo $form->textField($model,'anio',array('class'=>'form-control input-sm')); ?>
             <span class="input-group-btn">
-              <?php echo CHtml::button('Ok',array('onclick'=>'send();','class'=>'btn btn-conv btn-sm')); ?>
+              <?php echo CHtml::button('Ok',array('onclick'=>'send(1);','class'=>'btn btn-conv btn-sm')); ?>
             </span>
             
           </div>
@@ -56,7 +56,7 @@
       <div class="collapse list-group-submenu" id="Subtipo"> 
          <?php 
                $list=CHtml::listData($tipoconve,'idTipoConvenio','descripcionTipoConvenio');
-               echo $form->checkBoxList($model,'tipo',$list,array('onclick'=>'send();','template'=>'<a class="list-group-item" data-parent="#Subtipo"> {input}{label} </a>', "separator" => ""));
+               echo $form->checkBoxList($model,'tipo',$list,array('onclick'=>'send(1);','template'=>'<a class="list-group-item" data-parent="#Subtipo"> {input}{label} </a>', "separator" => ""));
           ?> 
       </div>
 
@@ -65,7 +65,7 @@
       <div class="collapse list-group-submenu" id="SubClasif"> 
        <?php  
               $list2=CHtml::listData($clasif,'idClasificacionConvenio','nombreClasificacionConvenio');
-              echo $form->checkBoxList($model,'clasificacion', $list2,array('onclick'=>'send();', 'template'=>'<a class="list-group-item" data-parent="#SubClasif"> {input}{label} </a>', "separator" => ""));
+              echo $form->checkBoxList($model,'clasificacion', $list2,array('onclick'=>'send(1);', 'template'=>'<a class="list-group-item" data-parent="#SubClasif"> {input}{label} </a>', "separator" => ""));
         ?>
         
       </div>
@@ -110,7 +110,7 @@
                     
            <?php 
                  $list4=CHtml::listData($tiposinst,'idTipoInstitucion','nombreTipoInstitucion');
-                 echo $form->checkBoxList($model,'tipo_institucion', $list4,array('onclick'=>'send();', 'template'=>'<a class="list-group-item" data-parent="#SubSubTipoIns"> {input}{label} </a> ', "separator" => "")); 
+                 echo $form->checkBoxList($model,'tipo_institucion', $list4,array('onclick'=>'send(1);', 'template'=>'<a class="list-group-item" data-parent="#SubSubTipoIns"> {input}{label} </a> ', "separator" => "")); 
             ?>
 
           </div>
@@ -127,7 +127,6 @@
                   ?> 
              </div>
           </div>
-
                      
          </a>
       </div>
@@ -137,7 +136,7 @@
 
           <?php  
            $list6=CHtml::listData($estadoconve,'idEstadoConvenio','nombreEstadoConvenio');   
-           echo $form->checkBoxList($model,'estadoConv', $list6,array('onclick'=>'send();', 'template'=>'<a class="list-group-item" data-parent="#SubEstado"> {input}{label} </a>', "separator" => ""));    
+           echo $form->checkBoxList($model,'estadoConv', $list6,array('onclick'=>'send(1);', 'template'=>'<a class="list-group-item" data-parent="#SubEstado"> {input}{label} </a>', "separator" => ""));    
           ?>
           
       </div>
@@ -231,73 +230,11 @@
 
           </div>
           <div class="col-sm-3">
-            <?php echo CHtml::button('Ok',array('onclick'=>'send();','class'=>'btn btn-conv btn-sm')); ?>
+            <?php echo CHtml::button('Ok',array('onclick'=>'send(1);','class'=>'btn btn-conv btn-sm')); ?>
           </div>
           
         </div>
 
-          <?php     
-         /*     echo $form->labelEx($model,'fechaVencimiento1');        
-                   $this->widget('zii.widgets.jui.CJuiDatePicker',
-                        array(
-                          'attribute'=>'fechaVencimiento1',
-                          'name'=>'fechaVencimiento1',
-                          'value'=>$model->fechaVencimiento1,
-                          'model'=>$model,
-                          'language' => 'es',
-                        
-                            'options'=>array(
-                                'autoSize'=>true,
-                                 'mode'=>'focus',
-                                 'showAnim'=>'slideDown',
-                                 'dateFormat'=>'yy/mm/dd',
-                                 'changeMonth'=>true,
-                                 'changeYear'=>true,
-                                 'showButtonPanel'=>true,
-                               
-                            ),
-                        'htmlOptions'=>array(
-                            'readonly'=>"readonly",
-                            'class'=>'form-control input-sm'
-                        ),
-                    ));
-     
-             echo $form->error($model,'fechaVencimiento1');
-
-              echo $form->labelEx($model,'fechaVencimiento2'); 
-
-              $this->widget('zii.widgets.jui.CJuiDatePicker',
-                        array(
-                          'attribute'=>'fechaVencimiento2',
-                          'name'=>'fechaVencimiento2',
-                          'value'=>$model->fechaVencimiento2,
-                          'model'=>$model,
-                          'language' => 'es',
-                        
-                            'options'=>array(
-                                'autoSize'=>true,
-                                 'mode'=>'focus',
-                                 'showAnim'=>'slideDown',
-                                 'dateFormat'=>'yy/mm/dd',
-                                 'changeMonth'=>true,
-                                 'changeYear'=>true,
-                                 'showButtonPanel'=>true,
-                               
-                            ),
-                        'htmlOptions'=>array(
-                            'readonly'=>"readonly",
-                           'style'=>'',
-                            'size'=>'5',
-                           'class'=>'form-control input-sm',
-                        ),
-                    ));
-             
-
-
-              echo $form->error($model,'fechaVencimiento2');
-
-              echo CHtml::button('Ok',array('onclick'=>'send();','class'=>'btn btn-conv btn-xs'));*/
-             ?> 
         </a>
       </div>
       <a  class="list-group-item text-center">
@@ -314,31 +251,28 @@
  <div  id="Resulconvenios" class="col-sm-8">
 
     <div id="resul" class="list-group">
-       
-
+        
     </div>
-   
+
  </div>
   
 </div>
-
-
 
 <script type="text/javascript">
 
 $('#ConsultasConvenios_pais').change(function() {
 //    console.log($('#ConsultasConvenios_pais option:selected').val());
-    send();
+    send(1);
 });
 
 $('#ConsultasConvenios_institucion').change(function() {
     //console.log($('#ConsultasConvenios_institucion option:selected').val());
-    send();
+    send(1);
 });
 
 $('#ConsultasConvenios_ambitoGeografico').change(function() {
     //console.log($('#ConsultasConvenios_institucion option:selected').val());
-    send();
+    send(1);
 });
 
 function  limpiarFiltros(){
@@ -379,9 +313,10 @@ function  limpiarFiltros(){
     send();
 }
 
-function send()
+function send(inicio)
  {
   
+  var inicio=Number(inicio);
   var anio = document.getElementById("ConsultasConvenios_anio").value;
 
   var tipo = document.getElementsByName("ConsultasConvenios[tipo][]");
@@ -434,20 +369,34 @@ function send()
 
  var url= '<?php echo Yii::app()->createUrl("convenios/consultara"); ?>'
  
-$.ajax({
+/*$.ajax({
 
 type:"post",
 url: url,
 data:{anio:anio , tipo:tipoc , clasificacion:clasific , tipoInstitucion:tipoInstc , estadoConvenio:estadoConvc ,
       ambito:ambito, pais:pais , institucion:institucion, fechav1: fv1 , fechav2: fv2},
-success:function (datos){
+success:function(datos){
+
+   document.getElementById("resul").innerHTML=datos;
+   
+}
+
+});*/
+
+$.ajax({
+
+type:"post",
+url: url,
+data:{ inicio:inicio , anio:anio , tipo:tipoc , clasificacion:clasific , tipoInstitucion:tipoInstc , estadoConvenio:estadoConvc ,
+      ambito:ambito, pais:pais , institucion:institucion, fechav1: fv1 , fechav2: fv2},
+success:function(datos){
 
    document.getElementById("resul").innerHTML=datos;
    
 }
 
 });
-    
+ 
 }
  
 </script>
