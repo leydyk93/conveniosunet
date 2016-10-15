@@ -30,7 +30,7 @@ class ConveniosController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 
-				'actions'=>array('index','view','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','guardardependencia','guardarinstitucion'),
+				'actions'=>array('index','view','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','autocompletef','guardardependencia','guardarinstitucion','guardarresponsable'),
 
 				'users'=>array('*'),
 			),
@@ -1016,14 +1016,79 @@ class ConveniosController extends Controller
 		 }
 		
 	}
+	public function actionGuardarresponsable(){
 
+		// echo("<script>console.log('Extension ".$e."');</script>"); 
+		
+		  echo("<script>console.log('Entrooo');</script>"); 
+		 $responsable= new Responsables;
+		 
+		 if(isset($_POST["Responsables"])){
+		 	 echo("<script>console.log('Existe el formulario');</script>"); 
+			$responsable->attributes=$_POST["Responsables"];
+			$responsable->instituciones_idInstitucion=$_COOKIE['cookinst'];
 
+			 //echo("<script>console.log('Nombre ".$responsable->primerNombreResponsable."');</script>");  
+			if($responsable->save()){
+				 echo("<script>console.log('guardo');</script>"); 
+			}
+			else{
+				//print_r("<script>console.log('Errores ".$$responsable->getErrors()."');</script>");
+			}
 
+			//$lista= Instituciones::model()->findAll();
+		 	//$lista=CHtml::listData($lista,'idInstitucion','nombreInstitucion');
+
+			//	foreach ($lista as $valor => $descripcion) {
+			//			echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion), true);
+			//	}	
+		 }
+		
+	}
+//*****************************************FUNCIONES DE AUTOCOMPLETADO**********************************************
 			public function actionAutocomplete($term) 
 			{
 			 $criteria = new CDbCriteria;
 			 $criteria->compare('LOWER(primerApellidoResponsable)', strtolower($_GET['term']), true);
+
 			 $criteria->compare('LOWER(primerNombreResponsable)', strtolower($_GET['term']), true, 'OR');
+			 $criteria->addCondition('instituciones_idInstitucion IS NULL');
+			 $criteria->order = 'primerApellidoResponsable';
+			 $criteria->limit = 30; 
+			 $data = Responsables::model()->findAll($criteria);
+
+			 if (!empty($data))
+			 {
+			  $arr = array();
+			  foreach ($data as $item) {
+			   $arr[] = array(
+			    'id' => $item->idResponsable,
+			    'value' => $item->primerApellidoResponsable.' '.$item->primerNombreResponsable,
+			    'label' => $item->primerApellidoResponsable.' '.$item->primerNombreResponsable,
+			   );
+			  }
+			 }
+			 else
+			 {
+			  $arr = array();
+			  $arr[] = array(
+			   'id' => '',
+			   'value' => 'No se han encontrado resultados para su búsqueda',
+			   'label' => 'No se han encontrado resultados para su búsqueda',
+			  );
+			 }
+			  
+			 echo CJSON::encode($arr);
+			}
+			public function actionAutocompletef($term) 
+			{
+			 $criteria = new CDbCriteria;
+			 $criteria->compare('LOWER(primerApellidoResponsable)', strtolower($_GET['term']), true);
+
+			 $criteria->compare('LOWER(primerNombreResponsable)', strtolower($_GET['term']), true, 'OR');
+			  $criteria->compare('instituciones_idInstitucion', $_COOKIE['cookinst'], true,'AND');
+			// $criteria->condition="instituciones_idInstitucion=:col_inst";
+			 //$criteria->params=array(':col_inst'=>$_COOKIE['cookinst']);
 			 $criteria->order = 'primerApellidoResponsable';
 			 $criteria->limit = 30; 
 			 $data = Responsables::model()->findAll($criteria);

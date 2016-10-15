@@ -1,3 +1,35 @@
+<!--INCIALIZANDO LOS CAMPOS -->
+<?php 
+if(!isset($_SESSION['nombreconvenio'])){
+        $_SESSION['nombreconvenio']="";
+}
+if(!isset($_SESSION['tipo'])){
+        $_SESSION['tipo']="";
+}
+if(!isset($_SESSION['fechainicioconvenio'])){
+        $_SESSION['fechainicioconvenio']="";
+}
+if(!isset($_SESSION['fechacaducidadconvenio'])){
+        $_SESSION['fechacaducidadconvenio']="";
+}
+if(!isset($_SESSION['objetivo'])){
+        $_SESSION['objetivo']="";
+}
+if(!isset($_SESSION['dependenciaconvenio'])){
+        $_SESSION['dependenciaconvenio']="";
+}
+if(!isset($_SESSION['estado'])){
+        $_SESSION['estado']="";
+}
+if(!isset($_SESSION['clasificacion'])){
+        $_SESSION['clasificacion']="";
+}
+if(!isset($_SESSION['alcance'])){
+        $_SESSION['alcance']="";
+}
+ ?>
+
+
 <?php 
 	$form=$this->beginWidget("CActiveForm");
  ?>
@@ -33,14 +65,14 @@
 
 <div class="row">
 <?php echo $form->labelEx($pasouno,"tipo",array('class'=>'col-md-3')); ?>
-<?php echo $form->dropDownList($pasouno,"tipo",CHtml::listData(Tipoconvenios::model()->findAll(), 'idTipoConvenio', 'descripcionTipoConvenio'),'',array('style'=>'width:200px;','class'=>'col-md-5')); ?>
+<?php echo $form->dropDownList($pasouno,"tipo",CHtml::listData(Tipoconvenios::model()->findAll(), 'idTipoConvenio', 'descripcionTipoConvenio'),array('options' => array($_SESSION['tipo']=>array('selected'=>true))),array('style'=>'width:200px;','class'=>'col-md-5')); ?>
 <?php echo $form->error($pasouno,"tipo"); ?>
 </div>
 <br>
 <br>
 <div class="row">
 <?php echo $form->labelEx($pasouno,"nombreconvenio",array('class'=>'col-md-3')); ?>
-<?php echo $form->textField($pasouno,"nombreconvenio",array('style'=>'width:200px;','class'=>'col-md-5')); ?>
+<?php echo $form->textField($pasouno,"nombreconvenio",array('style'=>'width:200px;','class'=>'col-md-5','value'=>$_SESSION['nombreconvenio'])); ?>
 <?php echo $form->error($pasouno,"nombreconvenio"); ?>
 </div>
 <br>
@@ -65,6 +97,9 @@
                         'changeYear'=>true,
                         'defaultDate'=>'+1w',
                 ),
+                'htmlOptions'=>array(
+                        'value'=>$_SESSION['fechainicioconvenio'],
+                    ),
         ));
    ?>
 <?php echo $form->error($pasouno,"fechainicio"); ?>
@@ -91,6 +126,9 @@
                         'changeYear'=>true,
                         'defaultDate'=>'+1w',
                 ),
+                 'htmlOptions'=>array(
+                        'value'=>$_SESSION['fechacaducidadconvenio'],
+                    ),
         ));
    ?>
 <?php echo $form->error($pasouno,"fechacaducidad"); ?>
@@ -99,14 +137,14 @@
 <br>
 <div class="row">
 <?php echo $form->labelEx($pasouno,"objetivo",array('class'=>'col-md-3')); ?>
-<?php echo $form->textField($pasouno,"objetivo",array('style'=>'width:200px;','class'=>'col-md-5'));?>
+<?php echo $form->textField($pasouno,"objetivo",array('style'=>'width:200px;','class'=>'col-md-5','value'=>$_SESSION['objetivo']));?>
 <?php echo $form->error($pasouno,"objetivo"); ?>
 </div>
 <br>	
 <br>	
 <div class="row">
 <?php echo $form->labelEx($pasouno,'dependencia',array('class'=>'col-md-3')); ?>
-<?php echo $form->dropDownList($pasouno,'dependencia',CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),''); ?>
+<?php echo $form->dropDownList($pasouno,'dependencia',CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),array('options' => array($_SESSION['dependenciaconvenio']=>array('selected'=>true)))); ?>
 <?php echo $form->error($pasouno,'dependencia'); ?>
 </div>
 
@@ -119,7 +157,7 @@
 
 <div class="row">
 <?php echo $form->labelEx($pasouno,'estado',array('class'=>'col-md-3')); ?>
-<?php echo $form->dropDownList($pasouno,'estado',CHtml::listData(Estadoconvenios::model()->findAll(), 'idEstadoConvenio', 'nombreEstadoConvenio'),''); ?>
+<?php echo $form->dropDownList($pasouno,'estado',CHtml::listData(Estadoconvenios::model()->findAll(), 'idEstadoConvenio', 'nombreEstadoConvenio'),array('options' => array($_SESSION['estado']=>array('selected'=>true)))); ?>
 <?php echo $form->error($pasouno,'estado'); ?>
 </div>
 <br>
@@ -127,13 +165,13 @@ CARACTERISTICAS DEL CONVENIO
 <br>
 <div class="row">
 <?php echo $form->labelEx($pasouno,'clasiicacion',array('class'=>'col-md-3')); ?>
-<?php echo $form->dropDownList($pasouno,'clasificacion',CHtml::listData(Clasificacionconvenios::model()->findAll(), 'idClasificacionConvenio', 'nombreClasificacionConvenio'),''); ?>
+<?php echo $form->dropDownList($pasouno,'clasificacion',CHtml::listData(Clasificacionconvenios::model()->findAll(), 'idClasificacionConvenio', 'nombreClasificacionConvenio'),array('options' => array($_SESSION['clasificacion']=>array('selected'=>true)))); ?>
 <?php echo $form->error($pasouno,'clasificacion'); ?>
 </div>
 <?php echo "<br>"; ?>
 <div class="row">
 <?php echo $form->labelEx($pasouno,'alcance',array('class'=>'col-md-3')); ?>
-<?php echo $form->textField($pasouno,"alcance",array('style'=>'width:200px;','class'=>'col-md-5')); ?>
+<?php echo $form->textField($pasouno,"alcance",array('style'=>'width:200px;','class'=>'col-md-5','value'=>$_SESSION['alcance'])); ?>
 <?php echo $form->error($pasouno,'alcance'); ?>
 </div>
 
@@ -235,6 +273,8 @@ echo "<br>";
     </div>
 </div>
 <script type="text/javascript">
+      
+
 
         function guard(){
             alert('funcion guardar');

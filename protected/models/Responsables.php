@@ -39,7 +39,7 @@ class Responsables extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('primerNombreResponsable, primerApellidoResponsable, instituciones_idInstitucion, dependencias_idDependencia, tipoResponsable_idTipoResponsable', 'required'),
+			array('primerNombreResponsable, primerApellidoResponsable, dependencias_idDependencia, tipoResponsable_idTipoResponsable', 'required'),
 			array('instituciones_idInstitucion, dependencias_idDependencia, tipoResponsable_idTipoResponsable', 'numerical', 'integerOnly'=>true),
 			array('primerNombreResponsable, segundoNombreResponsable', 'length', 'max'=>40),
 			array('primerApellidoResponsable, segundoApellidoResponsable', 'length', 'max'=>60),
