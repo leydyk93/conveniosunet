@@ -49,41 +49,137 @@ class ConveniosController extends Controller
 	}
 
 	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
-	public function actionView($id)
-	{
-
+	*Realiza la consulta de los responsables de la UNET para un convenio 
+	*@param entero $id que reperesta el convenio
+	*/
+	public function consultarResponsablesUNET($id){
+		
 		$conexion=Yii::app()->db;
 
-		/*Este modelo almacena el resultado de la consulta por columna*/
+		 $consultarcUNET="SELECT r.primerNombreResponsable, r.primerApellidoResponsable, r.correoElectronicoResponsable, r.telefonoResponsable, tr.descripcionTipoResponsable FROM responsables r ";
+		 $consultarcUNET.="JOIN historicoresponsables hr ON r.idResponsable = hr.responsables_idResponsable ";
+		 $consultarcUNET.="JOIN convenios c ON c.idConvenio = hr.convenios_idConvenio ";
+		 $consultarcUNET.="JOIN tiporesponsable tr ON tr.idTipoResponsable = r.tipoResponsable_idTipoResponsable ";
+		 $consultarcUNET.="WHERE c.idConvenio = ".$id;
 
-		$resull= new ResultadoConvenios; //almacenar datos de ubicacion de la contraparte
-		$resullResponsables= new ResultadoConvenios;
-		$resullRespoContacto= new ResultadoConvenios;
-		$resullRespUNET = new ResultadoConvenios;
-		$resultados=null;
+		 $resultados=$conexion->createCommand($consultarcUNET)->query();
 
-		/*Datos de la contraparte*/
-		$consulta  ="SELECT c.nombreConvenio, inst.siglasInstitucion, inst.nombreInstitucion, tinst.nombreTipoInstitucion, edo.nombreEstado, ps.nombrePais FROM convenios c ";
+		 return $resultados;		
+	}
+		/**
+	*Realiza la consulta de los responsables de la contraparte 
+	*@param entero $id que reperesta el convenio
+	*/
+	public function consultarInstitucionesContraparte($id){
+
+		 $conexion=Yii::app()->db;
+		$consulta  ="SELECT inst.idInstitucion, inst.siglasInstitucion, inst.nombreInstitucion, tinst.nombreTipoInstitucion, edo.nombreEstado, ps.nombrePais FROM convenios c ";
 		$consulta .="JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio ";
 		$consulta .="JOIN institucion_convenios ic ON c.idConvenio = ic.convenios_idConvenio ";
 		$consulta .="JOIN instituciones inst ON inst.idInstitucion = ic.instituciones_idInstitucion ";
 		$consulta .="JOIN tiposInstituciones tinst ON tinst.idTipoInstitucion = inst.tiposInstituciones_idTipoInstitucion ";
 		$consulta .="JOIN estados edo ON edo.idEstado = inst.estados_idEstado ";
 		$consulta .="JOIN paises ps ON ps.idPais = edo.paises_idPais ";
-		$consulta .="WHERE c.idConvenio = ".$id;
+		$consulta .="WHERE c.idConvenio = ".$id; 
 
 		$resultados=$conexion->createCommand($consulta)->query();
 
-				$resultados->bindColumn(1,$resull->nombre_convenio); //nombre del convenio
-				$resultados->bindColumn(2,$resull->fecha_inicio);    //siglas de la institucion
-				$resultados->bindColumn(3,$resull->fecha_caducidad); //nombre de la Institucion
-				$resultados->bindColumn(4,$resull->objetivo_convenio);//tipo de institucion
-				$resultados->bindColumn(5,$resull->tipo_convenio);   //estado institucion
-				$resultados->bindColumn(6,$resull->estado_actual_convenio); // nombre del pais 
- 
+		return $resultados;
+
+	}
+	public function ConsultarResponsablesPorInstitucion($id){
+
+	   $conexion=Yii::app()->db;
+
+	   $resulResponsablesC= new ResultadoConvenios;
+
+		$consulta  ="SELECT inst.idInstitucion,inst.siglasInstitucion, inst.nombreInstitucion, tinst.nombreTipoInstitucion, edo.nombreEstado, ps.nombrePais, r.primerNombreResponsable, r.primerApellidoResponsable, r.correoElectronicoResponsable, r.telefonoResponsable, tr.descripcionTipoResponsable FROM responsables r ";
+		$consulta .="JOIN historicoresponsables hr ON r.idResponsable = hr.responsables_idResponsable ";
+		$consulta .="JOIN institucion_convenios ic ON ic.idInstitucionConvenio = hr.institucion_convenios_idInstitucionConvenio ";
+		$consulta .="JOIN convenios c ON c.idConvenio = ic.convenios_idConvenio ";
+		$consulta .="JOIN instituciones inst ON inst.idInstitucion = ic.instituciones_idInstitucion ";
+		$consulta .="JOIN tiposInstituciones tinst ON tinst.idTipoInstitucion = inst.tiposInstituciones_idTipoInstitucion ";
+		$consulta .="JOIN estados edo ON edo.idEstado = inst.estados_idEstado ";
+		$consulta .="JOIN paises ps ON ps.idPais = edo.paises_idPais ";
+		$consulta .="JOIN tiporesponsable tr ON tr.idTipoResponsable = r.tipoResponsable_idTipoResponsable ";
+		$consulta .="WHERE c.idConvenio = ".$id;
+
+			$resultadosResponContrap=$conexion->createCommand($consulta)->query();
+
+
+		/*Datos de los responsables por institucion contraparte*/
+
+ 				$resultadosResponContrap->bindColumn(1,$resulResponsablesC->institucion);			//id institucion
+ 				$resultadosResponContrap->bindColumn(2,$resulResponsablesC->nombre_convenio); 		//Siglas de la institucion
+				$resultadosResponContrap->bindColumn(3,$resulResponsablesC->tipo_convenio);    		//nombre de la institucion
+				$resultadosResponContrap->bindColumn(4,$resulResponsablesC->objetivo_convenio); 		//tipo institucion
+				$resultadosResponContrap->bindColumn(5,$resulResponsablesC->fecha_inicio);			//estado ubicacion 
+				$resultadosResponContrap->bindColumn(6,$resulResponsablesC->fecha_caducidad);   		//pais 
+				$resultadosResponContrap->bindColumn(7,$resulResponsablesC->estado_actual_convenio); 	// nombre del responsable
+				$resultadosResponContrap->bindColumn(8,$resulResponsablesC->responsable_Unet); 		// Apellido del responsable
+				$resultadosResponContrap->bindColumn(9,$resulResponsablesC->clasificacion); 			// Correo  del responsable
+				$resultadosResponContrap->bindColumn(10,$resulResponsablesC->ambito); 					// telefono  del responsable
+				$resultadosResponContrap->bindColumn(11,$resulResponsablesC->tipo_institucion); 		    // tipo Responsable  del responsabl 
+			
+			$reponsablesinst;
+			$i=0;
+			while((($resultadosResponContrap->read())!==false)){
+					$responsable=new ResultadoConvenios();
+
+					$responsable->institucion=$resulResponsablesC->institucion;
+					$responsable->nombre_convenio=$resulResponsablesC->nombre_convenio;
+					$responsable->nombre_convenio=$resulResponsablesC->tipo_convenio;
+					$responsable->objetivo_convenio=$resulResponsablesC->objetivo_convenio;
+					$responsable->fecha_inicio=$resulResponsablesC->fecha_inicio;
+					$responsable->fecha_caducidad=$resulResponsablesC->fecha_caducidad;
+					$responsable->estado_actual_convenio=$resulResponsablesC->estado_actual_convenio;
+					$responsable->responsable_Unet=$resulResponsablesC->responsable_Unet;
+					$responsable->clasificacion=$resulResponsablesC->clasificacion;
+					$responsable->ambito=$resulResponsablesC->ambito;
+					$responsable->tipo_institucion=$resulResponsablesC->tipo_institucion;
+
+					$reponsablesinst[$i]=$responsable;
+					$i=$i+1;
+			}
+			
+
+				return $reponsablesinst;
+	}
+
+
+	/**
+	 * Displays a particular model.
+	 * @param integer $id the ID of the model to be displayed
+	 */
+	public function actionView($id)
+	{
+		$conexion=Yii::app()->db;
+		$resullRespUNET = new ResultadoConvenios;
+		$resulContraparte= new ResultadoConvenios;
+		$resulResponsablesC= new ResultadoConvenios;
+
+
+			/*Datos de los responsables de la UNET*/		
+		$resultadosResponUnet=$this->consultarResponsablesUNET($id);
+				$resultadosResponUnet->bindColumn(1,$resullRespUNET->fecha_inicio);     		//primer nombre responsable
+				$resultadosResponUnet->bindColumn(2,$resullRespUNET->fecha_caducidad);  		//primer apellido de responsable
+				$resultadosResponUnet->bindColumn(3,$resullRespUNET->objetivo_convenio);		//correo electronico
+				$resultadosResponUnet->bindColumn(4,$resullRespUNET->tipo_convenio);   			//telefono
+				$resultadosResponUnet->bindColumn(5,$resullRespUNET->estado_actual_convenio); 	// tipo de responsable
+
+		/*Datos de las instituciones contraparte*/
+		$resultadosInstContrap=$this->consultarInstitucionesContraparte($id);
+
+				$resultadosInstContrap->bindColumn(1,$resulContraparte->institucion); 			//id institucion
+				$resultadosInstContrap->bindColumn(2,$resulContraparte->tipo_convenio);    		//Siglas de la institucion
+				$resultadosInstContrap->bindColumn(3,$resulContraparte->objetivo_convenio); 	//nombre de la institucion	
+				$resultadosInstContrap->bindColumn(4,$resulContraparte->fecha_inicio);			//tipo institucion
+				$resultadosInstContrap->bindColumn(5,$resulContraparte->fecha_caducidad);   	//estado ubicacion 	
+				$resultadosInstContrap->bindColumn(6,$resulContraparte->estado_actual_convenio); //pais 
+
+	    /*Datos de los responsables por institucion contraparte*/			
+
+ 		$resultadosResponContrap=$this->ConsultarResponsablesPorInstitucion($id);
 
  		/*Buscando el estado actual recordar tomar en cuanta las prorrogas*/
 
@@ -103,73 +199,14 @@ class ConveniosController extends Controller
          while(($row=$resultados2->read())!==false) { 
               $estado=$estador;
           }
-
-        /*Datos de los responsables Legales de otras instituciones */ 
-        $consultar="SELECT inst.siglasInstitucion, r.primerNombreResponsable, r.primerApellidoResponsable, r.correoElectronicoResponsable, r.telefonoResponsable, tr.descripcionTipoResponsable FROM responsables r "; 
-        $consultar.="JOIN historicoresponsables hr ON r.idResponsable = hr.responsables_idResponsable ";
-        $consultar.="JOIN institucion_convenios ic ON ic.idInstitucionConvenio = hr.institucion_convenios_idInstitucionConvenio ";
-        $consultar.="JOIN convenios c ON c.idConvenio = ic.convenios_idConvenio ";
-        $consultar.="JOIN instituciones inst ON inst.idInstitucion = ic.instituciones_idInstitucion ";
-        $consultar.="JOIN tiporesponsable tr ON tr.idTipoResponsable = r.tipoResponsable_idTipoResponsable ";
-        $consultar.="WHERE c.idConvenio = ".$id." and  upper(tr.descripcionTipoResponsable)='LEGAL'";
-
-        $resultados3=$conexion->createCommand($consultar)->query();
-
-         		$resultados3->bindColumn(1,$resullResponsables->nombre_convenio);  //siglas institucion
-				$resultados3->bindColumn(2,$resullResponsables->fecha_inicio);     //primer nombre responsable
-				$resultados3->bindColumn(3,$resullResponsables->fecha_caducidad);  //primer apellido de responsable
-				$resultados3->bindColumn(4,$resullResponsables->objetivo_convenio);//correo electronico
-				$resultados3->bindColumn(5,$resullResponsables->tipo_convenio);   //telefono
-				$resultados3->bindColumn(6,$resullResponsables->estado_actual_convenio); // tipo de responsable
-	
-
-
-	 /*Datos de los responsables de  Contacto de otras instituciones*/ 
-        $consultarc="SELECT inst.siglasInstitucion, r.primerNombreResponsable, r.primerApellidoResponsable, r.correoElectronicoResponsable, r.telefonoResponsable, tr.descripcionTipoResponsable FROM responsables r "; 
-        $consultarc.="JOIN historicoresponsables hr ON r.idResponsable = hr.responsables_idResponsable ";
-        $consultarc.="JOIN institucion_convenios ic ON ic.idInstitucionConvenio = hr.institucion_convenios_idInstitucionConvenio ";
-        $consultarc.="JOIN convenios c ON c.idConvenio = ic.convenios_idConvenio ";
-        $consultarc.="JOIN instituciones inst ON inst.idInstitucion = ic.instituciones_idInstitucion ";
-        $consultarc.="JOIN tiporesponsable tr ON tr.idTipoResponsable = r.tipoResponsable_idTipoResponsable ";
-        $consultarc.="WHERE c.idConvenio = ".$id." and  upper(tr.descripcionTipoResponsable)='CONTACTO'";
-
-        $resultados4=$conexion->createCommand($consultarc)->query();
-
-         		$resultados4->bindColumn(1,$resullRespoContacto->nombre_convenio);  //siglas institucion
-				$resultados4->bindColumn(2,$resullRespoContacto->fecha_inicio);     //primer nombre responsable
-				$resultados4->bindColumn(3,$resullRespoContacto->fecha_caducidad);  //primer apellido de responsable
-				$resultados4->bindColumn(4,$resullRespoContacto->objetivo_convenio);//correo electronico
-				$resultados4->bindColumn(5,$resullRespoContacto->tipo_convenio);   //telefono
-				$resultados4->bindColumn(6,$resullRespoContacto->estado_actual_convenio); // tipo de responsable
-
-		/*Datos de los responsables de la UNET*/
-
-		 $consultarcUNET="SELECT r.primerNombreResponsable, r.primerApellidoResponsable, r.correoElectronicoResponsable, r.telefonoResponsable, tr.descripcionTipoResponsable FROM responsables r ";
-		 $consultarcUNET.="JOIN historicoresponsables hr ON r.idResponsable = hr.responsables_idResponsable ";
-		 $consultarcUNET.="JOIN convenios c ON c.idConvenio = hr.convenios_idConvenio ";
-		 $consultarcUNET.="JOIN tiporesponsable tr ON tr.idTipoResponsable = r.tipoResponsable_idTipoResponsable ";
-		 $consultarcUNET.="WHERE c.idConvenio = ".$id;
-
-		     $resultados5=$conexion->createCommand($consultarcUNET)->query();
-
-				$resultados5->bindColumn(1,$resullRespUNET->fecha_inicio);     //primer nombre responsable
-				$resultados5->bindColumn(2,$resullRespUNET->fecha_caducidad);  //primer apellido de responsable
-				$resultados5->bindColumn(3,$resullRespUNET->objetivo_convenio);//correo electronico
-				$resultados5->bindColumn(4,$resullRespUNET->tipo_convenio);   //telefono
-				$resultados5->bindColumn(5,$resullRespUNET->estado_actual_convenio); // tipo de responsable
-
-	
  	
 		$this->render('view',array(
-			'model'=>$this->loadModel($id), /*Datos generales del convenio*/
-			'resulConsulta'=>$resultados, 	/*contraparte ubicacion*/
-			'resullInfo'=>$resull,			/*contraparte ubicacion*/
-			'resulConResp'=>$resultados3,
-			'resullResp'=>$resullResponsables,
-			'resulRespCont'=>$resultados4,
-			'resullRespC'=>$resullRespoContacto,
-			'resulRespContUNET'=>$resultados5,
+			'model'=>$this->loadModel($id),				 /*Datos generales del convenio*/
+			'resulRU'=>$resultadosResponUnet,  
 			'resullRespUNET'=>$resullRespUNET,
+			'resulRC'=>$resultadosInstContrap,
+			'resullRespCONT'=>$resulContraparte,
+			'InforRC'=>$resultadosResponContrap,
 			'estado'=>$estado,
 		));
 	}
@@ -1042,8 +1079,7 @@ class ConveniosController extends Controller
 
 			 $text.= "</aside>"; 
 		    }	 
-
-				$text.='<nav aria-label="Page navigation"> ';
+//				$text.='<nav aria-label="Page navigation"> ';
 				$text.=' <ul class="pagination pagination-sm">';
 
 				if($iniciopag>1){
@@ -1090,10 +1126,9 @@ class ConveniosController extends Controller
 
 			    }
    
-				
-
+			
 				$text.='</ul>';
-				$text.='</nav>';
+//				$text.='</nav>';
 
 		echo $text;  		 
                                
@@ -1137,7 +1172,8 @@ class ConveniosController extends Controller
      		'paisesconve'=>$modelPais,
      		'tiposinst'=>$modelTipoIns,
        		'institucionconve'=>$modelInst,
-        	'estadoconve'=>$modelEdoConve
+        	'estadoconve'=>$modelEdoConve,
+        	'resuldefecto'=>1,
      		));
 
 	}

@@ -56,12 +56,8 @@ $this->menu=array(
 	<div class="collapse" id="demo2">
 		<div  class="list-group-item">
 			
-			<h5>UNET </h5>
-		  	<ul>
-		  		<li>
-			      	Institucion: <?php echo $model->institucionUNET ?>	
-				</li>
-		  		<li>Responsables
+			<h4>UNET <small><?php echo $model->institucionUNET ?></small></h4>
+		  	<h5>Responsables</h5>
 		  			<div class="table-responsive">
 		  			<table class="table table-bordered">
 					    <thead>
@@ -73,7 +69,7 @@ $this->menu=array(
 					      </tr>
 					    </thead>
 					    <tbody>
-					      <?php while((($resulRespContUNET->read())!==false)){ ?>
+					      <?php while((($resulRU->read())!==false)){ ?>
 					      <tr>
 					        <td><?php echo $resullRespUNET->estado_actual_convenio ?></td>
 					        <td><?php echo $resullRespUNET->fecha_inicio." ".$resullRespUNET->fecha_caducidad; ?></td>
@@ -84,87 +80,43 @@ $this->menu=array(
 					    </tbody>
 					  </table>
 					</div>
-		  		</li>
 		  		
-		  	</ul>
-		  	<h5>Contraparte </h5>
-		  	<ul>
-		  		<li> Ubicación
-		  			<div class="table-responsive">
-					 <table class="table table-bordered">
-					    <thead>
-					      <tr>
-					        <th>Pais</th>
-					        <th>Estado</th>
-					        <th>Institución</th>
-					        
-					      </tr>
-					    </thead>
-					    <tbody>
-					      <?php while((($resulConsulta->read())!==false)) { ?>
-					      <tr>
-					        <td><?php  echo $resullInfo->estado_actual_convenio; ?></td>
-					        <td><?php  echo $resullInfo->tipo_convenio; ?></td>
-					        <td><?php  echo $resullInfo->fecha_caducidad." (".$resullInfo->fecha_inicio.")"; ?></td>
-					      	<!--<td><button  type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="<?php /*echo '#'.$resullInfo->fecha_inicio */?>">Ver información</button></td>-->
-					      </tr>
-					     <?php } ?>
-					    </tbody>
-					  </table>
-					</div>
-		  		</li> 
+		  	<h4>Contraparte </h4>
+		  	
+		 	<?php while((($resulRC->read())!==false)){ ?>
+		
+				<h4><?php echo $resullRespCONT->tipo_convenio; ?><small><?php echo " ".$resullRespCONT->objetivo_convenio." (".$resullRespCONT->estado_actual_convenio.",".$resullRespCONT->fecha_caducidad.")" ?></small></h4>
+		 		 <h5>Responsables</h5>   
+		 		    <div class="table-responsive">
+				  			<table class="table table-bordered">
+							    <thead>
+							      <tr>
+							        <th>Tipo </th>
+							        <th>Responsable</th>
+							        <th>Información de Contacto</th>
+							        
+							      </tr>
+							    </thead>
+							 <tbody>
+						
+		 		    <?php for($i=0;$i<count($InforRC);$i++){ ?>
 
-		  		<li>Responsable Legal
-		  			<div class="table-responsive">
-		  			<table class="table table-bordered">
-					    <thead>
-					      <tr>
-					        <th>Institucion</th>
-					        <th>Responsable</th>
-					        <th>Información de Contacto</th>
-					        
-					      </tr>
-					    </thead>
-					    <tbody>
-					      <?php while((($resulConResp->read())!==false)){ ?>
-					      <tr>
-					        <td><?php echo $resullResp->nombre_convenio ?></td>
-					        <td><?php echo $resullResp->fecha_inicio." ".$resullResp->fecha_caducidad; ?></td>
-					        <td><?php echo $resullResp->objetivo_convenio." </br> Telf. ".$resullResp->tipo_convenio; ?></td>
-					        
-					      </tr>
-					     <?php } ?>
-					    </tbody>
-					  </table>
-					</div>
-		  		</li>
+		 		    <?php if($resullRespCONT->institucion==$InforRC[$i]->institucion){?>
+							
+								<tr>
+							        <td><?php echo $InforRC[$i]->tipo_institucion; ?></td>
+							        <td><?php echo $InforRC[$i]->estado_actual_convenio." ".$InforRC[$i]->responsable_Unet; ?></td>
+							        <td><?php echo $InforRC[$i]->clasificacion." Telf.".$InforRC[$i]->ambito; ?></td>
+							        
+							      </tr>
+					<?php  }?>
+		 		   
+		 		<?php } ?>
 
-		  		<li>Responsable Contacto
-		  			<div class="table-responsive">
-		  			<table class="table table-bordered">
-					    <thead>
-					      <tr>
-					        <th>Institucion</th>
-					        <th>Responsable</th>
-					        <th>Información de Contacto</th>
-					        
-					      </tr>
-					    </thead>
-					    <tbody>
-					      <?php while((($resulRespCont->read())!==false)){ ?>
-					      <tr>
-					        <td><?php echo $resullRespC->nombre_convenio ?></td>
-					        <td><?php echo $resullRespC->fecha_inicio." ".$resullResp->fecha_caducidad; ?></td>
-					        <td><?php echo $resullRespC->objetivo_convenio." </br> Telf. ".$resullResp->tipo_convenio; ?></td>
-					        
-					      </tr>
-					     <?php } ?>
-					    </tbody>
-					  </table>
-					</div>
-		  		</li>
-		  		
-		  	</ul>
+				  			</tbody>
+							  </table>
+							</div>
+		 		<?php } ?>
 
 		</div>		
 	</div>
@@ -179,12 +131,14 @@ $this->menu=array(
 			      	 echo $modelClass->nombreClasificacionConvenio; 	
 			      	 ?>
 				</li>
-				<li>Alcance: </li>
-				
+				<li>Alcance: <?php echo $model->alcanceConvenios; ?> </li>
 			</ul>
 		</div>
 	</div>
 </div>
+
+
+
 
 
 

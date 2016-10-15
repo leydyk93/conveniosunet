@@ -796,14 +796,33 @@ FROM convenio_estados
 WHERE convenios_idConvenio = c.idConvenio
 ) and upper(tr.descripcionTipoResponsable)="CONTACTO";
 
-SELECT c.idConvenio, inst.siglasInstitucion, r.primerNombreResponsable, r.primerApellidoResponsable, r.correoElectronicoResponsable, r.telefonoResponsable, tr.descripcionTipoResponsable
+SELECT c.idConvenio, inst.siglasInstitucion, inst.nombreInstitucion, tinst.nombreTipoInstitucion, edo.nombreEstado, ps.nombrePais, r.primerNombreResponsable, r.primerApellidoResponsable, r.correoElectronicoResponsable, r.telefonoResponsable, tr.descripcionTipoResponsable
 FROM responsables r
 JOIN historicoresponsables hr ON r.idResponsable = hr.responsables_idResponsable
 JOIN institucion_convenios ic ON ic.idInstitucionConvenio = hr.institucion_convenios_idInstitucionConvenio
 JOIN convenios c ON c.idConvenio = ic.convenios_idConvenio
 JOIN instituciones inst ON inst.idInstitucion = ic.instituciones_idInstitucion
+JOIN tiposInstituciones tinst ON tinst.idTipoInstitucion = inst.tiposInstituciones_idTipoInstitucion
+JOIN estados edo ON edo.idEstado = inst.estados_idEstado
+JOIN paises ps ON ps.idPais = edo.paises_idPais
 JOIN tiporesponsable tr ON tr.idTipoResponsable = r.tipoResponsable_idTipoResponsable
-WHERE c.idConvenio =  "02" and upper(tr.descripcionTipoResponsable)="LEGAL";
+WHERE c.idConvenio =  "02" 
+
+
+
+SELECT c.idConvenio, inst.idInstitucion, inst.siglasInstitucion, inst.nombreInstitucion, tinst.nombreTipoInstitucion, r.primerNombreResponsable, r.primerApellidoResponsable, r.correoElectronicoResponsable, r.telefonoResponsable, tr.descripcionTipoResponsable
+FROM responsables r
+JOIN historicoresponsables hr ON r.idResponsable = hr.responsables_idResponsable
+JOIN institucion_convenios ic ON ic.idInstitucionConvenio = hr.institucion_convenios_idInstitucionConvenio
+JOIN convenios c ON c.idConvenio = ic.convenios_idConvenio
+JOIN instituciones inst ON inst.idInstitucion = ic.instituciones_idInstitucion
+JOIN tiposInstituciones tinst ON tinst.idTipoInstitucion = inst.tiposInstituciones_idTipoInstitucion
+JOIN tiporesponsable tr ON tr.idTipoResponsable = r.tipoResponsable_idTipoResponsable
+WHERE c.idConvenio =  "02" upper(inst.siglasInstitucion)="ULA";
+
+
+
+
 
 SELECT c.idConvenio, r.primerNombreResponsable, r.primerApellidoResponsable, r.correoElectronicoResponsable, r.telefonoResponsable, tr.descripcionTipoResponsable
 FROM responsables r
@@ -815,6 +834,16 @@ WHERE c.idConvenio =  "02" and upper(tr.descripcionTipoResponsable)="LEGAL";
 
 
 
+
+SELECT c.nombreConvenio, inst.siglasInstitucion, inst.nombreInstitucion, tinst.nombreTipoInstitucion, edo.nombreEstado, ps.nombrePais
+FROM convenios c
+JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio
+JOIN institucion_convenios ic ON c.idConvenio = ic.convenios_idConvenio
+JOIN instituciones inst ON inst.idInstitucion = ic.instituciones_idInstitucion
+JOIN tiposInstituciones tinst ON tinst.idTipoInstitucion = inst.tiposInstituciones_idTipoInstitucion
+JOIN estados edo ON edo.idEstado = inst.estados_idEstado
+JOIN paises ps ON ps.idPais = edo.paises_idPais
+WHERE c.idConvenio =  "01"
 
 
 

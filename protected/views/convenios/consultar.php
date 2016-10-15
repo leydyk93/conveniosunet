@@ -250,8 +250,8 @@
 
  <div  id="Resulconvenios" class="col-sm-8">
 
-    <div id="resul" class="list-group">
-        
+    <div id="resul" class="list-group" >
+
     </div>
 
  </div>
@@ -259,6 +259,11 @@
 </div>
 
 <script type="text/javascript">
+
+  <?php if($resuldefecto==1){ ?>
+           send(1);
+
+  <?php  $resuldefecto=0; }?>
 
 $('#ConsultasConvenios_pais').change(function() {
 //    console.log($('#ConsultasConvenios_pais option:selected').val());
@@ -284,7 +289,9 @@ function  limpiarFiltros(){
  document.getElementById("fechaVencimiento1").value=""; 
  document.getElementById("fechaVencimiento2").value="";  
 
-
+ $('#ConsultasConvenios_ambitoGeografico').val($('#ConsultasConvenios_ambitoGeografico > option:first').val());
+ $('#ConsultasConvenios_institucion').val($('#ConsultasConvenios_institucion > option:first').val());
+ $('#ConsultasConvenios_pais').val($('#ConsultasConvenios_pais > option:first').val());
 
 
   for(i=0;i<tipo.length;i++)
@@ -310,7 +317,7 @@ function  limpiarFiltros(){
       estadoConv[l].checked=false;
       
     }
-    send();
+    send(1);
 }
 
 function send(inicio)
@@ -368,20 +375,7 @@ function send(inicio)
     }
 
  var url= '<?php echo Yii::app()->createUrl("convenios/consultara"); ?>'
- 
-/*$.ajax({
 
-type:"post",
-url: url,
-data:{anio:anio , tipo:tipoc , clasificacion:clasific , tipoInstitucion:tipoInstc , estadoConvenio:estadoConvc ,
-      ambito:ambito, pais:pais , institucion:institucion, fechav1: fv1 , fechav2: fv2},
-success:function(datos){
-
-   document.getElementById("resul").innerHTML=datos;
-   
-}
-
-});*/
 
 $.ajax({
 
