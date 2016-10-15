@@ -15,6 +15,12 @@ class ResultadoConvenios extends CFormModel
 	public $estado_actual_convenio;
 	public $responsable_Unet;
 	public $id_convenio;
+	public $clasificacion;
+	public $ambito;
+	public $pais;
+	public $institucion;
+	public $tipo_institucion;
+	public $anio;
 
 
 	/**
