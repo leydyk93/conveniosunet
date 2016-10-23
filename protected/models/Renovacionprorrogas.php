@@ -9,6 +9,7 @@
  * @property string $observacionProrroga
  * @property string $convenios_idConvenio
  * @property string $fechaRenovacion
+ * @property string $fechaCaducidadModificada
  *
  * The followings are the available model relations:
  * @property Convenios $conveniosIdConvenio
@@ -31,7 +32,7 @@ class Renovacionprorrogas extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('convenios_idConvenio', 'required'),
+			array('convenios_idConvenio, fechaCaducidadModificada', 'required'),
 			array('observacionProrroga', 'length', 'max'=>200),
 			array('convenios_idConvenio', 'length', 'max'=>50),
 			array('fechaFinProrroga, fechaRenovacion', 'safe'),
@@ -42,7 +43,7 @@ class Renovacionprorrogas extends CActiveRecord
 				 'message'=>'el formato es de año ejem:2016'),*/
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idRenovacionProrroga, fechaFinProrroga, observacionProrroga, convenios_idConvenio, fechaRenovacion', 'safe', 'on'=>'search'),
+			array('idRenovacionProrroga, fechaFinProrroga, observacionProrroga, convenios_idConvenio, fechaRenovacion, fechaCaducidadModificada', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -85,6 +86,7 @@ class Renovacionprorrogas extends CActiveRecord
 			'observacionProrroga' => 'Justificación',
 			'convenios_idConvenio' => 'Convenios Id Convenio',
 			'fechaRenovacion' => 'Fecha Renovacion',
+			'fechaCaducidadModificada' => 'Fecha Caducidad Modificada',
 		);
 	}
 
@@ -111,6 +113,7 @@ class Renovacionprorrogas extends CActiveRecord
 		$criteria->compare('observacionProrroga',$this->observacionProrroga,true);
 		$criteria->compare('convenios_idConvenio',$this->convenios_idConvenio,true);
 		$criteria->compare('fechaRenovacion',$this->fechaRenovacion,true);
+		$criteria->compare('fechaCaducidadModificada',$this->fechaCaducidadModificada,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

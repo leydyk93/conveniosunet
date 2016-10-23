@@ -109,7 +109,25 @@ div#Resulconvenios ul{
 	/*background-color: #FF7F50;*/
 }
 
-.menu_pasos{
+#pasoscaragar li{
+	
+	border-radius: 5px;
+	background-color: #1b325f;
+}
+#pasoscaragar li a:hover{
+	
+	color: #1b325f;
+	background-color: #3fb8af;
+
+}
+#pasoscaragar li a{
+	
+	color:#E9F2F9;
+
+
+}
+
+/*.menu_pasos{
 	background-color: #E9F2F9;
 }
 
@@ -122,20 +140,22 @@ div#Resulconvenios ul{
 	width: 93%;
 	height: 70px;
 	padding: 0;
+	background-color: blue;
 	 background: url("../img/botoncarga.png") no-repeat;
 	 background-size: 80% 90% ;
 	 display: table;
 	 margin: 5px;
-}
-#navi li:hover{
+}*/
+/*#navi li:hover{
 	width: 93%;
 	height: 70px;
 	padding: 0;
-	 background: url("../img/botoncargaselec.png") no-repeat;
-	 background-size: 80% 90% ;
-}
+	background-color: black;
+	/* background: url("../img/botoncargaselec.png") no-repeat;*/
+/*	 background-size: 80% 90% ;
+}*/
 
-#navi li a{
+/*#navi li a{
 
 	margin: 10px;
 	display: block;
@@ -146,10 +166,7 @@ div#Resulconvenios ul{
 	vertical-align: middle;
 	font-weight: bold;
 	font-size: large;
-
-
-}
-
+}*/
 .nuevo{	
 	height: 40px;
 	background-color: #E9F2F9;
@@ -210,14 +227,6 @@ background-size: 100% 100%;
 .cost{
 	margin-left: 20%;
 }
-
- .glyphicon-plus:before {
-   content: "\2212";
-}
-
-.collapsed .glyphicon-plus:before {
-    content: "\2b";
-}
 /*Nuevos estilos para la pagina consultar*/
 .collapsed .glyphicon-plus-sign:before { 
     
@@ -227,6 +236,8 @@ background-size: 100% 100%;
  .glyphicon-plus-sign:before {
     content: "\e082";
 }
-br {
-display: none;
-}
+
+/*Para la tabla.*/
+
+
+

@@ -29,165 +29,198 @@ if(!isset($_SESSION['alcance'])){
 }
  ?>
 
-
-<?php 
-	$form=$this->beginWidget("CActiveForm");
- ?>
-    <main class="container-fluid">
-        <div class "row">
-            
+<main class="container-fluid">
+ <!--<div class "row">
             <div  class="nuevo col-xs-12 text-left">
                 <p ><span class="glyphicon glyphicon-th-list"></span> Nuevo Convenio Marco</p>
             </div>
-        </div>
+  </div>-->
 
 <div class="row">
-<aside class="menu_pasos col-xs-3">
-            
-                    <ul id="navi">
-                        <li><a href="#" class="text-center">Paso 1</a></li>
-                        <li><a href="#" class="text-center" >Paso 2</a></li>
-                        <li><a href="#" class="text-center">Paso 3</a></li>
-                        <li><a href="#" class="text-center">Paso 4</a></li>
-                        <li><a href="#" class="text-center">Paso 5</a></li>
-                        <li><a href="#" class="text-center">Paso 6</a></li>
-                        
-                    </ul>
-                    
-                
-            </aside>
+
+<div class="col-xs-3">
+    <ul id="pasoscaragar" class="nav nav-pills nav-stacked">
+    <li><a class="text-center">Nuevo Convenio</a></li>
+    <li><a href="#" class="text-center" >Paso 1</a></li>
+    <li><a href="#" class="text-center" >Paso 2</a></li>
+    <li><a href="#" class="text-center" >Paso 3</a></li>
+    <li><a href="#" class="text-center" >Paso 4</a></li>
+    <li><a href="#" class="text-center" >Paso 5</a></li>
+    
+  </ul>
+</div>
 
 <section class="datos col-xs-9">     
-
-<h4>Datos Generales del Convenio</h4>
-
-<br>
-
-<div class="row">
-<?php echo $form->labelEx($pasouno,"tipo",array('class'=>'col-md-3')); ?>
-<?php echo $form->dropDownList($pasouno,"tipo",CHtml::listData(Tipoconvenios::model()->findAll(), 'idTipoConvenio', 'descripcionTipoConvenio'),array('options' => array($_SESSION['tipo']=>array('selected'=>true))),array('style'=>'width:200px;','class'=>'col-md-5')); ?>
-<?php echo $form->error($pasouno,"tipo"); ?>
-</div>
-<br>
-<br>
-<div class="row">
-<?php echo $form->labelEx($pasouno,"nombreconvenio",array('class'=>'col-md-3')); ?>
-<?php echo $form->textField($pasouno,"nombreconvenio",array('style'=>'width:200px;','class'=>'col-md-5','value'=>$_SESSION['nombreconvenio'])); ?>
-<?php echo $form->error($pasouno,"nombreconvenio"); ?>
-</div>
-<br>
-<br>
-<div class="row">
-<?php echo $form->labelEx($pasouno,"fechainicio",array('class'=>'col-md-3')); ?>
- <?php
-  $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-                'options'=>array(
-                        'showAnim'=>'fold',
-                ),
-                'model'=>$pasouno,
-                'attribute'=>'fechainicio',
-                'htmlOptions'=>array(
-                        'class'=>'betterform',
-                        'tabindex'=>3
-                ),
-                'options'=>array(
-                        'dateFormat'=>'yy-mm-dd',
-                        'showButtonPanel'=>true,
-                        'changeMonth'=>true,
-                        'changeYear'=>true,
-                        'defaultDate'=>'+1w',
-                ),
-                'htmlOptions'=>array(
-                        'value'=>$_SESSION['fechainicioconvenio'],
-                    ),
-        ));
-   ?>
-<?php echo $form->error($pasouno,"fechainicio"); ?>
-</div>
-<br>
-<br>
-<div class="row">
-<?php echo $form->labelEx($pasouno,"fechacaducidad",array('class'=>'col-md-3')); ?>
- <?php
-  $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-                'options'=>array(
-                        'showAnim'=>'fold',
-                ),
-                'model'=>$pasouno,
-                'attribute'=>'fechacaducidad',
-                'htmlOptions'=>array(
-                        'class'=>'betterform',
-                        'tabindex'=>3
-                ),
-                'options'=>array(
-                        'dateFormat'=>'yy-mm-dd',
-                        'showButtonPanel'=>true,
-                        'changeMonth'=>true,
-                        'changeYear'=>true,
-                        'defaultDate'=>'+1w',
-                ),
-                 'htmlOptions'=>array(
-                        'value'=>$_SESSION['fechacaducidadconvenio'],
-                    ),
-        ));
-   ?>
-<?php echo $form->error($pasouno,"fechacaducidad"); ?>
-</div>
-<br>	
-<br>
-<div class="row">
-<?php echo $form->labelEx($pasouno,"objetivo",array('class'=>'col-md-3')); ?>
-<?php echo $form->textField($pasouno,"objetivo",array('style'=>'width:200px;','class'=>'col-md-5','value'=>$_SESSION['objetivo']));?>
-<?php echo $form->error($pasouno,"objetivo"); ?>
-</div>
-<br>	
-<br>	
-<div class="row">
-<?php echo $form->labelEx($pasouno,'dependencia',array('class'=>'col-md-3')); ?>
-<?php echo $form->dropDownList($pasouno,'dependencia',CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),array('options' => array($_SESSION['dependenciaconvenio']=>array('selected'=>true)))); ?>
-<?php echo $form->error($pasouno,'dependencia'); ?>
-</div>
-
-<a href="#" data-toggle="modal" data-target="#miventana">
-    Nueva Dependenia
-</a>
-
-<br>
-<br>	
-
-<div class="row">
-<?php echo $form->labelEx($pasouno,'estado',array('class'=>'col-md-3')); ?>
-<?php echo $form->dropDownList($pasouno,'estado',CHtml::listData(Estadoconvenios::model()->findAll(), 'idEstadoConvenio', 'nombreEstadoConvenio'),array('options' => array($_SESSION['estado']=>array('selected'=>true)))); ?>
-<?php echo $form->error($pasouno,'estado'); ?>
-</div>
-<br>
-CARACTERISTICAS DEL CONVENIO
-<br>
-<div class="row">
-<?php echo $form->labelEx($pasouno,'clasiicacion',array('class'=>'col-md-3')); ?>
-<?php echo $form->dropDownList($pasouno,'clasificacion',CHtml::listData(Clasificacionconvenios::model()->findAll(), 'idClasificacionConvenio', 'nombreClasificacionConvenio'),array('options' => array($_SESSION['clasificacion']=>array('selected'=>true)))); ?>
-<?php echo $form->error($pasouno,'clasificacion'); ?>
-</div>
-<?php echo "<br>"; ?>
-<div class="row">
-<?php echo $form->labelEx($pasouno,'alcance',array('class'=>'col-md-3')); ?>
-<?php echo $form->textField($pasouno,"alcance",array('style'=>'width:200px;','class'=>'col-md-5','value'=>$_SESSION['alcance'])); ?>
-<?php echo $form->error($pasouno,'alcance'); ?>
-</div>
-
 <?php 
-echo "<br>";
-echo "<br>";
-
+    $form=$this->beginWidget("CActiveForm", array(  
+             'htmlOptions'=>array('class'=>'form-horizontal'),                      
+        ));
  ?>
- 
- 
-<?php echo CHtml::submitButton("Siguiente",array("class"=>'btn btn-conv')); ?>
+
+     <!-- <div class="well well-sm ">  -->
+      <legend class="text-center header"><h4>Datos Generales del Convenio</h4></legend>  
+      <div class="form-group">
+        <?php echo $form->labelEx($pasouno,"tipo",array('class'=>'control-label col-sm-2')); ?>
+        <div class="col-sm-10">
+            <?php 
+                    echo  $form->dropDownList($pasouno,"tipo", 
+                        CHtml::listData(Tipoconvenios::model()->findAll(),'idTipoConvenio', 'descripcionTipoConvenio'),
+                         array('class'=>'form-control input-sm'),
+                         array('options' => array($_SESSION['tipo']=>array('selected'=>true)))
+                            );
+             ?>
+          <?php echo $form->error($pasouno,"tipo"); ?>
+        </div>
+      </div>
+     
+      <div class="form-group">
+        <?php echo $form->labelEx($pasouno,"nombreconvenio",array('class'=>'control-label col-sm-2')); ?>
+        <div class="col-sm-10"> 
+
+        <?php echo $form->textField($pasouno,"nombreconvenio",array('class'=>'form-control input-sm' ,'value'=>$_SESSION['nombreconvenio'])); ?>
+        <?php echo $form->error($pasouno,"nombreconvenio"); ?>
+          
+        </div>
+      </div>
+
+      <div class="form-group">
+        <?php echo $form->labelEx($pasouno,"fechainicio",array('class'=>'control-label col-sm-2')); ?>
+        <div class="col-sm-10"> 
+
+            <?php
+              $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                            'options'=>array(
+                                    'showAnim'=>'fold',
+                            ),
+                            'model'=>$pasouno,
+                            'attribute'=>'fechainicio',
+                            'htmlOptions'=>array(
+                                    'class'=>'betterform',
+                                    'tabindex'=>3
+                            ),
+                            'options'=>array(
+                                    'dateFormat'=>'yy-mm-dd',
+                                    'showButtonPanel'=>true,
+                                    'changeMonth'=>true,
+                                    'changeYear'=>true,
+                                    'defaultDate'=>'+1w',
+                            ),
+                            'htmlOptions'=>array( 'class'=>'form-control input-sm',
+                                    'value'=>$_SESSION['fechainicioconvenio'],
+                                ),
+                    ));
+               ?>
+        <?php echo $form->error($pasouno,"fechainicio"); ?>
+
+        </div>
+      </div>
+
+        <div class="form-group">
+        <?php echo $form->labelEx($pasouno,"fechacaducidad",array('class'=>'control-label col-sm-2')); ?>
+        <div class="col-sm-10"> 
+
+         <?php
+          $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                        'options'=>array(
+                                'showAnim'=>'fold',
+                        ),
+                        'model'=>$pasouno,
+                        'attribute'=>'fechacaducidad',
+                        'htmlOptions'=>array(
+                                'class'=>'betterform',
+                                'tabindex'=>3
+                        ),
+                        'options'=>array(
+                                'dateFormat'=>'yy-mm-dd',
+                                'showButtonPanel'=>true,
+                                'changeMonth'=>true,
+                                'changeYear'=>true,
+                                'defaultDate'=>'+1w',
+                        ),
+                         'htmlOptions'=>array( 'class'=>'form-control input-sm',
+                                'value'=>$_SESSION['fechacaducidadconvenio'],
+                            ),
+                ));
+           ?>
+        <?php echo $form->error($pasouno,"fechacaducidad"); ?>
+          
+        </div>
+      </div>
+
+      <div class="form-group">
+        <?php echo $form->labelEx($pasouno,"objetivo",array('class'=>'control-label col-sm-2')); ?>
+        
+        <div class="col-sm-10"> 
+            <?php echo $form->textArea($pasouno,"objetivo",array('class'=>"form-control input-sm", 'rows'=>"7",'value'=>$_SESSION['objetivo']));?>
+            <?php echo $form->error($pasouno,"objetivo"); ?>    
+        </div>
+      </div>
+
+      <div class="form-group">
+        
+        <?php echo $form->labelEx($pasouno,'dependencia',array('class'=>'control-label col-sm-2')); ?>
+        <div class="col-sm-10"> 
+            <?php echo $form->dropDownList($pasouno,'dependencia',
+            CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),
+            array('class'=>"form-control input-sm"),
+            array('options' => array($_SESSION['dependenciaconvenio']=>array('selected'=>true)))); ?>
+            <?php echo $form->error($pasouno,'dependencia'); ?>
+            <div class="text-right"><a  href="#" data-toggle="modal" data-target="#miventana">
+            Nueva Dependenia
+            </a></div>
+        </div>
+      </div>
+
+       <div class="form-group">
+        
+        <?php echo $form->labelEx($pasouno,'estado',array('class'=>'control-label col-sm-2')); ?>
+        <div class="col-sm-10"> 
+           
+            <?php echo $form->dropDownList($pasouno,'estado',
+                CHtml::listData(Estadoconvenios::model()->findAll(), 'idEstadoConvenio', 'nombreEstadoConvenio'),
+                array('class'=>"form-control input-sm"),
+                array('options' => array($_SESSION['estado']=>array('selected'=>true)))); ?>
+            <?php echo $form->error($pasouno,'estado'); ?>
+        </div>
+      </div>
+
+     <legend class="text-center header"><h4>Características del Convenio</h4></legend>  
+
+      <div class="form-group">
+        <?php echo $form->labelEx($pasouno,'clasiicacion',array('class'=>'control-label col-sm-2')); ?>
+        
+        <div class="col-sm-10"> 
+           
+            <?php echo $form->dropDownList($pasouno,'clasificacion',
+            CHtml::listData(Clasificacionconvenios::model()->findAll(), 'idClasificacionConvenio', 'nombreClasificacionConvenio'),
+                array('class'=>"form-control input-sm"),
+                array('options' => array($_SESSION['clasificacion']=>array('selected'=>true)))); ?>
+            <?php echo $form->error($pasouno,'clasificacion'); ?>
+        </div>
+      </div>
+
+        <div class="form-group">
+        
+        <?php echo $form->labelEx($pasouno,'alcance',array('class'=>'control-label col-sm-2')); ?>
+        <div class="col-sm-10"> 
+            <?php echo $form->textArea($pasouno,"alcance",array('class'=>"form-control input-sm",'value'=>$_SESSION['alcance'])); ?>
+            <?php echo $form->error($pasouno,'alcance'); ?>
+        </div>
+      </div>
+      
+      <div class="form-group text-right"> 
+        <div class="col-sm-offset-2 col-sm-10">
+           <?php echo CHtml::submitButton("Siguiente",array("class"=>'btn btn-conv')); ?> 
+        </div>
+      </div>
+ <!--</div>-->
+ <?php $this->endWidget(); ?>
 </section>
 
 </div><!--contenido-->
 </main>
-<?php $this->endWidget(); ?>
+
+
 
 <div class="modal fade" id="miventana" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog"> 
@@ -197,8 +230,8 @@ echo "<br>";
                     <h4>Agregar Nueva Dependencia</h4>
                 </div>            
                 <div class="modal-body">
-                    
-                    <p>Todo el contenido de la ventana modal</p>
+
+                  
                     <?php 
                      //    $formd=$this->beginWidget("CActiveForm",
                        //         array(
@@ -213,6 +246,8 @@ echo "<br>";
                                  //'validateOnType' => true,
                                    //                  ) ,
                                     //));
+
+
 
                             echo CHtml:: form();
                             echo "Dependencia ";
@@ -302,3 +337,30 @@ echo "<br>";
         
 </script>
 
+<!--Tyson esta es la estructura de los formularios de las pantallas modales
+<form class="form-horizontal">
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="email">Email:</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="email" placeholder="Enter email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="pwd">Password:</label>
+    <div class="col-sm-10"> 
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+    </div>
+  </div>
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label><input type="checkbox"> Remember me</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+  </div>
+</form>-->

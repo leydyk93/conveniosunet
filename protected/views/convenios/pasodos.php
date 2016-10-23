@@ -11,7 +11,7 @@
 
 	<?php 
 	//campos del formulario 
-	echo "<br>";
+	/*echo "<br>";
 	echo "id_convenio: ".$_SESSION['idconvenio'];
 	echo "<br>";
 	echo "tipo : ".$_SESSION['tipo'];
@@ -31,7 +31,7 @@
 	echo "clasificacion: ".$_SESSION['clasificacion'];
 	echo "<br>";
 	echo "alcance: ".$_SESSION['alcance'];
-	echo "<br>";
+	echo "<br>";*/
 
 	?>
 
@@ -44,21 +44,19 @@
 	</div>
 
 	<div class="row">
-		<aside class="menu_pasos col-xs-3">
-
-			<ul id="navi">
-				<li><a href="index.php?r=convenios/create" class="text-center">Paso 1</a></li>
+		<div class="col-xs-3">
+		    <ul class="nav nav-pills nav-stacked">
+		    <li href=""><a></a></li>
+		   <li><a href="index.php?r=convenios/create" class="text-center">Paso 1</a></li>
 				<li><a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center" >Paso 2</a></li>
 				<li><a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center">Paso 3</a></li>
 				<li><a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>"  class="text-center">Paso 4</a></li>
 				<li><a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>"  class="text-center">Paso 5</a></li>
 				<li><a href="#" class="text-center">Paso 6</a></li>
+		  </ul>
+		</div>
 
-			</ul>
-
-
-		</aside>
-
+	
 		<section class="datos col-xs-9">     
 
 			<h4>Información de las Partes</h4>
@@ -320,20 +318,19 @@
 			</div>            
 			<div class="modal-body">
 
-				<p>Todo el contenido de la ventana modal</p>
-				<!--************************************************************aca  -->
-
-				<!-- ***********************************************************-->
 				<?php 
-				$formi=$this->beginWidget("CActiveForm");
+					$formi=$this->beginWidget("CActiveForm", array(  
+			             'htmlOptions'=>array('class'=>'form-horizontal'),                      
+			        ));
 				?>
-				<div class="row">
-
-					<?php echo $formi->labelEx($paises,'idPais',array('class'=>'col-md-3')); ?>
-
-					<!--++++++++++++++++++++++++++++++++++++++++++++++++validacion para dropdownlist dependiente ++++++++++++++++++++ -->
-					<?php echo $formi->dropDownList($paises,"idPais",
+					
+						<div class="form-group">
+							<?php echo $formi->labelEx($paises,'idPais',array('class'=>'control-label col-sm-2')); ?>
+					    <div class="col-sm-10">
+					    	<!--++++++++++++++++++++++++++++++++++++++++++++++++validacion para dropdownlist dependiente ++++++++++++++++++++ -->
+						<?php echo $formi->dropDownList($paises,"idPais",
 						CHtml::listData(Paises::model()->findAll(),'idPais','nombrePais'), 
+						 array('class'=>"form-control input-sm"),
 						array(
 							'ajax'=>array(
 								'type'=>'POST',
@@ -343,16 +340,30 @@
 							)
 							);?>
 							<?php echo $formi->error($paises,"idPais"); ?>
+					    </div>
+					  </div>
 
-						</div>
+					  <div class="form-group">
+					    <!--<label class="control-label col-sm-2" for="pwd">Password:</label>-->
+					    <div class="col-sm-10"> 
+					     <!-- <input type="password" class="form-control" id="pwd" placeholder="Enter password">-->
+					    </div>
+					  </div>
+					 
+					 
+					  
+				<!--</form> AQUI CIERRA EL wigte Yo lo -->
 
-						<br>
-						<div class="row">
+				
+
+
+
+						
 							<?php echo $formi->labelEx($instituciones,'estados_idEstado'); ?>
 							<?php echo $formi->dropDownList($instituciones,"estados_idEstado",array());?>
 							<?php echo $formi->error($instituciones,"estados_idEstado"); ?>
 
-						</div>
+						
 
 						<div class="row">
 							<?php echo $formi->labelEx($instituciones,'nombreInstitucion',array('class'=>'col-md-3')); ?>

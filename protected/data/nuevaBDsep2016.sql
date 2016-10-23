@@ -355,6 +355,7 @@ CREATE TABLE IF NOT EXISTS    renovacionProrrogas  (
     ON UPDATE NO ACTION);
 
 ALTER TABLE renovacionProrrogas ADD fechaRenovacion DATE NULL;
+ALTER TABLE renovacionProrrogas ADD fechaCaducidadModificada DATE NOT NULL;
 -- -----------------------------------------------------
 -- Table    institucion_convenios 
 -- -----------------------------------------------------

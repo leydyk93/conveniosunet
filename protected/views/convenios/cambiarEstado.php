@@ -20,7 +20,7 @@
             <tr>
               <th>Descripcion Estado</th>
               <th>Fecha de cambio</th>
-              <th>Reporte</th>
+             <!-- <th>Reporte</th>-->
               <th>Justificación</th>
               <th>Dependencia</th>
               
@@ -31,7 +31,7 @@
             <tr>
               <td><?php   echo $modelEdoBD->nombre_convenio;  ?></td>
               <td><?php   echo $modelEdoBD->fecha_inicio;     ?></td>
-              <td><?php   echo $modelEdoBD->fecha_caducidad;  ?></td>
+            <!--  <td><?php   /*echo $modelEdoBD->fecha_caducidad;*/  ?></td>-->
               <td><?php   echo $modelEdoBD->objetivo_convenio;?></td>
               <td><?php   echo $modelEdoBD->tipo_convenio     ?></td>
             </tr>
@@ -66,7 +66,7 @@
                             <span class="col-md-2 col-md-offset-2 text-center"><?php echo $form->labelEx($modeloE,'estadoConvenios_idEstadoConvenio'); ?></span>
                             <div class="col-md-7">
                             	<?php 
-								$list1=CHtml::listData($modelEdo,'idEstadoConvenio','nombreEstadoConvenio');
+								              $list1=CHtml::listData($modelEdo,'idEstadoConvenio','nombreEstadoConvenio');
 	                            echo $form->dropDownList($modeloE,'estadoConvenios_idEstadoConvenio', 
 	                                      $list1,array('class'=>"form-control"));
 
@@ -116,18 +116,18 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <span class="col-md-2 col-md-offset-2 text-center"><?php echo $form->labelEx($modeloE,'numeroReporte');  ?></span>
+                       <!-- <div class="form-group">
+                            <span class="col-md-2 col-md-offset-2 text-center"><?php /*echo $form->labelEx($modeloE,'numeroReporte'); */ ?></span>
                             <div class="col-md-7">
 						          <?php 
 
-						           echo $form->textField($modeloE,'numeroReporte',array('class'=>"form-control"));
-						           echo $form->error($modeloE,'numeroReporte');
+						          /* echo $form->textField($modeloE,'numeroReporte',array('class'=>"form-control"));
+						           echo $form->error($modeloE,'numeroReporte');*/
 
 						            ?>
                                
                             </div>
-                        </div>
+                        </div>-->
 
 
                         <div class="form-group">
@@ -149,9 +149,9 @@
                             <span class="col-md-2 col-md-offset-2 text-center"><?php echo $form->labelEx($modeloE,'dependencias_idDependencia'); ?></span>
                             <div class="col-md-7">
                             	<?php 
-          							$list2=CHtml::listData($modelDpcia,'idDependencia', 'nombreDependencia');
+          							     $list2=CHtml::listData($modelDpcia,'idDependencia', 'nombreDependencia');
                            			 echo $form->dropDownList($modeloE,'dependencias_idDependencia', 
-                                      $list2,array('class'=>"form-control"));
+                                      $list2,array('class'=>"form-control", /*"empty" => "--"*/));
 
                             	 ?>
                                 <!--<input id="phone" name="phone" type="text" placeholder="Phone" class="form-control">-->

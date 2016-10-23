@@ -846,6 +846,10 @@ JOIN paises ps ON ps.idPais = edo.paises_idPais
 WHERE c.idConvenio =  "01"
 
 
+SELECT renv.fechaRenovacion FROM renovacionprorrogas renv Where convenios_idConvenio="01";
+
+
+
 
 
 

@@ -86,7 +86,7 @@
        <div class="col-xs-6">
 
        	<?php if(!Yii::app()->user->isGuest):?>
-			<p class="text-right" id="fecha"></p>
+			<!--<p class="text-right" id="fecha"></p>-->
 		<?php endif?>
        </div>
 	</div>   
@@ -121,7 +121,7 @@
 
 			<section class="datos col-xs-9"> 
 			
-				<?php echo $content; ?>
+				<?php /*echo $content; */?>
 			</section>	
 
 		
@@ -137,7 +137,7 @@
 		
 	</footer><!-- footer -->
  <!--</div>-->
- <script>
+ <!--<script>
       var d = new Date();
       var dia=d.getDate().toString();
       var mes=(d.getMonth()+1).toString();
@@ -147,7 +147,7 @@
       //var fecha3=anio.concat("-",mes,"-",dia);
 
       document.getElementById("fecha").innerHTML = fecha1;
-   </script>
+   </script>-->
 
 </body>
 </html>

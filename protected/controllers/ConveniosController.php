@@ -241,6 +241,7 @@ class ConveniosController extends Controller
           	$renovacion->attributes=$_POST["Renovacionprorrogas"];
 			$renovacion->convenios_idConvenio=$id;
 			$renovacion->fechaRenovacion=Date("Y-m-d");
+			$renovacion->fechaCaducidadModificada=$model->fechaCaducidadConvenio;
 
 
 
@@ -252,12 +253,15 @@ class ConveniosController extends Controller
 
 			if($renovacion->validate()){
 
-				if($renovacion->save())
-				 $this->redirect(array('renovar','id'=>$id));
-				//echo $renovacion->convenios_idConvenio." ";
-				//echo $renovacion->fechaFinProrroga." ";
-	          	//echo $renovacion->observacionProrroga." ";
-	          	//echo $renovacion->fechaRenovacion;
+				$model->fechaCaducidadConvenio=$renovacion->fechaFinProrroga;
+
+				if($renovacion->save()){
+
+					if($model->save())
+						$this->redirect(array('view','id'=>$id));
+
+				}
+
 			}
 
           }
@@ -300,14 +304,20 @@ class ConveniosController extends Controller
 
 		if(isset($_POST["ConvenioEstados"])){
 
+
 			$modelestado->attributes=$_POST["ConvenioEstados"];
 			//$modelestado->id_convenio_estado=10;
 			$modelestado->convenios_idConvenio=$id;
 
 			if($modelestado->validate()){
 
+				/*if(empty($modelestado->dependencias_idDependencia)){
+			      echo $modelestado->dependencias_idDependencia."JOJO"; /*No muestra por el join en la consulta pero si guarda*/
+			 	
+			 /*	 }*/
+
 				if($modelestado->save())
-				 $this->redirect(array('view','id'=>$id));
+				 $this->redirect(array('cambiarEstado','id'=>$id));
 
 			}else{
 				//echo "errores en el formulario";
@@ -744,6 +754,7 @@ class ConveniosController extends Controller
 
 			if($inicio!==false && $nroconv!==false){
 
+				
 				$consulta  = "SELECT DISTINCT c.nombreConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio,c.objetivoConvenio,tc.descripcionTipoConvenio, ec.nombreEstadoConvenio, c.idConvenio, r.correoElectronicoResponsable FROM convenios c ";
 				$consulta .= "JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio ";
 				$consulta .= "JOIN convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio ";
@@ -1026,6 +1037,8 @@ class ConveniosController extends Controller
   	$paginas=ceil($totalConvenios/$convxpag);
   	
   	$resultados=$this->RespuestaConsultaConvenios($BusquedaUsuario,$nuevoinicioPag,$convxpag);
+  	//print_r($resultados);
+
 
   				$resultados->bindColumn(1,$resull3->nombre_convenio);
 				$resultados->bindColumn(2,$resull3->fecha_inicio);
@@ -1162,6 +1175,14 @@ class ConveniosController extends Controller
 	       	echo CActiveForm::validate($formConsulta);
 	       	Yii::app()->end();
         }
+
+        /*El convenio tiene porroga? de ser asi la fecha de caducidad coresponde a la informacion de la tabla renovacionProrroga*/
+
+            $conexion=Yii::app()->db;
+				//$command = $conexion->createCommand('call ejemplo1()');
+				//$command->execute(); 
+
+				//print_r($command);
 
 
 		
