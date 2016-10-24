@@ -26,25 +26,25 @@ $this->menu=array(
 
  </div>
 
- <div class="list-group panel">
-	<a href="#demo1" class="list-group-item" data-toggle="collapse"><h4>Datos generales del Convenio<span class="glyphicon glyphicon-plus-sign pull-right"></span></h4></a>
+ <div id="Mostrar" class="list-group panel">
+	<a href="#demo1" class="list-group-item opcion" data-toggle="collapse"><h4>Datos generales del Convenio<span class="glyphicon glyphicon-plus-sign pull-right"></span></h4></a>
 	<div class="collapse" id="demo1">
 	 	<div class="list-group-item">
 	 		<ul>
 		  		<!--<li>Codigo: <?php /*echo $model->idConvenio; */?></li>
 		  		<li>Nombre: <?php /*echo $model->nombreConvenio; */?></li>-->
-		  		<li>Objetivo:<?php echo $model->objetivoConvenio; ?></li>
-		  		<li>Tipo: <?php 
+		  		<li>Objetivo:<small><?php echo $model->objetivoConvenio; ?></small></li>
+		  		<li>Tipo: <small><?php 
 		  			 $modelTipo=Tipoconvenios::model()->findByPk($model->tipoConvenios_idTipoConvenio);
 			      	 echo  $modelTipo->descripcionTipoConvenio;
-			      	 ?>
+			      	 ?></small>
 			    </li>
-			    <li>Fecha Inicio: <?php echo $model->fechaInicioConvenio; ?></li>
-			    <li>Fecha Caducidad:<?php echo $model->fechaCaducidadConvenio; ?></li>
-			    <li>Estado Actual: <?php echo $estado; ?><?php 
+			    <li>Fecha Inicio: <small> <?php echo $model->fechaInicioConvenio; ?></small></li>
+			    <li>Fecha Caducidad:<small><?php echo $model->fechaCaducidadConvenio; ?></small></li>
+			    <li>Estado Actual:<small> <?php echo $estado; ?><?php 
 
 
-			     ?>
+			     ?></small>
 			 	</li>
 		  	</ul>
 
@@ -125,13 +125,13 @@ $this->menu=array(
 	<div class="collapse" id="demo3">
 		<div  class="list-group-item">
 			<ul>
-				<li>Clasificación: 
+				<li>Clasificación: <small>
 					<?php 
 					 $modelClass=Clasificacionconvenios::model()->findByPk($model->clasificacionConvenios_idTipoConvenio);
 			      	 echo $modelClass->nombreClasificacionConvenio; 	
-			      	 ?>
+			      	 ?></small>
 				</li>
-				<li>Alcance: <?php echo $model->alcanceConvenios; ?> </li>
+				<li>Alcance: <small> <?php echo $model->alcanceConvenios; ?> </small></li>
 			</ul>
 		</div>
 	</div>

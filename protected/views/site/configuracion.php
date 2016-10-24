@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
  <p>Seleccione la tabla que desea modificar</p>
 
 
-<div class="row">
+<div id="tablasBD" class="row">
   <div class="col-sm-4"> 
   	<ul class="list-group">
 			  <li class="list-group-item list-group-item-success">Instituciones</li>

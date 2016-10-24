@@ -104,6 +104,58 @@ div#Resulconvenios ul{
 	 list-style: none;
 
 }
+/*Estilos Formularios*/
+
+/*Estilo Para el filtrar*/
+
+
+#MainMenu .opcion, #tablasBD .list-group-item-success{
+	/*#1b325f; Azul oscuro
+	#3fb8af; verde
+	#e9f2f9; azul clarito
+	#4c7eb1;
+
+	menu
+	*/
+	background-color: #1b325f; 
+}
+#MainMenu .opcion span{
+
+	color: #3fb8af;
+	
+}
+#MainMenu .opcion label, #tablasBD li{
+
+	color: #e9f2f9;
+	font-weight: normal;
+	font-size: small;
+}
+#tablasBD li .list-group-item{
+	color: #1b325f; 
+}
+/*Estilos del View convenio*/
+#Mostrar ul{
+	list-style: none;
+}
+/*Estilos a los resultados generados*/
+#resul .text-info{
+
+	color: #1b325f;
+	font-weight: bold;
+
+
+} 
+#resul a, #tablasBD a{
+	text-decoration: none
+}
+#resul li p .resultado{
+	font-size: small;
+}
+
+
+
+
+
 /* ESTILOS PARA EL LAYOUUT CARGAR*/
 .datos{
 	/*background-color: #FF7F50;*/

@@ -19,15 +19,12 @@
 			 'htmlOptions'=>array('class'=>'form-inline', ),
 		                        
 		)); ?>
-
-
 			<div class="form-group">
 				<?php echo $form->labelEx($model,'descripcionTipoConvenio'); ?>
 				<?php echo $form->textField($model,'descripcionTipoConvenio',array('class'=>"form-control")); ?>
 				
 			</div>
 
-			
 				<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar',array('class'=>"btn btn-conv btn-md")); ?>
 
 		<?php $this->endWidget(); ?>

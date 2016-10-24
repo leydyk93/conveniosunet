@@ -1062,11 +1062,11 @@ class ConveniosController extends Controller
 				 $text.="<div class='row'>";
 					 $text.="<div class='col-sm-8'>";
 					 	$text.="<ul>";
-						  $text.="<li> Fecha Inicio: ".$resull3->fecha_inicio."</li>";
-						  $text.="<li> Fecha Caducidad: ".$resull3->fecha_caducidad."</li>";
-						  $text.="<li> Objetivo: ".$resull3->objetivo_convenio."</li>";
-						  $text.="<li> Estado: ".$resull3->estado_actual_convenio."</li>";
-						  $text.="<li> Responsable Contacto: ".$resull3->responsable_Unet."</li>";
+						  $text.="<li> Fecha Inicio: <small>".$resull3->fecha_inicio." </small></li>";
+						  $text.="<li> Fecha Caducidad: <small>".$resull3->fecha_caducidad."</small></li>";
+						  $text.="<li> Objetivo: <small>".$resull3->objetivo_convenio."</small></li>";
+						  $text.="<li> Estado: <small>".$resull3->estado_actual_convenio."</small></li>";
+						  $text.="<li> Responsable Contacto: <small>".$resull3->responsable_Unet."</small></li>";
 					 	$text.="</ul>";
 					 $text.="</div>";
 

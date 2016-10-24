@@ -28,10 +28,10 @@
    <h4><a href="<?php echo $this->createUrl( '/convenios/create' ); ?>"><span class="glyphicon glyphicon-plus"></span></a> Nuevo Convenio </h4>
 <!--el menu de prueba-->
   <div class="list-group panel">
-    <a href="#demo3" class="list-group-item " data-toggle="collapse" data-parent="#MainMenu">Filtrar por <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
+    <a href="#demo3" class="list-group-item" data-toggle="collapse" data-parent="#MainMenu">Filtrar por <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
     <div class="collapse" id="demo3">
 
-      <a  class="list-group-item">
+      <a  class="list-group-item ">
        <div class="row">
         <div class="col-xs-1"><?php echo $form->labelEx($model,'anio');  ?></div>
         <div class="col-xs-10">
@@ -52,7 +52,7 @@
         
       </a>
 
-      <a href="#Subtipo" class="list-group-item"  data-toggle="collapse" data-parent="#Subtipo" ><?php echo $form->labelEx($model,'tipo');  ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
+      <a href="#Subtipo" class="list-group-item opcion"  data-toggle="collapse" data-parent="#Subtipo" ><?php echo $form->labelEx($model,'tipo');  ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
       <div class="collapse list-group-submenu" id="Subtipo"> 
          <?php 
                $list=CHtml::listData($tipoconve,'idTipoConvenio','descripcionTipoConvenio');
@@ -61,7 +61,7 @@
       </div>
 
         
-      <a href="#SubClasif" class="list-group-item"  data-toggle="collapse" data-parent="#SubClasif" > <?php echo $form->labelEx($model,'clasificacion'); ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
+      <a href="#SubClasif" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubClasif" > <?php echo $form->labelEx($model,'clasificacion'); ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
       <div class="collapse list-group-submenu" id="SubClasif"> 
        <?php  
               $list2=CHtml::listData($clasif,'idClasificacionConvenio','nombreClasificacionConvenio');
@@ -70,7 +70,7 @@
         
       </div>
 
-      <a href="#SubAmbitoG" class="list-group-item"  data-toggle="collapse" data-parent="#SubAmbitoG" ><?php echo $form->labelEx($model,'ambitoGeografico'); ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
+      <a href="#SubAmbitoG" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubAmbitoG" ><?php echo $form->labelEx($model,'ambitoGeografico'); ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
       <div class="collapse list-group-submenu" id="SubAmbitoG"> 
         <a class="list-group-item" data-parent="#SubAmbitoG">
               <?php 
@@ -88,7 +88,7 @@
       </div>
 
 
-      <a href="#SubDatosC" class="list-group-item"  data-toggle="collapse" data-parent="#SubDatosC" ><?php echo $form->labelEx($model,'contraparte'); ?><span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
+      <a href="#SubDatosC" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubDatosC" ><?php echo $form->labelEx($model,'contraparte'); ?><span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
       <div class="collapse list-group-submenu" id="SubDatosC"> 
         <a class="list-group-item" data-parent="#SubDatosC"> 
 
@@ -105,7 +105,7 @@
           </div>
          
         </a>
-         <a href="#SubSubTipoIns" class="list-group-item" data-toggle="collapse" data-parent="#SubSubTipoIns"><?php echo $form->labelEx($model,'tipo_institucion'); ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
+         <a href="#SubSubTipoIns" class="list-group-item opcion" data-toggle="collapse" data-parent="#SubSubTipoIns"><?php echo $form->labelEx($model,'tipo_institucion'); ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
           <div class="collapse list-group-submenu list-group-submenu-1" id="SubSubTipoIns">
                     
            <?php 
@@ -115,7 +115,6 @@
 
           </div>
          <a class="list-group-item" data-parent="#SubDatosC">
-
 
           <div class="row">
               <div class="col-sm-4"><?php  echo $form->labelEx($model,'institucion'); ?></div>
@@ -131,7 +130,7 @@
          </a>
       </div>
 
-      <a href="#SubEstado" class="list-group-item"  data-toggle="collapse" data-parent="#SubEstado" ><?php echo $form->labelEx($model,'estadoConv'); ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
+      <a href="#SubEstado" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubEstado" ><?php echo $form->labelEx($model,'estadoConv'); ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
       <div class="collapse list-group-submenu" id="SubEstado"> 
 
           <?php  
@@ -141,7 +140,7 @@
           
       </div>
 
-       <a href="#SubVence" class="list-group-item"  data-toggle="collapse" data-parent="#SubVence" >Fecha de vencimiento <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
+       <a href="#SubVence" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubVence" ><label for="">Fecha de vencimiento</label> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
       <div class="collapse list-group-submenu" id="SubVence"> 
         
         <a class="list-group-item" data-parent="#SubVence">
@@ -247,6 +246,7 @@
   </div>
     <?php $this->endWidget(); ?>
   </div>
+ 
 
  <div  id="Resulconvenios" class="col-sm-8">
 

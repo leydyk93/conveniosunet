@@ -15,9 +15,9 @@
   <li class="list-group-item"><h4>Información general del Convenio a renovar</h4>
   	 <ul>
   		
-	    <li>Fecha Inicio: <?php echo $model->fechaInicioConvenio; ?></li>
-	    <li>Fecha Caducidad:<?php echo $model->fechaCaducidadConvenio; ?></li>
-	    <li>Estado Actual: <?php echo $estado; ?><?php 
+	    <li>Fecha Inicio: <small><?php echo $model->fechaInicioConvenio; ?></small></li>
+	    <li>Fecha Caducidad:<small><?php echo $model->fechaCaducidadConvenio; ?></small></li>
+	    <li>Estado Actual: <small><?php echo $estado; ?></small><?php 
 
 	     ?>
 	 	</li>
