@@ -59,6 +59,7 @@ if(!isset($_SESSION['alcance'])){
 
      <!-- <div class="well well-sm ">  -->
       <legend class="text-center header"><h4>Datos Generales del Convenio</h4></legend>  
+      
       <div class="form-group">
         <?php echo $form->labelEx($pasouno,"tipo",array('class'=>'control-label col-sm-2')); ?>
         <div class="col-sm-10">
@@ -338,6 +339,7 @@ if(!isset($_SESSION['alcance'])){
 </script>
 
 <!--Tyson esta es la estructura de los formularios de las pantallas modales
+
 <form class="form-horizontal">
   <div class="form-group">
     <label class="control-label col-sm-2" for="email">Email:</label>

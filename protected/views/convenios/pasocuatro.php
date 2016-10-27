@@ -1,5 +1,7 @@
 <?php 
-	$form=$this->beginWidget("CActiveForm");
+	$form=$this->beginWidget("CActiveForm",array(  
+			'htmlOptions'=>array('class'=>'form-horizontal'),                      
+			));
  ?>
 
 <?php 
@@ -79,33 +81,41 @@ echo "<br>";
  Aportes del Convenio
   <?php echo "<br>"; ?>
   <?php echo "<br>"; ?>
-<div>
-<?php echo $form->labelEx($pasocuatro,'descripcion_aporte',array('class'=>'col-md-3')); ?>
-<?php echo $form->textField($pasocuatro,'descripcion_aporte'); ?>
-<?php echo $form->error($pasocuatro,'descripcion_aporte'); ?>
+<div class="form-group">
+<?php echo $form->labelEx($pasocuatro,'descripcion_aporte',array('class'=>'control-label col-sm-2')); ?>
+<div class="col-sm-10">
+	<?php echo $form->textField($pasocuatro,'descripcion_aporte',array('class'=>'form-control')); ?>
+	<?php echo $form->error($pasocuatro,'descripcion_aporte'); ?>
+</div>
 </div>
 
- <?php echo "<br>"; ?>
- <div>
-<?php echo $form->labelEx($pasocuatro,'monedas_idMoneda',array('class'=>'col-md-3')); ?>
-<?php echo $form->dropDownList($pasocuatro,'monedas_idMoneda',CHtml::listData(Monedas::model()->findAll(), 'idMoneda', 'descripcionMoneda'),''); ?>
-<?php echo $form->error($pasocuatro,'monedas_idMoneda'); ?>
+<div class="form-group">
+<?php echo $form->labelEx($pasocuatro,'monedas_idMoneda',array('class'=>'control-label col-sm-2')); ?>
+<div class="col-sm-10">
+	<?php echo $form->dropDownList($pasocuatro,'monedas_idMoneda',CHtml::listData(Monedas::model()->findAll(), 'idMoneda', 'descripcionMoneda'),array('class'=>'form-control')); ?>
+	<?php echo $form->error($pasocuatro,'monedas_idMoneda'); ?>
+</div>
 </div>
 
-<?php echo "<br>"; ?>
-<div>
-<?php echo $form->labelEx($pasocuatro,'valor',array('class'=>'col-md-3')); ?>
-<?php echo $form->textField($pasocuatro,'valor'); ?>
-<?php echo $form->error($pasocuatro,'valor'); ?>
+<div class="form-group">
+<?php echo $form->labelEx($pasocuatro,'valor',array('class'=>'control-label col-sm-2')); ?>
+	<div class="col-sm-10">
+		<?php echo $form->textField($pasocuatro,'valor',array('class'=>'form-control')); ?>
+		<?php echo $form->error($pasocuatro,'valor'); ?>
+	</div>
 </div>
-<?php echo "<br>"; ?>
-<div>
-<?php echo $form->labelEx($pasocuatro,'cantidad',array('class'=>'col-md-3')); ?>
-<?php echo $form->textField($pasocuatro,'cantidad'); ?>
-<?php echo $form->error($pasocuatro,'cantidad'); ?>
+
+
+<div class="form-group">
+<?php echo $form->labelEx($pasocuatro,'cantidad',array('class'=>'control-label col-sm-2')); ?>
+<div class="col-sm-10">
+	<?php echo $form->textField($pasocuatro,'cantidad',array('class'=>'form-control')); ?>
+	<?php echo $form->error($pasocuatro,'cantidad'); ?>
+	<div class="text-right"><a onclick="aporte_agregar()"> Agregar</a></div>
 </div>
-<?php echo "<br>"; ?>
-<a onclick="aporte_agregar()"> Agregar</a>
+</div>
+
+
 <?php echo "<br>"; ?>
 
  <table class="table table-bordered" id="tablai">

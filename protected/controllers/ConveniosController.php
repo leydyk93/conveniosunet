@@ -494,6 +494,8 @@ class ConveniosController extends Controller
 			
 			//Si guarda en la tabla convenios entonces guarde en la tabla Institución convenios
 			if($model->save()){
+
+				echo "Guardo en convenios";
 //-----------------------------GUARDANDO EN INSTITUCIOIN CONVENIOS----------------------------
 				for ($i=1; $i <count($_SESSION['institucion']) ; $i++) {
 
@@ -511,7 +513,7 @@ class ConveniosController extends Controller
 					if($model_ic->save()){
 //------------------------------------------GUARDANDO EN HISTORICO DE RESPONSABLES-----CONTRAPARTE------------------//
 						//buscando id de institucion
-						
+						echo "Guardo en institucion";
 						$criteria= new CDbCriteria();
 						$criteria->select='idInstitucionConvenio';
 						$criteria->condition='instituciones_idInstitucion=:ins AND convenios_idConvenio=:conv';
@@ -598,12 +600,13 @@ class ConveniosController extends Controller
 				   		echo "guardo";
 				   }
 				   //redireccionando a la vista dle convenio 
-				  // $this->redirect(array('view','id'=>$model->idConvenio));
+				   $this->redirect(array('view','id'=>$model->idConvenio));
 
 			} //model->save
 			else{
 					print_r($model->getErrors());
 			}
+			
 		}
 
 		$this->render('pasocinco',array("model"=>$model));

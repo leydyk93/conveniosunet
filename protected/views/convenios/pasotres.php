@@ -1,6 +1,8 @@
 
 <?php 
-	$form=$this->beginWidget("CActiveForm");
+	$form=$this->beginWidget("CActiveForm",array(  
+			'htmlOptions'=>array('class'=>'form-horizontal'),                      
+			));
  ?>
 
  <?php if(isset($_COOKIE['contra']))
@@ -85,22 +87,54 @@
 <h4>Acta de Intención </h4> 
 	
 
-<div class="row">
-<?php echo $form->labelEx($pasotres,'nro_acta',array('class'=>'col-md-3')); ?>
-<?php echo $form->textField($pasotres,'nro_acta',array('style'=>'width:200px;','class'=>'col-md-5')); ?>
-<?php echo $form->error($pasotres,'nro_acta'); ?>
+<div class="form-group">
+	<?php echo $form->labelEx($pasotres,'nro_acta',array('class'=>'control-label col-sm-2')); ?>
+	<div class="col-sm-10">
+		<?php echo $form->textField($pasotres,'nro_acta',array('class'=>'form-control')); ?>
+		<?php echo $form->error($pasotres,'nro_acta'); ?>
+	</div>
 </div>
-<?php echo "<br>"; ?>
-<div class="row">
-<?php echo $form->labelEx($pasotres,'fecha_acta',array('class'=>'col-md-3')); ?>
-<?php echo $form->textField($pasotres,'fecha_acta',array('style'=>'width:200px;','class'=>'col-md-5')); ?>
-<?php echo $form->error($pasotres,'fecha_acta'); ?>
+
+
+<div class="form-group">
+        <?php echo $form->labelEx($pasotres,"fecha_acta",array('class'=>'control-label col-sm-2')); ?>
+        <div class="col-sm-10"> 
+
+            <?php
+              $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                            'options'=>array(
+                                    'showAnim'=>'fold',
+                            ),
+                            'model'=>$pasotres,
+                            'attribute'=>'fecha_acta',
+                            'htmlOptions'=>array(
+                                    'class'=>'betterform',
+                                    'tabindex'=>3
+                            ),
+                            'options'=>array(
+                                    'dateFormat'=>'yy-mm-dd',
+                                    'showButtonPanel'=>true,
+                                    'changeMonth'=>true,
+                                    'changeYear'=>true,
+                                    'defaultDate'=>'+1w',
+                            ),
+                            'htmlOptions'=>array( 'class'=>'form-control input-sm'//,
+                                    //'value'=>$_SESSION['fechainicioconvenio'],
+                                ),
+                    ));
+               ?>
+        <?php echo $form->error($pasotres,"fecha_acta"); ?>
+
+        </div>
+      </div>
+
+<div class="form-group">
+
+<?php echo $form->labelEx($pasotres,'url_acta',array('class'=>'control-label col-sm-2')); ?>
+<div class="col-sm-10">
+	<?php echo $form->textField($pasotres,'url_acta',array('class'=>'form-control')); ?>
+	<?php echo $form->error($pasotres,'url_acta'); ?>
 </div>
-<?php echo "<br>"; ?>
-<div class="row">
-<?php echo $form->labelEx($pasotres,'url_acta',array('class'=>'col-md-3')); ?>
-<?php echo $form->textField($pasotres,'url_acta',array('style'=>'width:200px;','class'=>'col-md-5')); ?>
-<?php echo $form->error($pasotres,'url_acta'); ?>
 </div>
 <?php echo "<br>"; ?>
 
