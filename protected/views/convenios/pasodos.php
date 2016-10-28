@@ -607,10 +607,9 @@
 
 
 				<?php 
-				$value=0;
-				$value1="";
-				setcookie("nrofila", $value);
-		//setcookie("contra",$value1);
+				//$value=0;
+				//$value1="";
+				//setcookie("nrofila", $value);
 				?>
 
 
@@ -639,10 +638,6 @@
          		 //	resp.innerHTML="holaaa";
          		 	resp.value=getCookie("responsable_legal_unet");
          		 	respc.value=getCookie("responsable_contacto_unet");
-
-         		 		var selec=document.getElementById("PasodosForm_instanciaunet");
-						selec.selectedIndex="2";
-         	
 
      			   }
 				function fagregar(){
@@ -715,7 +710,13 @@
 			//agregando al cookie contra... la contraparte que se selecciono. 
 			document.cookie="contra="+getCookie("contra")+"-"+valselc+"."+respl_id+"."+respc_id;
 
+			//limpiando campos 
 
+			 	var resplc=document.getElementById("apellidos_nombres2");
+         		var respcc=document.getElementById("apellidos_nombres3")
+
+         		resplc.value="";
+         		respcc.value="";
 		}
 		function eliminarfila(fila){
 
@@ -726,6 +727,8 @@
 			//alert(aux[1]);		
 			var fil=document.getElementById(aux[1]);
 			fil.parentNode.removeChild(fil);
+
+
 
 			//eliminadno valor el cookie
 			document.cookie="contra= ";
