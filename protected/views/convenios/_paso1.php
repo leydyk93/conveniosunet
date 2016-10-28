@@ -1,5 +1,6 @@
 <!--INCIALIZANDO LOS CAMPOS -->
 <?php 
+//window.onload=asignar();
 if(!isset($_SESSION['nombreconvenio'])){
         $_SESSION['nombreconvenio']="";
 }
@@ -29,6 +30,7 @@ if(!isset($_SESSION['alcance'])){
 }
  ?>
 
+<body onload="asignar();">
 <main class="container-fluid">
  <!--<div class "row">
             <div  class="nuevo col-xs-12 text-left">
@@ -211,7 +213,7 @@ if(!isset($_SESSION['alcance'])){
       
       <div class="form-group text-right"> 
         <div class="col-sm-offset-2 col-sm-10">
-           <?php echo CHtml::submitButton("Siguiente",array("class"=>'btn btn-conv')); ?> 
+           <?php echo CHtml::submitButton("Siguiente",array("class"=>'btn btn-conv',"onclick"=>'recolectar()')); ?> 
         </div>
       </div>
  <!--</div>-->
@@ -310,7 +312,43 @@ if(!isset($_SESSION['alcance'])){
 </div>
 <script type="text/javascript">
       
+        function recolectar(){
+            
+            var selec=document.getElementById("PasounoForm_tipo");
+            var valselc=selec.selectedIndex;
+            document.cookie="tipo="+valselc;
 
+            var dep=document.getElementById("PasounoForm_dependencia");
+            var depselc=dep.selectedIndex;
+            document.cookie="dependencia="+depselc;
+
+            var clas=document.getElementById("PasounoForm_clasificacion");
+            var classelc=clas.selectedIndex;
+            document.cookie="clasificacion="+classelc;
+
+            var estado=document.getElementById("PasounoForm_estado");
+            var estadoselc=estado.selectedIndex;
+            document.cookie="estado="+estadoselc;
+        }
+        function asignar(){
+
+
+             var selec=document.getElementById("PasounoForm_tipo");
+             selec.selectedIndex=getCookie("tipo");
+
+
+             var depselec=document.getElementById("PasounoForm_dependencia");
+             depselec.selectedIndex=getCookie("dependencia");
+
+             var classelec=document.getElementById("PasounoForm_clasificacion");
+             classelec.selectedIndex=getCookie("clasificacion");
+
+             var estadoselec=document.getElementById("PasounoForm_estado");
+             estadoselec.selectedIndex=getCookie("estado");
+             //selec.selectedIndex="1 ";
+             alert(getCookie("tipo"));
+
+        }
 
         function guard(){
             alert('funcion guardar');
@@ -335,6 +373,23 @@ if(!isset($_SESSION['alcance'])){
 
             );
         }
+
+     
+        function getCookie(cname) {
+           var name = cname + "=";
+           var ca = document.cookie.split(';');
+           for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') {
+               c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+              return c.substring(name.length,c.length);
+            }
+            }
+          return "";
+        }
+
         
 </script>
 

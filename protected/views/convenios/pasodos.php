@@ -1,7 +1,14 @@
 		<?php 
+		if(!isset($_SESSION['instanciaunet'])){
+			$_SESSION['instanciaunet']="";
+		}
 		if(!isset($_SESSION['responsable_legal_unet'])){
 			$_SESSION['responsable_legal_unet']="";
 		}
+		if(!isset($_SESSION['responsable_contacto_unet'])){
+			$_SESSION['responsable_contacto_unet']="";
+		}
+
 		?>
 
 		<?php 
@@ -36,9 +43,17 @@
 			echo "<br>";
 
 			?>
+			<?php 
+				if(!isset($_SESSION['responsable_legal_unet'])){
+ 			       $_SESSION['responsable_legal_unet']="";
+				}
+			 ?>
 
-			<main class="container-fluid">
-				<div class "row">
+			<body onload="asignar();">
+		
+
+			<main class="container-fluid" >
+				<div class "row" >
 
 					<div  class="nuevo col-xs-12 text-left">
 						<p ><span class="glyphicon glyphicon-th-list"></span> Nuevo Convenio Marco</p>
@@ -73,10 +88,14 @@
 						<div class="form-group">
 							<?php echo $form->labelEx($pasodos,'instanciaunet',array('class'=>'control-label col-sm-2')); ?>
 							<div class="col-sm-10"> 
+								
 								<?php 
 								echo $form->dropDownList($pasodos,'instanciaunet',
 									CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),
-									array('class'=>'form-control input-sm'));
+									array('class'=>'form-control input-sm'),
+									array('options' => array($_SESSION['instanciaunet']=>array('selected'=>true)),'value'=>$_SESSION['instanciaunet'])
+									);
+									
 									?>
 									<?php echo $form->error($pasodos,'instanciaunet'); ?>
 								</div>
@@ -113,6 +132,8 @@
 			    	'value'=> '1',
 			    	'name'=>'1',
 			    	'class'=>'form-control input-sm',
+			    	'onclick'=>'asignar()',
+
 			    	//'placeholder'=>'Buscar responsable...',
 			   //  'title'=>'Indique el nombre del responsable.'
 			    	),
@@ -326,7 +347,7 @@
 
 
 		<br>
-		<?php echo CHtml::submitButton("siguiente",array("class"=>'btn btn-conv')); ?>
+		<?php echo CHtml::submitButton("siguiente",array("class"=>'btn btn-conv',"onclick"=>'recolectar()')); ?>
 
 
 	</section>
@@ -562,7 +583,34 @@
 
 				<script>
 
+				function recolectar(){
 
+					
+					var respl=document.getElementById("apellidos_nombres");
+					document.cookie="responsable_legal_unet="+respl.value;
+					var respc=document.getElementById("apellidos_nombres1");
+					document.cookie="responsable_contacto_unet="+respc.value;
+					
+				
+
+
+				}
+
+				 function asignar(){
+        		 
+        
+         		 	var resp=document.getElementById("apellidos_nombres");
+         		 	var respc=document.getElementById("apellidos_nombres1")
+         	
+         		 //	resp.innerHTML="holaaa";
+         		 	resp.value=getCookie("responsable_legal_unet");
+         		 	respc.value=getCookie("responsable_contacto_unet");
+
+         		 		var selec=document.getElementById("PasodosForm_instanciaunet");
+						selec.selectedIndex="2";
+         	
+
+     			   }
 				function fagregar(){
 
 
