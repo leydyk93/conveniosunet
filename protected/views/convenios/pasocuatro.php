@@ -37,7 +37,7 @@ echo "<br>";
 				echo "<br>";
 				print_r($_SESSION['institucion']) ;
 				echo "<br>";
-				echo "instancia contraparte: ".$_SESSION['instancia_contraparte'];
+				//echo "instancia contraparte: ".$_SESSION['instancia_contraparte'];
 				echo "<br>";
 				echo "responsable legal contraparte: ".$_SESSION['responsable_legal_contraparte'];
 				echo "<br>";

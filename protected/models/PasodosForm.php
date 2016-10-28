@@ -8,14 +8,14 @@
 	//	public $localidad;
 	//	public $tipo_institucion;
 		public $institucion;
-		public $instancia_contraparte;
+
 		public $responsable_legal_contraparte;
 		public $responsable_contacto_contraparte;
 
 		public function rules (){
 
 			return array(
-				array("instanciaunet,responsable_legal_unet,responsable_contacto_unet,institucion,instancia_contraparte,responsable_legal_contraparte,responsable_contacto_contraparte","required"),
+				array("instanciaunet,responsable_legal_unet,responsable_contacto_unet,institucion,responsable_legal_contraparte,responsable_contacto_contraparte","required"),
 				//safe se le coloca a los datos que no se quieren validar 
 			);
 		}
@@ -26,7 +26,7 @@
 					'responsable_legal_unet' => 'Responsable Legal',
 					'responsable_contacto_unet'=> 'Responsable de Contacto',
 					'institucion' => 'Contraparte',
-					'instancia_contraparte' => 'instancia Contraparte',
+
 					'responsable_legal_contraparte' => 'Responsable Legal',
 					'responsable_contacto_contraparte' => 'Responsable de Contacto',
 					);

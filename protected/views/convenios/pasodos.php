@@ -5,10 +5,31 @@
 		if(!isset($_SESSION['responsable_legal_unet'])){
 			$_SESSION['responsable_legal_unet']="";
 		}
+		else{
+			$pasodos->responsable_legal_unet=$_SESSION['responsable_legal_unet'];
+		}
 		if(!isset($_SESSION['responsable_contacto_unet'])){
 			$_SESSION['responsable_contacto_unet']="";
+
+		}
+		else{
+			$pasodos->responsable_contacto_unet=$_SESSION['responsable_contacto_unet'];
+		}	
+		if(!isset($_SESSION['responsable_legal_contraparte'])){
+			$_SESSION['responsable_legal_contraparte']="";
+
+		}
+		else{
+			$pasodos->responsable_legal_contraparte=$_SESSION['responsable_legal_contraparte'];
 		}
 
+		if(!isset($_SESSION['responsable_contacto_contraparte'])){
+			$_SESSION['responsable_contacto_contraparte']="";
+
+		}
+		else{
+			$pasodos->responsable_contacto_contraparte=$_SESSION['responsable_contacto_contraparte'];
+		}
 		?>
 
 		<?php 
@@ -279,13 +300,7 @@
 				</div>
 			</div>
 			
-			<div class="form-group">
-				<?php echo $form->labelEx($pasodos,'instancia_contraparte',array('class'=>'control-label col-sm-2')); ?>
-				<div class="col-sm-10">
-				<?php echo $form->dropDownList($pasodos,'instancia_contraparte',CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),array('class'=>'form-control input-sm')); ?>
-				<?php echo $form->error($pasodos,'instancia_contraparte'); ?>
-				</div>
-			</div>
+		
 
 			<?php 
 			if(isset($_COOKIE['contra'])){
@@ -306,11 +321,29 @@
 						<th>Insttitucion</th>
 						<th>Responsable legal</th>
 						<th>Responsable Contacto</th>
-						<th>Instancia Contraparte</th>
 						<th>Operaciones </th>
 					</tr>
 				</thead>
 				<tbody id="bodyt">
+				<?php 
+					for ($i=1; $i <count($_SESSION['institucion']) ; $i++) {
+						
+						$institucion_contraparte=explode('.',$_SESSION['institucion'][$i]);	
+						
+						$institucion=Instituciones::model()->find('idInstitucion='.$institucion_contraparte[0]);
+						$resp_legal=Responsables::model()->find('idResponsable='.$institucion_contraparte[1]);
+						$resp_cont=Responsables::model()->find('idResponsable='.$institucion_contraparte[2]);
+
+						echo '<tr id='.$i.'>';
+						echo '<td>'.$institucion->nombreInstitucion.'</td>';
+						echo '<td>'.$resp_legal->primerApellidoResponsable.' '.$resp_legal->primerNombreResponsable.'</td>';
+						echo '<td>'.$resp_cont->primerApellidoResponsable.' '.$resp_cont->primerNombreResponsable.'</td>';
+						echo '<td> <a id=b-'.$i.'-'.$institucion_contraparte[0].'.'.$institucion_contraparte[1].'.'.$institucion_contraparte[2].' onclick=eliminarfila(this.id)> Eliminar </a>';
+						echo '</tr>';
+
+					}
+
+				 ?>
 					<!-- ESTRUCTURA DE LA TABLA -->
 			   <!--
 			       <tr>
@@ -588,6 +621,7 @@
 					
 					var respl=document.getElementById("apellidos_nombres");
 					document.cookie="responsable_legal_unet="+respl.value;
+
 					var respc=document.getElementById("apellidos_nombres1");
 					document.cookie="responsable_contacto_unet="+respc.value;
 					
@@ -626,34 +660,37 @@
 					var selec=document.getElementById("PasodosForm_institucion");
 					var seleci=selec.options[selec.selectedIndex].text;
 					var valselc=selec.options[selec.selectedIndex].value;
+					
 					var nombreboton;
 					var nomb;
 
 					var respl=document.getElementById("apellidos_nombres2").value;
 					var respc=document.getElementById("apellidos_nombres3").value;
-					var inst= document.getElementById("PasodosForm_instancia_contraparte");
-					var inst_selec=inst.options[inst.selectedIndex].text;
+				
+					//var inst= document.getElementById("PasodosForm_instancia_contraparte");
+					//var inst_selec=inst.options[inst.selectedIndex].text;
+					//var inst_id=inst.options[inst.selectedIndex].value;
 
-					var inst_id=inst.options[inst.selectedIndex].value;
 					var respl_id=document.getElementById("PasodosForm_responsable_legal_contraparte").value;
 					var respc_id=document.getElementById("PasodosForm_responsable_contacto_contraparte").value;
 
 
 					btn1.innerHTML="Eliminar";
 			//obtenienod cookie con nro de fila actual 
-			nombreboton=getCookie("nrofila");
+					nombreboton=getCookie("nrofila");
 			//auentado uno a la fila
-			nombreboton++;
+					nombreboton++;
 			//asignano el nro a la fila
-			tr1.setAttribute("id",nombreboton);
+					tr1.setAttribute("id",nombreboton);
 			//asignando el nuevo nuero actual al cookie
-			document.cookie="nrofila="+nombreboton;
+					document.cookie="nrofila="+nombreboton;
 			//asignando id al boton
 			//asignando id al boton relacioinado con la fila 
-			var nomb="b-"+nombreboton+"-"+valselc+"."+respl_id+"."+respc_id+"."+inst_id;
-			alert(nomb);
-			btn1.setAttribute("id",nomb);
-			btn1.setAttribute("onclick","eliminarfila(this.id)");
+				var nomb="b-"+nombreboton+"-"+valselc+"."+respl_id+"."+respc_id;
+				alert(nomb);
+				
+				btn1.setAttribute("id",nomb);
+				btn1.setAttribute("onclick","eliminarfila(this.id)");
 
 			//agregando institución;
 			td1.innerHTML=seleci;
@@ -661,8 +698,6 @@
 			td2.innerHTML=respl;
 			//agregando responsable de contacto
 			td3.innerHTML=respc;
-			//agrregando instancia
-			td4.innerHTML=inst_selec;
 			//agregando boton;
 			td5.appendChild(btn1);
 			
@@ -671,14 +706,14 @@
 			tr1.appendChild(td1);
 			tr1.appendChild(td2);
 			tr1.appendChild(td3);
-			tr1.appendChild(td4);
+
 			tr1.appendChild(td5);
 			tabla.appendChild(tr1);
 
 			//div1.appendChild(div3);
 			//div4.setAttribute("class","col-15");
 			//agregando al cookie contra... la contraparte que se selecciono. 
-			document.cookie="contra="+getCookie("contra")+"-"+valselc+"."+respl_id+"."+respc_id+"."+inst_id;
+			document.cookie="contra="+getCookie("contra")+"-"+valselc+"."+respl_id+"."+respc_id;
 
 
 		}
