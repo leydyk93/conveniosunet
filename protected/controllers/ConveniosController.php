@@ -306,7 +306,7 @@ class ConveniosController extends Controller
 
 		if(isset($_POST["ConvenioEstados"])){
 
-
+			echo " ENTRO AL FORMULARIO DE ESTADOS";
 			$modelestado->attributes=$_POST["ConvenioEstados"];
 			//$modelestado->id_convenio_estado=10;
 			$modelestado->convenios_idConvenio=$id;
@@ -329,7 +329,26 @@ class ConveniosController extends Controller
 				//echo "errores en el formulario";
 			}
 
+		}
+		if(isset($_POST["ArchivosForm"])){
+			$modelArchivo->attributes=$_POST["ArchivosForm"];
+			echo " ENTRO AL ARCHIVO TITULO: ";
+			echo $modelArchivo->titulo;
+
+			$documento=CUploadedFile::getInstancesByName('documento');	
+			
+			if(count($documento)===0){
+			
+			}
+			else{
+				echo " lleno ";
+				print_r($modelArchivo->documento);
+				print_r($documento);
+			}
+
 		}	
+
+
 
 
 
@@ -349,7 +368,26 @@ class ConveniosController extends Controller
 	public function actionGuardararchivo(){
 
 		$modelo=new Archivosconvenios;
+
+
+		if(isset($_POST["ArchivosForm"])){
+
+			$modelo->attributes=$_POST["ArchivosForm"];
+			$documento=CUploadedFile::getInstancesByName('documento');	
 			
+			if(count($documento)===0){
+				echo $modelo->titulo." vacio";
+			}
+			else{
+				echo $modelo->titulo." lleno ".$modelo->documento;
+				print_r($modelo->documento);
+				print_r($documento);
+			}
+
+				//echo $modelo->titulo." documento".$modelo->documento;
+		 }
+
+
 			if(isset($_POST["documento"])){
 				echo "HOLA ".$_POST["documento"];
 			}
@@ -452,6 +490,7 @@ class ConveniosController extends Controller
 	public function actionPasotres($idconvenio){
 
 		$pasotres=new PasotresForm;
+		$modelArchivo= new ArchivosForm;
 
 		if(isset($_POST["PasotresForm"])){
 			$pasotres->attributes=$_POST["PasotresForm"];
@@ -460,10 +499,18 @@ class ConveniosController extends Controller
 				$_SESSION['nro_acta']=$pasotres->nro_acta;
 				$_SESSION['fecha_acta']=$pasotres->fecha_acta;
 				$_SESSION['url_acta']=$pasotres->url_acta;
-				$this->redirect(array('convenios/pasocuatro',"idconvenio"=>$_SESSION['idconvenio']));
+				echo "existe paso tres";
+				//$this->redirect(array('convenios/pasocuatro',"idconvenio"=>$_SESSION['idconvenio']));
 			}
 		}
-		$this->render('pasotres',array("pasotres"=>$pasotres));
+		if(isset($_POST["ArchivosForm"])){
+			$modelArchivo->attributes=$_POST["ArchivosForm"];
+
+				echo "existe formularioi de archivo";
+				echo $modelArchivo->titulo;
+		}
+
+		$this->render('pasotres',array("pasotres"=>$pasotres,"modelArchivo"=>$modelArchivo));
 
 	}
 

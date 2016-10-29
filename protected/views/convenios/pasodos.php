@@ -326,6 +326,7 @@
 				</thead>
 				<tbody id="bodyt">
 				<?php 
+				if(isset($_SESSION['institucion'])){
 					for ($i=1; $i <count($_SESSION['institucion']) ; $i++) {
 						
 						$institucion_contraparte=explode('.',$_SESSION['institucion'][$i]);	
@@ -342,7 +343,7 @@
 						echo '</tr>';
 
 					}
-
+					}
 				 ?>
 					<!-- ESTRUCTURA DE LA TABLA -->
 			   <!--

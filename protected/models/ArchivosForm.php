@@ -15,6 +15,7 @@ class ArchivosForm extends CFormModel
 	{
 		return array(
 			// name, email, subject and body are require
+			//array("documento","required"),
 			array('titulo',
 			 'match', 
 			 'pattern'=>'/^[a-z0-9]+$/i',

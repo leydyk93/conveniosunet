@@ -54,7 +54,7 @@
 				          'id' => 'form',
 				          'enableAjaxValidation' => true,
 				          'htmlOptions'=>array(
-	                          'class'=>'form-horizontal',
+	                          'class'=>'form-horizontal', 'enctype'=>'multipart/form-data'
                             
 	                        ),
                  
@@ -154,6 +154,32 @@
                             </div>
                         </div>
 
+                        <?php 
+                            echo $form->labelEx($modelArchivo,'titulo');
+                            echo $form->textField($modelArchivo,'titulo');
+                            echo $form->error($modelArchivo,'titulo');
+                             
+
+
+                             $this->widget('CMultiFileUpload',
+                            array(
+                              'model'=>$modelArchivo,
+                              'name'=>'documento',
+                              'attribute'=>'documento',
+                              'accept'=> 'txt',
+                              'denied'=>'El documento debe estar en formato PDF',
+                              'max'=>1,
+                              'duplicate'=>'archivo duplicado',
+                              ));
+                            
+                              echo $form->error($modelArchivo,'documento');
+                          
+                           
+                              // echo CHtml::submitButton('Subir documento', array('class'=>'btn btn-conv btn-sm')); 
+
+                              echo Yii::app()->request->baseUrl."/archivos/"."/".$modelArchivo->documento;
+                         ?>
+        
 
                         <div class="form-group">
                             <div class="col-md-12 text-center">
@@ -178,7 +204,8 @@
 
  
             <?php 
-         $formarch=$this->beginWidget('CActiveForm',
+
+       /* $formarch=$this->beginWidget('CActiveForm',
                 array(
                   'method' =>'POST',
                   'action' =>Yii::app()->createUrl('convenios/guardararchivo'),
@@ -186,41 +213,20 @@
                   'htmlOptions'=>array(
                             'enctype'=>'multipart/form-data',
                           ),
-                  
+                  'clientOptions'=> array('validateOnSubmit'=>true),
                   
                   ));
-             ?>
-      
-          <?php 
-
-            $this->widget('CMultiFileUpload',
-              array(
-                'model'=>$modelArchivo,
-                'name'=>'documento',
-                'attribute'=>'documento',
-                'accept'=> 'pdf',
-                'denied'=>'El documento debe estar en formato PDF',
-                'max'=>1,
-                'duplicate'=>'archivo duplicado',
-                ));
-
-             echo $formarch->error($modelArchivo,'documento');
-             ?>
-        
-
-
-             <?php 
-                  echo CHtml:: ajaxSubmitButton(
-                    'Guardar', 
-                     array('convenios/guardararchivo'),
-                     array( 'type' => 'post','data' => array('documento'=>$modelArchivo->documento) ,'update'=>'#oculto'), 
-                     array("class"=>'btn btn-conv','data-dismiss'=>'modal')
-                  );
+             */
+               
+              
+             
+           /*   $this->endWidget();*/
+       
 
                 ?>
 
+            
 
-
-            <?php $this->endWidget(); ?>
+    
 
 

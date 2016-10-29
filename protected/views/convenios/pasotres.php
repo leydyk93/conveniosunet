@@ -1,7 +1,6 @@
-
 <?php 
 	$form=$this->beginWidget("CActiveForm",array(  
-			'htmlOptions'=>array('class'=>'form-horizontal'),                      
+			'htmlOptions'=>array('class'=>'form-horizontal','enctype'=>'multipart/form-data'),                      
 			));
  ?>
 
@@ -51,7 +50,7 @@
 				echo "<br>";
 				print_r($_SESSION['institucion']) ;
 				echo "<br>";
-				echo "instancia contraparte: ".$_SESSION['instancia_contraparte'];
+			
 				echo "<br>";
 				echo "responsable legal contraparte: ".$_SESSION['responsable_legal_contraparte'];
 				echo "<br>";
@@ -137,6 +136,60 @@
 </div>
 </div>
 <?php echo "<br>"; ?>
+
+
+            <?php 
+
+   /*     $formarch=$this->beginWidget('CActiveForm',
+                array(
+                  'method' =>'POST',
+                  'action' =>Yii::app()->createUrl('convenios/guardararchivo'),
+                  'enableClientValidation' => true,
+                  'htmlOptions'=>array(
+                            'enctype'=>'multipart/form-data',
+                          ),
+                  'clientOptions'=> array('validateOnSubmit'=>true),
+                  
+                  ));
+             
+          */     
+                     echo $form->labelEx($modelArchivo,'titulo');
+                     echo $form->textField($modelArchivo,'titulo');
+                     echo $form->error($modelArchivo,'titulo');
+               
+
+
+               $this->widget('CMultiFileUpload',
+              array(
+                'model'=>$modelArchivo,
+                'name'=>'documento',
+                'attribute'=>'documento',
+                'accept'=> 'txt',
+                'denied'=>'El documento debe estar en formato PDF',
+                'max'=>1,
+                'duplicate'=>'archivo duplicado',
+                ));
+              
+                echo $form->error($modelArchivo,'documento');
+            
+          //      echo CHtml:: ajaxSubmitButton(
+            //    'Guardar', array('convenios/guardararchivo'),array(
+              //    'update'=>'#oculto'
+                //  ),array("class"=>'btn btn-conv')
+               // );
+                // echo CHtml::submitButton('Subir documento', array('class'=>'btn btn-conv btn-sm')); 
+
+              echo Yii::app()->request->baseUrl."/archivos/"."/".$modelArchivo->documento;
+             
+          //    $this->endWidget();
+       
+
+                ?>
+
+
+
+
+
 
 <?php echo CHtml::submitButton("siguiente",array("class"=>'btn btn-conv')); ?>
 
