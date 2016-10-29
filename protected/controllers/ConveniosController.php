@@ -666,8 +666,40 @@ class ConveniosController extends Controller
 				   if($acta->save()){
 				   		echo "guardo";
 				   }
+				    //***************************REINICIANDO VARIABLES DE SESION********************************
+				   $_SESSION['idconvenio']="";
+				   $_SESSION['tipo']="";
+	 			   $_SESSION['nombreconvenio']="";
+				   $_SESSION['fechainicioconvenio']="";
+				   $_SESSION['fechacaducidadconvenio']="";
+				   $_SESSION['objetivo']="";
+				   $_SESSION['dependenciaconvenio']="";
+				   $_SESSION['estado']="";
+				   $_SESSION['clasificacion']="";
+				   $_SESSION['alcance']="";
+				   $_SESSION['instanciaunet']="";
+				   $_SESSION['responsable_legal_unet']="";
+				   $_SESSION['responsable_contacto_unet']="";
+				   $_SESSION['institucion']="";
+				   $_SESSION['responsable_legal_contraparte']="";
+				   $_SESSION['responsable_contacto_contraparte']="";
+				   $_SESSION['nro_acta']="";
+				   $_SESSION['fecha_acta']="";
+				   $_SESSION['url_acta']="";
+				   $_SESSION['aporte']="";
+				    
+                    $value=0;
+                    $value1="";
+                    setcookie("responsable_legal_unet", $value1);
+                    setcookie("responsable_contacto_unet",$value1);
+
+
 				   //redireccionando a la vista dle convenio 
 				   $this->redirect(array('view','id'=>$model->idConvenio));
+
+
+				  
+
 
 			} //model->save
 			else{

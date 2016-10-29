@@ -152,7 +152,7 @@
 			    	'value'=> '1',
 			    	'name'=>'1',
 			    	'class'=>'form-control input-sm',
-			    	'onclick'=>'asignar()',
+			    
 
 			    	//'placeholder'=>'Buscar responsable...',
 			   //  'title'=>'Indique el nombre del responsable.'
