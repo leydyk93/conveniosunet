@@ -1,4 +1,15 @@
 <?php 
+	if(isset($_SESSION['aporte'])){
+		 $pasocuatro->descripcion_aporte=" ";
+		 $pasocuatro->monedas_idMoneda=" ";
+		 $pasocuatro->valor=" ";
+		 $pasocuatro->cantidad=" ";
+
+	}
+ ?>
+
+
+<?php 
 	$form=$this->beginWidget("CActiveForm",array(  
 			'htmlOptions'=>array('class'=>'form-horizontal'),                      
 			));
@@ -63,15 +74,14 @@ echo "<br>";
 <div class="row">
 <aside class="menu_pasos col-xs-3">
             
-                    <ul id="navi">
-                        <li><a href="index.php?r=convenios/_paso1" class="text-center">Paso 1</a></li>
-                        <li><a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center" >Paso 2</a></li>
-                        <li><a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center">Paso 3</a></li>
-                        <li><a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>"  class="text-center">Paso 4</a></li>
-                        <li><a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>"  class="text-center">Paso 5</a></li>
-                        <li><a href="#" class="text-center">Paso 6</a></li>
-                        
-                    </ul>
+                   		<ul id="navi">
+							<li><a href="index.php?r=convenios/create" class="text-center">Paso 1</a></li>
+							<li><a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center" >Paso 2</a></li>
+							<li><a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center">Paso 3</a></li>
+							<li><a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>"  class="text-center">Paso 4</a></li>
+							<li><a href="<?php echo $this->createUrl( '/convenios/pasocinco' )."&idconvenio=".$_SESSION['idconvenio']; ?>"  class="text-center">Paso 5</a></li>
+
+						</ul>
                     
                 
             </aside>
@@ -123,12 +133,35 @@ echo "<br>";
 		      <tr>
 		        <th>Aporte</th>
 		        <th>Moneda</th>
-		        <th>Cantidad</th>
 		        <th>Valor</th>
+		        <th>Cantidad</th>
 		        <th>Operacion</th>
 		      </tr>
 		    </thead>
 		  <tbody id="bodya">
+			
+			<?php 
+
+		  			if(isset($_SESSION['aporte'])){
+					for ($i=1; $i <count($_SESSION['aporte']) ; $i++) {
+						
+						$aporteA=explode('.',$_SESSION['aporte'][$i]);	
+						
+						$moneda=Monedas::model()->find('idMoneda='.$aporteA[1]);
+				
+
+						echo '<tr id=a'.$i.'>';
+						echo '<td>'.$aporteA[0].'</td>';
+						echo '<td>'.$moneda->descripcionMoneda.'</td>';
+						echo '<td>'.$aporteA[2].'</td>';
+						echo '<td>'.$aporteA[3].'</td>';
+						//echo '<td>Eliminar</td>';
+						echo '<td> <a id=b-a'.$i.'-'.$aporteA[0].'.'.$moneda->idMoneda.'.'.$aporteA[2].'.'.$aporteA[3].' onclick=eliminarfilap(this.id)> Eliminar </a>';
+						echo '</tr>';
+
+					}
+					}
+				 ?>
 		      <!-- <tr>
 		       
 		        <td>Bono alimenticio </td>

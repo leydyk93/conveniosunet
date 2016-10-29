@@ -500,7 +500,7 @@ class ConveniosController extends Controller
 				$_SESSION['fecha_acta']=$pasotres->fecha_acta;
 				$_SESSION['url_acta']=$pasotres->url_acta;
 				echo "existe paso tres";
-				//$this->redirect(array('convenios/pasocuatro',"idconvenio"=>$_SESSION['idconvenio']));
+				//
 			}
 		}
 		if(isset($_POST["ArchivosForm"])){
@@ -508,6 +508,7 @@ class ConveniosController extends Controller
 
 				echo "existe formularioi de archivo";
 				echo $modelArchivo->titulo;
+				$this->redirect(array('convenios/pasocuatro',"idconvenio"=>$_SESSION['idconvenio']));
 		}
 
 		$this->render('pasotres',array("pasotres"=>$pasotres,"modelArchivo"=>$modelArchivo));

@@ -41,15 +41,14 @@ if(!isset($_SESSION['alcance'])){
 <div class="row">
 
 <div class="col-xs-3">
-    <ul id="pasoscaragar" class="nav nav-pills nav-stacked">
-    <li><a class="text-center">Nuevo Convenio</a></li>
-    <li><a href="#" class="text-center" >Paso 1</a></li>
-    <li><a href="#" class="text-center" >Paso 2</a></li>
-    <li><a href="#" class="text-center" >Paso 3</a></li>
-    <li><a href="#" class="text-center" >Paso 4</a></li>
-    <li><a href="#" class="text-center" >Paso 5</a></li>
-    
-  </ul>
+        <ul id="navi">
+              <li><a href="index.php?r=convenios/create" class="text-center">Paso 1</a></li>
+              <li><a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center" >Paso 2</a></li>
+              <li><a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center">Paso 3</a></li>
+              <li><a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>"  class="text-center">Paso 4</a></li>
+              <li><a href="<?php echo $this->createUrl( '/convenios/pasocinco' )."&idconvenio=".$_SESSION['idconvenio']; ?>"  class="text-center">Paso 5</a></li>
+
+        </ul>
 </div>
 
 <section class="datos col-xs-9">     
@@ -346,7 +345,7 @@ if(!isset($_SESSION['alcance'])){
              var estadoselec=document.getElementById("PasounoForm_estado");
              estadoselec.selectedIndex=getCookie("estado");
              //selec.selectedIndex="1 ";
-             alert(getCookie("tipo"));
+        
 
         }
 
