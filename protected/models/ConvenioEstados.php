@@ -22,6 +22,7 @@ class ConvenioEstados extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+	 
 	public function tableName()
 	{
 		return 'convenio_estados';
@@ -35,7 +36,7 @@ class ConvenioEstados extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('convenios_idConvenio, estadoConvenios_idEstadoConvenio, fechaCambioEstado', 'required'),
+			array('convenios_idConvenio, estadoConvenios_idEstadoConvenio, fechaCambioEstado', 'required' , 'message'=>'El campo no debe estar vacio'),
 			array('estadoConvenios_idEstadoConvenio, dependencias_idDependencia', 'numerical', 'integerOnly'=>true),
 			array('convenios_idConvenio', 'length', 'max'=>50),
 			array('numeroReporte', 'length', 'max'=>10),
