@@ -30,7 +30,7 @@ class ConveniosController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 
-				'actions'=>array('index','view','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','autocompletef','guardardependencia','guardarinstitucion','guardarresponsable'),
+				'actions'=>array('index','view','archivo','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','autocompletef','guardardependencia','guardarinstitucion','guardarresponsable','guardararchivo'),
 
 				'users'=>array('*'),
 			),
@@ -283,10 +283,11 @@ class ConveniosController extends Controller
 		$modelDependencia=Dependencias::model()->findAll(); //Busco las dependencias
 		$modelestado = new ConvenioEstados; // se le crea el formulario al modelo viaja por post
 		
-		$resull= new ResultadoConvenios;; //estado hallados en la base de datos
+		//$resull= new ResultadoConvenios;; //estado hallados en la base de datos
 
+		$modelArchivo= new ArchivosForm; //subir el archivo del convenio
 
-		$consultan  ="SELECT ec.nombreEstadoConvenio, ce.fechaCambioEstado, ce.numeroReporte, ce.observacionCambioEstado, d.nombreDependencia FROM convenios c ";
+		/*$consultan  ="SELECT ec.nombreEstadoConvenio, ce.fechaCambioEstado, ce.numeroReporte, ce.observacionCambioEstado, d.nombreDependencia FROM convenios c ";
 	    $consultan .="JOIN convenio_estados ce ON ce.convenios_idConvenio = c.idConvenio ";
 	    $consultan .="JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio = ec.idEstadoConvenio ";	
 	    $consultan .="JOIN dependencias d ON d.idDependencia=ce.dependencias_idDependencia "; 
@@ -299,8 +300,9 @@ class ConveniosController extends Controller
         $resultados->bindColumn(2,$resull->fecha_inicio); //fecha cambio estado
 		$resultados->bindColumn(3,$resull->fecha_caducidad); //nro reporte
 		$resultados->bindColumn(4,$resull->objetivo_convenio); //observacion
-		$resultados->bindColumn(5,$resull->tipo_convenio); //dependencia
+		$resultados->bindColumn(5,$resull->tipo_convenio); //dependencia*/
 
+	
 
 		if(isset($_POST["ConvenioEstados"])){
 
@@ -309,6 +311,10 @@ class ConveniosController extends Controller
 			//$modelestado->id_convenio_estado=10;
 			$modelestado->convenios_idConvenio=$id;
 
+			$modelArchivo->attributes=$_POST["ArchivosForm"];	
+			$documento=CUploadedFile::getInstancesByName('documento');		
+
+
 			if($modelestado->validate()){
 
 				/*if(empty($modelestado->dependencias_idDependencia)){
@@ -316,24 +322,37 @@ class ConveniosController extends Controller
 			 	
 			 /*	 }*/
 
-				if($modelestado->save())
-				 $this->redirect(array('cambiarEstado','id'=>$id));
+				if($modelestado->save()){}
+				// $this->redirect(array('cambiarEstado','id'=>$id));
 
 			}else{
 				//echo "errores en el formulario";
 			}
 
-		}
+		}	
+
+
 
 		$this->render('cambiarEstado',array(
 			'model'=>$model,
 			'modeloE'=>$modelestado,
-			'resultados'=>$resultados,
-			'modelEdoBD'=>$resull,
+			//'resultados'=>$resultados,
+			//'modelEdoBD'=>$resull,
 			'modelEdo'=>$modelEdoConve,
 			'modelDpcia'=>$modelDependencia,
+			'modelArchivo'=>$modelArchivo,
+			
 			
 			));
+	}
+
+	public function actionGuardararchivo(){
+
+		$modelo=new Archivosconvenios;
+			
+			if(isset($_POST["documento"])){
+				echo "HOLA ".$_POST["documento"];
+			}
 	}
 
 	/**
@@ -686,7 +705,6 @@ class ConveniosController extends Controller
 
 		$this->render('pasoseis',array("model"=>$model));
 	}
-
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -723,6 +741,73 @@ class ConveniosController extends Controller
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	}
+
+	public function actionArchivo(){
+
+		$model= new ArchivosForm;
+		$modelo=new Archivosconvenios;
+		$msg ="";
+
+		
+
+		if(isset($_POST["ArchivosForm"])){
+
+			$model->attributes=$_POST["ArchivosForm"];	
+			$documento=CUploadedFile::getInstancesByName('documento');		
+
+		
+
+			
+
+			if(count($documento)===0){
+
+				$msg="<strong class='text-error'>Error, No ha seleccionado el archivo</strong>";
+
+			}else if(!$model->validate()){	
+				$msg="<strong class='text-error'>Error, al enviar en formulario</strong>";	
+			}else{
+
+				$folder=strtolower($model->titulo);
+				$buscar=array(' ');
+				$reemplazar=array('-');
+
+				$folder=str_replace($buscar, $reemplazar, $folder);
+
+				$path = Yii::getPathOfAlias('webroot').'/convenios/'.$folder.'/';
+				
+				echo $path;
+				if(!is_dir($path)){
+					mkdir($path,0,true);
+					chmod($path,0755);	
+				}
+
+				foreach ($documento as $doc => $i) {
+						$aleatorio=rand(10000,99999);
+						$docu=$aleatorio."-".$i->name;
+
+					$modelo->convenios_idConvenio=1;
+					$modelo->titulo=$model->titulo;
+					$modelo->folder=$folder;
+					$modelo->documento=$docu;
+
+					$modelo->save();
+
+					$i->saveAs($path.$docu);
+
+					}					
+
+
+
+
+			
+			}
+
+		}
+
+		$this->render('archivo',array('model'=>$model,'modelo'=>$modelo));
+
+
 	}
 
 	/**

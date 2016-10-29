@@ -11,7 +11,7 @@
 	</div>
  </div>
 
-<div class="list-group">
+<!--<div class="list-group">
   <div class="list-group-item"><h4>Estados del convenio</h4>
 
     <div class="table-responsive">
@@ -20,48 +20,48 @@
             <tr>
               <th>Descripcion Estado</th>
               <th>Fecha de cambio</th>
-             <!-- <th>Reporte</th>-->
+             
               <th>Justificación</th>
               <th>Dependencia</th>
               
             </tr>
           </thead>
           <tbody>
-            <?php while(($row=$resultados->read())!==false) { ?>
+            <?php /*while(($row=$resultados->read())!==false) {*/ ?>
             <tr>
-              <td><?php   echo $modelEdoBD->nombre_convenio;  ?></td>
-              <td><?php   echo $modelEdoBD->fecha_inicio;     ?></td>
-            <!--  <td><?php   /*echo $modelEdoBD->fecha_caducidad;*/  ?></td>-->
-              <td><?php   echo $modelEdoBD->objetivo_convenio;?></td>
-              <td><?php   echo $modelEdoBD->tipo_convenio     ?></td>
+              <td><?php  /* echo $modelEdoBD->nombre_convenio; */ ?></td>
+              <td><?php  /* echo $modelEdoBD->fecha_inicio;    */ ?></td>
+            
+              <td><?php  /* echo $modelEdoBD->objetivo_convenio;*/?></td>
+              <td><?php /*  echo $modelEdoBD->tipo_convenio   */  ?></td>
             </tr>
-            <?php } ?>
+            <?php /*} */?>
           </tbody>
         </table>
       </div>
   </div>	 
-</div>
+</div>-->
 
     <div class="row">
         <div class="col-md-12">
             <div class="well well-sm">
-               <!-- <form class="form-horizontal" method="post">-->
+              
 				   <?php 
 				      $form=$this->beginWidget('CActiveForm',
 				        array(
 				          'method' =>'POST',
 				          'action' =>Yii::app()->createUrl('convenios/cambiarEstado'."&id=".$model->idConvenio),
 				          'id' => 'form',
-				          'enableAjaxValidation' => false,
+				          'enableAjaxValidation' => true,
 				          'htmlOptions'=>array(
 	                          'class'=>'form-horizontal',
+                            
 	                        ),
+                 
 				          
 				          ));
 				     ?>
-                    <fieldset>
                         <legend class="text-center header">Nuevo Estado para el convenio</legend>
-
                         <div class="form-group">
                             <span class="col-md-2 col-md-offset-2 text-center"><?php echo $form->labelEx($modeloE,'estadoConvenios_idEstadoConvenio'); ?></span>
                             <div class="col-md-7">
@@ -102,8 +102,6 @@
               							                             'readonly'=>"readonly",
               							                        ),
               							                    ));
-
-              							             
               							              
               							           ?>
                                         <span class="input-group-addon">
@@ -136,12 +134,10 @@
 
                             	<?php 
                             	 
-						         echo $form->textArea($modeloE,'observacionCambioEstado',array('class'=>"form-control", 'rows'=>"7" ));
-						         echo $form->error($modeloE,'observacionCambioEstado');
+        						         echo $form->textArea($modeloE,'observacionCambioEstado',array('class'=>"form-control", 'rows'=>"7" ));
+        						         echo $form->error($modeloE,'observacionCambioEstado');
 
-                            	 ?>
-
-                               <!-- <textarea class="form-control" id="message" name="message" placeholder="Enter your massage for us here. We will get back to you within 2 business days." rows="7"></textarea>-->
+                            	 ?>                      
                             </div>
                         </div>
 
@@ -154,23 +150,77 @@
                                       $list2,array('class'=>"form-control", /*"empty" => "--"*/));
 
                             	 ?>
-                                <!--<input id="phone" name="phone" type="text" placeholder="Phone" class="form-control">-->
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-12 text-center">
-                            	<?php  echo CHtml::submitButton('Actualizar', array('class'=>'btn btn-conv btn-lg')); ?>
                                
                             </div>
                         </div>
-                    </fieldset>
 
+
+                        <div class="form-group">
+                            <div class="col-md-12 text-center">
+                            	<?php  echo CHtml::submitButton('Actualizar', array('class'=>'btn btn-conv btn-lg')); ?> 
+                            </div>
+                        </div>
                      <?php $this->endWidget(); ?>
-               <!-- </form>-->
+
+                     <div class="text-right">
+                       <a data-toggle="modal" data-target="#SubirArchivo" class="btn btn-conv btn-sm">
+                          <span class="glyphicon glyphicon-cloud-upload"></span> Subir Archivo
+                       </a>
+                       
+                     </div>
+
+
             </div>
         </div>
     </div>
 
+    <div id="oculto"></div>
+
+ 
+            <?php 
+         $formarch=$this->beginWidget('CActiveForm',
+                array(
+                  'method' =>'POST',
+                  'action' =>Yii::app()->createUrl('convenios/guardararchivo'),
+                  'enableClientValidation' => true,
+                  'htmlOptions'=>array(
+                            'enctype'=>'multipart/form-data',
+                          ),
+                  
+                  
+                  ));
+             ?>
+      
+          <?php 
+
+            $this->widget('CMultiFileUpload',
+              array(
+                'model'=>$modelArchivo,
+                'name'=>'documento',
+                'attribute'=>'documento',
+                'accept'=> 'pdf',
+                'denied'=>'El documento debe estar en formato PDF',
+                'max'=>1,
+                'duplicate'=>'archivo duplicado',
+                ));
+
+             echo $formarch->error($modelArchivo,'documento');
+             ?>
+        
+
+
+             <?php 
+                  echo CHtml:: ajaxSubmitButton(
+                    'Guardar', 
+                     array('convenios/guardararchivo'),
+                     array( 'type' => 'post','data' => array('documento'=>$modelArchivo->documento) ,'update'=>'#oculto'), 
+                     array("class"=>'btn btn-conv','data-dismiss'=>'modal')
+                  );
+
+                ?>
+
+
+
+            <?php $this->endWidget(); ?>
 
 
