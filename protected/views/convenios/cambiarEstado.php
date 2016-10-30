@@ -55,10 +55,8 @@
 				          'enableAjaxValidation' => true,
 				          'htmlOptions'=>array(
 	                          'class'=>'form-horizontal',
-                            
 	                        ),
-                 
-				          
+
 				          ));
 				     ?>
                         <legend class="text-center header">Nuevo Estado para el convenio</legend>
@@ -155,6 +153,8 @@
                         </div>
 
 
+
+
                         <div class="form-group">
                             <div class="col-md-12 text-center">
                             	<?php  echo CHtml::submitButton('Actualizar', array('class'=>'btn btn-conv btn-lg')); ?> 
@@ -174,53 +174,4 @@
         </div>
     </div>
 
-    <div id="oculto"></div>
-
- 
-            <?php 
-         $formarch=$this->beginWidget('CActiveForm',
-                array(
-                  'method' =>'POST',
-                  'action' =>Yii::app()->createUrl('convenios/guardararchivo'),
-                  'enableClientValidation' => true,
-                  'htmlOptions'=>array(
-                            'enctype'=>'multipart/form-data',
-                          ),
-                  
-                  
-                  ));
-             ?>
-      
-          <?php 
-
-            $this->widget('CMultiFileUpload',
-              array(
-                'model'=>$modelArchivo,
-                'name'=>'documento',
-                'attribute'=>'documento',
-                'accept'=> 'pdf',
-                'denied'=>'El documento debe estar en formato PDF',
-                'max'=>1,
-                'duplicate'=>'archivo duplicado',
-                ));
-
-             echo $formarch->error($modelArchivo,'documento');
-             ?>
-        
-
-
-             <?php 
-                  echo CHtml:: ajaxSubmitButton(
-                    'Guardar', 
-                     array('convenios/guardararchivo'),
-                     array( 'type' => 'post','data' => array('documento'=>$modelArchivo->documento) ,'update'=>'#oculto'), 
-                     array("class"=>'btn btn-conv','data-dismiss'=>'modal')
-                  );
-
-                ?>
-
-
-
-            <?php $this->endWidget(); ?>
-
-
+   

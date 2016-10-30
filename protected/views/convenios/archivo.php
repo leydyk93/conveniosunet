@@ -64,11 +64,11 @@
 						 //CHtml::link("Link Doc.", "http://".$_SERVER["SERVER_NAME"].Yii::app()->request->baseUrl."/images/upload/".$data->link_doc)
 						 		//CHtml::link("Link Doc.", "http://".$_SERVER["SERVER_NAME"].Yii::app()->request->baseUrl."/convenios/prueba/".$data->link_doc);
 						 //	echo  "ASI APARECE".Yii::getPathOfAlias('webroot');
-						 		echo Yii::app()->request->baseUrl."/archivos/".$modelo->folder."/".$modelo->documento;
+						 		echo Yii::app()->request->baseUrl."/archivos/convenios/".$modelo->folder."/".$modelo->documento;
 				      ?>
 
 
-				      <a href="<?php  echo Yii::app()->request->baseUrl."/archivos/".$modelo->folder."/".$modelo->documento; ?>" download="convenioM234.pdf">descargar</a>
+				      <a href="<?php  echo Yii::app()->request->baseUrl."/archivos/convenios/".$modelo->folder."/".$modelo->documento; ?>" download="convenioM234.pdf">descargar</a>
 
 				     
 	

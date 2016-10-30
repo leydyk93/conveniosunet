@@ -7,7 +7,6 @@ class ArchivosForm extends CFormModel
 {
 	public $titulo;
 	public $documento;
-
 	/**
 	 * Declares the validation rules.
 	 */

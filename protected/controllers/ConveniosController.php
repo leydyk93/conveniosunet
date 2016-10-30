@@ -311,8 +311,8 @@ class ConveniosController extends Controller
 			//$modelestado->id_convenio_estado=10;
 			$modelestado->convenios_idConvenio=$id;
 
-			$modelArchivo->attributes=$_POST["ArchivosForm"];	
-			$documento=CUploadedFile::getInstancesByName('documento');		
+			//$modelArchivo->attributes=$_POST["ArchivosForm"];	
+			//$documento=CUploadedFile::getInstancesByName('documento');		
 
 
 			if($modelestado->validate()){
@@ -322,8 +322,8 @@ class ConveniosController extends Controller
 			 	
 			 /*	 }*/
 
-				if($modelestado->save()){}
-				// $this->redirect(array('cambiarEstado','id'=>$id));
+				if($modelestado->save())
+				 $this->redirect(array('cambiarEstado','id'=>$id));
 
 			}else{
 				//echo "errores en el formulario";
@@ -349,6 +349,7 @@ class ConveniosController extends Controller
 	public function actionGuardararchivo(){
 
 		$modelo=new Archivosconvenios;
+
 			
 			if(isset($_POST["documento"])){
 				echo "HOLA ".$_POST["documento"];
@@ -753,12 +754,15 @@ class ConveniosController extends Controller
 
 		if(isset($_POST["ArchivosForm"])){
 
+			
+
 			$model->attributes=$_POST["ArchivosForm"];	
-			$documento=CUploadedFile::getInstancesByName('documento');		
 
 		
 
-			
+			$documento=CUploadedFile::getInstancesByName('documento');		
+
+			print_r($documento);
 
 			if(count($documento)===0){
 
@@ -774,7 +778,7 @@ class ConveniosController extends Controller
 
 				$folder=str_replace($buscar, $reemplazar, $folder);
 
-				$path = Yii::getPathOfAlias('webroot').'/convenios/'.$folder.'/';
+				$path = Yii::getPathOfAlias('webroot').'/archivos/convenios/'.$folder.'/';
 				
 				echo $path;
 				if(!is_dir($path)){
