@@ -1,6 +1,9 @@
 <!--INCIALIZANDO LOS CAMPOS -->
 <?php 
 //window.onload=asignar();
+if(!isset($_SESSION['idconvenio'])){
+        $_SESSION['idconvenio']="";
+}
 if(!isset($_SESSION['nombreconvenio'])){
         $_SESSION['nombreconvenio']="";
 }

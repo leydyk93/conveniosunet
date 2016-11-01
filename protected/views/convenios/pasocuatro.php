@@ -207,6 +207,7 @@ function aporte_agregar(){
 		var desc=document.getElementById("PasocuatroForm_descripcion_aporte").value;
 		var mon=document.getElementById("PasocuatroForm_monedas_idMoneda");
 		var moned=mon.options[mon.selectedIndex].value;
+		var monedt=mon.options[mon.selectedIndex].text;
 		var val=document.getElementById("PasocuatroForm_valor").value;
 		var cant=document.getElementById("PasocuatroForm_cantidad").value;
 		//var selec=document.getElementById("PasodosForm_institucion");
@@ -235,7 +236,7 @@ function aporte_agregar(){
 		bt1.setAttribute("onclick","eliminarfilap(this.id)");
 
 		td1.innerHTML=desc;
-		td2.innerHTML=moned;
+		td2.innerHTML=monedt;
 		td3.innerHTML=val;
 		td4.innerHTML=cant;
 		td5.appendChild(bt1);
