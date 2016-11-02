@@ -12,7 +12,7 @@
 		public function rules (){
 
 			return array(
-				array("descripcion_aporte,monedas_idMoneda,valor,cantidad","required"),
+				array("descripcion_aporte,monedas_idMoneda,valor,cantidad","safe"),
 				//safe se le coloca a los datos que no se quieren validar 
 			);
 		}

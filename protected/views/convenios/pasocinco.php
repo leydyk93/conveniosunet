@@ -1,13 +1,13 @@
 <?php 
 	$form=$this->beginWidget("CActiveForm");
  ?>
-<?php if(isset($_COOKIE['aportes']))
+<?php if(isset($_COOKIE['aportes'])){
 			echo " cookie ";
 		   echo $_COOKIE['aportes'];
 		   $_SESSION['aporte']=explode('-',$_COOKIE['aportes']);	
 		   echo " Variable de Sesion ";
 		   print_r($_SESSION['aporte']) ;
-
+		}
 		 ?>
 
 <?php 
@@ -43,7 +43,7 @@ echo "<br>";
 				echo "<br>";
 				print_r($_SESSION['institucion']) ;
 				echo "<br>";
-				echo "instancia contraparte: ".$_SESSION['instancia_contraparte'];
+			//	echo "instancia contraparte: ".$_SESSION['instancia_contraparte'];
 				echo "<br>";
 				echo "responsable legal contraparte: ".$_SESSION['responsable_legal_contraparte'];
 				echo "<br>";
@@ -75,15 +75,14 @@ echo "<br>";
 <div class="row">
 <aside class="menu_pasos col-xs-3">
             
-                    <ul id="navi">
-                        <li><a href="index.php?r=convenios/_paso1" class="text-center">Paso 1</a></li>
-                        <li><a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center" >Paso 2</a></li>
-                        <li><a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center">Paso 3</a></li>
-                        <li><a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>"  class="text-center">Paso 4</a></li>
-                        <li><a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>"  class="text-center">Paso 5</a></li>
-                        <li><a href="#" class="text-center">Paso 6</a></li>
-                        
-                    </ul>
+                  		<ul id="navi">
+							<li><a href="index.php?r=convenios/create" class="text-center">Paso 1</a></li>
+							<li><a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center" >Paso 2</a></li>
+							<li><a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center">Paso 3</a></li>
+							<li><a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>"  class="text-center">Paso 4</a></li>
+							<li><a href="<?php echo $this->createUrl( '/convenios/pasocinco' )."&idconvenio=".$_SESSION['idconvenio']; ?>"  class="text-center">Paso 5</a></li>
+
+						</ul>
                     
                 
             </aside>

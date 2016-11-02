@@ -1,5 +1,6 @@
 <!--INCIALIZANDO LOS CAMPOS -->
 <?php 
+//window.onload=asignar();
 if(!isset($_SESSION['nombreconvenio'])){
         $_SESSION['nombreconvenio']="";
 }
@@ -29,6 +30,7 @@ if(!isset($_SESSION['alcance'])){
 }
  ?>
 
+<body onload="asignar();">
 <main class="container-fluid">
  <!--<div class "row">
             <div  class="nuevo col-xs-12 text-left">
@@ -39,15 +41,14 @@ if(!isset($_SESSION['alcance'])){
 <div class="row">
 
 <div class="col-xs-3">
-    <ul id="pasoscaragar" class="nav nav-pills nav-stacked">
-    <li><a class="text-center">Nuevo Convenio</a></li>
-    <li><a href="#" class="text-center" >Paso 1</a></li>
-    <li><a href="#" class="text-center" >Paso 2</a></li>
-    <li><a href="#" class="text-center" >Paso 3</a></li>
-    <li><a href="#" class="text-center" >Paso 4</a></li>
-    <li><a href="#" class="text-center" >Paso 5</a></li>
-    
-  </ul>
+        <ul id="navi">
+              <li><a href="index.php?r=convenios/create" class="text-center">Paso 1</a></li>
+              <li><a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center" >Paso 2</a></li>
+              <li><a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center">Paso 3</a></li>
+              <li><a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>"  class="text-center">Paso 4</a></li>
+              <li><a href="<?php echo $this->createUrl( '/convenios/pasocinco' )."&idconvenio=".$_SESSION['idconvenio']; ?>"  class="text-center">Paso 5</a></li>
+
+        </ul>
 </div>
 
 <section class="datos col-xs-9">     
@@ -211,7 +212,7 @@ if(!isset($_SESSION['alcance'])){
       
       <div class="form-group text-right"> 
         <div class="col-sm-offset-2 col-sm-10">
-           <?php echo CHtml::submitButton("Siguiente",array("class"=>'btn btn-conv')); ?> 
+           <?php echo CHtml::submitButton("Siguiente",array("class"=>'btn btn-conv',"onclick"=>'recolectar()')); ?> 
         </div>
       </div>
  <!--</div>-->
@@ -310,7 +311,43 @@ if(!isset($_SESSION['alcance'])){
 </div>
 <script type="text/javascript">
       
+        function recolectar(){
+            
+            var selec=document.getElementById("PasounoForm_tipo");
+            var valselc=selec.selectedIndex;
+            document.cookie="tipo="+valselc;
 
+            var dep=document.getElementById("PasounoForm_dependencia");
+            var depselc=dep.selectedIndex;
+            document.cookie="dependencia="+depselc;
+
+            var clas=document.getElementById("PasounoForm_clasificacion");
+            var classelc=clas.selectedIndex;
+            document.cookie="clasificacion="+classelc;
+
+            var estado=document.getElementById("PasounoForm_estado");
+            var estadoselc=estado.selectedIndex;
+            document.cookie="estado="+estadoselc;
+        }
+        function asignar(){
+
+
+             var selec=document.getElementById("PasounoForm_tipo");
+             selec.selectedIndex=getCookie("tipo");
+
+
+             var depselec=document.getElementById("PasounoForm_dependencia");
+             depselec.selectedIndex=getCookie("dependencia");
+
+             var classelec=document.getElementById("PasounoForm_clasificacion");
+             classelec.selectedIndex=getCookie("clasificacion");
+
+             var estadoselec=document.getElementById("PasounoForm_estado");
+             estadoselec.selectedIndex=getCookie("estado");
+             //selec.selectedIndex="1 ";
+        
+
+        }
 
         function guard(){
             alert('funcion guardar');
@@ -335,6 +372,23 @@ if(!isset($_SESSION['alcance'])){
 
             );
         }
+
+     
+        function getCookie(cname) {
+           var name = cname + "=";
+           var ca = document.cookie.split(';');
+           for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') {
+               c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+              return c.substring(name.length,c.length);
+            }
+            }
+          return "";
+        }
+
         
 </script>
 

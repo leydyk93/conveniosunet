@@ -55,6 +55,7 @@
 				          'enableAjaxValidation' => true,
 				          'htmlOptions'=>array(
 	                          'class'=>'form-horizontal',
+                             'enctype'=>'multipart/form-data'
 	                        ),
 
 				          ));
@@ -152,6 +153,34 @@
                             </div>
                         </div>
 
+                        <?php 
+                            echo $form->labelEx($modelArchivo,'titulo');
+                            echo $form->textField($modelArchivo,'titulo');
+                            echo $form->error($modelArchivo,'titulo');
+                          ?>
+                      
+                        
+                          <?php   
+
+                            $this->widget('CMultiFileUpload',
+                            array(
+                              'model'=>$modelArchivo,
+                              'name'=>'documento',
+                              'attribute'=>'documento',
+                              'accept'=> 'pdf',
+                              'denied'=>'El documento debe estar en formato PDF',
+                              'max'=>1,
+                              'duplicate'=>'archivo duplicado',
+                              ));
+                            
+                              echo $form->error($modelArchivo,'documento');
+                          
+                           
+                              // echo CHtml::submitButton('Subir documento', array('class'=>'btn btn-conv btn-sm')); 
+
+                             // echo Yii::app()->request->baseUrl."/archivos/"."/".$modelArchivo->documento;
+                         ?>
+        
 
 
 
@@ -174,4 +203,3 @@
         </div>
     </div>
 
-   

@@ -282,38 +282,15 @@ class ConveniosController extends Controller
 		$modelEdoConve=Estadoconvenios::model()->findAll(); //Busco los nombres de los estados 
 		$modelDependencia=Dependencias::model()->findAll(); //Busco las dependencias
 		$modelestado = new ConvenioEstados; // se le crea el formulario al modelo viaja por post
-		
-		//$resull= new ResultadoConvenios;; //estado hallados en la base de datos
 
 		$modelArchivo= new ArchivosForm; //subir el archivo del convenio
 
-		/*$consultan  ="SELECT ec.nombreEstadoConvenio, ce.fechaCambioEstado, ce.numeroReporte, ce.observacionCambioEstado, d.nombreDependencia FROM convenios c ";
-	    $consultan .="JOIN convenio_estados ce ON ce.convenios_idConvenio = c.idConvenio ";
-	    $consultan .="JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio = ec.idEstadoConvenio ";	
-	    $consultan .="JOIN dependencias d ON d.idDependencia=ce.dependencias_idDependencia "; 
-	    $consultan .="WHERE  c.idConvenio = ".$id;
-		
-
-		$resultados=$conexion->createCommand($consultan)->query();
-
-        $resultados->bindColumn(1,$resull->nombre_convenio);  //nombre del estado del convenio
-        $resultados->bindColumn(2,$resull->fecha_inicio); //fecha cambio estado
-		$resultados->bindColumn(3,$resull->fecha_caducidad); //nro reporte
-		$resultados->bindColumn(4,$resull->objetivo_convenio); //observacion
-		$resultados->bindColumn(5,$resull->tipo_convenio); //dependencia*/
-
-	
-
 		if(isset($_POST["ConvenioEstados"])){
 
-
+			
 			$modelestado->attributes=$_POST["ConvenioEstados"];
-			//$modelestado->id_convenio_estado=10;
+			
 			$modelestado->convenios_idConvenio=$id;
-
-			//$modelArchivo->attributes=$_POST["ArchivosForm"];	
-			//$documento=CUploadedFile::getInstancesByName('documento');		
-
 
 			if($modelestado->validate()){
 
@@ -329,9 +306,38 @@ class ConveniosController extends Controller
 				//echo "errores en el formulario";
 			}
 
+		}
+		if(isset($_POST["ArchivosForm"])){
+		
+			$modelArchivo->attributes=$_POST["ArchivosForm"];
+
+			$modelArchivo->titulo="convenios";	
+			
+			$documento=CUploadedFile::getInstancesByName('documento');	
+			
+			if(count($documento)===0){
+				//no ha subido ningun archivo
+			}else if(!$modelArchivo->validate()){
+				//informacion invalida
+			}else{
+				
+				$path = Yii::getPathOfAlias('webroot').'/archivos/'.$modelArchivo->titulo."/";
+				//echo $path;
+
+				foreach ($documento as $doc => $i) {
+				 					
+					$docu=$model->idConvenio."_".$i->name;
+
+					$model->urlConvenio=$path.$docu;
+
+					$i->saveAs($path.$docu);
+
+				}
+				//Actualizamos el Url del convenio
+				$model->save();
+			}
+
 		}	
-
-
 
 		$this->render('cambiarEstado',array(
 			'model'=>$model,
@@ -346,16 +352,6 @@ class ConveniosController extends Controller
 			));
 	}
 
-	public function actionGuardararchivo(){
-
-		$modelo=new Archivosconvenios;
-
-			
-			if(isset($_POST["documento"])){
-				echo "HOLA ".$_POST["documento"];
-			}
-	}
-
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
@@ -363,7 +359,6 @@ class ConveniosController extends Controller
 	public function actionCreate()
 	{
 		//modelo para la tabla convenios 
-
 		$model=new Convenios;
 
 		$pasouno=new PasounoForm;
@@ -434,7 +429,7 @@ class ConveniosController extends Controller
 				$_SESSION['responsable_legal_unet']=$pasodos->responsable_legal_unet;
 				$_SESSION['responsable_contacto_unet']=$pasodos->responsable_contacto_unet;
 				//$_SESSION['institucion']=$pasodos->institucion;
-				$_SESSION['instancia_contraparte']=$pasodos->instancia_contraparte;
+				//$_SESSION['instancia_contraparte']=$pasodos->instancia_contraparte;
 				$_SESSION['responsable_legal_contraparte']=$pasodos->responsable_legal_contraparte;
 				$_SESSION['responsable_contacto_contraparte']=$pasodos->responsable_contacto_contraparte;
 				//en el paso tambien se llena la variable de sesioin de las instituciones (revisar esto )
@@ -453,6 +448,7 @@ class ConveniosController extends Controller
 	public function actionPasotres($idconvenio){
 
 		$pasotres=new PasotresForm;
+		$modelArchivo= new ArchivosForm;
 
 		if(isset($_POST["PasotresForm"])){
 			$pasotres->attributes=$_POST["PasotresForm"];
@@ -461,10 +457,19 @@ class ConveniosController extends Controller
 				$_SESSION['nro_acta']=$pasotres->nro_acta;
 				$_SESSION['fecha_acta']=$pasotres->fecha_acta;
 				$_SESSION['url_acta']=$pasotres->url_acta;
-				$this->redirect(array('convenios/pasocuatro',"idconvenio"=>$_SESSION['idconvenio']));
+				echo "existe paso tres";
+				//
 			}
 		}
-		$this->render('pasotres',array("pasotres"=>$pasotres));
+		if(isset($_POST["ArchivosForm"])){
+			$modelArchivo->attributes=$_POST["ArchivosForm"];
+
+				echo "existe formularioi de archivo";
+				echo $modelArchivo->titulo;
+				$this->redirect(array('convenios/pasocuatro',"idconvenio"=>$_SESSION['idconvenio']));
+		}
+
+		$this->render('pasotres',array("pasotres"=>$pasotres,"modelArchivo"=>$modelArchivo));
 
 	}
 
@@ -619,8 +624,40 @@ class ConveniosController extends Controller
 				   if($acta->save()){
 				   		echo "guardo";
 				   }
+				    //***************************REINICIANDO VARIABLES DE SESION********************************
+				   $_SESSION['idconvenio']="";
+				   $_SESSION['tipo']="";
+	 			   $_SESSION['nombreconvenio']="";
+				   $_SESSION['fechainicioconvenio']="";
+				   $_SESSION['fechacaducidadconvenio']="";
+				   $_SESSION['objetivo']="";
+				   $_SESSION['dependenciaconvenio']="";
+				   $_SESSION['estado']="";
+				   $_SESSION['clasificacion']="";
+				   $_SESSION['alcance']="";
+				   $_SESSION['instanciaunet']="";
+				   $_SESSION['responsable_legal_unet']="";
+				   $_SESSION['responsable_contacto_unet']="";
+				   $_SESSION['institucion']="";
+				   $_SESSION['responsable_legal_contraparte']="";
+				   $_SESSION['responsable_contacto_contraparte']="";
+				   $_SESSION['nro_acta']="";
+				   $_SESSION['fecha_acta']="";
+				   $_SESSION['url_acta']="";
+				   $_SESSION['aporte']="";
+				    
+                    $value=0;
+                    $value1="";
+                    setcookie("responsable_legal_unet", $value1);
+                    setcookie("responsable_contacto_unet",$value1);
+
+
 				   //redireccionando a la vista dle convenio 
 				   $this->redirect(array('view','id'=>$model->idConvenio));
+
+
+				  
+
 
 			} //model->save
 			else{
