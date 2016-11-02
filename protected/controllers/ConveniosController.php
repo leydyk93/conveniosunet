@@ -411,6 +411,11 @@ class ConveniosController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
+		if(isset($_POST['ajax'])&& $_POST['ajax']==='pasouno'){
+			echo CActiveForm::validate($pasouno);
+			Yii::app()->end();
+		}
+
 		if (isset($_POST["PasounoForm"])){
 			$pasouno->attributes=$_POST["PasounoForm"];
 			
@@ -432,10 +437,12 @@ class ConveniosController extends Controller
 				//$pasouno->idconvenio;
 				//$pasouno->nombreconvenio;
 			//	$this->redirect(array("create"));
-		
-				$this->redirect(array('convenios/pasodos',
-				"idconvenio"=>$pasouno->idconvenio,
-				));
+			
+				if($pasouno->validate()){
+					$this->redirect(array('convenios/pasodos',
+					"idconvenio"=>$pasouno->idconvenio,
+					));
+				}
 			}
 			}
 
@@ -461,6 +468,11 @@ class ConveniosController extends Controller
 		$paises = new Paises;
 		$estados= new Estados;
 		$responsable= new Responsables;
+
+	if(isset($_POST['ajax'])&& $_POST['ajax']==='pasodos'){
+			echo CActiveForm::validate($pasodos);
+			Yii::app()->end();
+		}
 		
 		if(isset($_POST["PasodosForm"])){
 
@@ -475,6 +487,7 @@ class ConveniosController extends Controller
 				$_SESSION['responsable_legal_contraparte']=$pasodos->responsable_legal_contraparte;
 				$_SESSION['responsable_contacto_contraparte']=$pasodos->responsable_contacto_contraparte;
 				//en el paso tambien se llena la variable de sesioin de las instituciones (revisar esto )
+			
 				$this->redirect(array('convenios/pasotres',
 				"idconvenio"=>$_SESSION['idconvenio']
 				));
@@ -1500,7 +1513,7 @@ class ConveniosController extends Controller
 			 {
 			  $arr = array();
 			  $arr[] = array(
-			   'id' => '',
+			   'id' => ' ',
 			   'value' => 'No se han encontrado resultados para su búsqueda',
 			   'label' => 'No se han encontrado resultados para su búsqueda',
 			  );
