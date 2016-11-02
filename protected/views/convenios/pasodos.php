@@ -34,7 +34,17 @@
 
 		<?php 
 		$form=$this->beginWidget("CActiveForm",array(  
-			'htmlOptions'=>array('class'=>'form-horizontal'),                      
+			'htmlOptions'=>array('class'=>'form-horizontal'),     
+			'method' => 'POST',
+            // 'action'=> Yii::app()->createUrl('convenios/pasodos'),
+             'id'=>'pasodos',
+             'enableAjaxValidation'=>true,
+             'enableClientValidation'=> true,
+             'clientOptions'=> array(
+                'validateOnSubmit'=> true,
+                'validateOnChange'=> true,
+                'validateOnType'=>true,
+               )                
 			));
 			?>
 

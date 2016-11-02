@@ -1,6 +1,9 @@
 <!--INCIALIZANDO LOS CAMPOS -->
 <?php 
 //window.onload=asignar();
+if(!isset($_SESSION['idconvenio'])){
+        $_SESSION['idconvenio']="";
+}
 if(!isset($_SESSION['nombreconvenio'])){
         $_SESSION['nombreconvenio']="";
 }
@@ -54,7 +57,18 @@ if(!isset($_SESSION['alcance'])){
 <section class="datos col-xs-9">     
 <?php 
     $form=$this->beginWidget("CActiveForm", array(  
-             'htmlOptions'=>array('class'=>'form-horizontal'),                      
+             'method' => 'POST',
+             'action'=> Yii::app()->createUrl('convenios/create'),
+             'id'=>'pasouno',
+             'enableAjaxValidation'=>true,
+             'enableClientValidation'=> true,
+             'clientOptions'=> array(
+                'validateOnSubmit'=> true,
+                'validateOnChange'=> true,
+                'validateOnType'=>true,
+              ),
+             'htmlOptions'=>array('class'=>'form-horizontal'),    
+
         ));
  ?>
 
