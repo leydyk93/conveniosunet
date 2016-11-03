@@ -141,7 +141,7 @@
 			<?php echo $form->labelEx($pasodos,'responsable_legal_unet',array('class'=>'control-label col-sm-2')); ?>
 			<div class="col-sm-10">
 				<?php
-			  echo $form->hiddenField($pasodos,'responsable_legal_unet',array()); // Campo oculto para guardar el ID de la persona seleccionada
+			  echo $form->TextField($pasodos,'responsable_legal_unet',array()); // Campo oculto para guardar el ID de la persona seleccionada
 
 			  $this->widget('zii.widgets.jui.CJuiAutoComplete',
 			  	array(
