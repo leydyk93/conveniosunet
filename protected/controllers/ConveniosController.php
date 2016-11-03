@@ -455,7 +455,6 @@ class ConveniosController extends Controller
 		$this->render('pasodos',array(
 			"model"=>$model,"pasodos"=>$pasodos,"instituciones"=>$instituciones,"paises"=>$paises,"estados"=>$estados, "responsable"=>$responsable));
 
-
 	}
 
 	public function actionPasotres($idconvenio){
@@ -1021,7 +1020,6 @@ class ConveniosController extends Controller
 
 				 $consulta .=" limit ".$inicio.",".$nroconv;
 
-
 			}else{
 
 				$consulta  = "SELECT DISTINCT c.nombreConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio,c.objetivoConvenio,tc.descripcionTipoConvenio, ec.nombreEstadoConvenio, c.idConvenio, r.correoElectronicoResponsable FROM convenios c ";
@@ -1157,7 +1155,7 @@ class ConveniosController extends Controller
 	$resultados=null;
 	$resull3= new ResultadoConvenios;
 	$BusquedaUsuario= new ResultadoConvenios; //almacena las variables que viajan por el post a traves de ajax
-	$convxpag=2;
+	$convxpag=4;
 	$iniciopag=$_POST['inicio'];//la variable que viaja por ajax post para la paginacion
 	$nuevoinicioPag=($iniciopag-1)*$convxpag;
 
