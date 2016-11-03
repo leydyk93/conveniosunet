@@ -162,6 +162,7 @@
 			    	'value'=> '1',
 			    	'name'=>'1',
 			    	'class'=>'form-control input-sm',
+			    	'onblur'=>'pruebafocus()',
 			    
 
 			    	//'placeholder'=>'Buscar responsable...',
@@ -170,6 +171,7 @@
 			    ));  
 			    ?>
 			    <?php echo $form->error($pasodos,'responsable_legal_unet'); ?>
+			    <div id="MensajeAjax"> </div>
 
 			    <div class="text-right"><a href="#" data-toggle="modal" data-target="#miventana3" onclick="limpiar_institucion()">
 			    	Nuevo Responsable
@@ -782,5 +784,32 @@
 		}
 		function get_institucion(){
 			alert("hola");
+		}
+
+		function pruebafocus(){
+			
+			
+			var url= '<?php echo Yii::app()->createUrl("convenios/validacionautocomplete"); ?>'
+			var inicio="hola";
+			var oculto=document.getElementById("PasodosForm_responsable_legal_unet").value;
+			var widget=document.getElementById("apellidos_nombres").value;
+			if(widget==""||widget==" "){
+				alert("vacio");
+			}
+
+			$.ajax({
+
+			type:"post",
+			url: url,
+			data:{ oculto:oculto,widget:widget},
+			success:function(datos){
+
+   				document.getElementById("MensajeAjax").innerHTML=datos;
+
+   
+			}
+
+});
+
 		}
 		</script>

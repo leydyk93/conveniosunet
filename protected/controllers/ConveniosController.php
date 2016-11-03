@@ -30,7 +30,8 @@ class ConveniosController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 
-				'actions'=>array('index','view','archivo','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','autocompletef','guardardependencia','guardarinstitucion','guardarresponsable','guardararchivo','prueba','updateajax','reporte'),
+
+				'actions'=>array('index','view','archivo','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','autocompletef','guardardependencia','guardarinstitucion','guardarresponsable','guardararchivo','validacionautocomplete','prueba','updateajax','reporte'),
 
 				'users'=>array('*'),
 			),
@@ -1575,6 +1576,33 @@ class ConveniosController extends Controller
 			 }
 			  
 			 echo CJSON::encode($arr);
+			}
+
+			public function actionValidacionautocomplete(){
+
+				if(isset($_POST['widget'])){
+					$campo_widget=explode(' ', $_POST['widget']);
+
+				}
+					//echo $_POST['widget'];
+
+				$criteria= new CDbCriteria();
+				$criteria->select='idResponsable';
+				$criteria->condition='primerApellidoResponsable=:ins';
+				$criteria->params= array(':ins'=>$_POST['widget']);
+				$result= Responsables::model()->find($criteria);
+				echo count($campo_widget)." ".$result->idResponsable;
+      			//echo  "Nombre".	$resul->primerNombreResponsable;	
+      			
+      				# code...
+      		//	foreach ($resul as $key => $resultado) {
+      				# code...
+      		//		echo $resultado->primerNombreResponsable;
+      		//	}
+      				
+      	
+      			
+      			
 			}
 
 }
