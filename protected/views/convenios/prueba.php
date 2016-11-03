@@ -1,6 +1,6 @@
 <?php 
   $this->breadcrumbs=array(
-	'Convenios'=>array('consultar'),
+	'Convenios'=>array('prueba'),
 	'Consulta Convenios',
 );
  ?>
@@ -16,7 +16,7 @@
             'enableAjaxValidation' => true,
             'enableClientValidation' => true,
             'clientOptions' => array(
-              'validateOnSubmit' => true,
+              /*'validateOnSubmit' => true,*/
               'validateOnChange' => true,
               'validateOnType' => true,
               ),
@@ -237,16 +237,7 @@
         </a>
       </div>
       <a  class="list-group-item text-center">
-
-           <?php 
-            //echo CHtml::submitButton('Reporte', array('class'=>'btn btn-conv'));
-           //echo CHtml:: ajaxSubmitButton('Reporte',array('reporte'));
-              echo CHtml::button('Reportes',array('onclick'=>'GenererarReportes();','class'=>'btn btn-conv btn-md'));
-
-          ?>
-      </a>
-       <a  class="list-group-item text-center">
-       <?php      
+         <?php      
               echo CHtml::button('Desmarcar filtros',array('onclick'=>'limpiarFiltros();','class'=>'btn btn-conv btn-md'));
              ?> 
       </a>
@@ -259,173 +250,25 @@
 
  <div  id="Resulconvenios" class="col-sm-8">
 
-    <div id="resul" class="list-group" >
+    <div  id="data" class="list-group" >
+
+    	
+		   <?php $this->renderPartial('_ajaxContent', array('data'=>$data)); ?>
+		
 
     </div>
 
   
     <div class="text-right">
 
-            
-
       <?php /*echo CHtml::button('Generar Reporte',array('onclick'=>'Imprimir();','class'=>'btn btn-conv btn-md')); */ ?>
     </div>
 
  </div>
   
-</div>
+</div> 
 
-<script type="text/javascript">
-
-  <?php if($resuldefecto==1){ ?>
-           send(1);
-
-  <?php  $resuldefecto=0; }?>
-
-$('#ConsultasConvenios_pais').change(function() {
-//    console.log($('#ConsultasConvenios_pais option:selected').val());
-    send(1);
-});
-
-$('#ConsultasConvenios_institucion').change(function() {
-    //console.log($('#ConsultasConvenios_institucion option:selected').val());
-    send(1);
-});
-
-$('#ConsultasConvenios_ambitoGeografico').change(function() {
-    //console.log($('#ConsultasConvenios_institucion option:selected').val());
-    send(1);
-});
-
-
-
-function  limpiarFiltros(){
- document.getElementById("ConsultasConvenios_anio").value="";
- var tipo = document.getElementsByName("ConsultasConvenios[tipo][]");
- var clasifi= document.getElementsByName("ConsultasConvenios[clasificacion][]");
- var tipoInst= document.getElementsByName("ConsultasConvenios[tipo_institucion][]"); 
- var estadoConv= document.getElementsByName("ConsultasConvenios[estadoConv][]");  
- document.getElementById("fechaVencimiento1").value=""; 
- document.getElementById("fechaVencimiento2").value="";  
-
- $('#ConsultasConvenios_ambitoGeografico').val($('#ConsultasConvenios_ambitoGeografico > option:first').val());
- $('#ConsultasConvenios_institucion').val($('#ConsultasConvenios_institucion > option:first').val());
- $('#ConsultasConvenios_pais').val($('#ConsultasConvenios_pais > option:first').val());
-
-
-  for(i=0;i<tipo.length;i++)
-    {
-        tipo[i].checked=false; 
-    }
-  
-
-  for(j=0;j<clasifi.length;j++)
-    {
-      clasifi[j].checked=false;
-    }
-
-  for(k=0;k<tipoInst.length;k++)
-    {
-     
-      tipoInst[k].checked=false;
-   
-    }
-
-    for(l=0;l<estadoConv.length;l++)
-    {
-      estadoConv[l].checked=false;
-      
-    }
-    send(1);
-}
-
-function GenererarReportes(){
-
-var anio = document.getElementById("ConsultasConvenios_anio").value;
-
-var url= '<?php echo Yii::app()->createUrl("convenios/reporte"); ?>'
-$.ajax({
-
-type:"post",
-url: url,
-data:{ anio:anio},
-success:function(datos){
-    document.getElementById("resul").innerHTML=datos;  
-}
-});
-
-}
-
-function send(inicio)
- {
-  
-  var inicio=Number(inicio);
-  var anio = document.getElementById("ConsultasConvenios_anio").value;
-
-  var tipo = document.getElementsByName("ConsultasConvenios[tipo][]");
-  var clasifi= document.getElementsByName("ConsultasConvenios[clasificacion][]");
-  var ambito=$('#ConsultasConvenios_ambitoGeografico option:selected').val();
-  var pais=$('#ConsultasConvenios_pais option:selected').val();
-  var tipoInst= document.getElementsByName("ConsultasConvenios[tipo_institucion][]"); 
-  var institucion=$('#ConsultasConvenios_institucion option:selected').val();
-  var estadoConv= document.getElementsByName("ConsultasConvenios[estadoConv][]");  
-  var fv1 = document.getElementById("fechaVencimiento1").value; 
-  var fv2 = document.getElementById("fechaVencimiento2").value; 
-  
-  var tipoc=[], clasific=[], tipoInstc=[] , estadoConvc=[]; 
-
-    for(i=0;i<tipo.length;i++)
-    {
-      if(tipo[i].checked){
-        tipoc[i]=tipo[i].value;
-      }else{
-        tipoc[i]=0;
-      }
-    }
-
-    for(j=0;j<clasifi.length;j++)
-    {
-      if(clasifi[j].checked){
-        clasific[j]=clasifi[j].value;
-      }else{
-        clasific[j]=0;
-      }
-    }
-
-    for(k=0;k<tipoInst.length;k++)
-    {
-      if(tipoInst[k].checked){
-        tipoInstc[k]=tipoInst[k].value;
-      }else{
-        tipoInstc[k]=0;
-      }
-    }
-
-     for(l=0;l<estadoConv.length;l++)
-    {
-      if(estadoConv[l].checked){
-        estadoConvc[l]=estadoConv[l].value;
-      }else{
-        estadoConvc[l]=0;
-      }
-    }
-
- var url= '<?php echo Yii::app()->createUrl("convenios/consultara"); ?>'
-
-
-$.ajax({
-
-type:"post",
-url: url,
-data:{ inicio:inicio , anio:anio , tipo:tipoc , clasificacion:clasific , tipoInstitucion:tipoInstc , estadoConvenio:estadoConvc ,
-      ambito:ambito, pais:pais , institucion:institucion, fechav1: fv1 , fechav2: fv2},
-success:function(datos){
-
-   document.getElementById("resul").innerHTML=datos;  
-}
-});
-}
-
-
- 
-</script>
+<?php echo CHtml::ajaxButton ("Update data",
+                              CController::createUrl('convenios/UpdateAjax'), 
+                              array('update' => '#data'));
+?>

@@ -30,7 +30,7 @@ class ConveniosController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 
-				'actions'=>array('index','view','archivo','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','autocompletef','guardardependencia','guardarinstitucion','guardarresponsable','guardararchivo'),
+				'actions'=>array('index','view','archivo','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','autocompletef','guardardependencia','guardarinstitucion','guardarresponsable','guardararchivo','prueba','updateajax','reporte'),
 
 				'users'=>array('*'),
 			),
@@ -850,10 +850,7 @@ class ConveniosController extends Controller
 
 					}					
 
-
-
-
-			
+		
 			}
 
 		}
@@ -873,7 +870,6 @@ class ConveniosController extends Controller
 			'dataProvider'=>$dataProvider,
 		));
 	}
-
 	/**
 	 * Manages all models.
 	 */
@@ -1155,7 +1151,7 @@ class ConveniosController extends Controller
 	$resultados=null;
 	$resull3= new ResultadoConvenios;
 	$BusquedaUsuario= new ResultadoConvenios; //almacena las variables que viajan por el post a traves de ajax
-	$convxpag=4;
+	$convxpag=3;
 	$iniciopag=$_POST['inicio'];//la variable que viaja por ajax post para la paginacion
 	$nuevoinicioPag=($iniciopag-1)*$convxpag;
 
@@ -1171,7 +1167,7 @@ class ConveniosController extends Controller
 	$BusquedaUsuario->fecha_inicio=$_POST['fechav1'];
     $BusquedaUsuario->fecha_caducidad=$_POST['fechav2'];
 
-  	$resulTotal=$this->RespuestaConsultaConvenios($BusquedaUsuario);
+  	$resulTotal=$this->RespuestaConsultaConvenios($BusquedaUsuario); 
   	$totalConvenios=count($resulTotal);
 
   	$paginas=ceil($totalConvenios/$convxpag);
@@ -1281,6 +1277,8 @@ class ConveniosController extends Controller
    
 			
 				$text.='</ul>';
+
+			
 //				$text.='</nav>';
 
 		echo $text;  		 
@@ -1294,8 +1292,6 @@ class ConveniosController extends Controller
 		}*/
       
       // print_r($_POST['x1'][1]);
-
-	
 	}
 
 	public function actionConsultar()
@@ -1316,15 +1312,25 @@ class ConveniosController extends Controller
 	       	Yii::app()->end();
         }
 
-        /*El convenio tiene porroga? de ser asi la fecha de caducidad coresponde a la informacion de la tabla renovacionProrroga*/
+         /* if(isset($_POST["ConsultasConvenios"])){
+          		$formConsulta->attributes=$_POST["ConsultasConvenios"];
 
-            $conexion=Yii::app()->db;
+          		$this->redirect(array('convenios/reporte',
+					"id"=>1,
+					));
+					
+					//$this->renderPartial('reporte');
+
+          		//$this->redirect($this->createUrl('convenios/reporte',array()));	
+
+          }*/
+
+       		//intentando llamar un procedimiento de la Base de datos
+            //$conexion=Yii::app()->db;
 				//$command = $conexion->createCommand('call ejemplo1()');
 				//$command->execute(); 
 
 				//print_r($command);
-
-
 		
      	$this->render('consultar',array(
      		'model'=>$formConsulta,
@@ -1338,6 +1344,60 @@ class ConveniosController extends Controller
      		));
 
 	}
+
+	public function actionReporte(){
+
+		$data=$_POST["anio"];
+
+			//$valor->anio;
+
+        /*  if(isset($_POST["ConsultasConvenios"])){
+          		$formConsulta->attributes=$_POST["ConsultasConvenios"];
+
+          		echo $formConsulta->anio;
+          		//$this->redirect($this->createUrl('convenios/reporte',array()));	
+
+          }*/
+
+		//$this->render('reporte');
+          $this->renderPartial('_ajaxContent',array('data'=>$data), false, true);
+	}
+
+	 public function actionPrueba()
+    {
+
+    	$modelConv=Convenios::model()->findAll();
+		$modelTipo=Tipoconvenios::model()->findAll();
+		$modelClass=Clasificacionconvenios::model()->findAll();
+		$modelPais=Paises::model()->findAll();
+		$modelTipoIns=Tiposinstituciones::model()->findAll();
+        $modelInst=Instituciones::model()->findAll();
+        $modelEdoConve=Estadoconvenios::model()->findAll();
+		$formConsulta = new ConsultasConvenios;
+    
+
+        $data = array();
+        $data["myValue"] = "Content loaded";
+ 
+        $this->render('prueba', 
+        	array('data'=>$data,
+        		  'model'=>$formConsulta,
+		     	   'tipoconve'=>$modelTipo,
+		     	    'clasif'=>$modelClass,
+		     		'paisesconve'=>$modelPais,
+		     		'tiposinst'=>$modelTipoIns,
+		       		'institucionconve'=>$modelInst,
+		        	'estadoconve'=>$modelEdoConve,
+        	));
+    }
+
+	  public function actionUpdateAjax()
+    {
+        $data = array();
+        $data["myValue"] = "Content updated in AJAX";
+ 		
+        $this->renderPartial('_ajaxContent',array('data'=>$data), false, true);
+    }
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

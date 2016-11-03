@@ -4,10 +4,10 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="es" />
+	
 	<?php 
 		echo Yii::app()->bootstrap->registerAllCss();
 		echo Yii::app()->bootstrap->registerCoreScripts();
-		
 	 ?>
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 	
