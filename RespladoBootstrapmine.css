@@ -47,6 +47,53 @@ nav#menuPrincipal li a span{
     background-color: #3cc2b8; 
  }
 
+@media print {
+
+	header{
+		padding-bottom: 2cm;
+	}
+	header div#dmanos{
+		display: none;
+
+	}
+	body{
+		font-family: arial;
+		font-size: 20pt;
+	}
+	div#MainMenu, div#Resulconvenios input.btn,div#navegabilidadbreadcrumbs {
+		display: none;
+	}
+	div#Resulconvenios input#ReporteForm_titulo{
+		border-width:0;
+		font-size: 30pt;
+		text-align: center;
+	}
+
+	div#Resulconvenios textarea#ReporteForm_descripcion{
+		border-width:0;
+		font-size: 20pt;
+		text-align: left;
+	}
+
+	 .dl-horizontal dt {
+	    float: left;
+	    width: 300px;
+	    overflow: hidden;
+	    clear: left;
+	    text-align: right;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	  }
+	  .dl-horizontal dd {
+	    margin-left: 180px;
+	  }
+
+	footer {
+		display: none;
+	}
+	
+}
+
 @media screen and (max-width: 700px){
 	
 	.h1mod{
@@ -152,9 +199,11 @@ div#Resulconvenios ul{
 	font-size: small;
 }
 
-
-
-
+/*Estilos para el input file*/
+#documento
+{
+    color: transparent;
+}
 
 /* ESTILOS PARA EL LAYOUUT CARGAR*/
 .datos{
@@ -178,6 +227,11 @@ div#Resulconvenios ul{
 
 
 }
+/*Reporte*/
+#listreporte dt{
+	text-align: left;
+}
+
 
 /*.menu_pasos{
 	background-color: #E9F2F9;
