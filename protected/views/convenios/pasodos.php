@@ -141,7 +141,7 @@
 			<?php echo $form->labelEx($pasodos,'responsable_legal_unet',array('class'=>'control-label col-sm-2')); ?>
 			<div class="col-sm-10">
 				<?php
-			  echo $form->TextField($pasodos,'responsable_legal_unet',array()); // Campo oculto para guardar el ID de la persona seleccionada
+			  echo $form->hiddenField($pasodos,'responsable_legal_unet',array()); // Campo oculto para guardar el ID de la persona seleccionada
 
 			  $this->widget('zii.widgets.jui.CJuiAutoComplete',
 			  	array(
@@ -155,6 +155,7 @@
 			      'minLength'=>'3', // Minimo de caracteres que hay que digitar antes de relizar la busqueda
 			      'select'=>"js:function(event, ui) { 
 			      	$('#PasodosForm_responsable_legal_unet').val(ui.item.id); // HTML-Id del campo
+			      		document.cookie='seleccion=1'; 
 			      }"
 			      ),
 			    'htmlOptions'=> array(
@@ -162,7 +163,7 @@
 			    	'value'=> '1',
 			    	'name'=>'1',
 			    	'class'=>'form-control input-sm',
-			    	'onblur'=>'pruebafocus()',
+			    	'onblur'=>'pruebafocus(1)',
 			    
 
 			    	//'placeholder'=>'Buscar responsable...',
@@ -201,6 +202,7 @@
 			      'minLength'=>'3', // Minimo de caracteres que hay que digitar antes de relizar la busqueda
 			      'select'=>"js:function(event, ui) { 
 			      	$('#PasodosForm_responsable_contacto_unet').val(ui.item.id); // HTML-Id del campo
+			      	document.cookie='seleccion=1'; 
 			      }"
 			      ),
 			    'htmlOptions'=> array(
@@ -208,11 +210,13 @@
 
 			    	'placeholder'=>'Buscar responsable...',
 			    	'class'=>'form-control input-sm',
+			    	'onblur'=>'pruebafocus(2)',
 			     //'title'=>'Indique el nombre del responsable.'
 			    	),
 			    ));  
 			    ?>
 			    <?php echo $form->error($pasodos,'responsable_contacto_unet'); ?>
+			     <div id="MensajeAjax1"> </div>
 			    <div class="text-right"><a href="#" data-toggle="modal" data-target="#miventana3" onclick="limpiar_institucion()">
 			    	Nuevo Responsable
 			    </a></div>
@@ -255,6 +259,7 @@
 			      'minLength'=>'3', // Minimo de caracteres que hay que digitar antes de relizar la busqueda
 			      'select'=>"js:function(event, ui) { 
 			      	$('#PasodosForm_responsable_legal_contraparte').val(ui.item.id); // HTML-Id del campo
+			      	document.cookie='seleccion=1'; 
 			      }"
 			      ),
 			    'htmlOptions'=> array(
@@ -262,11 +267,13 @@
 			    	'placeholder'=>'Buscar responsable...',
 			    	'onclick'=>'capturar_institucion()',
 			    	'class'=>'form-control input-sm',
+			    	'onblur'=>'pruebafocus(3)',
 			     //'title'=>'Indique el nombre del responsable.'
 			    	),
 			    ));  
 			    ?>
 			    <?php echo $form->error($pasodos,'responsable_legal_contraparte'); ?>
+			     <div id="MensajeAjax2"> </div>
 				<div class="text-right"><a href="#" data-toggle="modal" data-target="#miventana3" onclick="capturar_institucion()">
 				Nuevo Responsable
 				</a></div>
@@ -293,6 +300,7 @@
 			      'minLength'=>'3', // Minimo de caracteres que hay que digitar antes de relizar la busqueda
 			      'select'=>"js:function(event, ui) { 
 			      	$('#PasodosForm_responsable_contacto_contraparte').val(ui.item.id); // HTML-Id del campo
+			      	document.cookie='seleccion=1'; 
 			      }"
 			      ),
 			    'htmlOptions'=> array(
@@ -300,11 +308,13 @@
 			    	'placeholder'=>'Buscar responsable...',
 			    	'onclick'=>'capturar_institucion()',
 			    	'class'=>'form-control input-sm',
+			    	'onblur'=>'pruebafocus(4)',
 			     //'title'=>'Indique el nombre del responsable.'
 			    	),
 			    ));  
 			    ?>
 			    <?php echo $form->error($pasodos,'responsable_contacto_contraparte'); ?>
+			     <div id="MensajeAjax3"> </div>
 			    <div class="text-right"><a href="#" data-toggle="modal" data-target="#miventana3" onclick="capturar_institucion()">
 				Nuevo Responsable
 				</a></div>
@@ -479,9 +489,7 @@
 								'Guardar', array('convenios/guardarinstitucion'),array(
 									'update'=>'#PasodosForm_institucion'
 									),array("class"=>'btn btn-conv','data-dismiss'=>'modal')
-								);
-
-								?>
+								);?>
 						</div>
 					
 							<?php $this->endWidget(); ?>
@@ -786,15 +794,26 @@
 			alert("hola");
 		}
 
-		function pruebafocus(){
+		function pruebafocus(numero){
 			
+
 			
 			var url= '<?php echo Yii::app()->createUrl("convenios/validacionautocomplete"); ?>'
 			var inicio="hola";
-			var oculto=document.getElementById("PasodosForm_responsable_legal_unet").value;
+			
+			if(numero==1){
 			var widget=document.getElementById("apellidos_nombres").value;
+			var oculto=document.getElementById("PasodosForm_responsable_legal_unet").value;
+			}
+			if(numero==2)
+			var widget=document.getElementById("apellidos_nombres1").value;
+			if(numero==3)
+			var widget=document.getElementById("apellidos_nombres2").value;
+			if(numero==4)
+			var widget=document.getElementById("apellidos_nombres3").value;
+
 			if(widget==""||widget==" "){
-				alert("vacio");
+			
 			}
 
 			$.ajax({
@@ -804,8 +823,85 @@
 			data:{ oculto:oculto,widget:widget},
 			success:function(datos){
 
-   				document.getElementById("MensajeAjax").innerHTML=datos;
+				var arreglo=datos.split(" ");
+				var elementos=datos.length;
 
+   				//document.getElementById("MensajeAjax").innerHTML="Elementos "+elementos;
+   				if(elementos==1||elementos==2||elementos==3||elementos==4){
+   					if(numero==1){
+   					document.getElementById("PasodosForm_responsable_legal_unet").value=datos;
+   					}
+   					if(numero==2){
+   					document.getElementById("PasodosForm_responsable_contacto_unet").value=datos;	
+   					}
+   					if(numero==3){
+   					document.getElementById("PasodosForm_responsable_legal_contraparte").value=datos;	
+   					}
+   					if(numero==4){
+   					document.getElementById("PasodosForm_responsable_contacto_contraparte").value=datos;	
+   					}
+   				}
+   				else{
+   					if(numero==1){
+   						//si no selecciono un elemento de la lista autocompletada... borre el campo y muestre el mensaje 
+   						if(getCookie("seleccion")==0){
+   						document.getElementById("PasodosForm_responsable_legal_unet").value="";
+   						document.getElementById("MensajeAjax").innerHTML=datos;/*+" "+getCookie("seleccion")+" "+elementos;*/
+   						}
+   						else{
+   							//reiniciando variable seleccion
+   							var nuevo=0;
+							document.cookie="seleccion="+nuevo;   
+							if(elementos==78){
+								document.getElementById("PasodosForm_responsable_legal_unet").value="";
+								document.getElementById("MensajeAjax").innerHTML=datos;/*+" "+getCookie("seleccion")+" "+elementos;*/
+   							}
+   						}			
+   					}
+   					if(numero==2){
+   						if(getCookie("seleccion")==0){
+   							document.getElementById("PasodosForm_responsable_contacto_unet").value="";
+   							document.getElementById("MensajeAjax1").innerHTML=datos;
+   						}
+   						else{
+
+   							var nuevo=0;
+							document.cookie="seleccion="+nuevo;   
+							if(elementos==78){
+								document.getElementById("PasodosForm_responsable_contacto_unet").value="";
+								document.getElementById("MensajeAjax1").innerHTML=datos;/*+" "+getCookie("seleccion")+" "+elementos;*/
+   							}
+   						}
+   					}
+   					if(numero==3){
+   						if(getCookie("contra").length==0&&getCookie("seleccion")==0){
+   							document.getElementById("PasodosForm_responsable_legal_contraparte").value="";
+   							document.getElementById("MensajeAjax2").innerHTML=datos;/*+" "+getCookie("contra").length;*/
+   						}	
+   						else{
+   							var nuevo=0;
+							document.cookie="seleccion="+nuevo;
+							if(elementos==78){
+								document.getElementById("PasodosForm_responsable_legal_contraparte").value="";
+								document.getElementById("MensajeAjax2").innerHTML=datos;/*+" "+getCookie("seleccion")+" "+elementos;*/
+							}
+   						}
+   					}
+   					if(numero==4){
+   						if(getCookie("contra").length==0&&getCookie("seleccion")==0){
+   							document.getElementById("PasodosForm_responsable_contacto_contraparte").value="";
+   							document.getElementById("MensajeAjax3").innerHTML=datos;/*+" "+getCookie("contra").length;	*/
+   						}
+   						else{
+   							var nuevo=0;
+							document.cookie="seleccion="+nuevo;
+							if(elementos==78){
+								document.getElementById("PasodosForm_responsable_contacto_contraparte").value="";
+								document.getElementById("MensajeAjax3").innerHTML=datos;/*+" "+getCookie("seleccion")+" "+elementos;*/
+							}
+   						}
+   					}
+   				} 			
    
 			}
 
