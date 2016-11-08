@@ -20,10 +20,10 @@ if(!isset($_SESSION['url_acta'])){
 
  <?php if(isset($_COOKIE['contra'])){
 			echo " cookie ";
-		   echo $_COOKIE['contra'];
+		 //  echo $_COOKIE['contra'];
 		   $_SESSION['institucion']=explode('-',$_COOKIE['contra']);	
-		   echo " Variable de Sesion ";
-		   print_r($_SESSION['institucion']) ;
+		   //echo " Variable de Sesion ";
+		   //print_r($_SESSION['institucion']) ;
 		   }
 		  //print_r($_SESSION['institucion']) ;
 		  //echo " nueva";
@@ -33,7 +33,7 @@ if(!isset($_SESSION['url_acta'])){
 
 <?php 
 //campos del formulario 
-	 			echo "<br>";
+	 		/*	echo "<br>";
 	 			echo "id_convenio: ".$_SESSION['idconvenio'];
 	 			echo "<br>";
 	 			echo "tipo : ".$_SESSION['tipo'];
@@ -70,7 +70,7 @@ if(!isset($_SESSION['url_acta'])){
 				echo "responsable legal contraparte: ".$_SESSION['responsable_legal_contraparte'];
 				echo "<br>";
 				echo "responsable contacto contraparte ".$_SESSION['responsable_contacto_contraparte'];
-
+*/
 ?>
  <main class="container-fluid">
         <div class "row">

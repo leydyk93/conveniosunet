@@ -2,17 +2,17 @@
 	$form=$this->beginWidget("CActiveForm");
  ?>
 <?php if(isset($_COOKIE['aportes'])){
-			echo " cookie ";
-		   echo $_COOKIE['aportes'];
+		//	echo " cookie ";
+		   //echo $_COOKIE['aportes'];
 		   $_SESSION['aporte']=explode('-',$_COOKIE['aportes']);	
-		   echo " Variable de Sesion ";
-		   print_r($_SESSION['aporte']) ;
+		   //echo " Variable de Sesion ";
+		 //  print_r($_SESSION['aporte']) ;
 		}
 		 ?>
 
 <?php 
 echo "<br>";
-	 			echo "id_convenio: ".$_SESSION['idconvenio'];
+	 		/*	echo "id_convenio: ".$_SESSION['idconvenio'];
 	 			echo "<br>";
 	 			echo "tipo : ".$_SESSION['tipo'];
 	 			echo "<br>";
@@ -67,7 +67,7 @@ echo "<br>";
 				
 					print_r($_SESSION['aporte']) ;
 					echo count($_SESSION['aporte']);
-				}
+				}*/
 
  ?>
  <!--<?php //echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Save');  ?>-->

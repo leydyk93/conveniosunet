@@ -51,7 +51,8 @@
 
 			<?php 
 		//campos del formulario 
-			echo "<br>";
+			
+			/*echo "<br>";
 			echo "id_convenio: ".$_SESSION['idconvenio'];
 			echo "<br>";
 			echo "tipo : ".$_SESSION['tipo'];
@@ -72,7 +73,7 @@
 			echo "<br>";
 			echo "alcance: ".$_SESSION['alcance'];
 			echo "<br>";
-
+*/
 			//echo "idpapa: ".$_SESSION['idpapa'];
 			echo "<br>";
 
@@ -120,7 +121,7 @@
 						<br>
 						<div class="form-group">
 							<?php echo $form->labelEx($pasodos,'instanciaunet',array('class'=>'control-label col-sm-2')); ?>
-							<div class="col-sm-10"> 
+							<div class="col-sm-9"> 
 								
 								<?php 
 								echo $form->dropDownList($pasodos,'instanciaunet',
@@ -142,7 +143,7 @@
 		<!-- ************************************** BUSQUEDA AUTOCOMPLETADA ******** RESPONSABLE LEGAL UNET*************************** -->
 		<div class="form-group">
 			<?php echo $form->labelEx($pasodos,'responsable_legal_unet',array('class'=>'control-label col-sm-2')); ?>
-			<div class="col-sm-10">
+			<div class="col-sm-9">
 				<?php
 			  echo $form->hiddenField($pasodos,'responsable_legal_unet',array()); // Campo oculto para guardar el ID de la persona seleccionada
 
@@ -177,11 +178,10 @@
 			    <?php echo $form->error($pasodos,'responsable_legal_unet'); ?>
 			    <div id="MensajeAjax"> </div>
 
-			    <div class="text-right"><a href="#" data-toggle="modal" data-target="#miventana3" onclick="limpiar_institucion()">
-			    	Nuevo Responsable
-			    </a></div>
-
 			</div>    
+			 <div class="text-left col-sm-1"><a href="#" data-toggle="modal" data-target="#miventana3" onclick="limpiar_institucion()">
+			    	<span class="glyphicon glyphicon-plus"></span>
+			    </a></div>
 		</div>
 
 
@@ -190,7 +190,7 @@
 		<!-- ************************************** BUSQUEDA AUTOCOMPLETADA ******** RESPONSABLE CONTACTO UNET*************************** -->
 		<div class="form-group">
 			<?php echo $form->labelEx($pasodos,'responsable_contacto_unet',array('class'=>'control-label col-sm-2')); ?>
-			<div class="col-sm-10">
+			<div class="col-sm-9">
 				<?php
 			  echo $form->hiddenField($pasodos,'responsable_contacto_unet',array()); // Campo oculto para guardar el ID de la persona seleccionada
 			  $this->widget('zii.widgets.jui.CJuiAutoComplete',
@@ -220,34 +220,35 @@
 			    ?>
 			    <?php echo $form->error($pasodos,'responsable_contacto_unet'); ?>
 			     <div id="MensajeAjax1"> </div>
-			    <div class="text-right"><a href="#" data-toggle="modal" data-target="#miventana3" onclick="limpiar_institucion()">
-			    	Nuevo Responsable
-			    </a></div>
+			    
 			</div>
+		<div class="text-left col-sm-1"><a href="#" data-toggle="modal" data-target="#miventana3" onclick="limpiar_institucion()">
+			    	<span class="glyphicon glyphicon-plus"></span>
+		</a></div>
 		</div>
-
-
+		
+	
 		<!-- ************************************************************************************************************* -->
 		<br>
 		<h4>Contraparte</h4>
 
 		<div class="form-group">
 			<?php echo $form->labelEx($pasodos,'institucion',array('class'=>'control-label col-sm-2')); ?>
-			<div class="col-sm-10">
+			<div class="col-sm-9">
 			<?php echo $form->dropDownList($pasodos,'institucion',CHtml::listData(Instituciones::model()->findAll(), 'idInstitucion', 'nombreInstitucion'),array('class'=>'form-control input-sm')); ?>
 			<?php echo $form->error($pasodos,'institucion'); ?>
-			<div class="text-right"><a href="#" data-toggle="modal" data-target="#miventana2">
-			Nueva Institucion 
-			</a></div>
+			
 			</div>
-
+			<div class="text-left col-sm-1"><a href="#" data-toggle="modal" data-target="#miventana2">
+				<span class="glyphicon glyphicon-plus"></span>
+			</a></div>
 		</div>
 
 
 		<!--****************************************************** BUSQUEDA AUTO-COMPLETADA RESPONSABLE LEGAL CONTRAPARTE******************* -->
 			<div class="form-group">
 			<?php echo $form->labelEx($pasodos,'responsable_legal_contraparte',array('class'=>'control-label col-sm-2')); ?>
-			<div class="col-sm-10">
+			<div class="col-sm-9">
 			<?php
 			  echo $form->hiddenField($pasodos,'responsable_legal_contraparte',array()); // Campo oculto para guardar el ID de la persona seleccionada
 			  $this->widget('zii.widgets.jui.CJuiAutoComplete',
@@ -277,17 +278,18 @@
 			    ?>
 			    <?php echo $form->error($pasodos,'responsable_legal_contraparte'); ?>
 			     <div id="MensajeAjax2"> </div>
-				<div class="text-right"><a href="#" data-toggle="modal" data-target="#miventana3" onclick="capturar_institucion()">
-				Nuevo Responsable
-				</a></div>
+				
 				</div>
+				<div class="text-righ col-sm-1"><a href="#" data-toggle="modal" data-target="#miventana3" onclick="capturar_institucion()">
+					<span class="glyphicon glyphicon-plus"></span>
+				</a></div>
 			</div>
 
 			<!-- ********************************************************************************************* -->
 			<!--****************************************************** BUSQUEDA AUTO-COMPLETADA RESPONSABLE CONTACTO CONTRAPARTE******************* -->
 			<div class="form-group">
 				<?php echo $form->labelEx($pasodos,'responsable_contacto_contraparte',array('class'=>'control-label col-sm-2')); ?>
-				<div class="col-sm-10">
+				<div class="col-sm-9">
 				<?php
 			  echo $form->hiddenField($pasodos,'responsable_contacto_contraparte',array()); // Campo oculto para guardar el ID de la persona seleccionada
 
@@ -318,10 +320,12 @@
 			    ?>
 			    <?php echo $form->error($pasodos,'responsable_contacto_contraparte'); ?>
 			     <div id="MensajeAjax3"> </div>
-			    <div class="text-right"><a href="#" data-toggle="modal" data-target="#miventana3" onclick="capturar_institucion()">
-				Nuevo Responsable
-				</a></div>
+			    
 				</div>
+
+				<div class="text-left col-sm-1"><a href="#" data-toggle="modal" data-target="#miventana3" onclick="capturar_institucion()">
+					<span class="glyphicon glyphicon-plus"></span>
+				</a></div>
 			</div>
 			
 		
@@ -335,7 +339,7 @@
 			?>	
 			<br>
 			<!--*************************************** BOTON PARA AGREGAR EN LA TABLA^************************************-->
-			<div class="text-right"><a onclick="fagregar()"> Agregar Contraparte</a></div>	
+			<div class="text-right"><a onclick="fagregar()"> <span class="glyphicon glyphicon-ok-sign"></span></a></div>	
 			<br>
 			
 
@@ -363,7 +367,7 @@
 						echo '<td>'.$institucion->nombreInstitucion.'</td>';
 						echo '<td>'.$resp_legal->primerApellidoResponsable.' '.$resp_legal->primerNombreResponsable.'</td>';
 						echo '<td>'.$resp_cont->primerApellidoResponsable.' '.$resp_cont->primerNombreResponsable.'</td>';
-						echo '<td> <a id=b-'.$i.'-'.$institucion_contraparte[0].'.'.$institucion_contraparte[1].'.'.$institucion_contraparte[2].' onclick=eliminarfila(this.id)> Eliminar </a>';
+						echo '<td> <a id=b-'.$i.'-'.$institucion_contraparte[0].'.'.$institucion_contraparte[1].'.'.$institucion_contraparte[2].' onclick=eliminarfila(this.id)> <span class="glyphicon glyphicon-remove"></span> </a>';
 						echo '</tr>';
 
 					}
@@ -742,10 +746,10 @@
 					}
 					else{
 
-							btn1.innerHTML="Eliminar";
+							btn1.innerHTML="<span class='glyphicon glyphicon-remove'></span>";
 					//obtenienod cookie con nro de fila actual 
 							nombreboton=getCookie("nrofila");
-					//auentado uno a la fila
+					//auentado uno a la fila<span class='glyphicon glyphicon-remove'></span>
 							nombreboton++;
 					//asignano el nro a la fila
 							tr1.setAttribute("id",nombreboton);
