@@ -986,6 +986,9 @@ class ConveniosController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+
+		$model=Convenios::model()->findByPk($id); // assuming there is a post whose ID is 10
+		$model->delete(); // delete the row from the database table
 		//$this->loadModel($id)->delete();	
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		//if(!isset($_GET['ajax']))
