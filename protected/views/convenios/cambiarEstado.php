@@ -6,8 +6,8 @@
  ?>
 
   <div class="row">
-	<div  class="nuevo col-md-12 text-left">
-		 <h4>Cambiar Estado: <?php echo $model->nombreConvenio; ?></h4>
+	<div  class=" nuevo col-md-12 text-left">
+		<h4> <span class="glyphicon glyphicon-refresh"></span> Cambiar Estado: <?php echo $model->nombreConvenio; ?></h4>
 	</div>
  </div>
 
@@ -67,7 +67,7 @@
                             	<?php 
 								              $list1=CHtml::listData($modelEdo,'idEstadoConvenio','nombreEstadoConvenio');
 	                            echo $form->dropDownList($modeloE,'estadoConvenios_idEstadoConvenio', 
-	                                      $list1,array('class'=>"form-control"));
+	                                      $list1,array('class'=>"form-control input-sm"));
 
                             	 ?>
                             </div>
@@ -97,7 +97,7 @@
               							                            ),
               							                        'htmlOptions'=>array(
               							                        
-              							                            'class'=>"form-control",
+              							                            'class'=>"form-control input-sm",
               							                             'readonly'=>"readonly",
               							                        ),
               							                    ));
@@ -146,7 +146,7 @@
                             	<?php 
           							     $list2=CHtml::listData($modelDpcia,'idDependencia', 'nombreDependencia');
                            			 echo $form->dropDownList($modeloE,'dependencias_idDependencia', 
-                                      $list2,array('class'=>"form-control", /*"empty" => "--"*/));
+                                      $list2,array('class'=>"form-control input-sm", /*"empty" => "--"*/));
 
                             	 ?>
                                
@@ -154,35 +154,41 @@
                         </div>
 
                         <?php 
-                            echo $form->labelEx($modelArchivo,'titulo');
-                            echo $form->textField($modelArchivo,'titulo');
-                            echo $form->error($modelArchivo,'titulo');
+                            echo $form->labelEx($modelArchivoConv,'titulo',array('class'=>"modelArchivo"));
+                            echo $form->textField($modelArchivoConv,'titulo',array('class'=>"modelArchivo"));
+                            echo $form->error($modelArchivoConv,'titulo');
                           ?>
                       
-                        
-                          <?php   
+                        <div class="form-group">
+                          <span class="col-md-2 col-md-offset-2 text-center"><?php ?></span>
+                          <div class="col-md-7">
+                          <label class="btn btn-conv btn-sm"> <span class="glyphicon glyphicon-open-file"></span> Subir Archivo del Convenio
+                            <?php   
+                              
+                              $this->widget('CMultiFileUpload',
+                              array(
+                                'model'=>$modelArchivoConv,
+                                'name'=>'documento',
+                                'attribute'=>'documento',
+                                'accept'=> 'pdf',
+                                'denied'=>'El documento debe estar en formato PDF',
+                                'max'=>1,
+                                'duplicate'=>'archivo duplicado',
+                                 'htmlOptions'=>array(
+                                    'style'=>"display: none;"     
+                                  ),
+                                )
 
-                            $this->widget('CMultiFileUpload',
-                            array(
-                              'model'=>$modelArchivo,
-                              'name'=>'documento',
-                              'attribute'=>'documento',
-                              'accept'=> 'pdf',
-                              'denied'=>'El documento debe estar en formato PDF',
-                              'max'=>1,
-                              'duplicate'=>'archivo duplicado',
-                              ));
+
+                              );
+                              
+                                echo $form->error($modelArchivoConv,'documento');
                             
-                              echo $form->error($modelArchivo,'documento');
                           
-                           
-                              // echo CHtml::submitButton('Subir documento', array('class'=>'btn btn-conv btn-sm')); 
-
-                             // echo Yii::app()->request->baseUrl."/archivos/"."/".$modelArchivo->documento;
-                         ?>
-        
-
-
+                           ?>
+                         </label>
+                          </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-12 text-center">
@@ -190,14 +196,6 @@
                             </div>
                         </div>
                      <?php $this->endWidget(); ?>
-
-                     <div class="text-right">
-                       <a data-toggle="modal" data-target="#SubirArchivo" class="btn btn-conv btn-sm">
-                          <span class="glyphicon glyphicon-cloud-upload"></span> Subir Archivo
-                       </a>
-                       
-                     </div>
-
 
             </div>
         </div>

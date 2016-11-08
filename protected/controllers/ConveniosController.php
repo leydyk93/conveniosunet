@@ -284,7 +284,7 @@ class ConveniosController extends Controller
 		$modelDependencia=Dependencias::model()->findAll(); //Busco las dependencias
 		$modelestado = new ConvenioEstados; // se le crea el formulario al modelo viaja por post
 
-		$modelArchivo= new ArchivosForm; //subir el archivo del convenio
+		$modelArchivoConv= new ArchivosForm; //subir el archivo del convenio
 
 		if(isset($_POST["ConvenioEstados"])){
 
@@ -309,21 +309,23 @@ class ConveniosController extends Controller
 
 		}
 		if(isset($_POST["ArchivosForm"])){
-		
-			$modelArchivo->attributes=$_POST["ArchivosForm"];
 
-			$modelArchivo->titulo="convenios";	
+		
+			$modelArchivoConv->attributes=$_POST["ArchivosForm"];
+
+			$modelArchivoConv->titulo="convenios";	
 			
-			$documento=CUploadedFile::getInstancesByName('documento');	
+			$documento=CUploadedFile::getInstancesByName('documento');
+
 			
 			if(count($documento)===0){
 				//no ha subido ningun archivo
-			}else if(!$modelArchivo->validate()){
+			}else if(!$modelArchivoConv->validate()){
 				//informacion invalida
 			}else{
 				
-				$path = Yii::getPathOfAlias('webroot').'/archivos/'.$modelArchivo->titulo."/";
-				//echo $path;
+				$path = Yii::getPathOfAlias('webroot').'/archivos/'.$modelArchivoConv->titulo."/";
+				
 
 				foreach ($documento as $doc => $i) {
 				 					
@@ -332,8 +334,8 @@ class ConveniosController extends Controller
 					$model->urlConvenio=$path.$docu;
 
 					$i->saveAs($path.$docu);
-
 				}
+
 				//Actualizamos el Url del convenio
 				$model->save();
 			}
@@ -347,7 +349,7 @@ class ConveniosController extends Controller
 			//'modelEdoBD'=>$resull,
 			'modelEdo'=>$modelEdoConve,
 			'modelDpcia'=>$modelDependencia,
-			'modelArchivo'=>$modelArchivo,
+			'modelArchivoConv'=>$modelArchivoConv,
 			
 			
 			));
@@ -1184,7 +1186,7 @@ class ConveniosController extends Controller
 				$resultados->bindColumn(6,$resull3->estado_actual_convenio);
 				$resultados->bindColumn(7,$resull3->id_convenio);
 				$resultados->bindColumn(8,$resull3->responsable_Unet);
-			
+				$resultados->bindColumn(9,$resull3->url);
 		
 		   $text=" ";
 		   while(($row=$resultados->read())!==false) { 
@@ -1333,7 +1335,7 @@ class ConveniosController extends Controller
 
 	protected function consultaBase(){
 
-				$consulta  = "SELECT DISTINCT c.nombreConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio,c.objetivoConvenio,tc.descripcionTipoConvenio, ec.nombreEstadoConvenio, c.idConvenio, r.correoElectronicoResponsable FROM convenios c ";
+				$consulta  = "SELECT DISTINCT c.nombreConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio,c.objetivoConvenio,tc.descripcionTipoConvenio, ec.nombreEstadoConvenio, c.idConvenio, r.correoElectronicoResponsable, c.urlConvenio FROM convenios c ";
 				$consulta .= "JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio ";
 				$consulta .= "JOIN convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio ";
 				$consulta .= "JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio ";

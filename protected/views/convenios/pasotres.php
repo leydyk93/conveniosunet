@@ -149,17 +149,21 @@ if(!isset($_SESSION['url_acta'])){
 	<?php echo $form->error($pasotres,'url_acta'); ?>
 </div>
 </div>
-<?php echo "<br>"; ?>
 
 
-            <?php 
+            		<?php 
+	                     echo $form->labelEx($modelArchivo,'titulo',array('class'=>"modelArchivo"));
+	                     echo $form->textField($modelArchivo,'titulo',array('class'=>"modelArchivo"));
+	                     echo $form->error($modelArchivo,'titulo');
+	               
+ 						?>
 
 
-                     echo $form->labelEx($modelArchivo,'titulo');
-                     echo $form->textField($modelArchivo,'titulo');
-                     echo $form->error($modelArchivo,'titulo');
-               
-
+  <div class="form-group">
+                          <span class="col-md-2 col-md-offset-2 text-center"><?php ?></span>
+                          <div class="col-md-7">
+                          <label class="btn btn-conv btn-sm"> <span class="glyphicon glyphicon-open-file"></span> Subir Archivo del Convenio
+ <?php 	
 
                $this->widget('CMultiFileUpload',
               array(
@@ -170,17 +174,23 @@ if(!isset($_SESSION['url_acta'])){
                 'denied'=>'El documento debe estar en formato PDF',
                 'max'=>1,
                 'duplicate'=>'archivo duplicado',
+                 'htmlOptions'=>array(
+                                    'style'=>"display: none;"     
+                                  ),
                 ));
               
                 echo $form->error($modelArchivo,'documento');
          
 
-              echo Yii::app()->request->baseUrl."/archivos/"."/".$modelArchivo->documento;
+             // echo Yii::app()->request->baseUrl."/archivos/"."/".$modelArchivo->documento;
              
           //    $this->endWidget();
        
 
                 ?>
+            </label>
+            </div>
+            </div>
 
 <?php echo CHtml::submitButton("siguiente",array("class"=>'btn btn-conv')); ?>
 
