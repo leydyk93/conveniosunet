@@ -360,7 +360,7 @@ class ConveniosController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreateEspecifico($idconvenio)
+	public function actionCreateEspecifico($id)
 	{
 		//modelo para la tabla convenios 
 		$model=new Convenios;
@@ -373,6 +373,8 @@ class ConveniosController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
+		$pasouno->idmarco=$id;
+
 		if(isset($_POST['ajax'])&& $_POST['ajax']==='pasouno'){
 			echo CActiveForm::validate($pasouno);
 			Yii::app()->end();
@@ -383,6 +385,7 @@ class ConveniosController extends Controller
 			
 			$count = Convenios::model()->countBySql("select COUNT(*) from convenios"); 
 	  		$pasouno->idconvenio=$count+1;
+	  		$_SESSION['idpapa']=$id;
 
 			if($pasouno->validate()){
 
@@ -396,6 +399,7 @@ class ConveniosController extends Controller
 				$_SESSION['estado']=$pasouno->estado;
 				$_SESSION['clasificacion']=$pasouno->clasificacion;
 				$_SESSION['alcance']=$pasouno->alcance;
+				
 				//$pasouno->idconvenio;
 				//$pasouno->nombreconvenio;
 			//	$this->redirect(array("create"));
@@ -416,7 +420,7 @@ class ConveniosController extends Controller
 				echo "dependencia guardado";	
 			}
 			}
-
+		$_SESSION['tipo']="2";
 		$this->render('create',array(
 			"pasouno"=>$pasouno,"dep"=>$dep
 		));
@@ -622,7 +626,8 @@ class ConveniosController extends Controller
 			$model->tipoConvenios_idTipoConvenio=$_SESSION['tipo'];
 			$model->alcanceConvenios=$_SESSION['alcance'];
 			$model->dependencias_idDependencia=$_SESSION['dependenciaconvenio'];
-			//$model->convenios_idConvenio=$_SESSION['idconvenio']; //aqui va el id si es especifico
+			if(isset($_SESSION['idpapa']))
+			$model->convenios_idConvenio=$_SESSION['idpapa']; //aqui va el id si es especifico
 			
 			//Si guarda en la tabla convenios entonces guarde en la tabla Institución convenios
 			if($model->save()){

@@ -11,6 +11,7 @@
 		public $estado;
 		public $alcance;
 		public $clasificacion; 
+		public $idmarco;
 
 		public function rules (){
 
@@ -22,6 +23,7 @@
 				array('fechacaducidad','date','format'=>'yyyy-mm-dd','message'=>'Debe introducir un formato de fecha ejem 2016-01-01'),
 				array('objetivo','length','max'=>300,'tooLong'=>'Maximo 300 caracteres'),
 				array('alcance','length','max'=>300,'tooLong'=>'Maximo 300 caracteres'),
+				
 				//safe se le coloca a los datos que no se quieren validar 
 			);
 		}
