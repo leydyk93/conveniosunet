@@ -72,8 +72,8 @@
 			echo "<br>";
 			echo "alcance: ".$_SESSION['alcance'];
 			echo "<br>";
-		
-			echo "idpapa: ".$_SESSION['idpapa'];
+
+			//echo "idpapa: ".$_SESSION['idpapa'];
 			echo "<br>";
 
 			?>

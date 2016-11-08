@@ -63,11 +63,11 @@ echo "<br>";
 				echo "<br>";
 				echo "PASO CUATRO";
 				echo "<br>";
+				if(isset($_SESSION['aporte'])){
 				
-				print_r($_SESSION['aporte']) ;
-
-				
+					print_r($_SESSION['aporte']) ;
 					echo count($_SESSION['aporte']);
+				}
 
  ?>
  <!--<?php //echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Save');  ?>-->

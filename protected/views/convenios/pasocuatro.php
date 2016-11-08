@@ -262,7 +262,7 @@ function aporte_agregar(){
 				document.cookie="nrofilap="+nombreboton;
 				//asignando id al boton relacioinado con la fila
 				nomb="b-"+filap+"-"+desc+"."+moned+"."+val+"."+cant;
-				alert(nomb);
+				//alert(nomb);
 				bt1.setAttribute("id",nomb);
 				bt1.setAttribute("onclick","eliminarfilap(this.id)");
 

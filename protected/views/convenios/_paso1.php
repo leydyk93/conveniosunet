@@ -204,16 +204,19 @@ if(!isset($_SESSION['alcance'])){
       <div class="form-group">
         
         <?php echo $form->labelEx($pasouno,'dependencia',array('class'=>'control-label col-sm-2')); ?>
-        <div class="col-sm-10"> 
+        <div class="col-sm-9"> 
             <?php echo $form->dropDownList($pasouno,'dependencia',
             CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),
             array('class'=>"form-control input-sm"),
             array('options' => array($_SESSION['dependenciaconvenio']=>array('selected'=>true)))); ?>
             <?php echo $form->error($pasouno,'dependencia'); ?>
-            <div class="text-right"><a  href="#" data-toggle="modal" data-target="#miventana" >
-            Nueva Dependenia
-            </a></div>
+
+            
+
         </div>
+        <div class="col-sm-1"><a  href="#" data-toggle="modal" data-target="#miventana" >
+                <span class="glyphicon glyphicon-plus"></span>
+        </a></div>
       </div>
 
        <div class="form-group">
