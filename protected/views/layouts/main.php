@@ -80,30 +80,32 @@
   </div>
 </nav>
 
-	<div class="container-fluid">
+	<div id="navegabilidadbreadcrumbs" class="container-fluid">
 
-	<div class="row">
-		<div class="col-md-6">
-		<?php if(isset($this->breadcrumbs)):?>
-			<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-				'links'=>$this->breadcrumbs,
-			)); ?><!-- breadcrumbs -->
-		<?php endif?>
-       </div>
+		<div class="row">
 
-       <div class="col-md-6">
+			<div class="col-md-6">
+			<?php if(isset($this->breadcrumbs)):?>
+				<?php $this->widget('zii.widgets.CBreadcrumbs', array(
+					'links'=>$this->breadcrumbs,
+				)); ?><!-- breadcrumbs -->
+			<?php endif?>
+	       </div>
 
-       	<?php if(!Yii::app()->user->isGuest):?>
-       	<p  class="text-right"> <?php echo Date("d-m-Y"); ?></p>
-			
-		<?php endif?>
-       </div>
-	</div>   
+	       <div class="col-md-6">
+
+	       	<?php if(!Yii::app()->user->isGuest):?>
+	       	<p  class="text-right"> <?php echo Date("d-m-Y"); ?></p>
+				
+			<?php endif?>
+	       </div>
+		</div>   
 	</div> 
 
 	<main class="container">
-	<?php echo $content; ?>
+		<?php echo $content; ?>
 	</main>
+	
 	<footer id="foo" class="container-fluid text-center">
 		<div class="row">
 			<div class="col-md-12">

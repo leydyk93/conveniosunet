@@ -31,7 +31,8 @@ class ConveniosController extends Controller
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 
 
-				'actions'=>array('index','view','archivo','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','autocompletef','guardarinstitucion','guardarresponsable','guardararchivo','validacionautocomplete','prueba','updateajax','reporte','guardardependencia'),
+
+				'actions'=>array('index','view','archivo','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','autocompletef','guardarinstitucion','guardarresponsable','guardararchivo','validacionautocomplete','prueba','updateajax','reporte','guardardependencia','ConstruirReporte'),
 
 				'users'=>array('*'),
 			),
@@ -477,8 +478,40 @@ class ConveniosController extends Controller
 		if(isset($_POST["ArchivosForm"])){
 			$modelArchivo->attributes=$_POST["ArchivosForm"];
 
-				echo "existe formularioi de archivo";
-				echo $modelArchivo->titulo;
+			$modelArchivo->titulo="actaIntencion";	// este es el nombre de la carpeta donde se almacenara el acta
+			
+			$documento=CUploadedFile::getInstancesByName('documento');	//este es el documento como tal. 
+
+			if(count($documento)===0){
+				//no ha subido ningun archivo
+			}else if(!$modelArchivo->validate()){
+				//informacion invalida
+			}else{
+
+				//creo la direccion donde se almacenrá
+				$path = Yii::getPathOfAlias('webroot').'/archivos/'.$modelArchivo->titulo."/";
+
+				foreach ($documento as $doc => $i) {
+				 					
+					$docu="Acta-".$i->name;
+
+					$_SESSION['url_acta']=$path.$docu;
+
+					//$model->urlConvenio=$path.$docu;
+
+					$i->saveAs($path.$docu);
+
+				}
+
+
+
+			}
+
+
+
+
+				//echo "existe formularioi de archivo";
+				//echo $modelArchivo->titulo;
 				$this->redirect(array('convenios/pasocuatro',"idconvenio"=>$_SESSION['idconvenio']));
 		}
 
@@ -892,25 +925,8 @@ class ConveniosController extends Controller
 
 			if($inicio!==false && $nroconv!==false){
 
-				
-				$consulta  = "SELECT DISTINCT c.nombreConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio,c.objetivoConvenio,tc.descripcionTipoConvenio, ec.nombreEstadoConvenio, c.idConvenio, r.correoElectronicoResponsable FROM convenios c ";
-				$consulta .= "JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio ";
-				$consulta .= "JOIN convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio ";
-				$consulta .= "JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio ";
-				$consulta .= "JOIN institucion_convenios ic ON c.idConvenio = ic.convenios_idConvenio ";
-				$consulta .= "JOIN instituciones inst ON inst.idInstitucion = ic.instituciones_idInstitucion ";
-				$consulta .= "JOIN tiposinstituciones tinst ON  tinst.idTipoInstitucion = inst.tiposInstituciones_idTipoInstitucion ";
-				$consulta .= "JOIN estados edo ON edo.idEstado = inst.estados_idEstado ";
-				$consulta .= "JOIN paises ps ON ps.idPais=edo.paises_idPais ";
-				$consulta .= "JOIN historicoresponsables hr ON c.idConvenio = hr.convenios_idConvenio ";
-				$consulta .= "JOIN responsables r ON r.idResponsable  = hr.responsables_idResponsable ";
-				$consulta .= "JOIN tiporesponsable tr ON tr.idTipoResponsable= r.tipoResponsable_idTipoResponsable ";
-				$consulta .= "WHERE ce.fechaCambioEstado = (
-							SELECT MAX( fechaCambioEstado ) 
-							FROM convenio_estados
-							WHERE convenios_idConvenio = c.idConvenio
-							) and upper(tr.descripcionTipoResponsable) = 'CONTACTO' ";
-				
+				$consulta=$this->consultaBase();
+
 				if(isset($criterio->anio) && $criterio->anio!=null){
 				 $consulta .="and YEAR(c.fechaInicioConvenio)=".$criterio->anio." ";	
 				 
@@ -1019,23 +1035,7 @@ class ConveniosController extends Controller
 
 			}else{
 
-				$consulta  = "SELECT DISTINCT c.nombreConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio,c.objetivoConvenio,tc.descripcionTipoConvenio, ec.nombreEstadoConvenio, c.idConvenio, r.correoElectronicoResponsable FROM convenios c ";
-				$consulta .= "JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio ";
-				$consulta .= "JOIN convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio ";
-				$consulta .= "JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio ";
-				$consulta .= "JOIN institucion_convenios ic ON c.idConvenio = ic.convenios_idConvenio ";
-				$consulta .= "JOIN instituciones inst ON inst.idInstitucion = ic.instituciones_idInstitucion ";
-				$consulta .= "JOIN tiposinstituciones tinst ON  tinst.idTipoInstitucion = inst.tiposInstituciones_idTipoInstitucion ";
-				$consulta .= "JOIN estados edo ON edo.idEstado = inst.estados_idEstado ";
-				$consulta .= "JOIN paises ps ON ps.idPais=edo.paises_idPais ";
-				$consulta .= "JOIN historicoresponsables hr ON c.idConvenio = hr.convenios_idConvenio ";
-				$consulta .= "JOIN responsables r ON r.idResponsable  = hr.responsables_idResponsable ";
-				$consulta .= "JOIN tiporesponsable tr ON tr.idTipoResponsable= r.tipoResponsable_idTipoResponsable ";
-				$consulta .= "WHERE ce.fechaCambioEstado = (
-							SELECT MAX( fechaCambioEstado ) 
-							FROM convenio_estados
-							WHERE convenios_idConvenio = c.idConvenio
-							) and upper(tr.descripcionTipoResponsable) = 'CONTACTO' ";
+				$consulta=$this->consultaBase();
 				
 				if(isset($criterio->anio) && $criterio->anio!=null){
 				 $consulta .="and YEAR(c.fechaInicioConvenio)=".$criterio->anio." ";	
@@ -1312,20 +1312,6 @@ class ConveniosController extends Controller
 	       	echo CActiveForm::validate($formConsulta);
 	       	Yii::app()->end();
         }
-
-         /* if(isset($_POST["ConsultasConvenios"])){
-          		$formConsulta->attributes=$_POST["ConsultasConvenios"];
-
-          		$this->redirect(array('convenios/reporte',
-					"id"=>1,
-					));
-					
-					//$this->renderPartial('reporte');
-
-          		//$this->redirect($this->createUrl('convenios/reporte',array()));	
-
-          }*/
-
        		//intentando llamar un procedimiento de la Base de datos
             //$conexion=Yii::app()->db;
 				//$command = $conexion->createCommand('call ejemplo1()');
@@ -1346,28 +1332,33 @@ class ConveniosController extends Controller
 
 	}
 
-	public function actionReporte(){
+	protected function consultaBase(){
 
-		$data=$_POST["anio"];
+				$consulta  = "SELECT DISTINCT c.nombreConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio,c.objetivoConvenio,tc.descripcionTipoConvenio, ec.nombreEstadoConvenio, c.idConvenio, r.correoElectronicoResponsable FROM convenios c ";
+				$consulta .= "JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio ";
+				$consulta .= "JOIN convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio ";
+				$consulta .= "JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio ";
+				$consulta .= "JOIN institucion_convenios ic ON c.idConvenio = ic.convenios_idConvenio ";
+				$consulta .= "JOIN instituciones inst ON inst.idInstitucion = ic.instituciones_idInstitucion ";
+				$consulta .= "JOIN tiposinstituciones tinst ON  tinst.idTipoInstitucion = inst.tiposInstituciones_idTipoInstitucion ";
+				$consulta .= "JOIN estados edo ON edo.idEstado = inst.estados_idEstado ";
+				$consulta .= "JOIN paises ps ON ps.idPais=edo.paises_idPais ";
+				$consulta .= "JOIN historicoresponsables hr ON c.idConvenio = hr.convenios_idConvenio ";
+				$consulta .= "JOIN responsables r ON r.idResponsable  = hr.responsables_idResponsable ";
+				$consulta .= "JOIN tiporesponsable tr ON tr.idTipoResponsable= r.tipoResponsable_idTipoResponsable ";
+				$consulta .= "WHERE ce.fechaCambioEstado = (
+							SELECT MAX( fechaCambioEstado ) 
+							FROM convenio_estados
+							WHERE convenios_idConvenio = c.idConvenio
+							) and upper(tr.descripcionTipoResponsable) = 'CONTACTO' ";	
 
-			//$valor->anio;
+		return $consulta;	
 
-        /*  if(isset($_POST["ConsultasConvenios"])){
-          		$formConsulta->attributes=$_POST["ConsultasConvenios"];
-
-          		echo $formConsulta->anio;
-          		//$this->redirect($this->createUrl('convenios/reporte',array()));	
-
-          }*/
-
-		//$this->render('reporte');
-          $this->renderPartial('_ajaxContent',array('data'=>$data), false, true);
 	}
 
-	 public function actionPrueba()
-    {
+	public function actionConstruirReporte(){
 
-    	$modelConv=Convenios::model()->findAll();
+		$modelConv=Convenios::model()->findAll();
 		$modelTipo=Tipoconvenios::model()->findAll();
 		$modelClass=Clasificacionconvenios::model()->findAll();
 		$modelPais=Paises::model()->findAll();
@@ -1375,30 +1366,127 @@ class ConveniosController extends Controller
         $modelInst=Instituciones::model()->findAll();
         $modelEdoConve=Estadoconvenios::model()->findAll();
 		$formConsulta = new ConsultasConvenios;
-    
+		$modelReporte = new ReporteForm;
 
-        $data = array();
-        $data["myValue"] = "Content loaded";
- 
-        $this->render('prueba', 
-        	array('data'=>$data,
-        		  'model'=>$formConsulta,
-		     	   'tipoconve'=>$modelTipo,
-		     	    'clasif'=>$modelClass,
-		     		'paisesconve'=>$modelPais,
-		     		'tiposinst'=>$modelTipoIns,
-		       		'institucionconve'=>$modelInst,
-		        	'estadoconve'=>$modelEdoConve,
-        	));
-    }
+		if(isset($_POST["ajax"]) && $_POST["ajax"]==='form'){
 
-	  public function actionUpdateAjax()
-    {
-        $data = array();
-        $data["myValue"] = "Content updated in AJAX";
- 		
-        $this->renderPartial('_ajaxContent',array('data'=>$data), false, true);
-    }
+	       	echo CActiveForm::validate($formConsulta);
+	       	Yii::app()->end();
+        }
+		
+     	$this->render('construirReporte',array(
+     		'model'=>$formConsulta,
+     		'tipoconve'=>$modelTipo,
+     		'clasif'=>$modelClass,
+     		'paisesconve'=>$modelPais,
+     		'tiposinst'=>$modelTipoIns,
+       		'institucionconve'=>$modelInst,
+        	'estadoconve'=>$modelEdoConve,
+        	'reporte'=>$modelReporte,
+     		));
+
+	}
+
+	public function actionReporte(){
+
+		$convenio= new ResultadoConvenios;
+	    $formConsulta = new ConsultasConvenios;
+		$formConsulta->attributes=$_POST["ConsultasConvenios"]; 
+
+		$conexion=Yii::app()->db;
+
+		$consulta=$this->consultaBase();
+		
+		/*Condiciones para la consulta*/
+	    if(isset($formConsulta->anio) && $formConsulta->anio!=null){
+				$consulta .="and YEAR(c.fechaInicioConvenio)=".$formConsulta->anio." ";	
+	    
+		}
+
+		if(isset($_POST['ConsultasConvenios']['tipo'])&&$_POST['ConsultasConvenios']['tipo']!=null){
+					$ctipo=null;
+					foreach ($_POST['ConsultasConvenios']['tipo'] as $row) {
+						$ctipo=$row.",".$ctipo;
+					}
+					$ctipo=substr($ctipo, 0, -1);
+
+					$consulta .="and tc.idTipoConvenio IN (".$ctipo.") ";		
+		}	
+
+		if(isset($_POST['ConsultasConvenios']['clasificacion'])&&$_POST['ConsultasConvenios']['clasificacion']!=null){
+				  $cclasif=null;
+					foreach ($_POST['ConsultasConvenios']['clasificacion'] as $row) {
+						$cclasif=$row.",".$cclasif;
+					}
+					$cclasif=substr($cclasif, 0, -1);
+				
+					$consulta .="and c.clasificacionConvenios_idTipoConvenio IN (".$cclasif.") ";		
+		}
+		if(isset($_POST['ConsultasConvenios']['ambitoGeografico'])&&$_POST['ConsultasConvenios']['ambitoGeografico']!=null){
+  					
+  						if($_POST['ConsultasConvenios']['ambitoGeografico']=="01"){
+							$consulta .="and ps.idPais!=".'"35"'." ";	
+						}
+						if($_POST['ConsultasConvenios']['ambitoGeografico']=="02"){
+							$consulta .="and ps.idPais=".'"35"'." ";	
+						}
+						if($_POST['ConsultasConvenios']['ambitoGeografico']=="03"){
+							$consulta .="and edo.idEstado=".'"9"'." ";	
+						}	
+  					
+		}	
+
+		if(isset($_POST['ConsultasConvenios']['pais'])&&$_POST['ConsultasConvenios']['pais']!=null){
+  					
+  				$consulta .="and ps.idPais=".$_POST['ConsultasConvenios']['pais']." ";	
+		}
+
+		if(isset($_POST['ConsultasConvenios']['tipo_institucion'])&&$_POST['ConsultasConvenios']['tipo_institucion']!=null){
+								$ctinst=null;
+									foreach ($_POST['ConsultasConvenios']['tipo_institucion'] as $row) {
+										$ctinst=$row.",".$ctinst;
+									}
+									$ctinst=substr($ctinst, 0, -1);
+
+									$consulta .="and tinst.idTipoInstitucion IN (".$ctinst.") ";
+		}	
+
+		if(isset($_POST['ConsultasConvenios']['institucion'])&&$_POST['ConsultasConvenios']['institucion']!=null){
+				  
+				  	$inst=$_POST['ConsultasConvenios']['institucion'];
+				  	$consulta .="and inst.idInstitucion=".$_POST['ConsultasConvenios']['institucion']." ";
+		}
+
+		if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios']['estadoConv']!=null){
+								 	$cestado=null;
+									foreach ($_POST['ConsultasConvenios']['estadoConv'] as $row) {
+										$cestado=$row.",".$cestado;
+									}
+									$cestado=substr($cestado, 0, -1);
+
+									$consulta .="and ec.idEstadoConvenio IN (".$cestado.") ";
+		}
+		if(isset($_POST['ConsultasConvenios']['fechaVencimiento1'])&& $_POST['ConsultasConvenios']['fechaVencimiento1']!="" && isset($_POST['ConsultasConvenios']['fechaVencimiento2'])&& $_POST['ConsultasConvenios']['fechaVencimiento1']!=""){
+					
+  					$consulta .='and c.fechaCaducidadConvenio BETWEEN  '.'"'.$_POST['ConsultasConvenios']['fechaVencimiento1'].'"'.' AND '.'"'.$_POST['ConsultasConvenios']['fechaVencimiento2'].'"'.' ';
+		}
+
+		$resultados=$conexion->createCommand($consulta)->query();
+
+				$resultados->bindColumn(1,$convenio->nombre_convenio);
+				$resultados->bindColumn(2,$convenio->fecha_inicio);
+				$resultados->bindColumn(3,$convenio->fecha_caducidad);
+				$resultados->bindColumn(4,$convenio->objetivo_convenio);
+				$resultados->bindColumn(5,$convenio->tipo_convenio);
+				$resultados->bindColumn(6,$convenio->estado_actual_convenio);
+				$resultados->bindColumn(7,$convenio->id_convenio);
+				$resultados->bindColumn(8,$convenio->responsable_Unet);		
+
+			
+        $this->renderPartial('_ajaxContent',array('resultados'=>$resultados,'model'=>$convenio), false, true);
+         
+	}
+
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

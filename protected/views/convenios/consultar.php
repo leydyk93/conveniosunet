@@ -4,7 +4,6 @@
 	'Consulta Convenios',
 );
  ?>
-
 <div class="row">
 
      <?php 
@@ -26,6 +25,7 @@
 
 <div  id="MainMenu" class="col-sm-4">
    <h4><a href="<?php echo $this->createUrl( '/convenios/create' ); ?>"><span class="glyphicon glyphicon-plus"></span></a> Nuevo Convenio </h4>
+   <h4><a href="<?php echo $this->createUrl( '/convenios/construirReporte' ); ?>"><span class="glyphicon glyphicon-file"></span></a> Construir Reporte </h4>
 <!--el menu de prueba-->
   <div class="list-group panel">
     <a href="#demo3" class="list-group-item" data-toggle="collapse" data-parent="#MainMenu">Filtrar por <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
@@ -236,15 +236,6 @@
 
         </a>
       </div>
-      <a  class="list-group-item text-center">
-
-           <?php 
-            //echo CHtml::submitButton('Reporte', array('class'=>'btn btn-conv'));
-           //echo CHtml:: ajaxSubmitButton('Reporte',array('reporte'));
-              echo CHtml::button('Reportes',array('onclick'=>'GenererarReportes();','class'=>'btn btn-conv btn-md'));
-
-          ?>
-      </a>
        <a  class="list-group-item text-center">
        <?php      
               echo CHtml::button('Desmarcar filtros',array('onclick'=>'limpiarFiltros();','class'=>'btn btn-conv btn-md'));
@@ -261,14 +252,6 @@
 
     <div id="resul" class="list-group" >
 
-    </div>
-
-  
-    <div class="text-right">
-
-            
-
-      <?php /*echo CHtml::button('Generar Reporte',array('onclick'=>'Imprimir();','class'=>'btn btn-conv btn-md')); */ ?>
     </div>
 
  </div>
@@ -297,9 +280,7 @@ $('#ConsultasConvenios_ambitoGeografico').change(function() {
     send(1);
 });
 
-
-
-function  limpiarFiltros(){
+  function  limpiarFiltros(){
  document.getElementById("ConsultasConvenios_anio").value="";
  var tipo = document.getElementsByName("ConsultasConvenios[tipo][]");
  var clasifi= document.getElementsByName("ConsultasConvenios[clasificacion][]");
@@ -337,23 +318,6 @@ function  limpiarFiltros(){
       
     }
     send(1);
-}
-
-function GenererarReportes(){
-
-var anio = document.getElementById("ConsultasConvenios_anio").value;
-
-var url= '<?php echo Yii::app()->createUrl("convenios/reporte"); ?>'
-$.ajax({
-
-type:"post",
-url: url,
-data:{ anio:anio},
-success:function(datos){
-    document.getElementById("resul").innerHTML=datos;  
-}
-});
-
 }
 
 function send(inicio)
