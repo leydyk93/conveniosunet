@@ -32,7 +32,7 @@ class ConveniosController extends Controller
 
 
 
-				'actions'=>array('index','view','archivo','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','autocompletef','guardarinstitucion','guardarresponsable','guardararchivo','validacionautocomplete','prueba','updateajax','reporte','guardardependencia','ConstruirReporte'),
+				'actions'=>array('index','view','archivo','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','autocompletef','guardarinstitucion','guardarresponsable','guardararchivo','validacionautocomplete','prueba','updateajax','reporte','guardardependencia','ConstruirReporte','createEspecifico'),
 
 				'users'=>array('*'),
 			),
@@ -360,6 +360,68 @@ class ConveniosController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
+	public function actionCreateEspecifico($id)
+	{
+		//modelo para la tabla convenios 
+		$model=new Convenios;
+
+		$pasouno=new PasounoForm;
+
+		$dep=new Dependencias;
+
+		//logic del formulario 
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['ajax'])&& $_POST['ajax']==='pasouno'){
+			echo CActiveForm::validate($pasouno);
+			Yii::app()->end();
+		}
+
+		if (isset($_POST["PasounoForm"])){
+			$pasouno->attributes=$_POST["PasounoForm"];
+			
+			$count = Convenios::model()->countBySql("select COUNT(*) from convenios"); 
+	  		$pasouno->idconvenio=$count+1;
+
+			if($pasouno->validate()){
+
+				$_SESSION['idconvenio']=$pasouno->idconvenio;
+				$_SESSION['nombreconvenio']=$pasouno->nombreconvenio;
+				$_SESSION['fechainicioconvenio']=$pasouno->fechainicio;
+				$_SESSION['fechacaducidadconvenio']=$pasouno->fechacaducidad;
+				$_SESSION['objetivo']=$pasouno->objetivo;
+				$_SESSION['dependenciaconvenio']=$pasouno->dependencia;
+				$_SESSION['tipo']=$pasouno->tipo;
+				$_SESSION['estado']=$pasouno->estado;
+				$_SESSION['clasificacion']=$pasouno->clasificacion;
+				$_SESSION['alcance']=$pasouno->alcance;
+				//$pasouno->idconvenio;
+				//$pasouno->nombreconvenio;
+			//	$this->redirect(array("create"));
+			
+				if($pasouno->validate()){
+					$this->redirect(array('convenios/pasodos',
+					"idconvenio"=>$pasouno->idconvenio,
+					));
+				}
+			}
+			}
+
+			if (isset($_POST["Dependencias"])){
+			$dep->attributes=$_POST["Dependencias"];
+
+			if($dep->save()){
+
+				echo "dependencia guardado";	
+			}
+			}
+
+		$this->render('create',array(
+			"pasouno"=>$pasouno,"dep"=>$dep
+		));
+
+	}
 	public function actionCreate()
 	{
 		//modelo para la tabla convenios 
@@ -555,7 +617,7 @@ class ConveniosController extends Controller
 			$model->fechaCaducidadConvenio=$_SESSION['fechacaducidadconvenio'];
 			$model->objetivoConvenio=$_SESSION['objetivo'];
 			$model->institucionUNET="UNET";
-			$model->urlConvenio=$_SESSION['url_acta'];//colocar direccion del archivo real pdf 
+			$model->urlConvenio="Sin Archivo";//colocar direccion del archivo real pdf 
 			$model->clasificacionConvenios_idTipoConvenio=$_SESSION['clasificacion'];
 			$model->tipoConvenios_idTipoConvenio=$_SESSION['tipo'];
 			$model->alcanceConvenios=$_SESSION['alcance'];
@@ -630,7 +692,8 @@ class ConveniosController extends Controller
 					if($model_hr4->save()){
 						echo "guardo responsable contacto unet";
 					}
-//---------------------------------------------- GUARDANDO EN CONVENI-ESTADOS-------------------				
+//---------------------------------------------- GUARDANDO EN CONVENI-ESTADOS-------------------	
+
 					$model_ce->convenios_idConvenio=$_SESSION['idconvenio'];
  					$model_ce->estadoConvenios_idEstadoConvenio=$_SESSION['estado'];
  					$model_ce->fechaCambioEstado=new CDbExpression('NOW()');
@@ -643,31 +706,35 @@ class ConveniosController extends Controller
 						print_r($model_ce->getErrors());
 					}
 	//--------------------------------------------GUARDANDO EN CONVENIO APORTES ---------------------------------------------			
-				   for ($j=1; $j < count($_SESSION['aporte']); $j++) { 
-				   	# code...
-				   	$model_ca= new ConvenioAportes;
-				   	$aporte_esp;
-				   	$aporte_esp=explode('.',$_SESSION['aporte'][$j]);	
-				    $model_ca->convenios_idConvenio=$_SESSION['idconvenio'];
-				    $model_ca->descripcion_aporte=$aporte_esp[0];
-				    $model_ca->monedas_idMoneda=$aporte_esp[1];
-				    $model_ca->valor=$aporte_esp[2];
-				    $model_ca->cantidad=$aporte_esp[3];
-				    if($model_ca->save()){
-				    	echo "guardo";
-				    }
-				    else{
-				    	print_r($model_ca->getErrors());
-				    }
+				   if(count($_SESSION['aporte'])>1){
+					   for ($j=1; $j < count($_SESSION['aporte']); $j++) { 
+					   	# code...
+					   	$model_ca= new ConvenioAportes;
+					   	$aporte_esp;
+					   	$aporte_esp=explode('.',$_SESSION['aporte'][$j]);	
+					    $model_ca->convenios_idConvenio=$_SESSION['idconvenio'];
+					    $model_ca->descripcion_aporte=$aporte_esp[0];
+					    $model_ca->monedas_idMoneda=$aporte_esp[1];
+					    $model_ca->valor=$aporte_esp[2];
+					    $model_ca->cantidad=$aporte_esp[3];
+					    if($model_ca->save()){
+					    	echo "guardo";
+					    }
+					    else{
+					    	print_r($model_ca->getErrors());
+					    }
+					   }
 				   }
 //------------------------------------------GUARDANDO ACTA DE INTENCIÓN-----------------------------------
-				   $acta = new Actaintencion;
-				   
-				   $acta->fechaActaIntencion=$_SESSION['fecha_acta'];
-				   $acta->urlActaIntencion=$_SESSION['url_acta'];
-				   $acta->convenios_idConvenio=$_SESSION['idconvenio'];
-				   if($acta->save()){
-				   		echo "guardo";
+				  if($_SESSION['fecha_acta']!=""){
+						   $acta = new Actaintencion;
+						   
+						   $acta->fechaActaIntencion=$_SESSION['fecha_acta'];
+						   $acta->urlActaIntencion=$_SESSION['url_acta'];
+						   $acta->convenios_idConvenio=$_SESSION['idconvenio'];
+						   if($acta->save()){
+						   		echo "guardo";
+						   }
 				   }
 				    //***************************REINICIANDO VARIABLES DE SESION********************************
 				   $_SESSION['idconvenio']="";

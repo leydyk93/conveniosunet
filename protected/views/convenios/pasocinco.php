@@ -54,13 +54,20 @@ echo "<br>";
 				echo "nro_acta ".$_SESSION['nro_acta'];
 				echo "<br>";
 				echo "fecha_acta ".$_SESSION['fecha_acta'];
+				if($_SESSION['fecha_acta']==""){
+					echo "no hay fecha de acta";
+				}
 				echo "<br>";
 				echo "url_acta ".$_SESSION['url_acta'];
 				//variales del paso cuatro 
 				echo "<br>";
 				echo "PASO CUATRO";
 				echo "<br>";
+				
 				print_r($_SESSION['aporte']) ;
+
+				
+					echo count($_SESSION['aporte']);
 
  ?>
  <!--<?php //echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Save');  ?>-->
