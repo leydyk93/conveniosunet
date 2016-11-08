@@ -166,7 +166,7 @@ if(!isset($_SESSION['url_acta'])){
                 'model'=>$modelArchivo,
                 'name'=>'documento',
                 'attribute'=>'documento',
-                'accept'=> 'txt',
+                'accept'=> 'pdf',
                 'denied'=>'El documento debe estar en formato PDF',
                 'max'=>1,
                 'duplicate'=>'archivo duplicado',
@@ -181,11 +181,6 @@ if(!isset($_SESSION['url_acta'])){
        
 
                 ?>
-
-
-
-
-
 
 <?php echo CHtml::submitButton("siguiente",array("class"=>'btn btn-conv')); ?>
 

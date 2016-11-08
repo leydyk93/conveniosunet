@@ -62,6 +62,22 @@ echo "<br>";
 				echo "<br>";
 				echo "url_acta ".$_SESSION['url_acta'];
 
+				/*foreach ($_SESSION['documento'] as $doc => $i) {
+				 					
+					$docu="ActaIntencion".$i->name;
+
+					//$_SESSION['url_acta']=;
+					//$model->urlConvenio=$path.$docu;
+
+					$i->saveAs($_SESSION['url_acta'].$docu);
+
+					echo "</br>";
+					echo $_SESSION['url_acta'].$docu;
+
+				}*/
+
+		
+
  ?>
  <main class="container-fluid">
         <div class "row">

@@ -477,8 +477,40 @@ class ConveniosController extends Controller
 		if(isset($_POST["ArchivosForm"])){
 			$modelArchivo->attributes=$_POST["ArchivosForm"];
 
-				echo "existe formularioi de archivo";
-				echo $modelArchivo->titulo;
+			$modelArchivo->titulo="actaIntencion";	// este es el nombre de la carpeta donde se almacenara el acta
+			
+			$documento=CUploadedFile::getInstancesByName('documento');	//este es el documento como tal. 
+
+			if(count($documento)===0){
+				//no ha subido ningun archivo
+			}else if(!$modelArchivo->validate()){
+				//informacion invalida
+			}else{
+
+				//creo la direccion donde se almacenrá
+				$path = Yii::getPathOfAlias('webroot').'/archivos/'.$modelArchivo->titulo."/";
+
+				foreach ($documento as $doc => $i) {
+				 					
+					$docu="Acta-".$i->name;
+
+					$_SESSION['url_acta']=$path.$docu;
+
+					//$model->urlConvenio=$path.$docu;
+
+					$i->saveAs($path.$docu);
+
+				}
+
+
+
+			}
+
+
+
+
+				//echo "existe formularioi de archivo";
+				//echo $modelArchivo->titulo;
 				$this->redirect(array('convenios/pasocuatro',"idconvenio"=>$_SESSION['idconvenio']));
 		}
 
