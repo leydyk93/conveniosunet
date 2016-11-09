@@ -31,7 +31,8 @@ class ConveniosController extends Controller
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 
 
-				'actions'=>array('index','view','archivo','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','autocompletef','guardardependencia','guardarinstitucion','guardarresponsable','guardararchivo','validacionautocomplete','ConstruirReporte','reporte'),
+
+				'actions'=>array('index','view','archivo','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','autocompletef','guardarinstitucion','guardarresponsable','guardararchivo','validacionautocomplete','prueba','updateajax','reporte','guardardependencia','ConstruirReporte'),
 
 				'users'=>array('*'),
 			),
@@ -1529,22 +1530,34 @@ class ConveniosController extends Controller
 
 	public function actionGuardardependencia(){
 
+		echo("<script>console.log('Entrooo');</script>"); 
 		$dependencia= new Dependencias;
-		$dependencia->nombreDependencia=$_POST['nombre'];
-		$dependencia->telefonoDependencia=$_POST['telefono'];		
+
+		if(isset($_POST["Dependencias"])){
+			$dependencia->attributes=$_POST["Dependencias"];
 
 			if($dependencia->save()){
+			//$dependencia->save();
+			echo "Dependencia guardada con exito ";
+			 setcookie("gdependencia","1");
+			}
+			else{
+				setcookie("gdependencia","0"); 
+				
+			}
 
-				//echo $_POST['nombre'];
-		 	    //echo $_POST['telefono'];
-		 	    $lista= Dependencias::model()->findAll();
+				$lista= Dependencias::model()->findAll();
 		 	    $lista=CHtml::listData($lista,'idDependencia','nombreDependencia');
 
 				foreach ($lista as $valor => $descripcion) {
 						echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion), true);
 				}	
-			}	
-			
+		}
+		//$return=array();
+		//$return['status']='1';
+		//echo CJSON::encode($return);
+		//Yii::app()->end();
+		
 	}
 
 	public function actionGuardarinstitucion(){
@@ -1556,7 +1569,13 @@ class ConveniosController extends Controller
 		 
 		 if(isset($_POST["Instituciones"])){
 			$institucion->attributes=$_POST["Instituciones"];
-			$institucion->save();
+
+			if($institucion->save()){
+				 setcookie("ginstitucion","1");
+			}
+			else{
+				 setcookie("gresponsable","0");
+			}
 
 			$lista= Instituciones::model()->findAll();
 		 	$lista=CHtml::listData($lista,'idInstitucion','nombreInstitucion');
@@ -1581,9 +1600,12 @@ class ConveniosController extends Controller
 
 			 //echo("<script>console.log('Nombre ".$responsable->primerNombreResponsable."');</script>");  
 			if($responsable->save()){
+
+				 setcookie("gresponsable","1");
 				 echo("<script>console.log('guardo');</script>"); 
 			}
 			else{
+				 setcookie("gresponsable","0");
 				//print_r("<script>console.log('Errores ".$$responsable->getErrors()."');</script>");
 			}
 
@@ -1600,9 +1622,8 @@ class ConveniosController extends Controller
 			public function actionAutocomplete($term) 
 			{
 			 $criteria = new CDbCriteria;
-			 $criteria->compare('LOWER(primerApellidoResponsable)', strtolower($_GET['term']), true);
-
-			 $criteria->compare('LOWER(primerNombreResponsable)', strtolower($_GET['term']), true, 'OR');
+			 $criteria->compare('CONCAT(CONCAT(LOWER(primerApellidoResponsable)," "),primerNombreResponsable)', strtolower($_GET['term']), true);
+			 $criteria->compare('CONCAT(CONCAT(LOWER(primerNombreResponsable)," "),primerApellidoResponsable)', strtolower($_GET['term']), true, 'OR');
 			 $criteria->addCondition('instituciones_idInstitucion IS NULL');
 			 $criteria->order = 'primerApellidoResponsable';
 			 $criteria->limit = 30; 
@@ -1615,9 +1636,11 @@ class ConveniosController extends Controller
 			   $arr[] = array(
 			    'id' => $item->idResponsable,
 			    'value' => $item->primerApellidoResponsable.' '.$item->primerNombreResponsable,
-			    'label' => $item->primerApellidoResponsable.' '.$item->primerNombreResponsable,
+			    'label' => $item->primerApellidoResponsable.' '.$item->primerNombreResponsable.' ('.$item->idResponsable.')',
 			   );
+
 			  }
+
 			 }
 			 else
 			 {
@@ -1634,10 +1657,10 @@ class ConveniosController extends Controller
 			public function actionAutocompletef($term) 
 			{
 			 $criteria = new CDbCriteria;
-			 $criteria->compare('LOWER(primerApellidoResponsable)', strtolower($_GET['term']), true);
-
-			 $criteria->compare('LOWER(primerNombreResponsable)', strtolower($_GET['term']), true, 'OR');
-			  $criteria->compare('instituciones_idInstitucion', $_COOKIE['cookinst'], true,'AND');
+			$criteria->compare('CONCAT(CONCAT(LOWER(primerApellidoResponsable)," "),primerNombreResponsable)', strtolower($_GET['term']), true);
+			 $criteria->compare('CONCAT(CONCAT(LOWER(primerNombreResponsable)," "),primerApellidoResponsable)', strtolower($_GET['term']), true, 'OR');			// $criteria->compare('LOWER(primerNombreResponsable)'.' '.'LOWER(primerApellidoResponsable)', strtolower($_GET['term']), true, 'OR');
+			 $criteria->compare('instituciones_idInstitucion', $_COOKIE['cookinst'], true,'AND');
+			
 			// $criteria->condition="instituciones_idInstitucion=:col_inst";
 			 //$criteria->params=array(':col_inst'=>$_COOKIE['cookinst']);
 			 $criteria->order = 'primerApellidoResponsable';
@@ -1650,8 +1673,8 @@ class ConveniosController extends Controller
 			  foreach ($data as $item) {
 			   $arr[] = array(
 			    'id' => $item->idResponsable,
-			    'value' => $item->primerApellidoResponsable.' '.$item->primerNombreResponsable,
-			    'label' => $item->primerApellidoResponsable.' '.$item->primerNombreResponsable,
+				'value' => $item->primerApellidoResponsable.' '.$item->primerNombreResponsable,
+			    'label' => $item->primerApellidoResponsable.' '.$item->primerNombreResponsable.' ('.$item->idResponsable.')',
 			   );
 			  }
 			 }
@@ -1678,10 +1701,24 @@ class ConveniosController extends Controller
 
 				$criteria= new CDbCriteria();
 				$criteria->select='idResponsable';
-				$criteria->condition='primerApellidoResponsable=:ins';
+				$criteria->condition='CONCAT(CONCAT(primerApellidoResponsable," "),primerNombreResponsable)=:ins OR CONCAT(CONCAT(primerNombreResponsable," "),primerApellidoResponsable)=:ins ';
 				$criteria->params= array(':ins'=>$_POST['widget']);
-				$result= Responsables::model()->find($criteria);
-				echo count($campo_widget)." ".$result->idResponsable;
+				$result= Responsables::model()->findAll($criteria);
+				
+					if(count($result)==1){
+								foreach ($result as $key => $resultado) {
+									echo $resultado->idResponsable;
+				//	echo " ";
+								}
+					}
+				
+					if(count($result)>1){
+						echo "varios resultados para el mismo nombre seleccione de la lista autocompletada";
+					}
+					if(count($result)<1){
+						echo "El nombre indicado no existe en la base de datos. Agregue un nuevo responsable";
+					}
+
       			//echo  "Nombre".	$resul->primerNombreResponsable;	
       			
       				# code...

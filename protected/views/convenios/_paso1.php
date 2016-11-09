@@ -181,7 +181,7 @@ if(!isset($_SESSION['alcance'])){
             array('class'=>"form-control input-sm"),
             array('options' => array($_SESSION['dependenciaconvenio']=>array('selected'=>true)))); ?>
             <?php echo $form->error($pasouno,'dependencia'); ?>
-            <div class="text-right"><a  href="#" data-toggle="modal" data-target="#miventana">
+            <div class="text-right"><a  href="#" data-toggle="modal" data-target="#miventana" >
             Nueva Dependenia
             </a></div>
         </div>
@@ -249,53 +249,68 @@ if(!isset($_SESSION['alcance'])){
 
                   
                     <?php 
-                     //    $formd=$this->beginWidget("CActiveForm",
-                       //         array(
-                         //       'method' =>'POST',
-                           //     'action' =>Yii::app()->createUrl('convenios/create'),
-                            //    'id' => 'form',
-                            //       'enableAjaxValidation' => true,
-                              //  'enableClientValidation' => true,
-                               // 'clientOptions' => array(
-                                /*'validateOnSubmit' => true,*/
-                                //'validateOnChange' => true,
-                                 //'validateOnType' => true,
-                                   //                  ) ,
-                                    //));
+                       $formd=$this->beginWidget("CActiveForm",array(  
+                        'method' => 'POST',
+                         'action'=> Yii::app()->createUrl('convenios/create'),
+                         'id'=>'dependencia',
+                        // 'enableAjaxValidation'=>true,
+                         'enableClientValidation'=> true,
+                         'clientOptions'=> array(
+                            'validateOnSubmit'=> true,
+                            'validateOnChange'=> true,
+                            'validateOnType'=>true,
+                          ),
+                          'htmlOptions'=>array('class'=>'form-horizontal'),                      
+                       ));
 
+                      ?>     
 
+                          <div id="MensajeDependencia"></div>
+                          <br>
+                         <div class="form-group">
+                    
+                             <?php  echo $formd->labelEx($dep,'nombreDependencia',array('class'=>'control-label col-sm-2')); ?>
+                          <div class="col-sm-10">
+                            <?php  echo $formd->textField($dep,"nombreDependencia",array('class'=>'form-control input-sm'));?>
+                            <?php  echo $formd->error($dep,"nombreDependencia"); ?>
+                            </div>
+                         </div>
 
-                            echo CHtml:: form();
-                            echo "Dependencia ";
+                          <div class="form-group">   
+                          <?php  echo $formd->labelEx($dep,'telefonoDependencia',array('class'=>'control-label col-sm-2')); ?>
+                           <div class="col-sm-10">
+                          <?php  echo $formd->textField($dep,"telefonoDependencia",array('class'=>'form-control input-sm'));?>
+                          <?php echo $formd->error($dep,"telefonoDependencia"); ?>
+                           </div>
+                           </div>
+
+                
                           
-                            echo CHtml:: textField('nombre');
-                            echo "<br>";
-                            echo "<br>";
-                            echo "Telefono ";
-                  
-                            echo CHtml:: textField('telefono');
-                             echo "<br>";
-                            echo CHtml:: ajaxSubmitButton(
-                                'Guardar', array('convenios/guardardependencia'),array(
-                                'update'=>'#PasounoForm_dependencia'
-                                    )
-                            );
-
-                            echo CHtml::endForm();
-                    ?>
+                    <?php   echo CHtml:: ajaxSubmitButton(
+                            'Guardar', array('convenios/guardardependencia'),array(
+                             //'type'=>'post',
+                             //'dataType'=>'json', 
+                            'update'=>'#PasounoForm_dependencia',
+                            'complete'=>'js:function(data){
+                              if(getCookie("gdependencia")==1){
+                                  document.cookie="gdependencia=0";
+                                   $("#MensajeDependencia").html("");
+                                
+                                  $("#MensajeDependencia").html("Dependencia guardada con éxito cierre la pantalla modal y continue la carga");
+                                  }
+                              else{
+                                  $("#MensajeDependencia").html("Llene todos los campos");
+                              }
+                             
+                            }',
+                         
+                            
+                            ),array("class"=>'btn btn-conv')//,'data-dismiss'=>'modal')
+                      ); ?>
+                   
                     <div id="resultado"></div>
 
-            <!--        <div class="row">
-                    <?php // echo $formd->labelEx($dep,'nombreDependencia',array('class'=>'col-md-3')); ?>
-                    <?php // echo $formd->textField($dep,"nombreDependencia",array('style'=>'width:200px;','class'=>'col-md-5'));?>
-                    <?php // echo $formd->error($dep,"nombreDependencia"); ?>
-                    </div>
-                    <div class="row">
-                    <?php // echo $formd->labelEx($dep,'telefonoDependencia',array('class'=>'col-md-3')); ?>
-                    <?php // echo $formd->textField($dep,"telefonoDependencia",array('style'=>'width:200px;','class'=>'col-md-5'));?>
-                    <?php //echo $formd->error($dep,"telefonoDependencia"); ?>
-                    </div>
--->
+              <?php $this->endWidget(); ?>  
 
                 </div>
                 <div class="modal-footer">
@@ -402,7 +417,26 @@ if(!isset($_SESSION['alcance'])){
             }
           return "";
         }
+        function validardependencia(){
+         var mensaje= document.getElementById("MensajeDependencia");
 
+         //mensaje.innerHTML=getCookie("gdependencia");
+         // mensaje.innerHTML=getCookie("gdependencia");
+         if(getCookie("gdependencia")=="1"){
+           mensaje.innerHTML="Nueva Dependencia guardada con éxito";
+           //alert("dependencia guardada con exito");
+         
+         }
+
+        
+          
+
+        }
+         function validardependencia2(){
+          alert("entro aca");
+            var numero=0;
+            document.cookie="gdependencia="+numero;
+         }
         
 </script>
 

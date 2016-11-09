@@ -99,7 +99,7 @@ if(!isset($_SESSION['url_acta'])){
 
 <h4>Acta de Intención </h4> 
 	
-
+<!--
 <div class="form-group">
 	<?php echo $form->labelEx($pasotres,'nro_acta',array('class'=>'control-label col-sm-2')); ?>
 	<div class="col-sm-10">
@@ -107,7 +107,7 @@ if(!isset($_SESSION['url_acta'])){
 		<?php echo $form->error($pasotres,'nro_acta'); ?>
 	</div>
 </div>
-
+-->
 
 <div class="form-group">
         <?php echo $form->labelEx($pasotres,"fecha_acta",array('class'=>'control-label col-sm-2')); ?>
@@ -140,15 +140,17 @@ if(!isset($_SESSION['url_acta'])){
 
         </div>
       </div>
-
+<!--
 <div class="form-group">
 
 <?php echo $form->labelEx($pasotres,'url_acta',array('class'=>'control-label col-sm-2')); ?>
 <div class="col-sm-10">
-	<?php echo $form->textField($pasotres,'url_acta',array('class'=>'form-control','value'=>$_SESSION['url_acta'])); ?>
+	<?php echo $form->hiddenField($pasotres,'url_acta',array('class'=>'form-control','value'=>$_SESSION['url_acta'])); ?>
 	<?php echo $form->error($pasotres,'url_acta'); ?>
 </div>
 </div>
+-->
+<?php echo "<br>"; ?>
 
 
             		<?php 

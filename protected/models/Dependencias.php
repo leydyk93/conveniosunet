@@ -31,6 +31,7 @@ class Dependencias extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array("nombreDependencia","required"),
 			array('nombreDependencia', 'length', 'max'=>100),
 			array('telefonoDependencia', 'length', 'max'=>50),
 			// The following rule is used by search().
