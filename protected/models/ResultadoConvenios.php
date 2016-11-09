@@ -21,6 +21,7 @@ class ResultadoConvenios extends CFormModel
 	public $institucion;
 	public $tipo_institucion;
 	public $anio;
+	public $url;
 
 
 	/**
