@@ -152,7 +152,6 @@ if(!isset($_SESSION['url_acta'])){
 -->
 <?php echo "<br>"; ?>
 
-
             		<?php 
 	                     echo $form->labelEx($modelArchivo,'titulo',array('class'=>"modelArchivo"));
 	                     echo $form->textField($modelArchivo,'titulo',array('class'=>"modelArchivo"));
@@ -166,7 +165,6 @@ if(!isset($_SESSION['url_acta'])){
                           <div class="col-md-7">
                           <label class="btn btn-conv btn-sm"> <span class="glyphicon glyphicon-open-file"></span> Subir Archivo del Convenio
  <?php 	
-
                $this->widget('CMultiFileUpload',
               array(
                 'model'=>$modelArchivo,

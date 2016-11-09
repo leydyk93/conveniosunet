@@ -32,7 +32,7 @@ class ConveniosController extends Controller
 
 
 
-				'actions'=>array('index','view','archivo','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','autocompletef','guardarinstitucion','guardarresponsable','guardararchivo','validacionautocomplete','prueba','updateajax','reporte','guardardependencia','ConstruirReporte','createEspecifico'),
+				'actions'=>array('index','view','archivo','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','autocompletef','guardarinstitucion','guardarresponsable','guardararchivo','validacionautocomplete','prueba','updateajax','reporte','guardardependencia','ConstruirReporte','createEspecifico','updateConvenio'),
 
 				'users'=>array('*'),
 			),
@@ -144,10 +144,8 @@ class ConveniosController extends Controller
 					$i=$i+1;
 			}
 			
-
 				return $reponsablesinst;
 	}
-
 
 	/**
 	 * Displays a particular model.
@@ -268,7 +266,6 @@ class ConveniosController extends Controller
 
           }
 
-
 		$this->render('renovar',array(
 		 'model'=>$model,
 		 'estado'=>$estado,
@@ -369,15 +366,96 @@ class ConveniosController extends Controller
 			'modelDpcia'=>$modelDependencia,
 			'modelArchivoConv'=>$modelArchivoConv,
 			
-			
 			));
 	}
-
 	/**
-	 * Creates a new model.
+	 * Creates a new model de convenio especifico.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreateEspecifico($idconvenio)
+	public function actionUpdateConvenio($id)
+	{
+		//modelo para la tabla convenios 
+		$model=$this->loadModel($id);
+		
+		//$model=new Convenios;
+
+		$pasouno=new PasounoForm;
+
+		$dep=new Dependencias;
+
+		//logic del formulario 
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['ajax'])&& $_POST['ajax']==='pasouno'){
+			echo CActiveForm::validate($pasouno);
+			Yii::app()->end();
+		}
+
+		if(!isset($_POST["PasounoForm"])){
+
+
+				$_SESSION['idconvenio']=$model->idConvenio;
+				$_SESSION['nombreconvenio']=$model->nombreConvenio;
+				$_SESSION['fechainicioconvenio']=$model->fechaInicioConvenio;
+				$_SESSION['fechacaducidadconvenio']=$model->fechaCaducidadConvenio;
+				$_SESSION['objetivo']=$model->objetivoConvenio;
+				$_SESSION['dependenciaconvenio']=$model->dependencias_idDependencia;
+				$_SESSION['tipo']=$model->tipoConvenios_idTipoConvenio;
+				//$_SESSION['estado']=$model->estado;
+				$_SESSION['clasificacion']=$model->clasificacionConvenios_idTipoConvenio;
+				$_SESSION['alcance']=$model->alcanceConvenios;
+
+
+		} else {
+			$pasouno->attributes=$_POST["PasounoForm"];
+			
+			$count = Convenios::model()->countBySql("select COUNT(*) from convenios"); 
+	  		$pasouno->idconvenio=$count+1;
+
+			if($pasouno->validate()){
+
+				$_SESSION['idconvenio']=$pasouno->idconvenio;
+				$_SESSION['nombreconvenio']=$pasouno->nombreconvenio;
+				$_SESSION['fechainicioconvenio']=$pasouno->fechainicio;
+				$_SESSION['fechacaducidadconvenio']=$pasouno->fechacaducidad;
+				$_SESSION['objetivo']=$pasouno->objetivo;
+				$_SESSION['dependenciaconvenio']=$pasouno->dependencia;
+				$_SESSION['tipo']=$pasouno->tipo;
+				$_SESSION['estado']=$pasouno->estado;
+				$_SESSION['clasificacion']=$pasouno->clasificacion;
+				$_SESSION['alcance']=$pasouno->alcance;
+				//$pasouno->idconvenio;
+				//$pasouno->nombreconvenio;
+			//	$this->redirect(array("create"));
+			
+				if($pasouno->validate()){
+					$this->redirect(array('convenios/pasodos',
+					"idconvenio"=>$pasouno->idconvenio,
+					));
+				}
+			}
+			}
+
+			if (isset($_POST["Dependencias"])){
+			$dep->attributes=$_POST["Dependencias"];
+
+			if($dep->save()){
+
+				echo "dependencia guardado";	
+			}
+			}
+
+		$this->render('updateConvenio',array(
+			"pasouno"=>$pasouno,"dep"=>$dep
+		));
+
+	}
+	/**
+	 * Creates a new model de convenio especifico.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
+	 */
+	public function actionCreateEspecifico($id)
 	{
 		//modelo para la tabla convenios 
 		$model=new Convenios;
@@ -903,11 +981,10 @@ class ConveniosController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
-
+		//$this->loadModel($id)->delete();	
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		//if(!isset($_GET['ajax']))
+		//	$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
 	public function actionArchivo(){
@@ -1295,14 +1372,14 @@ class ConveniosController extends Controller
 					  $text.="<div class='col-sm-4'>";
 					 	$text.="<ul class='list-inline'>";
 					 	if(strcmp($resull3->tipo_convenio,"Marco")==0){
-					 	  $text.="<li><a href='' data-toggle='tooltip' title='Agregar Específico'><span class='glyphicon glyphicon-plus'></span><a/></li>";	
+					 	  $text.="<li><a href="."'".$this->createUrl("/convenios/createEspecifico")."&id=".$resull3->id_convenio."'"." data-toggle='tooltip' title='Agregar Específico'><span class='glyphicon glyphicon-plus'></span><a/></li>";	
 					 	}
 
-					 	$text.="<li><a href="."'".$this->createUrl("/convenios/update")."&id=".$resull3->id_convenio."'"." data-toggle='tooltip' title='Editar'><span class='glyphicon glyphicon-pencil'></span></a></li>";
+					 	$text.="<li><a href="."'".$this->createUrl("/convenios/updateConvenio")."&id=".$resull3->id_convenio."'"." data-toggle='tooltip' title='Editar'><span class='glyphicon glyphicon-pencil'></span></a></li>";
  						$text.="<li><a href="."'".$this->createUrl("/convenios/renovar")."&id=".$resull3->id_convenio."'"." data-toggle='tooltip' title='Renovar'><span class='glyphicon glyphicon-time'></span></a></li>";
  						$text.="<li><a href="."'".$this->createUrl("/convenios/cambiarEstado")."&id=".$resull3->id_convenio."'"." sdata-toggle='tooltip' title='Cambiar Estado'><span class='glyphicon glyphicon-refresh'></span></a></li>";
 						$text.="<li><a href="."'".$resull3->url."'"." data-toggle='tooltip' title='Descargar' download='123convenios1.pdf'><span class='glyphicon glyphicon-cloud-download'></a></span></li>";
-                        $text.="<li><a href='' data-toggle='tooltip' title='Eliminar'><span class='glyphicon glyphicon-trash'></span></a></li>"; 
+                        $text.="<li><a href="."'".$this->createUrl("/convenios/delete")."&id=".$resull3->id_convenio."'"." data-toggle='tooltip' title='Eliminar'><span class='glyphicon glyphicon-trash'></span></a></li>"; 
 					 	$text.="</ul>";
 					
 					 $text.="</div>";
