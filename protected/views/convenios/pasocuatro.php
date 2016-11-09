@@ -23,7 +23,7 @@
 
 <?php 
 echo "<br>";
-	 			echo "id_convenio: ".$_SESSION['idconvenio'];
+	 		/*	echo "id_convenio: ".$_SESSION['idconvenio'];
 	 			echo "<br>";
 	 			echo "tipo : ".$_SESSION['tipo'];
 	 			echo "<br>";
@@ -67,7 +67,7 @@ echo "<br>";
 				echo "fecha_acta ".$_SESSION['fecha_acta'];
 				echo "<br>";
 				echo "url_acta ".$_SESSION['url_acta'];
-
+*/
 				/*foreach ($_SESSION['documento'] as $doc => $i) {
 				 					
 					$docu="ActaIntencion".$i->name;
@@ -126,7 +126,7 @@ echo "<br>";
   <?php echo "<br>"; ?>
 <div class="form-group">
 <?php echo $form->labelEx($pasocuatro,'descripcion_aporte',array('class'=>'control-label col-sm-2')); ?>
-<div class="col-sm-10">
+<div class="col-sm-9">
 	<?php echo $form->textField($pasocuatro,'descripcion_aporte',array('class'=>'form-control')); ?>
 	<?php echo $form->error($pasocuatro,'descripcion_aporte'); ?>
 </div>
@@ -134,7 +134,7 @@ echo "<br>";
 
 <div class="form-group">
 <?php echo $form->labelEx($pasocuatro,'monedas_idMoneda',array('class'=>'control-label col-sm-2')); ?>
-<div class="col-sm-10">
+<div class="col-sm-9">
 	<?php echo $form->dropDownList($pasocuatro,'monedas_idMoneda',CHtml::listData(Monedas::model()->findAll(), 'idMoneda', 'descripcionMoneda'),array('class'=>'form-control')); ?>
 	<?php echo $form->error($pasocuatro,'monedas_idMoneda'); ?>
 </div>
@@ -142,7 +142,7 @@ echo "<br>";
 
 <div class="form-group">
 <?php echo $form->labelEx($pasocuatro,'valor',array('class'=>'control-label col-sm-2')); ?>
-	<div class="col-sm-10">
+	<div class="col-sm-9">
 		<?php echo $form->textField($pasocuatro,'valor',array('class'=>'form-control')); ?>
 		<?php echo $form->error($pasocuatro,'valor'); ?>
 	</div>
@@ -151,13 +151,13 @@ echo "<br>";
 
 <div class="form-group">
 <?php echo $form->labelEx($pasocuatro,'cantidad',array('class'=>'control-label col-sm-2')); ?>
-<div class="col-sm-10">
+<div class="col-sm-9">
 	<?php echo $form->textField($pasocuatro,'cantidad',array('class'=>'form-control')); ?>
 	<?php echo $form->error($pasocuatro,'cantidad'); ?>
-	<div class="text-right"><a onclick="aporte_agregar()"> Agregar</a></div>
+	
 </div>
 </div>
-
+<div class="text-right"><a onclick="aporte_agregar()"> <span class="glyphicon glyphicon-plus"></span></a></div>
 
 <?php echo "<br>"; ?>
 
@@ -189,7 +189,7 @@ echo "<br>";
 						echo '<td>'.$aporteA[2].'</td>';
 						echo '<td>'.$aporteA[3].'</td>';
 						//echo '<td>Eliminar</td>';
-						echo '<td> <a id=b-a'.$i.'-'.$aporteA[0].'.'.$moneda->idMoneda.'.'.$aporteA[2].'.'.$aporteA[3].' onclick=eliminarfilap(this.id)> Eliminar </a>';
+						echo '<td> <a id=b-a'.$i.'-'.$aporteA[0].'.'.$moneda->idMoneda.'.'.$aporteA[2].'.'.$aporteA[3].' onclick=eliminarfilap(this.id)> <span class="glyphicon glyphicon-remove"></span> </a>';
 						echo '</tr>';
 
 					}
@@ -259,7 +259,7 @@ function aporte_agregar(){
 		}
 		else{
 
-				bt1.innerHTML="Eliminar";
+				bt1.innerHTML="<span class='glyphicon glyphicon-remove'></span>";
 				//asignando nombre al boton eliminar
 				nombreboton=getCookie("nrofilap");
 

@@ -105,7 +105,7 @@ if(!isset($_SESSION['alcance'])){
 
       <div class="form-group">
         <?php echo $form->labelEx($pasouno,"tipo",array('class'=>'control-label col-sm-2')); ?>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
             <?php 
 
             //DROPDOWNLIST DEPENDIENDO SI ES MARCO O ESPECIFICO 
@@ -131,7 +131,7 @@ if(!isset($_SESSION['alcance'])){
      
       <div class="form-group">
         <?php echo $form->labelEx($pasouno,"nombreconvenio",array('class'=>'control-label col-sm-2')); ?>
-        <div class="col-sm-10"> 
+        <div class="col-sm-9"> 
 
         <?php echo $form->textField($pasouno,"nombreconvenio",array('class'=>'form-control input-sm' ,'value'=>$_SESSION['nombreconvenio'])); ?>
         <?php echo $form->error($pasouno,"nombreconvenio"); ?>
@@ -141,7 +141,7 @@ if(!isset($_SESSION['alcance'])){
 
       <div class="form-group">
         <?php echo $form->labelEx($pasouno,"fechainicio",array('class'=>'control-label col-sm-2')); ?>
-        <div class="col-sm-10"> 
+        <div class="col-sm-9"> 
 
             <?php
               $this->widget('zii.widgets.jui.CJuiDatePicker', array(
@@ -173,7 +173,7 @@ if(!isset($_SESSION['alcance'])){
 
         <div class="form-group">
         <?php echo $form->labelEx($pasouno,"fechacaducidad",array('class'=>'control-label col-sm-2')); ?>
-        <div class="col-sm-10"> 
+        <div class="col-sm-9"> 
 
          <?php
           $this->widget('zii.widgets.jui.CJuiDatePicker', array(
@@ -206,7 +206,7 @@ if(!isset($_SESSION['alcance'])){
       <div class="form-group">
         <?php echo $form->labelEx($pasouno,"objetivo",array('class'=>'control-label col-sm-2')); ?>
         
-        <div class="col-sm-10"> 
+        <div class="col-sm-9"> 
             <?php echo $form->textArea($pasouno,"objetivo",array('class'=>"form-control input-sm", 'rows'=>"7",'value'=>$_SESSION['objetivo']));?>
             <?php echo $form->error($pasouno,"objetivo"); ?>    
         </div>
@@ -229,11 +229,11 @@ if(!isset($_SESSION['alcance'])){
                 <span class="glyphicon glyphicon-plus"></span>
         </a></div>
       </div>
-
+    
        <div class="form-group">
         
         <?php echo $form->labelEx($pasouno,'estado',array('class'=>'control-label col-sm-2')); ?>
-        <div class="col-sm-10"> 
+        <div class="col-sm-9"> 
            
             <?php echo $form->dropDownList($pasouno,'estado',
                 CHtml::listData(Estadoconvenios::model()->findAll(), 'idEstadoConvenio', 'nombreEstadoConvenio'),
@@ -248,7 +248,7 @@ if(!isset($_SESSION['alcance'])){
       <div class="form-group">
         <?php echo $form->labelEx($pasouno,'clasiicacion',array('class'=>'control-label col-sm-2')); ?>
         
-        <div class="col-sm-10"> 
+        <div class="col-sm-9"> 
            
             <?php echo $form->dropDownList($pasouno,'clasificacion',
             CHtml::listData(Clasificacionconvenios::model()->findAll(), 'idClasificacionConvenio', 'nombreClasificacionConvenio'),
@@ -261,14 +261,14 @@ if(!isset($_SESSION['alcance'])){
         <div class="form-group">
         
         <?php echo $form->labelEx($pasouno,'alcance',array('class'=>'control-label col-sm-2')); ?>
-        <div class="col-sm-10"> 
+        <div class="col-sm-9"> 
             <?php echo $form->textArea($pasouno,"alcance",array('class'=>"form-control input-sm",'value'=>$_SESSION['alcance'])); ?>
             <?php echo $form->error($pasouno,'alcance'); ?>
         </div>
       </div>
       
       <div class="form-group text-right"> 
-        <div class="col-sm-offset-2 col-sm-10">
+        <div class="col-sm-offset-2 col-sm-9">
            <?php echo CHtml::submitButton("Siguiente",array("class"=>'btn btn-conv',"onclick"=>'recolectar()')); ?> 
         </div>
       </div>
