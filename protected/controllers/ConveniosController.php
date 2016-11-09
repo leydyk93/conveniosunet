@@ -326,16 +326,16 @@ class ConveniosController extends Controller
 				
 				$path = Yii::getPathOfAlias('webroot').'/archivos/'.$modelArchivoConv->titulo."/";
 				
-
 				foreach ($documento as $doc => $i) {
 				 					
 					$docu=$model->idConvenio."_".$i->name;
 
-					$model->urlConvenio=$path.$docu;
+					$model->urlConvenio=Yii::app()->request->baseUrl."/archivos/convenios/".$docu;
 
 					$i->saveAs($path.$docu);
 				}
 
+				//echo $model->urlConvenio;
 				//Actualizamos el Url del convenio
 				$model->save();
 			}
@@ -496,7 +496,7 @@ class ConveniosController extends Controller
 				 					
 					$docu="Acta-".$i->name;
 
-					$_SESSION['url_acta']=$path.$docu;
+					$_SESSION['url_acta']=Yii::app()->request->baseUrl."/archivos/convenios/".$docu;
 
 					//$model->urlConvenio=$path.$docu;
 
@@ -507,9 +507,6 @@ class ConveniosController extends Controller
 
 
 			}
-
-
-
 
 				//echo "existe formularioi de archivo";
 				//echo $modelArchivo->titulo;
@@ -1187,7 +1184,8 @@ class ConveniosController extends Controller
 				$resultados->bindColumn(7,$resull3->id_convenio);
 				$resultados->bindColumn(8,$resull3->responsable_Unet);
 				$resultados->bindColumn(9,$resull3->url);
-		
+
+	
 		   $text=" ";
 		   while(($row=$resultados->read())!==false) { 
 		   	$text.="<aside id='prueba' class='list-group-item'>";
@@ -1218,11 +1216,10 @@ class ConveniosController extends Controller
 					 	$text.="<li><a href="."'".$this->createUrl("/convenios/update")."&id=".$resull3->id_convenio."'"." data-toggle='tooltip' title='Editar'><span class='glyphicon glyphicon-pencil'></span></a></li>";
  						$text.="<li><a href="."'".$this->createUrl("/convenios/renovar")."&id=".$resull3->id_convenio."'"." data-toggle='tooltip' title='Renovar'><span class='glyphicon glyphicon-time'></span></a></li>";
  						$text.="<li><a href="."'".$this->createUrl("/convenios/cambiarEstado")."&id=".$resull3->id_convenio."'"." sdata-toggle='tooltip' title='Cambiar Estado'><span class='glyphicon glyphicon-refresh'></span></a></li>";
-						$text.="<li><a href='' data-toggle='tooltip' title='Descargar'><span class='glyphicon glyphicon-cloud-download'></a></span></li>";
+						$text.="<li><a href="."'".$resull3->url."'"." data-toggle='tooltip' title='Descargar' download='123convenios1.pdf'><span class='glyphicon glyphicon-cloud-download'></a></span></li>";
                         $text.="<li><a href='' data-toggle='tooltip' title='Eliminar'><span class='glyphicon glyphicon-trash'></span></a></li>"; 
-
-						  
 					 	$text.="</ul>";
+					
 					 $text.="</div>";
 
 
@@ -1283,7 +1280,11 @@ class ConveniosController extends Controller
 			
 //				$text.='</nav>';
 
-		echo $text;  		 
+		echo $text;  
+		
+		/*$resultados=10;
+
+		$this->renderPartial('_conveniosConsulta',array('resultados'=>$resultados), false, true);*/
                                
  //echo Yii::app()->createUrl("site/informacion");    
 
@@ -1484,7 +1485,7 @@ class ConveniosController extends Controller
 				$resultados->bindColumn(8,$convenio->responsable_Unet);		
 
 			
-        $this->renderPartial('_ajaxContent',array('resultados'=>$resultados,'model'=>$convenio), false, true);
+        $this->renderPartial('_conveniosReporte',array('resultados'=>$resultados,'model'=>$convenio), false, true);
          
 	}
 

@@ -200,10 +200,15 @@ div#Resulconvenios ul{
 }
 
 /*Estilos para el input file*/
-#documento
+/*#documento
 {
     color: transparent;
+}*/
+.modelArchivo{
+
+	display: none;
 }
+
 
 /* ESTILOS PARA EL LAYOUUT CARGAR*/
 .datos{

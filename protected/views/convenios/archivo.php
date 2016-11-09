@@ -56,24 +56,10 @@
 				     </div>
 
 				        <?php 
-				    	 /*echo $modelo->convenios_idConvenio." ";
-						 echo $modelo->titulo." ";
-						 echo $modelo->folder." ";
-						 echo $modelo->documento." ";*/
-
-						 //CHtml::link("Link Doc.", "http://".$_SERVER["SERVER_NAME"].Yii::app()->request->baseUrl."/images/upload/".$data->link_doc)
-						 		//CHtml::link("Link Doc.", "http://".$_SERVER["SERVER_NAME"].Yii::app()->request->baseUrl."/convenios/prueba/".$data->link_doc);
-						 //	echo  "ASI APARECE".Yii::getPathOfAlias('webroot');
-						 		echo Yii::app()->request->baseUrl."/archivos/convenios/".$modelo->folder."/".$modelo->documento;
+				    	
+				     	 $modelo->folder="01_Convenio1.pdf";
 				      ?>
 
-
-				      <a href="<?php  echo Yii::app()->request->baseUrl."/archivos/convenios/".$modelo->folder."/".$modelo->documento; ?>" download="convenioM234.pdf">descargar</a>
-
-				     
-	
-				     
-				  
-
+				      <a href="<?php  echo Yii::app()->request->baseUrl."/archivos/convenios/".$modelo->folder; ?>" download="convenioM234.pdf">descargar</a>
 
 				     <?php $this->endWidget(); ?>
