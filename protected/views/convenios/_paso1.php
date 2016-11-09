@@ -181,7 +181,7 @@ if(!isset($_SESSION['alcance'])){
             array('class'=>"form-control input-sm"),
             array('options' => array($_SESSION['dependenciaconvenio']=>array('selected'=>true)))); ?>
             <?php echo $form->error($pasouno,'dependencia'); ?>
-            <div class="text-right"><a  href="#" data-toggle="modal" data-target="#miventana">
+            <div class="text-right"><a  href="#" data-toggle="modal" data-target="#miventana" >
             Nueva Dependenia
             </a></div>
         </div>
@@ -265,7 +265,7 @@ if(!isset($_SESSION['alcance'])){
 
                       ?>     
 
-                          <div>Dependencia guardada con exito</div>
+                          <div id="MensajeDependencia"></div>
                           <br>
                          <div class="form-group">
                     
@@ -288,8 +288,24 @@ if(!isset($_SESSION['alcance'])){
                           
                     <?php   echo CHtml:: ajaxSubmitButton(
                             'Guardar', array('convenios/guardardependencia'),array(
-                            'update'=>'#PasounoForm_dependencia'
-                            ),array("class"=>'btn btn-conv',"onclick"=>'validardependencia()')//,'data-dismiss'=>'modal')
+                             //'type'=>'post',
+                             //'dataType'=>'json', 
+                            'update'=>'#PasounoForm_dependencia',
+                            'complete'=>'js:function(data){
+                              if(getCookie("gdependencia")==1){
+                                  document.cookie="gdependencia=0";
+                                   $("#MensajeDependencia").html("");
+                                
+                                  $("#MensajeDependencia").html("Dependencia guardada con éxito cierre la pantalla modal y continue la carga");
+                                  }
+                              else{
+                                  $("#MensajeDependencia").html("Llene todos los campos");
+                              }
+                             
+                            }',
+                         
+                            
+                            ),array("class"=>'btn btn-conv')//,'data-dismiss'=>'modal')
                       ); ?>
                    
                     <div id="resultado"></div>
@@ -402,9 +418,25 @@ if(!isset($_SESSION['alcance'])){
           return "";
         }
         function validardependencia(){
-          alert("hola");
-        }
+         var mensaje= document.getElementById("MensajeDependencia");
 
+         //mensaje.innerHTML=getCookie("gdependencia");
+         // mensaje.innerHTML=getCookie("gdependencia");
+         if(getCookie("gdependencia")=="1"){
+           mensaje.innerHTML="Nueva Dependencia guardada con éxito";
+           //alert("dependencia guardada con exito");
+         
+         }
+
+        
+          
+
+        }
+         function validardependencia2(){
+          alert("entro aca");
+            var numero=0;
+            document.cookie="gdependencia="+numero;
+         }
         
 </script>
 

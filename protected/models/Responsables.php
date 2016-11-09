@@ -39,11 +39,12 @@ class Responsables extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('primerNombreResponsable, primerApellidoResponsable, dependencias_idDependencia, tipoResponsable_idTipoResponsable', 'required'),
+			array('idResponsable, telefonoResponsable,correoElectronicoResponsable,primerNombreResponsable, primerApellidoResponsable, dependencias_idDependencia, tipoResponsable_idTipoResponsable', 'required'),
 			array('instituciones_idInstitucion, dependencias_idDependencia, tipoResponsable_idTipoResponsable', 'numerical', 'integerOnly'=>true),
 			array('primerNombreResponsable, segundoNombreResponsable', 'length', 'max'=>40),
 			array('primerApellidoResponsable, segundoApellidoResponsable', 'length', 'max'=>60),
 			array('correoElectronicoResponsable', 'length', 'max'=>100),
+			array('correoElectronicoResponsable', 'email'),
 			array('telefonoResponsable', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -72,16 +73,16 @@ class Responsables extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'idResponsable' => 'Id Responsable',
-			'primerNombreResponsable' => 'Primer Nombre Responsable',
-			'segundoNombreResponsable' => 'Segundo Nombre Responsable',
-			'primerApellidoResponsable' => 'Primer Apellido Responsable',
-			'segundoApellidoResponsable' => 'Segundo Apellido Responsable',
-			'correoElectronicoResponsable' => 'Correo Electronico Responsable',
-			'telefonoResponsable' => 'Telefono Responsable',
-			'instituciones_idInstitucion' => 'Instituciones Id Institucion',
-			'dependencias_idDependencia' => 'Dependencias Id Dependencia',
-			'tipoResponsable_idTipoResponsable' => 'Tipo Responsable Id Tipo Responsable',
+			'idResponsable' => 'Cedula',
+			'primerNombreResponsable' => 'Primer Nombre',
+			'segundoNombreResponsable' => 'Segundo Nombre',
+			'primerApellidoResponsable' => 'Primer Apellido',
+			'segundoApellidoResponsable' => 'Segundo Apellido',
+			'correoElectronicoResponsable' => 'Correo Electronico',
+			'telefonoResponsable' => 'Telefono',
+			'instituciones_idInstitucion' => 'Instituciones',
+			'dependencias_idDependencia' => 'Dependencias',
+			'tipoResponsable_idTipoResponsable' => 'Tipo Responsable',
 		);
 	}
 

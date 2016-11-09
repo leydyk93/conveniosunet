@@ -1533,9 +1533,14 @@ class ConveniosController extends Controller
 		if(isset($_POST["Dependencias"])){
 			$dependencia->attributes=$_POST["Dependencias"];
 
-			if($dependencia->validate()){
-			$dependencia->save();
+			if($dependencia->save()){
+			//$dependencia->save();
 			echo "Dependencia guardada con exito ";
+			 setcookie("gdependencia","1");
+			}
+			else{
+				setcookie("gdependencia","0"); 
+				
 			}
 
 				$lista= Dependencias::model()->findAll();
@@ -1545,6 +1550,10 @@ class ConveniosController extends Controller
 						echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion), true);
 				}	
 		}
+		//$return=array();
+		//$return['status']='1';
+		//echo CJSON::encode($return);
+		//Yii::app()->end();
 		
 	}
 
@@ -1557,7 +1566,13 @@ class ConveniosController extends Controller
 		 
 		 if(isset($_POST["Instituciones"])){
 			$institucion->attributes=$_POST["Instituciones"];
-			$institucion->save();
+
+			if($institucion->save()){
+				 setcookie("ginstitucion","1");
+			}
+			else{
+				 setcookie("gresponsable","0");
+			}
 
 			$lista= Instituciones::model()->findAll();
 		 	$lista=CHtml::listData($lista,'idInstitucion','nombreInstitucion');
@@ -1582,9 +1597,12 @@ class ConveniosController extends Controller
 
 			 //echo("<script>console.log('Nombre ".$responsable->primerNombreResponsable."');</script>");  
 			if($responsable->save()){
+
+				 setcookie("gresponsable","1");
 				 echo("<script>console.log('guardo');</script>"); 
 			}
 			else{
+				 setcookie("gresponsable","0");
 				//print_r("<script>console.log('Errores ".$$responsable->getErrors()."');</script>");
 			}
 

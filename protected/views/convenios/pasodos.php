@@ -421,11 +421,17 @@
 			</div>            
 			<div class="modal-body">
 				<!--************************************************************aca  -->
-
+				<div id="MensajeInstitucion"></div>
 				<!-- ***********************************************************-->
 				<?php 
 				$formi=$this->beginWidget("CActiveForm",array(  
-								'htmlOptions'=>array('class'=>'form-horizontal'),                      
+								'htmlOptions'=>array('class'=>'form-horizontal'),  
+								'enableClientValidation'=> true,
+		                         'clientOptions'=> array(
+		                            'validateOnSubmit'=> true,
+		                            'validateOnChange'=> true,
+		                            'validateOnType'=>true,
+		                          ),                    
 				));
 				?>
 				 
@@ -487,8 +493,20 @@
 								<?php 
 								echo CHtml:: ajaxSubmitButton(
 								'Guardar', array('convenios/guardarinstitucion'),array(
-									'update'=>'#PasodosForm_institucion'
-									),array("class"=>'btn btn-conv','data-dismiss'=>'modal')
+									'update'=>'#PasodosForm_institucion',
+									'complete'=>'js:function(data){
+				                              if(getCookie("ginstitucion")==1){
+				                                  document.cookie="ginstitucion=0";
+				                                   $("#MensajeInstitucion").html("");
+				                                
+				                                  $("#MensajeInstitucion").html("Institucion guardada con éxito cierre la pantalla modal y continue la carga");
+				                                  }
+				                              else{
+				                                  $("#MensajeInstitucion").html("Llene todos los campos");
+				                              }
+				                             
+				                            }',
+									),array("class"=>'btn btn-conv')
 								);?>
 						</div>
 					
@@ -517,15 +535,30 @@
 						</div>            
 						<div class="modal-body">
 
-							<p>Todo el contenido de la ventana modal</p>
+							
 							<!--************************************************************aca  -->
 
 							<!-- ***********************************************************-->
 							<?php 
 							$formr=$this->beginWidget("CActiveForm",array(  
-								'htmlOptions'=>array('class'=>'form-horizontal'),                      
+								'htmlOptions'=>array('class'=>'form-horizontal'),   
+								'enableClientValidation'=> true,
+		                         'clientOptions'=> array(
+		                            'validateOnSubmit'=> true,
+		                            'validateOnChange'=> true,
+		                            'validateOnType'=>true,
+		                          ),                   
 							));
 							?>
+							<div id="MensajeResponsable"></div>
+							<br>
+							<div class="form-group">
+								<?php echo $formr->labelEx($responsable,'idResponsable',array('class'=>'control-label col-sm-3')); ?>
+								<div class="col-sm-8">
+									<?php echo $formr->textField($responsable,"idResponsable",array('class'=>'form-control'));?>
+									<?php echo $formr->error($responsable,"idResponsable"); ?>
+								</div>
+							</div>
 
 							<div class="form-group">
 								<?php echo $formr->labelEx($responsable,'primerNombreResponsable',array('class'=>'control-label col-sm-3')); ?>
@@ -608,8 +641,20 @@
 								<?php 
 									echo CHtml:: ajaxSubmitButton(
 										'Guardar', array('convenios/guardarresponsable'),array(
-										'update'=>'#oculto'
-									),array("class"=>'btn btn-conv','data-dismiss'=>'modal')
+										'update'=>'#oculto',
+										'complete'=>'js:function(data){
+				                              if(getCookie("gresponsable")==1){
+				                                  document.cookie="gresponsable=0";
+				                                   $("#MensajeResponsable").html("");
+				                                
+				                                  $("#MensajeResponsable").html("Responsable guardado con éxito cierre la pantalla modal y continue la carga");
+				                                  }
+				                              else{
+				                                  $("#MensajeDependencia").html("Llene todos los campos");
+				                              }
+				                             
+				                            }',
+									),array("class"=>'btn btn-conv')
 									);
 
 								?>
@@ -689,54 +734,59 @@
 					var respl_id=document.getElementById("PasodosForm_responsable_legal_contraparte").value;
 					var respc_id=document.getElementById("PasodosForm_responsable_contacto_contraparte").value;
 
+					if(respl==""||respc==""){
+						alert("Debe llenar los Responsables de la contraparte")
+					}
+					else{
 
-					btn1.innerHTML="Eliminar";
-			//obtenienod cookie con nro de fila actual 
-					nombreboton=getCookie("nrofila");
-			//auentado uno a la fila
-					nombreboton++;
-			//asignano el nro a la fila
-					tr1.setAttribute("id",nombreboton);
-			//asignando el nuevo nuero actual al cookie
-					document.cookie="nrofila="+nombreboton;
-			//asignando id al boton
-			//asignando id al boton relacioinado con la fila 
-				var nomb="b-"+nombreboton+"-"+valselc+"."+respl_id+"."+respc_id;
-				alert(nomb);
-				
-				btn1.setAttribute("id",nomb);
-				btn1.setAttribute("onclick","eliminarfila(this.id)");
+							btn1.innerHTML="Eliminar";
+					//obtenienod cookie con nro de fila actual 
+							nombreboton=getCookie("nrofila");
+					//auentado uno a la fila
+							nombreboton++;
+					//asignano el nro a la fila
+							tr1.setAttribute("id",nombreboton);
+					//asignando el nuevo nuero actual al cookie
+							document.cookie="nrofila="+nombreboton;
+					//asignando id al boton
+					//asignando id al boton relacioinado con la fila 
+							var nomb="b-"+nombreboton+"-"+valselc+"."+respl_id+"."+respc_id;
+							//alert(nomb);
+							
+							btn1.setAttribute("id",nomb);
+							btn1.setAttribute("onclick","eliminarfila(this.id)");
 
-			//agregando institución;
-			td1.innerHTML=seleci;
-			//agregando responsable legal
-			td2.innerHTML=respl;
-			//agregando responsable de contacto
-			td3.innerHTML=respc;
-			//agregando boton;
-			td5.appendChild(btn1);
-			
+					//agregando institución;
+							td1.innerHTML=seleci;
+							//agregando responsable legal
+							td2.innerHTML=respl;
+							//agregando responsable de contacto
+							td3.innerHTML=respc;
+							//agregando boton;
+							td5.appendChild(btn1);
+					
 
 
-			tr1.appendChild(td1);
-			tr1.appendChild(td2);
-			tr1.appendChild(td3);
+							tr1.appendChild(td1);
+							tr1.appendChild(td2);
+							tr1.appendChild(td3);
 
-			tr1.appendChild(td5);
-			tabla.appendChild(tr1);
+							tr1.appendChild(td5);
+							tabla.appendChild(tr1);
 
-			//div1.appendChild(div3);
-			//div4.setAttribute("class","col-15");
-			//agregando al cookie contra... la contraparte que se selecciono. 
-			document.cookie="contra="+getCookie("contra")+"-"+valselc+"."+respl_id+"."+respc_id;
+					//div1.appendChild(div3);
+					//div4.setAttribute("class","col-15");
+					//agregando al cookie contra... la contraparte que se selecciono. 
+							document.cookie="contra="+getCookie("contra")+"-"+valselc+"."+respl_id+"."+respc_id;
 
-			//limpiando campos 
+							//limpiando campos 
 
-			 	var resplc=document.getElementById("apellidos_nombres2");
-         		var respcc=document.getElementById("apellidos_nombres3")
+							 	var resplc=document.getElementById("apellidos_nombres2");
+				         		var respcc=document.getElementById("apellidos_nombres3")
 
-         		resplc.value="";
-         		respcc.value="";
+				         		resplc.value="";
+				         		respcc.value="";
+         	}//else de campos no vacios
 		}
 		function eliminarfila(fila){
 
