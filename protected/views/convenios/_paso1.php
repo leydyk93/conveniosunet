@@ -31,7 +31,12 @@ if(!isset($_SESSION['clasificacion'])){
 if(!isset($_SESSION['alcance'])){
         $_SESSION['alcance']="";
 }
+
+
+
  ?>
+
+
 
 <body onload="asignar();">
 <main class="container-fluid">
@@ -75,10 +80,34 @@ if(!isset($_SESSION['alcance'])){
      <!-- <div class="well well-sm ">  -->
       <legend class="text-center header"><h4>Datos Generales del Convenio</h4></legend>  
       
+      <?php 
+
+      if($pasouno->idmarco!=""){
+
+        $conveniopapa=Convenios::model()->find('idConvenio=:idConvenio',array(':idConvenio'=>$pasouno->idmarco));
+
+        echo "Convenio asociado a ".$conveniopapa->nombreConvenio;
+        $_SESSION['tipo']="2";
+      }
+
+       ?>
+
       <div class="form-group">
         <?php echo $form->labelEx($pasouno,"tipo",array('class'=>'control-label col-sm-2')); ?>
         <div class="col-sm-10">
             <?php 
+
+            //DROPDOWNLIST DEPENDIENDO SI ES MARCO O ESPECIFICO 
+                if($pasouno->idmarco!=""){
+                   $_SESSION["idpapa"]=$pasouno->idmarco;
+                  echo  $form->dropDownList($pasouno,"tipo", 
+                        CHtml::listData(Tipoconvenios::model()->findAll('idTipoConvenio=:idTipoConvenio',array('idTipoConvenio'=>$_SESSION['tipo'])),'idTipoConvenio', 'descripcionTipoConvenio'),
+                         array('class'=>'form-control input-sm'),
+                         array('options' => array("2"=>array('selected'=>true)))
+                            );
+                }
+                else
+                   
                     echo  $form->dropDownList($pasouno,"tipo", 
                         CHtml::listData(Tipoconvenios::model()->findAll(),'idTipoConvenio', 'descripcionTipoConvenio'),
                          array('class'=>'form-control input-sm'),
