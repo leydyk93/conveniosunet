@@ -287,11 +287,12 @@ class ConveniosController extends Controller
 
 		$modelArchivoConv= new ArchivosForm; //subir el archivo del convenio
 
+		$estado=0; $archivo=0;
+
+
 		if(isset($_POST["ConvenioEstados"])){
 
-			
-			$modelestado->attributes=$_POST["ConvenioEstados"];
-			
+			$modelestado->attributes=$_POST["ConvenioEstados"];			
 			$modelestado->convenios_idConvenio=$id;
 
 			if($modelestado->validate()){
@@ -301,8 +302,10 @@ class ConveniosController extends Controller
 			 	
 			 /*	 }*/
 
-				if($modelestado->save())
-				 $this->redirect(array('cambiarEstado','id'=>$id));
+				/*if($modelestado->save())
+				 $this->redirect(array('cambiarEstado','id'=>$id));*/
+				$modelestado->save(); 
+				$estado=1;
 
 			}else{
 				//echo "errores en el formulario";
@@ -339,9 +342,23 @@ class ConveniosController extends Controller
 				//echo $model->urlConvenio;
 				//Actualizamos el Url del convenio
 				$model->save();
+				$archivo=1;
 			}
 
 		}	
+
+		if($archivo==1&&$estado==1){
+				 $this->redirect(array('cambiarEstado','id'=>$id));
+				//echo "guardar los dos modelos";
+		}else if($archivo==1){
+				  $this->redirect(array('cambiarEstado','id'=>$id));
+			//echo "Guardar solo archivo";
+		}else if($estado==1){
+				 $this->redirect(array('cambiarEstado','id'=>$id));
+			//echo "Guardar solo estado";
+		}else{
+			//echo "Ninguno";
+		} 
 
 		$this->render('cambiarEstado',array(
 			'model'=>$model,
