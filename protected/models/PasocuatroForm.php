@@ -13,6 +13,8 @@
 
 			return array(
 				array("descripcion_aporte,monedas_idMoneda,valor,cantidad","safe"),
+				array("valor","default","setOnEmpty"=>"0"),
+				array("cantidad","default","setOnEmpty"=>"0"),
 				//safe se le coloca a los datos que no se quieren validar 
 			);
 		}

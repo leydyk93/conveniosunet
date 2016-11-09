@@ -11,7 +11,13 @@
 
 <?php 
 	$form=$this->beginWidget("CActiveForm",array(  
-			'htmlOptions'=>array('class'=>'form-horizontal'),                      
+			'htmlOptions'=>array('class'=>'form-horizontal'),     
+			'enableClientValidation'=> true,
+		                         'clientOptions'=> array(
+		                            'validateOnSubmit'=> true,
+		                            'validateOnChange'=> true,
+		                            'validateOnType'=>true,
+		                          ),                         
 			));
  ?>
 
@@ -232,43 +238,52 @@ function aporte_agregar(){
 		var nombreboton;
 		var nomb;
 
-		
-		bt1.innerHTML="Eliminar";
-		//asignando nombre al boton eliminar
-		nombreboton=getCookie("nrofilap");
+		if(desc==""||(val==""&&cant=="")){
+			if(desc==""){
+				alert("Debe llenar el campo descripción");
+			}
+			else if(val==""||cant==""){
+				alert("Debe llenar el campo valor o el campo cantidad");
+			}
+		}
+		else{
 
-		//aumentando una fila
-		nombreboton++;
-		//asignando el id con el nro a la fila 
-		var filap;
-		filap="a"+nombreboton;
-		tr1.setAttribute("id",filap);
-		//asignando nuevo valor al cookie
-		document.cookie="nrofilap="+nombreboton;
-		//asignando id al boton relacioinado con la fila
-		nomb="b-"+filap+"-"+desc+"."+moned+"."+val+"."+cant;
-		alert(nomb);
-		bt1.setAttribute("id",nomb);
-		bt1.setAttribute("onclick","eliminarfilap(this.id)");
+				bt1.innerHTML="Eliminar";
+				//asignando nombre al boton eliminar
+				nombreboton=getCookie("nrofilap");
 
-		td1.innerHTML=desc;
-		td2.innerHTML=monedt;
-		td3.innerHTML=val;
-		td4.innerHTML=cant;
-		td5.appendChild(bt1);
+				//aumentando una fila
+				nombreboton++;
+				//asignando el id con el nro a la fila 
+				var filap;
+				filap="a"+nombreboton;
+				tr1.setAttribute("id",filap);
+				//asignando nuevo valor al cookie
+				document.cookie="nrofilap="+nombreboton;
+				//asignando id al boton relacioinado con la fila
+				nomb="b-"+filap+"-"+desc+"."+moned+"."+val+"."+cant;
+				alert(nomb);
+				bt1.setAttribute("id",nomb);
+				bt1.setAttribute("onclick","eliminarfilap(this.id)");
 
-		tr1.appendChild(td1);
-		tr1.appendChild(td2);
-		tr1.appendChild(td3);
-		tr1.appendChild(td4);
-		tr1.appendChild(td5);
-		
-		tabla.appendChild(tr1);
-	
-		//agregando al cookie aportes... la contraparte que se selecciono. 
-		document.cookie="aportes="+getCookie("aportes")+"-"+desc+"."+moned+"."+val+"."+cant;
+				td1.innerHTML=desc;
+				td2.innerHTML=monedt;
+				td3.innerHTML=val;
+				td4.innerHTML=cant;
+				td5.appendChild(bt1);
 
+				tr1.appendChild(td1);
+				tr1.appendChild(td2);
+				tr1.appendChild(td3);
+				tr1.appendChild(td4);
+				tr1.appendChild(td5);
+				
+				tabla.appendChild(tr1);
+			
+				//agregando al cookie aportes... la contraparte que se selecciono. 
+				document.cookie="aportes="+getCookie("aportes")+"-"+desc+"."+moned+"."+val+"."+cant;
 
+	}//else si estan los campos llenos
 	}	
 	function getCookie(cname) {
     var name = cname + "=";
