@@ -227,6 +227,42 @@ INSERT INTO convenios (idConvenio,nombreConvenio,fechaInicioConvenio,fechaCaduci
 ('02', 'convenio 2','2014/01/01','2015/01/01','ejemplo 2','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','fmkmfkkfm','1',null),
 ('03', 'convenio 3','2015/02/01','2017/01/01','ejemplo 3','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio3/djndkjaskd.pdf','1','2','fmkmfkkfm','2','01');
 
+INSERT INTO convenios (idConvenio,nombreConvenio) VALUES
+('10', 'convenio 10'),
+('11', 'convenio 11'),
+('12', 'convenio 12');
+
+
+ALTER TABLE convenios
+ADD caducidadIndefinida BOOLEAN NULL;
+
+ALTER TABLE convenios
+MODIFY fechaInicioConvenio DATE NULL;
+
+ALTER TABLE convenios
+MODIFY fechaCaducidadConvenio DATE NULL;
+
+ALTER TABLE convenios
+MODIFY objetivoConvenio TEXT NULL;
+
+ALTER TABLE convenios
+MODIFY institucionUNET VARCHAR(50) NULL;
+
+ALTER TABLE convenios
+MODIFY urlConvenio VARCHAR(100) NULL;
+
+ALTER TABLE convenios
+MODIFY clasificacionConvenios_idTipoConvenio INT NULL;
+
+ALTER TABLE convenios
+MODIFY tipoConvenios_idTipoConvenio INT NULL;
+
+ALTER TABLE convenios
+MODIFY alcanceConvenios TEXT NULL;
+
+ALTER TABLE convenios
+MODIFY dependencias_idDependencia INT NULL;
+
 -- -----------------------------------------------------
 -- Table  mydb . tipoResponsable
 -- -----------------------------------------------------

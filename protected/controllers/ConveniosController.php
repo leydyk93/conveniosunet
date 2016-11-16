@@ -37,7 +37,7 @@ class ConveniosController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','renovar','cambiarEstado'),
+				'actions'=>array('create','update','renovar','cambiarEstado','ConveniosEspera'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -1330,7 +1330,7 @@ class ConveniosController extends Controller
 	$BusquedaUsuario->clasificacion=$_POST['clasificacion'];
 	$BusquedaUsuario->ambito=$_POST['ambito'];
 	$BusquedaUsuario->pais=$_POST['pais'];
-	$BusquedaUsuario->estado_actual_convenio=$_POST['estadoConvenio'];
+	//$BusquedaUsuario->estado_actual_convenio=$_POST['estadoConvenio'];
 	$BusquedaUsuario->tipo_institucion=$_POST['tipoInstitucion'];
 	$BusquedaUsuario->institucion=$_POST['institucion'];
 	$BusquedaUsuario->fecha_inicio=$_POST['fechav1'];
@@ -1350,121 +1350,19 @@ class ConveniosController extends Controller
 				$resultados->bindColumn(3,$resull3->fecha_caducidad);
 				$resultados->bindColumn(4,$resull3->objetivo_convenio);
 				$resultados->bindColumn(5,$resull3->tipo_convenio);
-				$resultados->bindColumn(6,$resull3->estado_actual_convenio);
-				$resultados->bindColumn(7,$resull3->id_convenio);
-				$resultados->bindColumn(8,$resull3->responsable_Unet);
-				$resultados->bindColumn(9,$resull3->url);
+				//$resultados->bindColumn(6,$resull3->estado_actual_convenio);
+				$resultados->bindColumn(6,$resull3->id_convenio);
+				$resultados->bindColumn(7,$resull3->responsable_Unet);
+				$resultados->bindColumn(8,$resull3->url);
 
-	
-		   $text=" ";
-		   while(($row=$resultados->read())!==false) { 
-		   	$text.="<aside id='prueba' class='list-group-item'>";
-	            $text.="<div class='row'>";
-				   
-	            $text.="<div class='col-sm-2'><p class='text-info'>".$resull3->tipo_convenio." "."</p></div>"; 
-	            $text.="<div class='col-sm-10'><a href=".Yii::app()->createUrl('/convenios/view')."&id=".$resull3->id_convenio." >".$resull3->nombre_convenio."</a></div>";  
-				$text.="</div>";    
+		$this->renderPartial('_conveniosConsulta',
+			array('resultados'=>$resultados,
+				  'resull3'=>$resull3,
+				  'iniciopag'=>$iniciopag,
+				  'paginas'=>$paginas,
 
-				 $text.="<div class='row'>";
-					 $text.="<div class='col-sm-8'>";
-					 	$text.="<ul>";
-						  $text.="<li> Fecha Inicio: <small>".$resull3->fecha_inicio." </small></li>";
-						  $text.="<li> Fecha Caducidad: <small>".$resull3->fecha_caducidad."</small></li>";
-						  $text.="<li> Objetivo: <small>".$resull3->objetivo_convenio."</small></li>";
-						  $text.="<li> Estado: <small>".$resull3->estado_actual_convenio."</small></li>";
-						  $text.="<li> Responsable Contacto: <small>".$resull3->responsable_Unet."</small></li>";
-					 	$text.="</ul>";
-					 $text.="</div>";
-
-
-					  $text.="<div class='col-sm-4'>";
-					 	$text.="<ul class='list-inline'>";
-					 	if(strcmp($resull3->tipo_convenio,"Marco")==0){
-					 	  $text.="<li><a href="."'".$this->createUrl("/convenios/createEspecifico")."&id=".$resull3->id_convenio."'"." data-toggle='tooltip' title='Agregar Específico'><span class='glyphicon glyphicon-plus'></span><a/></li>";	
-					 	}
-
-					 	$text.="<li><a href="."'".$this->createUrl("/convenios/updateConvenio")."&id=".$resull3->id_convenio."'"." data-toggle='tooltip' title='Editar'><span class='glyphicon glyphicon-pencil'></span></a></li>";
- 						$text.="<li><a href="."'".$this->createUrl("/convenios/renovar")."&id=".$resull3->id_convenio."'"." data-toggle='tooltip' title='Renovar'><span class='glyphicon glyphicon-time'></span></a></li>";
- 						$text.="<li><a href="."'".$this->createUrl("/convenios/cambiarEstado")."&id=".$resull3->id_convenio."'"." sdata-toggle='tooltip' title='Cambiar Estado'><span class='glyphicon glyphicon-refresh'></span></a></li>";
-						$text.="<li><a href="."'".$resull3->url."'"." data-toggle='tooltip' title='Descargar' download='123convenios1.pdf'><span class='glyphicon glyphicon-cloud-download'></a></span></li>";
-                        $text.="<li><a href="."'".$this->createUrl("/convenios/delete")."&id=".$resull3->id_convenio."'"." data-toggle='tooltip' title='Eliminar'><span class='glyphicon glyphicon-trash'></span></a></li>"; 
-					 	$text.="</ul>";
-					
-					 $text.="</div>";
-
-
-				 $text.="</div>";
-
-			 $text.= "</aside>"; 
-		    }	 
-//				$text.='<nav aria-label="Page navigation"> ';
-				$text.=' <ul class="pagination pagination-sm">';
-
-				if($iniciopag>1){
-					$valor=$iniciopag-1;
-					$text.='<li >
-					      <a href="javascript:void(0)" aria-label="Previous"  onclick="send('.$valor.')">
-					        <span aria-hidden="true">&laquo;</span>
-					      </a>
-					    </li>';
-
-				}else{
-						$text.='<li class="disabled">
-					      <a href="" aria-label="Previous">
-					        <span aria-hidden="true">&laquo;</span>
-					      </a>
-					    </li>';
-				}
-			
-
-			    for($i=1;$i<=$paginas;$i++){
-			    	if($i==$iniciopag){
-						$text.='<li class="active"><a  href="javascript:void(0)">'.$i.'</a></li>';
-			    	}else{
-				    	$text.='<li><a href="javascript:void(0)" onclick="send('.$i.')">'.$i.'</a></li>';
-			    	}
-			    }
-
-			    if($iniciopag<$paginas){
-
-			    		$valorn=$iniciopag+1;
-			    		$text.='<li>
-					      <a href="javascript:void(0)" aria-label="Next" onclick="send('.$valorn.')" >
-					        <span aria-hidden="true">&raquo;</span>
-					      </a>
-					    </li>';
-
-			    }else{
-
-			    	$text.='<li class="disabled" >
-					      <a href="javascript:void(0)" aria-label="Next" >
-					        <span aria-hidden="true">&raquo;</span>
-					      </a>
-					    </li>';
-
-			    }
-   
-			
-				$text.='</ul>';
-
-			
-//				$text.='</nav>';
-
-		echo $text;  
-		
-		/*$resultados=10;
-
-		$this->renderPartial('_conveniosConsulta',array('resultados'=>$resultados), false, true);*/
+			), false, true);
                                
- //echo Yii::app()->createUrl("site/informacion");    
-
-	    /*
-
-		foreach ($_POST['x1'] as $k => $v){
-    		echo " ".$v." ";
-		}*/
-      
-      // print_r($_POST['x1'][1]);
 	}
 
 	public function actionConsultar()
@@ -1506,10 +1404,10 @@ class ConveniosController extends Controller
 
 	protected function consultaBase(){
 
-				$consulta  = "SELECT DISTINCT c.nombreConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio,c.objetivoConvenio,tc.descripcionTipoConvenio, ec.nombreEstadoConvenio, c.idConvenio, r.correoElectronicoResponsable, c.urlConvenio FROM convenios c ";
+				$consulta  = "SELECT DISTINCT c.nombreConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio,c.objetivoConvenio,tc.descripcionTipoConvenio, /*ec.nombreEstadoConvenio,*/ c.idConvenio, r.correoElectronicoResponsable, c.urlConvenio FROM convenios c ";
 				$consulta .= "JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio ";
-				$consulta .= "JOIN convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio ";
-				$consulta .= "JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio ";
+				//$consulta .= "JOIN convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio ";
+				//$consulta .= "JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio ";
 				$consulta .= "JOIN institucion_convenios ic ON c.idConvenio = ic.convenios_idConvenio ";
 				$consulta .= "JOIN instituciones inst ON inst.idInstitucion = ic.instituciones_idInstitucion ";
 				$consulta .= "JOIN tiposinstituciones tinst ON  tinst.idTipoInstitucion = inst.tiposInstituciones_idTipoInstitucion ";
@@ -1518,11 +1416,7 @@ class ConveniosController extends Controller
 				$consulta .= "JOIN historicoresponsables hr ON c.idConvenio = hr.convenios_idConvenio ";
 				$consulta .= "JOIN responsables r ON r.idResponsable  = hr.responsables_idResponsable ";
 				$consulta .= "JOIN tiporesponsable tr ON tr.idTipoResponsable= r.tipoResponsable_idTipoResponsable ";
-				$consulta .= "WHERE ce.fechaCambioEstado = (
-							SELECT MAX( fechaCambioEstado ) 
-							FROM convenio_estados
-							WHERE convenios_idConvenio = c.idConvenio
-							) and upper(tr.descripcionTipoResponsable) = 'CONTACTO' ";	
+				$consulta .= "WHERE upper(tr.descripcionTipoResponsable) = 'CONTACTO' ";	
 
 		return $consulta;	
 
@@ -1650,13 +1544,21 @@ class ConveniosController extends Controller
 				$resultados->bindColumn(3,$convenio->fecha_caducidad);
 				$resultados->bindColumn(4,$convenio->objetivo_convenio);
 				$resultados->bindColumn(5,$convenio->tipo_convenio);
-				$resultados->bindColumn(6,$convenio->estado_actual_convenio);
-				$resultados->bindColumn(7,$convenio->id_convenio);
-				$resultados->bindColumn(8,$convenio->responsable_Unet);		
+				//$resultados->bindColumn(6,$convenio->estado_actual_convenio);
+				$resultados->bindColumn(6,$convenio->id_convenio);
+				$resultados->bindColumn(7,$convenio->responsable_Unet);		
 
 			
         $this->renderPartial('_conveniosReporte',array('resultados'=>$resultados,'model'=>$convenio), false, true);
          
+	}
+
+	public function actionConveniosEspera(){
+
+		$modelEdoConve=Estadoconvenios::model()->findAll();
+
+
+		$this->render('conveniosEspera', array('estadoconve'=>$modelEdoConve));
 	}
 
 	/**
