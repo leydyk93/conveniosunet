@@ -16,8 +16,6 @@ $this->menu=array(
 	array('label'=>'Manage Convenios', 'url'=>array('admin')),
 );
 ?>
-
-
 <div class="row">
 	<div  class="nuevo col-md-12 text-left">
 		 <h4>Convenio: <span><?php echo $model->nombreConvenio; ?></span></h4>

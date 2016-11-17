@@ -25,7 +25,7 @@
 
 <div  id="MainMenu" class="col-sm-4">
    <h4><a href="<?php echo $this->createUrl( '/convenios/create' ); ?>"><span class="glyphicon glyphicon-plus"></span></a> Nuevo Convenio </h4>
-   <h4><a href="<?php echo $this->createUrl( '/convenios/construirReporte' ); ?>"><span class="glyphicon glyphicon-file"></span></a> Construir Reporte </h4>
+   <h4><a href="<?php echo $this->createUrl( '/convenios/construirReporte' ); ?>"><span class="glyphicon glyphicon-edit"></span></a> Convenios en espera </h4>
 <!--el menu de prueba-->
   <div class="list-group panel">
     <a href="#demo3" class="list-group-item" data-toggle="collapse" data-parent="#MainMenu">Filtrar por <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
@@ -126,19 +126,18 @@
                   ?> 
              </div>
           </div>
-                     
          </a>
       </div>
 
-      <a href="#SubEstado" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubEstado" ><?php echo $form->labelEx($model,'estadoConv'); ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
+      <!--<a href="#SubEstado" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubEstado" ><?php //echo $form->labelEx($model,'estadoConv'); ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
       <div class="collapse list-group-submenu" id="SubEstado"> 
 
           <?php  
-           $list6=CHtml::listData($estadoconve,'idEstadoConvenio','nombreEstadoConvenio');   
-           echo $form->checkBoxList($model,'estadoConv', $list6,array('onclick'=>'send(1);', 'template'=>'<a class="list-group-item" data-parent="#SubEstado"> {input}{label} </a>', "separator" => ""));    
+           //$list6=CHtml::listData($estadoconve,'idEstadoConvenio','nombreEstadoConvenio');   
+           //echo $form->checkBoxList($model,'estadoConv', $list6,array('onclick'=>'send(1);', 'template'=>'<a class="list-group-item" data-parent="#SubEstado"> {input}{label} </a>', "separator" => ""));    
           ?>
           
-      </div>
+      </div>-->
 
        <a href="#SubVence" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubVence" ><label for="">Fecha de vencimiento</label> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
       <div class="collapse list-group-submenu" id="SubVence"> 

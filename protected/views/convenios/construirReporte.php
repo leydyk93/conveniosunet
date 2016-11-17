@@ -128,15 +128,15 @@
          </a>
       </div>
 
-      <a href="#SubEstado" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubEstado" ><?php echo $form->labelEx($model,'estadoConv'); ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
+      <!--<a href="#SubEstado" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubEstado" ><?php //echo $form->labelEx($model,'estadoConv'); ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
       <div class="collapse list-group-submenu" id="SubEstado"> 
 
           <?php  
-           $list6=CHtml::listData($estadoconve,'idEstadoConvenio','nombreEstadoConvenio');   
-           echo $form->checkBoxList($model,'estadoConv', $list6,array('onclick'=>'GenererarReportes();', 'template'=>'<a class="list-group-item" data-parent="#SubEstado"> {input}{label} </a>', "separator" => ""));    
+          // $list6=CHtml::listData($estadoconve,'idEstadoConvenio','nombreEstadoConvenio');   
+          // echo $form->checkBoxList($model,'estadoConv', $list6,array('onclick'=>'GenererarReportes();', 'template'=>'<a class="list-group-item" data-parent="#SubEstado"> {input}{label} </a>', "separator" => ""));    
           ?>
           
-      </div>
+      </div>-->
 
        <a href="#SubVence" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubVence" ><label for="">Fecha de vencimiento</label> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
       <div class="collapse list-group-submenu" id="SubVence"> 

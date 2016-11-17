@@ -177,7 +177,7 @@ if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios
                    <div class="row">
                       <div class="col-sm-2"><p class="text-info"><?php  echo $resultado3->tipo_convenio." ";  ?></p> </div>
                       <div class="col-sm-10">
-                      <a href="<?php echo $this->createUrl( '/convenios/view' )."&id=".$resultado3->id_convenio; ?>"><?php echo $resultado3->nombre_convenio; ?></a> 
+                      <a href="<?php echo $this->createUrl( '/convenios/view' )."&id=".$resull3->id_convenio; ?>"><?php echo $resultado3->nombre_convenio; ?></a> 
                       </div> 
                   </div>
 

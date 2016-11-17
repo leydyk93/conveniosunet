@@ -86,6 +86,14 @@ return array(
 			'charset' => 'utf8',
 			*/
 
+			/*'connectionString' => 'mysql:host=mysql.hostinger.es;dbname=u518728809_conv',
+			'emulatePrepare' => true,
+			'username' => 'u518728809_leydy',
+			'password' => 'lmkarina1410', 
+			'charset' => 'utf8',*/
+			
+
+
 			'connectionString' => 'mysql:host=localhost;dbname=unetconvenios',
 			'emulatePrepare' => true,
 			'username' => 'root',

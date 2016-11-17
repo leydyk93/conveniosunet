@@ -50,6 +50,7 @@
 			'items'=>array(
 				array('label'=>'<span class="glyphicon glyphicon-home"></span>', 'url'=>array('/site/index')),
 				array('label'=>'<span class="glyphicon glyphicon-search"></span> Consultar Convenios', 'url'=>array('/convenios/consultar')),
+				array('label'=>'<span class="glyphicon glyphicon-file"></span> Reportes', 'url'=>array('/convenios/construirReporte'),'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'<span class="glyphicon glyphicon-book"></span> Información', 'url'=>array('/site/informacion')),
 				array('label'=>'<span class="glyphicon glyphicon-earphone"></span> Contactenos', 'url'=>array('/site/contact'),'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'<span class="glyphicon glyphicon-cog"></span> Configuración <span class="caret"></span>', 'url'=>array('/site/configuracion'), 'visible'=>!Yii::app()->user->isGuest,'items'=>array(
