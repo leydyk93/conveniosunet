@@ -560,6 +560,8 @@
 							$formr=$this->beginWidget("CActiveForm",array(  
 								'htmlOptions'=>array('class'=>'form-horizontal'),   
 								'enableClientValidation'=> true,
+								'id'=>'formresp',
+								'enableAjaxValidation'=>true,
 		                         'clientOptions'=> array(
 		                            'validateOnSubmit'=> true,
 		                            'validateOnChange'=> true,

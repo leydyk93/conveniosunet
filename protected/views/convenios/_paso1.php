@@ -267,11 +267,24 @@ if(!isset($_SESSION['alcance'])){
         </div>
       </div>
       
-      <div class="form-group text-right"> 
-        <div class="col-sm-offset-2 col-sm-9">
-           <?php echo CHtml::submitButton("Siguiente",array("class"=>'btn btn-conv',"onclick"=>'recolectar()')); ?> 
+
+
+ <div class="form-group "> 
+        <div class="col-sm-6 text-left">
+           <?php echo CHtml::submitButton("Guardar Hasta aquí",array("class"=>'btn btn-conv',"onclick"=>'recolectar()',"name"=>'enviar')); ?> 
         </div>
-      </div>
+
+        <div class="col-sm-6 text-right">
+           <?php echo CHtml::submitButton("Siguiente",array("class"=>'btn btn-conv',"onclick"=>'recolectar()','name'=>'siguiente')); ?> 
+        </div>
+</div>
+
+
+  <div class="form-group text-right"> 
+        
+  </div>
+
+      
  <!--</div>-->
  <?php $this->endWidget(); ?>
 </section>
