@@ -37,7 +37,7 @@ class ConveniosController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','renovar','cambiarEstado','ConveniosEspera'),
+				'actions'=>array('create','update','renovar','cambiarEstado','conveniosEspera','selectEstado'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -1233,8 +1233,29 @@ class ConveniosController extends Controller
   				
 				}
 
+			
+					switch ($criterio->orden) {
+						case '1':
+							$consulta .="ORDER BY c.fechaInicioConvenio DESC ";	
+							//$consulta .="ORDER BY c.fechaInicioConvenio ASC";	
+							break;
+						case '2':
+							$consulta .="ORDER BY c.fechaCaducidadConvenio ";	
+							break;
+						case '3':
+							 $consulta .="ORDER BY c.nombreConvenio ";	
+							break;
+					
+						default:
+							
+							break;
+					}
 
-				 $consulta .=" limit ".$inicio.",".$nroconv;
+				
+				 
+				 $consulta .=" limit ".$inicio.",".$nroconv." ";
+
+				// $consulta .="ORDER BY YEAR(c.fechaInicioConvenio) ";
 
 			}else{
 
@@ -1342,6 +1363,8 @@ class ConveniosController extends Controller
   					$consulta .='and c.fechaCaducidadConvenio BETWEEN  '.'"'.$criterio->fecha_inicio.'"'.' AND '.'"'.$criterio->fecha_caducidad.'"'.' ';
   				
 				}
+
+					$consulta .="ORDER BY YEAR(c.fechaInicioConvenio)";
 		
 			}
     
@@ -1370,6 +1393,7 @@ class ConveniosController extends Controller
 	$BusquedaUsuario->institucion=$_POST['institucion'];
 	$BusquedaUsuario->fecha_inicio=$_POST['fechav1'];
     $BusquedaUsuario->fecha_caducidad=$_POST['fechav2'];
+    $BusquedaUsuario->orden=$_POST['orden'];
 
   	$resulTotal=$this->RespuestaConsultaConvenios($BusquedaUsuario); 
   	$totalConvenios=count($resulTotal);
@@ -1572,6 +1596,8 @@ class ConveniosController extends Controller
   					$consulta .='and c.fechaCaducidadConvenio BETWEEN  '.'"'.$_POST['ConsultasConvenios']['fechaVencimiento1'].'"'.' AND '.'"'.$_POST['ConsultasConvenios']['fechaVencimiento2'].'"'.' ';
 		}
 
+		 $consulta .="ORDER BY c.fechaInicioConvenio DESC ";	
+
 		$resultados=$conexion->createCommand($consulta)->query();
 
 				$resultados->bindColumn(1,$convenio->nombre_convenio);
@@ -1588,12 +1614,67 @@ class ConveniosController extends Controller
          
 	}
 
-	public function actionConveniosEspera(){
+	public function actionconveniosEspera(){
 
-		$modelEdoConve=Estadoconvenios::model()->findAll();
+		//$modelEdoConve=Estadoconvenios::model()->findAll();
+		$modelEdoConve=Estadoconvenios::model()->findAll('idEstadoConvenio!=:idEstadoConvenio', array(':idEstadoConvenio'=>5));
+		$formConsulta = new ConsultasConvenios;
 
+		/*if(isset($_POST["ajax"]) && $_POST["ajax"]==='form'){
 
-		$this->render('conveniosEspera', array('estadoconve'=>$modelEdoConve));
+	       	echo CActiveForm::validate($formConsulta);
+	       	Yii::app()->end();
+        }*/
+
+		$this->render('conveniosEspera', array('estadoconve'=>$modelEdoConve, 'model'=>$formConsulta, 'resuldefecto'=>1));
+	}
+
+	public function ConsultarEstado(){
+
+				$consulta  = "SELECT DISTINCT c.nombreConvenio, ec.nombreEstadoConvenio, c.idConvenio FROM convenios c ";
+				$consulta .= "JOIN convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio ";
+				$consulta .= "JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio ";
+				$consulta .= "WHERE ce.fechaCambioEstado = (
+							SELECT MAX( fechaCambioEstado ) 
+							FROM convenio_estados
+							WHERE convenios_idConvenio = c.idConvenio
+							) and ec.idEstadoConvenio!="."'5' ";
+
+				$consulta .="ORDER BY c.nombreConvenio ";		
+		return $consulta;	
+	}
+
+	public function actionselectEstado(){
+
+		$convenio= new ResultadoConvenios;
+	    $formConsulta = new ConsultasConvenios;
+		$formConsulta->attributes=$_POST["ConsultasConvenios"]; 
+
+/*		$convxpag=3;
+		$iniciopag=$_POST["inicio"]; 
+		$nuevoinicioPag=($iniciopag-1)*$convxpag;*/
+
+		$conexion=Yii::app()->db;
+
+		$consulta=$this->ConsultarEstado();
+
+		if(isset($_POST['ConsultasConvenios']['estadoConv'])&&$_POST['ConsultasConvenios']['estadoConv']!=null){
+								 	$cestado=null;
+									foreach ($_POST['ConsultasConvenios']['estadoConv'] as $row) {
+										$cestado=$row.",".$cestado;
+									}
+									$cestado=substr($cestado, 0, -1);
+
+								    $consulta .="and ec.idEstadoConvenio IN (".$cestado.") ";
+		}
+	
+		$resultados=$conexion->createCommand($consulta)->query();
+
+		$resultados->bindColumn(1,$convenio->nombre_convenio);
+		$resultados->bindColumn(2,$convenio->estado_actual_convenio);
+		$resultados->bindColumn(3,$convenio->id_convenio);
+		
+		$this->renderPartial('_conveniosEnProceso',array('resultados'=>$resultados,'model'=>$convenio), false, true);
 	}
 
 	/**

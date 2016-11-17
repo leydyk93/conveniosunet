@@ -535,7 +535,7 @@ CREATE TABLE IF NOT EXISTS    convenio_Estados  (
 
 
 INSERT INTO convenio_Estados (convenios_idConvenio,estadoConvenios_idEstadoConvenio,fechaCambioEstado,dependencias_idDependencia) VALUES
-('01','1','2015/02/02','2'),
+/*('01','1','2015/02/02','2'),
 ('01','2','2015/03/02','2'),
 ('01','3','2015/03/5','1'),
 ('01','4','2015/03/6','1'),
@@ -546,7 +546,17 @@ INSERT INTO convenio_Estados (convenios_idConvenio,estadoConvenios_idEstadoConve
 ('02','4','2014/03/6','1'),
 ('02','5','2014/03/12','1'),
 ('03','5','2015/03/10','1'),
-('04','4','2015/03/10','1');
+('04','4','2015/03/10','1');*/
+/*Estos son los convenios de los cuales conocemos todo por lo tanto deben estar aprobados*/
+('01','5','2015/02/02','1'),
+('02','5','2014/02/02','1'),
+('03','5','2015/03/10','1'),
+('04','5','2015/03/10','1'),
+/*estado diferente de aporbado*/
+('10','1','2016/01/20','1'),
+('11','1','2016/02/10','1'),
+('12','1','2016/03/12','1');
+
 
 
 -- -----------------------------------------------------

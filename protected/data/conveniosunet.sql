@@ -673,6 +673,16 @@ CONSTRAINT uk_convenio_criterios  UNIQUE (informes_idInforme,criterios_idCriteri
 /*validar que la fecha de los cambios de estado esten entre la fecha de inscripcion del convenio y la fecha de 
 caducidad ojo con esto*/
 
+
+  SELECT DISTINCT c.nombreConvenio, ec.nombreEstadoConvenio, c.idConvenio FROM convenios c 
+  JOIN convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio 
+        JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio 
+        WHERE ce.fechaCambioEstado = (
+              SELECT MAX( fechaCambioEstado ) 
+              FROM convenio_estados
+              WHERE convenios_idConvenio = c.idConvenio
+              ) and ec.idEstadoConvenio!="5";
+
  
 SELECT c.nombreConvenio, ec.nombreEstadoConvenio
 FROM convenios c

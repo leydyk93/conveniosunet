@@ -22,8 +22,8 @@ class ResultadoConvenios extends CFormModel
 	public $tipo_institucion;
 	public $anio;
 	public $url;
-
-
+	public $orden;
+	
 	/**
 	 * Declares the validation rules.
 	 * The rules state that username and password are required,

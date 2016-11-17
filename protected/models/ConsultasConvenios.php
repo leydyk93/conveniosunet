@@ -18,6 +18,7 @@ class ConsultasConvenios extends CFormModel
 	public $fechaVencimiento1;
 	public $fechaVencimiento2;
 	public $ambitoGeografico;
+	public $order;
 
 	private $_identity;
 
