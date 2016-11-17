@@ -446,9 +446,14 @@ class ConveniosController extends Controller
 			}
 			}
 
-		$this->render('updateConvenio',array(
+		//$this->render('updateConvenio',array(
+		//	"pasouno"=>$pasouno,"dep"=>$dep
+		//));
+			
+		$this->render('create',array(
 			"pasouno"=>$pasouno,"dep"=>$dep
 		));
+
 
 	}
 	/**
@@ -539,13 +544,16 @@ class ConveniosController extends Controller
 			Yii::app()->end();
 		}
 
+		
+
+		
 		if (isset($_POST["PasounoForm"])){
 			$pasouno->attributes=$_POST["PasounoForm"];
 			
 			$count = Convenios::model()->countBySql("select COUNT(*) from convenios"); 
 	  		$pasouno->idconvenio=$count+1;
 
-			if($pasouno->validate()){
+	
 
 				$_SESSION['idconvenio']=$pasouno->idconvenio;
 				$_SESSION['nombreconvenio']=$pasouno->nombreconvenio;
@@ -562,12 +570,39 @@ class ConveniosController extends Controller
 			//	$this->redirect(array("create"));
 			
 				if($pasouno->validate()){
-					$this->redirect(array('convenios/pasodos',
-					"idconvenio"=>$pasouno->idconvenio,
-					));
+
+						//-------------------------GUARDANDO EN LA TABLA CONVENIOS---------------------------------
+					if (isset($_REQUEST['enviar'])) 
+					{ 
+						$model->idConvenio=$_SESSION['idconvenio'];
+						$model->nombreConvenio=$_SESSION['nombreconvenio'];
+						$model->fechaInicioConvenio=$_SESSION['fechainicioconvenio'];
+						$model->fechaCaducidadConvenio=$_SESSION['fechacaducidadconvenio'];
+						$model->objetivoConvenio=$_SESSION['objetivo'];
+						$model->institucionUNET="UNET";
+						$model->urlConvenio="Sin Archivo";//colocar direccion del archivo real pdf 
+						$model->clasificacionConvenios_idTipoConvenio=$_SESSION['clasificacion'];
+						$model->tipoConvenios_idTipoConvenio=$_SESSION['tipo'];
+						$model->alcanceConvenios=$_SESSION['alcance'];
+						$model->dependencias_idDependencia=$_SESSION['dependenciaconvenio'];
+						if(isset($_SESSION['idpapa']))
+						$model->convenios_idConvenio=$_SESSION['idpapa']; //aqui va el id si es especifico
+						
+						//Si guarda en la tabla convenios entonces guarde en la tabla Institución convenios
+						if($model->save()){
+
+							$this->redirect(array('convenios/conveniosEspera'));
+						}
+					}
+					else{
+
+						$this->redirect(array('convenios/pasodos',
+						"idconvenio"=>$pasouno->idconvenio,
+						));
+					}
 				}
 			}
-			}
+			
 
 			if (isset($_POST["Dependencias"])){
 			$dep->attributes=$_POST["Dependencias"];
@@ -1662,22 +1697,31 @@ class ConveniosController extends Controller
 		// echo("<script>console.log('Extension ".$e."');</script>"); 
 		
 		  echo("<script>console.log('Entrooo');</script>"); 
+		  echo "<br>";
+		  echo("<script>console.log(".$_COOKIE['cookinst'].");</script>"); 
 		 $responsable= new Responsables;
-		 
+
+		// if(isset($_POST['ajax'])&&$_POST['ajax']=='formresp'){
+
+		 //	echo CActiveForm::validate($responsable);
+		 	//Yii::app()->end();
+		 //}
+
 		 if(isset($_POST["Responsables"])){
 		 	 echo("<script>console.log('Existe el formulario');</script>"); 
 			$responsable->attributes=$_POST["Responsables"];
 			$responsable->instituciones_idInstitucion=$_COOKIE['cookinst'];
 
-			 //echo("<script>console.log('Nombre ".$responsable->primerNombreResponsable."');</script>");  
+			 echo("<script>console.log('Institucion: ".$responsable->instituciones_idInstitucion."');</script>");  
 			if($responsable->save()){
-
+//
 				 setcookie("gresponsable","1");
 				 echo("<script>console.log('guardo');</script>"); 
 			}
 			else{
 				 setcookie("gresponsable","0");
-				//print_r("<script>console.log('Errores ".$$responsable->getErrors()."');</script>");
+				  echo("<script>console.log('Echoo');</script>"); 
+				 //print_r("<script>console.log(".$responsable->getErrors().");</script>");
 			}
 
 			//$lista= Instituciones::model()->findAll();

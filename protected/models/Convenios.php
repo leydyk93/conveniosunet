@@ -16,6 +16,7 @@
  * @property string $alcanceConvenios
  * @property integer $dependencias_idDependencia
  * @property string $convenios_idConvenio
+ * @property integer $caducidadIndefinida
  *
  * The followings are the available model relations:
  * @property Actaintencion[] $actaintencions
@@ -48,14 +49,15 @@ class Convenios extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idConvenio, nombreConvenio, fechaInicioConvenio, fechaCaducidadConvenio, objetivoConvenio, institucionUNET, urlConvenio, clasificacionConvenios_idTipoConvenio, tipoConvenios_idTipoConvenio, alcanceConvenios, dependencias_idDependencia', 'required'),
-			array('clasificacionConvenios_idTipoConvenio, tipoConvenios_idTipoConvenio, dependencias_idDependencia', 'numerical', 'integerOnly'=>true),
+			array('idConvenio, nombreConvenio', 'required'),
+			array('clasificacionConvenios_idTipoConvenio, tipoConvenios_idTipoConvenio, dependencias_idDependencia, caducidadIndefinida', 'numerical', 'integerOnly'=>true),
 			array('idConvenio, institucionUNET, convenios_idConvenio', 'length', 'max'=>50),
 			array('nombreConvenio', 'length', 'max'=>200),
 			array('urlConvenio', 'length', 'max'=>100),
+			array('fechaInicioConvenio, fechaCaducidadConvenio, objetivoConvenio, alcanceConvenios', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idConvenio, nombreConvenio, fechaInicioConvenio, fechaCaducidadConvenio, objetivoConvenio, institucionUNET, urlConvenio, clasificacionConvenios_idTipoConvenio, tipoConvenios_idTipoConvenio, alcanceConvenios, dependencias_idDependencia, convenios_idConvenio', 'safe', 'on'=>'search'),
+			array('idConvenio, nombreConvenio, fechaInicioConvenio, fechaCaducidadConvenio, objetivoConvenio, institucionUNET, urlConvenio, clasificacionConvenios_idTipoConvenio, tipoConvenios_idTipoConvenio, alcanceConvenios, dependencias_idDependencia, convenios_idConvenio, caducidadIndefinida', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -99,6 +101,7 @@ class Convenios extends CActiveRecord
 			'alcanceConvenios' => 'Alcance Convenios',
 			'dependencias_idDependencia' => 'Dependencias Id Dependencia',
 			'convenios_idConvenio' => 'Convenios Id Convenio',
+			'caducidadIndefinida' => 'Caducidad Indefinida',
 		);
 	}
 
@@ -132,6 +135,7 @@ class Convenios extends CActiveRecord
 		$criteria->compare('alcanceConvenios',$this->alcanceConvenios,true);
 		$criteria->compare('dependencias_idDependencia',$this->dependencias_idDependencia);
 		$criteria->compare('convenios_idConvenio',$this->convenios_idConvenio,true);
+		$criteria->compare('caducidadIndefinida',$this->caducidadIndefinida);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
