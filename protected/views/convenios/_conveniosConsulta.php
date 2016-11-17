@@ -1,8 +1,7 @@
-<h4 class="text-center">Convenios Aprobados</h4>
-
 
 		   <?php while(($row=$resultados->read())!==false) {  ?>
 		   	<aside id='prueba' class='list-group-item'>
+	           
 	           <div class='row'>
 		            <div class='col-sm-2'><p class='text-info'><?php echo $resull3->tipo_convenio; ?></p></div>
 		            <div class='col-sm-10'><a href="<?php echo $this->createUrl( '/convenios/view' )."&id=".$resull3->id_convenio; ?>" ><?php echo $resull3->nombre_convenio; ?></a></div> 
@@ -20,18 +19,24 @@
 					 </div>
 
 
-					  <div class='col-sm-4'>
-					 	<ul class='list-inline'>
-					 	<?php if(strcmp($resull3->tipo_convenio,"Marco")==0){ ?>
-					 	  <li><a href="<?php echo $this->createUrl("/convenios/createEspecifico")."&id=".$resull3->id_convenio; ?>" data-toggle='tooltip' title='Agregar Específico'><span class='glyphicon glyphicon-plus'></span><a/></li>
-					 	<?php } ?>
+					  	<div class='col-sm-4'>
+						 	<ul class='list-inline'>
+						 	<?php if(strcmp($resull3->tipo_convenio,"Marco")==0){ ?>
+						 		<?php if(!Yii::app()->user->isGuest):?>
+						 	  		<li><a href="<?php echo $this->createUrl("/convenios/createEspecifico")."&id=".$resull3->id_convenio; ?>" data-toggle='tooltip' title='Agregar Específico'><span class='glyphicon glyphicon-plus'></span><a/></li>
+						 		<?php endif?>
+						 	<?php } ?>
 
-					 	<li><a href="<?php echo $this->createUrl("/convenios/updateConvenio")."&id=".$resull3->id_convenio; ?>" data-toggle='tooltip' title='Editar'><span class='glyphicon glyphicon-pencil'></span></a></li>
- 						<li><a href="<?php echo $this->createUrl("/convenios/renovar")."&id=".$resull3->id_convenio; ?>" data-toggle='tooltip' title='Renovar'><span class='glyphicon glyphicon-time'></span></a></li>
- 						<!--<li><a href="<?php //echo $this->createUrl("/convenios/cambiarEstado")."&id=".$resull3->id_convenio; ?>" sdata-toggle='tooltip' title='Cambiar Estado'><span class='glyphicon glyphicon-refresh'></span></a></li>-->
-						<li><a href="<?php echo $resull3->url; ?>" data-toggle='tooltip' title='Descargar' download='123convenios1.pdf'><span class='glyphicon glyphicon-download-alt'></a></span></li>
-                        <li><a href="<?php echo $this->createUrl("/convenios/delete")."&id=".$resull3->id_convenio; ?>" data-toggle='tooltip' title='Eliminar'><span class='glyphicon glyphicon-trash'></span></a></li> 
-					 	</ul>
+						 	<?php if(!Yii::app()->user->isGuest):?>
+						 		<li><a href="<?php echo $this->createUrl("/convenios/updateConvenio")."&id=".$resull3->id_convenio; ?>" data-toggle='tooltip' title='Editar'><span class='glyphicon glyphicon-pencil'></span></a></li>
+	 							<li><a href="<?php echo $this->createUrl("/convenios/renovar")."&id=".$resull3->id_convenio; ?>" data-toggle='tooltip' title='Renovar'><span class='glyphicon glyphicon-time'></span></a></li>
+	 						<?php endif?>
+	 						<!--<li><a href="<?php //echo $this->createUrl("/convenios/cambiarEstado")."&id=".$resull3->id_convenio; ?>" sdata-toggle='tooltip' title='Cambiar Estado'><span class='glyphicon glyphicon-refresh'></span></a></li>-->
+							<li><a href="<?php echo $resull3->url; ?>" data-toggle='tooltip' title='Descargar' download='123convenios1.pdf'><span class='glyphicon glyphicon-download-alt'></a></span></li>
+	                       <?php if(!Yii::app()->user->isGuest):?>
+	                        	<li><a href="<?php echo $this->createUrl("/convenios/delete")."&id=".$resull3->id_convenio; ?>" data-toggle='tooltip' title='Eliminar'><span class='glyphicon glyphicon-trash'></span></a></li> 
+						 	<?php endif?>
+						 	</ul>
 					
 					 </div>
 

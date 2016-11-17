@@ -7,11 +7,14 @@
 
 <div class="row">
 
-     <?php 
+    
+
+<div  id="MainMenu" class="col-sm-4">
+   <?php 
       $form=$this->beginWidget('CActiveForm',
         array(
           'method' =>'POST',
-          'action' =>Yii::app()->createUrl('convenios/consultar'),
+          'action' =>Yii::app()->createUrl('convenios/construirReporte'),
           'id' => 'form',
             'enableAjaxValidation' => true,
             'enableClientValidation' => true,
@@ -23,8 +26,6 @@
           
           ));
      ?>
-
-<div  id="MainMenu" class="col-sm-4">
 <!--el menu de prueba-->
   <div class="list-group panel">
     <a href="#demo3" class="list-group-item" data-toggle="collapse" data-parent="#MainMenu">Filtrar por <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>

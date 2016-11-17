@@ -96,8 +96,7 @@
 	       <div class="col-md-6">
 
 	       	<?php if(!Yii::app()->user->isGuest):?>
-	       	<p  class="text-right"> <?php echo Date("d-m-Y"); ?></p>
-				
+	       		<p  class="text-right"> <?php echo Date("d-m-Y"); ?></p>	
 			<?php endif?>
 	       </div>
 		</div>   

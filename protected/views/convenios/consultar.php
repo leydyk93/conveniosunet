@@ -6,7 +6,7 @@
  ?>
 <div class="row">
 
-     <?php 
+   <?php 
       $form=$this->beginWidget('CActiveForm',
         array(
           'method' =>'POST',
@@ -22,11 +22,13 @@
           
           ));
      ?>
-
+    
 <div  id="MainMenu" class="col-sm-4">
+  <?php if(!Yii::app()->user->isGuest):?>
    <h4><a href="<?php echo $this->createUrl( '/convenios/create' ); ?>"><span class="glyphicon glyphicon-plus"></span></a> Nuevo Convenio </h4>
-   <h4><a href="<?php echo $this->createUrl( '/convenios/construirReporte' ); ?>"><span class="glyphicon glyphicon-edit"></span></a> Convenios en espera </h4>
-<!--el menu de prueba-->
+   <h4><a href="<?php echo $this->createUrl( '/convenios/conveniosEspera' ); ?>"><span class="glyphicon glyphicon-edit"></span></a> Convenios en espera </h4>
+  <?php endif?>
+  
   <div class="list-group panel">
     <a href="#demo3" class="list-group-item" data-toggle="collapse" data-parent="#MainMenu">Filtrar por <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
     <div class="collapse" id="demo3">
@@ -243,18 +245,33 @@
     </div>
    
   </div>
-    <?php $this->endWidget(); ?>
+    <!--<?php // $this->endWidget(); ?>-->
   </div>
  
 
  <div  id="Resulconvenios" class="col-sm-8">
 
+    <div class="row">
+      <div class="col-sm-8"> <h4>Convenios Aprobados</h4></div>
+      <div class="col-sm-4"> 
+          
+          <?php       
+                   echo $form->dropDownList($model,'order', array('1'=>'Ordenar por fecha Inicio','2'=>'Ordenar por fecha de caducidad','3'=>'Ordenar por Nombre ',),
+                              array('class'=>'form-control input-sm'));
+                  ?> 
+
+      </div>
+    </div>
+   
+    
+      
     <div id="resul" class="list-group" >
 
     </div>
 
  </div>
-  
+
+  <?php $this->endWidget(); ?> 
 </div>
 
 <script type="text/javascript">
@@ -275,6 +292,11 @@ $('#ConsultasConvenios_institucion').change(function() {
 });
 
 $('#ConsultasConvenios_ambitoGeografico').change(function() {
+    //console.log($('#ConsultasConvenios_institucion option:selected').val());
+    send(1);
+});
+
+$('#ConsultasConvenios_order').change(function() {
     //console.log($('#ConsultasConvenios_institucion option:selected').val());
     send(1);
 });
@@ -334,6 +356,7 @@ function send(inicio)
   var estadoConv= document.getElementsByName("ConsultasConvenios[estadoConv][]");  
   var fv1 = document.getElementById("fechaVencimiento1").value; 
   var fv2 = document.getElementById("fechaVencimiento2").value; 
+  var orden=$('#ConsultasConvenios_order option:selected').val();
   
   var tipoc=[], clasific=[], tipoInstc=[] , estadoConvc=[]; 
 
@@ -375,15 +398,13 @@ function send(inicio)
 
  var url= '<?php echo Yii::app()->createUrl("convenios/consultara"); ?>'
 
-
 $.ajax({
 
 type:"post",
 url: url,
 data:{ inicio:inicio , anio:anio , tipo:tipoc , clasificacion:clasific , tipoInstitucion:tipoInstc , estadoConvenio:estadoConvc ,
-      ambito:ambito, pais:pais , institucion:institucion, fechav1: fv1 , fechav2: fv2},
+      ambito:ambito, pais:pais , institucion:institucion, fechav1: fv1 , fechav2: fv2 , orden:orden},
 success:function(datos){
-
    document.getElementById("resul").innerHTML=datos;  
 }
 });
