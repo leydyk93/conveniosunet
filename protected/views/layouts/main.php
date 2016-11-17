@@ -42,7 +42,7 @@
       </button>
       <!--<a class="navbar-brand" href="#">convenios UNET</a>-->
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
+    <div id="menuPrinc" class="collapse navbar-collapse" id="myNavbar">
      
         <?php $this->widget('zii.widgets.CMenu',array(
 			'htmlOptions'=>array('class'=>'nav navbar-nav'),

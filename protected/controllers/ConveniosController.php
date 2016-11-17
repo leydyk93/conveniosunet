@@ -1605,7 +1605,7 @@ class ConveniosController extends Controller
 							WHERE convenios_idConvenio = c.idConvenio
 							) and ec.idEstadoConvenio!="."'5' ";
 
-				$consulta .="ORDER BY c.nombreConvenio ";		
+				
 		return $consulta;	
 	}
 
@@ -1632,6 +1632,8 @@ class ConveniosController extends Controller
 
 								    $consulta .="and ec.idEstadoConvenio IN (".$cestado.") ";
 		}
+
+		$consulta .="ORDER BY c.nombreConvenio ";		
 	
 		$resultados=$conexion->createCommand($consulta)->query();
 
