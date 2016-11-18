@@ -271,7 +271,7 @@ if(!isset($_SESSION['alcance'])){
 
  <div class="form-group "> 
         <div class="col-sm-6 text-left">
-           <?php echo CHtml::submitButton("Guardar Hasta aquí",array("class"=>'btn btn-conv',"onclick"=>'recolectar()',"name"=>'enviar')); ?> 
+           <?php echo CHtml::submitButton("Guardar Paso 1",array("class"=>'btn btn-conv',"onclick"=>'recolectar()',"name"=>'enviar')); ?> 
         </div>
 
         <div class="col-sm-6 text-right">

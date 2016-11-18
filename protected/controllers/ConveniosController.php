@@ -79,7 +79,7 @@ class ConveniosController extends Controller
 		$consulta .="JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio ";
 		$consulta .="JOIN institucion_convenios ic ON c.idConvenio = ic.convenios_idConvenio ";
 		$consulta .="JOIN instituciones inst ON inst.idInstitucion = ic.instituciones_idInstitucion ";
-		$consulta .="JOIN tiposInstituciones tinst ON tinst.idTipoInstitucion = inst.tiposInstituciones_idTipoInstitucion ";
+		$consulta .="JOIN tiposinstituciones tinst ON tinst.idTipoInstitucion = inst.tiposInstituciones_idTipoInstitucion ";
 		$consulta .="JOIN estados edo ON edo.idEstado = inst.estados_idEstado ";
 		$consulta .="JOIN paises ps ON ps.idPais = edo.paises_idPais ";
 		$consulta .="WHERE c.idConvenio = ".$id; 
@@ -100,7 +100,7 @@ class ConveniosController extends Controller
 		$consulta .="JOIN institucion_convenios ic ON ic.idInstitucionConvenio = hr.institucion_convenios_idInstitucionConvenio ";
 		$consulta .="JOIN convenios c ON c.idConvenio = ic.convenios_idConvenio ";
 		$consulta .="JOIN instituciones inst ON inst.idInstitucion = ic.instituciones_idInstitucion ";
-		$consulta .="JOIN tiposInstituciones tinst ON tinst.idTipoInstitucion = inst.tiposInstituciones_idTipoInstitucion ";
+		$consulta .="JOIN tiposinstituciones tinst ON tinst.idTipoInstitucion = inst.tiposInstituciones_idTipoInstitucion ";
 		$consulta .="JOIN estados edo ON edo.idEstado = inst.estados_idEstado ";
 		$consulta .="JOIN paises ps ON ps.idPais = edo.paises_idPais ";
 		$consulta .="JOIN tiporesponsable tr ON tr.idTipoResponsable = r.tipoResponsable_idTipoResponsable ";
@@ -273,12 +273,47 @@ class ConveniosController extends Controller
 		 ));
 	}
 	/* nuevo estado al convenio*/
+
 	public function actionCambiarEstado($id)
 	{
-		$model=$this->loadModel($id);
-		$conexion=Yii::app()->db;
+		$model=$this->loadModelCambiarEstdo($id);
+		$modelEdoConve=Estadoconvenios::model()->findAll('idEstadoConvenio!=:idEstadoConvenio', array(':idEstadoConvenio'=>5)); //Busco los nombres de los estados 
 		
-		$modelEdoConve=Estadoconvenios::model()->findAll(); //Busco los nombres de los estados 
+		$estadosCovenio = ConvenioEstados::model()->findAll('convenios_idConvenio=:convenios_idConvenio', array(':convenios_idConvenio'=>$id));
+
+		$modelDependencia=Dependencias::model()->findAll(); 
+		$modelestado = new ConvenioEstados; 
+
+
+
+		if(isset($_POST["ConvenioEstados"])){
+
+			$modelestado->attributes=$_POST["ConvenioEstados"];			
+			$modelestado->convenios_idConvenio=$id;
+
+			if($modelestado->validate()){
+				if($modelestado->save())
+				 $this->redirect(array('conveniosEspera'));
+			}
+		}
+
+			$this->render('cambiarEstado',array(
+			'model'=>$model,
+			'modeloE'=>$modelestado,
+			'modelEdo'=>$modelEdoConve,
+			'modelDpcia'=>$modelDependencia,
+			'estadosConv'=>$estadosCovenio,
+			
+			));
+
+	}
+	public function actionCambiarEsta($id)
+	{
+		//$model=$this->loadModel($id);
+
+		$model=$this->loadModelCambiarEstdo($id);
+		
+		$modelEdoConve=Estadoconvenios::model()->findAll('idEstadoConvenio!=:idEstadoConvenio', array(':idEstadoConvenio'=>5)); //Busco los nombres de los estados 
 		$modelDependencia=Dependencias::model()->findAll(); //Busco las dependencias
 		$modelestado = new ConvenioEstados; // se le crea el formulario al modelo viaja por post
 
@@ -299,17 +334,18 @@ class ConveniosController extends Controller
 			 	
 			 /*	 }*/
 
-				/*if($modelestado->save())
-				 $this->redirect(array('cambiarEstado','id'=>$id));*/
-				$modelestado->save(); 
-				$estado=1;
+				if($modelestado->save())
+				 $this->redirect(array('conveniosEspera'));
+				
+				/*$modelestado->save(); 
+				$estado=1;*/
 
 			}else{
 				//echo "errores en el formulario";
 			}
 
 		}
-		if(isset($_POST["ArchivosForm"])){
+		/*if(isset($_POST["ArchivosForm"])){
 
 		
 			$modelArchivoConv->attributes=$_POST["ArchivosForm"];
@@ -342,9 +378,9 @@ class ConveniosController extends Controller
 				$archivo=1;
 			}
 
-		}	
+		}*/	
 
-		if($archivo==1&&$estado==1){
+		/*if($archivo==1&&$estado==1){
 				 $this->redirect(array('cambiarEstado','id'=>$id));
 				//echo "guardar los dos modelos";
 		}else if($archivo==1){
@@ -355,7 +391,7 @@ class ConveniosController extends Controller
 			//echo "Guardar solo estado";
 		}else{
 			//echo "Ninguno";
-		} 
+		} */
 
 		$this->render('cambiarEstado',array(
 			'model'=>$model,
@@ -1461,12 +1497,15 @@ class ConveniosController extends Controller
 
 	}
 
+	/*
+	retorna los convenios aprobados se usa en la vista reportes y en la vista consultar
+	*/
 	protected function consultaBase(){
 
 				$consulta  = "SELECT DISTINCT c.nombreConvenio, c.fechaInicioConvenio, c.fechaCaducidadConvenio,c.objetivoConvenio,tc.descripcionTipoConvenio, /*ec.nombreEstadoConvenio,*/ c.idConvenio, r.correoElectronicoResponsable, c.urlConvenio FROM convenios c ";
 				$consulta .= "JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio ";
-				//$consulta .= "JOIN convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio ";
-				//$consulta .= "JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio ";
+				$consulta .= "JOIN convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio ";
+				$consulta .= "JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio ";
 				$consulta .= "JOIN institucion_convenios ic ON c.idConvenio = ic.convenios_idConvenio ";
 				$consulta .= "JOIN instituciones inst ON inst.idInstitucion = ic.instituciones_idInstitucion ";
 				$consulta .= "JOIN tiposinstituciones tinst ON  tinst.idTipoInstitucion = inst.tiposInstituciones_idTipoInstitucion ";
@@ -1475,9 +1514,14 @@ class ConveniosController extends Controller
 				$consulta .= "JOIN historicoresponsables hr ON c.idConvenio = hr.convenios_idConvenio ";
 				$consulta .= "JOIN responsables r ON r.idResponsable  = hr.responsables_idResponsable ";
 				$consulta .= "JOIN tiporesponsable tr ON tr.idTipoResponsable= r.tipoResponsable_idTipoResponsable ";
-				$consulta .= "WHERE upper(tr.descripcionTipoResponsable) = 'CONTACTO' ";	
-
-		return $consulta;	
+				$consulta .= "WHERE ce.fechaCambioEstado = (
+							SELECT MAX( fechaCambioEstado ) 
+							FROM convenio_estados
+							WHERE convenios_idConvenio = c.idConvenio and  estadoConvenios_idEstadoConvenio = '5' 
+							) and upper(tr.descripcionTipoResponsable) = 'CONTACTO' ";	
+				
+		
+		return $consulta;
 
 	}
 
@@ -1614,6 +1658,11 @@ class ConveniosController extends Controller
          
 	}
 
+	/**
+	 * Muestra los convenios en espera de aprobacion 
+	 * @param no tiene
+	 */
+
 	public function actionconveniosEspera(){
 
 		//$modelEdoConve=Estadoconvenios::model()->findAll();
@@ -1628,6 +1677,12 @@ class ConveniosController extends Controller
 
 		$this->render('conveniosEspera', array('estadoconve'=>$modelEdoConve, 'model'=>$formConsulta, 'resuldefecto'=>1));
 	}
+
+	/**
+	 * Returns los convenios cuyo estado es diferente de aprobado
+	 * @param sin parametros
+	 * @return Convenios con estado diferente de aprobado
+	 */
 
 	public function ConsultarEstado(){
 
@@ -1644,6 +1699,12 @@ class ConveniosController extends Controller
 		return $consulta;	
 	}
 
+	/**
+	 * action ajax que se ejecuta al consultar los estados de los convenios en espera
+	 * Llama a la funcion Consultar estado y procesa sus resultados que luego actualiza renderizando 
+	 * parcialmente la vista conveniosEnProceso
+	 * @param no tiene
+	 */
 	public function actionselectEstado(){
 
 		$convenio= new ResultadoConvenios;
@@ -1693,6 +1754,39 @@ class ConveniosController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
+
+	/**
+	 * Returns el modelo de acuerdo al Id que llega por GET
+	 * If el estado del convenio es aporbado no permite el cambio de estado
+	 * @param integer $id the ID of the model to be loaded
+	 * @return Convenios the loaded model
+	 * @throws CHttpException
+	 */
+
+	public function loadModelCambiarEstdo($id)
+	{
+		$model=Convenios::model()->findByPk($id);
+		if($model===null){
+			throw new CHttpException(404,'The requested page does not exist.');
+		}else{
+			//verificamos si el estado del convenio es no aprobado
+			$modelestado = ConvenioEstados::model()->find('convenios_idConvenio=:convenios_idConvenio AND estadoConvenios_idEstadoConvenio!=:estadoConvenios_idEstadoConvenio', array(':convenios_idConvenio'=>$id, ':estadoConvenios_idEstadoConvenio'=>'5'));
+	
+			if($modelestado===null){
+				$model=null;
+			}
+
+		}
+
+		if($model===null){
+			throw new CHttpException(404,'The requested page does not exist.');
+		}
+			
+		return $model;
+	}
+
+
+
 
 	/**
 	 * Performs the AJAX validation.
