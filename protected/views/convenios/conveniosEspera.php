@@ -27,13 +27,16 @@
 		<div class="list-group panel">  
 
 		  <a href="javascript:void(0)" class="list-group-item" >Filtrar por </a>	
-	      <a href="#SubEstado" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubEstado" ><?php echo $form->labelEx($model,'estadoConv'); ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
-	      <div class="collapse list-group-submenu" id="SubEstado"> 
+		  <a href="javascript:void(0)" class="list-group-item opcion" ><?php echo $form->labelEx($model,'estadoConv'); ?> </a>	
+	      <!--<a href="#SubEstado" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubEstado" ><?php /*echo $form->labelEx($model,'estadoConv');*/ ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>-->
+	      <div class="list-group-submenu" id="SubEstado"> 
 
 	          <?php  
 	           $list6=CHtml::listData($estadoconve,'idEstadoConvenio','nombreEstadoConvenio');   
 	           echo $form->checkBoxList($model,'estadoConv', $list6,array('onclick'=>'ConvenioEstado(1)', 'template'=>'<a class="list-group-item" data-parent="#SubEstado"> {input}{label} </a>', "separator" => ""));    
 	          ?>
+
+	         <?php echo $form->hiddenField($model,'order'); ?>
 	          
 	      </div>
 
@@ -52,6 +55,10 @@
 
 </div>
 
+<ul class="breadcrumb text-right">
+  <li><a href="<?php echo $this->createUrl("site/index"); ?>">Home</a></li>
+  <li><a href="<?php echo $this->createUrl("convenios/consultar"); ?>">consultar Convenios</a></li>
+</ul>
 
 <script type="text/javascript"> 
 
@@ -62,7 +69,8 @@
 
 	function ConvenioEstado(inicio){
 
-    var pag=Number(inicio);		
+    var inicio=Number(inicio);	
+    document.getElementById("ConsultasConvenios_order").value=inicio;	
 	var data=$("#form").serialize();
 
 	var url= '<?php echo Yii::app()->createUrl("convenios/selectEstado"); ?>'

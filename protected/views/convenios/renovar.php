@@ -1,20 +1,20 @@
 <?php 
   $this->breadcrumbs=array(
-	'Convenios'=>array('renovar'),
+	'Consultar'=>array('consultar'),
 	'Renovar',
 );
 ?>
 
- <div class="row">
+ <!--<div class="row">
 	<div  class="nuevo col-md-12 text-left">
-		 <h4>Renovar: <?php echo $model->nombreConvenio; ?></h4>
+		 <h4>Renovar: <?php /*echo $model->nombreConvenio; */?></h4>
 	</div>
- </div>
+ </div>-->
 
  <ul class="list-group">
   <li class="list-group-item"><h4>Información general del Convenio a renovar</h4>
   	 <ul>
-  		
+  		<li>Nombre: <small><?php echo $model->nombreConvenio; ?></small></li>
 	    <li>Fecha Inicio: <small><?php echo $model->fechaInicioConvenio; ?></small></li>
 	    <li>Fecha Caducidad:<small><?php echo $model->fechaCaducidadConvenio; ?></small></li>
 	    <li>Estado Actual: <small><?php echo $estado; ?></small><?php 
@@ -35,7 +35,7 @@
                         'action' =>Yii::app()->createUrl('convenios/renovar'."&id=".$model->idConvenio),
                         'id' => 'form',
                         'enableAjaxValidation' => true,
-                        'enableClientValidation' => true,
+                        /*'enableClientValidation' => true,*/
                         'clientOptions' => array(
                           /*'validateOnSubmit' => true,*/
                           'validateOnChange' => true,
@@ -116,8 +116,8 @@
             </div>
         </div>
     </div>
-
-
-
-
+<ul class="breadcrumb text-right">
+  <li><a href="<?php echo $this->createUrl("site/index"); ?>">Home</a></li>
+  <li><a href="<?php echo $this->createUrl("convenios/consultar"); ?>">consultar Convenios</a></li>
+</ul>
 

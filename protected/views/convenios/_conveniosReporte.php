@@ -5,14 +5,15 @@ while(($row=$resultados->read())!==false) {  ?>
 			<aside id="prueba" class="list-group-item" >
 				<div class="row">
                       <div class="col-sm-12">
-                      	<p class="text-info"><?php echo $model->id_convenio." ".$model->tipo_convenio  ?></p>
+                      	<p class="text-info"><?php echo $model->id_convenio." ".$model->tipo_convenio; ?><small class="text-primary"><?php echo " ".$model->nombre_convenio; ?></small></p>
+
                        </div> 			
                   </div>
 
                   <div class="row">
 					
                   	<div class="col-sm-12">
-                  		<p  class="text-primary text-center"><?php echo $model->nombre_convenio; ?></p>	
+                  		<!--<p  class="text-primary text-center"><?php /* echo $model->nombre_convenio; */?></p>-->	
                   		 <dl id="listreporte" class="dl-horizontal">
 						    <dt>Fecha Inicio </dt>
 						    <dd><small class="text-muted"><?php   echo $model->fecha_inicio." ";?></small></dd>

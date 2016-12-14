@@ -3,7 +3,7 @@
 /* @var $model Convenios */
 
 $this->breadcrumbs=array(
-	'Convenios'=>array('index'),
+	'Convenios'=>array('consultar'),
 	'Detalle de convenio',
 	//$model->idConvenio,
 );
@@ -16,21 +16,21 @@ $this->menu=array(
 	array('label'=>'Manage Convenios', 'url'=>array('admin')),
 );
 ?>
-<div class="row">
+<!--<div class="row">
 	<div  class="nuevo col-md-12 text-left">
-		 <h4>Convenio: <span><?php echo $model->nombreConvenio; ?></span></h4>
+		 <h4>Convenio: <span><?php /*echo $model->nombreConvenio;*/ ?></span></h4>
 
 	</div>
 
- </div>
+ </div>-->
 
  <div id="Mostrar" class="list-group panel">
-	<a href="#demo1" class="list-group-item opcion" data-toggle="collapse"><h4>Datos generales del Convenio<span class="glyphicon glyphicon-plus-sign pull-right"></span></h4></a>
-	<div class="collapse" id="demo1">
+	<a href="#" class="list-group-item opcion" data-toggle="collapse"><h4>Datos generales del Convenio</h4></a>
+	<!--<div class="collapse" id="demo1">-->
 	 	<div class="list-group-item">
 	 		<ul>
-		  		<!--<li>Codigo: <?php /*echo $model->idConvenio; */?></li>
-		  		<li>Nombre: <?php /*echo $model->nombreConvenio; */?></li>-->
+		  		<!--<li>Codigo: <?php /*echo $model->idConvenio; */?></li>-->
+		  		<li>Nombre: <?php echo $model->nombreConvenio; ?></li>
 		  		<li>Objetivo:<small><?php echo $model->objetivoConvenio; ?></small></li>
 		  		<li>Tipo: <small><?php 
 		  			 $modelTipo=Tipoconvenios::model()->findByPk($model->tipoConvenios_idTipoConvenio);
@@ -47,7 +47,7 @@ $this->menu=array(
 		  	</ul>
 
 	 	</div>
-	</div>
+	<!--</div>-->
 
 
 	<a href="#demo2" class="list-group-item" data-toggle="collapse"><h4>Información de las Partes<span class="glyphicon glyphicon-plus-sign pull-right"></span></h4></a>

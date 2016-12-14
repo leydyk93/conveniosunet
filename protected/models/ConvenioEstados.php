@@ -63,14 +63,13 @@ class ConvenioEstados extends CActiveRecord
 
 		foreach ($resultados as $fila) {
 
-			if($this->fechaCambioEstado < $maxFecha){
+			if( $maxFecha>$this->fechaCambioEstado){
 				$this->addError('fechaCambioEstado','debe ser superior a la ultima fecha de cambio de estado '.$maxFecha);	
 				
 			}
 			
 
 		}
-
 
 	}
 

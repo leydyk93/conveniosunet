@@ -30,8 +30,8 @@
   <?php endif?>
   
   <div class="list-group panel">
-    <a href="#demo3" class="list-group-item" data-toggle="collapse" data-parent="#MainMenu">Filtrar por <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
-    <div class="collapse" id="demo3">
+    <a href="#demo3" class="list-group-item" data-toggle="collapse" data-parent="#MainMenu">Filtrar por: </a>
+    <!--<div class="collapse" id="demo3">-->
 
       <a  class="list-group-item ">
        <div class="row">
@@ -242,7 +242,7 @@
               echo CHtml::button('Desmarcar filtros',array('onclick'=>'limpiarFiltros();','class'=>'btn btn-conv btn-md'));
              ?> 
       </a>
-    </div>
+    <!--</div>-->
    
   </div>
     <!--<?php // $this->endWidget(); ?>-->
@@ -273,6 +273,11 @@
 
   <?php $this->endWidget(); ?> 
 </div>
+
+<ul class="breadcrumb text-right">
+  <li><a href="<?php echo $this->createUrl("site/index"); ?>">Home</a></li>
+  <li><a href="<?php echo $this->createUrl("convenios/conveniosEspera"); ?>">Convenios No Aprobados</a></li>
+</ul>
 
 <script type="text/javascript">
 

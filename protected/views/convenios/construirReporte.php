@@ -6,11 +6,7 @@
  ?>
 
 <div class="row">
-
-    
-
-<div  id="MainMenu" class="col-sm-4">
-   <?php 
+  <?php 
       $form=$this->beginWidget('CActiveForm',
         array(
           'method' =>'POST',
@@ -26,11 +22,12 @@
           
           ));
      ?>
+<div  id="MainMenu" class="col-sm-4">
+ 
 <!--el menu de prueba-->
   <div class="list-group panel">
-    <a href="#demo3" class="list-group-item" data-toggle="collapse" data-parent="#MainMenu">Filtrar por <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
-    <div class="collapse" id="demo3">
-
+    <a href="javascript:void(0)" class="list-group-item" data-toggle="collapse" data-parent="#MainMenu">Filtrar por</a>
+   <!-- <div class="collapse" id="demo3">-->
       <a  class="list-group-item ">
        <div class="row">
         <div class="col-xs-1"><?php echo $form->labelEx($model,'anio');  ?></div>
@@ -129,16 +126,6 @@
          </a>
       </div>
 
-      <!--<a href="#SubEstado" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubEstado" ><?php //echo $form->labelEx($model,'estadoConv'); ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
-      <div class="collapse list-group-submenu" id="SubEstado"> 
-
-          <?php  
-          // $list6=CHtml::listData($estadoconve,'idEstadoConvenio','nombreEstadoConvenio');   
-          // echo $form->checkBoxList($model,'estadoConv', $list6,array('onclick'=>'GenererarReportes();', 'template'=>'<a class="list-group-item" data-parent="#SubEstado"> {input}{label} </a>', "separator" => ""));    
-          ?>
-          
-      </div>-->
-
        <a href="#SubVence" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubVence" ><label for="">Fecha de vencimiento</label> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
       <div class="collapse list-group-submenu" id="SubVence"> 
         
@@ -235,72 +222,48 @@
 
         </a>
       </div>
-      <a  class="list-group-item text-center">
-
-           <?php             
-            //  echo CHtml::button('Reportes',array('onclick'=>'GenererarReportes();','class'=>'btn btn-conv btn-md'));
-          ?>
-      </a>
        <a  class="list-group-item text-center">
        <?php      
               echo CHtml::button('Desmarcar filtros',array('onclick'=>'limpiarFiltros();','class'=>'btn btn-conv btn-md'));
              ?> 
       </a>
-    </div>
+   <!-- </div>-->
    
   </div>
-    <?php $this->endWidget(); ?>
+   <!-- Aqui Estaba -->
   </div>
- 
+
+   <div id="Resulreporte" class="col-sm-8">
+
+     <div class="row">
+      <div class="col-sm-8"> <h4>Reporte de Convenios</h4></div>
+      <div class="col-sm-4"> 
+          
+          <?php       
+                   echo $form->dropDownList($model,'order', array('1'=>'Ordenar por fecha Inicio','2'=>'Ordenar por fecha de caducidad','3'=>'Ordenar por Nombre ',),
+                              array('class'=>'form-control input-sm'));
+                  ?> 
+
+      </div>
+    </div>
+
+     <div class="form-group">  
+        <div class="col-sm-8">
+          <?php echo CHtml::textField('titulo','',array('class'=>'form-control','placeholder'=>"Título del Reporte")); ?>
+        </div>     
+          <?php  echo CHtml::button('Generar Reporte',array('onclick'=>'javascript:print();','class'=>'btn btn-conv btn-md col-sm-4')); ?>    
+     </div>
+
+   </div>
 
  <div  id="Resulconvenios" class="col-sm-8">
-
-		 <?php 
-		      $formrep=$this->beginWidget('CActiveForm',
-		        array(
-		          'method' =>'POST',
-		          'action' =>Yii::app()->createUrl('convenios/_ajaxContent'),
-		          'id' => 'formreporte',
-		            'enableAjaxValidation' => true,
-		            'enableClientValidation' => true,
-		            'clientOptions' => array(
-		              'validateOnSubmit' => true,
-		              'validateOnChange' => true,
-		              'validateOnType' => true,
-		              ),
-		             'htmlOptions'=>array(
-	                          'class'=>'form-horizontal',
-	                        ),
-		          
-		          ));
-		     ?>
-
-		 <div class="form-group">  
-
-		 	  <div class="col-sm-8">
-				<?php echo   $formrep->textField($reporte,'titulo',array('class'=>'form-control','placeholder'=>"Título del Reporte")); ?>
-		 	  	<?php  echo  $formrep->error($reporte,'titulo'); ?>
-		 	  </div> 
-			   
-			 		<?php  echo CHtml::button('Generar Reporte',array('onclick'=>'javascript:print();','class'=>'btn btn-conv btn-md col-sm-4')); ?>  	
-			  
-		 </div>
-
-		 <div class="form-group">  
-				 <div class="col-sm-12">
-				<?php  echo  $formrep->textArea($reporte,'descripcion',array('class'=>"form-control", 'rows'=>"3" ,'placeholder'=>"Descripción del Reporte (mecione los filtros seleccionados para crear el reporte)"));  ?>  
-				 <?php  echo  $formrep->error($reporte,'descripcion'); ?>
-        		</div>	
-		 </div>
-	 
-		 <?php $this->endWidget(); ?>
-
+               
     <div id="resul" class="list-group" >
 
     </div>
 
  </div>
-  
+    <?php $this->endWidget(); ?>
 </div>
 
 
@@ -319,6 +282,11 @@ $('#ConsultasConvenios_institucion').change(function() {
 $('#ConsultasConvenios_ambitoGeografico').change(function() {
     //console.log($('#ConsultasConvenios_institucion option:selected').val());
     GenererarReportes();
+});
+
+$('#ConsultasConvenios_order').change(function() {
+    //console.log($('#ConsultasConvenios_institucion option:selected').val());
+     GenererarReportes();
 });
 
 	function GenererarReportes(){
@@ -381,9 +349,9 @@ $('#ConsultasConvenios_ambitoGeografico').change(function() {
 
 </script> 
 
-
-
-    
-
+<ul id="navInferior" class="breadcrumb text-right">
+  <li><a href="<?php echo $this->createUrl("site/index"); ?>">Home</a></li>
+  <li><a href="<?php echo $this->createUrl("convenios/consultar"); ?>">consultar Convenios</a></li>
+</ul>
 
 
