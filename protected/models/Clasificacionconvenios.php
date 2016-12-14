@@ -57,8 +57,8 @@ class Clasificacionconvenios extends CActiveRecord
 	{
 		return array(
 			'idClasificacionConvenio' => 'Id Clasificacion Convenio',
-			'nombreClasificacionConvenio' => 'Nombre Clasificacion Convenio',
-			'descripcionClasificacionConvenio' => 'Descripcion Clasificacion Convenio',
+			'nombreClasificacionConvenio' => 'Nombre Clasificacion ',
+			'descripcionClasificacionConvenio' => 'Descripcion Clasificacion',
 		);
 	}
 

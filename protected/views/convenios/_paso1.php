@@ -218,15 +218,15 @@ if(!isset($_SESSION['alcance'])){
         <div class="col-sm-9"> 
             <?php echo $form->dropDownList($pasouno,'dependencia',
             CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),
-            array('class'=>"form-control input-sm"),
+            array('class'=>"form-control input-sm",'prompt'=>'Seleccione'),
             array('options' => array($_SESSION['dependenciaconvenio']=>array('selected'=>true)))); ?>
             <?php echo $form->error($pasouno,'dependencia'); ?>
 
             
 
         </div>
-        <div class="col-sm-1"><a  href="#" data-toggle="modal" data-target="#miventana" >
-                <span class="glyphicon glyphicon-plus"></span>
+        <div class="col-sm-1"><a  href="#" data-toggle="modal" data-target="#miventana"  onclick="limpiarmodaldependencia()" >
+                <span class="glyphicon glyphicon-plus" data-toggle=""></span>
         </a></div>
       </div>
     
@@ -237,25 +237,31 @@ if(!isset($_SESSION['alcance'])){
            
             <?php echo $form->dropDownList($pasouno,'estado',
                 CHtml::listData(Estadoconvenios::model()->findAll(), 'idEstadoConvenio', 'nombreEstadoConvenio'),
-                array('class'=>"form-control input-sm"),
+                array('class'=>"form-control input-sm",'prompt'=>'Seleccione'),
                 array('options' => array($_SESSION['estado']=>array('selected'=>true)))); ?>
             <?php echo $form->error($pasouno,'estado'); ?>
         </div>
+        <div class="col-sm-1"><a  href="#" data-toggle="modal" data-target="#miestado" onclick="limpiarmodalestado()"  >
+                <span class="glyphicon glyphicon-plus" data-toggle=""></span>
+        </a></div>
       </div>
 
      <legend class="text-center header"><h4>Características del Convenio</h4></legend>  
 
       <div class="form-group">
-        <?php echo $form->labelEx($pasouno,'clasiicacion',array('class'=>'control-label col-sm-2')); ?>
+        <?php echo $form->labelEx($pasouno,'clasificacion',array('class'=>'control-label col-sm-2')); ?>
         
         <div class="col-sm-9"> 
            
             <?php echo $form->dropDownList($pasouno,'clasificacion',
             CHtml::listData(Clasificacionconvenios::model()->findAll(), 'idClasificacionConvenio', 'nombreClasificacionConvenio'),
-                array('class'=>"form-control input-sm"),
+                array('class'=>"form-control input-sm",'prompt'=>'Seleccione'),
                 array('options' => array($_SESSION['clasificacion']=>array('selected'=>true)))); ?>
             <?php echo $form->error($pasouno,'clasificacion'); ?>
         </div>
+         <div class="col-sm-1"><a  href="#" data-toggle="modal" data-target="#miclasificacion" onclick="limpiarmodalclasificacion()"  >
+                <span class="glyphicon glyphicon-plus" data-toggle=""></span>
+        </a></div>
       </div>
 
         <div class="form-group">
@@ -292,7 +298,7 @@ if(!isset($_SESSION['alcance'])){
 </div><!--contenido-->
 </main>
 
-
+<!--                                   PANTALLA MODAL DEPENDENCIA                    !-->
 
 <div class="modal fade" id="miventana" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog"> 
@@ -341,21 +347,24 @@ if(!isset($_SESSION['alcance'])){
                            </div>
 
                 
-                          
+                          <div class="row">
+                            <div class="col-sm-10"></div>
                     <?php   echo CHtml:: ajaxSubmitButton(
                             'Guardar', array('convenios/guardardependencia'),array(
                              //'type'=>'post',
                              //'dataType'=>'json', 
+                            'beforeSend'=>'js:function(){ alert(\'antes de enviar\')}',
+
                             'update'=>'#PasounoForm_dependencia',
                             'complete'=>'js:function(data){
                               if(getCookie("gdependencia")==1){
                                   document.cookie="gdependencia=0";
                                    $("#MensajeDependencia").html("");
                                 
-                                  $("#MensajeDependencia").html("Dependencia guardada con éxito cierre la pantalla modal y continue la carga");
+                                  $("#MensajeDependencia").html("<font color=\'green\'> Dependencia guardada con éxito cierre la pantalla modal y continue la carga");
                                   }
                               else{
-                                  $("#MensajeDependencia").html("Llene todos los campos");
+                                  $("#MensajeDependencia").html("<font color=\'red\'>Llene todos los campos");
                               }
                              
                             }',
@@ -365,18 +374,16 @@ if(!isset($_SESSION['alcance'])){
                       ); ?>
                    
                     <div id="resultado"></div>
+                    </div>
 
               <?php $this->endWidget(); ?>  
 
                 </div>
                 <div class="modal-footer">
-                    <button  type="button" class="btn btn-conv" data-dismiss="modal"> Cerrar</button>
-                   
-                   
+                   <!-- <button  type="button" class="btn btn-conv" data-dismiss="modal"> Cerrar</button>-->
+                        
                     <?php //echo CHtml::button('Guardar',array('onclick'=>'guard();','class'=>'btn btn-conv btn-sm')); ?>
-                   
-                  
-
+        
                     <?php 
                     $value=0;
                     $value1="";
@@ -394,8 +401,209 @@ if(!isset($_SESSION['alcance'])){
         </div>
     </div>
 </div>
+
+<!--                                   PANTALLA MODAL CLASIFICACIÓN                !-->
+
+<div class="modal fade" id="miclasificacion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog"> 
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4>Agregar Nueva Clasificación</h4>
+                </div>            
+                <div class="modal-body">
+
+                  
+                    <?php 
+                       $formc=$this->beginWidget("CActiveForm",array(  
+                        'method' => 'POST',
+                         'action'=> Yii::app()->createUrl('convenios/create'),
+                         'id'=>'clasificacion',
+                        // 'enableAjaxValidation'=>true,
+                         'enableClientValidation'=> true,
+                         'clientOptions'=> array(
+                            'validateOnSubmit'=> true,
+                            'validateOnChange'=> true,
+                            'validateOnType'=>true,
+                          ),
+                          'htmlOptions'=>array('class'=>'form-horizontal'),                      
+                       ));
+
+                      ?>     
+
+                          <div id="MensajeClasificacion"></div>
+                          <br>
+                         <div class="form-group">
+                    
+                             <?php  echo $formc->labelEx($clas,'nombreClasificacionConvenio',array('class'=>'control-label col-sm-2')); ?>
+                          <div class="col-sm-10">
+                            <?php  echo $formc->textField($clas,"nombreClasificacionConvenio",array('class'=>'form-control input-sm'));?>
+                            <?php  echo $formc->error($clas,"nombreClasificacionConvenio"); ?>
+                            </div>
+                         </div>
+
+                          <div class="form-group">   
+                          <?php  echo $formc->labelEx($clas,'descripcionClasificacionConvenio',array('class'=>'control-label col-sm-2')); ?>
+                           <div class="col-sm-10">
+                          <?php  echo $formc->textField($clas,"descripcionClasificacionConvenio",array('class'=>'form-control input-sm'));?>
+                          <?php echo $formc->error($clas,"descripcionClasificacionConvenio"); ?>
+                           </div>
+                           </div>
+
+                
+                          <div class="row">
+                            <div class="col-sm-10"></div>
+                    <?php   echo CHtml:: ajaxSubmitButton(
+                            'Guardar', array('convenios/guardarclasificacion'),array(
+                             //'type'=>'post',
+                             //'dataType'=>'json', 
+                            //'beforeSend'=>'js:function(){ alert(\'antes de enviar\')}',
+
+                            'update'=>'#PasounoForm_clasificacion',
+                            'complete'=>'js:function(data){
+                              if(getCookie("gclasificacion")==1){
+                                  document.cookie="gclasificacion=0";
+                                   $("#MensajeClasificacion").html("");
+                                
+                                  $("#MensajeClasificacion").html("<font color=\'green\'>Clasificacion guardada con éxito cierre la pantalla modal y continue la carga");
+                                  }
+                              else{
+                                  $("#MensajeClasificacion").html("<font color=\'red\'> Llene todos los campos");
+                              }
+                             
+                            }',
+                         
+                            
+                            ),array("class"=>'btn btn-conv')//,'data-dismiss'=>'modal')
+                      ); ?>
+                   
+                    <div id="resultado"></div>
+                    </div>
+
+              <?php $this->endWidget(); ?>  
+
+                </div>
+                <div class="modal-footer">
+                
+                </div>
+        </div>
+    </div>
+</div>
+
+<!--                                   PANTALLA MODAL ESTADO                !-->
+
+<div class="modal fade" id="miestado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog"> 
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4>Agregar Nuevo Estado</h4>
+                </div>            
+                <div class="modal-body">
+
+                  
+                    <?php 
+                       $forme=$this->beginWidget("CActiveForm",array(  
+                        'method' => 'POST',
+                         'action'=> Yii::app()->createUrl('convenios/create'),
+                         'id'=>'clasificacion',
+                        // 'enableAjaxValidation'=>true,
+                         'enableClientValidation'=> true,
+                         'clientOptions'=> array(
+                            'validateOnSubmit'=> true,
+                            'validateOnChange'=> true,
+                            'validateOnType'=>true,
+                          ),
+                          'htmlOptions'=>array('class'=>'form-horizontal'),                      
+                       ));
+
+                      ?>     
+
+                          <div id="MensajeEstado"></div>
+                          <br>
+                         <div class="form-group">
+                    
+                             <?php  echo $forme->labelEx($est,'nombreEstadoConvenio',array('class'=>'control-label col-sm-2')); ?>
+                          <div class="col-sm-10">
+                            <?php  echo $forme->textField($est,"nombreEstadoConvenio",array('class'=>'form-control input-sm'));?>
+                            <?php  echo $forme->error($est,"nombreEstadoConvenio"); ?>
+                            </div>
+                         </div>
+
+                          <div class="form-group">   
+                          <?php  echo $formc->labelEx($est,'descripcionEstadoConvenio',array('class'=>'control-label col-sm-2')); ?>
+                           <div class="col-sm-10">
+                          <?php  echo $formc->textField($est,"descripcionEstadoConvenio",array('class'=>'form-control input-sm'));?>
+                          <?php echo $formc->error($est,"descripcionEstadoConvenio"); ?>
+                           </div>
+                           </div>
+
+                
+                          <div class="row">
+                            <div class="col-sm-10"></div>
+                    <?php   echo CHtml:: ajaxSubmitButton(
+                            'Guardar', array('convenios/guardarestado'),array(
+                             //'type'=>'post',
+                             //'dataType'=>'json', 
+                            //'beforeSend'=>'js:function(){ alert(\'antes de enviar\')}',
+
+                            'update'=>'#PasounoForm_estado',
+                            'complete'=>'js:function(data){
+                              if(getCookie("gestado")==1){
+                                  document.cookie="gestado=0";
+                                   $("#MensajeEstado").html("");
+                                
+                                  $("#MensajeEstado").html("<font color=\'green\'>Estado guardado con éxito cierre la pantalla modal y continue la carga");
+                                  }
+                              else{
+                                  $("#MensajeEstado").html("<font color=\'red\'> Llene todos los campos");
+                              }
+                             
+                            }',
+                         
+                            
+                            ),array("class"=>'btn btn-conv')//,'data-dismiss'=>'modal')
+                      ); ?>
+                   
+                    <div id="resultado"></div>
+                    </div>
+
+              <?php $this->endWidget(); ?>  
+
+                </div>
+                <div class="modal-footer">
+                
+                </div>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript">
       
+        function limpiarmodaldependencia(){
+          var nom=document.getElementById("Dependencias_nombreDependencia");
+          nom.value="";
+          var tel=document.getElementById("Dependencias_telefonoDependencia");
+          tel.value="";
+          var msj=document.getElementById("MensajeDependencia");
+          msj.innerHTML=" ";
+        }
+         function limpiarmodalclasificacion(){
+          var nom=document.getElementById("Clasificacionconvenios_nombreClasificacionConvenio");
+          nom.value="";
+          var tel=document.getElementById("Clasificacionconvenios_descripcionClasificacionConvenio");
+          tel.value="";
+          var msj=document.getElementById("MensajeClasificacion");
+          msj.innerHTML=" ";
+        }
+         function limpiarmodalestado(){
+          var nom=document.getElementById("Estadoconvenios_nombreEstadoConvenio");
+          nom.value="";
+          var tel=document.getElementById("Estadoconvenios_descripcionEstadoConvenio");
+          tel.value="";
+          var msj=document.getElementById("MensajeEstado");
+          msj.innerHTML=" ";
+        }
         function recolectar(){
             
             var selec=document.getElementById("PasounoForm_tipo");

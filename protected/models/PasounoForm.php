@@ -16,9 +16,9 @@
 		public function rules (){
 
 			return array(
-				array("tipo,nombreconvenio,fechainicio,fechacaducidad,objetivo,dependencia,estado,alcance,clasificacion","required"),
+				array("tipo,nombreconvenio,fechainicio,fechacaducidad,objetivo,estado,clasificacion","required"),
 				array('nombreconvenio','match','pattern'=>'/^[a-záéíóúàèìòùäëïöüñ\s]+$/i','message'=>'el tipo de datos introducido es incorrecto' ),
-				array('nombreconvenio','length','min'=>5,'tooShort'=>'Minimo 5 Caracteres','max'=>50,'tooLong'=>'Maximo 50 caracteres'),
+				array('nombreconvenio','length','max'=>200,'tooLong'=>'Maximo 200 caracteres'),
 				array('fechainicio','date','format'=>'yyyy-mm-dd','message'=>'Debe introducir un formato de fecha ejem 2016-01-01'),
 				array('fechacaducidad','date','format'=>'yyyy-mm-dd','message'=>'Debe introducir un formato de fecha ejem 2016-01-01'),
 				array('objetivo','length','max'=>300,'tooLong'=>'Maximo 300 caracteres'),
@@ -39,7 +39,7 @@
 					'dependencia' => 'dependencia',
 					'estado' => 'Estado Inicial',
 					'alcance'=>'Alcance',
-					'clasificacion'=>'Clasificacion'
+					'clasificacion'=>'Clasificacion',
 				);
 			}
 		public function comprobar_email($attributes, $params){

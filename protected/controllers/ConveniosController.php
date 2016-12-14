@@ -32,7 +32,7 @@ class ConveniosController extends Controller
 
 
 
-				'actions'=>array('index','view','archivo','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','autocompletef','guardarinstitucion','guardarresponsable','guardararchivo','validacionautocomplete','prueba','updateajax','reporte','guardardependencia','ConstruirReporte','createEspecifico','updateConvenio'),
+				'actions'=>array('index','view','archivo','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','autocompletef','guardarinstitucion','guardarresponsable','guardararchivo','validacionautocomplete','prueba','updateajax','reporte','guardardependencia','ConstruirReporte','createEspecifico','updateConvenio','guardarclasificacion','guardarestado'),
 
 				'users'=>array('*'),
 			),
@@ -79,7 +79,7 @@ class ConveniosController extends Controller
 		$consulta .="JOIN tipoconvenios tc ON tc.idTipoConvenio = c.tipoConvenios_idTipoConvenio ";
 		$consulta .="JOIN institucion_convenios ic ON c.idConvenio = ic.convenios_idConvenio ";
 		$consulta .="JOIN instituciones inst ON inst.idInstitucion = ic.instituciones_idInstitucion ";
-		$consulta .="JOIN tiposInstituciones tinst ON tinst.idTipoInstitucion = inst.tiposInstituciones_idTipoInstitucion ";
+		$consulta .="JOIN tiposinstituciones tinst ON tinst.idTipoInstitucion = inst.tiposInstituciones_idTipoInstitucion ";
 		$consulta .="JOIN estados edo ON edo.idEstado = inst.estados_idEstado ";
 		$consulta .="JOIN paises ps ON ps.idPais = edo.paises_idPais ";
 		$consulta .="WHERE c.idConvenio = ".$id; 
@@ -535,6 +535,10 @@ class ConveniosController extends Controller
 
 		$dep=new Dependencias;
 
+		$clas= new Clasificacionconvenios;
+
+		$est= new Estadoconvenios;
+
 		//logic del formulario 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -614,7 +618,7 @@ class ConveniosController extends Controller
 			}
 
 		$this->render('create',array(
-			"pasouno"=>$pasouno,"dep"=>$dep
+			"pasouno"=>$pasouno,"dep"=>$dep,"clas"=>$clas,"est"=>$est
 		));
 
 	}
@@ -1740,13 +1744,62 @@ class ConveniosController extends Controller
 						echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion), true);
 				}	
 		}
-		//$return=array();
-		//$return['status']='1';
-		//echo CJSON::encode($return);
-		//Yii::app()->end();
 		
 	}
+public function actionGuardarclasificacion(){
 
+		echo("<script>console.log('Entro clasificacion');</script>"); 
+		$clasificacion= new Clasificacionconvenios;
+
+		if(isset($_POST["Clasificacionconvenios"])){
+			$clasificacion->attributes=$_POST["Clasificacionconvenios"];
+
+			if($clasificacion->save()){
+			//$dependencia->save();
+			echo "Clasificacion Guardadda con exito ";
+			 setcookie("gclasificacion","1");
+			}
+			else{
+				setcookie("gclasificacion","0"); 
+				
+			}
+
+				$lista= Clasificacionconvenios::model()->findAll();
+		 	    $lista=CHtml::listData($lista,'idClasificacionConvenio','nombreClasificacionConvenio');
+
+				foreach ($lista as $valor => $descripcion) {
+						echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion), true);
+				}	
+		}
+		
+	}
+public function actionGuardarestado(){
+
+		echo("<script>console.log('Entro estado');</script>"); 
+		$estado= new Estadoconvenios;
+
+		if(isset($_POST["Estadoconvenios"])){
+			$estado->attributes=$_POST["Estadoconvenios"];
+
+			if($estado->save()){
+			//$dependencia->save();
+			echo "Estado Guardadda con exito ";
+			 setcookie("gestado","1");
+			}
+			else{
+				setcookie("gestado","0"); 
+				
+			}
+
+				$lista= Estadoconvenios::model()->findAll();
+		 	    $lista=CHtml::listData($lista,'idEstadoConvenio','nombreEstadoConvenio');
+
+				foreach ($lista as $valor => $descripcion) {
+						echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion), true);
+				}	
+		}
+		
+	}
 	public function actionGuardarinstitucion(){
 
 		// echo("<script>console.log('Extension ".$e."');</script>"); 

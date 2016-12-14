@@ -52,7 +52,7 @@
 			<?php 
 		//campos del formulario 
 			
-			/*echo "<br>";
+			echo "<br>";
 			echo "id_convenio: ".$_SESSION['idconvenio'];
 			echo "<br>";
 			echo "tipo : ".$_SESSION['tipo'];
@@ -73,7 +73,7 @@
 			echo "<br>";
 			echo "alcance: ".$_SESSION['alcance'];
 			echo "<br>";
-*/
+
 			//echo "idpapa: ".$_SESSION['idpapa'];
 			echo "<br>";
 
