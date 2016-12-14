@@ -1,7 +1,7 @@
 <?php 
   $this->breadcrumbs=array(
-	'Convenios'=>array('consultar'),
-	'Consulta Convenios',
+	'Consultar'=>array('consultar'),
+  'Convenios Aprobados'
 );
  ?>
 <div class="row">

@@ -1,6 +1,6 @@
 <?php 
   $this->breadcrumbs=array(
-	'Convenios'=>array('consultar'),
+	'Consultar'=>array('consultar'),
 	'Convenios en Espera',
 );
  ?>

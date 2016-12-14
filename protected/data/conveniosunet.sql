@@ -803,7 +803,7 @@ JOIN tiporesponsable tr ON tr.idTipoResponsable= r.tipoResponsable_idTipoRespons
 WHERE ce.fechaCambioEstado = (
 SELECT MAX( fechaCambioEstado ) 
 FROM convenio_estados
-WHERE convenios_idConvenio = c.idConvenio
+WHERE convenios_idConvenio = c.idConvenio and  estadoConvenios_idEstadoConvenio="5"
 ) and upper(tr.descripcionTipoResponsable)="CONTACTO";
 
 SELECT c.idConvenio, inst.siglasInstitucion, inst.nombreInstitucion, tinst.nombreTipoInstitucion, edo.nombreEstado, ps.nombrePais, r.primerNombreResponsable, r.primerApellidoResponsable, r.correoElectronicoResponsable, r.telefonoResponsable, tr.descripcionTipoResponsable

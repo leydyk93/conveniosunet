@@ -228,9 +228,9 @@ INSERT INTO convenios (idConvenio,nombreConvenio,fechaInicioConvenio,fechaCaduci
 ('03', 'convenio 3','2015/02/01','2017/01/01','ejemplo 3','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio3/djndkjaskd.pdf','1','2','fmkmfkkfm','2','01');
 
 INSERT INTO convenios (idConvenio,nombreConvenio) VALUES
-('10', 'convenio 10'),
-('11', 'convenio 11'),
-('12', 'convenio 12');
+('5', 'convenio 5'),
+('6', 'convenio 6'),
+('7', 'convenio 7');
 
 
 ALTER TABLE convenios
@@ -553,9 +553,9 @@ INSERT INTO convenio_Estados (convenios_idConvenio,estadoConvenios_idEstadoConve
 ('03','5','2015/03/10','1'),
 ('04','5','2015/03/10','1'),
 /*estado diferente de aporbado*/
-('10','1','2016/01/20','1'),
-('11','1','2016/02/10','1'),
-('12','1','2016/03/12','1');
+('5','1','2016/01/20','1'),
+('6','1','2016/02/10','1'),
+('7','1','2016/03/12','1');
 
 
 

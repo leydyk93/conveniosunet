@@ -1,18 +1,14 @@
 <?php 
   $this->breadcrumbs=array(
-	'Convenios'=>array('Cambiar Estado'),
+	'Convenios en Espera'=>array('conveniosEspera'),
 	'Cambiar estado',
 );
  ?>
 
-  <div class="row">
-	<div  class=" nuevo col-md-12 text-left">
-		<h4> <span class="glyphicon glyphicon-refresh"></span> Cambiar Estado: <?php echo $model->nombreConvenio; ?></h4>
-	</div>
- </div>
-
-<!--<div class="list-group">
-  <div class="list-group-item"><h4>Estados del convenio</h4>
+<h4> <span class="glyphicon glyphicon-refresh"></span> Cambiar Estado: <?php echo $model->nombreConvenio; ?></h4>
+	
+<div class="list-group">
+  <div class="list-group-item"><h4 class="text-center">Estados del convenio</h4>
 
     <div class="table-responsive">
        <table class="table table-bordered">
@@ -20,27 +16,32 @@
             <tr>
               <th>Descripcion Estado</th>
               <th>Fecha de cambio</th>
-             
               <th>Justificación</th>
               <th>Dependencia</th>
               
             </tr>
           </thead>
           <tbody>
-            <?php /*while(($row=$resultados->read())!==false) {*/ ?>
+            <?php  foreach ($estadosConv as $key => $value) { ?>
             <tr>
-              <td><?php  /* echo $modelEdoBD->nombre_convenio; */ ?></td>
-              <td><?php  /* echo $modelEdoBD->fecha_inicio;    */ ?></td>
+              <td><?php   $estadosNombre=Estadoconvenios::model()->findByPk($value->estadoConvenios_idEstadoConvenio);
+               echo  $estadosNombre->nombreEstadoConvenio; ?></td>
+              <td><?php echo $value->fechaCambioEstado;   ?></td>
             
-              <td><?php  /* echo $modelEdoBD->objetivo_convenio;*/?></td>
-              <td><?php /*  echo $modelEdoBD->tipo_convenio   */  ?></td>
+              <td><?php  echo $value->observacionCambioEstado; ?></td>
+              <td><?php  if($value->dependencias_idDependencia!=null) { 
+                              $dependenciaNombre=Dependencias::model()->findByPk($value->dependencias_idDependencia);
+                              echo  $dependenciaNombre->nombreDependencia;
+                            } 
+                   ?>
+              </td>
             </tr>
-            <?php /*} */?>
+            <?php } ?>
           </tbody>
         </table>
       </div>
   </div>	 
-</div>-->
+</div>
 
     <div class="row">
         <div class="col-md-12">
@@ -50,14 +51,13 @@
 				      $form=$this->beginWidget('CActiveForm',
 				        array(
 				          'method' =>'POST',
-				          'action' =>Yii::app()->createUrl('convenios/cambiarEstado'."&id=".$model->idConvenio),
+				          //'action' =>Yii::app()->createUrl('convenios/cambiarEstado'."&id=".$model->idConvenio),
 				          'id' => 'form',
-				          'enableAjaxValidation' => true,
+				          'enableAjaxValidation' => false,
 				          'htmlOptions'=>array(
 	                          'class'=>'form-horizontal',
-                             'enctype'=>'multipart/form-data'
+                             /*'enctype'=>'multipart/form-data'*/
 	                        ),
-
 				          ));
 				     ?>
                         <legend class="text-center header">Nuevo Estado para el convenio</legend>
@@ -146,7 +146,7 @@
                             	<?php 
           							     $list2=CHtml::listData($modelDpcia,'idDependencia', 'nombreDependencia');
                            			 echo $form->dropDownList($modeloE,'dependencias_idDependencia', 
-                                      $list2,array('class'=>"form-control input-sm", /*"empty" => "--"*/));
+                                      $list2,array('class'=>"form-control input-sm", "empty" => "--"));
 
                             	 ?>
                                
@@ -154,18 +154,18 @@
                         </div>
 
                         <?php 
-                            echo $form->labelEx($modelArchivoConv,'titulo',array('class'=>"modelArchivo"));
+                           /* echo $form->labelEx($modelArchivoConv,'titulo',array('class'=>"modelArchivo"));
                             echo $form->textField($modelArchivoConv,'titulo',array('class'=>"modelArchivo"));
-                            echo $form->error($modelArchivoConv,'titulo');
+                            echo $form->error($modelArchivoConv,'titulo');*/
                           ?>
                       
-                        <div class="form-group">
+                        <!--<div class="form-group">
                           <span class="col-md-2 col-md-offset-2 text-center"><?php ?></span>
                           <div class="col-md-7">
                           <label class="btn btn-conv btn-sm"> <span class="glyphicon glyphicon-open-file"></span> Subir Archivo del Convenio
                             <?php   
                               
-                              $this->widget('CMultiFileUpload',
+                            /*  $this->widget('CMultiFileUpload',
                               array(
                                 'model'=>$modelArchivoConv,
                                 'name'=>'documento',
@@ -183,12 +183,12 @@
                               );
                               
                                 echo $form->error($modelArchivoConv,'documento');
-                            
+                            */
                           
                            ?>
                          </label>
                           </div>
-                        </div>
+                        </div>-->
 
                         <div class="form-group">
                             <div class="col-md-12 text-center">
