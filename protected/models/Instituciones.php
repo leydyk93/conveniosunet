@@ -68,8 +68,8 @@ class Instituciones extends CActiveRecord
 			'idInstitucion' => 'Id Institucion',
 			'nombreInstitucion' => 'Nombre Institucion',
 			'siglasInstitucion' => 'Siglas Institucion',
-			'estados_idEstado' => 'Estados Id Estado',
-			'tiposInstituciones_idTipoInstitucion' => 'Tipos Instituciones Id Tipo Institucion',
+			'estados_idEstado' => 'Estado ',
+			'tiposInstituciones_idTipoInstitucion' => 'Tipo Institucion',
 		);
 	}
 

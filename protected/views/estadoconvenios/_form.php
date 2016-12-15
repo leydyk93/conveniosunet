@@ -1,42 +1,41 @@
 <?php
-/* @var $this ClasificacionconveniosController */
-/* @var $model Clasificacionconvenios */
+/* @var $this EstadoconveniosController */
+/* @var $model Estadoconvenios */
 /* @var $form CActiveForm */
 ?>
 
 <div class="row">
-	<div class="col-md-8 col-md-offset-2">
-		<div class="panel panel-default">
- 		<div class="panel text-center"><h4><?php if($model->isNewRecord){ echo "Nueva Clasificacion";}else{ echo "Modificar Clasificacion";} ?></h4></div>
+ <div class="col-md-8 col-md-offset-2">
+ 	<div class="panel panel-default">
+ 		<div class="panel text-center"><h4><?php if($model->isNewRecord){ echo "Nuevo estado Convenio";}else{ echo "Modificar estado Convenio";} ?></h4></div>
  		<div class="panel-body text-center">
-
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'clasificacionconvenios-form',
+	'id'=>'estadoconvenios-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
-		'enableAjaxValidation'=>false,
-		'htmlOptions'=>array('class'=>'form-horizontal', ),
+	'enableAjaxValidation'=>false,
+	'htmlOptions'=>array('class'=>'form-horizontal', ),
 )); ?>
 
 	<div class="form-group">
 		<div class="col-sm-4">
-		<?php echo $form->labelEx($model,'nombreClasificacionConvenio'); ?>
+		<?php echo $form->labelEx($model,'nombreEstadoConvenio'); ?>
 		</div>
 		<div class="col-sm-6">
-		<?php echo $form->textField($model,'nombreClasificacionConvenio',array('class'=>"form-control")); ?>
-		<?php echo $form->error($model,'nombreClasificacionConvenio'); ?>
+		<?php echo $form->textField($model,'nombreEstadoConvenio',array('class'=>"form-control")); ?>
+		<?php echo $form->error($model,'nombreEstadoConvenio'); ?>
 		</div>
 	</div>
 
 	<div class="form-group">
 		<div class="col-sm-4">
-		<?php echo $form->labelEx($model,'descripcionClasificacionConvenio'); ?>
+		<?php echo $form->labelEx($model,'descripcionEstadoConvenio'); ?>
 		</div>
 		<div class="col-sm-6">
-		<?php echo $form->textField($model,'descripcionClasificacionConvenio',array('class'=>"form-control")); ?>
-		<?php echo $form->error($model,'descripcionClasificacionConvenio'); ?>
+		<?php echo $form->textField($model,'descripcionEstadoConvenio',array('class'=>"form-control")); ?>
+		<?php echo $form->error($model,'descripcionEstadoConvenio'); ?>
 		</div>
 	</div>
 

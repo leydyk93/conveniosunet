@@ -22,6 +22,9 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'idInstitucion',
-		'nombre_institucion',
+		'nombreInstitucion',
+		'siglasInstitucion',
+		'estados_idEstado',
+		'tiposInstituciones_idTipoInstitucion',
 	),
 )); ?>

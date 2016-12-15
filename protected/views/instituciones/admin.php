@@ -3,16 +3,16 @@
 /* @var $model Instituciones */
 
 $this->breadcrumbs=array(
-	'Instituciones'=>array('index'),
-	'Manage',
+	'Gestion base Datos'=>array('site/configuracion'),
+	'Listar Clasificacion Convenio',
 );
 
-$this->menu=array(
+/*$this->menu=array(
 	array('label'=>'List Instituciones', 'url'=>array('index')),
 	array('label'=>'Create Instituciones', 'url'=>array('create')),
-);
+);*/
 
-Yii::app()->clientScript->registerScript('search', "
+/*Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
 	$('.search-form').toggle();
 	return false;
@@ -23,22 +23,25 @@ $('.search-form form').submit(function(){
 	});
 	return false;
 });
-");
+");*/
 ?>
+<div class="row">
+ <div class="col-sm-6">
+ <h4>Tabla: Instituciones</h4>
+ </div>	
+ <div class="col-sm-6">
+ 	<div class="text-right">
+ 		<?php echo CHtml::link('Nueva Institucion',array('create'),array('class'=>'btn btn-conv btn-md')); ?>
+ 	</div>
+ </div>
+</div>
 
-<h1>Manage Instituciones</h1>
-
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
-
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+<?php /*echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
+));*/ ?>
+<!--</div>--><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'instituciones-grid',
@@ -46,9 +49,32 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'columns'=>array(
 		'idInstitucion',
-		'nombre_institucion',
+		'nombreInstitucion',
+		'siglasInstitucion',
+		array('name'=>'estados_idEstado','header'=>'Estado' ,'value'=>'$data->estadosIdEstado->nombreEstado', ),
+		array('name'=>'tiposInstituciones_idTipoInstitucion', 'header'=>'Tipo Institucion' ,'value'=>'$data->tiposInstitucionesIdTipoInstitucion->nombreTipoInstitucion', ),
+		
 		array(
-			'class'=>'CButtonColumn',
+			'class'=>'CButtonColumn', 'header'=>'Operaciones', 'template'=>'<span>{update}</span> <span>{delete}</span>',
+			'buttons'=>array (
+			        'update'=> array(
+			            'label'=>'',
+			            'imageUrl'=>'',
+			            'options'=>array( 'class'=>'glyphicon glyphicon-pencil' ),
+			        ),
+			        'delete'=>array(
+			            'label'=>'',
+			            'imageUrl'=>'',
+			            'options'=>array( 'class'=>'glyphicon glyphicon-remove' ),
+			        ),
+			    ),
+
+
 		),
 	),
 )); ?>
+
+<ul class="breadcrumb text-right">
+  <li><a href="<?php echo $this->createUrl("site/index"); ?>">Home</a></li>
+  <li><a href="<?php echo $this->createUrl("site/configuracion"); ?>">Gestion de la Base de Datos</a></li>
+</ul>

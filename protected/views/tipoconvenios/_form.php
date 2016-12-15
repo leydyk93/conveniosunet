@@ -7,7 +7,7 @@
 <div class="row">
  <div class="col-md-8 col-md-offset-2">
  	<div class="panel panel-default">
- 		<div class="panel-heading"><?php if($model->isNewRecord){ echo "Nuevo Tipo de Convenio";}else{ echo "Modificar Tipo de Convenio";} ?> </div>
+ 		<div class="panel text-center"><h4><?php if($model->isNewRecord){ echo "Nuevo Tipo de Convenio";}else{ echo "Modificar Tipo de Convenio";} ?></h4></div>
  		<div class="panel-body text-center">
 		<?php $form=$this->beginWidget('CActiveForm', array(
 			'id'=>'tipoconvenios-form',
@@ -30,14 +30,9 @@
 		<?php $this->endWidget(); ?>
 		<?php echo $form->error($model,'descripcionTipoConvenio'); ?>
 		</div>
-
+   <p class="note text-right">Los campos con <span class="required">*</span> son obligatorios</p>
 	</div>
-	<p class="note">Los campos con <span class="required">*</span> son obligatorios</p>
-
-	<div class="text-right">Regresar a 
- 		<?php echo CHtml::link('Lista tipo convenios',array('admin'),array('class'=>'btn btn-conv btn-md')); ?>
- 	</div>
-
+	
   </div>
 </div>
 
