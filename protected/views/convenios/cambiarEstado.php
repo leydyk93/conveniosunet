@@ -5,7 +5,7 @@
 );
  ?>
 
-<h4> <span class="glyphicon glyphicon-refresh"></span> Cambiar Estado: <?php echo $model->nombreConvenio; ?></h4>
+<h4> <span class="glyphicon glyphicon-refresh"></span> Cambiar Estado: <small><?php echo $model->nombreConvenio; ?></small></h4>
 	
 <div class="list-group">
   <div class="list-group-item"><h4 class="text-center">Estados del convenio</h4>
@@ -53,7 +53,7 @@
 				          'method' =>'POST',
 				          //'action' =>Yii::app()->createUrl('convenios/cambiarEstado'."&id=".$model->idConvenio),
 				          'id' => 'form',
-				          'enableAjaxValidation' => false,
+				          'enableAjaxValidation' => true,
 				          'htmlOptions'=>array(
 	                          'class'=>'form-horizontal',
                              /*'enctype'=>'multipart/form-data'*/
@@ -200,4 +200,10 @@
             </div>
         </div>
     </div>
+
+<ul class="breadcrumb text-right">
+  <li><a href="<?php echo $this->createUrl("site/index"); ?>">Home</a></li>
+  <li><a href="<?php echo $this->createUrl("convenios/consultar"); ?>">consultar Convenios</a></li>
+  <li><a href="<?php echo $this->createUrl("convenios/conveniosEspera"); ?>">Convenios en Espera</a></li>
+</ul>
 
