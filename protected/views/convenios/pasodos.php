@@ -90,9 +90,9 @@
 			<main class="container-fluid" >
 				<div class "row" >
 
-					<div  class="nuevo col-xs-12 text-left">
+				<!--	<div  class="nuevo col-xs-12 text-left">
 						<p ><span class="glyphicon glyphicon-th-list"></span> Nuevo Convenio Marco</p>
-					</div>
+					</div>-->
 				</div>
 
 				<div class="row">
