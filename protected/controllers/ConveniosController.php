@@ -574,6 +574,9 @@ class ConveniosController extends Controller
 
 		$est= new Estadoconvenios;
 
+		$model_ce= new ConvenioEstados;
+	
+
 		//logic del formulario 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -630,8 +633,25 @@ class ConveniosController extends Controller
 						//Si guarda en la tabla convenios entonces guarde en la tabla Institución convenios
 						if($model->save()){
 
+							$model_ce->convenios_idConvenio=$_SESSION['idconvenio'];
+		 					$model_ce->estadoConvenios_idEstadoConvenio=$_SESSION['estado'];
+		 					$model_ce->fechaCambioEstado=new CDbExpression('NOW()');
+		 					$model_ce->dependencias_idDependencia=$_SESSION['dependenciaconvenio'];
+		 					
+		 					if($model_ce->save()){
+								echo "guardo";
+							}
+							else{
+								print_r($model_ce->getErrors());
+							}
+
 							$this->redirect(array('convenios/conveniosEspera'));
 						}
+
+						//---------------------------------------------- GUARDANDO EN CONVENI-ESTADOS-------------------	
+
+							
+		 					
 					}
 					else{
 
