@@ -42,6 +42,10 @@
 	<?php echo CHtml::encode($data->dependencias_idDependencia); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('tipoResponsable_idTipoResponsable')); ?>:</b>
+	<?php echo CHtml::encode($data->tipoResponsable_idTipoResponsable); ?>
+	<br />
+
 	*/ ?>
 
 </div>

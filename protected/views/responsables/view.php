@@ -30,5 +30,6 @@ $this->menu=array(
 		'telefonoResponsable',
 		'instituciones_idInstitucion',
 		'dependencias_idDependencia',
+		'tipoResponsable_idTipoResponsable',
 	),
 )); ?>

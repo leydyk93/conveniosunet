@@ -56,6 +56,11 @@
 		<?php echo $form->textField($model,'dependencias_idDependencia'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->label($model,'tipoResponsable_idTipoResponsable'); ?>
+		<?php echo $form->textField($model,'tipoResponsable_idTipoResponsable'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>

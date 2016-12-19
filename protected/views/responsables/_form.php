@@ -4,7 +4,11 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel panel-default">
+ 		<div class="panel text-center"><h4><?php if($model->isNewRecord){ echo "Nuevo Responsable";}else{ echo "Modificar Responsable";} ?></h4></div>
+ 		<div class="panel-body text-center">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'responsables-form',
@@ -13,65 +17,108 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
+	'htmlOptions'=>array('class'=>'form-horizontal', ),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'primerNombreResponsable'); ?>
-		<?php echo $form->textField($model,'primerNombreResponsable',array('size'=>40,'maxlength'=>40)); ?>
-		<?php echo $form->error($model,'primerNombreResponsable'); ?>
+	<div class="form-group">
+		<div class="col-sm-4">
+			<?php echo $form->labelEx($model,'primerNombreResponsable'); ?>
+		</div>
+		<div class="col-sm-6">
+			<?php echo $form->textField($model,'primerNombreResponsable',array('class'=>"form-control")); ?>
+			<?php echo $form->error($model,'primerNombreResponsable'); ?>
+		</div>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'segundoNombreResponsable'); ?>
-		<?php echo $form->textField($model,'segundoNombreResponsable',array('size'=>40,'maxlength'=>40)); ?>
-		<?php echo $form->error($model,'segundoNombreResponsable'); ?>
+	<div class="form-group">
+		<div class="col-sm-4">
+			<?php echo $form->labelEx($model,'segundoNombreResponsable'); ?>
+		</div>
+		<div class="col-sm-6">
+			<?php echo $form->textField($model,'segundoNombreResponsable',array('class'=>"form-control")); ?>
+			<?php echo $form->error($model,'segundoNombreResponsable'); ?>
+		</div>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'primerApellidoResponsable'); ?>
-		<?php echo $form->textField($model,'primerApellidoResponsable',array('size'=>60,'maxlength'=>60)); ?>
-		<?php echo $form->error($model,'primerApellidoResponsable'); ?>
+	<div class="form-group">
+		<div class="col-sm-4">
+			<?php echo $form->labelEx($model,'primerApellidoResponsable'); ?>
+		</div>
+		<div class="col-sm-6">
+			<?php echo $form->textField($model,'primerApellidoResponsable',array('class'=>"form-control")); ?>
+			<?php echo $form->error($model,'primerApellidoResponsable'); ?>
+		</div>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'segundoApellidoResponsable'); ?>
-		<?php echo $form->textField($model,'segundoApellidoResponsable',array('size'=>60,'maxlength'=>60)); ?>
-		<?php echo $form->error($model,'segundoApellidoResponsable'); ?>
+	<div class="form-group">
+		<div class="col-sm-4">
+			<?php echo $form->labelEx($model,'segundoApellidoResponsable'); ?>
+		</div>
+		<div class="col-sm-6">
+			<?php echo $form->textField($model,'segundoApellidoResponsable',array('class'=>"form-control")); ?>
+			<?php echo $form->error($model,'segundoApellidoResponsable'); ?>
+		</div>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'correoElectronicoResponsable'); ?>
-		<?php echo $form->textField($model,'correoElectronicoResponsable',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'correoElectronicoResponsable'); ?>
+	<div class="form-group">
+		<div class="col-sm-4">
+			<?php echo $form->labelEx($model,'correoElectronicoResponsable'); ?>
+		</div>
+		<div class="col-sm-6">
+			<?php echo $form->textField($model,'correoElectronicoResponsable',array('class'=>"form-control")); ?>
+			<?php echo $form->error($model,'correoElectronicoResponsable'); ?>
+		</div>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
+		<div class="col-sm-4">
 		<?php echo $form->labelEx($model,'telefonoResponsable'); ?>
-		<?php echo $form->textField($model,'telefonoResponsable',array('size'=>50,'maxlength'=>50)); ?>
+		</div>
+		<div class="col-sm-6">
+		<?php echo $form->textField($model,'telefonoResponsable',array('class'=>"form-control")); ?>
 		<?php echo $form->error($model,'telefonoResponsable'); ?>
+		</div>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
+		<div class="col-sm-4">	
 		<?php echo $form->labelEx($model,'instituciones_idInstitucion'); ?>
-		<?php echo $form->textField($model,'instituciones_idInstitucion'); ?>
+		</div>
+		<div class="col-sm-6">
+		<?php echo $form->textField($model,'instituciones_idInstitucion',array('class'=>"form-control")); ?>
 		<?php echo $form->error($model,'instituciones_idInstitucion'); ?>
+		</div>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
+		<div class="col-sm-4">
 		<?php echo $form->labelEx($model,'dependencias_idDependencia'); ?>
-		<?php echo $form->textField($model,'dependencias_idDependencia'); ?>
+		</div>
+		<div class="col-sm-6">
+		<?php echo $form->textField($model,'dependencias_idDependencia',array('class'=>"form-control")); ?>
 		<?php echo $form->error($model,'dependencias_idDependencia'); ?>
+		</div>
 	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	<div class="form-group">
+		<div class="col-sm-4">
+		<?php echo $form->labelEx($model,'tipoResponsable_idTipoResponsable'); ?>
+		</div>
+		<div class="col-sm-6">
+		<?php echo $form->textField($model,'tipoResponsable_idTipoResponsable',array('class'=>"form-control")); ?>
+		<?php echo $form->error($model,'tipoResponsable_idTipoResponsable'); ?>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar',array('class'=>"btn btn-conv btn-md")); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
 
-
-</div><!-- form -->
+</div>
+   <p class="note text-right">Los campos con <span class="required">*</span> son obligatorios</p>
+	</div>
+	
+  </div>
+</div>

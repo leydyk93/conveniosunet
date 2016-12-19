@@ -3,36 +3,19 @@
 /* @var $model Responsables */
 
 $this->breadcrumbs=array(
-	'Responsables'=>array('index'),
-	'Create',
+	'Responsables'=>array('admin'),
+	'Crear',
 );
 
-$this->menu=array(
+/*$this->menu=array(
 	array('label'=>'List Responsables', 'url'=>array('index')),
 	array('label'=>'Manage Responsables', 'url'=>array('admin')),
-);
+);*/
 ?>
 
-<h1>Create Responsables</h1>
+<?php $this->renderPartial('_form', array('model'=>$model)); ?>
 
-<?php  ?>
-
-<?php 
-$this->beginWidget('zii.widgets.jui.CJuiDialog',array(
-    'id'=>'mydialog',
-    // additional javascript options for the dialog plugin
-    'options'=>array(
-        'title'=>'Dialog box 1',
-        'autoOpen'=>false,
-    ),
-));
-
-   $this->renderPartial('_form', array('model'=>$model));
-
-$this->endWidget('zii.widgets.jui.CJuiDialog');
-
-// the link that may open the dialog
-echo CHtml::link('open dialog', '#', array(
-   'onclick'=>'$("#mydialog").dialog("open"); return false;',
-));
- ?>
+<ul class="breadcrumb text-right">
+  <li><a href="<?php echo $this->createUrl("site/configuracion"); ?>">Gestion de la Base de Datos</a></li>
+  <li><a href="<?php echo $this->createUrl("admin"); ?>">Listar Responsables</a></li>
+</ul>
