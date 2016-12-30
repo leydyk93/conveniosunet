@@ -12,8 +12,9 @@ $this->menu=array(
 	array('label'=>'Manage Convenios', 'url'=>array('admin')),
 );
 ?>
-
-<?php   $this->renderPartial('_paso1', array("pasouno"=>$pasouno,"dep"=>$dep,"clas"=>$clas,"est"=>$est));?>
+<div class="container">
+	<?php   $this->renderPartial('_paso1', array("pasouno"=>$pasouno,"dep"=>$dep,"clas"=>$clas,"est"=>$est));?>
+</div>
 <!--<h1>Crear Convenios</h1>-->
 
 <!-- 

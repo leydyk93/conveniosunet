@@ -27,6 +27,7 @@ $('.search-form form').submit(function(){
 */
 ?>
 
+<div class="container">
 <div class="row">
  <div class="col-sm-6">
  <h4>Tabla: Clasificación del Convenio</h4>
@@ -78,3 +79,4 @@ $('.search-form form').submit(function(){
   <li><a href="<?php echo $this->createUrl("site/index"); ?>">Home</a></li>
   <li><a href="<?php echo $this->createUrl("site/configuracion"); ?>">Gestion de la Base de Datos</a></li>
 </ul>
+</div>

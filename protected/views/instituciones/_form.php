@@ -42,13 +42,30 @@
 
 	<div class="form-group">
 		<div class="col-sm-4">
+		<strong>Pais</strong> 
+		</div>
+		<div class="col-sm-6">
+			<?php //$findPais=Estados::model()->findByPk($model->estados_idEstado);
+			if(!$model->isNewRecord){
+			$findPais=Estados::model()->with('paisesIdPais')->findByPk($model->estados_idEstado);
+			echo $form->dropDownList($pais,'idPais', CHtml::listData(Paises::model()->findAll('idPais=:idPais', array(':idPais'=>$findPais->paises_idPais)),'idPais','nombrePais'),
+                              array('class'=>'form-control input-sm'));
+			}else{
+			
+			?>
+			<?php echo $form->dropDownList($pais,'idPais', CHtml::listData(Paises::model()->findAll(),'idPais','nombrePais'),
+                              array('class'=>'form-control input-sm',"empty" => "seleccione"));
+                             }?>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-4">
 		<?php echo $form->labelEx($model,'estados_idEstado'); ?>
 		</div>
 		<div class="col-sm-6">
 		<?php echo $form->dropDownList($model,'estados_idEstado', CHtml::listData(Estados::model()->findAll(),'idEstado','nombreEstado'),
-                              array('class'=>'form-control input-sm'));
-
-		 /*echo $form->textField($model,'estados_idEstado',array('class'=>"form-control"));*/ ?>
+                              array('class'=>'form-control input-sm',"empty" => "seleccione"));?>
 		<?php echo $form->error($model,'estados_idEstado'); ?>
 
 		</div>

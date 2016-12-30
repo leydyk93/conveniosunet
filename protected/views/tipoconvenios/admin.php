@@ -24,16 +24,17 @@ $('.search-form form').submit(function(){
 ");*/
 ?>
 
-<div class="row">
- <div class="col-sm-6">
- <h4>Tabla: Tipo de Convenio</h4>
- </div>	
- <div class="col-sm-6">
- 	<div class="text-right">
- 		<?php echo CHtml::link('Nuevo tipo de convenio',array('create'),array('class'=>'btn btn-conv btn-md')); ?>
- 	</div>
- </div>
-</div>
+<div class="container">
+	<div class="row">
+	 <div class="col-sm-6">
+	 <h4>Tabla: Tipo de Convenio</h4>
+	 </div>	
+	 <div class="col-sm-6">
+	 	<div class="text-right">
+	 		<?php echo CHtml::link('Nuevo tipo de convenio',array('create'),array('class'=>'btn btn-conv btn-md')); ?>
+	 	</div>
+	 </div>
+	</div>
 
 
 <?php /* echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
@@ -71,9 +72,8 @@ $('.search-form form').submit(function(){
 	),
 )); ?>
 
-
-<ul class="breadcrumb text-right">
-  <li><a href="<?php echo $this->createUrl("site/index"); ?>">Home</a></li>
-  <li><a href="<?php echo $this->createUrl("site/configuracion"); ?>">Gestion de la Base de Datos</a></li>
-</ul>
-
+	<ul class="breadcrumb text-right">
+	  <li><a href="<?php echo $this->createUrl("site/index"); ?>">Home</a></li>
+	  <li><a href="<?php echo $this->createUrl("site/configuracion"); ?>">Gestion de la Base de Datos</a></li>
+	</ul>
+</div>

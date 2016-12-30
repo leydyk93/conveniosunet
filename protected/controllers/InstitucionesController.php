@@ -63,6 +63,7 @@ class InstitucionesController extends Controller
 	public function actionCreate()
 	{
 		$model=new Instituciones;
+		$pais = new Paises;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -77,6 +78,7 @@ class InstitucionesController extends Controller
 
 		$this->render('create',array(
 			'model'=>$model,
+			'pais'=>$pais,
 		));
 	}
 
@@ -88,6 +90,7 @@ class InstitucionesController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$pais = new Paises;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -101,6 +104,7 @@ class InstitucionesController extends Controller
 
 		$this->render('update',array(
 			'model'=>$model,
+			'pais'=>$pais,
 		));
 	}
 

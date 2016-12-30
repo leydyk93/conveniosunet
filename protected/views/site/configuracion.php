@@ -4,6 +4,8 @@ $this->breadcrumbs=array(
 	'Configuración',
 );
  ?>
+
+ <div class="container">
  <h4>Gestión de Información en la Base de Datos </h4> 
  <p>Seleccione la tabla que desea modificar</p>
 
@@ -80,4 +82,4 @@ $this->breadcrumbs=array(
   <li><a href="<?php echo $this->createUrl("convenios/consultar"); ?>">consultar Convenios</a></li>
 </ul>
 
-
+</div>

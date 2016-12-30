@@ -4,6 +4,8 @@
   'Convenios Aprobados'
 );
  ?>
+
+<div class="container">
 <div class="row">
 
    <?php 
@@ -276,8 +278,12 @@
 
 <ul class="breadcrumb text-right">
   <li><a href="<?php echo $this->createUrl("site/index"); ?>">Home</a></li>
+ <?php  if(!Yii::app()->user->isGuest){?>
   <li><a href="<?php echo $this->createUrl("convenios/conveniosEspera"); ?>">Convenios No Aprobados</a></li>
+<?php } ?>
 </ul>
+
+</div>
 
 <script type="text/javascript">
 

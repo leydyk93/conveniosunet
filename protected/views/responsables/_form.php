@@ -85,8 +85,10 @@
 		<?php echo $form->labelEx($model,'instituciones_idInstitucion'); ?>
 		</div>
 		<div class="col-sm-6">
-		<?php echo $form->textField($model,'instituciones_idInstitucion',array('class'=>"form-control")); ?>
+		<?php echo $form->dropDownList($model,'instituciones_idInstitucion', CHtml::listData(Instituciones::model()->findAll(),'idInstitucion','nombreInstitucion'),
+                              array('class'=>'form-control input-sm')); ?>
 		<?php echo $form->error($model,'instituciones_idInstitucion'); ?>
+		
 		</div>
 	</div>
 
@@ -95,7 +97,8 @@
 		<?php echo $form->labelEx($model,'dependencias_idDependencia'); ?>
 		</div>
 		<div class="col-sm-6">
-		<?php echo $form->textField($model,'dependencias_idDependencia',array('class'=>"form-control")); ?>
+		<?php echo $form->dropDownList($model,'dependencias_idDependencia', CHtml::listData(Dependencias::model()->findAll(),'idDependencia','nombreDependencia'),
+                              array('class'=>'form-control input-sm')); ?>	
 		<?php echo $form->error($model,'dependencias_idDependencia'); ?>
 		</div>
 	</div>
@@ -105,7 +108,8 @@
 		<?php echo $form->labelEx($model,'tipoResponsable_idTipoResponsable'); ?>
 		</div>
 		<div class="col-sm-6">
-		<?php echo $form->textField($model,'tipoResponsable_idTipoResponsable',array('class'=>"form-control")); ?>
+		<?php echo $form->dropDownList($model,'tipoResponsable_idTipoResponsable', CHtml::listData(Tiporesponsable::model()->findAll(),'idTipoResponsable','descripcionTipoResponsable'),
+                              array('class'=>'form-control input-sm')); ?>		
 		<?php echo $form->error($model,'tipoResponsable_idTipoResponsable'); ?>
 		</div>
 	</div>

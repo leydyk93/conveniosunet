@@ -5,6 +5,8 @@
 );
  ?>
 
+ <div class="container">
+
 <div class="row">
      <div  id="MainMenu" class="col-sm-4">
 
@@ -59,7 +61,7 @@
   <li><a href="<?php echo $this->createUrl("site/index"); ?>">Home</a></li>
   <li><a href="<?php echo $this->createUrl("convenios/consultar"); ?>">consultar Convenios</a></li>
 </ul>
-
+</div>
 <script type="text/javascript"> 
 
 <?php if($resuldefecto==1){ ?>

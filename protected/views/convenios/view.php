@@ -24,6 +24,7 @@ $this->menu=array(
 
  </div>-->
 
+<div class="container">
  <div id="Mostrar" class="list-group panel">
 	<a href="#" class="list-group-item opcion" data-toggle="collapse"><h4>Datos generales del Convenio</h4></a>
 	<!--<div class="collapse" id="demo1">-->
@@ -134,7 +135,7 @@ $this->menu=array(
 		</div>
 	</div>
 </div>
-
+</div>
 
 
 

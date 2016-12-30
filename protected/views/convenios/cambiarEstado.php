@@ -5,6 +5,7 @@
 );
  ?>
 
+<div class="container">
 <h4> <span class="glyphicon glyphicon-refresh"></span> Cambiar Estado: <small><?php echo $model->nombreConvenio; ?></small></h4>
 	
 <div class="list-group">
@@ -45,8 +46,8 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="well well-sm">
-              
+            <div class="panel panel-default">
+               <div class="panel-heading text-center"><h4>Nuevo Estado para el Convenio</h4></div>
 				   <?php 
 				      $form=$this->beginWidget('CActiveForm',
 				        array(
@@ -60,7 +61,9 @@
 	                        ),
 				          ));
 				     ?>
-                        <legend class="text-center header">Nuevo Estado para el convenio</legend>
+                       
+                        <!--<legend class="text-center header">Nuevo Estado para el convenio</legend>-->
+                     <div class="panel-body text-center">
                         <div class="form-group">
                             <span class="col-md-2 col-md-offset-2 text-center"><?php echo $form->labelEx($modeloE,'estadoConvenios_idEstadoConvenio'); ?></span>
                             <div class="col-md-7">
@@ -195,6 +198,8 @@
                             	<?php  echo CHtml::submitButton('Actualizar', array('class'=>'btn btn-conv btn-lg')); ?> 
                             </div>
                         </div>
+
+                      </div>
                      <?php $this->endWidget(); ?>
 
             </div>
@@ -207,3 +212,4 @@
   <li><a href="<?php echo $this->createUrl("convenios/conveniosEspera"); ?>">Convenios en Espera</a></li>
 </ul>
 
+</div>

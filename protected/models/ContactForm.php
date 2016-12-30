@@ -20,9 +20,9 @@ class ContactForm extends CFormModel
 	{
 		return array(
 			// name, email, subject and body are required
-			array('name, email, subject, body', 'required'),
+			array('name, email, subject, body', 'required', 'message'=>'El campo no debe estar en blanco'),
 			// email has to be a valid email address
-			array('email', 'email'),
+			array('email', 'email','message'=>'El email no es una dirección valida'),
 			// verifyCode needs to be entered correctly
 			array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
 		);
