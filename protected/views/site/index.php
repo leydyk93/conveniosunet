@@ -38,5 +38,8 @@ $this->pageTitle=Yii::app()->name;
     <a href="<?php echo $this->createUrl( '/convenios/Consultar' ); ?>" class="btn btn-conv btn-lg">Consultar</a>   
   </div>
 </div>
+
+
+
 </div>
 

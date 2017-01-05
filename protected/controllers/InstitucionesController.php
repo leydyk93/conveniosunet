@@ -32,7 +32,7 @@ class InstitucionesController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','selectEstado'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -43,6 +43,22 @@ class InstitucionesController extends Controller
 				'users'=>array('*'),
 			),
 		);
+	}
+
+	public function actionSelectEstado(){
+		
+		$valor ="<script>console.log( 'HOLA' );</script>";
+		echo $valor;
+
+		 $data=Estados::model()->findAll('paises_idPais=:paises_idPais', 
+   		array(':paises_idPais'=>(int) $_POST['idPais']));
+
+		  $data=CHtml::listData($data,'idEstado','nombreEstado');
+ 
+		   echo "<option value=''>Seleccione Estado</option>";
+		   foreach($data as $value=>$nombreEstado)
+		   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($nombreEstado),true);
+
 	}
 
 	/**

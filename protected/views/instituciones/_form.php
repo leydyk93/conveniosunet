@@ -19,7 +19,6 @@
 	'enableAjaxValidation'=>false,
 	 'htmlOptions'=>array('class'=>'form-horizontal', ),
 )); ?>
-
 	<div class="form-group">
 		<div class="col-sm-4">
 		<?php echo $form->labelEx($model,'nombreInstitucion'); ?>
@@ -45,16 +44,39 @@
 		<strong>Pais</strong> 
 		</div>
 		<div class="col-sm-6">
-			<?php //$findPais=Estados::model()->findByPk($model->estados_idEstado);
+			<?php 
 			if(!$model->isNewRecord){
-			$findPais=Estados::model()->with('paisesIdPais')->findByPk($model->estados_idEstado);
-			echo $form->dropDownList($pais,'idPais', CHtml::listData(Paises::model()->findAll('idPais=:idPais', array(':idPais'=>$findPais->paises_idPais)),'idPais','nombrePais'),
-                              array('class'=>'form-control input-sm'));
+				$findidPais=Estados::model()->with('paisesIdPais')->findByPk($model->estados_idEstado);
+				$valor=$findidPais->paises_idPais;
+
+				echo $form->dropDownList($pais,'idPais', CHtml::listData(Paises::model()->findAll(),'idPais','nombrePais'),
+                              array(  'ajax'=>array(
+						                'type'=>'POST',
+						                'url'=>Yii::app()->createUrl('instituciones/selectEstado'),
+						                'update'=>'#Instituciones_estados_idEstado',
+						                'data'=>array('idPais'=>'js:this.value'),
+						            ),
+                              	'class'=>'form-control input-sm', 
+                                'options'=> array( $valor=>array('selected'=>'selected'))
+
+                              	));
 			}else{
 			
 			?>
-			<?php echo $form->dropDownList($pais,'idPais', CHtml::listData(Paises::model()->findAll(),'idPais','nombrePais'),
-                              array('class'=>'form-control input-sm',"empty" => "seleccione"));
+
+			<?php
+				
+				echo $form->dropDownList($pais,'idPais', CHtml::listData(Paises::model()->findAll(),'idPais','nombrePais'),
+                              array(  'ajax'=>array(
+						                'type'=>'POST',
+						                'url'=>Yii::app()->createUrl('instituciones/selectEstado'),
+						                'update'=>'#Instituciones_estados_idEstado',
+						                'data'=>array('idPais'=>'js:this.value'),
+						            ),
+                              	'class'=>'form-control input-sm', 
+                                'empty'=>'Seleccione',
+
+                              	));
                              }?>
 		</div>
 	</div>
@@ -64,8 +86,19 @@
 		<?php echo $form->labelEx($model,'estados_idEstado'); ?>
 		</div>
 		<div class="col-sm-6">
-		<?php echo $form->dropDownList($model,'estados_idEstado', CHtml::listData(Estados::model()->findAll(),'idEstado','nombreEstado'),
-                              array('class'=>'form-control input-sm',"empty" => "seleccione"));?>
+			<?php 
+			if(!$model->isNewRecord){
+				 $listaestad=CHtml::listData(Estados::model()->findAll('paises_idPais=:paises_idPais', array(':paises_idPais'=>$valor)),'idEstado','nombreEstado');
+
+			
+			}else{
+				$listaestad=CHtml::listData(Estados::model()->findAll(),'idEstado','nombreEstado');
+			}
+			 ?>
+		<?php echo $form->dropDownList($model,'estados_idEstado',$listaestad,
+                              array('class'=>'form-control input-sm',"empty" => "seleccione"));
+                             
+                              ?>
 		<?php echo $form->error($model,'estados_idEstado'); ?>
 
 		</div>
