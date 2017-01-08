@@ -123,29 +123,27 @@
 					<section class="datos col-xs-9">     
 
 						<legend class="text-center header"><h4>Información de las Partes</h4></legend>  
-
-						<h4>UNET</h4>
-
-						<p>Institución: Universidad Nacional Experimental del Táchira</p>
+						<h4>UNET <small><?php echo "Universidad Nacional Experimental del Táchira"; ?></small></h4>
+						
 
 						<br>
-						<div class="form-group">
-							<?php echo $form->labelEx($pasodos,'instanciaunet',array('class'=>'control-label col-sm-2')); ?>
+				<!--		<div class="form-group">
+				 	<?php //echo $form->labelEx($pasodos,'instanciaunet',array('class'=>'control-label col-sm-2')); ?>
 							<div class="col-sm-9"> 
 								
 								<?php 
-								echo $form->dropDownList($pasodos,'instanciaunet',
-									CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),
-									array('class'=>'form-control input-sm'),
-									array('options' => array($_SESSION['instanciaunet']=>array('selected'=>true)),'value'=>$_SESSION['instanciaunet'])
-									);
+								//echo $form->dropDownList($pasodos,'instanciaunet',
+								//	CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),
+								//	array('class'=>'form-control input-sm'),
+								//	array('options' => array($_SESSION['instanciaunet']=>array('selected'=>true)),'value'=>$_SESSION['instanciaunet'])
+								//	);
 									
 									?>
-									<?php echo $form->error($pasodos,'instanciaunet'); ?>
+									<?php //echo $form->error($pasodos,'instanciaunet'); ?>
 								</div>
 							</div>
 
-		<!--	<div class="row">
+		<div class="row">
 			<?php //echo $form->labelEx($pasodos,"responsable_legal_unet",array('class'=>'col-md-3')); ?>
 			<?php //echo $form->textField($pasodos,"responsable_legal_unet",array('size'=>60,'maxlength'=>200)); ?>
 			<?php //echo $form->error($pasodos,"responsable_legal_unet"); ?>
@@ -899,6 +897,7 @@
    				if(elementos==1||elementos==2||elementos==3||elementos==4){
    					if(numero==1){
    					document.getElementById("PasodosForm_responsable_legal_unet").value=datos;
+   					document.getElementById("MensajeAjax").innerHTML=" ";
    					}
    					if(numero==2){
    					document.getElementById("PasodosForm_responsable_contacto_unet").value=datos;	

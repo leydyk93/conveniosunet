@@ -15,7 +15,7 @@
 		public function rules (){
 
 			return array(
-				array("instanciaunet,responsable_legal_unet,responsable_contacto_unet,institucion,responsable_legal_contraparte,responsable_contacto_contraparte","required"),
+				array("responsable_legal_unet,responsable_contacto_unet,institucion,responsable_legal_contraparte,responsable_contacto_contraparte","required"),
 				//safe se le coloca a los datos que no se quieren validar 
 			);
 		}
