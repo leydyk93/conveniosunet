@@ -13,9 +13,9 @@ $this->breadcrumbs=array(
  <div class="col-md-6 col-md-offset-3">
  	<div class="panel panel-default">
 
- 		<!--<div id="tituloIs" class="panel-heading text-center">Iniciar Sesion</div>-->
+ 		<div id="tituloIs" class="panel-heading text-center"><h4>Iniciar sesión</h4></div>
 
-				<legend class="text-center"><h4>Iniciar Sesión</h4></legend>
+				<!--<legend class="text-center"><h4>Iniciar Sesión</h4></legend>-->
 
 				<?php $form=$this->beginWidget('CActiveForm', array(
 					'id'=>'login-form',
@@ -47,15 +47,12 @@ $this->breadcrumbs=array(
 					    </div>
 				  	</div>
 
-				  	<!--<div class="form-group"> 
-					  	 <div class="col-sm-10"> 
-						     	(<span class="required">*</span>) indica que el campo es requerido
-						    </div>
-					
-				  	</div>-->
-
 					<div class="form-group">    
-					     <?php echo CHtml::submitButton('Iniciar',array('class'=>'btn btn-conv')); ?>
+					     <?php echo CHtml::submitButton('Iniciar',array('class'=>'btn btn-conv btn-lg')); ?>
+				  	</div>
+
+				  	<div class="text-right"> 
+						     	(<span class="required">*</span>) indica que el campo es requerido
 				  	</div>
 				  	
 				</div>
@@ -67,11 +64,7 @@ $this->breadcrumbs=array(
 						<?php /*echo $form->error($model,'rememberMe');*/ ?>-->
 				    <!--  </div>
 				    </div>
-				  </div> -->
-
-				
-
-					
+				  </div> -->					
 
 				<?php $this->endWidget(); ?>
 

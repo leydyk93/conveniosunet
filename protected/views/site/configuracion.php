@@ -4,6 +4,8 @@ $this->breadcrumbs=array(
 	'Configuración',
 );
  ?>
+
+ <div class="container">
  <h4>Gestión de Información en la Base de Datos </h4> 
  <p>Seleccione la tabla que desea modificar</p>
 
@@ -12,9 +14,9 @@ $this->breadcrumbs=array(
   <div class="col-sm-4"> 
   	<ul class="list-group">
 			  <li class="list-group-item list-group-item-success">Instituciones</li>
-			  <li class="list-group-item">Tipos de Instituciones</li>
-			  <li class="list-group-item">Instituciones </li>
-			  <li class="list-group-item">Dependencias</li>
+			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/tiposinstituciones/admin' ) ?>">Tipos de Instituciones</a></li>
+			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/instituciones/admin' ) ?>">Instituciones</a></li>
+			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/dependencias/admin' ) ?>">Dependencias</a></li>
 	</ul>
   </div>
   <div class="col-sm-4">
@@ -22,14 +24,14 @@ $this->breadcrumbs=array(
 			  <li class="list-group-item list-group-item-success">Convenios</li>
 			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/tipoconvenios/admin' ) ?>">Tipos de Convenio</a></li>
 			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/clasificacionconvenios/admin' ) ?>">Clasificación de los convenios</a></li>
-			  <li class="list-group-item">Estados para los convenios</li>
+			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/estadoconvenios/admin' ) ?>">Estados para los convenios</a></li>
 		</ul>
   </div>
   <div class="col-sm-4">
   		<ul class="list-group">
 			  <li class="list-group-item list-group-item-success">Responsables</li>
-			  <li class="list-group-item">Tipos de Responsables</li>
-			  <li class="list-group-item">Responsables UNET</li>
+			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/tiporesponsable/admin' ) ?>">Tipos de Responsables</a></li>
+			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/responsables/admin' ) ?>">Responsables UNET</a></li>
 			  <li class="list-group-item">Responsables Contraparte</li>
 		</ul>
   </div>
@@ -74,3 +76,10 @@ $this->breadcrumbs=array(
 	<p>Son todos los docentes o directivos de otras instituciones responsables de contacto para los convenios  </p>
 	</li>
 </ul>-->
+
+<ul class="breadcrumb text-right">
+  <li><a href="<?php echo $this->createUrl("site/index"); ?>">Home</a></li>
+  <li><a href="<?php echo $this->createUrl("convenios/consultar"); ?>">consultar Convenios</a></li>
+</ul>
+
+</div>

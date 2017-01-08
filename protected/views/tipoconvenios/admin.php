@@ -2,8 +2,8 @@
 /* @var $this TipoconveniosController */
 /* @var $model Tipoconvenios */
 $this->breadcrumbs=array(
-	'Tipo convenio'=>array('index'),
-	'Listar',
+	'Gestion base Datos'=>array('site/configuracion'),
+	'Listar tipo convenio',
 );
 /*$this->menu=array(
 	array('label'=>'List Tipoconvenios', 'url'=>array('index')),
@@ -24,17 +24,17 @@ $('.search-form form').submit(function(){
 ");*/
 ?>
 
-<div class="row">
-	<div  class="nuevo col-md-12 text-left">
-		 <h4>Tabla: Tipo de convenio</h4>
+<div class="container">
+	<div class="row">
+	 <div class="col-sm-6">
+	 <h4>Tabla: Tipo de Convenio</h4>
+	 </div>	
+	 <div class="col-sm-6">
+	 	<div class="text-right">
+	 		<?php echo CHtml::link('Nuevo tipo de convenio',array('create'),array('class'=>'btn btn-conv btn-md')); ?>
+	 	</div>
+	 </div>
 	</div>
- </div>
-
- <div class="row">
- 	<div class="">
- 		<?php echo CHtml::link('Nuevo tipo de convenio',array('create'),array('class'=>'btn btn-conv btn-md')); ?>
- 	</div>
- </div>
 
 
 <?php /* echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
@@ -72,10 +72,8 @@ $('.search-form form').submit(function(){
 	),
 )); ?>
 
-
-<div class="row">
- 	<div class="text-right">Regresar a 
- 		<?php echo CHtml::link('Gestion de la BD',array('site/configuracion'),array('class'=>'btn btn-conv btn-md')); ?>
- 	</div>
- </div>
-
+	<ul class="breadcrumb text-right">
+	  <li><a href="<?php echo $this->createUrl("site/index"); ?>">Home</a></li>
+	  <li><a href="<?php echo $this->createUrl("site/configuracion"); ?>">Gestion de la Base de Datos</a></li>
+	</ul>
+</div>

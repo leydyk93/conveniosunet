@@ -11,6 +11,8 @@
 	</div>
  </div>-->
 
+ <div class="container">
+
  <ul class="list-group">
   <li class="list-group-item"><h4>Información general del Convenio a renovar</h4>
   	 <ul>
@@ -26,7 +28,8 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="well well-sm">
+            <div class="panel panel-default">
+              <div class="panel-heading text-center"><h4>Datos de la Renovación</h4></div>
                 <!--<form class="form-horizontal" method="post">-->
                  <?php 
                     $form=$this->beginWidget('CActiveForm',
@@ -47,9 +50,9 @@
                         
                         ));
                     ?>
-                    <fieldset>
-                        <legend class="text-center header">Datos de la Renovación</legend>
-
+                    
+                       <!-- <legend class="text-center header">Datos de la Renovación</legend>-->
+                    <div class="panel-body text-center">
                         <div class="form-group">
                             <span class="col-md-2 col-md-offset-2 text-center"><?php echo $form->labelEx($renovar,'fechaFinProrroga'); ?></span>
                             <div class="col-md-7">
@@ -110,7 +113,7 @@
                               <?php  echo CHtml::submitButton('Renovar', array('class'=>'btn btn-conv btn-lg')); ?>
                             </div>
                         </div>
-                    </fieldset>
+                    </div>
                     <?php $this->endWidget(); ?>
                <!-- </form>-->
             </div>
@@ -121,3 +124,4 @@
   <li><a href="<?php echo $this->createUrl("convenios/consultar"); ?>">consultar Convenios</a></li>
 </ul>
 
+</div>

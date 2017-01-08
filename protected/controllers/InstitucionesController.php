@@ -32,7 +32,7 @@ class InstitucionesController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','selectEstado'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -43,6 +43,22 @@ class InstitucionesController extends Controller
 				'users'=>array('*'),
 			),
 		);
+	}
+
+	public function actionSelectEstado(){
+		
+		$valor ="<script>console.log( 'HOLA' );</script>";
+		echo $valor;
+
+		 $data=Estados::model()->findAll('paises_idPais=:paises_idPais', 
+   		array(':paises_idPais'=>(int) $_POST['idPais']));
+
+		  $data=CHtml::listData($data,'idEstado','nombreEstado');
+ 
+		   echo "<option value=''>Seleccione Estado</option>";
+		   foreach($data as $value=>$nombreEstado)
+		   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($nombreEstado),true);
+
 	}
 
 	/**
@@ -63,6 +79,7 @@ class InstitucionesController extends Controller
 	public function actionCreate()
 	{
 		$model=new Instituciones;
+		$pais = new Paises;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -71,11 +88,13 @@ class InstitucionesController extends Controller
 		{
 			$model->attributes=$_POST['Instituciones'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->idInstitucion));
+				$this->redirect(array('admin'));
+				//$this->redirect(array('view','id'=>$model->idInstitucion));
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
+			'pais'=>$pais,
 		));
 	}
 
@@ -87,6 +106,7 @@ class InstitucionesController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$pais = new Paises;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -95,11 +115,12 @@ class InstitucionesController extends Controller
 		{
 			$model->attributes=$_POST['Instituciones'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->idInstitucion));
+				$this->redirect(array('admin'));
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
+			'pais'=>$pais,
 		));
 	}
 

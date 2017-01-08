@@ -71,7 +71,7 @@ class ClasificacionconveniosController extends Controller
 		{
 			$model->attributes=$_POST['Clasificacionconvenios'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->idClasificacionConvenio));
+				$this->redirect(array('admin'));
 		}
 
 		$this->render('create',array(
@@ -95,7 +95,8 @@ class ClasificacionconveniosController extends Controller
 		{
 			$model->attributes=$_POST['Clasificacionconvenios'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->idClasificacionConvenio));
+				$this->redirect(array('admin'));
+				//$this->redirect(array('view','id'=>$model->idClasificacionConvenio));
 		}
 
 		$this->render('update',array(

@@ -3,7 +3,7 @@
 /* @var $model Tipoconvenios */
 
 $this->breadcrumbs=array(
-	'Tipo convenios'=>array('index'),
+	'Tipo convenios'=>array('admin'),
 	$model->idTipoConvenio=>array('view','id'=>$model->idTipoConvenio),
 	'Modificar',
 );
@@ -16,10 +16,10 @@ $this->breadcrumbs=array(
 );*/
 ?>
 
-<div class="row">
-	<div  class="nuevo col-md-12 text-left">
-		 <h4>Tabla: Tipo de convenio</h4>
-	</div>
+<div class="container">
+	<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+	<ul class="breadcrumb text-right">
+	  <li><a href="<?php echo $this->createUrl("site/configuracion"); ?>">Gestion de la Base de Datos</a></li>
+	  <li><a href="<?php echo $this->createUrl("admin"); ?>">Listar Tipo de convenio</a></li>
+	</ul>
 </div>
-
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>

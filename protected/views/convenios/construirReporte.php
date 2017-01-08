@@ -5,6 +5,7 @@
 );
  ?>
 
+<div class="container">
 <div class="row">
   <?php 
       $form=$this->beginWidget('CActiveForm',
@@ -267,6 +268,14 @@
 </div>
 
 
+<ul id="navInferior" class="breadcrumb text-right">
+  <li><a href="<?php echo $this->createUrl("site/index"); ?>">Home</a></li>
+  <li><a href="<?php echo $this->createUrl("convenios/consultar"); ?>">consultar Convenios</a></li>
+</ul>
+
+
+</div>
+
 <script type="text/javascript"> 
 
 $('#ConsultasConvenios_pais').change(function() {
@@ -349,9 +358,5 @@ $('#ConsultasConvenios_order').change(function() {
 
 </script> 
 
-<ul id="navInferior" class="breadcrumb text-right">
-  <li><a href="<?php echo $this->createUrl("site/index"); ?>">Home</a></li>
-  <li><a href="<?php echo $this->createUrl("convenios/consultar"); ?>">consultar Convenios</a></li>
-</ul>
 
 

@@ -11,14 +11,24 @@ header{
  background: url("../img/CabeceraA.png") no-repeat;
 }
 .h1c{
-	color: #1b325f;
+	color: #1b325f;	
+}
+div#fondoimg{
+	background: url("../img/portada.png") no-repeat;
+	padding-top: 260px;
+
 }
 footer#foo{
-	background-color: #1b325f;
+	/*background-color: #1b325f;*/
+	background: url("../img/footer.png") no-repeat;
 	color: white;
-	margin-top: 1em;
-	padding-top: 70px;
-	padding-bottom: 150px;
+	margin-top: 0.5em;
+	padding-top: 50px;
+	/*
+	padding-bottom: 150px;*/
+}
+footer#foo ul li a{
+	color: white;
 }
 img#manos{
 	display: block;
@@ -37,6 +47,22 @@ nav#menuPrincipal  li a {
 }
 nav#menuPrincipal li a span{
 	color: #1b325f; 
+}
+nav#menuPrincipal ul .dropdown-menu li a{
+	color: #1b325f;
+}
+#titulo{
+	color: #1b325f;
+}
+.h2Familia{
+	color:#4c7eb1;
+	font-family: "Dancing Script";
+	font-size: 48px;
+}
+.hFamilia{
+	color:#4c7eb1;
+	font-family: "Dancing Script";
+	font-size: 24px;
 }
 .btn-conv{
     color: #1b325f;
@@ -60,21 +86,24 @@ nav#menuPrincipal li a span{
 		font-family: arial;
 		font-size: 20pt;
 	}
-	div#MainMenu, div#Resulconvenios input.btn,div#navegabilidadbreadcrumbs {
+	div#MainMenu, div#Resulreporte input.btn,div#navegabilidadbreadcrumbs, div#Resulreporte h4, div#Resulreporte select {
 		display: none;
 	}
-	div#Resulconvenios input#ReporteForm_titulo{
+	div#Resulreporte input#titulo{
 		border-width:0;
 		font-size: 30pt;
 		text-align: center;
 	}
 
-	div#Resulconvenios textarea#ReporteForm_descripcion{
+	div#Resulreporte textarea#ReporteForm_descripcion{
 		border-width:0;
 		font-size: 20pt;
 		text-align: left;
 	}
 
+	ul#navInferior{
+		display: none;		
+	}
 	 .dl-horizontal dt {
 	    float: left;
 	    width: 300px;
@@ -117,6 +146,11 @@ nav#menuPrincipal li a span{
 	.col-xs-2, .col-xs-6{
 		width: 33.33333333%; 
 	}	
+	div#fondoimg{
+	background: url("../img/pequeña.png") no-repeat;
+	padding-top: 50px;
+
+	}
 	/*.col-xs-6{
 		width: 66.66666667%;
 	}*/
