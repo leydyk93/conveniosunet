@@ -179,10 +179,12 @@ CREATE TABLE IF NOT EXISTS instituciones (
     REFERENCES tiposInstituciones (idTipoInstitucion));
 
 INSERT INTO instituciones (nombreInstitucion,siglasInstitucion,estados_idEstado,tiposInstituciones_idTipoInstitucion) 
-VALUES ('Universidad de los Andes','ULA','9','1'), 
+VALUES 
+('Universidad de los Andes','ULA','9','1'), 
 ('Universidad Central de Venezuela','UCV','3','1'), 
 ('Universidad Nacional Abierta','UNA','9','1'),
- ('Universidad de Chile','UCHILE','25','1');
+('Universidad de Chile','UCHILE','25','1');
+('Universidad Nacional Experimental del Tachira','UNET','9','1'), 
 
 -- -----------------------------------------------------
 -- Table `mydb`.`tipoConvenios`

@@ -63,7 +63,10 @@ class ResponsablesController extends Controller
 	public function actionCreate()
 	{
 		$model=new Responsables;
-
+		$pais = new Paises;
+		$estados = new Estados;
+		$tipoIns= new Tiposinstituciones;
+		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -76,6 +79,9 @@ class ResponsablesController extends Controller
 
 		$this->render('create',array(
 			'model'=>$model,
+			'pais' =>$pais,
+			'estados'=>$estados,
+			'tipoIns'=>$tipoIns,
 		));
 	}
 
@@ -87,6 +93,9 @@ class ResponsablesController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$pais = new Paises;
+		$estados = new Estados;
+		$tipoIns= new Tiposinstituciones;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -100,6 +109,10 @@ class ResponsablesController extends Controller
 
 		$this->render('update',array(
 			'model'=>$model,
+			'pais' =>$pais,
+			'estados'=>$estados,
+			'tipoIns'=>$tipoIns,
+
 		));
 	}
 

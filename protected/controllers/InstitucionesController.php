@@ -32,7 +32,7 @@ class InstitucionesController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','selectEstado'),
+				'actions'=>array('create','update','selectEstado','selectInstitucion'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -59,7 +59,22 @@ class InstitucionesController extends Controller
 		   foreach($data as $value=>$nombreEstado)
 		   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($nombreEstado),true);
 
-	}
+   }
+
+   public function actionSelectInstitucion(){
+
+   	  $valor ="<script>console.log( 'HOLAinstucion' );</script>";
+   	  echo $valor;
+	
+		$data=Instituciones::model()->findAll('estados_idEstado=:estados_idEstado', 
+   		array(':estados_idEstado'=>(int) $_POST['idEstado']));
+
+		  $data=CHtml::listData($data,'idInstitucion','nombreInstitucion');
+ 
+		   echo "<option value=''>Seleccione Institucion</option>";
+		   foreach($data as $value=>$nombreInstitucion)
+		   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($nombreInstitucion),true);
+   }
 
 	/**
 	 * Displays a particular model.

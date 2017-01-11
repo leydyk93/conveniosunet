@@ -46,7 +46,7 @@ class Responsables extends CActiveRecord
 			array('correoElectronicoResponsable', 'length', 'max'=>100),
 			array('correoElectronicoResponsable', 'email'),
 			array('telefonoResponsable', 'length', 'max'=>50),
-			array('idResponsable','comprobar_responsable'),
+			//array('idResponsable','comprobar_responsable'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('idResponsable, primerNombreResponsable, segundoNombreResponsable, primerApellidoResponsable, segundoApellidoResponsable, correoElectronicoResponsable, telefonoResponsable, instituciones_idInstitucion, dependencias_idDependencia, tipoResponsable_idTipoResponsable', 'safe', 'on'=>'search'),
@@ -140,7 +140,7 @@ class Responsables extends CActiveRecord
 						$this->addError('idResponsable','Responsable ya Existe');
 						break;
 					}
-					# code...
+				
 				}
 		}
 }

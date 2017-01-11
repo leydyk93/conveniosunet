@@ -57,7 +57,7 @@ $('.search-form form').submit(function(){
 			
 			array(
 				'class'=>'CButtonColumn', 'header'=>'Operaciones', 'template'=>'<span>{update}</span> <span>{delete}</span>',
-				'buttons'=>array (
+				'buttons'=>array(
 				        'update'=> array(
 				            'label'=>'',
 				            'imageUrl'=>'',

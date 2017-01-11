@@ -3,7 +3,7 @@
 /* @var $model Responsables */
 
 $this->breadcrumbs=array(
-	'Responsables'=>array('admin'),
+	'Responsables'=>array('index'),
 	'Crear',
 );
 
@@ -12,11 +12,12 @@ $this->breadcrumbs=array(
 	array('label'=>'Manage Responsables', 'url'=>array('admin')),
 );*/
 ?>
-<div class="container">
-	<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+
+<div class="container"> 
+	<?php $this->renderPartial('_form', array('model'=>$model,'pais'=>$pais,'estados'=>$estados,'tipoIns'=>$tipoIns,)); ?>
 
 	<ul class="breadcrumb text-right">
 	  <li><a href="<?php echo $this->createUrl("site/configuracion"); ?>">Gestion de la Base de Datos</a></li>
-	  <li><a href="<?php echo $this->createUrl("admin"); ?>">Listar Responsables</a></li>
+	  <li><a href="<?php echo $this->createUrl("admin"); ?>">Listar Instituciones</a></li>
 	</ul>
 </div>
