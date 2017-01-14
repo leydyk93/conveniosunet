@@ -81,8 +81,8 @@ class Responsables extends CActiveRecord
 			'segundoApellidoResponsable' => 'Segundo Apellido',
 			'correoElectronicoResponsable' => 'Correo Electronico',
 			'telefonoResponsable' => 'Telefono',
-			'instituciones_idInstitucion' => 'Instituciones',
-			'dependencias_idDependencia' => 'Dependencias',
+			'instituciones_idInstitucion' => 'Institución',
+			'dependencias_idDependencia' => 'Dependencia',
 			'tipoResponsable_idTipoResponsable' => 'Tipo Responsable',
 		);
 	}

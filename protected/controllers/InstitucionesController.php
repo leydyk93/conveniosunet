@@ -32,7 +32,7 @@ class InstitucionesController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','selectEstado','selectInstitucion'),
+				'actions'=>array('create','update','selectEstado', 'selectTipoInstitucion'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -61,19 +61,19 @@ class InstitucionesController extends Controller
 
    }
 
-   public function actionSelectInstitucion(){
+   public function actionSelectTipoInstitucion(){
+   	 //$valor ="<script>console.log( 'HOLATipoInst' );</script>";
+   	  //echo $valor;
 
-   	  $valor ="<script>console.log( 'HOLAinstucion' );</script>";
-   	  echo $valor;
-	
-		$data=Instituciones::model()->findAll('estados_idEstado=:estados_idEstado', 
-   		array(':estados_idEstado'=>(int) $_POST['idEstado']));
+   	  	$data=Instituciones::model()->findAll('tiposInstituciones_idTipoInstitucion=:tiposInstituciones_idTipoInstitucion AND estados_idEstado=:estados_idEstado',
+   		array(':tiposInstituciones_idTipoInstitucion'=>(int) $_POST['idTipoInstitucion'] , ':estados_idEstado'=>(int) $_POST['idEstadox'] ));
 
 		  $data=CHtml::listData($data,'idInstitucion','nombreInstitucion');
  
 		   echo "<option value=''>Seleccione Institucion</option>";
 		   foreach($data as $value=>$nombreInstitucion)
 		   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($nombreInstitucion),true);
+
    }
 
 	/**

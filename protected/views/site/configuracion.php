@@ -31,14 +31,13 @@ $this->breadcrumbs=array(
   		<ul class="list-group">
 			  <li class="list-group-item list-group-item-success">Responsables</li>
 			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/tiporesponsable/admin' ) ?>">Tipos de Responsables</a></li>
-			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/responsables/admin' ) ?>">Responsables UNET</a></li>
-			  <li class="list-group-item">Responsables Contraparte</li>
+			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/responsables/admin' ) ?>">Responsables</a></li>
+			  
 		</ul>
   </div>
 </div>
 
 
-  
  <!--<h5>Instituciones</h5>
  <ul>
  	<li>Tipos de institucion

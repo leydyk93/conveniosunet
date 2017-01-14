@@ -74,7 +74,8 @@ class ResponsablesController extends Controller
 		{
 			$model->attributes=$_POST['Responsables'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->idResponsable));
+				$this->redirect(array('admin'));
+				//$this->redirect(array('view','id'=>$model->idResponsable));
 		}
 
 		$this->render('create',array(
@@ -104,7 +105,8 @@ class ResponsablesController extends Controller
 		{
 			$model->attributes=$_POST['Responsables'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->idResponsable));
+				$this->redirect(array('admin'));
+				//$this->redirect(array('view','id'=>$model->idResponsable));
 		}
 
 		$this->render('update',array(
