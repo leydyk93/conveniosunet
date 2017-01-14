@@ -19,7 +19,7 @@
 	'enableAjaxValidation'=>false,
 	 'htmlOptions'=>array('class'=>'form-horizontal', ),
 )); ?>
-<h2>Información Personal del Responsable</h2>
+
 	<div class="form-group">
 		<div class="col-sm-4">
 		<?php echo $form->labelEx($model,'nombreInstitucion'); ?>

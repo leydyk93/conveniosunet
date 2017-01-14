@@ -30,8 +30,7 @@
 			<?php echo $form->textField($model,'idResponsable',array('class'=>"form-control")); ?>
 			<?php echo $form->error($model,'idResponsable'); ?>
 		</div>		
-
-			
+	
 	</div>
 
 	<div class="form-group">
