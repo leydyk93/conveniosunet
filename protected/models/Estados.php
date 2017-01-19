@@ -60,7 +60,7 @@ class Estados extends CActiveRecord
 		return array(
 			'idEstado' => 'Id Estado',
 			'nombreEstado' => 'Nombre Estado',
-			'paises_idPais' => 'Paises Id Pais',
+			'paises_idPais' => 'Pais',
 		);
 	}
 

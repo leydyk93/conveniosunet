@@ -51,7 +51,7 @@ $('.search-form form').submit(function(){
 		'filter'=>$model,
 		'htmlOptions' => array('class' => 'grid-view'),
 		'columns'=>array(
-			array('name'=>'idDependencia', 'htmlOptions'=>array('class'=>'text-center')),
+			//array('name'=>'idDependencia', 'htmlOptions'=>array('class'=>'text-center')),
 			
 			'nombreDependencia',
 			'telefonoDependencia',

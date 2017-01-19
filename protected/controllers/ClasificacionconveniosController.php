@@ -121,13 +121,13 @@ class ClasificacionconveniosController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	/*public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Clasificacionconvenios');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
-	}
+	}*/
 
 	/**
 	 * Manages all models.

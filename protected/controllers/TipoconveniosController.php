@@ -121,13 +121,13 @@ class TipoconveniosController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	/*public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Tipoconvenios');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
-	}
+	}*/
 
 	/**
 	 * Manages all models.

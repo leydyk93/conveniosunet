@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Tipo responsables'=>array('admin'),
-	$model->idTipoResponsable=>array('view','id'=>$model->idTipoResponsable),
+	//$model->idTipoResponsable=>array('view','id'=>$model->idTipoResponsable),
 	'Modificar',
 );
 

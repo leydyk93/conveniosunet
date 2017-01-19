@@ -7,7 +7,7 @@
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-default">
- 		<div class="panel text-center"><h4><?php if($model->isNewRecord){ echo "Nueva Clasificacion";}else{ echo "Modificar Clasificacion";} ?></h4></div>
+ 		<div class="panel-heading text-center"><h4><?php if($model->isNewRecord){ echo "Nueva Clasificación";}else{ echo "Modificar Clasificacion";} ?></h4></div>
  		<div class="panel-body text-center">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -35,7 +35,7 @@
 		<?php echo $form->labelEx($model,'descripcionClasificacionConvenio'); ?>
 		</div>
 		<div class="col-sm-6">
-		<?php echo $form->textField($model,'descripcionClasificacionConvenio',array('class'=>"form-control")); ?>
+		<?php echo $form->textArea($model,'descripcionClasificacionConvenio',array('class'=>"form-control", 'rows'=>"5")); ?>
 		<?php echo $form->error($model,'descripcionClasificacionConvenio'); ?>
 		</div>
 	</div>

@@ -4,7 +4,11 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel panel-default">
+ 		<div class="panel-heading text-center"><h4><?php if($model->isNewRecord){ echo "Nuevo Usuario";}else{ echo "Modificar Usuario";} ?></h4></div>
+ 		<div class="panel-body text-center">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'usuario-form',
@@ -13,46 +17,49 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
+	'htmlOptions'=>array('class'=>'form-horizontal',),
 )); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'nombre'); ?>
-		<?php echo $form->textField($model,'nombre',array('size'=>60,'maxlength'=>128)); ?>
+	
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'nombre',array('class'=>"control-label col-sm-2")); ?>
+		<div class="col-sm-10">
+		<?php echo $form->textField($model,'nombre',array('class'=>"form-control input-sm")); ?>
 		<?php echo $form->error($model,'nombre'); ?>
+		</div>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'clave'); ?>
-		<?php echo $form->textField($model,'clave',array('size'=>60,'maxlength'=>128)); ?>
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'clave',array('class'=>"control-label col-sm-2")); ?>
+		<div class="col-sm-10">
+		<?php echo $form->passwordField($model,'clave',array('class'=>"form-control input-sm")); ?>
 		<?php echo $form->error($model,'clave'); ?>
+		</div>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'correo'); ?>
-		<?php echo $form->textField($model,'correo',array('size'=>60,'maxlength'=>128)); ?>
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'correo',array('class'=>"control-label col-sm-2")); ?>
+		<div class="col-sm-10">
+		<?php echo $form->textField($model,'correo',array('class'=>"form-control input-sm")); ?>
 		<?php echo $form->error($model,'correo'); ?>
+		</div>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'fecha_creacion'); ?>
-		<?php echo $form->textField($model,'fecha_creacion'); ?>
-		<?php echo $form->error($model,'fecha_creacion'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'IdRol'); ?>
-		<?php echo $form->textField($model,'IdRol',array('size'=>10,'maxlength'=>10)); ?>
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'IdRol',array('class'=>"control-label col-sm-2")); ?>
+		<div class="col-sm-10">
+		<?php echo $form->textField($model,'IdRol',array('class'=>"form-control input-sm")); ?>
 		<?php echo $form->error($model,'IdRol'); ?>
+		
+		</div>
 	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	<div class="form-group">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar',array('class'=>"btn btn-conv btn-md")); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
-
-</div><!-- form -->
+</div>
+   <p class="note text-right">Los campos con <span class="required">*</span> son obligatorios</p>
+	</div>
+  </div>
+</div>

@@ -135,13 +135,13 @@ class ResponsablesController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	/*public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Responsables');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
-	}
+	}*/
 
 	/**
 	 * Manages all models.

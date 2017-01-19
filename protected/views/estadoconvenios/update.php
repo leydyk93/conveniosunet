@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Estado convenios'=>array('admin'),
-	$model->idEstadoConvenio=>array('view','id'=>$model->idEstadoConvenio),
+	//$model->idEstadoConvenio=>array('view','id'=>$model->idEstadoConvenio),
 	'Modificar',
 );
 

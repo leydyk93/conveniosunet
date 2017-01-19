@@ -7,7 +7,8 @@
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-default">
- 		<div class="panel text-center"><h4><?php if($model->isNewRecord){ echo "Nuevo Tipo de Institucion";}else{ echo "Modificar Tipo de Institucion";} ?></h4></div>
+
+ 		<div class="panel-heading text-center"><h4><?php if($model->isNewRecord){ echo "Nuevo Tipo de Institución";}else{ echo "Modificar Tipo de Institución";} ?></h4></div>
  		<div class="panel-body text-center">
 
 <?php $form=$this->beginWidget('CActiveForm', array(

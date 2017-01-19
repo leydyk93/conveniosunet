@@ -120,13 +120,13 @@ class DependenciasController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	/*public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Dependencias');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
-	}
+	}*/
 
 	/**
 	 * Manages all models.

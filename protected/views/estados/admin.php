@@ -1,15 +1,16 @@
 <?php
-/* @var $this UsuarioController */
-/* @var $model Usuario */
+/* @var $this EstadosController */
+/* @var $model Estados */
 
 $this->breadcrumbs=array(
+	'Manage',
 	'Gestion base Datos'=>array('site/configuracion'),
-	'Listar Usuarios',
+	'Listar Estados y Provincias',
 );
 
 /*$this->menu=array(
-	array('label'=>'Lista de Usuarios', 'url'=>array('index')),
-	array('label'=>'Crear Usuario', 'url'=>array('create')),
+	array('label'=>'List Estados', 'url'=>array('index')),
+	array('label'=>'Create Estados', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -18,7 +19,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$('#usuario-grid').yiiGridView('update', {
+	$('#estados-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -26,17 +27,7 @@ $('.search-form form').submit(function(){
 ");*/
 ?>
 
-<div class="container">
-	<div class="row">
-	 <div class="col-sm-6">
-	 <h4>Tabla: Usuarios</h4>
-	 </div>	
-	 <div class="col-sm-6">
-	 	<div class="text-right">
-	 		<?php echo CHtml::link('Nuevo Usuario',array('create'),array('class'=>'btn btn-conv btn-md')); ?>
-	 	</div>
-	 </div>
-	</div>
+
 
 <?php /*echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
@@ -45,18 +36,32 @@ $('.search-form form').submit(function(){
 )); */?>
 <!--</div>--><!-- search-form -->
 
+<div class="container">
+	<div class="row">
+	 <div class="col-sm-6">
+	 <h4>Tabla: Estados y Provincias</h4>
+	 </div>	
+	 <div class="col-sm-6">
+	 	<div class="text-right">
+	 		<?php echo CHtml::link('Nuevo estado o Provincia',array('create'),array('class'=>'btn btn-conv btn-md')); ?>
+	 	</div>
+	 </div>
+	</div>
+
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'usuario-grid',
+	'id'=>'estados-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		//'id',
-		'nombre',
-		//'clave',
-		'correo',
-		'fecha_creacion',
-		'IdRol',
-		array(
+		//'idEstado',
+		'nombreEstado',
+			array(
+				            'header'=>'Pais',
+				            'name' =>'paises_idPais',
+				            'value'=>'$data->paisesIdPais->nombrePais',
+				            'filter'=>CHtml::listData(Paises::model()->findAll(),'idPais','nombrePais'),
+				        ),
+			array(
 				'class'=>'CButtonColumn', 'header'=>'Operaciones', 'template'=>'<span>{update}</span> <span>{delete}</span>',
 				'buttons'=>array(
 				        'update'=> array(
@@ -76,7 +81,7 @@ $('.search-form form').submit(function(){
 	),
 )); ?>
 
-<ul class="breadcrumb text-right">
+	<ul class="breadcrumb text-right">
 	  <li><a href="<?php echo $this->createUrl("site/index"); ?>">Home</a></li>
 	  <li><a href="<?php echo $this->createUrl("site/configuracion"); ?>">Gestion de la Base de Datos</a></li>
 	</ul>

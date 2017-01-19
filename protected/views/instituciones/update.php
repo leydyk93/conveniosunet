@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Instituciones'=>array('admin'),
-	$model->idInstitucion=>array('view','id'=>$model->idInstitucion),
+	//$model->idInstitucion=>array('view','id'=>$model->idInstitucion),
 	'Modificar',
 );
 

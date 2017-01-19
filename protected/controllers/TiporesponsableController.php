@@ -120,13 +120,13 @@ class TiporesponsableController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	/*public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Tiporesponsable');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
-	}
+	}*/
 
 	/**
 	 * Manages all models.

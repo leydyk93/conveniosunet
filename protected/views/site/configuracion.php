@@ -16,6 +16,7 @@ $this->breadcrumbs=array(
 			  <li class="list-group-item list-group-item-success">Instituciones</li>
 			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/tiposinstituciones/admin' ) ?>">Tipos de Instituciones</a></li>
 			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/instituciones/admin' ) ?>">Instituciones</a></li>
+			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/estados/admin' ) ?>">Estados o Provincias</a></li>
 			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/dependencias/admin' ) ?>">Dependencias</a></li>
 	</ul>
   </div>

@@ -6,7 +6,7 @@
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-default">
- 		<div class="panel text-center"><h4><?php if($model->isNewRecord){ echo "Nuevo Responsable";}else{ echo "Modificar Responsable";} ?></h4></div>
+ 		<div class="panel-heading text-center"><h4><?php if($model->isNewRecord){ echo "Nuevo Responsable";}else{ echo "Modificar Responsable";} ?></h4></div>
  		<div class="panel-body text-center">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -18,7 +18,7 @@
 	'enableAjaxValidation'=>false,
 	'htmlOptions'=>array('class'=>'form-horizontal', ),
 )); ?>
-	<h4>Informacion Personal del Responsable</h4>
+	<h4>Información Personal del Responsable</h4>
 	<div class="form-group">
 		<label for="" class="control-label col-sm-4">Tipo Documento</label>
 		<div class="col-sm-2">

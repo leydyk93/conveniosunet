@@ -55,7 +55,7 @@ class Tiposinstituciones extends CActiveRecord
 	{
 		return array(
 			'idTipoInstitucion' => 'Tipo Institución',
-			'nombreTipoInstitucion' => 'Nombre Tipo Institución',
+			'nombreTipoInstitucion' => 'Tipo Institución',
 		);
 	}
 

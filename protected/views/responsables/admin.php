@@ -51,7 +51,7 @@ $('.search-form form').submit(function(){
 			'dataProvider'=>$model->search(),
 			'filter'=>$model,
 			'columns'=>array(
-				'idResponsable',
+				//'idResponsable',
 				'primerNombreResponsable',
 				//'segundoNombreResponsable',
 				'primerApellidoResponsable',
@@ -86,7 +86,6 @@ $('.search-form form').submit(function(){
 				            'options'=>array( 'class'=>'glyphicon glyphicon-remove' ),
 				        ),
 				    ),
-
 
 			),
 

@@ -64,16 +64,12 @@ class InstitucionesController extends Controller
    public function actionSelectTipoInstitucion(){
    	 //$valor ="<script>console.log( 'HOLATipoInst' );</script>";
    	  //echo $valor;
-
    	  	$data=Instituciones::model()->findAll('tiposInstituciones_idTipoInstitucion=:tiposInstituciones_idTipoInstitucion AND estados_idEstado=:estados_idEstado',
    		array(':tiposInstituciones_idTipoInstitucion'=>(int) $_POST['idTipoInstitucion'] , ':estados_idEstado'=>(int) $_POST['idEstadox'] ));
-
 		  $data=CHtml::listData($data,'idInstitucion','nombreInstitucion');
- 
 		   echo "<option value=''>Seleccione Institucion</option>";
 		   foreach($data as $value=>$nombreInstitucion)
 		   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($nombreInstitucion),true);
-
    }
 
 	/**
@@ -138,7 +134,6 @@ class InstitucionesController extends Controller
 			'pais'=>$pais,
 		));
 	}
-
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
@@ -147,7 +142,6 @@ class InstitucionesController extends Controller
 	public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();
-
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
@@ -156,13 +150,13 @@ class InstitucionesController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	/*public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Instituciones');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
-	}
+	}*/
 
 	/**
 	 * Manages all models.

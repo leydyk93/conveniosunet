@@ -1,6 +1,6 @@
 <?php
 
-class EstadoconveniosController extends Controller
+class EstadosController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -62,17 +62,16 @@ class EstadoconveniosController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Estadoconvenios;
+		$model=new Estados;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Estadoconvenios']))
+		if(isset($_POST['Estados']))
 		{
-			$model->attributes=$_POST['Estadoconvenios'];
+			$model->attributes=$_POST['Estados'];
 			if($model->save())
 				$this->redirect(array('admin'));
-				//$this->redirect(array('view','id'=>$model->idEstadoConvenio));
 		}
 
 		$this->render('create',array(
@@ -92,12 +91,12 @@ class EstadoconveniosController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Estadoconvenios']))
+		if(isset($_POST['Estados']))
 		{
-			$model->attributes=$_POST['Estadoconvenios'];
+			$model->attributes=$_POST['Estados'];
 			if($model->save())
 				$this->redirect(array('admin'));
-				//$this->redirect(array('view','id'=>$model->idEstadoConvenio));
+				//$this->redirect(array('view','id'=>$model->idEstado));
 		}
 
 		$this->render('update',array(
@@ -124,10 +123,11 @@ class EstadoconveniosController extends Controller
 	 */
 	/*public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Estadoconvenios');
+		$dataProvider=new CActiveDataProvider('Estados');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
+
 	}*/
 
 	/**
@@ -135,10 +135,10 @@ class EstadoconveniosController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Estadoconvenios('search');
+		$model=new Estados('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Estadoconvenios']))
-			$model->attributes=$_GET['Estadoconvenios'];
+		if(isset($_GET['Estados']))
+			$model->attributes=$_GET['Estados'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -149,12 +149,12 @@ class EstadoconveniosController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Estadoconvenios the loaded model
+	 * @return Estados the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Estadoconvenios::model()->findByPk($id);
+		$model=Estados::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -162,11 +162,11 @@ class EstadoconveniosController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Estadoconvenios $model the model to be validated
+	 * @param Estados $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='estadoconvenios-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='estados-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

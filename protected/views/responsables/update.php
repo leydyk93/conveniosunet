@@ -3,8 +3,8 @@
 /* @var $model Responsables */
 
 $this->breadcrumbs=array(
-	'Responsables'=>array('index'),
-	$model->idResponsable=>array('view','id'=>$model->idResponsable),
+	'Responsables'=>array('admin'),
+	//$model->idResponsable=>array('view','id'=>$model->idResponsable),
 	'Modificar',
 );
 

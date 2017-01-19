@@ -7,7 +7,7 @@
 <div class="row">
  <div class="col-md-8 col-md-offset-2">
  	<div class="panel panel-default">
- 		<div class="panel text-center"><h4><?php if($model->isNewRecord){ echo "Nuevo Tipo de Convenio";}else{ echo "Modificar Tipo de Convenio";} ?></h4></div>
+ 		<div class="panel-heading text-center"><h4><?php if($model->isNewRecord){ echo "Nuevo Tipo de Convenio";}else{ echo "Modificar Tipo de Convenio";} ?></h4></div>
  		
 		<?php $form=$this->beginWidget('CActiveForm', array(
 			'id'=>'tipoconvenios-form',

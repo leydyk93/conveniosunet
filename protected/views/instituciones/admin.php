@@ -49,7 +49,7 @@ $('.search-form form').submit(function(){
 		'dataProvider'=>$model->search(),
 		'filter'=>$model,
 		'columns'=>array(
-			'idInstitucion',
+			//'idInstitucion',
 			'nombreInstitucion',
 			'siglasInstitucion',
 			array('name'=>'estados_idEstado','header'=>'Estado' ,'value'=>'$data->estadosIdEstado->nombreEstado', ),

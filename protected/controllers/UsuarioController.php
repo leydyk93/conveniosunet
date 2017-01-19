@@ -70,8 +70,11 @@ class UsuarioController extends Controller
 		if(isset($_POST['Usuario']))
 		{
 			$model->attributes=$_POST['Usuario'];
+			$model->clave=md5($model->clave);
+			$model->fecha_creacion=date("Y/m/d");
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('admin'));
+				//$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('create',array(
@@ -90,12 +93,18 @@ class UsuarioController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
+		$claveant=$model->clave;
 
 		if(isset($_POST['Usuario']))
 		{
 			$model->attributes=$_POST['Usuario'];
+
+
+			if(!($model->clave==$claveant)){
+				$model->clave=md5($model->clave);
+			}
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('admin'));
 		}
 
 		$this->render('update',array(
@@ -119,13 +128,13 @@ class UsuarioController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	/*public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Usuario');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
-	}
+	}*/
 
 	/**
 	 * Manages all models.
