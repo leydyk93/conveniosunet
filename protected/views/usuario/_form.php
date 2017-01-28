@@ -47,9 +47,18 @@
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'IdRol',array('class'=>"control-label col-sm-2")); ?>
 		<div class="col-sm-10">
-		<?php echo $form->textField($model,'IdRol',array('class'=>"form-control input-sm")); ?>
-		<?php echo $form->error($model,'IdRol'); ?>
+
+		 <?php 
+
+               echo $form->dropDownList($model,'IdRol', 
+                                            array("1"=>"Administrador", "2"=>"Especial"),
+                                            array('class'=>'form-control input-sms')                            
+                                            );
+                   
+         ?>
 		
+		<?php echo $form->error($model,'IdRol'); ?>
+
 		</div>
 	</div>
 

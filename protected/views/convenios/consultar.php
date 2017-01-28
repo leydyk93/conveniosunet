@@ -81,7 +81,8 @@
 
                echo $form->dropDownList($model,'ambitoGeografico', 
                                             array("01"=>"Internacional", "02"=>"Nacional", "03"=>"Regional"),
-                                            array('class'=>'form-control input-sm','empty' => 'Todos')
+                                            array( 
+                                              'class'=>'form-control input-sm','empty' => 'Todos')
                                           
                                             );
                    // echo $form->checkBoxList($model,'ambitoGeografico',array("01"=>"Internacional", "02"=>"Nacional", "03"=>"Regional"),array('onclick'=>'send();', 'template'=>'<a class="list-group-item" data-parent="#SubAmbitoG"> {input}{label} </a>', "separator" => ""));
@@ -171,6 +172,7 @@
                                      'changeMonth'=>true,
                                      'changeYear'=>true,
                                      'showButtonPanel'=>true,
+                                     'onClose' => 'js:function(selectedDate) { $("#fechaVencimiento2").datepicker("option", "minDate", selectedDate); }',
                                    
                                 ),
                             'htmlOptions'=>array(
@@ -213,6 +215,7 @@
                                  'changeMonth'=>true,
                                  'changeYear'=>true,
                                  'showButtonPanel'=>true,
+                                 'onClose' => 'js:function(selectedDate) { $("#fechaVencimiento1").datepicker("option", "maxDate", selectedDate); }', 
                                
                             ),
                         'htmlOptions'=>array(
@@ -294,6 +297,7 @@
 
 $('#ConsultasConvenios_pais').change(function() {
 //    console.log($('#ConsultasConvenios_pais option:selected').val());
+    CambiarInstitucionPais();
     send(1);
 });
 
@@ -304,6 +308,8 @@ $('#ConsultasConvenios_institucion').change(function() {
 
 $('#ConsultasConvenios_ambitoGeografico').change(function() {
     //console.log($('#ConsultasConvenios_institucion option:selected').val());
+    CambiarPaisesAmbito();
+    CambiarInstitucionesAmbito();
     send(1);
 });
 
@@ -421,6 +427,49 @@ success:function(datos){
 });
 }
 
+function CambiarPaisesAmbito(){
 
+  var amb=$('#ConsultasConvenios_ambitoGeografico').val();
+  var url= '<?php echo Yii::app()->createUrl("estados/selectPaisAmbito"); ?>'
+  $.ajax({
+  type:"post",
+  url: url,
+  data:{ ambito:amb},
+  success:function(datos){
+      document.getElementById("ConsultasConvenios_pais").innerHTML=datos;  
+  }
+  });
+
+  }
+
+  function CambiarInstitucionesAmbito(){
+
+  var amb=$('#ConsultasConvenios_ambitoGeografico').val();
+  var url= '<?php echo Yii::app()->createUrl("instituciones/selectInstitucionPorAmbito"); ?>'
+  $.ajax({
+  type:"post",
+  url: url,
+  data:{ ambito:amb},
+  success:function(datos){
+      document.getElementById("ConsultasConvenios_institucion").innerHTML=datos;  
+  }
+  });
+
+  }
+
+ function CambiarInstitucionPais(){
+
+  var pais=$('#ConsultasConvenios_pais').val();
+  var url= '<?php echo Yii::app()->createUrl("instituciones/selectInstitucionesPorPais"); ?>'
+  $.ajax({
+  type:"post",
+  url: url,
+  data:{ pais:pais},
+  success:function(datos){
+      document.getElementById("ConsultasConvenios_institucion").innerHTML=datos;  
+  }
+  });
+  
+  }
  
 </script>

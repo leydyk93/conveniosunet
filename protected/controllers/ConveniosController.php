@@ -1366,13 +1366,12 @@ class ConveniosController extends Controller
 
 	public function actionConsultar()
 	{
-
 		$modelConv=Convenios::model()->findAll();
 		$modelTipo=Tipoconvenios::model()->findAll();
 		$modelClass=Clasificacionconvenios::model()->findAll();
 		$modelPais=Paises::model()->findAll();
 		$modelTipoIns=Tiposinstituciones::model()->findAll();
-        $modelInst=Instituciones::model()->findAll();
+        $modelInst=instituciones::model()->findAll('idInstitucion!=:idInstitucion',array(':idInstitucion'=>"6"));
         $modelEdoConve=Estadoconvenios::model()->findAll();
 		$formConsulta = new ConsultasConvenios;
 
@@ -1436,7 +1435,8 @@ class ConveniosController extends Controller
 		$modelClass=Clasificacionconvenios::model()->findAll();
 		$modelPais=Paises::model()->findAll();
 		$modelTipoIns=Tiposinstituciones::model()->findAll();
-        $modelInst=Instituciones::model()->findAll();
+        //$modelInst=Instituciones::model()->findAll();
+        $modelInst=instituciones::model()->findAll('idInstitucion!=:idInstitucion',array(':idInstitucion'=>"6"));
         $modelEdoConve=Estadoconvenios::model()->findAll();
 		$formConsulta = new ConsultasConvenios;
 		
@@ -1499,6 +1499,7 @@ class ConveniosController extends Controller
   					
   						if($_POST['ConsultasConvenios']['ambitoGeografico']=="01"){
 							$consulta .="and ps.idPais!=".'"35"'." ";	
+						
 						}
 						if($_POST['ConsultasConvenios']['ambitoGeografico']=="02"){
 							$consulta .="and ps.idPais=".'"35"'." ";	

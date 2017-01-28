@@ -28,7 +28,7 @@ class InstitucionesController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','selectInstitucionesPorPais','SelectInstitucionPorAmbito'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -45,11 +45,12 @@ class InstitucionesController extends Controller
 		);
 	}
 
+	/**
+	 * Permite listar a traves de AJAX Los estados a partir del pais
+	 * este metodo es usado en la vista de configuracion
+	 */
 	public function actionSelectEstado(){
 		
-		$valor ="<script>console.log( 'HOLA' );</script>";
-		echo $valor;
-
 		 $data=Estados::model()->findAll('paises_idPais=:paises_idPais', 
    		array(':paises_idPais'=>(int) $_POST['idPais']));
 
@@ -61,13 +62,79 @@ class InstitucionesController extends Controller
 
    }
 
+   /**
+	 * Permite listar a traves de AJAX las instituciones a partir del ambito seleccionado
+	 * este metodo es usado en la vista construirReporte y consultar
+	 */
+   public function actionSelectInstitucionPorAmbito(){
+		
+		if($_POST['ambito']=="01"){
+
+		$criteria=new CDbCriteria;
+		$criteria->select='*';  
+		$criteria->join='INNER JOIN estados e ON e.idEstado = estados_idEstado'; 
+		$criteria->condition='e.paises_idPais!=:idPais and idInstitucion!=:idInstitucion';
+		$criteria->params=array(':idPais'=>"35", ':idInstitucion'=>"6");
+		$data=instituciones::model()->findAll($criteria);
+			
+		}else if($_POST['ambito']=="02"){
+
+		$criteria=new CDbCriteria;
+		$criteria->select='*';  
+		$criteria->join='INNER JOIN estados e ON e.idEstado = estados_idEstado'; 
+		$criteria->condition='e.paises_idPais=:idPais and idInstitucion!=:idInstitucion';
+		$criteria->params=array(':idPais'=>"35", ':idInstitucion'=>"6");
+		$data=instituciones::model()->findAll($criteria);
+			
+		}else if($_POST['ambito']=="03"){
+			$data=instituciones::model()->findAll('estados_idEstado=:estados_idEstado and idInstitucion!=:idInstitucion',array(':estados_idEstado'=>"9", ':idInstitucion'=>"6"));
+		}else{
+			$data=instituciones::model()->findAll();
+		}
+	 	 $data=CHtml::listData($data,'idInstitucion','nombreInstitucion');
+		  echo "<option value=''>Todos</option>";
+		   foreach($data as $value=>$nombreInstitucion)
+		   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($nombreInstitucion),true);
+   }
+
+   /**
+	 * Permite listar a traves de AJAX las instituciones a partir del pais seleccionado
+	 * este metodo es usado en la vista construirReporte y consultar
+	 */
+   	public function actionSelectInstitucionesPorPais(){
+		
+		//$valor ="<script>console.log( 'HOLA' );</script>";
+		//echo $valor;
+		if($_POST['pais']==""){
+			$data=instituciones::model()->findAll('idInstitucion!=:idInstitucion', array(':idInstitucion'=>"6"));	
+		}else{
+			$criteria=new CDbCriteria;
+			$criteria->select='*';  
+			$criteria->join='INNER JOIN estados e ON e.idEstado = estados_idEstado'; 
+			$criteria->condition='e.paises_idPais=:idPais and idInstitucion!=:idInstitucion';
+			$criteria->params=array(':idPais'=>(int) $_POST['pais'], ':idInstitucion'=>"6");
+			$data=instituciones::model()->findAll($criteria);
+		}
+
+		  $data=CHtml::listData($data,'idInstitucion','nombreInstitucion');
+		   echo "<option value=''>Todos</option>";
+		   foreach($data as $value=>$nombreInstitucion)
+		   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($nombreInstitucion),true);
+
+   }
+
+	/**
+	 * Permite listar a traves de AJAX las instituciones a partir del tipo y del estado(ubicacion)
+	 * este metodo es usado en la vista de configuracion
+	 */
    public function actionSelectTipoInstitucion(){
-   	 //$valor ="<script>console.log( 'HOLATipoInst' );</script>";
-   	  //echo $valor;
-   	  	$data=Instituciones::model()->findAll('tiposInstituciones_idTipoInstitucion=:tiposInstituciones_idTipoInstitucion AND estados_idEstado=:estados_idEstado',
-   		array(':tiposInstituciones_idTipoInstitucion'=>(int) $_POST['idTipoInstitucion'] , ':estados_idEstado'=>(int) $_POST['idEstadox'] ));
+   		
+		   $data=Instituciones::model()->findAll('tiposInstituciones_idTipoInstitucion=:tiposInstituciones_idTipoInstitucion AND estados_idEstado=:estados_idEstado',
+   		   array(':tiposInstituciones_idTipoInstitucion'=>(int) $_POST['idTipoInstitucion'] , ':estados_idEstado'=>(int) $_POST['idEstadox'] ));
+		 
 		  $data=CHtml::listData($data,'idInstitucion','nombreInstitucion');
 		   echo "<option value=''>Seleccione Institucion</option>";
+		   
 		   foreach($data as $value=>$nombreInstitucion)
 		   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($nombreInstitucion),true);
    }

@@ -28,7 +28,7 @@ class EstadosController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','selectPaisAmbito'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -103,6 +103,27 @@ class EstadosController extends Controller
 			'model'=>$model,
 		));
 	}
+
+	public function actionSelectPaisAmbito(){
+		
+		//$valor ="<script>console.log('AQUI');</script>";
+		//echo $valor;
+
+		if($_POST['ambito']=="01"){
+			$data=Paises::model()->findAll('idPais!=:idPais',array(':idPais'=>"35"));
+			 //echo "<option value=''>Todos</option>";
+		}else if($_POST['ambito']=="02" || $_POST['ambito']=="03"){
+			$data=Paises::model()->findAll('idPais=:idPais',array(':idPais'=>"35"));
+		}else{
+			$data=Paises::model()->findAll();
+			 //echo "<option value=''>Todos</option>";
+		}
+
+		 $data=CHtml::listData($data,'idPais','nombrePais');
+ 		echo "<option value=''>Todos</option>";
+		   foreach($data as $value=>$nombrePais)
+		   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($nombrePais),true);
+   }
 
 	/**
 	 * Deletes a particular model.

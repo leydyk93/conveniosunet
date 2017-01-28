@@ -41,13 +41,14 @@ class ConsultasConvenios extends CFormModel
 			array('anio',
 				 'date', 
 				 'format'=>'yyyy',
-				 'message'=>'el formato es de año ejem:2016'),
+				 'message'=>'el formato es de año ejemplo:2016'),
 			/*array('anio',
 				  'length',
 				  'min'=>4,
 				  'tooShort'=>'El formato del año es: 2016'
 				),*/
 			array('anio','ValidarAnio'),
+			
 
 		);
 		
