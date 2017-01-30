@@ -32,7 +32,9 @@
 	 							<li><a href="<?php echo $this->createUrl("/convenios/renovar")."&id=".$resull3->id_convenio; ?>" data-toggle='tooltip' title='Renovar'><span class='glyphicon glyphicon-time'></span></a></li>
 	 						<?php endif?>
 	 						<!--<li><a href="<?php //echo $this->createUrl("/convenios/cambiarEstado")."&id=".$resull3->id_convenio; ?>" sdata-toggle='tooltip' title='Cambiar Estado'><span class='glyphicon glyphicon-refresh'></span></a></li>-->
-							<li><a href="<?php echo $resull3->url; ?>" data-toggle='tooltip' title='Descargar' download='123convenios1.pdf'><span class='glyphicon glyphicon-download-alt'></a></span></li>
+							<?php if($resull3->url!=null):?>
+							<li><a href="<?php echo $resull3->url; ?>" data-toggle='tooltip' title='Descargar' download='<?php echo $resull3->id_convenio."Convenio".$resull3->tipo_convenio; ?>'><span class='glyphicon glyphicon-download-alt'></a></span></li>
+	                       	<?php endif?>
 	                       <?php if(!Yii::app()->user->isGuest):?>
 	                        	<li><a href="<?php echo $this->createUrl("/convenios/delete")."&id=".$resull3->id_convenio; ?>" data-toggle='tooltip' title='Eliminar'><span class='glyphicon glyphicon-trash'></span></a></li> 
 						 	<?php endif?>
@@ -40,11 +42,13 @@
 					
 					 </div>
 
-
 				</div>
 
 			 </aside>
-		   <?php  }	?>  
+			 <?php } ?>
+		   
+
+		<?php if($paginas>0){ ?>
 
 		   	<nav class="text-right" aria-label="Page navigation">
 
@@ -83,10 +87,8 @@
 			    ?>
 			    
 			   <?php   if($iniciopag<$paginas){ 
-
 			   	 		$valorn=$iniciopag+1;
 			   	?>
-    
 			    		<li>
 					      <a href="javascript:void(0)" aria-label="Next" onclick="send(<?php echo $valorn; ?>)" >
 					        <span aria-hidden="true">&raquo;</span>
@@ -106,3 +108,8 @@
 				</ul>
 
 			</nav>
+
+			  <?php }else{?> 
+		 		<h4 class="text-center">" No hay convenios Registrados con las características seleccionadas "</h4>
+		   	<?php } ?>
+ 

@@ -22,7 +22,9 @@
 				</div>
 
 			 </aside>
-		   <?php  }	?>  
+		   <?php  }	?> 
+		
+			<?php if($paginas>0){ ?>
 
 		   	<nav class="text-right" aria-label="Page navigation">
 
@@ -83,4 +85,9 @@
    
 				</ul>
 
-			</nav>	  
+			</nav>	
+
+		 <?php }else{?> 
+		   <h4 class="text-center">" No hay convenios registrados para los estados seleccionados"</h4>
+		   <?php } ?>
+   

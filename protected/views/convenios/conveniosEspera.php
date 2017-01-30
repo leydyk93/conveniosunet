@@ -38,7 +38,7 @@
 	           echo $form->checkBoxList($model,'estadoConv', $list6,array('onclick'=>'ConvenioEstado(1)', 'template'=>'<a class="list-group-item" data-parent="#SubEstado"> {input}{label} </a>', "separator" => ""));    
 	          ?>
 
-	         <?php echo $form->hiddenField($model,'order'); ?>
+	         <?php echo $form->hiddenField($model,'inicio'); ?>
 	          
 	      </div>
 
@@ -72,7 +72,7 @@
 	function ConvenioEstado(inicio){
 
     var inicio=Number(inicio);	
-    document.getElementById("ConsultasConvenios_order").value=inicio;	
+    document.getElementById("ConsultasConvenios_inicio").value=inicio;	
 	var data=$("#form").serialize();
 
 	var url= '<?php echo Yii::app()->createUrl("convenios/selectEstado"); ?>'
