@@ -19,7 +19,6 @@ class ConveniosController extends Controller
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
-
 	/**
 	 * Specifies the access control rules.
 	 * This method is used by the 'accessControl' filter.
@@ -39,7 +38,7 @@ class ConveniosController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete','eliminar'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -47,10 +46,9 @@ class ConveniosController extends Controller
 			),
 		);
 	}
-
 	/**
 	*Realiza la consulta de los responsables de la UNET para un convenio 
-	*@param entero $id que reperesta el convenio
+	*@param entero $id que representa el convenio
 	*/
 	public function consultarResponsablesUNET($id){
 		
@@ -1078,13 +1076,66 @@ class ConveniosController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		$ai=Actaintencion::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));
+		$rp=Renovacionprorrogas::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));
+		$hr=Historicoresponsables::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));	
+		$ic=InstitucionConvenios::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));	
+		$ec=ConvenioEstados::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));	
+		//$model=Convenios::model()->findByPk($id); // assuming there is a post whose ID is 10
+		//$model->delete(); 
 
-		$model=Convenios::model()->findByPk($id); // assuming there is a post whose ID is 10
-		$model->delete(); // delete the row from the database table
-		//$this->loadModel($id)->delete();	
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		//if(!isset($_GET['ajax']))
-		//	$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		// delete the row from the database table
+		$this->loadModel($id)->delete();	
+		
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	}
+
+	public function actionEliminar($id){
+
+		//verificar primero que el convenio que desea va a eliminar no tenga dependiantes, es decir convenios especificos
+		$conv=convenios::model()->FindAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));			
+
+		if(empty($conv)){	
+			$ai=Actaintencion::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));	
+			$rp=Renovacionprorrogas::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));
+			$hr=Historicoresponsables::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id)); //Elimino los responsables por parte de la UNET	
+			//eliminar los responsables de las instituciones contraparte,busco las instituciones contraparte 
+			$ic=InstitucionConvenios::model()->FindAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));
+
+				foreach ($ic as $key => $value) {
+					$hrc=Historicoresponsables::model()->deleteAll('institucion_convenios_idInstitucionConvenio=:institucion_convenios_idInstitucionConvenio',array(':institucion_convenios_idInstitucionConvenio'=>$value->idInstitucionConvenio)); 
+				}
+
+			$ic=InstitucionConvenios::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));		
+			$ec=ConvenioEstados::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));	
+			
+			$this->loadModel($id)->delete();
+
+			
+			 $this->guardarBitacora(3, 1);
+		
+
+		}
+
+		$this->redirect(array('consultar'));
+
+	}
+
+	/**
+	 * Almacena la accion del usuario en la taba operaciones 
+	 * @param integer $tipoOperacion hacer referencia a la accion que realizo el usuario 
+	 * @param integer $modulo hace referencia a la tabla en la cual se realiza la accion
+	 */
+	public function guardarBitacora($tipoOperacion, $modulo){
+
+			$operacion=new operaciones;
+			$operacion->fecha= date("Y-m-d");
+			$operacion->usuario_id=Yii::app()->user->id;
+			$operacion->tipoOperaciones_idTipoOperacion=$tipoOperacion;
+			$operacion->modulos_idModulo=$modulo;
+			$operacion->save();
+
 	}
 
 	public function actionArchivo(){
@@ -1355,6 +1406,7 @@ class ConveniosController extends Controller
 				//$command->execute(); 
 
 				//print_r($command);
+        
 		
      	$this->render('consultar',array(
      		'model'=>$formConsulta,
