@@ -1,6 +1,6 @@
 <?php
 
-class TiposinstitucionesController extends Controller
+class ConvenioEstadosController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -62,18 +62,16 @@ class TiposinstitucionesController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Tiposinstituciones;
+		$model=new ConvenioEstados;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Tiposinstituciones']))
+		if(isset($_POST['ConvenioEstados']))
 		{
-			$model->attributes=$_POST['Tiposinstituciones'];
-			if($model->save()){
-				$this->guardarBitacora(1, 8);
-				$this->redirect(array('admin'));
-			}
+			$model->attributes=$_POST['ConvenioEstados'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->id_convenio_estado));
 		}
 
 		$this->render('create',array(
@@ -93,13 +91,11 @@ class TiposinstitucionesController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Tiposinstituciones']))
+		if(isset($_POST['ConvenioEstados']))
 		{
-			$model->attributes=$_POST['Tiposinstituciones'];
-			if($model->save()){
-				$this->guardarBitacora(2, 8);
-				$this->redirect(array('admin'));
-			}
+			$model->attributes=$_POST['ConvenioEstados'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->id_convenio_estado));
 		}
 
 		$this->render('update',array(
@@ -115,7 +111,7 @@ class TiposinstitucionesController extends Controller
 	public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();
-		$this->guardarBitacora(3, 8);
+
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
@@ -124,23 +120,25 @@ class TiposinstitucionesController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	/*public function actionIndex()
+	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Tiposinstituciones');
+		$dataProvider=new CActiveDataProvider('ConvenioEstados');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
-	}*/
+	}
 
 	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
+	public function actionAdmin($id)
 	{
-		$model=new Tiposinstituciones('search');
+		
+		//$model=ConvenioEstados::model()->findAll('convenios_idConvenio=:idConvenio', array(':idConvenio'=>$id)); 
+		$model=new ConvenioEstados('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Tiposinstituciones']))
-			$model->attributes=$_GET['Tiposinstituciones'];
+		if(isset($_GET['ConvenioEstados']))
+			$model->attributes=$_GET['ConvenioEstados'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -151,40 +149,24 @@ class TiposinstitucionesController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Tiposinstituciones the loaded model
+	 * @return ConvenioEstados the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Tiposinstituciones::model()->findByPk($id);
+		$model=ConvenioEstados::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
 
 	/**
-	 * Almacena la accion del usuario en la taba operaciones 
-	 * @param integer $tipoOperacion hacer referencia a la accion que realizo el usuario 
-	 * @param integer $modulo hace referencia a la tabla en la cual se realiza la accion
-	 */
-	public function guardarBitacora($tipoOperacion, $modulo){
-
-			$operacion=new operaciones;
-			$operacion->fecha= date("Y-m-d");
-			$operacion->usuario_id=Yii::app()->user->id;
-			$operacion->tipoOperaciones_idTipoOperacion=$tipoOperacion;
-			$operacion->modulos_idModulo=$modulo;
-			$operacion->save();
-
-	}
-
-	/**
 	 * Performs the AJAX validation.
-	 * @param Tiposinstituciones $model the model to be validated
+	 * @param ConvenioEstados $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='tiposinstituciones-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='convenio-estados-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

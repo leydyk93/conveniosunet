@@ -252,7 +252,7 @@ class ConveniosController extends Controller
 				$model->fechaCaducidadConvenio=$renovacion->fechaFinProrroga;
 
 				if($renovacion->save()){
-
+						$this->guardarBitacora(4, 1);
 					if($model->save())
 						$this->redirect(array('view','id'=>$id));
 
@@ -286,8 +286,10 @@ class ConveniosController extends Controller
 			$modelestado->convenios_idConvenio=$id;
 
 			if($modelestado->validate()){
-				if($modelestado->save())
+				if($modelestado->save()){
+				 //$this->guardarBitacora(5, 1);
 				 $this->redirect(array('conveniosEspera'));
+				}
 			}
 		}
 
@@ -1074,22 +1076,21 @@ class ConveniosController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete($id)
+	
+	/*public function actionDelete($id)
 	{
-		$ai=Actaintencion::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));
-		$rp=Renovacionprorrogas::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));
-		$hr=Historicoresponsables::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));	
-		$ic=InstitucionConvenios::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));	
-		$ec=ConvenioEstados::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));	
-		//$model=Convenios::model()->findByPk($id); // assuming there is a post whose ID is 10
-		//$model->delete(); 
-
 		// delete the row from the database table
 		$this->loadModel($id)->delete();	
 		
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
+	}*/
+
+	/**
+	 * Deletes a particular model.
+	 * If deletion is successful, the browser will be redirected to the 'admin' page.
+	 * @param integer $id the ID of the model to be deleted
+	 */
 
 	public function actionEliminar($id){
 
@@ -1112,7 +1113,6 @@ class ConveniosController extends Controller
 			
 			$this->loadModel($id)->delete();
 
-			
 			 $this->guardarBitacora(3, 1);
 		
 
@@ -1208,13 +1208,13 @@ class ConveniosController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	/*public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Convenios');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
-	}
+	}*/
 	/**
 	 * Manages all models.
 	 */

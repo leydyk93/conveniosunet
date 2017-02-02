@@ -165,9 +165,11 @@ class InstitucionesController extends Controller
 		if(isset($_POST['Instituciones']))
 		{
 			$model->attributes=$_POST['Instituciones'];
-			if($model->save())
+			if($model->save()){
+				$this->guardarBitacora(1, 9);
 				$this->redirect(array('admin'));
 				//$this->redirect(array('view','id'=>$model->idInstitucion));
+			}
 		}
 
 		$this->render('create',array(
@@ -192,8 +194,10 @@ class InstitucionesController extends Controller
 		if(isset($_POST['Instituciones']))
 		{
 			$model->attributes=$_POST['Instituciones'];
-			if($model->save())
+			if($model->save()){
+				$this->guardarBitacora(2, 9);
 				$this->redirect(array('admin'));
+			}
 		}
 
 		$this->render('update',array(
@@ -209,9 +213,26 @@ class InstitucionesController extends Controller
 	public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();
+		$this->guardarBitacora(3, 9);
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	}
+
+	/**
+	 * Almacena la accion del usuario en la taba operaciones 
+	 * @param integer $tipoOperacion hacer referencia a la accion que realizo el usuario 
+	 * @param integer $modulo hace referencia a la tabla en la cual se realiza la accion
+	 */
+	public function guardarBitacora($tipoOperacion, $modulo){
+
+			$operacion=new operaciones;
+			$operacion->fecha= date("Y-m-d");
+			$operacion->usuario_id=Yii::app()->user->id;
+			$operacion->tipoOperaciones_idTipoOperacion=$tipoOperacion;
+			$operacion->modulos_idModulo=$modulo;
+			$operacion->save();
+
 	}
 
 	/**

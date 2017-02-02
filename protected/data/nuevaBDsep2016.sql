@@ -596,7 +596,9 @@ CREATE TABLE IF NOT EXISTS tipoOperaciones (
 INSERT INTO tipoOperaciones (idTipoOperacion,descripcionTipoOperacion) VALUES
 ('1', 'Crear'),
 ('2', 'Modificar'),
-('3', 'Eliminar');
+('3', 'Eliminar'),
+('4', 'RenovacionConvenio'),
+('5', 'cambioEstadoConvenio');
 
 -- -----------------------------------------------------
 -- Table   Modulos
@@ -610,7 +612,15 @@ CREATE TABLE IF NOT EXISTS modulos (
 INSERT INTO modulos(idmodulo,descripcion) VALUES
 ('1', 'convenios'),
 ('2', 'usuarios'),
-('3', 'responsables');
+('3', 'responsables'),
+('4', 'tipoResponsable'),
+('5', 'tipoConvenios'),
+('6', 'clasificacionConvenios'),
+('7', 'estadoConvenios'),
+('8', 'tiposInstituciones'),
+('9', 'instituciones'),
+('10', 'estadosProvincias'),
+('11', 'Dependencias');
 
 -- -----------------------------------------------------
 -- Table   Operaciones
