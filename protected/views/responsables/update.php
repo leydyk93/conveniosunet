@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Responsables'=>array('admin'),
-	$model->idResponsable=>array('view','id'=>$model->idResponsable),
+	//$model->idResponsable=>array('view','id'=>$model->idResponsable),
 	'Modificar',
 );
 
@@ -17,10 +17,12 @@ $this->breadcrumbs=array(
 ?>
 
 <div class="container">
-	<?php $this->renderPartial('_form', array('model'=>$model)); ?>
 
-	<ul class="breadcrumb text-right">
-	  <li><a href="<?php echo $this->createUrl("site/configuracion"); ?>">Gestion de la Base de Datos</a></li>
-	  <li><a href="<?php echo $this->createUrl("admin"); ?>">Listar Instituciones</a></li>
-	</ul>
+<?php $this->renderPartial('_form', array('model'=>$model,'pais' =>$pais,'estados'=>$estados,'tipoIns'=>$tipoIns,)); ?>
+
+<ul class="breadcrumb text-right">
+  <li><a href="<?php echo $this->createUrl("site/configuracion"); ?>">Gestion de la Base de Datos</a></li>
+  <li><a href="<?php echo $this->createUrl("admin"); ?>">Listar Responsables</a></li>
+</ul>
+
 </div>

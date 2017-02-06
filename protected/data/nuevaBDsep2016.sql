@@ -557,8 +557,6 @@ INSERT INTO convenio_Estados (convenios_idConvenio,estadoConvenios_idEstadoConve
 ('6','1','2016/02/10','1'),
 ('7','1','2016/03/12','1');
 
-
-
 -- -----------------------------------------------------
 -- Table    convenio_aportes 
 -- -----------------------------------------------------
@@ -585,3 +583,58 @@ CREATE TABLE IF NOT EXISTS    convenio_aportes  (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
    );
+
+-- -----------------------------------------------------
+-- Table   tipoOperaciones
+-- -----------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS tipoOperaciones (
+  idTipoOperacion INT AUTO_INCREMENT NOT NULL,
+  descripcionTipoOperacion VARCHAR(50) NOT NULL,
+  PRIMARY KEY (idTipoOperacion));
+
+INSERT INTO tipoOperaciones (idTipoOperacion,descripcionTipoOperacion) VALUES
+('1', 'Crear'),
+('2', 'Modificar'),
+('3', 'Eliminar'),
+('4', 'RenovacionConvenio'),
+('5', 'cambioEstadoConvenio');
+
+-- -----------------------------------------------------
+-- Table   Modulos
+-- -----------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS modulos (
+  idModulo INT AUTO_INCREMENT NOT NULL,
+  descripcion VARCHAR(50) NOT NULL,
+  PRIMARY KEY (idmodulo));
+
+INSERT INTO modulos(idmodulo,descripcion) VALUES
+('1', 'convenios'),
+('2', 'usuarios'),
+('3', 'responsables'),
+('4', 'tipoResponsable'),
+('5', 'tipoConvenios'),
+('6', 'clasificacionConvenios'),
+('7', 'estadoConvenios'),
+('8', 'tiposInstituciones'),
+('9', 'instituciones'),
+('10', 'estadosProvincias'),
+('11', 'Dependencias');
+
+-- -----------------------------------------------------
+-- Table   Operaciones
+-- -----------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS  operaciones (
+  idOperacion INT AUTO_INCREMENT NOT NULL,
+  fecha DATE NOT NULL,
+  usuario_id  INT NOT NULL,
+  tipoOperaciones_idTipoOperacion INT NOT NULL,
+  modulos_idModulo INT NOT NULL,
+  PRIMARY KEY (idOperacion),
+  CONSTRAINT fk_usuario_operaciones FOREIGN KEY (usuario_id) REFERENCES usuario (id), 
+  CONSTRAINT fk_tipoOperaciones_operaciones FOREIGN KEY (tipoOperaciones_idTipoOperacion) REFERENCES tipoOperaciones (idTipoOperacion),
+  CONSTRAINT fk_modulos_operaciones FOREIGN KEY (modulos_idModulo) REFERENCES modulos (idModulo));
+
+

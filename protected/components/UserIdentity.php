@@ -25,7 +25,7 @@ class UserIdentity extends CUserIdentity
 		$conexion=Yii::app()->db;
 		$consulta="SELECT nombre, clave FROM usuario ";
 		$consulta .= "WHERE nombre='".$this->username."' AND ";
-		$consulta .="clave='".$this->password."'";
+		$consulta .="clave='".md5($this->password)."'";
 
 		$resultado=$conexion->createCommand($consulta)->query();
 

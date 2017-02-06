@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Clasificacion Convenios'=>array('admin'),
-	$model->idClasificacionConvenio=>array('view','id'=>$model->idClasificacionConvenio),
+	//$model->idClasificacionConvenio=>array('view','id'=>$model->idClasificacionConvenio),
 	'Modificar',
 );
 

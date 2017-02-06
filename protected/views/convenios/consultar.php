@@ -5,7 +5,11 @@
 );
  ?>
 
+
 <div class="container">
+ <div id="alertavencer">
+   
+ </div>
 <div class="row">
 
    <?php 
@@ -81,7 +85,8 @@
 
                echo $form->dropDownList($model,'ambitoGeografico', 
                                             array("01"=>"Internacional", "02"=>"Nacional", "03"=>"Regional"),
-                                            array('class'=>'form-control input-sm','empty' => 'Todos')
+                                            array( 
+                                              'class'=>'form-control input-sm','empty' => 'Todos')
                                           
                                             );
                    // echo $form->checkBoxList($model,'ambitoGeografico',array("01"=>"Internacional", "02"=>"Nacional", "03"=>"Regional"),array('onclick'=>'send();', 'template'=>'<a class="list-group-item" data-parent="#SubAmbitoG"> {input}{label} </a>', "separator" => ""));
@@ -133,16 +138,6 @@
          </a>
       </div>
 
-      <!--<a href="#SubEstado" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubEstado" ><?php //echo $form->labelEx($model,'estadoConv'); ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
-      <div class="collapse list-group-submenu" id="SubEstado"> 
-
-          <?php  
-           //$list6=CHtml::listData($estadoconve,'idEstadoConvenio','nombreEstadoConvenio');   
-           //echo $form->checkBoxList($model,'estadoConv', $list6,array('onclick'=>'send(1);', 'template'=>'<a class="list-group-item" data-parent="#SubEstado"> {input}{label} </a>', "separator" => ""));    
-          ?>
-          
-      </div>-->
-
        <a href="#SubVence" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubVence" ><label for="">Fecha de vencimiento</label> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
       <div class="collapse list-group-submenu" id="SubVence"> 
         
@@ -171,6 +166,7 @@
                                      'changeMonth'=>true,
                                      'changeYear'=>true,
                                      'showButtonPanel'=>true,
+                                     'onClose' => 'js:function(selectedDate) { $("#fechaVencimiento2").datepicker("option", "minDate", selectedDate); }',
                                    
                                 ),
                             'htmlOptions'=>array(
@@ -213,6 +209,7 @@
                                  'changeMonth'=>true,
                                  'changeYear'=>true,
                                  'showButtonPanel'=>true,
+                                 'onClose' => 'js:function(selectedDate) { $("#fechaVencimiento1").datepicker("option", "maxDate", selectedDate); }', 
                                
                             ),
                         'htmlOptions'=>array(
@@ -236,9 +233,10 @@
           </div>
           
         </div>
-
         </a>
       </div>
+       
+      <?php echo $form->hiddenField($model,'inicio'); ?>
        <a  class="list-group-item text-center">
        <?php      
               echo CHtml::button('Desmarcar filtros',array('onclick'=>'limpiarFiltros();','class'=>'btn btn-conv btn-md'));
@@ -264,9 +262,6 @@
 
       </div>
     </div>
-   
-    
-      
     <div id="resul" class="list-group" >
 
     </div>
@@ -294,6 +289,7 @@
 
 $('#ConsultasConvenios_pais').change(function() {
 //    console.log($('#ConsultasConvenios_pais option:selected').val());
+    CambiarInstitucionPais();
     send(1);
 });
 
@@ -304,6 +300,8 @@ $('#ConsultasConvenios_institucion').change(function() {
 
 $('#ConsultasConvenios_ambitoGeografico').change(function() {
     //console.log($('#ConsultasConvenios_institucion option:selected').val());
+    CambiarPaisesAmbito();
+    CambiarInstitucionesAmbito();
     send(1);
 });
 
@@ -353,74 +351,85 @@ $('#ConsultasConvenios_order').change(function() {
 }
 
 function send(inicio)
- {
-  
-  var inicio=Number(inicio);
-  var anio = document.getElementById("ConsultasConvenios_anio").value;
+{
+  var inicio=Number(inicio); 
+  document.getElementById("ConsultasConvenios_inicio").value=inicio;  
+  var data=$("#form").serialize();
+  var url= '<?php echo Yii::app()->createUrl("convenios/consultara"); ?>'
+  $.ajax({
+  type:"post",
+  url: url,
+  data:data,
+  success:function(datos){
+      document.getElementById("resul").innerHTML=datos;  
+  }
+  });
 
-  var tipo = document.getElementsByName("ConsultasConvenios[tipo][]");
-  var clasifi= document.getElementsByName("ConsultasConvenios[clasificacion][]");
-  var ambito=$('#ConsultasConvenios_ambitoGeografico option:selected').val();
-  var pais=$('#ConsultasConvenios_pais option:selected').val();
-  var tipoInst= document.getElementsByName("ConsultasConvenios[tipo_institucion][]"); 
-  var institucion=$('#ConsultasConvenios_institucion option:selected').val();
-  var estadoConv= document.getElementsByName("ConsultasConvenios[estadoConv][]");  
-  var fv1 = document.getElementById("fechaVencimiento1").value; 
-  var fv2 = document.getElementById("fechaVencimiento2").value; 
-  var orden=$('#ConsultasConvenios_order option:selected').val();
-  
-  var tipoc=[], clasific=[], tipoInstc=[] , estadoConvc=[]; 
-
-    for(i=0;i<tipo.length;i++)
-    {
-      if(tipo[i].checked){
-        tipoc[i]=tipo[i].value;
-      }else{
-        tipoc[i]=0;
-      }
-    }
-
-    for(j=0;j<clasifi.length;j++)
-    {
-      if(clasifi[j].checked){
-        clasific[j]=clasifi[j].value;
-      }else{
-        clasific[j]=0;
-      }
-    }
-
-    for(k=0;k<tipoInst.length;k++)
-    {
-      if(tipoInst[k].checked){
-        tipoInstc[k]=tipoInst[k].value;
-      }else{
-        tipoInstc[k]=0;
-      }
-    }
-
-     for(l=0;l<estadoConv.length;l++)
-    {
-      if(estadoConv[l].checked){
-        estadoConvc[l]=estadoConv[l].value;
-      }else{
-        estadoConvc[l]=0;
-      }
-    }
-
- var url= '<?php echo Yii::app()->createUrl("convenios/consultara"); ?>'
-
-$.ajax({
-
-type:"post",
-url: url,
-data:{ inicio:inicio , anio:anio , tipo:tipoc , clasificacion:clasific , tipoInstitucion:tipoInstc , estadoConvenio:estadoConvc ,
-      ambito:ambito, pais:pais , institucion:institucion, fechav1: fv1 , fechav2: fv2 , orden:orden},
-success:function(datos){
-   document.getElementById("resul").innerHTML=datos;  
-}
-});
 }
 
+function CambiarPaisesAmbito(){
 
- 
+  var amb=$('#ConsultasConvenios_ambitoGeografico').val();
+  var url= '<?php echo Yii::app()->createUrl("estados/selectPaisAmbito"); ?>'
+  $.ajax({
+  type:"post",
+  url: url,
+  data:{ ambito:amb},
+  success:function(datos){
+      document.getElementById("ConsultasConvenios_pais").innerHTML=datos;  
+  }
+  });
+
+  }
+
+  function CambiarInstitucionesAmbito(){
+
+  var amb=$('#ConsultasConvenios_ambitoGeografico').val();
+  var url= '<?php echo Yii::app()->createUrl("instituciones/selectInstitucionPorAmbito"); ?>'
+  $.ajax({
+  type:"post",
+  url: url,
+  data:{ ambito:amb},
+  success:function(datos){
+      document.getElementById("ConsultasConvenios_institucion").innerHTML=datos;  
+  }
+  });
+
+  }
+
+ function CambiarInstitucionPais(){
+
+  var pais=$('#ConsultasConvenios_pais').val();
+  var url= '<?php echo Yii::app()->createUrl("instituciones/selectInstitucionesPorPais"); ?>'
+  $.ajax({
+  type:"post",
+  url: url,
+  data:{ pais:pais},
+  success:function(datos){
+      document.getElementById("ConsultasConvenios_institucion").innerHTML=datos;  
+  }
+  });
+  
+  }
+  
+    function encontrarConveniosV(){
+        var url='<?php echo Yii::app()->createUrl("convenios/buscarConveniosV"); ?>'
+        
+        $.ajax({
+            type: "post",
+            url: url,
+           
+            success: function(datos) {
+                document.getElementById("alertavencer").innerHTML=datos;  
+            }
+        });
+    }
+    //setInterval(encontrarConveniosV, 3000);
+  
+  <?php if(!Yii::app()->user->isGuest):?>
+    setTimeout(encontrarConveniosV,2000);
+  <?php endif?>
+
 </script>
+
+

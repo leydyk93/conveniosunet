@@ -7,7 +7,7 @@
 <div class="row">
  <div class="col-md-8 col-md-offset-2">
  	<div class="panel panel-default">
- 		<div class="panel text-center"><h4><?php if($model->isNewRecord){ echo "Nuevo estado Convenio";}else{ echo "Modificar estado Convenio";} ?></h4></div>
+ 		<div class="panel-heading text-center"><h4><?php if($model->isNewRecord){ echo "Nuevo estado Convenio";}else{ echo "Modificar estado Convenio";} ?></h4></div>
  		<div class="panel-body text-center">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'estadoconvenios-form',
@@ -34,7 +34,7 @@
 		<?php echo $form->labelEx($model,'descripcionEstadoConvenio'); ?>
 		</div>
 		<div class="col-sm-6">
-		<?php echo $form->textField($model,'descripcionEstadoConvenio',array('class'=>"form-control")); ?>
+		<?php echo $form->textArea($model,'descripcionEstadoConvenio',array('class'=>"form-control")); ?>
 		<?php echo $form->error($model,'descripcionEstadoConvenio'); ?>
 		</div>
 	</div>

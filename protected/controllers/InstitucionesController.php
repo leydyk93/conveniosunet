@@ -28,11 +28,11 @@ class InstitucionesController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','selectInstitucionesPorPais','SelectInstitucionPorAmbito'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','selectEstado'),
+				'actions'=>array('create','update','selectEstado', 'selectTipoInstitucion'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -45,11 +45,12 @@ class InstitucionesController extends Controller
 		);
 	}
 
+	/**
+	 * Permite listar a traves de AJAX Los estados a partir del pais
+	 * este metodo es usado en la vista de configuracion
+	 */
 	public function actionSelectEstado(){
 		
-		$valor ="<script>console.log( 'HOLA' );</script>";
-		echo $valor;
-
 		 $data=Estados::model()->findAll('paises_idPais=:paises_idPais', 
    		array(':paises_idPais'=>(int) $_POST['idPais']));
 
@@ -59,7 +60,84 @@ class InstitucionesController extends Controller
 		   foreach($data as $value=>$nombreEstado)
 		   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($nombreEstado),true);
 
-	}
+   }
+
+   /**
+	 * Permite listar a traves de AJAX las instituciones a partir del ambito seleccionado
+	 * este metodo es usado en la vista construirReporte y consultar
+	 */
+   public function actionSelectInstitucionPorAmbito(){
+		
+		if($_POST['ambito']=="01"){
+
+		$criteria=new CDbCriteria;
+		$criteria->select='*';  
+		$criteria->join='INNER JOIN estados e ON e.idEstado = estados_idEstado'; 
+		$criteria->condition='e.paises_idPais!=:idPais and idInstitucion!=:idInstitucion';
+		$criteria->params=array(':idPais'=>"35", ':idInstitucion'=>"6");
+		$data=instituciones::model()->findAll($criteria);
+			
+		}else if($_POST['ambito']=="02"){
+
+		$criteria=new CDbCriteria;
+		$criteria->select='*';  
+		$criteria->join='INNER JOIN estados e ON e.idEstado = estados_idEstado'; 
+		$criteria->condition='e.paises_idPais=:idPais and idInstitucion!=:idInstitucion';
+		$criteria->params=array(':idPais'=>"35", ':idInstitucion'=>"6");
+		$data=instituciones::model()->findAll($criteria);
+			
+		}else if($_POST['ambito']=="03"){
+			$data=instituciones::model()->findAll('estados_idEstado=:estados_idEstado and idInstitucion!=:idInstitucion',array(':estados_idEstado'=>"9", ':idInstitucion'=>"6"));
+		}else{
+			$data=instituciones::model()->findAll();
+		}
+	 	 $data=CHtml::listData($data,'idInstitucion','nombreInstitucion');
+		  echo "<option value=''>Todos</option>";
+		   foreach($data as $value=>$nombreInstitucion)
+		   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($nombreInstitucion),true);
+   }
+
+   /**
+	 * Permite listar a traves de AJAX las instituciones a partir del pais seleccionado
+	 * este metodo es usado en la vista construirReporte y consultar
+	 */
+   	public function actionSelectInstitucionesPorPais(){
+		
+		//$valor ="<script>console.log( 'HOLA' );</script>";
+		//echo $valor;
+		if($_POST['pais']==""){
+			$data=instituciones::model()->findAll('idInstitucion!=:idInstitucion', array(':idInstitucion'=>"6"));	
+		}else{
+			$criteria=new CDbCriteria;
+			$criteria->select='*';  
+			$criteria->join='INNER JOIN estados e ON e.idEstado = estados_idEstado'; 
+			$criteria->condition='e.paises_idPais=:idPais and idInstitucion!=:idInstitucion';
+			$criteria->params=array(':idPais'=>(int) $_POST['pais'], ':idInstitucion'=>"6");
+			$data=instituciones::model()->findAll($criteria);
+		}
+
+		  $data=CHtml::listData($data,'idInstitucion','nombreInstitucion');
+		   echo "<option value=''>Todos</option>";
+		   foreach($data as $value=>$nombreInstitucion)
+		   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($nombreInstitucion),true);
+
+   }
+
+	/**
+	 * Permite listar a traves de AJAX las instituciones a partir del tipo y del estado(ubicacion)
+	 * este metodo es usado en la vista de configuracion
+	 */
+   public function actionSelectTipoInstitucion(){
+   		
+		   $data=Instituciones::model()->findAll('tiposInstituciones_idTipoInstitucion=:tiposInstituciones_idTipoInstitucion AND estados_idEstado=:estados_idEstado',
+   		   array(':tiposInstituciones_idTipoInstitucion'=>(int) $_POST['idTipoInstitucion'] , ':estados_idEstado'=>(int) $_POST['idEstadox'] ));
+		 
+		  $data=CHtml::listData($data,'idInstitucion','nombreInstitucion');
+		   echo "<option value=''>Seleccione Institucion</option>";
+		   
+		   foreach($data as $value=>$nombreInstitucion)
+		   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($nombreInstitucion),true);
+   }
 
 	/**
 	 * Displays a particular model.
@@ -87,9 +165,11 @@ class InstitucionesController extends Controller
 		if(isset($_POST['Instituciones']))
 		{
 			$model->attributes=$_POST['Instituciones'];
-			if($model->save())
+			if($model->save()){
+				$this->guardarBitacora(1, 9);
 				$this->redirect(array('admin'));
 				//$this->redirect(array('view','id'=>$model->idInstitucion));
+			}
 		}
 
 		$this->render('create',array(
@@ -114,8 +194,10 @@ class InstitucionesController extends Controller
 		if(isset($_POST['Instituciones']))
 		{
 			$model->attributes=$_POST['Instituciones'];
-			if($model->save())
+			if($model->save()){
+				$this->guardarBitacora(2, 9);
 				$this->redirect(array('admin'));
+			}
 		}
 
 		$this->render('update',array(
@@ -123,7 +205,6 @@ class InstitucionesController extends Controller
 			'pais'=>$pais,
 		));
 	}
-
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
@@ -132,22 +213,38 @@ class InstitucionesController extends Controller
 	public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();
-
+		$this->guardarBitacora(3, 9);
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
 	/**
+	 * Almacena la accion del usuario en la taba operaciones 
+	 * @param integer $tipoOperacion hacer referencia a la accion que realizo el usuario 
+	 * @param integer $modulo hace referencia a la tabla en la cual se realiza la accion
+	 */
+	public function guardarBitacora($tipoOperacion, $modulo){
+
+			$operacion=new operaciones;
+			$operacion->fecha= date("Y-m-d");
+			$operacion->usuario_id=Yii::app()->user->id;
+			$operacion->tipoOperaciones_idTipoOperacion=$tipoOperacion;
+			$operacion->modulos_idModulo=$modulo;
+			$operacion->save();
+
+	}
+
+	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	/*public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Instituciones');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
-	}
+	}*/
 
 	/**
 	 * Manages all models.

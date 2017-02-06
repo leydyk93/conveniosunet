@@ -16,6 +16,7 @@ $this->breadcrumbs=array(
 			  <li class="list-group-item list-group-item-success">Instituciones</li>
 			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/tiposinstituciones/admin' ) ?>">Tipos de Instituciones</a></li>
 			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/instituciones/admin' ) ?>">Instituciones</a></li>
+			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/estados/admin' ) ?>">Estados o Provincias</a></li>
 			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/dependencias/admin' ) ?>">Dependencias</a></li>
 	</ul>
   </div>
@@ -31,14 +32,13 @@ $this->breadcrumbs=array(
   		<ul class="list-group">
 			  <li class="list-group-item list-group-item-success">Responsables</li>
 			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/tiporesponsable/admin' ) ?>">Tipos de Responsables</a></li>
-			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/responsables/admin' ) ?>">Responsables UNET</a></li>
-			  <li class="list-group-item">Responsables Contraparte</li>
+			  <li class="list-group-item"><a  href="<?php echo $this->createUrl( '/responsables/admin' ) ?>">Responsables</a></li>
+			  
 		</ul>
   </div>
 </div>
 
 
-  
  <!--<h5>Instituciones</h5>
  <ul>
  	<li>Tipos de institucion

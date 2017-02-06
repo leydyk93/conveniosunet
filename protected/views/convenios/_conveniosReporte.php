@@ -1,5 +1,5 @@
-
-<?php 
+  
+<?php  
 while(($row=$resultados->read())!==false) {  ?>
 
 			<aside id="prueba" class="list-group-item" >
@@ -19,8 +19,8 @@ while(($row=$resultados->read())!==false) {  ?>
 						    <dd><small class="text-muted"><?php   echo $model->fecha_inicio." ";?></small></dd>
 						    <dt>Fecha Caducidad </dt>
 						    <dd><small class="text-muted"> <?php echo $model->fecha_caducidad." "; ?></small></dd>
-					 	    <dt>Objetivo del convenio </dt>
-						    <dd><small class="text-muted"> <?php echo $model->objetivo_convenio." "; ?></small></dd>
+					 	    <!--<dt>Objetivo del convenio </dt>
+						    <dd><small class="text-muted"> <?php /*echo $model->objetivo_convenio." ";*/ ?></small></dd>-->
 						    <!--<dt>Estado del Convenio </dt>
 						    <dd><small class="text-muted"> <?php /*echo $model->estado_actual_convenio;*/ ?></small></dd>-->
 						    <dt>Responsable Contacto </dt>

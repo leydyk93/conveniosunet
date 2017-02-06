@@ -11,7 +11,8 @@ $this->breadcrumbs=array(
 
 <div class="container">
 
-<p class="hFamilia">Para mas información, dudas o sugerencias, te invitamos a comunicarte con nosotros via correo electrónico, Escribenos </p>   
+<h4 class="text-center">Para más información, dudas o sugerencias, te invitamos a comunicarte con nosotros via correo electrónico <spand class="hFamilia"> ¡Escribenos! </spand> </h4>
+  
 </div>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">

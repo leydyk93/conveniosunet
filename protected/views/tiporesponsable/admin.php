@@ -52,7 +52,7 @@ $('.search-form form').submit(function(){
 		'htmlOptions' => array('class' => 'grid-view'),
 		'columns'=>array(
 
-			'idTipoResponsable',
+			//'idTipoResponsable',
 			'descripcionTipoResponsable',
 			array(
 				'class'=>'CButtonColumn', 'header'=>'Operaciones', 'template'=>'<span>{update}</span> <span>{delete}</span>',

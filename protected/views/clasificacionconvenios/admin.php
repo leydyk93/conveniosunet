@@ -53,7 +53,7 @@ $('.search-form form').submit(function(){
 	'filter'=>$model,
 	'htmlOptions' => array('class' => 'grid-view'),
 	'columns'=>array(
-		array('name'=>'idClasificacionConvenio', 'htmlOptions'=>array('class'=>'text-center')),
+		//array('name'=>'idClasificacionConvenio', 'htmlOptions'=>array('class'=>'text-center')),
 		
 		'nombreClasificacionConvenio',
 		'descripcionClasificacionConvenio',

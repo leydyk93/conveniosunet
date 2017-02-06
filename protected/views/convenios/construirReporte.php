@@ -117,6 +117,7 @@
               <div class="col-sm-4"><?php  echo $form->labelEx($model,'institucion'); ?></div>
               <div class="col-sm-7">
                  <?php 
+
                     $list5=CHtml::listData($institucionconve,'idInstitucion','nombreInstitucion');
                     echo $form->dropDownList($model,'institucion', $list5,
                               array('class'=>'form-control input-sm','empty' => 'Todos'));
@@ -143,18 +144,19 @@
                             array(
                               'attribute'=>'fechaVencimiento1',
                               'name'=>'fechaVencimiento1',
-                              'value'=>$model->fechaVencimiento1,
+                              //'value'=>$model->fechaVencimiento1,
                               'model'=>$model,
                               'language' => 'es',
                             
                                 'options'=>array(
-                                    'autoSize'=>true,
-                                     'mode'=>'focus',
+                                   // 'autoSize'=>true,
+                                    // 'mode'=>'focus',
                                      'showAnim'=>'slideDown',
                                      'dateFormat'=>'yy/mm/dd',
                                      'changeMonth'=>true,
                                      'changeYear'=>true,
                                      'showButtonPanel'=>true,
+                                     'onClose' => 'js:function(selectedDate) { $("#fechaVencimiento2").datepicker("option", "minDate", selectedDate); }',
                                    
                                 ),
                             'htmlOptions'=>array(
@@ -185,22 +187,25 @@
                         array(
                           'attribute'=>'fechaVencimiento2',
                           'name'=>'fechaVencimiento2',
-                          'value'=>$model->fechaVencimiento2,
+                          //'value'=>$model->fechaVencimiento2,
                           'model'=>$model,
                           'language' => 'es',
                         
                             'options'=>array(
-                                'autoSize'=>true,
-                                 'mode'=>'focus',
+                                //'autoSize'=>true,
+                                 //'mode'=>'focus',
                                  'showAnim'=>'slideDown',
                                  'dateFormat'=>'yy/mm/dd',
                                  'changeMonth'=>true,
                                  'changeYear'=>true,
                                  'showButtonPanel'=>true,
-                               
+                                 'onClose' => 'js:function(selectedDate) { $("#fechaVencimiento1").datepicker("option", "maxDate", selectedDate); }',                               
                             ),
                         'htmlOptions'=>array(
                             'readonly'=>"readonly",
+                            //'onchange'=>'ValidarFechas();',
+                            
+
                           /*  'style'=>'',
                             'size'=>'5',*/
                            'class'=>'form-control input-sm',
@@ -208,6 +213,7 @@
                     ));
              
              ?>
+
               <span class="input-group-addon input-sm">
                        <span class="glyphicon glyphicon-calendar"></span>
               </span>
@@ -220,6 +226,8 @@
           </div>
           
         </div>
+         <div><?php echo $form->error($model,'fechaVencimiento2'); ?></div>
+         
 
         </a>
       </div>
@@ -279,7 +287,8 @@
 <script type="text/javascript"> 
 
 $('#ConsultasConvenios_pais').change(function() {
-//    console.log($('#ConsultasConvenios_pais option:selected').val());
+   // console.log($('#ConsultasConvenios_pais option:selected').val());
+    CambiarInstitucionPais();
     GenererarReportes();
 });
 
@@ -289,7 +298,8 @@ $('#ConsultasConvenios_institucion').change(function() {
 });
 
 $('#ConsultasConvenios_ambitoGeografico').change(function() {
-    //console.log($('#ConsultasConvenios_institucion option:selected').val());
+    CambiarPaisesAmbito();
+    CambiarInstitucionesAmbito();
     GenererarReportes();
 });
 
@@ -301,10 +311,8 @@ $('#ConsultasConvenios_order').change(function() {
 	function GenererarReportes(){
 
 	var data=$("#form").serialize();
-
 	var url= '<?php echo Yii::app()->createUrl("convenios/reporte"); ?>'
 	$.ajax({
-
 	type:"post",
 	url: url,
 	//data:{ anio:anio},
@@ -313,8 +321,52 @@ $('#ConsultasConvenios_order').change(function() {
 	    document.getElementById("resul").innerHTML=datos;  
 	}
 	});
-
 	}
+
+  function CambiarPaisesAmbito(){
+
+  var amb=$('#ConsultasConvenios_ambitoGeografico').val();
+  var url= '<?php echo Yii::app()->createUrl("estados/selectPaisAmbito"); ?>'
+  $.ajax({
+  type:"post",
+  url: url,
+  data:{ ambito:amb},
+  success:function(datos){
+      document.getElementById("ConsultasConvenios_pais").innerHTML=datos;  
+  }
+  });
+
+  }
+
+  function CambiarInstitucionesAmbito(){
+
+  var amb=$('#ConsultasConvenios_ambitoGeografico').val();
+  var url= '<?php echo Yii::app()->createUrl("instituciones/selectInstitucionPorAmbito"); ?>'
+  $.ajax({
+  type:"post",
+  url: url,
+  data:{ ambito:amb},
+  success:function(datos){
+      document.getElementById("ConsultasConvenios_institucion").innerHTML=datos;  
+  }
+  });
+
+  }
+
+ function CambiarInstitucionPais(){
+
+  var pais=$('#ConsultasConvenios_pais').val();
+  var url= '<?php echo Yii::app()->createUrl("instituciones/selectInstitucionesPorPais"); ?>'
+  $.ajax({
+  type:"post",
+  url: url,
+  data:{ pais:pais},
+  success:function(datos){
+      document.getElementById("ConsultasConvenios_institucion").innerHTML=datos;  
+  }
+  });
+  
+  }
 
  function  limpiarFiltros(){
  document.getElementById("ConsultasConvenios_anio").value="";
@@ -329,12 +381,10 @@ $('#ConsultasConvenios_order').change(function() {
  $('#ConsultasConvenios_institucion').val($('#ConsultasConvenios_institucion > option:first').val());
  $('#ConsultasConvenios_pais').val($('#ConsultasConvenios_pais > option:first').val());
 
-
   for(i=0;i<tipo.length;i++)
     {
         tipo[i].checked=false; 
-    }
-  
+    }  
 
   for(j=0;j<clasifi.length;j++)
     {
@@ -343,15 +393,12 @@ $('#ConsultasConvenios_order').change(function() {
 
   for(k=0;k<tipoInst.length;k++)
     {
-     
       tipoInst[k].checked=false;
-   
     }
 
     for(l=0;l<estadoConv.length;l++)
     {
-      estadoConv[l].checked=false;
-      
+      estadoConv[l].checked=false; 
     }
     GenererarReportes();
 }

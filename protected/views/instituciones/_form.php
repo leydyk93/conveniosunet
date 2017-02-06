@@ -7,7 +7,7 @@
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-default">
- 		<div class="panel text-center"><h4><?php if($model->isNewRecord){ echo "Nueva Institución";}else{ echo "Modificar Institución";} ?></h4></div>
+ 		<div class="panel-heading text-center"><h4><?php if($model->isNewRecord){ echo "Nueva Institución";}else{ echo "Modificar Institución";} ?></h4></div>
  		<div class="panel-body text-center">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -19,6 +19,7 @@
 	'enableAjaxValidation'=>false,
 	 'htmlOptions'=>array('class'=>'form-horizontal', ),
 )); ?>
+
 	<div class="form-group">
 		<div class="col-sm-4">
 		<?php echo $form->labelEx($model,'nombreInstitucion'); ?>
@@ -88,11 +89,9 @@
 		<div class="col-sm-6">
 			<?php 
 			if(!$model->isNewRecord){
-				 $listaestad=CHtml::listData(Estados::model()->findAll('paises_idPais=:paises_idPais', array(':paises_idPais'=>$valor)),'idEstado','nombreEstado');
-
-			
+				 $listaestad=CHtml::listData(Estados::model()->findAll('paises_idPais=:paises_idPais', array(':paises_idPais'=>$valor)),'idEstado','nombreEstado');			
 			}else{
-				$listaestad=CHtml::listData(Estados::model()->findAll(),'idEstado','nombreEstado');
+				$listaestad=array();
 			}
 			 ?>
 		<?php echo $form->dropDownList($model,'estados_idEstado',$listaestad,
@@ -111,8 +110,6 @@
 		<div class="col-sm-6">
 		<?php echo $form->dropDownList($model,'tiposInstituciones_idTipoInstitucion', CHtml::listData(tiposinstituciones::model()->findAll(),'idTipoInstitucion','nombreTipoInstitucion'),
                               array('class'=>'form-control input-sm'));?>
-
-
 		<?php echo $form->error($model,'tiposInstituciones_idTipoInstitucion'); ?>
 		</div>
 	</div>
