@@ -347,7 +347,7 @@
 			?>	
 			<br>
 			<!--*************************************** BOTON PARA AGREGAR EN LA TABLA^************************************-->
-			<div class="text-right"><a onclick="fagregar()"> <span class="glyphicon glyphicon-ok-sign"></span></a></div>	
+			<div class="text-right"><button class="btn btn-conv" onclick="fagregar()"> <span > Agregar Contraparte</span></button></div>	
 			<br>
 			
 
@@ -417,8 +417,10 @@
 
 
 		<br>
+		<div class="row">
+			<div class="col-sm-10"></div>
 		<?php echo CHtml::submitButton("siguiente",array("class"=>'btn btn-conv',"onclick"=>'recolectar()')); ?>
-
+		</div>
 
 	</section>
 </div><!--contenido-->
@@ -556,92 +558,114 @@
 							<!-- ***********************************************************-->
 							<?php 
 							$formr=$this->beginWidget("CActiveForm",array(  
-								'htmlOptions'=>array('class'=>'form-horizontal'),   
-								'enableClientValidation'=> true,
-								'id'=>'formresp',
-								'enableAjaxValidation'=>true,
+								
+				                 'method' => 'POST',
+		                         'action'=> Yii::app()->createUrl('convenios/pasodos'),
+		                         'id'=>'formresp',
+		                         //'enableAjaxValidation'=>true,
+		                         'enableClientValidation'=> true,
 		                         'clientOptions'=> array(
 		                            'validateOnSubmit'=> true,
 		                            'validateOnChange'=> true,
 		                            'validateOnType'=>true,
-		                          ),                   
+		                          ),
+		                        //  'htmlOptions'=>array('class'=>'form-horizontal'),                  
 							));
 							?>
 							<div id="MensajeResponsable"></div>
 							<br>
 							<div class="form-group">
-								<?php echo $formr->labelEx($responsable,'idResponsable',array('class'=>'control-label col-sm-3')); ?>
-								<div class="col-sm-8">
+								<?php echo $formr->labelEx($responsable,'idResponsable',array('class'=>' col-sm-2')); ?>
+								<div class="col-sm-10">
 									<?php echo $formr->textField($responsable,"idResponsable",array('class'=>'form-control'));?>
 									<?php echo $formr->error($responsable,"idResponsable"); ?>
 								</div>
 							</div>
+							
+							<div class="col-sm-12"> <br></div>
+
+							<?php echo $formr->labelEx($responsable,'primerNombreResponsable',array('class'=>'col-sm-6')); ?>
+							<?php echo $formr->labelEx($responsable,'segundoNombreResponsable',array('class'=>'col-sm-6')); ?>
 
 							<div class="form-group">
-								<?php echo $formr->labelEx($responsable,'primerNombreResponsable',array('class'=>'control-label col-sm-3')); ?>
-								<div class="col-sm-8">
+						
+								<div class="col-sm-6">
 									<?php echo $formr->textField($responsable,"primerNombreResponsable",array('class'=>'form-control'));?>
 									<?php echo $formr->error($responsable,"primerNombreResponsable"); ?>
 								</div>
 							</div>
 							
 							<div class="form-group">
-								<?php echo $formr->labelEx($responsable,'segundoNombreResponsable',array('class'=>'control-label col-sm-3')); ?>
-								<div class="col-sm-8">
+								
+								<div class="col-sm-6">
 									<?php echo $formr->textField($responsable,"segundoNombreResponsable",array('class'=>'form-control'));?>
 									<?php echo $formr->error($responsable,"segundoNombreResponsable"); ?>
 								</div>
 							</div>
-
+							
+							<div class="col-sm-12"> <br></div>
+							
+							<?php echo $formr->labelEx($responsable,'primerApellidoResponsable',array('class'=>'col-sm-6')); ?>
+							<?php echo $formr->labelEx($responsable,'segundoApellidoResponsable',array('class'=>'col-sm-6')); ?>
 							<div class="form-group">
-								<?php echo $formr->labelEx($responsable,'primerApellidoResponsable',array('class'=>'control-label col-sm-3')); ?>
-								<div class="col-sm-8">
+								
+								<div class="col-sm-6">
 									<?php echo $formr->textField($responsable,"primerApellidoResponsable",array('class'=>'form-control'));?>
 									<?php echo $formr->error($responsable,"primerApellidoResponsable"); ?>
 								</div>
 							</div>
 					
 							<div class="form-group">
-								<?php echo $formr->labelEx($responsable,'segundoApellidoResponsable',array('class'=>'control-label col-sm-3')); ?>
-								<div class="col-sm-8">
+								
+								<div class="col-sm-6">
 									<?php echo $formr->textField($responsable,"segundoApellidoResponsable",array('class'=>'form-control'));?>
 									<?php echo $formr->error($responsable,"segundoApellidoResponsable"); ?>
 								</div>
 							</div>
-						
+							
+							<div class="col-sm-12"> <br></div>
+							
+							<?php echo $formr->labelEx($responsable,'telefonoResponsable',array('class'=>'control-label col-sm-6')); ?>
+							<?php echo $formr->labelEx($responsable,'correoElectronicoResponsable',array('class'=>'control-label col-sm-6')); ?>
+
 							<div class="form-group">
-								<?php echo $formr->labelEx($responsable,'telefonoResponsable',array('class'=>'control-label col-sm-3')); ?>
-								<div class="col-sm-8">
+								
+								<div class="col-sm-6">
 									<?php echo $formr->textField($responsable,"telefonoResponsable",array('class'=>'form-control'));?>
 									<?php echo $formr->error($responsable,"telefonoResponsable"); ?>
 								</div>
 							</div>
 						
 							<div class="form-group">
-								<?php echo $formr->labelEx($responsable,'correoElectronicoResponsable',array('class'=>'control-label col-sm-3')); ?>
-								<div class="col-sm-8">
+								
+								<div class="col-sm-6">
 									<?php echo $formr->textField($responsable,"correoElectronicoResponsable",array('class'=>'form-control'));?>
 									<?php echo $formr->error($responsable,"correoElectronicoResponsable"); ?>
 								</div>
 							</div>
 						
+						<div class="col-sm-12"> <br></div>
+
+						<?php echo $formr->labelEx($responsable,'dependencias_idDependencia',array('class'=>'control-label col-sm-6')); ?>
+						<?php echo $formr->labelEx($responsable,'tipoResponsable_idTipoResponsable',array('class'=>'control-label col-sm-6')); ?>
 							<div class="form-group">
 
-								<?php echo $formr->labelEx($responsable,'dependencias_idDependencia',array('class'=>'control-label col-sm-3')); ?>
-								<div class="col-sm-8">
+
+								<div class="col-sm-6">
 								<?php echo $formr->dropDownList($responsable,'dependencias_idDependencia',CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),array('class'=>'form-control')); ?>
 								<?php echo $formr->error($responsable,'dependencias_idDependencia'); ?>
 								</div>
 							</div>
 							<br>
 							<div class="row">
-								<?php echo $formr->labelEx($responsable,'tipoResponsable_idTipoResponsable',array('class'=>'control-label col-sm-3')); ?>
-								<div class="col-sm-8">
+								
+								<div class="col-sm-5">
 								<?php echo $formr->dropDownList($responsable,'tipoResponsable_idTipoResponsable',CHtml::listData(Tiporesponsable::model()->findAll(), 'idTipoResponsable', 'descripcionTipoResponsable'),array('class'=>'form-control')); ?>
 								<?php echo $formr->error($responsable,'tipoResponsable_idTipoResponsable'); ?>
 								</div>
 							</div>
 							
+							<div class="col-sm-12"> <br></div>
 							<?php 
 							if(isset($_COOKIE['cookinst'])){
 								$responsable->instituciones_idInstitucion=$_COOKIE['cookinst'];
@@ -649,7 +673,7 @@
 							?>
 
 							<div class="col-sm-6 text-left">	
-								<button  type="button" class="btn btn-conv" data-dismiss="modal"> Cerrar</button>
+							<!--	<button  type="button" class="btn btn-conv" data-dismiss="modal"> Cerrar</button>-->
 							</div>
 								
 
@@ -660,21 +684,33 @@
 										'Guardar', array('convenios/guardarresponsable'),array(
 										'update'=>'#oculto',
 										'complete'=>'js:function(data){
+												
+											if(getCookie("gresponsable")==3){
+														  $("#MensajeResponsable").html("");
+														  $("#MensajeResponsable").html("<font color=\'red\'> Correo electronico ya existe");
+														
+				                              	  }
+				                            if(getCookie("gresponsable")==0){
+				                            		  $("#MensajeResponsable").html("");
+				                                  	$("#MensajeResponsable").html("<font color=\'red\'> Cedula ya se encuentra registrada");
+				                                  	
+				                              	  }
+
 				                              if(getCookie("gresponsable")==1){
-				                                  document.cookie="gresponsable=0";
+				                                  
 				                                   $("#MensajeResponsable").html("");
 				                                
-				                                  $("#MensajeResponsable").html("Responsable guardado con éxito cierre la pantalla modal y continue la carga");
-				                                  }
-				                              else{
-				                                  $("#MensajeDependencia").html("Llene todos los campos");
-				                              }
-				                             
+				                                  $("#MensajeResponsable").html("<font color=\'green\'> Responsable guardado con éxito cierre la pantalla modal y continue la carga");
+				                               }
+				                           document.cookie="gresponsable=0";
+				                         
 				                            }',
 									),array("class"=>'btn btn-conv')
 									);
 
 								?>
+
+
 							</div>
 							<?php $this->endWidget(); ?>	
 
@@ -892,21 +928,33 @@
 
 				var arreglo=datos.split(" ");
 				var elementos=datos.length;
+//reviandooo
+   				document.getElementById("MensajeAjax").innerHTML="Elementos "+elementos;
 
-   				//document.getElementById("MensajeAjax").innerHTML="Elementos "+elementos;
-   				if(elementos==1||elementos==2||elementos==3||elementos==4){
+   				if(elementos<11){
    					if(numero==1){
    					document.getElementById("PasodosForm_responsable_legal_unet").value=datos;
-   					document.getElementById("MensajeAjax").innerHTML=" ";
+   					var pmens=document.getElementById("MensajeAjax");
+   					pmens.innerHTML=" ";
+
    					}
    					if(numero==2){
    					document.getElementById("PasodosForm_responsable_contacto_unet").value=datos;	
+   					var pmens=document.getElementById("MensajeAjax1");
+   					pmens.innerHTML=" ";
+
    					}
    					if(numero==3){
    					document.getElementById("PasodosForm_responsable_legal_contraparte").value=datos;	
+   					var pmens=document.getElementById("MensajeAjax2");
+   					pmens.innerHTML=" ";
+
    					}
    					if(numero==4){
-   					document.getElementById("PasodosForm_responsable_contacto_contraparte").value=datos;	
+   					document.getElementById("PasodosForm_responsable_contacto_contraparte").value=datos;
+   					var pmens=document.getElementById("MensajeAjax3");
+   					pmens.innerHTML=" ";
+	
    					}
    				}
    				else{

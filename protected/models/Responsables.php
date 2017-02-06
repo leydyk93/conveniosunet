@@ -46,7 +46,7 @@ class Responsables extends CActiveRecord
 			array('correoElectronicoResponsable', 'length', 'max'=>100),
 			array('correoElectronicoResponsable', 'email'),
 			array('telefonoResponsable', 'length', 'max'=>50),
-			array('idResponsable','comprobar_responsable'),
+			array('correoElectronicoResponsable','comprobar_responsable'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('idResponsable, primerNombreResponsable, segundoNombreResponsable, primerApellidoResponsable, segundoApellidoResponsable, correoElectronicoResponsable, telefonoResponsable, instituciones_idInstitucion, dependencias_idDependencia, tipoResponsable_idTipoResponsable', 'safe', 'on'=>'search'),
@@ -134,13 +134,23 @@ class Responsables extends CActiveRecord
 	public function comprobar_responsable($attributes, $params){
 
 			$resp=Responsables::model()->findAll();
+			$variable=0;
 
 				foreach ($resp as  $value) {
-					if($this->email==$e->idResponsable){
-						$this->addError('idResponsable','Responsable ya Existe');
+					if($this->correoElectronicoResponsable==$value->correoElectronicoResponsable){
+					//	setcookie("gresponsable","3");
+						$this->addError('correoElectronicoResponsable','Correo ya Existe.');
 						break;
+						//echo("<script>console.log('Correo ya existe');</script>"); 
+					//	$variable=1;						
 					}
+					//if($variable==1){
+					//	setcookie("gresponsable","3");
+						
+				//	}
 					# code...
 				}
 		}
+
+
 }
