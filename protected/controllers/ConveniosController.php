@@ -1976,7 +1976,8 @@ public function actionGuardarestado(){
 			 $criteria = new CDbCriteria;
 			 $criteria->compare('CONCAT(CONCAT(LOWER(primerApellidoResponsable)," "),primerNombreResponsable)', strtolower($_GET['term']), true);
 			 $criteria->compare('CONCAT(CONCAT(LOWER(primerNombreResponsable)," "),primerApellidoResponsable)', strtolower($_GET['term']), true, 'OR');
-			 $criteria->addCondition('instituciones_idInstitucion IS NULL');
+			 $criteria->compare('instituciones_idInstitucion',6, true,'AND');
+			// $criteria->addCondition('instituciones_idInstitucion IS NULL');
 			 $criteria->order = 'primerApellidoResponsable';
 			 $criteria->limit = 30; 
 			 $data = Responsables::model()->findAll($criteria);
