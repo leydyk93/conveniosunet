@@ -243,7 +243,10 @@
 		<div class="form-group">
 			<?php echo $form->labelEx($pasodos,'institucion',array('class'=>'control-label col-sm-2')); ?>
 			<div class="col-sm-9">
-			<?php echo $form->dropDownList($pasodos,'institucion',CHtml::listData(Instituciones::model()->findAll(), 'idInstitucion', 'nombreInstitucion'),array('class'=>'form-control input-sm')); ?>
+			<?php echo $form->dropDownList($pasodos,'institucion',CHtml::listData(Instituciones::model()->findAll( array(
+                      'condition' => 'idInstitucion != :valor',
+                      'params'    => array(':valor' => 6)
+                  )), 'idInstitucion', 'nombreInstitucion'),array('class'=>'form-control input-sm')); ?>
 			<?php echo $form->error($pasodos,'institucion'); ?>
 			
 			</div>
