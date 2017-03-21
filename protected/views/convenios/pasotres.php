@@ -33,7 +33,7 @@ if(!isset($_SESSION['url_acta'])){
 
 <?php 
 //campos del formulario 
-	 		/*	echo "<br>";
+	 			echo "<br>";
 	 			echo "id_convenio: ".$_SESSION['idconvenio'];
 	 			echo "<br>";
 	 			echo "tipo : ".$_SESSION['tipo'];
@@ -70,7 +70,7 @@ if(!isset($_SESSION['url_acta'])){
 				echo "responsable legal contraparte: ".$_SESSION['responsable_legal_contraparte'];
 				echo "<br>";
 				echo "responsable contacto contraparte ".$_SESSION['responsable_contacto_contraparte'];
-*/
+
 ?>
  <main class="container-fluid">
         <div class "row">

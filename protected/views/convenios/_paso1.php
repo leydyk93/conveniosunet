@@ -216,20 +216,21 @@ if(!isset($_SESSION['alcance'])){
         
         <?php echo $form->labelEx($pasouno,'dependencia',array('class'=>'control-label col-sm-2')); ?>
         <div class="col-sm-9"> 
+           
             <?php echo $form->dropDownList($pasouno,'dependencia',
-            CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),
-            array('class'=>"form-control input-sm",'prompt'=>'Seleccione'),
-            array('options' => array($_SESSION['dependenciaconvenio']=>array('selected'=>true)))); ?>
+                    CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),
+                    array('class'=>"form-control input-sm",'prompt'=>'Seleccione')
+                    //array('options' => array($_SESSION['dependenciaconvenio']=>array('selected'=>true)))
+                    );
+             ?>
             <?php echo $form->error($pasouno,'dependencia'); ?>
-
-            
-
         </div>
-        <div class="col-sm-1"><a  href="#" data-toggle="modal" data-target="#miventana"  onclick="limpiarmodaldependencia()" >
+        <!--<div class="col-sm-1"><a  href="#" data-toggle="modal" data-target="#miestado" onclick="limpiarmodalestado()"  >
                 <span class="glyphicon glyphicon-plus" data-toggle=""></span>
-        </a></div>
+        </a></div>-->
       </div>
-    
+
+  
        <div class="form-group">
         
         <?php echo $form->labelEx($pasouno,'estado',array('class'=>'control-label col-sm-2')); ?>

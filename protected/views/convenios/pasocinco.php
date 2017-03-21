@@ -12,7 +12,7 @@
 
 <?php 
 echo "<br>";
-	 		/*	echo "id_convenio: ".$_SESSION['idconvenio'];
+	 			echo "id_convenio: ".$_SESSION['idconvenio'];
 	 			echo "<br>";
 	 			echo "tipo : ".$_SESSION['tipo'];
 	 			echo "<br>";
@@ -35,7 +35,7 @@ echo "<br>";
 				//variables del paso dos
 				echo "PASO DOS ";
 				echo "<br>";
-				echo "instanciaunet: ".$_SESSION['instanciaunet'];
+			//	echo "instanciaunet: ".$_SESSION['instanciaunet'];
 				echo "<br>";
 				echo "responsable_legal_unet: ".$_SESSION['responsable_legal_unet'];
 				echo "<br>";
@@ -67,7 +67,7 @@ echo "<br>";
 				
 					print_r($_SESSION['aporte']) ;
 					echo count($_SESSION['aporte']);
-				}*/
+				}
 
  ?>
  <!--<?php //echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Save');  ?>-->
@@ -143,12 +143,12 @@ echo "<br>";
  		<div class="list-group-item">
 			<ul>
 				<?php 
-				$instancia_unet=Dependencias::model()->find('idDependencia='.$_SESSION['instanciaunet']);
+				//$instancia_unet=Dependencias::model()->find('idDependencia='.$_SESSION['instanciaunet']);
 				$responsable_legal=Responsables::model()->find('idResponsable='.$_SESSION['responsable_legal_unet']);
 				$responsable_contacto=Responsables::model()->find('idResponsable='.$_SESSION['responsable_contacto_unet']);
 				;
 				 ?>
-				<li>Instancia Unet: <small><?php echo $instancia_unet->nombreDependencia?></small></li>
+				<!--<li>Instancia Unet: <small><?php// echo $instancia_unet->nombreDependencia?></small></li>-->
 				<li>Responsable Legal Unet: <small><?php echo $responsable_legal->primerApellidoResponsable." ".$responsable_legal->primerNombreResponsable?></small></li>
 				<li>Responsable Contacto Unet: <small><?php echo $responsable_contacto->primerApellidoResponsable." ".$responsable_legal->primerNombreResponsable?></small></li>
 				<br>

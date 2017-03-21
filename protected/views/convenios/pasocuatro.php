@@ -23,7 +23,7 @@
 
 <?php 
 echo "<br>";
-	 		/*	echo "id_convenio: ".$_SESSION['idconvenio'];
+	 			echo "id_convenio: ".$_SESSION['idconvenio'];
 	 			echo "<br>";
 	 			echo "tipo : ".$_SESSION['tipo'];
 	 			echo "<br>";
@@ -67,7 +67,7 @@ echo "<br>";
 				echo "fecha_acta ".$_SESSION['fecha_acta'];
 				echo "<br>";
 				echo "url_acta ".$_SESSION['url_acta'];
-*/
+
 				/*foreach ($_SESSION['documento'] as $doc => $i) {
 				 					
 					$docu="ActaIntencion".$i->name;

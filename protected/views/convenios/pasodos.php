@@ -52,7 +52,7 @@
 			<?php 
 		//campos del formulario 
 			
-			echo "<br>";
+			 echo "<br>";
 			echo "id_convenio: ".$_SESSION['idconvenio'];
 			echo "<br>";
 			echo "tipo : ".$_SESSION['tipo'];
@@ -76,7 +76,7 @@
 
 			//echo "idpapa: ".$_SESSION['idpapa'];
 			echo "<br>";
-
+ 
 			?>
 			<?php 
 				if(!isset($_SESSION['responsable_legal_unet'])){
@@ -935,7 +935,7 @@
 				var arreglo=datos.split(" ");
 				var elementos=datos.length;
 //reviandooo
-   				document.getElementById("MensajeAjax").innerHTML="Elementos "+elementos;
+   				//document.getElementById("MensajeAjax").innerHTML="Elementos "+elementos;
 
    				if(elementos<11){
    					if(numero==1){

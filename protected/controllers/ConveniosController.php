@@ -601,7 +601,7 @@ class ConveniosController extends Controller
 	  		$pasouno->idconvenio=$count+1;
 
 	
-
+	  			echo("<script>console.log(".$pasouno->nombreconvenio.");</script>"); 
 				$_SESSION['idconvenio']=$pasouno->idconvenio;
 				$_SESSION['nombreconvenio']=$pasouno->nombreconvenio;
 				$_SESSION['fechainicioconvenio']=$pasouno->fechainicio;
@@ -612,6 +612,8 @@ class ConveniosController extends Controller
 				$_SESSION['estado']=$pasouno->estado;
 				$_SESSION['clasificacion']=$pasouno->clasificacion;
 				$_SESSION['alcance']=$pasouno->alcance;
+
+
 				//$pasouno->idconvenio;
 				//$pasouno->nombreconvenio;
 			//	$this->redirect(array("create"));
@@ -701,11 +703,11 @@ class ConveniosController extends Controller
 			$pasodos->attributes=$_POST["PasodosForm"];
 			if($pasodos->validate()){
 
-				$_SESSION['instanciaunet']=$pasodos->instanciaunet;
+				//$_SESSION['instanciaunet']=$pasodos->instanciaunet;
 				$_SESSION['responsable_legal_unet']=$pasodos->responsable_legal_unet;
 				$_SESSION['responsable_contacto_unet']=$pasodos->responsable_contacto_unet;
 				//$_SESSION['institucion']=$pasodos->institucion;
-				//$_SESSION['instancia_contraparte']=$pasodos->instancia_contraparte;
+				//$_SESSION['instanciaunet_contraparte']=$pasodos->instancia_contraparte;
 				$_SESSION['responsable_legal_contraparte']=$pasodos->responsable_legal_contraparte;
 				$_SESSION['responsable_contacto_contraparte']=$pasodos->responsable_contacto_contraparte;
 				//en el paso tambien se llena la variable de sesioin de las instituciones (revisar esto )
