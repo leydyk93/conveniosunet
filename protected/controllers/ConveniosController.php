@@ -64,7 +64,7 @@ class ConveniosController extends Controller
 
 		 return $resultados;		
 	}
-		/**
+	/**
 	*Realiza la consulta de los responsables de la contraparte 
 	*@param entero $id que reperesta el convenio
 	*/
@@ -85,6 +85,10 @@ class ConveniosController extends Controller
 		return $resultados;
 
 	}
+	/**
+	*Realiza la consulta de los responsables por institucion contraparte
+	*@param entero $id que representa el convenio
+	*/
 	public function ConsultarResponsablesPorInstitucion($id){
 
 	   $conexion=Yii::app()->db;
@@ -149,6 +153,9 @@ class ConveniosController extends Controller
 	 */
 	public function actionView($id)
 	{
+
+		$model=$this->loadModelView($id);
+
 		$conexion=Yii::app()->db;
 		$resullRespUNET = new ResultadoConvenios;
 		$resulContraparte= new ResultadoConvenios;
@@ -177,9 +184,9 @@ class ConveniosController extends Controller
 
  		$resultadosResponContrap=$this->ConsultarResponsablesPorInstitucion($id);
 
- 		/*Buscando el estado actual recordar tomar en cuanta las prorrogas*/
+ 		/*Buscando el estado actual no es necesario */
 
-	    $consultan  ="SELECT ec.nombreEstadoConvenio FROM convenios c ";
+	    /*$consultan  ="SELECT ec.nombreEstadoConvenio FROM convenios c ";
 	    $consultan .="JOIN convenio_estados ce ON ce.convenios_idConvenio = c.idConvenio ";
 	    $consultan .="JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio = ec.idEstadoConvenio ";
 	    $consultan .="WHERE ce.fechaCambioEstado = ( ";
@@ -194,16 +201,16 @@ class ConveniosController extends Controller
 
          while(($row=$resultados2->read())!==false) { 
               $estado=$estador;
-          }
+          }*/
  	
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),				 /*Datos generales del convenio*/
+			'model'=>$model,				 /*Datos generales del convenio*/
 			'resulRU'=>$resultadosResponUnet,  
 			'resullRespUNET'=>$resullRespUNET,
 			'resulRC'=>$resultadosInstContrap,
 			'resullRespCONT'=>$resulContraparte,
 			'InforRC'=>$resultadosResponContrap,
-			'estado'=>$estado,
+			//'estado'=>$estado,
 		));
 	}
     /*Renovar es una nueva fecha de caducidad*/
@@ -1764,6 +1771,30 @@ class ConveniosController extends Controller
 			
 		return $model;
 	}
+
+		public function loadModelView($id)
+		{
+			$model=Convenios::model()->findByPk($id);
+			if($model===null){
+				throw new CHttpException(404,'The requested page does not exist.');
+			}else{
+				//verificamos si el estado del convenio es no aprobado
+				$modelview = ConvenioEstados::model()->find('convenios_idConvenio=:convenios_idConvenio AND estadoConvenios_idEstadoConvenio=:estadoConvenios_idEstadoConvenio', array(':convenios_idConvenio'=>$id, ':estadoConvenios_idEstadoConvenio'=>'5'));
+		
+				if($modelview===null){
+					$model=null;
+				}
+
+			}
+
+			if($model===null){
+				throw new CHttpException(404,'The requested page does not exist.');
+			}
+				
+			return $model;
+		}
+
+
 	/**
 	 * Performs the AJAX validation.
 	 * @param Convenios $model the model to be validated

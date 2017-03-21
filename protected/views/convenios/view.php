@@ -31,19 +31,16 @@ $this->menu=array(
 	 	<div class="list-group-item">
 	 		<ul>
 		  		<!--<li>Codigo: <?php /*echo $model->idConvenio; */?></li>-->
-		  		<li>Nombre: <?php echo $model->nombreConvenio; ?></li>
-		  		<li>Objetivo:<small><?php echo $model->objetivoConvenio; ?></small></li>
-		  		<li>Tipo: <small><?php 
+		  		<li><strong class='text-info' >Nombre:</strong> <?php echo $model->nombreConvenio; ?></li>
+		  		<li><strong class='text-info' >Objetivo:</strong><?php echo $model->objetivoConvenio; ?></li>
+		  		<li><strong class='text-info' >Tipo: </strong><?php 
 		  			 $modelTipo=Tipoconvenios::model()->findByPk($model->tipoConvenios_idTipoConvenio);
 			      	 echo  $modelTipo->descripcionTipoConvenio;
-			      	 ?></small>
+			      	 ?>
 			    </li>
-			    <li>Fecha Inicio: <small> <?php echo $model->fechaInicioConvenio; ?></small></li>
-			    <li>Fecha Caducidad:<small><?php echo $model->fechaCaducidadConvenio; ?></small></li>
-			    <li>Estado Actual:<small> <?php echo $estado; ?><?php 
-
-
-			     ?></small>
+			    <li><strong class='text-info' >Fecha Inicio:</strong> <?php echo $model->fechaInicioConvenio; ?></li>
+			    <li><strong class='text-info' >Fecha Caducidad:</strong><?php echo $model->fechaCaducidadConvenio; ?></li>
+			    <!--<li>Estado Actual:<small> <?php //echo $estado; ?></small>-->
 			 	</li>
 		  	</ul>
 
@@ -56,14 +53,15 @@ $this->menu=array(
 		<div  class="list-group-item">
 			
 			<h4>UNET <small><?php echo $model->institucionUNET ?></small></h4>
+		  	<?php if(!Yii::app()->user->isGuest):?>
 		  	<h5>Responsables</h5>
 		  			<div class="table-responsive">
 		  			<table class="table table-bordered">
 					    <thead>
 					      <tr>
-					        <th>Tipo </th>
-					        <th>Responsable</th>
-					        <th>Información de Contacto</th>
+					        <th  class='text-info'>Tipo </th>
+					        <th  class='text-info'>Responsable</th>
+					        <th  class='text-info'>Información de Contacto</th>
 					        
 					      </tr>
 					    </thead>
@@ -79,21 +77,23 @@ $this->menu=array(
 					    </tbody>
 					  </table>
 					</div>
+			<?php endif?>
 		  		
 		  	<h4>Contraparte </h4>
 		  	
 		 	<?php while((($resulRC->read())!==false)){ ?>
 		
 				<h4><?php echo $resullRespCONT->tipo_convenio; ?><small><?php echo " ".$resullRespCONT->objetivo_convenio." (".$resullRespCONT->estado_actual_convenio.",".$resullRespCONT->fecha_caducidad.")" ?></small></h4>
+		 		<?php if(!Yii::app()->user->isGuest):?>
 		 		 <h5>Responsables</h5>   
 		 		    <div class="table-responsive">
 				  			<table class="table table-bordered">
 							    <thead>
 							      <tr>
-							        <th>Tipo </th>
-							        <th>Responsable</th>
-							        <th>Información de Contacto</th>
-							        
+							        <th  class='text-info'>Tipo </th>
+							        <th  class='text-info'>Responsable</th>
+							        <th  class='text-info'>Información de Contacto</th>
+							     
 							      </tr>
 							    </thead>
 							 <tbody>
@@ -105,8 +105,9 @@ $this->menu=array(
 								<tr>
 							        <td><?php echo $InforRC[$i]->tipo_institucion; ?></td>
 							        <td><?php echo $InforRC[$i]->estado_actual_convenio." ".$InforRC[$i]->responsable_Unet; ?></td>
+							       
 							        <td><?php echo $InforRC[$i]->clasificacion." Telf.".$InforRC[$i]->ambito; ?></td>
-							        
+							         
 							      </tr>
 					<?php  }?>
 		 		   
@@ -115,6 +116,7 @@ $this->menu=array(
 				  			</tbody>
 							  </table>
 							</div>
+							<?php endif?>
 		 		<?php } ?>
 
 		</div>		
@@ -124,13 +126,13 @@ $this->menu=array(
 	<div class="collapse" id="demo3">
 		<div  class="list-group-item">
 			<ul>
-				<li>Clasificación: <small>
+				<li><strong  class='text-info'>Clasificación: </strong>
 					<?php 
 					 $modelClass=Clasificacionconvenios::model()->findByPk($model->clasificacionConvenios_idTipoConvenio);
 			      	 echo $modelClass->nombreClasificacionConvenio; 	
-			      	 ?></small>
+			      	 ?>
 				</li>
-				<li>Alcance: <small> <?php echo $model->alcanceConvenios; ?> </small></li>
+				<li><strong  class='text-info'>Alcance: </strong><?php echo $model->alcanceConvenios; ?></li>
 			</ul>
 		</div>
 	</div>

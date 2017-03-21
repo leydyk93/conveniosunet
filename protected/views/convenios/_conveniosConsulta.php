@@ -1,4 +1,3 @@
-
 		   <?php while(($row=$resultados->read())!==false) {  ?>
 		   	<aside id='prueba' class='list-group-item'>
 	           
