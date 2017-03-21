@@ -176,7 +176,7 @@
 			    	'name'=>'1',
 			    	'class'=>'form-control input-sm',
 			    	'onblur'=>'pruebafocus(1)',
-			    
+			    	'onclick'=>'institucion_unet()',
 
 			    	//'placeholder'=>'Buscar responsable...',
 			   //  'title'=>'Indique el nombre del responsable.'
@@ -187,7 +187,7 @@
 			    <div id="MensajeAjax"> </div>
 
 			</div>    
-			 <div class="text-left col-sm-1"><a href="#" data-toggle="modal" data-target="#miventana3" onclick="limpiar_institucion()">
+			 <div class="text-left col-sm-1"><a href="#" data-toggle="modal" data-target="#miventana3" onclick="institucion_unet()">
 			    	<span class="glyphicon glyphicon-plus"></span>
 			    </a></div>
 		</div>
@@ -218,7 +218,7 @@
 			      ),
 			    'htmlOptions'=> array(
 			    	'size'=>60,
-
+			    	'onclick'=>'institucion_unet()',
 			    	'placeholder'=>'Buscar responsable...',
 			    	'class'=>'form-control input-sm',
 			    	'onblur'=>'pruebafocus(2)',
@@ -230,7 +230,7 @@
 			     <div id="MensajeAjax1"> </div>
 			    
 			</div>
-		<div class="text-left col-sm-1"><a href="#" data-toggle="modal" data-target="#miventana3" onclick="limpiar_institucion()">
+		<div class="text-left col-sm-1"><a href="#" data-toggle="modal" data-target="#miventana3" onclick="institucion_unet()">
 			    	<span class="glyphicon glyphicon-plus"></span>
 		</a></div>
 		</div>
@@ -880,7 +880,10 @@
 			}
 			return "";
 		}
-
+		function institucion_unet(){
+				var valselc=6;
+				document.cookie="cookinst="+valselc;
+		}
 		function capturar_institucion(){
 
 			var selec=document.getElementById("PasodosForm_institucion");
