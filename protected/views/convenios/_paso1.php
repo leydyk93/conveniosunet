@@ -76,7 +76,7 @@ if(!isset($_SESSION['alcance'])){
              'method' => 'POST',
              'action'=> Yii::app()->createUrl('convenios/create'),
              'id'=>'pasouno',
-             'enableAjaxValidation'=>true,
+            // 'enableAjaxValidation'=>true,
              'enableClientValidation'=> true,
              'clientOptions'=> array(
                 'validateOnSubmit'=> true,

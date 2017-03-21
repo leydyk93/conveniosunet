@@ -1933,7 +1933,8 @@ public function actionGuardarestado(){
 		  echo "<br>";
 		  echo("<script>console.log(".$_COOKIE['cookinst'].");</script>"); 
 		 $responsable= new Responsables;
-
+		 
+			$resp=Responsables::model()->findAll();
 		// if(isset($_POST['ajax'])&&$_POST['ajax']=='formresp'){
 
 		 //	echo CActiveForm::validate($responsable);
@@ -1941,9 +1942,43 @@ public function actionGuardarestado(){
 		 //}
 
 		 if(isset($_POST["Responsables"])){
-		 	 echo("<script>console.log('Existe el formulario');</script>"); 
-			$responsable->attributes=$_POST["Responsables"];
-			$responsable->instituciones_idInstitucion=$_COOKIE['cookinst'];
+		 				  echo("<script>console.log('Existe Responsable');</script>"); 
+		  }
+		  $responsable->attributes=$_POST["Responsables"];
+		  $responsable->instituciones_idInstitucion=$_COOKIE['cookinst'];
+		   echo("<script>console.log('Id: ".$responsable->idResponsable."');</script>"); 
+		   echo("<script>console.log('Primer Nombre: ".$responsable->primerNombreResponsable."');</script>"); 
+		   echo("<script>console.log('Segundo Nombre: ".$responsable->segundoNombreResponsable."');</script>"); 
+		   echo("<script>console.log('Primer Apellido: ".$responsable->primerApellidoResponsable."');</script>"); 
+		   echo("<script>console.log('Segundo Apellido: ".$responsable->segundoApellidoResponsable."');</script>"); 
+		   echo("<script>console.log('Correo electronico: ".$responsable->correoElectronicoResponsable."');</script>"); 
+		   echo("<script>console.log('Telefono: ".$responsable->telefonoResponsable."');</script>"); 
+		   echo("<script>console.log('Institucion: ".$responsable->instituciones_idInstitucion."');</script>");
+		   echo("<script>console.log('Dependencia: ".$responsable->dependencias_idDependencia."');</script>"); 
+		   echo("<script>console.log('Tipo: ".$responsable->tipoResponsable_idTipoResponsable."');</script>");   
+			if($responsable->validate()){
+				$responsable->save();
+				 echo("<script>console.log('guardo');</script>"); 
+				  setcookie("gresponsable","1");
+			}
+			else{
+				foreach ($resp as  $value) {
+					if($responsable->correoElectronicoResponsable==$value->correoElectronicoResponsable){
+						setcookie("gresponsable","3");
+						$variable=1;
+						break;
+						//echo("<script>console.log('Correo ya existe');</script>"); 
+					//	$variable=1;						
+					}
+
+			}
+			if($variable!=1){
+				setcookie("gresponsable","0");
+			}
+		}
+		 /*desde aqui 
+		
+			
 
 			 echo("<script>console.log('Institucion: ".$responsable->instituciones_idInstitucion."');</script>");  
 			if($responsable->save()){
@@ -1962,9 +1997,9 @@ public function actionGuardarestado(){
 
 			//	foreach ($lista as $valor => $descripcion) {
 			//			echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion), true);
-			//	}	
+			// 	}	
 		 }
-		
+		hasta aqui*/
 	}
 //*****************************************FUNCIONES DE AUTOCOMPLETADO**********************************************
 			public function actionAutocomplete($term) 
@@ -1972,7 +2007,8 @@ public function actionGuardarestado(){
 			 $criteria = new CDbCriteria;
 			 $criteria->compare('CONCAT(CONCAT(LOWER(primerApellidoResponsable)," "),primerNombreResponsable)', strtolower($_GET['term']), true);
 			 $criteria->compare('CONCAT(CONCAT(LOWER(primerNombreResponsable)," "),primerApellidoResponsable)', strtolower($_GET['term']), true, 'OR');
-			 $criteria->addCondition('instituciones_idInstitucion IS NULL');
+			 $criteria->compare('instituciones_idInstitucion',6, true,'AND');
+			// $criteria->addCondition('instituciones_idInstitucion IS NULL');
 			 $criteria->order = 'primerApellidoResponsable';
 			 $criteria->limit = 30; 
 			 $data = Responsables::model()->findAll($criteria);
@@ -2038,7 +2074,7 @@ public function actionGuardarestado(){
 			  
 			 echo CJSON::encode($arr);
 			}
-
+			
 			public function actionValidacionautocomplete(){
 
 				if(isset($_POST['widget'])){
@@ -2074,10 +2110,10 @@ public function actionGuardarestado(){
       				# code...
       		//		echo $resultado->primerNombreResponsable;
       		//	}
-      				
-      	
-      			
-      			
+      					
 			}
 
 }
+
+
+	
