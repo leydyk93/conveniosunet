@@ -17,7 +17,6 @@
 	                          'enctype'=>'multipart/form-data',
 	                        ),
 				          'clientOptions'=> array('validateOnSubmit'=>true),
-				          
 				          ));
 				     ?>
 
