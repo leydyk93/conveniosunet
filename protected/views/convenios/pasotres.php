@@ -153,10 +153,10 @@ if(!isset($_SESSION['url_acta'])){
 <!--
 <div class="form-group">
 
-<?php echo $form->labelEx($pasotres,'url_acta',array('class'=>'control-label col-sm-2')); ?>
+<?php /*echo $form->labelEx($pasotres,'url_acta',array('class'=>'control-label col-sm-2')); ?>
 <div class="col-sm-10">
 	<?php echo $form->hiddenField($pasotres,'url_acta',array('class'=>'form-control','value'=>$_SESSION['url_acta'])); ?>
-	<?php echo $form->error($pasotres,'url_acta'); ?>
+	<?php echo $form->error($pasotres,'url_acta');*/ ?>
 </div>
 </div>
 -->

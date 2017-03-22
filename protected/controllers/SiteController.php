@@ -399,6 +399,58 @@ class SiteController extends Controller
 	}
 
 	public function actionInformacion(){
-		$this->render('informacion');
+		
+	    $model = new ArchivosForm;
+		$modelo=new Archivosconvenios;
+		$msg ="";
+
+		if(isset($_POST["ArchivosForm"])){
+			$model->attributes=$_POST["ArchivosForm"];	
+			$documento=CUploadedFile::getInstancesByName('documento');		
+
+			print_r($documento);
+
+			if(count($documento)===0){
+
+				$msg="<strong class='text-error'>Error, No ha seleccionado el archivo</strong>";
+
+			}else if(!$model->validate()){	
+				$msg="<strong class='text-error'>Error, al enviar en formulario</strong>";	
+			}else{
+
+				$folder=strtolower($model->titulo);
+				$buscar=array(' ');
+				$reemplazar=array('-');
+
+				$folder=str_replace($buscar, $reemplazar, $folder);
+
+				$path = Yii::getPathOfAlias('webroot').'/archivos/convenios/'.$folder.'/';
+				
+				echo $path;
+				if(!is_dir($path)){
+					mkdir($path,0,true);
+					chmod($path,0755);	
+				}
+
+				foreach ($documento as $doc => $i) {
+						$aleatorio=rand(10000,99999);
+						$docu=$aleatorio."-".$i->name;
+
+					$modelo->convenios_idConvenio=1;
+					$modelo->titulo=$model->titulo;
+					$modelo->folder=$folder;
+					$modelo->documento=$docu;
+
+					$modelo->save();
+
+					$i->saveAs($path.$docu);
+
+					}					
+			}
+
+		}
+
+		$this->render('informacion',array('model'=>$model,'modelo'=>$modelo));
+		//$this->render('informacion');
 	}
 }
