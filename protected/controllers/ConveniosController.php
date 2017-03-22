@@ -597,9 +597,10 @@ class ConveniosController extends Controller
 		if (isset($_POST["PasounoForm"])){
 			$pasouno->attributes=$_POST["PasounoForm"];
 			
-			$count = Convenios::model()->countBySql("select COUNT(*) from convenios"); 
-	  		$pasouno->idconvenio=$count+1;
-
+			//$count = Convenios::model()->countBySql("select COUNT(*) from convenios"); 
+	  		//$pasouno->idconvenio=$count+1;
+			$count= Convenios::model()->maxId();
+			$pasouno->idconvenio=$count+1;
 	
 	  			echo("<script>console.log(".$pasouno->nombreconvenio.");</script>"); 
 				$_SESSION['idconvenio']=$pasouno->idconvenio;
