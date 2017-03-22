@@ -1187,6 +1187,7 @@ class ConveniosController extends Controller
 				if(!is_dir($path)){
 					mkdir($path,0,true);
 					chmod($path,0755);	
+				
 				}
 
 				foreach ($documento as $doc => $i) {

@@ -26,24 +26,23 @@
 	<li class="list-group-item"> <p class="hFamilia">1- Acta de intención</p> 
 		Documento que demuestra el interés de una institución de establecer un convenio, en él se especifican compromisos entre las partes
 		
-		<div class="text-right">
-			
-			Descargar formato
-		<span class="glyphicon glyphicon-arrow-down"></span>
-		
-		</div>
+					<div class="text-right">
+						Descargar formato
+						<a href="<?php  echo Yii::app()->request->baseUrl."/archivos/formatos/acta.pdf" ?>" download="ActaIntencion.pdf"><span class="glyphicon glyphicon-arrow-down"></span></a>
+					
+					</div>
 
-		 <div class="row">
-<?php 
-	                     echo $form->labelEx($model,'titulo',array('class'=>"modelArchivo"));
-	                     echo $form->textField($model,'titulo',array('class'=>"modelArchivo"));
-	                     echo $form->error($model,'titulo');
-	               
- 						?>
+		 			<div class="row">
+						<?php 
+							echo $form->labelEx($model,'titulo',array('class'=>"modelArchivo"));
+							echo $form->textField($model,'titulo',array('class'=>"modelArchivo"));
+							echo $form->error($model,'titulo');
+					       
+							?>
 				     </div>
 
 				     <div class="row">
-				     	  <label class="btn btn-conv btn-sm"> <span class="glyphicon glyphicon-open-file"></span> Subir Acta
+				     	  <label class="btn btn-conv btn-sm"> <span class="glyphicon glyphicon-open-file"></span>
 						<?php 
 
 						$this->widget('CMultiFileUpload',
@@ -55,6 +54,9 @@
 								'denied'=>'El documento debe estar en formato PDF',
 								'max'=>1,
 								'duplicate'=>'archivo duplicado',
+								 'htmlOptions'=>array(
+                                    'style'=>"display: none;"     
+                                  ),
 								));
 
 						 echo $form->error($model,'documento');
@@ -62,11 +64,10 @@
 
                         </label>
 						<?php 
-							 echo CHtml::submitButton('Subir documento', array('class'=>'btn btn-conv btn-sm')); 
+							 echo CHtml::submitButton('Actualizar', array('class'=>'btn btn-conv btn-sm')); 
 						 ?>
 				     	
 				     </div>
-
 
 
 

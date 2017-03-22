@@ -401,14 +401,14 @@ class SiteController extends Controller
 	public function actionInformacion(){
 		
 	    $model = new ArchivosForm;
-		$modelo=new Archivosconvenios;
+		$modelo=new Formatos;
 		$msg ="";
 
 		if(isset($_POST["ArchivosForm"])){
 			$model->attributes=$_POST["ArchivosForm"];	
 			$documento=CUploadedFile::getInstancesByName('documento');		
 
-			print_r($documento);
+			
 
 			if(count($documento)===0){
 
@@ -418,39 +418,24 @@ class SiteController extends Controller
 				$msg="<strong class='text-error'>Error, al enviar en formulario</strong>";	
 			}else{
 
-				$folder=strtolower($model->titulo);
-				$buscar=array(' ');
-				$reemplazar=array('-');
-
-				$folder=str_replace($buscar, $reemplazar, $folder);
-
-				$path = Yii::getPathOfAlias('webroot').'/archivos/convenios/'.$folder.'/';
-				
-				echo $path;
-				if(!is_dir($path)){
-					mkdir($path,0,true);
-					chmod($path,0755);	
-				}
+				$path = Yii::getPathOfAlias('webroot').'/archivos/formatos/';
 
 				foreach ($documento as $doc => $i) {
 						$aleatorio=rand(10000,99999);
 						$docu=$aleatorio."-".$i->name;
-
-					$modelo->convenios_idConvenio=1;
-					$modelo->titulo=$model->titulo;
-					$modelo->folder=$folder;
-					$modelo->documento=$docu;
-
-					$modelo->save();
+                        
+						$modelo->NOMBRE=$docu;
+					    $modelo->save();
 
 					$i->saveAs($path.$docu);
-
+				//	rename(Yii::app()->request->baseUrl."/archivos/formatos/".$docu,Yii::app()->request->baseUrl."/archivos/formatos/acta.pdf");
+			     rename($path.$docu,$path."acta.pdf");
 					}					
 			}
 
 		}
 
-		$this->render('informacion',array('model'=>$model,'modelo'=>$modelo));
-		//$this->render('informacion');
+		$this->render('informacion',array('model'=>$model));
+		
 	}
 }
