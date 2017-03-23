@@ -601,7 +601,7 @@ class ConveniosController extends Controller
 	  		//$pasouno->idconvenio=$count+1;
 			$count= Convenios::model()->maxId();
 			$pasouno->idconvenio=$count+1;
-;
+
 	
 	  			echo("<script>console.log(".$pasouno->nombreconvenio.");</script>"); 
 				$_SESSION['idconvenio']=$pasouno->idconvenio;
@@ -1189,6 +1189,7 @@ class ConveniosController extends Controller
 				if(!is_dir($path)){
 					mkdir($path,0,true);
 					chmod($path,0755);	
+				
 				}
 
 				foreach ($documento as $doc => $i) {

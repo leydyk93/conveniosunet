@@ -153,11 +153,10 @@ class Convenios extends CActiveRecord
 		return parent::model($className);
 	}
 
-	/** */
 
 	public static function maxId() {
+	
 
-		
 	  return Yii::app()->db->createCommand()
 	    ->select('MAX(CAST(idConvenio as int))')
 	    ->from('convenios')
