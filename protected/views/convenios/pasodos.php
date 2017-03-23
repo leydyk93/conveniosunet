@@ -350,7 +350,7 @@
 			?>	
 			<br>
 			<!--*************************************** BOTON PARA AGREGAR EN LA TABLA^************************************-->
-			<div class="text-right"><button class="btn btn-conv" onclick="fagregar()"> <span > Agregar Contraparte</span></button></div>	
+			<div class="text-right"><a class="btn btn-conv" onclick="fagregar()"> <span > Agregar Contraparte</span></a></div>	
 			<br>
 			
 
