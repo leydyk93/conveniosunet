@@ -97,7 +97,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=unetconvenios',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => 'ck^VzMzMvsrcVgolA0z5!7Hej6LNoTJxawVGqJ2bVWOImsN6c9Jj4*2shQ&zP0ImkvtX$Ak8wjxe',
 			'charset' => 'utf8',
 			
 		),
