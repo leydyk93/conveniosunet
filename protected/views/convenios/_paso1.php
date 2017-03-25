@@ -38,7 +38,7 @@ if(!isset($_SESSION['alcance'])){
 
 
 
-<body onload="asignar();">
+<body onload="asignar()">
 <main class="container-fluid">
  <!--<div class "row">
             <div  class="nuevo col-xs-12 text-left">
@@ -225,9 +225,9 @@ if(!isset($_SESSION['alcance'])){
              ?>
             <?php echo $form->error($pasouno,'dependencia'); ?>
         </div>
-        <!--<div class="col-sm-1"><a  href="#" data-toggle="modal" data-target="#miestado" onclick="limpiarmodalestado()"  >
+        <div class="col-sm-1"><a  href="#" data-toggle="modal" data-target="#miventana" onclick="limpiarmodaldependencia()"  >
                 <span class="glyphicon glyphicon-plus" data-toggle=""></span>
-        </a></div>-->
+        </a></div>
       </div>
 
   
@@ -282,7 +282,7 @@ if(!isset($_SESSION['alcance'])){
         </div>
 
         <div class="col-sm-6 text-right">
-           <?php echo CHtml::submitButton("Siguiente",array("class"=>'btn btn-conv',"onclick"=>'recolectar()','name'=>'siguiente')); ?> 
+           <?php echo CHtml::submitButton("Siguiente",array("class"=>'btn btn-conv disable',"onclick"=>'recolectar()','name'=>'siguiente','id'=>'botonsiguiente','disabled'=>true)); ?> 
         </div>
 </div>
 
@@ -382,8 +382,7 @@ if(!isset($_SESSION['alcance'])){
                 </div>
                 <div class="modal-footer">
                    <!-- <button  type="button" class="btn btn-conv" data-dismiss="modal"> Cerrar</button>-->
-                        
-                    <?php //echo CHtml::button('Guardar',array('onclick'=>'guard();','class'=>'btn btn-conv btn-sm')); ?>
+                  
         
                     <?php 
                     $value=0;
@@ -580,6 +579,22 @@ if(!isset($_SESSION['alcance'])){
 </div>
 
 <script type="text/javascript">
+
+        $('#PasounoForm_estado').change(function() {
+                var estado=document.getElementById("PasounoForm_estado").value;
+                if(estado==5){
+                   
+                    var boton= document.getElementById("botonsiguiente").disabled=false;
+                }
+                else{
+                   var boton= document.getElementById("botonsiguiente").disabled=true;
+                }
+        })
+
+        function desabilitar_boton(){
+            
+
+        }
       
         function limpiarmodaldependencia(){
           var nom=document.getElementById("Dependencias_nombreDependencia");
@@ -698,7 +713,7 @@ if(!isset($_SESSION['alcance'])){
 
         }
          function validardependencia2(){
-          alert("entro aca");
+       
             var numero=0;
             document.cookie="gdependencia="+numero;
          }

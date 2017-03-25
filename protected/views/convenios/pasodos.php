@@ -794,6 +794,31 @@
 						alert("Debe llenar los Responsables de la contraparte")
 					}
 					else{
+							//realizando validación de institución repetida. 
+							
+							var bandera=0;
+							var cookaux=getCookie("contra");
+							var auxcontra=cookaux.split("-");
+							
+							for(var j=0; j<auxcontra.length; j++){
+								var auxdetallado=auxcontra[j].split(".");
+								for(var i=0; i<auxdetallado.length;i++){
+									if(valselc==auxdetallado[0]){
+										alert("Institución repetida");
+										var resplc=document.getElementById("apellidos_nombres2");
+				         				var respcc=document.getElementById("apellidos_nombres3")
+
+				         				resplc.value="";
+				         				respcc.value="";
+										bandera=1;
+										break;
+									}
+								}
+								if(bandera==1)
+									break;
+							 }
+							
+				if(bandera==0){
 
 							btn1.innerHTML="<span class='glyphicon glyphicon-remove'></span>";
 					//obtenienod cookie con nro de fila actual 
@@ -834,7 +859,7 @@
 					//div4.setAttribute("class","col-15");
 					//agregando al cookie contra... la contraparte que se selecciono. 
 							document.cookie="contra="+getCookie("contra")+"-"+valselc+"."+respl_id+"."+respc_id;
-
+							console.log(getCookie("contra"));
 							//limpiando campos 
 
 							 	var resplc=document.getElementById("apellidos_nombres2");
@@ -842,6 +867,8 @@
 
 				         		resplc.value="";
 				         		respcc.value="";
+
+				}//if de bandera si la institución no es repetida. 
          	}//else de campos no vacios
 		}
 		function eliminarfila(fila){

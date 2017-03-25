@@ -294,6 +294,15 @@ function aporte_agregar(){
 				//agregando al cookie aportes... la contraparte que se selecciono. 
 				document.cookie="aportes="+getCookie("aportes")+"-"+desc+"."+moned+"."+val+"."+cant;
 
+				//limpiando campos
+				var desc=document.getElementById("PasocuatroForm_descripcion_aporte");
+				var val=document.getElementById("PasocuatroForm_valor");
+				var cant=document.getElementById("PasocuatroForm_cantidad");
+
+				desc.value="";
+				val.value="";
+				cant.value="";
+
 	}//else si estan los campos llenos
 	}	
 	function getCookie(cname) {
