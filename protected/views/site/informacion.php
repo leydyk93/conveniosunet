@@ -35,13 +35,12 @@
 		 			
 						<?php 
 							echo $form->labelEx($model,'titulo',array('class'=>"modelArchivo"));
-							echo $form->textField($model,'titulo',array('class'=>"modelArchivo"));
-							echo $form->error($model,'titulo');
-					       
+							echo $form->textField($model,'titulo',array('class'=>"modelArchivo", "value"=>"1"));
+							echo $form->error($model,'titulo'); 
 					     ?>
 				    
 
-				     <div class="row">
+				    <div class="row">
 				     	  <label class="btn btn-conv btn-sm"> <span class="glyphicon glyphicon-open-file"></span>
 						<?php 
 
@@ -66,7 +65,6 @@
 						<?php 
 							 echo CHtml::submitButton('Actualizar', array('class'=>'btn btn-conv btn-sm')); 
 						 ?>
-				     	
 				     </div>
 
 				     <?php endif ?>
@@ -77,9 +75,6 @@
 		<div class="text-right">Descargar formato
 		<span class="glyphicon glyphicon-arrow-down"></span>
 		</div>
-	
-
-
 	</li>
 	<li class="list-group-item"> <p class="hFamilia">2- Convenio Específico</p>
 		Es un acuerdo mas concreto entre las partes 
