@@ -70,16 +70,12 @@ if(!isset($_SESSION['url_acta'])){
 				echo "responsable legal contraparte: ".$_SESSION['responsable_legal_contraparte'];
 				echo "<br>";
 				echo "responsable contacto contraparte ".$_SESSION['responsable_contacto_contraparte'];
+				echo "<br>";
+				//echo "cookie contra ".$_COOKIE['contra'];
 
 ?>
  <main class="container-fluid">
-        <div class "row">
-            
-            <div  class="nuevo col-xs-12 text-left">
-                <p ><span class="glyphicon glyphicon-th-list"></span> Nuevo Convenio Marco</p>
-            </div>
-        </div>
-
+        
 <div class="row">
 <aside id="pasos" class="menu_pasos col-xs-3">
 
