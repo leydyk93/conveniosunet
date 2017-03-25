@@ -31,15 +31,15 @@
 						<a href="<?php  echo Yii::app()->request->baseUrl."/archivos/formatos/acta.pdf" ?>" download="ActaIntencion.pdf"><span class="glyphicon glyphicon-arrow-down"></span></a>
 					
 					</div>
-
-		 			<div class="row">
+                    <?php if(!Yii::app()->user->isGuest):?>
+		 			
 						<?php 
 							echo $form->labelEx($model,'titulo',array('class'=>"modelArchivo"));
 							echo $form->textField($model,'titulo',array('class'=>"modelArchivo"));
 							echo $form->error($model,'titulo');
 					       
-							?>
-				     </div>
+					     ?>
+				    
 
 				     <div class="row">
 				     	  <label class="btn btn-conv btn-sm"> <span class="glyphicon glyphicon-open-file"></span>
@@ -59,7 +59,7 @@
                                   ),
 								));
 
-						 echo $form->error($model,'documento');
+						   echo $form->error($model,'documento');
 						 ?>
 
                         </label>
@@ -69,7 +69,7 @@
 				     	
 				     </div>
 
-
+				     <?php endif ?>
 
 	</li>
 	<li class="list-group-item"> <p class="hFamilia">2- Convenio Marco</p> 
@@ -77,6 +77,9 @@
 		<div class="text-right">Descargar formato
 		<span class="glyphicon glyphicon-arrow-down"></span>
 		</div>
+	
+
+
 	</li>
 	<li class="list-group-item"> <p class="hFamilia">2- Convenio Específico</p>
 		Es un acuerdo mas concreto entre las partes 

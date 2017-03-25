@@ -33,6 +33,7 @@ class ArchivosForm extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
+			
 			'documento'=>'Documento',
 		);
 	}
