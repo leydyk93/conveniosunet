@@ -601,6 +601,7 @@ class ConveniosController extends Controller
 	  		//$pasouno->idconvenio=$count+1;
 			$count= Convenios::model()->maxId();
 			$pasouno->idconvenio=$count+1;
+
 	
 	  			echo("<script>console.log(".$pasouno->nombreconvenio.");</script>"); 
 				$_SESSION['idconvenio']=$pasouno->idconvenio;

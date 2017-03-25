@@ -11,13 +11,13 @@
 		public $estado;
 		public $alcance;
 		public $clasificacion; 
-		public $idmarco;
+		public $idmarco; 
 
-		public function rules (){
+		public function rules (){ 
 
 			return array(
 				array("tipo,nombreconvenio,fechainicio,fechacaducidad,objetivo,estado,clasificacion,dependencia","required"),
-				array('nombreconvenio','match','pattern'=>'/^[a-záéíóúàèìòùäëïöüñ\s]+$/i','message'=>'el tipo de datos introducido es incorrecto' ),
+				//array('nombreconvenio','match','pattern'=>'/^[a-záéíóúàèìòùäëïöüñ\s]+$/i','message'=>'el tipo de datos introducido es incorrecto' ),
 				array('nombreconvenio','length','max'=>200,'tooLong'=>'Maximo 200 caracteres'),
 				array('fechainicio','date','format'=>'yyyy-mm-dd','message'=>'Debe introducir un formato de fecha ejem 2016-01-01'),
 				array('fechacaducidad','date','format'=>'yyyy-mm-dd','message'=>'Debe introducir un formato de fecha ejem 2016-01-01'),
