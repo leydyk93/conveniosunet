@@ -404,11 +404,10 @@ class SiteController extends Controller
 		$modelo=new Formatos;
 		$msg ="";
 
+	
 		if(isset($_POST["ArchivosForm"])){
-			$model->attributes=$_POST["ArchivosForm"];	
-			$documento=CUploadedFile::getInstancesByName('documento');		
-
 			
+			$documento=CUploadedFile::getInstancesByName('documento');		
 
 			if(count($documento)===0){
 
@@ -417,24 +416,52 @@ class SiteController extends Controller
 			}else if(!$model->validate()){	
 				$msg="<strong class='text-error'>Error, al enviar en formulario</strong>";	
 			}else{
+				  $path = Yii::getPathOfAlias('webroot').'/archivos/formatos/';
+					switch ($model->titulo) {
+						case '1': //acta de intencion	
+								foreach ($documento as $doc => $i) {
+										$aleatorio=rand(10000,99999);
+										$docu=$aleatorio."-".$i->name;
+										
+										$modelo->NOMBRE=$docu;
+										$modelo->save();
 
-				$path = Yii::getPathOfAlias('webroot').'/archivos/formatos/';
+									    $i->saveAs($path.$docu);
+								       rename($path.$docu,$path."acta.pdf");
+									}	
+								 
+							break;
+						case '2': //convenio Marco
+								foreach ($documento as $doc => $i) {
+										$aleatorio=rand(10000,99999);
+										$docu=$aleatorio."-".$i->name;
+										
+										$modelo->NOMBRE=$docu;
+										$modelo->save();
 
-				foreach ($documento as $doc => $i) {
-						$aleatorio=rand(10000,99999);
-						$docu=$aleatorio."-".$i->name;
-                        
-						$modelo->NOMBRE=$docu;
-					    $modelo->save();
+									    $i->saveAs($path.$docu);
+								       rename($path.$docu,$path."convenioMarco.pdf");
+									}	
+							break;
+						case '3': //convenio especifico
+						       foreach ($documento as $doc => $i) {
+										$aleatorio=rand(10000,99999);
+										$docu=$aleatorio."-".$i->name;
+										
+										$modelo->NOMBRE=$docu;
+										$modelo->save();
 
-					$i->saveAs($path.$docu);
-				//	rename(Yii::app()->request->baseUrl."/archivos/formatos/".$docu,Yii::app()->request->baseUrl."/archivos/formatos/acta.pdf");
-			     rename($path.$docu,$path."acta.pdf");
-					}					
+									    $i->saveAs($path.$docu);
+								       rename($path.$docu,$path."convenioEspecifico.pdf"); 
+									}		   
+							break;
+						
+						default:
+							# code...
+							break;
+					}	  
 			}
-
 		}
-
 		$this->render('informacion',array('model'=>$model));
 		
 	}

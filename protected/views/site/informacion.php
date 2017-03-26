@@ -27,24 +27,20 @@
 		Documento que demuestra el interés de una institución de establecer un convenio, en él se especifican compromisos entre las partes
 		
 					<div class="text-right">
-						Descargar formato
-						<a href="<?php  echo Yii::app()->request->baseUrl."/archivos/formatos/acta.pdf" ?>" download="ActaIntencion.pdf"><span class="glyphicon glyphicon-arrow-down"></span></a>
-					
+						<a href="<?php  echo Yii::app()->request->baseUrl."/archivos/formatos/acta.pdf" ?>" download="UNETactaIntencion.pdf"><span class="glyphicon glyphicon-arrow-down"></span>Descargar formato</a>
 					</div>
+
                     <?php if(!Yii::app()->user->isGuest):?>
 		 			
 						<?php 
 							echo $form->labelEx($model,'titulo',array('class'=>"modelArchivo"));
-							echo $form->textField($model,'titulo',array('class'=>"modelArchivo"));
+							echo $form->textField($model,'titulo',array('class'=>"modelArchivo", 'value'=>"1"));
 							echo $form->error($model,'titulo');
 					       
 					     ?>
 				    
-
-				     <div class="row">
-				     	  <label class="btn btn-conv btn-sm"> <span class="glyphicon glyphicon-open-file"></span>
-						<?php 
-
+				    <label class="btn btn-conv btn-sm"> <span class="glyphicon glyphicon-open-file"></span>
+					  <?php 
 						$this->widget('CMultiFileUpload',
 							array(
 								'model'=>$model,
@@ -58,26 +54,49 @@
                                     'style'=>"display: none;"     
                                   ),
 								));
-
 						   echo $form->error($model,'documento');
 						 ?>
-
                         </label>
-						<?php 
-							 echo CHtml::submitButton('Actualizar', array('class'=>'btn btn-conv btn-sm')); 
-						 ?>
+						<?php  echo CHtml::submitButton('Actualizar', array('class'=>'btn btn-conv btn-sm')); ?>
 				     	
-				     </div>
-
 				     <?php endif ?>
 
 	</li>
 	<li class="list-group-item"> <p class="hFamilia">2- Convenio Marco</p> 
-		Tipo de acuerdo general que se realiza con instituciones, establece una estrecha relacion entre las partes, de un convenio marco se pueden derivar especificos
-		<div class="text-right">Descargar formato
-		<span class="glyphicon glyphicon-arrow-down"></span>
+		Tipo de acuerdo general que se realiza con instituciones, establece una estrecha relacion entre las partes, de un convenio marco se pueden derivar específicos
+		<div class="text-right">
+						<a href="<?php  echo Yii::app()->request->baseUrl."/archivos/formatos/convenioMarco.pdf" ?>" download="UNETconvenioMarco.pdf"><span class="glyphicon glyphicon-arrow-down"></span>Descargar formato</a>
 		</div>
-	
+		   <?php if(!Yii::app()->user->isGuest):?>
+		 			
+						<?php 
+							echo $form->labelEx($model,'titulo',array('class'=>"modelArchivo"));
+							echo $form->textField($model,'titulo',array('class'=>"modelArchivo", 'value'=>"2"));
+							echo $form->error($model,'titulo');
+					       
+					     ?>
+				    
+				    <label class="btn btn-conv btn-sm"> <span class="glyphicon glyphicon-open-file"></span>
+					  <?php 
+						$this->widget('CMultiFileUpload',
+							array(
+								'model'=>$model,
+								'name'=>'documento',
+								'attribute'=>'documento',
+								'accept'=> 'pdf',
+								'denied'=>'El documento debe estar en formato PDF',
+								'max'=>1,
+								'duplicate'=>'archivo duplicado',
+								 'htmlOptions'=>array(
+                                    'style'=>"display: none;"     
+                                  ),
+								));
+						   echo $form->error($model,'documento');
+						 ?>
+                        </label>
+						<?php  echo CHtml::submitButton('Actualizar', array('class'=>'btn btn-conv btn-sm')); ?>
+				     	
+				     <?php endif ?>
 
 
 	</li>
