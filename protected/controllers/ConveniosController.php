@@ -29,7 +29,7 @@ class ConveniosController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 
-				'actions'=>array('index','view','archivo','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','autocompletef','guardarinstitucion','guardarresponsable','guardararchivo','validacionautocomplete','prueba','updateajax','reporte','guardardependencia','ConstruirReporte','createEspecifico','updateConvenio','guardarclasificacion','guardarestado'),
+				'actions'=>array('index','view','archivo','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','autocompletef','guardarinstitucion','guardarresponsable','guardararchivo','validacionautocomplete','prueba','updateajax','reporte','guardardependencia','ConstruirReporte','createEspecifico','updateConvenio','guardarclasificacion','guardarestado','reiniciarvariables'),
 
 				'users'=>array('*'),
 			),
@@ -415,47 +415,42 @@ class ConveniosController extends Controller
 	public function actionUpdateConvenio($id)
 	{
 		//modelo para la tabla convenios 
-		$model=$this->loadModel($id);
-		
-		//$model=new Convenios;
+		$model=new Convenios;
 
 		$pasouno=new PasounoForm;
 
 		$dep=new Dependencias;
 
+		$clas= new Clasificacionconvenios;
+
+		$est= new Estadoconvenios;
+
+		$model_ce= new ConvenioEstados;
+	
+		$model=$this->loadModel($id);
 		//logic del formulario 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['ajax'])&& $_POST['ajax']==='pasouno'){
-			echo CActiveForm::validate($pasouno);
-			Yii::app()->end();
-		}
+	//	if(isset($_POST['ajax'])&& $_POST['ajax']==='pasouno'){
+	//		echo CActiveForm::validate($pasouno);
+	//		Yii::app()->end();
+	//	}
 
-		if(!isset($_POST["PasounoForm"])){
-
-
-				$_SESSION['idconvenio']=$model->idConvenio;
-				$_SESSION['nombreconvenio']=$model->nombreConvenio;
-				$_SESSION['fechainicioconvenio']=$model->fechaInicioConvenio;
-				$_SESSION['fechacaducidadconvenio']=$model->fechaCaducidadConvenio;
-				$_SESSION['objetivo']=$model->objetivoConvenio;
-				$_SESSION['dependenciaconvenio']=$model->dependencias_idDependencia;
-				$_SESSION['tipo']=$model->tipoConvenios_idTipoConvenio;
-				//$_SESSION['estado']=$model->estado;
-				$_SESSION['clasificacion']=$model->clasificacionConvenios_idTipoConvenio;
-				$_SESSION['alcance']=$model->alcanceConvenios;
-
-
-		} else {
+		
+		if (isset($_POST["PasounoForm"])){
 			$pasouno->attributes=$_POST["PasounoForm"];
 			
-			$count = Convenios::model()->countBySql("select COUNT(*) from convenios"); 
-	  		$pasouno->idconvenio=$count+1;
+			//$count = Convenios::model()->countBySql("select COUNT(*) from convenios"); 
+	  		//$pasouno->idconvenio=$count+1;
+			
 
-			if($pasouno->validate()){
+			//$count= Convenios::model()->maxId();
+			//$pasouno->idconvenio=$count+1;
 
-				$_SESSION['idconvenio']=$pasouno->idconvenio;
+	
+	  			echo("<script>console.log(".$pasouno->nombreconvenio.");</script>"); 
+				//$_SESSION['idconvenio']=$pasouno->idconvenio;
 				$_SESSION['nombreconvenio']=$pasouno->nombreconvenio;
 				$_SESSION['fechainicioconvenio']=$pasouno->fechainicio;
 				$_SESSION['fechacaducidadconvenio']=$pasouno->fechacaducidad;
@@ -465,17 +460,48 @@ class ConveniosController extends Controller
 				$_SESSION['estado']=$pasouno->estado;
 				$_SESSION['clasificacion']=$pasouno->clasificacion;
 				$_SESSION['alcance']=$pasouno->alcance;
+
+
 				//$pasouno->idconvenio;
 				//$pasouno->nombreconvenio;
 			//	$this->redirect(array("create"));
 			
 				if($pasouno->validate()){
-					$this->redirect(array('convenios/pasodos',
-					"idconvenio"=>$pasouno->idconvenio,
-					));
+
+						//-------------------------GUARDANDO EN LA TABLA CONVENIOS---------------------------------
+					if (isset($_REQUEST['enviar'])) 
+					{ 
+						
+						$model->nombreConvenio=$_SESSION['nombreconvenio'];
+						$model->fechaInicioConvenio=$_SESSION['fechainicioconvenio'];
+						$model->fechaCaducidadConvenio=$_SESSION['fechacaducidadconvenio'];
+						$model->objetivoConvenio=$_SESSION['objetivo'];
+						$model->institucionUNET="UNET";
+						$model->urlConvenio="Sin Archivo";//colocar direccion del archivo real pdf 
+						$model->clasificacionConvenios_idTipoConvenio=$_SESSION['clasificacion'];
+						$model->tipoConvenios_idTipoConvenio=$_SESSION['tipo'];
+						$model->alcanceConvenios=$_SESSION['alcance'];
+						$model->dependencias_idDependencia=$_SESSION['dependenciaconvenio'];
+						if(isset($_SESSION['idpapa']))
+						$model->convenios_idConvenio=$_SESSION['idpapa']; //aqui va el id si es especifico
+						
+						//Si guarda en la tabla convenios entonces guarde en la tabla Institución convenios
+						if($model->save()){
+
+							$this->redirect(array('convenios/conveniosEspera'));
+						}
+
+						//---------------------------------------------- GUARDANDO EN CONVENI-ESTADOS-------------------		 					
+					}
+					else{
+
+						$this->redirect(array('convenios/pasodos',
+						"idconvenio"=>$pasouno->idconvenio,
+						));
+					}
 				}
 			}
-			}
+			
 
 			if (isset($_POST["Dependencias"])){
 			$dep->attributes=$_POST["Dependencias"];
@@ -486,12 +512,8 @@ class ConveniosController extends Controller
 			}
 			}
 
-		//$this->render('updateConvenio',array(
-		//	"pasouno"=>$pasouno,"dep"=>$dep
-		//));
-			
 		$this->render('create',array(
-			"pasouno"=>$pasouno,"dep"=>$dep
+			"pasouno"=>$pasouno,"dep"=>$dep,"clas"=>$clas,"est"=>$est
 		));
 
 
@@ -581,6 +603,8 @@ class ConveniosController extends Controller
 
 		$model_ce= new ConvenioEstados;
 	
+
+
 
 		//logic del formulario 
 		// Uncomment the following line if AJAX validation is needed
@@ -2116,6 +2140,37 @@ public function actionGuardarestado(){
       		//		echo $resultado->primerNombreResponsable;
       		//	}
       					
+			}
+
+			public function actionreiniciarVariables(){
+
+					 $_SESSION['idconvenio']="";
+				   $_SESSION['tipo']="";
+	 			   $_SESSION['nombreconvenio']="";
+				   $_SESSION['fechainicioconvenio']="";
+				   $_SESSION['fechacaducidadconvenio']="";
+				   $_SESSION['objetivo']="";
+				   $_SESSION['dependenciaconvenio']="";
+				   $_SESSION['estado']="";
+				   $_SESSION['clasificacion']="";
+				   $_SESSION['alcance']="";
+				   $_SESSION['instanciaunet']="";
+				   $_SESSION['responsable_legal_unet']="";
+				   $_SESSION['responsable_contacto_unet']="";
+				   $_SESSION['institucion']="";
+				   $_SESSION['responsable_legal_contraparte']="";
+				   $_SESSION['responsable_contacto_contraparte']="";
+				   $_SESSION['nro_acta']="";
+				   $_SESSION['fecha_acta']="";
+				   $_SESSION['url_acta']="";
+				   $_SESSION['aporte']="";
+				    
+                    $value=0;
+                    $value1="";
+                    setcookie("responsable_legal_unet", $value1);
+                    setcookie("responsable_contacto_unet",$value1);
+
+
 			}
 
 }

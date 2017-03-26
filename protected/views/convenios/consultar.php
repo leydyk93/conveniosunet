@@ -31,7 +31,9 @@
     
 <div  id="MainMenu" class="col-sm-4">
   <?php if(!Yii::app()->user->isGuest):?>
-   <h4><a href="<?php echo $this->createUrl( '/convenios/create' ); ?>"><span class="glyphicon glyphicon-plus"></span></a> Nuevo Convenio </h4>
+
+   <h4><a onclick="sesionnew()" href="<?php echo $this->createUrl( '/convenios/create' ); ?>"><span class="glyphicon glyphicon-plus"></span></a> Nuevo Convenio </h4>
+
    <h4><a href="<?php echo $this->createUrl( '/convenios/conveniosEspera' ); ?>"><span class="glyphicon glyphicon-edit"></span></a> Convenios en espera </h4>
   <?php endif?>
   
@@ -413,7 +415,7 @@ function CambiarPaisesAmbito(){
   }
   
     function encontrarConveniosV(){
-        var url='<?php echo Yii::app()->createUrl("convenios/buscarConveniosV"); ?>'
+        var url='<?php echo Yii::app()->createUrl("convenios/buscarConveniosV"); ?>';
         
         $.ajax({
             type: "post",
@@ -423,6 +425,22 @@ function CambiarPaisesAmbito(){
                 document.getElementById("alertavencer").innerHTML=datos;  
             }
         });
+
+    }
+
+    function sesionnew(){
+  
+        var url='<?php echo Yii::app()->createUrl("convenios/reiniciarVariables"); ?>';
+
+        $.ajax({
+            type: "post",
+            url: url,
+
+            success: function(){
+
+            }
+        })
+
     }
     //setInterval(encontrarConveniosV, 3000);
   
