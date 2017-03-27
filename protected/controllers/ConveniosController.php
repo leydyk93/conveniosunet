@@ -412,7 +412,7 @@ class ConveniosController extends Controller
 	 * Creates a new model de convenio especifico.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionUpdateConvenio($id)
+	public function actionUpdateconvenio($id)
 	{
 		//modelo para la tabla convenios 
 		$model=new Convenios;
@@ -426,27 +426,39 @@ class ConveniosController extends Controller
 		$est= new Estadoconvenios;
 
 		$model_ce= new ConvenioEstados;
-	
+
+//**************************************** PARA ACTUALIZAR UN CONVENIO **********************///
+		//Cargando modelo inicial de convenios
 		$model=$this->loadModel($id);
-		//logic del formulario 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$_SESSION["isNewRecord"]=1;
+		//igualando las variables de sesión a los valores precargados del convenio.
+				$_SESSION['nombreconvenio']=$model->nombreConvenio;
+				$_SESSION['fechainicioconvenio']=$model->fechaInicioConvenio;
+				$_SESSION['fechacaducidadconvenio']=$model->fechaCaducidadConvenio;
+				$_SESSION['objetivo']=$model->objetivoConvenio;
+				$_SESSION['dependenciaconvenio']=$model->dependencias_idDependencia;
+				$_SESSION['tipo']=$model->tipoConvenios_idTipoConvenio;
+				
+				$fecha=Yii::app()->db->createCommand()
+	                  ->select('MAX(fechaCambioEstado)')
+	                  ->from('convenio_estados')
+	                  ->where('convenios_idConvenio='+$id)
+	                  ->queryScalar();
+				
+				$estado=Yii::app()->db->createCommand()
+	                  ->select('estadoConvenios_idEstadoConvenio')
+	                  ->from('convenio_estados')
+	                  ->where('convenios_idConvenio='+$id+'and fechaCambioEstado='+$fecha)
+	                  ->queryScalar();
 
-	//	if(isset($_POST['ajax'])&& $_POST['ajax']==='pasouno'){
-	//		echo CActiveForm::validate($pasouno);
-	//		Yii::app()->end();
-	//	}
+	            $_SESSION['estado']=$estado;
+				$_SESSION['alcance']=$model->alcanceConvenios;
 
-		
+
+		//Si le dio siguiente igualo las variables de sesión
 		if (isset($_POST["PasounoForm"])){
 			$pasouno->attributes=$_POST["PasounoForm"];
 			
-			//$count = Convenios::model()->countBySql("select COUNT(*) from convenios"); 
-	  		//$pasouno->idconvenio=$count+1;
-			
-
-			//$count= Convenios::model()->maxId();
-			//$pasouno->idconvenio=$count+1;
 
 	
 	  			echo("<script>console.log(".$pasouno->nombreconvenio.");</script>"); 
@@ -462,10 +474,6 @@ class ConveniosController extends Controller
 				$_SESSION['alcance']=$pasouno->alcance;
 
 
-				//$pasouno->idconvenio;
-				//$pasouno->nombreconvenio;
-			//	$this->redirect(array("create"));
-			
 				if($pasouno->validate()){
 
 						//-------------------------GUARDANDO EN LA TABLA CONVENIOS---------------------------------
@@ -488,7 +496,14 @@ class ConveniosController extends Controller
 						//Si guarda en la tabla convenios entonces guarde en la tabla Institución convenios
 						if($model->save()){
 
-							$this->redirect(array('convenios/conveniosEspera'));
+
+							$model_ce->convenios_idConvenio=$id;
+							$model_ce->estadoConvenios_idEstadoConvenio=$_SESSION['estado'];
+		 					$model_ce->fechaCambioEstado=new CDbExpression('NOW()');
+		 					$model_ce->dependencias_idDependencia=$_SESSION['dependenciaconvenio'];
+
+		 					if($model_ce->save()) 
+								$this->redirect(array('view','id'=>$model->idConvenio));
 						}
 
 						//---------------------------------------------- GUARDANDO EN CONVENI-ESTADOS-------------------		 					
@@ -512,8 +527,8 @@ class ConveniosController extends Controller
 			}
 			}
 
-		$this->render('create',array(
-			"pasouno"=>$pasouno,"dep"=>$dep,"clas"=>$clas,"est"=>$est
+		$this->render('update',array(
+			"pasouno"=>$pasouno,"dep"=>$dep,"clas"=>$clas,"est"=>$est , "model"=>$model
 		));
 
 
@@ -602,7 +617,7 @@ class ConveniosController extends Controller
 		$est= new Estadoconvenios;
 
 		$model_ce= new ConvenioEstados;
-	
+		$_SESSION["isNewRecord"]=0;
 
 
 
