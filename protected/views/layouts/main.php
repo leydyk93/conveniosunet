@@ -58,9 +58,9 @@
 				array('label'=>'<span class="glyphicon glyphicon-cog"></span> Configuración <span class="caret"></span>', 'url'=>array('/site/configuracion'), 'visible'=>!Yii::app()->user->isGuest,'items'=>array(
 		           // array('label'=>'Convenios', 'url'=>array('/site/configuracion', 'tag'=>'Estatica')),
 		            array('label'=>'Administrar Usuarios', 'url'=>array('usuario/admin', 'tag'=>'Aministrar Usuarios')),
-		            array('label'=>'Administrar Información Base de Datos', 'url'=>array('site/configuracion', 'tag'=>'popular')),
+		            array('label'=>'Administrar Información Base de Datos', 'url'=>array('site/configuracion')),
+					array('label'=>'Ver Bitacora de Operaciones', 'url'=>array('operaciones/admin')),
 		        ),
-
 				 'submenuOptions'=>array('class'=>'dropdown-menu'), 
 				 'itemOptions'=>array('class'=>'dropdown'),
 				 'linkOptions'=>array('class'=>'dropdown-toggle', 'data-toggle'=>'dropdown')

@@ -226,6 +226,10 @@ INSERT INTO convenios (idConvenio,nombreConvenio,fechaInicioConvenio,fechaCaduci
 ('01', 'convenio 1','2015/01/01','2016/01/01','ejemplo 1','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','lfklekfle','1',null),
 ('02', 'convenio 2','2014/01/01','2015/01/01','ejemplo 2','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio1/djndkjaskd.pdf','2','1','fmkmfkkfm','1',null),
 ('03', 'convenio 3','2015/02/01','2017/01/01','ejemplo 3','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio3/djndkjaskd.pdf','1','2','fmkmfkkfm','2','01');
+('13', 'convenio 13','2014/01/01','2015/01/01','ejemplo 13','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio13/djndkjaskd.pdf','2','1','fmkmfkkfm','1',null),
+('14', 'convenio 14','2017/02/01','2019/01/01','ejemplo 14','Universidad Nacional Experimental del Tachira','www.unet.edu.ve/convenio14/djndkjaskd.pdf','5','2','fmkmfkkfm','3','01');
+
+
 
 INSERT INTO convenios (idConvenio,nombreConvenio) VALUES
 ('5', 'convenio 5'),
@@ -431,6 +435,9 @@ INSERT INTO institucion_convenios (instituciones_idInstitucion,convenios_idConve
 ('3','02','2016/01/01'),
 ('1','03','2016/01/01'),
 ('4','04','2016/01/01');
+('7','13','2016/01/01'),
+('3','14','2016/01/01');
+('4','14','2016/01/01');
 
 -- -----------------------------------------------------
 -- Table    historicoResponsables 

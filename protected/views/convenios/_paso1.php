@@ -72,20 +72,41 @@ if(!isset($_SESSION['alcance'])){
 
 <section class="datos col-xs-9">     
 <?php 
-    $form=$this->beginWidget("CActiveForm", array(  
-             'method' => 'POST',
-             'action'=> Yii::app()->createUrl('convenios/create'),
-             'id'=>'pasouno',
-            // 'enableAjaxValidation'=>true,
-             'enableClientValidation'=> true,
-             'clientOptions'=> array(
-                'validateOnSubmit'=> true,
-                'validateOnChange'=> true,
-                'validateOnType'=>true,
-              ),
-             'htmlOptions'=>array('class'=>'form-horizontal'),    
+    if($_SESSION["isNewRecord"]==1){
+        $form=$this->beginWidget("CActiveForm", array(  
+                 'method' => 'POST',
+                 'action'=> Yii::app()->createUrl("/convenios/updateConvenio",array('id'=>"01")),
+                 'id'=>'pasouno',
+                // 'enableAjaxValidation'=>true,
+                 'enableClientValidation'=> true,
+                 'clientOptions'=> array(
+                    'validateOnSubmit'=> true,
+                    'validateOnChange'=> true,
+                    'validateOnType'=>true,
+                  ),
+                 'htmlOptions'=>array('class'=>'form-horizontal'),    
 
-        ));
+            ));
+        }
+        else{
+            $form=$this->beginWidget("CActiveForm", array(  
+                 'method' => 'POST',
+                 'action'=> Yii::app()->createUrl("/convenios/create"),
+                 'id'=>'pasouno',
+                // 'enableAjaxValidation'=>true,
+                 'enableClientValidation'=> true,
+                 'clientOptions'=> array(
+                    'validateOnSubmit'=> true,
+                    'validateOnChange'=> true,
+                    'validateOnType'=>true,
+                  ),
+                 'htmlOptions'=>array('class'=>'form-horizontal'),    
+
+            ));
+
+
+
+        }
  ?>
 
      <!-- <div class="well well-sm ">  -->

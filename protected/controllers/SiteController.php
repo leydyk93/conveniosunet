@@ -405,8 +405,9 @@ class SiteController extends Controller
 		$msg ="";
 
 		if(isset($_POST["ArchivosForm"])){
-			$model->attributes=$_POST["ArchivosForm"];	
-			$documento=CUploadedFile::getInstancesByName('documento');		
+			$model->attributes=$_POST["ArchivosForm"];
+			$documento=CUploadedFile::getInstancesByName('documento');
+			$path = Yii::getPathOfAlias('webroot').'/archivos/formatos/';		
 
 			if(count($documento)===0){
 
@@ -415,24 +416,68 @@ class SiteController extends Controller
 			}else if(!$model->validate()){	
 				$msg="<strong class='text-error'>Error, al enviar en formulario</strong>";	
 			}else{
-				if($model->titulo=="1"){
-					$path = Yii::getPathOfAlias('webroot').'/archivos/formatos/';
-					foreach ($documento as $doc => $i) {
-							$aleatorio=rand(10000,99999);
-							$docu=$aleatorio."-".$i->name;
-							$modelo->NOMBRE=$docu;
-							$modelo->save();
-						$i->saveAs($path.$docu);
-				//	rename(Yii::app()->request->baseUrl."/archivos/formatos/".$docu,Yii::app()->request->baseUrl."/archivos/formatos/acta.pdf");
-					rename($path.$docu,$path."acta.pdf");
-						}	
-				}				
+
+				switch ($model->titulo) {
+					case '1':
+							
+								foreach ($documento as $doc => $i) {
+										$aleatorio=rand(10000,99999);
+										$docu=$aleatorio."-".$i->name;
+										$modelo->NOMBRE=$docu;
+										$modelo->save();
+									$i->saveAs($path.$docu);
+							//	rename(Yii::app()->request->baseUrl."/archivos/formatos/".$docu,Yii::app()->request->baseUrl."/archivos/formatos/acta.pdf");
+								rename($path.$docu,$path."acta.pdf");
+									}	
+							
+						break;
+						case '2':
+								foreach ($documento as $doc => $i) {
+										$aleatorio=rand(10000,99999);
+										$docu=$aleatorio."-".$i->name;
+										$modelo->NOMBRE=$docu;
+										$modelo->save();
+									    $i->saveAs($path.$docu);
+							//	rename(Yii::app()->request->baseUrl."/archivos/formatos/".$docu,Yii::app()->request->baseUrl."/archivos/formatos/acta.pdf");
+								rename($path.$docu,$path."convenioMarco.pdf");
+									}	
+						  		
+						break;
+
+						case '3':
+								foreach ($documento as $doc => $i) {
+										$aleatorio=rand(10000,99999);
+										$docu=$aleatorio."-".$i->name;
+										$modelo->NOMBRE=$docu;
+										$modelo->save();
+									$i->saveAs($path.$docu);
+							//	rename(Yii::app()->request->baseUrl."/archivos/formatos/".$docu,Yii::app()->request->baseUrl."/archivos/formatos/acta.pdf");
+								rename($path.$docu,$path."convenioEspecifico.pdf");
+									}	
+						  		
+						break;
+
+							case '4':
+								foreach ($documento as $doc => $i) {
+										$aleatorio=rand(10000,99999);
+										$docu=$aleatorio."-".$i->name;
+										$modelo->NOMBRE=$docu;
+										$modelo->save();
+									$i->saveAs($path.$docu);
+							//	rename(Yii::app()->request->baseUrl."/archivos/formatos/".$docu,Yii::app()->request->baseUrl."/archivos/formatos/acta.pdf");
+								rename($path.$docu,$path."normasProcedimeintos.pdf");
+									}	
+						  		
+						break;
+					
+					default:
+						# code...
+						break;
+				}
+						
 			}
 
 		}
 		$this->render('informacion',array('model'=>$model));	
 	}
-
-
-
 }
