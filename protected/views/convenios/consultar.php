@@ -60,7 +60,7 @@
         
       </a>
 
-      <a href="#Subtipo" class="list-group-item opcion"  data-toggle="collapse" data-parent="#Subtipo" ><?php echo $form->labelEx($model,'tipo');  ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
+      <a href="#Subtipo" class="list-group-item opcion"  data-toggle="collapse" data-parent="#Subtipo" ><?php echo $form->labelEx($model,'tipo');  ?> <i class="fa fa-angle-down fa-main" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i><i class="fa fa-angle-up" aria-hidden="true"></i></a>
       <div class="collapse list-group-submenu" id="Subtipo"> 
          <?php 
                $list=CHtml::listData($tipoconve,'idTipoConvenio','descripcionTipoConvenio');
@@ -69,7 +69,7 @@
       </div>
 
         
-      <a href="#SubClasif" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubClasif" > <?php echo $form->labelEx($model,'clasificacion'); ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
+      <a href="#SubClasif" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubClasif" > <?php echo $form->labelEx($model,'clasificacion'); ?> <i class="fa fa-angle-down fa-main" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i><i class="fa fa-angle-up" aria-hidden="true"></i></a>
       <div class="collapse list-group-submenu" id="SubClasif"> 
        <?php  
               $list2=CHtml::listData($clasif,'idClasificacionConvenio','nombreClasificacionConvenio');
@@ -78,7 +78,7 @@
         
       </div>
 
-      <a href="#SubAmbitoG" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubAmbitoG" ><?php echo $form->labelEx($model,'ambitoGeografico'); ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
+      <a href="#SubAmbitoG" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubAmbitoG" ><?php echo $form->labelEx($model,'ambitoGeografico'); ?> <i class="fa fa-angle-down fa-main" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i><i class="fa fa-angle-up" aria-hidden="true"></i></a>
       <div class="collapse list-group-submenu" id="SubAmbitoG"> 
         <a class="list-group-item" data-parent="#SubAmbitoG">
               <?php 
@@ -97,7 +97,7 @@
       </div>
 
 
-      <a href="#SubDatosC" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubDatosC" ><?php echo $form->labelEx($model,'contraparte'); ?><span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
+      <a href="#SubDatosC" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubDatosC" ><?php echo $form->labelEx($model,'contraparte'); ?><i class="fa fa-angle-down fa-main" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i><i class="fa fa-angle-up" aria-hidden="true"></i></a>
       <div class="collapse list-group-submenu" id="SubDatosC"> 
         <a class="list-group-item" data-parent="#SubDatosC"> 
 
@@ -114,7 +114,7 @@
           </div>
          
         </a>
-         <a href="#SubSubTipoIns" class="list-group-item opcion" data-toggle="collapse" data-parent="#SubSubTipoIns"><?php echo $form->labelEx($model,'tipo_institucion'); ?> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
+         <a href="#SubSubTipoIns" class="list-group-item opcion opcion-submenu" data-toggle="collapse" data-parent="#SubSubTipoIns"><?php echo $form->labelEx($model,'tipo_institucion'); ?> <i class="fa fa-angle-down fa-main" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i><i class="fa fa-angle-up" aria-hidden="true"></i></a>
           <div class="collapse list-group-submenu list-group-submenu-1" id="SubSubTipoIns">
                     
            <?php 
@@ -138,7 +138,7 @@
          </a>
       </div>
 
-       <a href="#SubVence" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubVence" ><label for="">Fecha de vencimiento</label> <span class="glyphicon glyphicon-plus-sign pull-right"></span></a>
+       <a href="#SubVence" class="list-group-item opcion"  data-toggle="collapse" data-parent="#SubVence" ><label for="">Fecha de vencimiento</label> <i class="fa fa-angle-down fa-main" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i><i class="fa fa-angle-up" aria-hidden="true"></i></a>
       <div class="collapse list-group-submenu" id="SubVence"> 
         
         <a class="list-group-item" data-parent="#SubVence">
