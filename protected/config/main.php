@@ -87,7 +87,7 @@ return array(
 			'charset' => 'utf8',
 			*/
 
-			/*'connectionString' => 'mysql:host=mysql.hostinger.es;dbname=u533834452_conv',
+		/*	'connectionString' => 'mysql:host=mysql.hostinger.es;dbname=u533834452_conv',
 			'emulatePrepare' => true,
 			'username' => 'u533834452_lt',
 			'password' => 'lmkarina1410', 

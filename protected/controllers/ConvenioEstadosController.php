@@ -36,7 +36,7 @@ class ConvenioEstadosController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete','eliminar'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -116,6 +116,19 @@ class ConvenioEstadosController extends Controller
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
+
+		public function actionEliminar($id){
+
+		$this->loadModel($id)->delete();
+		//ver a donde redirigir, el eliminar si sirve 
+		//$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		//$this->guardarBitacora(3, 1);
+		//$this->redirect(Yii::app()->request->baseUrl."/convenios/cambiarEstado");
+
+		//$this->redirect(array('/convenios/cambiarEstado'));
+
+	}
+
 
 	/**
 	 * Lists all models.

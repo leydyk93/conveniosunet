@@ -300,12 +300,19 @@ class ConveniosController extends Controller
 			}
 		}
 
+		$modelB=new ConvenioEstados('search');
+		$modelB->unsetAttributes();  // clear any default values
+		if(isset($_GET['ConvenioEstados']))
+			$modelB->attributes=$_GET['ConvenioEstados'];
+
+
 			$this->render('cambiarEstado',array(
 			'model'=>$model,
 			'modeloE'=>$modelestado,
 			'modelEdo'=>$modelEdoConve,
 			'modelDpcia'=>$modelDependencia,
 			'estadosConv'=>$estadosCovenio,
+			'modelv'=>$modelB,
 			
 			));
 
@@ -1144,7 +1151,7 @@ class ConveniosController extends Controller
 
 	public function actionEliminar($id){
 
-		//verificar primero que el convenio que desea va a eliminar no tenga dependiantes, es decir convenios especificos
+		//verificar primero que el convenio que se va a eliminar no tenga dependiantes, es decir convenios especificos
 		$conv=convenios::model()->FindAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));			
 
 		if(empty($conv)){	

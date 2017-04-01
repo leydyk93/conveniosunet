@@ -19,6 +19,7 @@
               <th>Fecha de cambio</th>
               <th>Justificación</th>
               <th>Dependencia</th>
+              <th>Operacion</th>
               
             </tr>
           </thead>
@@ -36,6 +37,7 @@
                             } 
                    ?>
               </td>
+              <th><a href="<?php echo $this->createUrl("/convenioEstados/Eliminar",array('id'=>$value->id_convenio_estado)); ?>" onclick='return confirm("Esta seguro de eliminar el convenio");' data-toggle='tooltip' title='Eliminar'><span class='glyphicon glyphicon-trash'></span></a></th>
             </tr>
             <?php } ?>
           </tbody>
@@ -43,6 +45,7 @@
       </div>
   </div>	 
 </div>
+
 
     <div class="row">
         <div class="col-md-12">
