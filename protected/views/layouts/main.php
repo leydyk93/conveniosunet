@@ -10,7 +10,8 @@
 		echo Yii::app()->bootstrap->registerCoreScripts();
 	 ?>
 	<link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Dancing+Script" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="stylesheet" href="css/material/material.min.css" />
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 	
 </head> 
@@ -51,11 +52,11 @@
 			'encodeLabel' => false,
 			'items'=>array(
 				//array('label'=>'<span class="glyphicon glyphicon-home"></span>', 'url'=>array('/site/index')),
-				array('label'=>'<span class="glyphicon glyphicon-search"></span> Consultar Convenios', 'url'=>array('/convenios/consultar')),
-				array('label'=>'<span class="glyphicon glyphicon-file"></span> Reportes', 'url'=>array('/convenios/construirReporte'),'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'<span class="glyphicon glyphicon-book"></span> Información', 'url'=>array('/site/informacion')),
-				array('label'=>'<span class="glyphicon glyphicon-earphone"></span> Contactenos', 'url'=>array('/site/contact'),'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'<span class="glyphicon glyphicon-cog"></span> Configuración <span class="caret"></span>', 'url'=>array('/site/configuracion'), 'visible'=>!Yii::app()->user->isGuest,'items'=>array(
+				array('label'=>'<i class="fa fa-handshake-o" aria-hidden="true"></i><p> Consultar Convenios</p>', 'url'=>array('/convenios/consultar')),
+				array('label'=>'<i class="fa fa-pie-chart" aria-hidden="true"></i> <p> Reportes</p>', 'url'=>array('/convenios/construirReporte'),'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'<i class="fa fa-info" aria-hidden="true"></i> <p> Información</p>', 'url'=>array('/site/informacion')),
+				array('label'=>'<i class="fa fa-paper-plane-o" aria-hidden="true"></i> <p> Contacto</p>', 'url'=>array('/site/contact'),'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'<i class="fa fa-cog" aria-hidden="true"></i> <p> Configuración</p> <span class="caret"></span>', 'url'=>array('/site/configuracion'), 'visible'=>!Yii::app()->user->isGuest,'items'=>array(
 		           // array('label'=>'Convenios', 'url'=>array('/site/configuracion', 'tag'=>'Estatica')),
 		            array('label'=>'Administrar Usuarios', 'url'=>array('usuario/admin', 'tag'=>'Aministrar Usuarios')),
 		            array('label'=>'Administrar Información Base de Datos', 'url'=>array('site/configuracion', 'tag'=>'popular')),
@@ -73,8 +74,8 @@
 			'htmlOptions'=>array('class'=>'nav navbar-nav navbar-right'),
 			'encodeLabel' => false,
 			'items'=>array(
-				array('label'=>'<span class="glyphicon glyphicon-user"></span> Iniciar sesion','url'=>array('/site/login'),'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'<span class="glyphicon glyphicon-user"></span> cerrar sesion ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'<i class="fa fa-sign-in" aria-hidden="true"></i> <p>Iniciar Sesión</p> ','url'=>array('/site/login'),'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'<i class="fa fa-sign-in" aria-hidden="true"></i> <p>Cerrar Sesión</p> ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'<span class="glyphicon glyphicon-time"></span> '.Date("d-m-Y") ,'url'=>array('/site/login'),'visible'=>!Yii::app()->user->isGuest),
 			),
 			
@@ -127,6 +128,6 @@
 		</div>
 		
 	</footer><!-- footer -->
-
+	<script src="css/material/material.min.js"></script>
 </body>
 </html>
