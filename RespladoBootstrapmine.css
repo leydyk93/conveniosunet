@@ -77,6 +77,9 @@ main {
 #menuPrincipal li.active:hover a, #menuPrincipal li.active a{
 	padding: 18px;
 }
+#menuPrincipal li.active {
+	background-color: rgba(0, 0, 0, 0.1);
+}
 #menuPrincipal li.active a i {
 	margin-right: 10px;
 }
@@ -158,6 +161,59 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b7ea', end
     background-color: rgb(0, 136, 245);
     text-decoration:none;
 }
+
+input[type="checkbox"] {
+	position: relative;
+  	margin: 12px;
+}
+
+input[type="checkbox"]:focus {
+	outline-color: #fff;
+}
+
+input[type="checkbox"]:before {
+  border: 2px solid #ccc;
+  content: "";
+  cursor: pointer;
+  display: block;
+  height: 15px;
+  position: absolute;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  width: 15px;
+  z-index: 1;
+}
+
+input[type="checkbox"]:after {
+  background: #fff;
+  content: "";
+  display: block;
+  height: 15px;
+  position: absolute;
+  top: 0;
+  width: 15px;
+  z-index: 0;
+}
+
+.list-group-item:hover input[type="checkbox"]:after {
+	background:#f5f5f5;
+}
+
+input[type="checkbox"]:checked:before {
+  border-top-style: none;
+  border-right-style: none;
+  border-color:#00bcd4;
+  height: 10px;
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+
 
 
 @media print {
@@ -289,7 +345,7 @@ div#Resulconvenios ul{
 
 	menu
 	*/
-	background-color: #1b325f; 
+	background-color: #f9f9f9;
 }
 
 #pasos .opcion:hover{
@@ -299,18 +355,68 @@ div#Resulconvenios ul{
 
 
 #MainMenu .opcion span{
-
 	color: #3fb8af;
 	
 }
 #MainMenu .opcion label, #tablasBD li {
-
-	color: #e9f2f9;
-	font-weight: normal;
-	font-size: small;
+    color: #404040;
+    font-weight: bold;
+    font-size: medium;
+    
 }
-#tablasBD li .list-group-item{
+
+#MainMenu .opcion-submenu {
+	padding-left: 35px;
+}
+
+#MainMenu .list-group-submenu span a {
+	padding-left: 35px;
+}
+#tablasBD li .list-group-item {
 	color: #1b325f; 
+	border: none;
+}
+.list-group-item {
+	border:none;
+}
+
+#MainMenu a[aria-expanded="true"] .fa-main, #MainMenu a[aria-expanded="false"] .fa-main {
+	display: none;
+}
+
+#MainMenu a[aria-expanded="true"] .fa-angle-down {
+	display: none;
+}
+
+#MainMenu a[aria-expanded="true"] .fa-angle-up {
+	display: block;
+}
+
+#MainMenu a[aria-expanded="false"] .fa-angle-down {
+	display: block;
+}
+
+#MainMenu a[aria-expanded="false"] .fa-angle-up {
+	display: none;
+}
+#MainMenu a i {
+    float: right;
+    font-size: 25px;
+}
+#MainMenu a .fa-main {
+	display: block;
+}
+
+#MainMenu a .fa-angle-up, #MainMenu a .fa-angle-down.fa-main {
+	display: none;
+}
+
+#MainMenu .opcion {
+	border: 1px solid #f1f1f1;
+}
+
+.list-group-submenu a {
+	border: 1px solid #f1f1f1;
 }
 /*Estilos del View convenio*/
 #Mostrar ul{
@@ -473,14 +579,14 @@ background-size: 100% 100%;
 	margin-left: 20%;
 }
 /*Nuevos estilos para la pagina consultar*/
-.collapsed .glyphicon-plus-sign:before { 
+/*.collapsed .glyphicon-plus-sign:before { 
     
     content: "\e081";
 }
 
  .glyphicon-plus-sign:before {
     content: "\e082";
-}
+}*/
 
 /*Para la tabla.*/
 
