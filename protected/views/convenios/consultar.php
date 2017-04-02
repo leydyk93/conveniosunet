@@ -34,7 +34,7 @@
 
    <h4><a onclick="sesionnew()" href="<?php echo $this->createUrl( '/convenios/create' ); ?>"><span class="glyphicon glyphicon-plus"></span>Nuevo Convenio</a></h4>
 
-   <h4><a href="<?php echo $this->createUrl( '/convenios/conveniosEspera' ); ?>"><span class="glyphicon glyphicon-edit"></span></a> Convenios en espera </h4>
+   <h4><a href="<?php echo $this->createUrl( '/convenios/conveniosEspera' ); ?>"><span class="glyphicon glyphicon-edit"></span>Convenios en espera</a></h4>
   <?php endif?>
   
   <div class="list-group panel">

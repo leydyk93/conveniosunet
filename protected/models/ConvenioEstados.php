@@ -52,10 +52,13 @@ class ConvenioEstados extends CActiveRecord
 
 		$conexion=Yii::app()->db;
 
-			$consulta="SELECT MAX(ce.fechaCambioEstado) FROM convenios c ";
+
+			/*$consulta="SELECT MAX(ce.fechaCambioEstado) FROM convenios c ";
 			$consulta.="JOIN convenio_estados ce ON ce.convenios_idConvenio=c.idConvenio ";
 			$consulta.="JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio=ec.idEstadoConvenio ";
-			$consulta.="WHERE c.idConvenio=".$this->convenios_idConvenio;
+			$consulta.="WHERE c.idConvenio=".$this->convenios_idConvenio;*/
+
+	    $consulta="SELECT MAX( fechaCambioEstado ) FROM convenio_estados WHERE convenios_idConvenio=".$this->convenios_idConvenio;
 
 		$resultados=$conexion->createCommand($consulta)->query();
 
@@ -63,7 +66,7 @@ class ConvenioEstados extends CActiveRecord
 
 		foreach ($resultados as $fila) {
 
-			if( $maxFecha>$this->fechaCambioEstado){
+			if( strtotime($maxFecha)> strtotime($this->fechaCambioEstado)){
 				$this->addError('fechaCambioEstado','debe ser superior a la ultima fecha de cambio de estado '.$maxFecha);	
 				
 			}

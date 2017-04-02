@@ -26,7 +26,27 @@ $this->menu=array(
 
 <div class="container">
  <div id="Mostrar" class="list-group panel">
-	<a href="#" class="list-group-item opcion" data-toggle="collapse"><h4>Datos generales del Convenio</h4></a>
+	
+	<?php if(!Yii::app()->user->isGuest):?>
+					 	<div class="text-right">
+
+					 		<ul class='list-inline'>
+						 	
+						 		<li><a href="<?php echo $this->createUrl("/convenios/updateConvenio",array('id'=>$model->idConvenio)); ?>" data-toggle='tooltip' title='Editar'><span class='glyphicon glyphicon-pencil'></span>Editar</a></li>
+	 							<li><a href="<?php echo $this->createUrl("/convenios/renovar",array('id'=>$model->idConvenio)); ?>" data-toggle='tooltip' title='Renovar'><span class='glyphicon glyphicon-time'></span>Renovar</a></li>
+	 						
+		 						<!--<li><a href="<?php //echo $this->createUrl("/convenios/cambiarEstado")."&id=".$resull3->id_convenio; ?>" sdata-toggle='tooltip' title='Cambiar Estado'><span class='glyphicon glyphicon-refresh'></span></a></li>-->
+								<?php if($model->urlConvenio!=null):?>
+								<li><a href="<?php echo $model->urlConvenio; ?>" data-toggle='tooltip' title='Descargar' download='<?php echo $model->idConvenio."Convenio"; ?>'><span class='glyphicon glyphicon-download-alt'></span>Descargar</a></li>
+		                       	 <?php endif?>
+	                       
+	                        	<li><a href="<?php echo $this->createUrl("/convenios/eliminar",array('id'=>$model->idConvenio)); ?>" onclick='return confirm("Esta seguro de eliminar el convenio");' data-toggle='tooltip' title='Eliminar'><span class='glyphicon glyphicon-trash'></span>Eliminar</a></li>
+						 	
+						 	</ul>
+				 		</div>
+		<?php endif?>
+	 <a href="#" class="list-group-item opcion" data-toggle="collapse"><h4>Datos generales del Convenio</h4></a>
+
 	<!--<div class="collapse" id="demo1">-->
 	 	<div class="list-group-item">
 	 		<ul>
@@ -137,6 +157,11 @@ $this->menu=array(
 		</div>
 	</div>
 </div>
+
+<ul class="breadcrumb text-right">
+  <li><a href="<?php echo $this->createUrl("site/index"); ?>">Home</a></li>
+  <li><a href="<?php echo $this->createUrl("convenios/consultar"); ?>">consultar Convenios</a></li>
+</ul>
 </div>
 
 

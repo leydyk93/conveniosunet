@@ -32,11 +32,11 @@ class ConvenioEstadosController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','cambiarEstado'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','eliminar'),
+				'actions'=>array('admin','delete'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -54,6 +54,35 @@ class ConvenioEstadosController extends Controller
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
+	}
+
+	public function actionCambiarEstado($id)
+	{
+		$model=$this->loadModelCambiarEstdo($id);
+		
+		$modelEdoConve=Estadoconvenios::model()->findAll('idEstadoConvenio!=:idEstadoConvenio', array(':idEstadoConvenio'=>5)); //Busco los nombres de los estados que sean diferentes a aprobado
+		
+		$estadosCovenio = ConvenioEstados::model()->findAll('convenios_idConvenio=:convenios_idConvenio', array(':convenios_idConvenio'=>$id)); /*Todos los estados por los cuales ha pasado el convenio*/
+
+		$modelDependencia=Dependencias::model()->findAll(); 
+		$modelestado = new ConvenioEstados; 
+
+	    if(isset($_POST['ConvenioEstados']))
+		 {
+		 	$modelestado->convenios_idConvenio=$id;
+			$modelestado->attributes=$_POST['ConvenioEstados'];
+			if($modelestado->save())
+				$this->redirect(array('cambiarEstado','id'=>$modelestado->convenios_idConvenio));
+		 }
+
+			$this->render('cambiarEstado',array(
+			'model'=>$model,
+			'modeloE'=>$modelestado,
+			'modelEdo'=>$modelEdoConve,
+			'modelDpcia'=>$modelDependencia,
+			'estadosConv'=>$estadosCovenio
+			));
+
 	}
 
 	/**
@@ -77,6 +106,7 @@ class ConvenioEstadosController extends Controller
 		$this->render('create',array(
 			'model'=>$model,
 		));
+
 	}
 
 	/**
@@ -116,19 +146,6 @@ class ConvenioEstadosController extends Controller
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
-
-		public function actionEliminar($id){
-
-		$this->loadModel($id)->delete();
-		//ver a donde redirigir, el eliminar si sirve 
-		//$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		//$this->guardarBitacora(3, 1);
-		//$this->redirect(Yii::app()->request->baseUrl."/convenios/cambiarEstado");
-
-		//$this->redirect(array('/convenios/cambiarEstado'));
-
-	}
-
 
 	/**
 	 * Lists all models.
@@ -170,6 +187,29 @@ class ConvenioEstadosController extends Controller
 		$model=ConvenioEstados::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
+
+
+	public function loadModelCambiarEstdo($id)
+	{
+		$model=Convenios::model()->findByPk($id);
+		if($model===null){
+			throw new CHttpException(404,'The requested page does not exist.');
+		}else{
+			//verificamos si el estado del convenio es no aprobado
+			$modelestado = ConvenioEstados::model()->find('convenios_idConvenio=:convenios_idConvenio AND estadoConvenios_idEstadoConvenio!=:estadoConvenios_idEstadoConvenio', array(':convenios_idConvenio'=>$id, ':estadoConvenios_idEstadoConvenio'=>'5'));
+	
+			if($modelestado===null){
+				$model=null;
+			}
+
+		}
+
+		if($model===null){
+			throw new CHttpException(404,'The requested page does not exist.');
+		}
+			
 		return $model;
 	}
 

@@ -19,9 +19,7 @@
   		<li>Nombre: <small><?php echo $model->nombreConvenio; ?></small></li>
 	    <li>Fecha Inicio: <small><?php echo $model->fechaInicioConvenio; ?></small></li>
 	    <li>Fecha Caducidad:<small><?php echo $model->fechaCaducidadConvenio; ?></small></li>
-	    <li>Estado Actual: <small><?php echo $estado; ?></small><?php 
-
-	     ?>
+	    <!--<li>Estado Actual: <small><?php /*echo $estado; */?></small><?php ?>-->
 	 	</li>
   	</ul>
 </ul>
