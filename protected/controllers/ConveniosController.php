@@ -728,7 +728,7 @@ class ConveniosController extends Controller
 
 			$pasodos->attributes=$_POST["PasodosForm"];
 			if($pasodos->validate()){
-
+//comentario
 				//$_SESSION['instanciaunet']=$pasodos->instanciaunet;
 				$_SESSION['responsable_legal_unet']=$pasodos->responsable_legal_unet;
 				$_SESSION['responsable_contacto_unet']=$pasodos->responsable_contacto_unet;
