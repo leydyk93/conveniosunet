@@ -154,12 +154,13 @@ class Convenios extends CActiveRecord
 	}
 
 
-	public static function maxId() {
+		public static function maxId() {
 	
+// 
 	  return Yii::app()->db->createCommand()
 	    ->select('MAX(CAST(idConvenio as int))')
 	    ->from('convenios')
-	    ->query();
+	    ->queryScalar();
 	}
 
 }
