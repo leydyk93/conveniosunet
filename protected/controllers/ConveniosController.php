@@ -1442,7 +1442,7 @@ class ConveniosController extends Controller
 		$modelClass=Clasificacionconvenios::model()->findAll();
 		$modelPais=Paises::model()->findAll();
 		$modelTipoIns=Tiposinstituciones::model()->findAll();
-        $modelInst=instituciones::model()->findAll('idInstitucion!=:idInstitucion',array(':idInstitucion'=>"6"));
+        $modelInst=Instituciones::model()->findAll('idInstitucion!=:idInstitucion',array(':idInstitucion'=>"6"));
         $modelEdoConve=Estadoconvenios::model()->findAll();
 		$formConsulta = new ConsultasConvenios;
 
