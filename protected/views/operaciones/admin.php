@@ -73,6 +73,7 @@ $('.search-form form').submit(function(){
             true),	
 				        //    'filter'=>CHtml::listData(usuario::model()->findAll(),'id','nombre'),
 				        ),*/
+
 	    array(
 				            'header'=>'Usuario',
 				            'name' =>'usuario_id',

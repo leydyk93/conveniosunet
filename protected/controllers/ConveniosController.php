@@ -34,7 +34,7 @@ class ConveniosController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','renovar','cambiarEstado','conveniosEspera','selectEstado','buscarConveniosV'),
+				'actions'=>array('create','update','renovar','cambiarEstado','conveniosEspera','selectEstado','buscarConveniosV','eliminarec', 'eliminarEstado'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -184,25 +184,6 @@ class ConveniosController extends Controller
 
  		$resultadosResponContrap=$this->ConsultarResponsablesPorInstitucion($id);
 
- 		/*Buscando el estado actual no es necesario */
-
-	    /*$consultan  ="SELECT ec.nombreEstadoConvenio FROM convenios c ";
-	    $consultan .="JOIN convenio_estados ce ON ce.convenios_idConvenio = c.idConvenio ";
-	    $consultan .="JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio = ec.idEstadoConvenio ";
-	    $consultan .="WHERE ce.fechaCambioEstado = ( ";
-	    $consultan .="SELECT MAX( fechaCambioEstado ) FROM convenio_estados ";
-	    $consultan .="WHERE convenios_idConvenio = c.idConvenio ) and c.idConvenio = ".$id;
-		
-
-		$resultados2=$conexion->createCommand($consultan)->query();
-
-        $resultados2->bindColumn(1,$estador); //estado actual del convenio
-
-
-         while(($row=$resultados2->read())!==false) { 
-              $estado=$estador;
-          }*/
- 	
 		$this->render('view',array(
 			'model'=>$model,				 /*Datos generales del convenio*/
 			'resulRU'=>$resultadosResponUnet,  
@@ -220,7 +201,7 @@ class ConveniosController extends Controller
 
 		$renovacion= new Renovacionprorrogas;
 
-		$conexion=Yii::app()->db;
+		/*$conexion=Yii::app()->db;
 		$consultan  ="SELECT ec.nombreEstadoConvenio FROM convenios c ";
 	    $consultan .="JOIN convenio_estados ce ON ce.convenios_idConvenio = c.idConvenio ";
 	    $consultan .="JOIN estadoconvenios ec ON ce.estadoConvenios_idEstadoConvenio = ec.idEstadoConvenio ";
@@ -236,7 +217,7 @@ class ConveniosController extends Controller
 
          while(($row=$resultados2->read())!==false) { 
               $estado=$estador;
-          }
+          }*/
 
 		  
           if(isset($_POST["Renovacionprorrogas"])){
@@ -271,13 +252,12 @@ class ConveniosController extends Controller
 
 		$this->render('renovar',array(
 		 'model'=>$model,
-		 'estado'=>$estado,
+		 //'estado'=>$estado,
 		 'renovar'=>$renovacion,
 		 ));
 	}
 	/* nuevo estado al convenio*/
-
-	public function actionCambiarEstado($id)
+   public function actionCambiarEstado($id)
 	{
 		$model=$this->loadModelCambiarEstdo($id);
 		$modelEdoConve=Estadoconvenios::model()->findAll('idEstadoConvenio!=:idEstadoConvenio', array(':idEstadoConvenio'=>5)); //Busco los nombres de los estados que sean diferentes a aprobado
@@ -292,12 +272,16 @@ class ConveniosController extends Controller
 			$modelestado->attributes=$_POST["ConvenioEstados"];			
 			$modelestado->convenios_idConvenio=$id;
 
-			if($modelestado->validate()){
-				if($modelestado->save()){
+			//if($modelestado->validate()){
+
+				if($modelestado->save())//{
+					$this->redirect(array('conveniosEspera'));
+				 //this->redirect(array('cambiarEstado','id'=>$id));
 				 //$this->guardarBitacora(5, 1);
-				 $this->redirect(array('conveniosEspera'));
-				}
-			}
+				 //$this->redirect(array('conveniosEspera'));
+				 
+			//	}
+			//}
 		}
 
 			$this->render('cambiarEstado',array(
@@ -310,6 +294,7 @@ class ConveniosController extends Controller
 			));
 
 	}
+
 	public function actionCambiarEsta($id)
 	{
 		//$model=$this->loadModel($id);
@@ -1137,6 +1122,59 @@ class ConveniosController extends Controller
 	}*/
 
 	/**
+	 * Deletes a particular model de convenioEstados
+	 * If deletion is successful, the browser will be redirected to the 'admin' page.
+	 * @param integer $id the ID of the model to be deleted
+	 */
+
+	public function actionEliminarec($id){
+
+	    $conv=convenios::model()->FindAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));			
+
+		if(empty($conv)){	
+			$ai=Actaintencion::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));	
+			$rp=Renovacionprorrogas::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));
+			$hr=Historicoresponsables::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id)); //Elimino los responsables por parte de la UNET	
+			//eliminar los responsables de las instituciones contraparte,busco las instituciones contraparte 
+			$ic=InstitucionConvenios::model()->FindAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));
+
+				foreach ($ic as $key => $value) {
+					$hrc=Historicoresponsables::model()->deleteAll('institucion_convenios_idInstitucionConvenio=:institucion_convenios_idInstitucionConvenio',array(':institucion_convenios_idInstitucionConvenio'=>$value->idInstitucionConvenio)); 
+				}
+
+			$ic=InstitucionConvenios::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));		
+			$ec=ConvenioEstados::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));	
+			
+			$this->loadModel($id)->delete();
+
+			 $this->guardarBitacora(3, 1);
+		
+
+		}
+
+		$this->redirect(array('conveniosEspera'));
+
+	}
+
+	/*
+	*Eliminar el estado de un convenio 
+	*/
+
+	public function actionEliminarEstado($id){
+
+	    $model=ConvenioEstados::model()->findByPk($id);
+
+	    $model->delete();
+
+	    $this->redirect(array('cambiarEstado','id'=>$model->convenios_idConvenio));
+
+		//$this->redirect(array('conveniosEspera'));
+
+	}
+
+
+
+	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
@@ -1144,7 +1182,7 @@ class ConveniosController extends Controller
 
 	public function actionEliminar($id){
 
-		//verificar primero que el convenio que desea va a eliminar no tenga dependiantes, es decir convenios especificos
+		//verificar primero que el convenio que se va a eliminar no tenga dependiantes, es decir convenios especificos
 		$conv=convenios::model()->FindAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$id));			
 
 		if(empty($conv)){	
@@ -1723,11 +1761,15 @@ class ConveniosController extends Controller
 
 	}
 
+	/*
+	*Permite hallar los convenios que estan a punto de vencerse
+	*/
+
 	public function actionbuscarConveniosV(){
 
 		$hoy=date("Y-m-d");
-		//$tresMeses=date("Y-m-d", strtotime("3months"));
-		$tresMeses=date("Y-m-d", strtotime("2years"));
+		$tresMeses=date("Y-m-d", strtotime("3months"));
+		//$tresMeses=date("Y-m-d", strtotime("2years"));
 
 		//$convenios=Convenios::model()->findAll('fechaCaducidadConvenio BETWEEN :hoy AND :tresmeses', 
    		//array(':hoy'=> $hoy,':tresmeses'=>$tresMeses));

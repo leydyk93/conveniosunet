@@ -14,6 +14,7 @@
 						 <ul class='list-inline'>
 						 <li><a href="<?php echo $this->createUrl("/convenios/updateConvenio")."&id=".$model->id_convenio; ?>" data-toggle='tooltip' title='Editar'><span class='glyphicon glyphicon-pencil'></span></a></li>
 						 <li><a href="<?php echo $this->createUrl("/convenios/cambiarEstado")."&id=".$model->id_convenio; ?>" sdata-toggle='tooltip' title='Cambiar Estado'><span class='glyphicon glyphicon-refresh'></span></a></li>
+	           	         <li><a href="<?php echo $this->createUrl("/convenios/eliminarec",array('id'=>$model->id_convenio)); ?>" onclick='return confirm("Esta seguro de eliminar el convenio");' data-toggle='tooltip' title='Eliminar'><span class='glyphicon glyphicon-trash'></span></a></li>
 						 </ul>
 					
 					 </div>

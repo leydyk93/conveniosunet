@@ -9,6 +9,7 @@
 		echo Yii::app()->bootstrap->registerAllCss();
 		echo Yii::app()->bootstrap->registerCoreScripts();
 	 ?>
+	<link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Dancing+Script" />
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 	

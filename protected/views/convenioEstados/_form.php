@@ -15,7 +15,6 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -37,11 +36,11 @@
 		<?php echo $form->error($model,'fechaCambioEstado'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'numeroReporte'); ?>
-		<?php echo $form->textField($model,'numeroReporte',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'numeroReporte'); ?>
-	</div>
+	<!--<div class="row">
+		<?php /*echo $form->labelEx($model,'numeroReporte'); */?>
+		<?php /*echo $form->textField($model,'numeroReporte',array('size'=>10,'maxlength'=>10)); */?>
+		<?php /*echo $form->error($model,'numeroReporte');*/ ?>
+	</div>-->
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'observacionCambioEstado'); ?>

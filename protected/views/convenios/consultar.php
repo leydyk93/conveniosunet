@@ -32,9 +32,9 @@
 <div  id="MainMenu" class="col-sm-4">
   <?php if(!Yii::app()->user->isGuest):?>
 
-   <h4><a onclick="sesionnew()" href="<?php echo $this->createUrl( '/convenios/create' ); ?>"><span class="glyphicon glyphicon-plus"></span></a> Nuevo Convenio </h4>
+   <h4><a onclick="sesionnew()" href="<?php echo $this->createUrl( '/convenios/create' ); ?>"><span class="glyphicon glyphicon-plus"></span>Nuevo Convenio</a></h4>
 
-   <h4><a href="<?php echo $this->createUrl( '/convenios/conveniosEspera' ); ?>"><span class="glyphicon glyphicon-edit"></span></a> Convenios en espera </h4>
+   <h4><a href="<?php echo $this->createUrl( '/convenios/conveniosEspera' ); ?>"><span class="glyphicon glyphicon-edit"></span>Convenios en espera</a></h4>
   <?php endif?>
   
   <div class="list-group panel">
@@ -283,7 +283,9 @@
 </div>
 
 <script type="text/javascript">
-
+ /*
+ * Condicion que permite mostrar todos los convenios aprobados sin existir condicion alguna
+ */
   <?php if($resuldefecto==1){ ?>
            send(1);
 
@@ -312,7 +314,10 @@ $('#ConsultasConvenios_order').change(function() {
     send(1);
 });
 
-  function  limpiarFiltros(){
+/*
+* Limpiar los campos seleccionados por el usuario para realizar una busqueda desde cero
+*/
+function  limpiarFiltros(){
  document.getElementById("ConsultasConvenios_anio").value="";
  var tipo = document.getElementsByName("ConsultasConvenios[tipo][]");
  var clasifi= document.getElementsByName("ConsultasConvenios[clasificacion][]");
@@ -351,7 +356,9 @@ $('#ConsultasConvenios_order').change(function() {
     }
     send(1);
 }
-
+/*
+*Funcion que permite enviar el formulario a traves de AJAX al controlador conveniosController
+ */
 function send(inicio)
 {
   var inicio=Number(inicio); 
@@ -369,6 +376,10 @@ function send(inicio)
 
 }
 
+/*
+*Permite habilitar los paises de acuerdo al ambito seleccionado por el usuario
+*/
+
 function CambiarPaisesAmbito(){
 
   var amb=$('#ConsultasConvenios_ambitoGeografico').val();
@@ -384,6 +395,9 @@ function CambiarPaisesAmbito(){
 
   }
 
+/*
+*Permite habilitar las instituciones de acuerdo al ambito seleccionado por el usuario
+*/
   function CambiarInstitucionesAmbito(){
 
   var amb=$('#ConsultasConvenios_ambitoGeografico').val();
@@ -399,6 +413,9 @@ function CambiarPaisesAmbito(){
 
   }
 
+/*
+*Permite habilitar las instituciones de acuerdo al pais seleccionado por el usuario
+*/
  function CambiarInstitucionPais(){
 
   var pais=$('#ConsultasConvenios_pais').val();
@@ -413,6 +430,10 @@ function CambiarPaisesAmbito(){
   });
   
   }
+
+/*
+*Funcion que permite buscar convenios por vencer y mostrarlos en la alerta todo a traves de AJAX
+*/
   
     function encontrarConveniosV(){
         var url='<?php echo Yii::app()->createUrl("convenios/buscarConveniosV"); ?>';
@@ -428,7 +449,7 @@ function CambiarPaisesAmbito(){
 
     }
 
-    function sesionnew(){
+  function sesionnew(){
   
         var url='<?php echo Yii::app()->createUrl("convenios/reiniciarVariables"); ?>';
 
