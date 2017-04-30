@@ -415,7 +415,7 @@ class ConveniosController extends Controller
 //**************************************** PARA ACTUALIZAR UN CONVENIO **********************///
 		//Cargando modelo inicial de convenios
 		$model=$this->loadModel($id);
-		$_SESSION["isNewRecord"]=1;
+		$_SESSION["isNewRecord"]=0;
 		//igualando las variables de sesión a los valores precargados del convenio.
 				$_SESSION['nombreconvenio']=$model->nombreConvenio;
 				$_SESSION['fechainicioconvenio']=$model->fechaInicioConvenio;
@@ -443,6 +443,7 @@ class ConveniosController extends Controller
 		//Si le dio siguiente igualo las variables de sesión
 		if (isset($_POST["PasounoForm"])){
 			$pasouno->attributes=$_POST["PasounoForm"];
+			$pasouno->estado=$estado;
 			
 
 	
@@ -459,10 +460,11 @@ class ConveniosController extends Controller
 				$_SESSION['alcance']=$pasouno->alcance;
 
 
-				if($pasouno->validate()){
+
+				//if($pasouno->validate()){
 
 						//-------------------------GUARDANDO EN LA TABLA CONVENIOS---------------------------------
-					if (isset($_REQUEST['enviar'])) 
+					if (isset($_REQUEST['siguiente'])) 
 					{ 
 						
 						$model->nombreConvenio=$_SESSION['nombreconvenio'];
@@ -481,14 +483,9 @@ class ConveniosController extends Controller
 						//Si guarda en la tabla convenios entonces guarde en la tabla Institución convenios
 						if($model->save()){
 
-
-							$model_ce->convenios_idConvenio=$id;
-							$model_ce->estadoConvenios_idEstadoConvenio=$_SESSION['estado'];
-		 					$model_ce->fechaCambioEstado=new CDbExpression('NOW()');
-		 					$model_ce->dependencias_idDependencia=$_SESSION['dependenciaconvenio'];
-
-		 					if($model_ce->save()) 
-								$this->redirect(array('view','id'=>$model->idConvenio));
+								$this->redirect(array('convenios/pasodos',
+									"idconvenio"=>$model->idConvenio,
+						));
 						}
 
 						//---------------------------------------------- GUARDANDO EN CONVENI-ESTADOS-------------------		 					
@@ -499,7 +496,7 @@ class ConveniosController extends Controller
 						"idconvenio"=>$pasouno->idconvenio,
 						));
 					}
-				}
+				//}
 			}
 			
 
@@ -602,7 +599,7 @@ class ConveniosController extends Controller
 		$est= new Estadoconvenios;
 
 		$model_ce= new ConvenioEstados;
-		$_SESSION["isNewRecord"]=0;
+		$_SESSION["isNewRecord"]=1;
 
 
 
@@ -722,6 +719,10 @@ class ConveniosController extends Controller
 	if(isset($_POST['ajax'])&& $_POST['ajax']==='pasodos'){
 			echo CActiveForm::validate($pasodos);
 			Yii::app()->end();
+	}	
+
+		if($_SESSION["isNewRecord"]==0){
+			     echo("<script>console.log('Actualizando Convenio ".$idconvenio."');</script>"); 
 		}
 		
 		if(isset($_POST["PasodosForm"])){

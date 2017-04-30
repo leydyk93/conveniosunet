@@ -72,7 +72,7 @@ if(!isset($_SESSION['alcance'])){
 
 <section class="datos col-xs-9">     
 <?php 
-    if($_SESSION["isNewRecord"]==1){
+    if($_SESSION["isNewRecord"]==0){
         $form=$this->beginWidget("CActiveForm", array(  
                  'method' => 'POST',
                  'action'=> Yii::app()->createUrl("/convenios/updateConvenio",array('id'=>"01")),
@@ -251,7 +251,7 @@ if(!isset($_SESSION['alcance'])){
         </a></div>
       </div>
 
-  
+      <?php //f($_SESSION["isNewRecord"]==1){ ?>
        <div class="form-group">
         
         <?php echo $form->labelEx($pasouno,'estado',array('class'=>'control-label col-sm-2')); ?>
@@ -267,7 +267,7 @@ if(!isset($_SESSION['alcance'])){
                 <span class="glyphicon glyphicon-plus" data-toggle=""></span>
         </a></div>
       </div>
-
+      <?php// } ?>
      <legend class="text-center header"><h4>Características del Convenio</h4></legend>  
 
       <div class="form-group">
@@ -303,7 +303,7 @@ if(!isset($_SESSION['alcance'])){
         </div>
 
         <div class="col-sm-6 text-right">
-           <?php echo CHtml::submitButton("Siguiente",array("class"=>'btn btn-conv disable',"onclick"=>'recolectar()','name'=>'siguiente','id'=>'botonsiguiente','disabled'=>true)); ?> 
+           <?php echo CHtml::submitButton("Siguiente",array("class"=>'btn btn-conv disable',"onclick"=>'recolectar()','name'=>'siguiente','id'=>'botonsiguiente'/*,'disabled'=>true*/)); ?> 
         </div>
 </div>
 
