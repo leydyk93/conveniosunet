@@ -757,8 +757,10 @@
          		 	var respc=document.getElementById("apellidos_nombres1")
          	
          		 //	resp.innerHTML="holaaa";
-         		 	resp.value=getCookie("responsable_legal_unet");
-         		 	respc.value=getCookie("responsable_contacto_unet");
+         		 	//resp.value=getCookie("responsable_legal_unet");
+         		 //	respc.value=getCookie("responsable_contacto_unet");
+         		 console.log("responsable legal en vista"+getCookie("responsable_legal_unet"))
+         		 resp.value="Raúl Casanova";
 
      			   }
 				function fagregar(){

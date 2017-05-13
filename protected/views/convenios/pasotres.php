@@ -71,7 +71,7 @@ if(!isset($_SESSION['url_acta'])){
 				echo "<br>";
 				echo "responsable contacto contraparte ".$_SESSION['responsable_contacto_contraparte'];
 				echo "<br>";
-				//echo "cookie contra ".$_COOKIE['contra'];
+				echo "cookie contra ".$_COOKIE['contra'];
 
 ?>
  <main class="container-fluid">

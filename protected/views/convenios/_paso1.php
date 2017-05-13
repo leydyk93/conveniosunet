@@ -75,7 +75,7 @@ if(!isset($_SESSION['alcance'])){
     if($_SESSION["isNewRecord"]==0){
         $form=$this->beginWidget("CActiveForm", array(  
                  'method' => 'POST',
-                 'action'=> Yii::app()->createUrl("/convenios/updateConvenio",array('id'=>"01")),
+                 'action'=> Yii::app()->createUrl("/convenios/updateConvenio",array('id'=>$model->idConvenio)),
                  'id'=>'pasouno',
                 // 'enableAjaxValidation'=>true,
                  'enableClientValidation'=> true,
@@ -251,8 +251,12 @@ if(!isset($_SESSION['alcance'])){
         </a></div>
       </div>
 
-      <?php //f($_SESSION["isNewRecord"]==1){ ?>
+      <?php if($_SESSION["isNewRecord"]==1){ ?>
        <div class="form-group">
+       <?php  } else {?>
+       <div class="form-group" style='display:none'>
+       <?php } ?>
+
         
         <?php echo $form->labelEx($pasouno,'estado',array('class'=>'control-label col-sm-2')); ?>
         <div class="col-sm-9"> 
