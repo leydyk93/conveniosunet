@@ -30,6 +30,10 @@
 		else{
 			$pasodos->responsable_contacto_contraparte=$_SESSION['responsable_contacto_contraparte'];
 		}
+		if(!isset($_SESSION['nombrerresponsabe'])){
+				//$_SESSION['nombreresponsable']="";
+		}
+
 		?>
 
 		<?php 
@@ -73,6 +77,8 @@
 			echo "<br>";
 			echo "alcance: ".$_SESSION['alcance'];
 			echo "<br>";
+			
+			
 
 			//echo "idpapa: ".$_SESSION['idpapa'];
 			echo "<br>";
@@ -153,13 +159,13 @@
 			<?php echo $form->labelEx($pasodos,'responsable_legal_unet',array('class'=>'control-label col-sm-2')); ?>
 			<div class="col-sm-9">
 				<?php
-			  echo $form->hiddenField($pasodos,'responsable_legal_unet',array()); // Campo oculto para guardar el ID de la persona seleccionada
+			  echo $form->TextField($pasodos,'responsable_legal_unet',array()); // Campo oculto para guardar el ID de la persona seleccionada
 
 			  $this->widget('zii.widgets.jui.CJuiAutoComplete',
 			  	array(
 			    'name'=>'apellidos_nombres', // Nombre para el campo de autocompletar
 			    'model'=>$responsable,
-			    'value'=>$responsable->isNewRecord ? '' : $responsable->primerApellidoResponsable.' '.$responsable->primerNombreResponsable,
+			    'value'=>$responsable->isNewRecord ? $_SESSION["nombreresponsablelegal"] : $responsable->primerApellidoResponsable.' '.$responsable->primerNombreResponsable,
 			    'source'=>$this->createUrl('Convenios/autocomplete'), // URL que genera el conjunto de datos
 			    'options'=> array(
 			    	'showAnim'=>'fold',
@@ -200,12 +206,12 @@
 			<?php echo $form->labelEx($pasodos,'responsable_contacto_unet',array('class'=>'control-label col-sm-2')); ?>
 			<div class="col-sm-9">
 				<?php
-			  echo $form->hiddenField($pasodos,'responsable_contacto_unet',array()); // Campo oculto para guardar el ID de la persona seleccionada
+			  echo $form->TextField($pasodos,'responsable_contacto_unet',array()); // Campo oculto para guardar el ID de la persona seleccionada
 			  $this->widget('zii.widgets.jui.CJuiAutoComplete',
 			  	array(
 			    'name'=>'apellidos_nombres1', // Nombre para el campo de autocompletar
 			    'model'=>$responsable,
-			    'value'=>$responsable->isNewRecord ? '' : $responsable->primerApellidoResponsable.' '.$responsable->primerNombreResponsable,
+			    'value'=>$responsable->isNewRecord ? $_SESSION["nombreresponsablecontacto"] : $responsable->primerApellidoResponsable.' '.$responsable->primerNombreResponsable,
 			    'source'=>$this->createUrl('Convenios/autocomplete'), // URL que genera el conjunto de datos
 			    'options'=> array(
 			    	'showAnim'=>'fold',
@@ -261,7 +267,7 @@
 			<?php echo $form->labelEx($pasodos,'responsable_legal_contraparte',array('class'=>'control-label col-sm-2')); ?>
 			<div class="col-sm-9">
 			<?php
-			  echo $form->hiddenField($pasodos,'responsable_legal_contraparte',array()); // Campo oculto para guardar el ID de la persona seleccionada
+			  echo $form->TextField($pasodos,'responsable_legal_contraparte',array()); // Campo oculto para guardar el ID de la persona seleccionada
 			  $this->widget('zii.widgets.jui.CJuiAutoComplete',
 			  	array(
 			    'name'=>'apellidos_nombres2', // Nombre para el campo de autocompletar
@@ -302,7 +308,7 @@
 				<?php echo $form->labelEx($pasodos,'responsable_contacto_contraparte',array('class'=>'control-label col-sm-2')); ?>
 				<div class="col-sm-9">
 				<?php
-			  echo $form->hiddenField($pasodos,'responsable_contacto_contraparte',array()); // Campo oculto para guardar el ID de la persona seleccionada
+			  echo $form->TextField($pasodos,'responsable_contacto_contraparte',array()); // Campo oculto para guardar el ID de la persona seleccionada
 
 			  $this->widget('zii.widgets.jui.CJuiAutoComplete',
 			  	array(
@@ -422,7 +428,7 @@
 		<br>
 		<div class="row">
 			<div class="col-sm-10"></div>
-		<?php echo CHtml::submitButton("siguiente",array("class"=>'btn btn-conv',"onclick"=>'recolectar()')); ?>
+		<?php echo CHtml::submitButton("siguiente",array("class"=>'btn btn-conv',"onclick"=>'recolectar()',"name"=>'siguiente2')); ?>
 		</div>
 
 	</section>
@@ -740,10 +746,10 @@
 
 					
 					var respl=document.getElementById("apellidos_nombres");
-					document.cookie="responsable_legal_unet="+respl.value;
+					//document.cookie="responsable_legal_unet="+respl.value;
 
 					var respc=document.getElementById("apellidos_nombres1");
-					document.cookie="responsable_contacto_unet="+respc.value;
+					//document.cookie="responsable_contacto_unet="+respc.value;
 					
 				
 
@@ -753,14 +759,20 @@
 				 function asignar(){
         		 
         
-         		 	var resp=document.getElementById("apellidos_nombres");
-         		 	var respc=document.getElementById("apellidos_nombres1")
-         	
+         		 	var resp=document.getElementById("PasodosForm_responsable_legal_unet");
+         		 	var respc=document.getElementById("PasodosForm_responsable_contacto_unet");
+         			
+         		 	var resp_legal_contraparte=document.getElementById("PasodosForm_responsable_legal_contraparte");
+         		 	var resp_contacto_contraparte=document.getElementById("PasodosForm_responsable_contacto_contraparte");
          		 //	resp.innerHTML="holaaa";
-         		 	//resp.value=getCookie("responsable_legal_unet");
-         		 //	respc.value=getCookie("responsable_contacto_unet");
-         		 console.log("responsable legal en vista"+getCookie("responsable_legal_unet"))
-         		 resp.value="Raúl Casanova";
+
+         		 	resp.value=getCookie("responsable_legal_unet");
+         		    respc.value=getCookie("responsable_contacto_unet");
+
+         		    resp_legal_contraparte.value=getCookie("responsable_legal_contraparate");
+         		    resp_contacto_contraparte.value=getCookie("responsable_contacto_contraparate");
+         		 //console.log("responsable legal en vista"+getCookie("responsable_legal_unet"))
+         		 //resp.value="Raúl Casanova";
 
      			   }
 				function fagregar(){
@@ -865,7 +877,7 @@
 							//limpiando campos 
 
 							 	var resplc=document.getElementById("apellidos_nombres2");
-				         		var respcc=document.getElementById("apellidos_nombres3")
+				         		var respcc=document.getElementById("apellidos_nombres3") 	
 
 				         		resplc.value="";
 				         		respcc.value="";
@@ -892,6 +904,8 @@
 					document.cookie="contra="+getCookie("contra")+"-"+auxcontra[j];
 				}
 			}
+			console.log(getCookie("contra"));
+
 
 		}
 

@@ -744,16 +744,19 @@ class ConveniosController extends Controller
 
 			     	 //igualando valores a los campos de resonsables
 			     	 if($findtiporesponsable->descripcionTipoResponsable=="Legal"){
-			     	 	setcookie("responsable_legal_unet",$findresponsable->primerNombreResponsable);
+			     	 	setcookie("responsable_legal_unet",$findresponsable->idResponsable);
 			     	 	echo("<script>console.log('es legal');</script>");
+			     	 	$_SESSION["nombreresponsablelegal"]=$findresponsable->primerApellidoResponsable." ".$findresponsable->primerNombreResponsable;
 			     	 }
-			     	 //setcookie("responsable_legal_unet",$findresponsable->primerNombreResponsable);
 			     	if($findtiporesponsable->descripcionTipoResponsable=="Contacto"){
 			     	echo("<script>console.log('es contacto');</script>");
+			     	$_SESSION["nombreresponsablecontacto"]=$findresponsable->primerApellidoResponsable." ".$findresponsable->primerNombreResponsable;
 
-			     	 setcookie("responsable_contacto_unet",$findresponsable->primerApellidoResponsable." ".$findresponsable->primerNombreResponsable);
+			     	 setcookie("responsable_contacto_unet",$findresponsable->idResponsable);
 			     	}
 			     }
+
+			     //haciendo consulta para armar la tabla de instituciones 
 
 			     $findInstituciones=InstitucionConvenios::model()->findAll('convenios_idConvenio=:convenios_idConvenio', array('convenios_idConvenio'=>$idconvenio));
 			   echo("<script>console.log('Insitituciones');</script>"); 
@@ -775,11 +778,24 @@ class ConveniosController extends Controller
 				    echo("<script>console.log('Responsable ".$findresp->primerNombreResponsable."');</script>");
 				    echo("<script>console.log('Tipo Responsable ".$findtiporesp->descripcionTipoResponsable."');</script>");
 				    $inst.=".".$findresp->idResponsable;
+				    if($j==0){
+				    	setcookie("responsable_legal_contraparate",$findresp->idResponsable);
+				      echo("<script>console.log('Responsable asignado a cookie legal ".$findresp->idResponsable."');</script>");
+
+				    }
+				    else{
+						setcookie("responsable_contacto_contraparate",$findresp->idResponsable);
+						echo("<script>console.log('Responsable asignado a cookie contacto ".$findresp->idResponsable."');</script>");
+
+				    }
 			    }
 			  }
 			  echo("<script>console.log('Institucion".$inst."');</script>");
-			  setcookie("contra",$inst);
+			  	if(!isset($_POST["PasodosForm"]))
+			  	setcookie("contra",$inst);
+			  
 			  $_SESSION["institucion"]=explode('-',$inst);
+
 
 
 		}
@@ -796,12 +812,128 @@ class ConveniosController extends Controller
 				//$_SESSION['instanciaunet_contraparte']=$pasodos->instancia_contraparte;
 				$_SESSION['responsable_legal_contraparte']=$pasodos->responsable_legal_contraparte;
 				$_SESSION['responsable_contacto_contraparte']=$pasodos->responsable_contacto_contraparte;
+
+				//buscand modelo de responsables de la unet 
+				$responsablelegal=Responsables::model()->findByPk($pasodos->responsable_legal_unet);
+				$responsablecontacto=Responsables::model()->findByPk($pasodos->responsable_contacto_unet);
+				$_SESSION['nombreresponsablelegal']=$responsablelegal->primerApellidoResponsable." ".$responsablelegal->primerNombreResponsable;
+				setcookie("responsable_legal_unet",$responsablelegal->idResponsable);
+				setcookie("responsable_contacto_unet",$responsablecontacto->idResponsable);
+
+				$_SESSION['nombreresponsablecontacto']=$responsablecontacto->primerApellidoResponsable." ".$responsablecontacto->primerNombreResponsable;
+				
 				//en el paso tambien se llena la variable de sesioin de las instituciones (revisar esto )
-			echo("<script>console.log('Institucion".$_COOKIE["contra"]."');</script>");
-				//$this->redirect(array('convenios/pasotres',
-				//"idconvenio"=>$_SESSION['idconvenio']
-				//));
+				echo("<script>console.log('Institucion".$_COOKIE["contra"]."');</script>");
+		
+
+				//ELIMINANDO REGISTROS DE LA TABLA Y REEMPLAZANDOLOS POR EL NUEVO COOKIE
+				if($_SESSION["isNewRecord"]==0){
+
+					$findhistoricoresponsable=Historicoresponsables::model()->findAll('convenios_idConvenio=:convenios_idConvenio', array(':convenios_idConvenio'=>$idconvenio));
+			   
+			     for($i=0;$i<count($findhistoricoresponsable);$i++){
+			     	 
+
+			     	 $findresponsable=Responsables::model()->findByPk($findhistoricoresponsable[$i]->responsables_idResponsable);
+			     	 $findtiporesponsable=Tiporesponsable::model()->findByPk($findresponsable->tipoResponsable_idTipoResponsable);
+
+
+			     	 //igualando valores a los campos de resonsables
+			     	 if($findtiporesponsable->descripcionTipoResponsable=="Legal"){
+			     	 	$model_hrl= Historicoresponsables::model()->findByPk($findhistoricoresponsable[$i]->idHistoricoResponsable); //responsable legal
+			     	 	$model_hrl->responsables_idResponsable=$_SESSION['responsable_legal_unet'];
+			     	 	$model_hrl->convenios_idConvenio=$idconvenio;
+			     	 	$model_hrl->fechaAsignacionResponsable=$_SESSION['fechainicioconvenio'];
+			     	 	if($model_hrl->save()){
+			     	 		echo "actualizo responsable legal unet";
+			     	 	}
+
+			     	
+			     	 }
+			     	if($findtiporesponsable->descripcionTipoResponsable=="Contacto"){
+			     		$model_hrc= Historicoresponsables::model()->findByPk($findhistoricoresponsable[$i]->idHistoricoResponsable); //responsable legal
+			     	 	$model_hrc->responsables_idResponsable=$_SESSION['responsable_contacto_unet'];
+			     	 	$model_hrc->convenios_idConvenio=$idconvenio;
+			     	 	$model_hrc->fechaAsignacionResponsable=$_SESSION['fechainicioconvenio'];
+			     	 	if($model_hrc->save()){
+			     	 		echo "actualizo responsable contacto unet";
+			     	 	}
+			     	
+			     	}
+			     }
+
+
+				
+
+
+
+
+					//**********************************************//
+					$findInstituciones=InstitucionConvenios::model()->findAll('convenios_idConvenio=:convenios_idConvenio', array('convenios_idConvenio'=>$idconvenio));
+					
+					
+						foreach($findInstituciones as $key => $value){						
+
+							$hrc=Historicoresponsables::model()->deleteAll('institucion_convenios_idInstitucionConvenio=:institucion_convenios_idInstitucionConvenio',array(':institucion_convenios_idInstitucionConvenio'=>$value->idInstitucionConvenio)); 
+
+						}
+
+						$ic=InstitucionConvenios::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$idconvenio));
+					
+					echo("<script>console.log('Borrado idInstitucionConvenio');</script>");
+
+					//volviendo a insertar de acuerdo al cookie actual
+
+					$_SESSION['institucion']=explode('-',$_COOKIE['contra']);
+					for ($i=1; $i <count($_SESSION['institucion']) ; $i++) {
+						$institucion_contraparte=explode('.',$_SESSION['institucion'][$i]);	
+
+						$model_ic= new InstitucionConvenios;
+						
+						$model_hr1= new Historicoresponsables; //responsable legal
+						$model_hr2= new Historicoresponsables;//responsable de contacto
+
+						$model_ic->convenios_idConvenio=$idconvenio;
+						$model_ic->fechaIncorporacion=$_SESSION['fechainicioconvenio'];//la fecha de incorporacion es cuando inicia el convenio?
+						$model_ic->instituciones_idInstitucion=$institucion_contraparte[0];
+
+						if($model_ic->save()){
+	//------------------------------------------GUARDANDO EN HISTORICO DE RESPONSABLES-----CONTRAPARTE------------------//
+							//buscando id de institucion
+								echo "Guardo en institucion";
+								$criteria= new CDbCriteria();
+							$criteria->select='idInstitucionConvenio';
+							$criteria->condition='instituciones_idInstitucion=:ins AND convenios_idConvenio=:conv';
+							$criteria->params= array(':ins'=>$institucion_contraparte[0],':conv'=>$idconvenio);
+							$result= InstitucionConvenios::model()->find($criteria);
+							echo $result['idInstitucionConvenio'];
+
+
+							//guardando en historico de responsable
+							//responsable legal
+							$model_hr1->responsables_idResponsable=$institucion_contraparte[1];
+							$model_hr1->institucion_convenios_idInstitucionConvenio=$result['idInstitucionConvenio'];
+							$model_hr1->fechaAsignacionResponsable=$_SESSION['fechainicioconvenio']; //revisar fecha
+							if($model_hr1->save()){
+								echo "guardo responsable 1";
+							}
+							//responsable contacto
+							$model_hr2->responsables_idResponsable=$institucion_contraparte[2];
+							$model_hr2->institucion_convenios_idInstitucionConvenio=$result['idInstitucionConvenio'];
+							$model_hr2->fechaAsignacionResponsable=$_SESSION['fechainicioconvenio']; //revisar fecha
+							if($model_hr2->save()){
+								echo "guardo responsable 2";
+							}
+
+						}
+					}
+
+					$_SESSION["idconvenio"]=$idconvenio;
+				} //if de isnuewrecord
+
 			}
+
+			$this->redirect(array('convenios/pasotres',"idconvenio"=>$_SESSION['idconvenio']));
 		}
 
 		$this->render('pasodos',array(
@@ -813,6 +945,9 @@ class ConveniosController extends Controller
 
 		$pasotres=new PasotresForm;
 		$modelArchivo= new ArchivosForm;
+
+
+			   	echo("<script>console.log('idInstitucionesConvenios ".$_COOKIE["contra"]."');</script>"); 
 
 		if(isset($_POST["PasotresForm"])){
 			$pasotres->attributes=$_POST["PasotresForm"];
@@ -2281,6 +2416,8 @@ public function actionGuardarestado(){
 				   $_SESSION['fecha_acta']="";
 				   $_SESSION['url_acta']="";
 				   $_SESSION['aporte']="";
+				   $_SESSION['nombreresponsablelegal']="";
+				   $_SESSION['nombreresponsablecontacto']="";
 				    
                     $value=0;
                     $value1="";
