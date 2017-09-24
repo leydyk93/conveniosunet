@@ -73,9 +73,9 @@
 			'htmlOptions'=>array('class'=>'nav navbar-nav navbar-right'),
 			'encodeLabel' => false,
 			'items'=>array(
-				array('label'=>'<span class="glyphicon glyphicon-user"></span> Iniciar sesion','url'=>array('/site/login'),'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'<span class="glyphicon glyphicon-user"></span> cerrar sesion ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'<span class="glyphicon glyphicon-time"></span> '.Date("d-m-Y") ,'url'=>array('/site/login'),'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'<span class="glyphicon glyphicon-user"></span> Iniciar','url'=>array('/site/login'),'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'<span class="glyphicon glyphicon-user"></span> Salir ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+				//array('label'=>'<span class="glyphicon glyphicon-time"></span> '.Date("d-m-Y") ,'url'=>array('/site/login'),'visible'=>!Yii::app()->user->isGuest),
 			),
 			
 		)); ?>
@@ -84,7 +84,7 @@
   </div>
 </nav>
 
-	<div id="navegabilidadbreadcrumbs" class="container-fluid">
+	<div id="navegabilidadbreadcrumbs" class="container-fluid" style="margin-top: 70px;">
 
 		<div class="row">
 

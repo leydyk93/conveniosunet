@@ -156,7 +156,13 @@ class ConveniosController extends Controller
 
 		$model=$this->loadModelView($id);
 
-		$conexion=Yii::app()->db;
+		//$acta= actaIntencion::model()->with('conveniosIdConvenio')->findByPk($id);
+		//$urlActa=$acta->idActaIntencion;
+		
+		$urlActa=actaIntencion::model()->findAll('convenios_idConvenio=:idconvenio',array(':idconvenio'=>$id));
+		
+		
+
 		$resullRespUNET = new ResultadoConvenios;
 		$resulContraparte= new ResultadoConvenios;
 		$resulResponsablesC= new ResultadoConvenios;
@@ -191,6 +197,7 @@ class ConveniosController extends Controller
 			'resulRC'=>$resultadosInstContrap,
 			'resullRespCONT'=>$resulContraparte,
 			'InforRC'=>$resultadosResponContrap,
+			'urlActa'=>$urlActa,
 			//'estado'=>$estado,
 		));
 	}
@@ -945,7 +952,7 @@ class ConveniosController extends Controller
 
 		$pasotres=new PasotresForm;
 		$modelArchivo= new ArchivosForm;
-
+	
 
 			   	echo("<script>console.log('idInstitucionesConvenios ".$_COOKIE["contra"]."');</script>"); 
 
@@ -953,11 +960,12 @@ class ConveniosController extends Controller
 			$pasotres->attributes=$_POST["PasotresForm"];
 			if($pasotres->validate()){
 
-				$_SESSION['nro_acta']=$pasotres->nro_acta;
+				//$_SESSION['nro_acta']=$pasotres->nro_acta;
 				$_SESSION['fecha_acta']=$pasotres->fecha_acta;
 				$_SESSION['url_acta']=$pasotres->url_acta;
 				echo "existe paso tres";
 				//
+
 			}
 		}
 		if(isset($_POST["ArchivosForm"])){
@@ -973,14 +981,16 @@ class ConveniosController extends Controller
 				//informacion invalida
 			}else{
 
+
+
 				//creo la direccion donde se almacenrá
 				$path = Yii::getPathOfAlias('webroot').'/archivos/'.$modelArchivo->titulo."/";
 
 				foreach ($documento as $doc => $i) {
 				 					
-					$docu="Acta-".$i->name;
+					$docu="Acta-".$i->name."-convenio-".$idconvenio;
 
-					$_SESSION['url_acta']=Yii::app()->request->baseUrl."/archivos/convenios/".$docu;
+					$_SESSION['url_acta']=Yii::app()->request->baseUrl."/archivos/actaIntencion/".$docu;
 
 					//$model->urlConvenio=$path.$docu;
 
@@ -1027,7 +1037,7 @@ class ConveniosController extends Controller
 		$model= new Convenios;
 		$model_ic= new InstitucionConvenios;
 		$model_ce= new ConvenioEstados;
-	
+		$acta= new Actaintencion;
 
 //-------------------------GUARDANDO EN LA TABLA CONVENIOS---------------------------------
 		if (isset($_REQUEST['enviar'])) 
@@ -1050,6 +1060,8 @@ class ConveniosController extends Controller
 			if($model->save()){
 
 				echo "Guardo en convenios";
+				
+
 //-----------------------------GUARDANDO EN INSTITUCIOIN CONVENIOS----------------------------
 				for ($i=1; $i <count($_SESSION['institucion']) ; $i++) {
 
@@ -1149,7 +1161,7 @@ class ConveniosController extends Controller
 				   }
 //------------------------------------------GUARDANDO ACTA DE INTENCIÓN-----------------------------------
 				  if($_SESSION['fecha_acta']!=""){
-						   $acta = new Actaintencion;
+						  
 						   
 						   $acta->fechaActaIntencion=$_SESSION['fecha_acta'];
 						   $acta->urlActaIntencion=$_SESSION['url_acta'];
@@ -2056,6 +2068,8 @@ class ConveniosController extends Controller
 		public function loadModelView($id)
 		{
 			$model=Convenios::model()->findByPk($id);
+			
+
 			if($model===null){
 				throw new CHttpException(404,'The requested page does not exist.');
 			}else{
