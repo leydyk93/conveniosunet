@@ -1,10 +1,16 @@
 <?php 
 	if(isset($_SESSION['aporte'])){
-		 $pasocuatro->descripcion_aporte=" ";
-		 $pasocuatro->monedas_idMoneda=" ";
-		 $pasocuatro->valor=" ";
-		 $pasocuatro->cantidad=" ";
+		 $pasocuatro->descripcion_aporte="";
+		 $pasocuatro->monedas_idMoneda="";
+		 $pasocuatro->valor="";
+		 $pasocuatro->cantidad="";
 
+	}
+
+	if(isset($_SESSION['aporte_editado'])){
+	echo("<script>console.log('Asigno el cookie en la vista');</script>");
+
+		//setcookie("aportes",$_SESSION["aporte_editado"]);
 	}
  ?>
 
@@ -46,6 +52,7 @@ echo "<br>";
 				//variables del paso dos
 				echo "PASO DOS ";
 				echo "<br>";
+				if(isset($_SESSION['instanciaunet']))
 				echo "instanciaunet: ".$_SESSION['instanciaunet'];
 				echo "<br>";
 				echo "responsable_legal_unet: ".$_SESSION['responsable_legal_unet'];
@@ -82,9 +89,12 @@ echo "<br>";
 
 				}*/
 
-		
+$variable="hola";		
 
  ?>
+ <?php if($_SESSION["isNewRecord"]==0){ ?>
+ <body onload="asignar('<?php echo $_SESSION['aporte_editado'];?>');">
+ <?php } ?>
  <main class="container-fluid">
         <div class "row">
             
@@ -97,15 +107,28 @@ echo "<br>";
 <aside id="pasos" class="menu_pasos col-xs-3">
 
 
-	<div class="list-group panel">
-	    <a href="" class="list-group-item"><h4>Nuevo Convenio</h4></a>
-	    <a href="index.php?r=convenios/create" class="list-group-item opcion text-center"><h5>Paso 1</h5></a>
-	    <a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 2</h5></a>
-	    <a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 3</h5></a>
-	    <a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 4</h5></a>
-	    <a href="<?php echo $this->createUrl( '/convenios/pasocinco' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center" ><h5>Paso 5</h5></a>
-	    
-	   </div>
+
+	 <?php if($_SESSION["isNewRecord"]==1){ ?>
+			   <div class="list-group panel">
+			    <a href="" class="list-group-item"><h4>Nuevo Convenio</h4></a>
+			    <a href="index.php?r=convenios/create" class="list-group-item opcion text-center"><h5>Paso 1</h5></a>
+			    <a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 2</h5></a>
+			    <a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 3</h5></a>
+			    <a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion_selected text-center"><h5>Paso 4</h5></a>
+			    <a class="list-group-item opcion_disabled text-center" ><h5>Paso 5</h5></a>
+			    
+			    </div>
+			    <?php }?>
+			    <?php if($_SESSION["isNewRecord"]==0){ ?>
+			   <div class="list-group panel">
+			    <a href="" class="list-group-item"><h4>Nuevo Convenio</h4></a>
+			    <a href="index.php?r=convenios/create" class="list-group-item opcion_selected text-center"><h5>Paso 1</h5></a>
+			  <a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 2</h5></a>
+                <a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 3</h5></a>
+                <a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 4</h5></a>
+                <a href="<?php echo $this->createUrl( '/convenios/pasocinco' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center" ><h5>Paso 5</h5></a>        
+						    </div>
+    <?php }?>
             
                    		<!--<ul id="navi">
 							<li><a href="index.php?r=convenios/create" class="text-center">Paso 1</a></li>
@@ -174,11 +197,17 @@ echo "<br>";
 		  <tbody id="bodya">
 			
 			<?php 
-
+					$varia="variable";
+					echo '<div id="papa">';
 		  			if(isset($_SESSION['aporte'])){
 					for ($i=1; $i <count($_SESSION['aporte']) ; $i++) {
-						
+
+						echo("<script>console.log('Sesion Aporte".$_SESSION["aporte"][$i]."');</script>");
+
 						$aporteA=explode('.',$_SESSION['aporte'][$i]);	
+						echo("<script>console.log('Aporte0".$aporteA[0]."');</script>");
+
+
 						
 						$moneda=Monedas::model()->find('idMoneda='.$aporteA[1]);
 				
@@ -189,11 +218,15 @@ echo "<br>";
 						echo '<td>'.$aporteA[2].'</td>';
 						echo '<td>'.$aporteA[3].'</td>';
 						//echo '<td>Eliminar</td>';
-						echo '<td> <a id=b-a'.$i.'-'.$aporteA[0].'.'.$moneda->idMoneda.'.'.$aporteA[2].'.'.$aporteA[3].' onclick=eliminarfilap(this.id)> <span class="glyphicon glyphicon-remove"></span> </a>';
+						echo '<td> <a id=b-a'.$i.'-'.'o'.$i.'-'.$aporteA[0].'.'.$moneda->idMoneda.'.'.$aporteA[2].'.'.$aporteA[3].' onclick=eliminarfilap(this.id)> <span class="glyphicon glyphicon-remove"></span> </a>';
 						echo '</tr>';
+						setcookie("nrofilap",$i); //agregado reciente
+						echo '<div id=o'.$i.'>'.$aporteA[0].'.'.$moneda->idMoneda.'.'.$aporteA[2].'.'.$aporteA[3].'</div>';
 
 					}
+					
 					}
+					echo '</div>'
 				 ?>
 		      <!-- <tr>
 		       
@@ -243,6 +276,9 @@ function aporte_agregar(){
 		var monedt=mon.options[mon.selectedIndex].text;
 		var val=document.getElementById("PasocuatroForm_valor").value;
 		var cant=document.getElementById("PasocuatroForm_cantidad").value;
+		
+		var papa=document.getElementById("papa");
+
 		//var selec=document.getElementById("PasodosForm_institucion");
 		//var seleci=selec.options[selec.selectedIndex].text;
 		//var valselc=selec.options[selec.selectedIndex].value;
@@ -293,6 +329,7 @@ function aporte_agregar(){
 			
 				//agregando al cookie aportes... la contraparte que se selecciono. 
 				document.cookie="aportes="+getCookie("aportes")+"-"+desc+"."+moned+"."+val+"."+cant;
+				console.log("aporte agregado "+getCookie("aportes"));
 
 				//limpiando campos
 				var desc=document.getElementById("PasocuatroForm_descripcion_aporte");
@@ -302,6 +339,14 @@ function aporte_agregar(){
 				desc.value="";
 				val.value="";
 				cant.value="";
+
+
+				//agregando campo oculto del cual se tomara el valor para eliminar. 
+				var divnuevo=document.createElement('div');
+				divnuevo.innerHTML=desc+"."+moned+"."+val+"."+cant;
+				papa.appendChild(divnuevo);
+
+
 
 	}//else si estan los campos llenos
 	}	
@@ -321,10 +366,12 @@ function aporte_agregar(){
 	}
 
 	function eliminarfilap(fila){
+	   console.log("fila a eliminar "+fila);
 
 		var aux;
 		aux=fila.split("-");
 		var cookaux=getCookie("aportes");
+		console.log("cookaux "+cookaux);
 		var auxcontra= cookaux.split("-");
 		//alert(aux[1]);		
 		var fil=document.getElementById(aux[1]);
@@ -332,11 +379,28 @@ function aporte_agregar(){
 
 		//eliminadno valor el cookie
 		document.cookie="aportes= ";
+	    console.log("elemento a eliminar "+aux[2]);
+	    var contenido= document.getElementById(aux[2]);
+	    console.log("elemento "+contenido.textContent);
+
+
+	
+	     
+
 		for(var j=1;j<auxcontra.length;j++){
-			if(auxcontra[j]!=aux[2]){
+			console.log("auxcontra"+auxcontra[j]+"content"+contenido.textContent+"f");
+			if(auxcontra[j]!=contenido.textContent){
+				console.log("entro");
 				document.cookie="aportes="+getCookie("aportes")+"-"+auxcontra[j];
 			}
 		}
+		console.log("cookie aportes nuevo "+getCookie("aportes"));
 
 	}	
+	function asignar(variable){
+		console.log("entro a asigar");
+		console.log(variable);
+		document.cookie="aportes="+variable;
+	}
+
 </script>

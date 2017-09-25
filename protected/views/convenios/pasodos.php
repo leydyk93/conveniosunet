@@ -101,29 +101,31 @@
 					</div>-->
 				</div>
 
-				<div class="row">
-					<aside id="pasos" class="menu_pasos col-xs-3">
+	<div class="row">
+		<aside id="pasos" class="menu_pasos col-xs-3">
 
-						  <div class="list-group panel">
-						    <a href="" class="list-group-item"><h4>Nuevo Convenio</h4></a>
-						    <a href="index.php?r=convenios/create" class="list-group-item opcion text-center"><h5>Paso 1</h5></a>
-						    <a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 2</h5></a>
-						    <a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 3</h5></a>
-						    <a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 4</h5></a>
-						    <a href="<?php echo $this->createUrl( '/convenios/pasocinco' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center" ><h5>Paso 5</h5></a>
-						    
-						  </div>
-
-						<!--<ul id="navi">
-							<li><a href="index.php?r=convenios/create" class="text-center">Paso 1</a></li>
-							<li><a href="<?php //echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center" >Paso 2</a></li>
-							<li><a href="<?php //echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center">Paso 3</a></li>
-							<li><a href="<?php //echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>"  class="text-center">Paso 4</a></li>
-							<li><a href="<?php //echo $this->createUrl( '/convenios/pasocinco' )."&idconvenio=".$_SESSION['idconvenio']; ?>"  class="text-center">Paso 5</a></li>
-
-						</ul>-->
-
-
+			<?php if($_SESSION["isNewRecord"]==1){ ?>
+			   <div class="list-group panel">
+			    <a href="" class="list-group-item"><h4>Nuevo Convenio</h4></a>
+			    <a href="index.php?r=convenios/create" class="list-group-item opcion text-center"><h5>Paso 1</h5></a>
+			    <a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion_selected text-center"><h5>Paso 2</h5></a>
+			    <a class="list-group-item opcion_disabled text-center"><h5>Paso 3</h5></a>
+			    <a class="list-group-item opcion_disabled text-center"><h5>Paso 4</h5></a>
+			    <a class="list-group-item opcion_disabled text-center" ><h5>Paso 5</h5></a>
+			    
+			    </div>
+			    <?php }?>
+			    <?php if($_SESSION["isNewRecord"]==0){ ?>
+			   <div class="list-group panel">
+			    <a href="" class="list-group-item"><h4>Nuevo Convenio</h4></a>
+			    <a href="index.php?r=convenios/create" class="list-group-item opcion_selected text-center"><h5>Paso 1</h5></a>
+			  <a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 2</h5></a>
+                <a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 3</h5></a>
+                <a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 4</h5></a>
+                <a href="<?php echo $this->createUrl( '/convenios/pasocinco' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center" ><h5>Paso 5</h5></a>        
+						    </div>
+    <?php }?>
+   
 					</aside>
 
 					<section class="datos col-xs-9">     
@@ -166,7 +168,7 @@
 			    'name'=>'apellidos_nombres', // Nombre para el campo de autocompletar
 			    'model'=>$responsable,
 			    'value'=>$responsable->isNewRecord ? $_SESSION["nombreresponsablelegal"] : $responsable->primerApellidoResponsable.' '.$responsable->primerNombreResponsable,
-			    'source'=>$this->createUrl('Convenios/autocomplete'), // URL que genera el conjunto de datos
+			    'source'=>$this->createUrl('Convenios/autocompleteL'), // URL que genera el conjunto de datos
 			    'options'=> array(
 			    	'showAnim'=>'fold',
 			    	'size'=>'30',
@@ -212,7 +214,7 @@
 			    'name'=>'apellidos_nombres1', // Nombre para el campo de autocompletar
 			    'model'=>$responsable,
 			    'value'=>$responsable->isNewRecord ? $_SESSION["nombreresponsablecontacto"] : $responsable->primerApellidoResponsable.' '.$responsable->primerNombreResponsable,
-			    'source'=>$this->createUrl('Convenios/autocomplete'), // URL que genera el conjunto de datos
+			    'source'=>$this->createUrl('Convenios/autocompleteC'), // URL que genera el conjunto de datos
 			    'options'=> array(
 			    	'showAnim'=>'fold',
 			    	'size'=>'30',
@@ -273,7 +275,7 @@
 			    'name'=>'apellidos_nombres2', // Nombre para el campo de autocompletar
 			    'model'=>$responsable,
 			    'value'=>$responsable->isNewRecord ? '' : $responsable->primerApellidoResponsable.' '.$responsable->primerNombreResponsable,
-			    'source'=>$this->createUrl('Convenios/autocompletef'), // URL que genera el conjunto de datos
+			    'source'=>$this->createUrl('Convenios/autocompletefL'), // URL que genera el conjunto de datos
 			    'options'=> array(
 			    	'showAnim'=>'fold',
 			    	'size'=>'30',
@@ -315,7 +317,7 @@
 			    'name'=>'apellidos_nombres3', // Nombre para el campo de autocompletar
 			    'model'=>$responsable,
 			    'value'=>$responsable->isNewRecord ? '' : $responsable->primerApellidoResponsable.' '.$responsable->primerNombreResponsable,
-			    'source'=>$this->createUrl('Convenios/autocompletef'), // URL que genera el conjunto de datos
+			    'source'=>$this->createUrl('Convenios/autocompletefC'), // URL que genera el conjunto de datos
 			    'options'=> array(
 			    	'showAnim'=>'fold',
 			    	'size'=>'30',

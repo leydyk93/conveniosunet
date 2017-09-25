@@ -34,6 +34,8 @@ if(!isset($_SESSION['alcance'])){
 
 
 
+
+
  ?>
 
 
@@ -49,17 +51,27 @@ if(!isset($_SESSION['alcance'])){
 <div class="row">
 
 <div  id="pasos" class="col-xs-3">
-
+   <?php if($_SESSION["isNewRecord"]==1){ ?>
    <div class="list-group panel">
     <a href="" class="list-group-item"><h4>Nuevo Convenio</h4></a>
-    <a href="index.php?r=convenios/create" class="list-group-item opcion text-center"><h5>Paso 1</h5></a>
-    <a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 2</h5></a>
-    <a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 3</h5></a>
-    <a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 4</h5></a>
-    <a href="<?php echo $this->createUrl( '/convenios/pasocinco' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center" ><h5>Paso 5</h5></a>
+    <a href="index.php?r=convenios/create" class="list-group-item opcion_selected text-center"><h5>Paso 1</h5></a>
+    <a class="list-group-item opcion_disabled text-center"><h5>Paso 2</h5></a>
+    <a class="list-group-item opcion_disabled text-center"><h5>Paso 3</h5></a>
+    <a class="list-group-item opcion_disabled text-center"><h5>Paso 4</h5></a>
+    <a class="list-group-item opcion_disabled text-center" ><h5>Paso 5</h5></a>
     
     </div>
-
+    <?php }?>
+    <?php if($_SESSION["isNewRecord"]==0){ ?>
+   <div class="list-group panel">
+    <a href="" class="list-group-item"><h4>Nuevo Convenio</h4></a>
+    <a href="index.php?r=convenios/create" class="list-group-item opcion_selected text-center"><h5>Paso 1</h5></a>
+  <a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 2</h5></a>
+                <a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 3</h5></a>
+                <a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 4</h5></a>
+                <a href="<?php echo $this->createUrl( '/convenios/pasocinco' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center" ><h5>Paso 5</h5></a>        
+    </div>
+    <?php }?>
      <!--  <ul id="navi">
               <li><a href="index.php?r=convenios/create" class="text-center">Paso 1</a></li>
               <li><a href="<?php //echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="text-center" >Paso 2</a></li>
@@ -181,6 +193,7 @@ if(!isset($_SESSION['alcance'])){
                                     'changeMonth'=>true,
                                     'changeYear'=>true,
                                     'defaultDate'=>'+1w',
+                                    'onClose' => 'js:function(selectedDate) { $("#PasounoForm_fechacaducidad").datepicker("option", "minDate", selectedDate); }'
                             ),
                             'htmlOptions'=>array( 'class'=>'form-control input-sm',
                                     'value'=>$_SESSION['fechainicioconvenio'],
@@ -213,6 +226,7 @@ if(!isset($_SESSION['alcance'])){
                                 'changeMonth'=>true,
                                 'changeYear'=>true,
                                 'defaultDate'=>'+1w',
+                                'onClose' => 'js:function(selectedDate) { $("#PasounoForm_fechainicio").datepicker("option", "maxDate", selectedDate); }',
                         ),
                          'htmlOptions'=>array( 'class'=>'form-control input-sm',
                                 'value'=>$_SESSION['fechacaducidadconvenio'],
@@ -238,11 +252,14 @@ if(!isset($_SESSION['alcance'])){
         <?php echo $form->labelEx($pasouno,'dependencia',array('class'=>'control-label col-sm-2')); ?>
         <div class="col-sm-9"> 
            
-            <?php echo $form->dropDownList($pasouno,'dependencia',
-                    CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),
-                    array('class'=>"form-control input-sm",'prompt'=>'Seleccione')
-                    //array('options' => array($_SESSION['dependenciaconvenio']=>array('selected'=>true)))
-                    );
+            <?php 
+
+            echo $form->dropDownList($pasouno,'dependencia', CHtml::listData(Dependencias::model()->findAll(), 'idDependencia', 'nombreDependencia'),
+                              array(  
+
+                                'class'=>'form-control input-sm', 
+                                 'options'=> array($_SESSION['dependenciaconvenio']=>array('selected'=>'selected'))
+                ));
              ?>
             <?php echo $form->error($pasouno,'dependencia'); ?>
         </div>
@@ -278,11 +295,14 @@ if(!isset($_SESSION['alcance'])){
         <?php echo $form->labelEx($pasouno,'clasificacion',array('class'=>'control-label col-sm-2')); ?>
         
         <div class="col-sm-9"> 
-           
-            <?php echo $form->dropDownList($pasouno,'clasificacion',
-            CHtml::listData(Clasificacionconvenios::model()->findAll(), 'idClasificacionConvenio', 'nombreClasificacionConvenio'),
-                array('class'=>"form-control input-sm",'prompt'=>'Seleccione'),
-                array('options' => array($_SESSION['clasificacion']=>array('selected'=>true)))); ?>
+            <?php 
+                echo $form->dropDownList($pasouno,'clasificacion', CHtml::listData(Clasificacionconvenios::model()->findAll(), 'idClasificacionConvenio', 'nombreClasificacionConvenio'),
+                              array(  
+
+                                'class'=>'form-control input-sm', 
+                                 'options'=> array($_SESSION['clasificacion']=>array('selected'=>'selected'))
+                ));
+                ?>
             <?php echo $form->error($pasouno,'clasificacion'); ?>
         </div>
          <div class="col-sm-1"><a  href="#" data-toggle="modal" data-target="#miclasificacion" onclick="limpiarmodalclasificacion()"  >
@@ -416,6 +436,7 @@ if(!isset($_SESSION['alcance'])){
                     setcookie("contra",$value1);
                     setcookie("nrofilap",$value);
                     setcookie("aportes",$value1);
+                    $_SESSION["aporte_editado"]="";
                      ?>
 
                 <?php //$this->endWidget(); ?>

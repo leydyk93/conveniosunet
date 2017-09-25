@@ -29,7 +29,7 @@ class ConveniosController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 
-				'actions'=>array('index','view','archivo','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocomplete','autocompletef','guardarinstitucion','guardarresponsable','guardararchivo','validacionautocomplete','prueba','updateajax','reporte','guardardependencia','ConstruirReporte','createEspecifico','updateConvenio','guardarclasificacion','guardarestado','reiniciarvariables'),
+				'actions'=>array('index','view','archivo','pasodos','pasotres','pasocuatro','pasocinco','pasoseis','consultar','consultara','selectdos','autocompleteL','AutocompleteC','autocompletefL','autocompletefC','guardarinstitucion','guardarresponsable','guardararchivo','validacionautocomplete','prueba','updateajax','reporte','guardardependencia','ConstruirReporte','createEspecifico','updateConvenio','guardarclasificacion','guardarestado','reiniciarvariables'),
 
 				'users'=>array('*'),
 			),
@@ -417,12 +417,14 @@ class ConveniosController extends Controller
 		$model=$this->loadModel($id);
 		$_SESSION["isNewRecord"]=0;
 		//igualando las variables de sesión a los valores precargados del convenio.
+				$_SESSION['idconvenio']=$id;
 				$_SESSION['nombreconvenio']=$model->nombreConvenio;
 				$_SESSION['fechainicioconvenio']=$model->fechaInicioConvenio;
 				$_SESSION['fechacaducidadconvenio']=$model->fechaCaducidadConvenio;
 				$_SESSION['objetivo']=$model->objetivoConvenio;
 				$_SESSION['dependenciaconvenio']=$model->dependencias_idDependencia;
 				$_SESSION['tipo']=$model->tipoConvenios_idTipoConvenio;
+				$_SESSION['clasificacion']=$model->clasificacionConvenios_idTipoConvenio;
 				
 				$fecha=Yii::app()->db->createCommand()
 	                  ->select('MAX(fechaCambioEstado)')
@@ -861,13 +863,6 @@ class ConveniosController extends Controller
 			     	
 			     	}
 			     }
-
-
-				
-
-
-
-
 					//**********************************************//
 					$findInstituciones=InstitucionConvenios::model()->findAll('convenios_idConvenio=:convenios_idConvenio', array('convenios_idConvenio'=>$idconvenio));
 					
@@ -875,9 +870,7 @@ class ConveniosController extends Controller
 						foreach($findInstituciones as $key => $value){						
 
 							$hrc=Historicoresponsables::model()->deleteAll('institucion_convenios_idInstitucionConvenio=:institucion_convenios_idInstitucionConvenio',array(':institucion_convenios_idInstitucionConvenio'=>$value->idInstitucionConvenio)); 
-
 						}
-
 						$ic=InstitucionConvenios::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$idconvenio));
 					
 					echo("<script>console.log('Borrado idInstitucionConvenio');</script>");
@@ -907,7 +900,6 @@ class ConveniosController extends Controller
 							$criteria->params= array(':ins'=>$institucion_contraparte[0],':conv'=>$idconvenio);
 							$result= InstitucionConvenios::model()->find($criteria);
 							echo $result['idInstitucionConvenio'];
-
 
 							//guardando en historico de responsable
 							//responsable legal
@@ -945,9 +937,14 @@ class ConveniosController extends Controller
 
 		$pasotres=new PasotresForm;
 		$modelArchivo= new ArchivosForm;
+		$modelActa= new Actaintencion;
 
 
-			   	echo("<script>console.log('idInstitucionesConvenios ".$_COOKIE["contra"]."');</script>"); 
+	    echo("<script>console.log('idInstitucionesConvenios ".$_COOKIE["contra"]."');</script>"); 
+		echo("<script>console.log('IDCONVENIOS ".$idconvenio."');</script>"); 
+	    $modelActa=Actaintencion::model()->find('convenios_idConvenio=:convenios_idConvenio', array(':convenios_idConvenio'=>$idconvenio));
+	    echo("<script>console.log('IDACTA ".$modelActa->idActaIntencion."');</script>"); 
+
 
 		if(isset($_POST["PasotresForm"])){
 			$pasotres->attributes=$_POST["PasotresForm"];
@@ -957,6 +954,8 @@ class ConveniosController extends Controller
 				$_SESSION['fecha_acta']=$pasotres->fecha_acta;
 				$_SESSION['url_acta']=$pasotres->url_acta;
 				echo "existe paso tres";
+
+				
 				//
 			}
 		}
@@ -975,21 +974,23 @@ class ConveniosController extends Controller
 
 				//creo la direccion donde se almacenrá
 				$path = Yii::getPathOfAlias('webroot').'/archivos/'.$modelArchivo->titulo."/";
-
 				foreach ($documento as $doc => $i) {
-				 					
 					$docu="Acta-".$i->name;
-
 					$_SESSION['url_acta']=Yii::app()->request->baseUrl."/archivos/convenios/".$docu;
-
 					//$model->urlConvenio=$path.$docu;
-
 					$i->saveAs($path.$docu);
-
 				}
-
-
-
+				
+				if($_SESSION["isNewRecord"]==0){
+					$modelActa=Actaintencion::model()->find('convenios_idConvenio=:convenios_idConvenio', array(':convenios_idConvenio'=>$idconvenio));
+						
+					
+					$modelActa->fechaActaIntencion=$_SESSION['fecha_acta'];
+					$modelActa->urlActaIntencion=$_SESSION['url_acta'];
+					if($modelActa->save()){
+						echo "guardo Acta de intencion";
+					}
+				}
 			}
 
 				//echo "existe formularioi de archivo";
@@ -998,29 +999,91 @@ class ConveniosController extends Controller
 		}
 
 		$this->render('pasotres',array("pasotres"=>$pasotres,"modelArchivo"=>$modelArchivo));
-
 	}
 
 	public function actionPasocuatro($idconvenio){
 
 		$pasocuatro=new PasocuatroForm;
+		$aporte="";
+		$idconvenio=$_SESSION['idconvenio'];
+
+		if($_SESSION["isNewRecord"]==0){
+
+			$findaportes=ConvenioAportes::model()->findAll('convenios_idConvenio=:convenios_idConvenio', array(':convenios_idConvenio'=>$idconvenio));
+			for($i=0;$i<count($findaportes);$i++){
+				echo("<script>console.log('Aportes de convenio ".$findaportes[$i]->descripcion_aporte."');</script>");
+
+				$aporte.="-".$findaportes[$i]->descripcion_aporte.".".$findaportes[$i]->monedas_idMoneda.".".$findaportes[$i]->valor.".".$findaportes[$i]->cantidad;
+			}
+
+			echo("<script>console.log('Aportes concatenados".$aporte."');</script>");
+			  	if(!isset($_POST["PasocuatroForm"])){
+			  	$_SESSION["aporte_editado"]=$aporte; 	
+			  	//setcookie("aportes",$aporte);
+			  	if(isset($_COOKIE["aportes"]))
+			 	echo("<script>console.log('Cookie asigando".$_COOKIE["aportes"]."');</script>");
+			  	}
+			  
+			  $_SESSION["aporte"]=explode('-',$aporte);
+
+
+
+
+
+		}
 
 		if(isset($_POST["PasocuatroForm"])){
 			$pasocuatro->attributes=$_POST["PasocuatroForm"];
 			if($pasocuatro->validate()){
 
-			//	$_SESSION['ventajas']=$pasocuatro->ventajas;
-			//	$_SESSION['clasificacion']=$pasocuatro->clasificacion;
-			//	$_SESSION['alcance']=$pasocuatro->alcance;
-			//	$_SESSION['forma']=$pasocuatro->forma;
-			//	$_SESSION['actividades']=$pasocuatro->actividades;
-			//	$_SESSION['otras_instituciones']=$pasocuatro->otras_instituciones;
-				$this->redirect(array('convenios/pasocinco',"idconvenio"=>$_SESSION['idconvenio']));
+				if($_SESSION["isNewRecord"]==0){
+
+
+					$ia=ConvenioAportes::model()->deleteAll('convenios_idConvenio=:convenios_idConvenio',array(':convenios_idConvenio'=>$idconvenio));
+					
+					echo("<script>console.log('Borrado Aportes');</script>");
+
+					//volviendo a insertar de acuerdo al cookie actual
+
+					$_SESSION['aporte']=explode('-',$_COOKIE['aportes']);
+
+					
+
+					//--------------------------------------------GUARDANDO EN CONVENIO APORTES ---------------------------------------------			
+				
+//--
+				  if(count($_SESSION['aporte'])>1){
+					   for ($j=1; $j < count($_SESSION['aporte']); $j++) { 
+					   	# code...
+					   	$model_ca= new ConvenioAportes;
+					   	$aporte_esp;
+					   	$aporte_esp=explode('.',$_SESSION['aporte'][$j]);	
+					    $model_ca->convenios_idConvenio=$_SESSION['idconvenio'];
+					    $model_ca->descripcion_aporte=$aporte_esp[0];
+					    $model_ca->monedas_idMoneda=$aporte_esp[1];
+					    $model_ca->valor=$aporte_esp[2];
+					    $model_ca->cantidad=$aporte_esp[3];
+					    if($model_ca->save()){
+					    	echo "guardo aporte ".$j;
+					    }
+					    else{
+					    	print_r($model_ca->getErrors());
+					    }
+					   }
+				   }
+
+		
+
+
+				
 			}
+			$this->redirect(array('convenios/pasocinco',"idconvenio"=>$_SESSION['idconvenio']));
 		}
 
-		$this->render('pasocuatro',array("pasocuatro"=>$pasocuatro));
 	}
+			$this->render('pasocuatro',array("pasocuatro"=>$pasocuatro));
+
+}
 
 	public function actionPasocinco($idconvenio){
 
@@ -2149,7 +2212,14 @@ public function actionGuardarclasificacion(){
 
 				foreach ($lista as $valor => $descripcion) {
 						echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion), true);
-				}	
+				}
+
+				//$lista= Estadoconvenios::model()->findAll();
+		 	    //$lista=CHtml::listData($lista,'idEstadoConvenio','nombreEstadoConvenio');
+
+				//foreach ($lista as $valor => $descripcion) {
+				//		echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion), true);
+				//}		
 		}
 		
 	}
@@ -2283,12 +2353,15 @@ public function actionGuardarestado(){
 		hasta aqui*/
 	}
 //*****************************************FUNCIONES DE AUTOCOMPLETADO**********************************************
-			public function actionAutocomplete($term) 
+			public function actionAutocompleteL($term) 
 			{
 			 $criteria = new CDbCriteria;
+
 			 $criteria->compare('CONCAT(CONCAT(LOWER(primerApellidoResponsable)," "),primerNombreResponsable)', strtolower($_GET['term']), true);
 			 $criteria->compare('CONCAT(CONCAT(LOWER(primerNombreResponsable)," "),primerApellidoResponsable)', strtolower($_GET['term']), true, 'OR');
 			 $criteria->compare('instituciones_idInstitucion',6, true,'AND');
+			 $criteria->compare('tipoResponsable_idTipoResponsable',1,false,'AND');
+
 			// $criteria->addCondition('instituciones_idInstitucion IS NULL');
 			 $criteria->order = 'primerApellidoResponsable';
 			 $criteria->limit = 30; 
@@ -2303,9 +2376,7 @@ public function actionGuardarestado(){
 			    'value' => $item->primerApellidoResponsable.' '.$item->primerNombreResponsable,
 			    'label' => $item->primerApellidoResponsable.' '.$item->primerNombreResponsable.' ('.$item->idResponsable.')',
 			   );
-
 			  }
-
 			 }
 			 else
 			 {
@@ -2316,15 +2387,88 @@ public function actionGuardarestado(){
 			   'label' => 'No se han encontrado resultados para su búsqueda',
 			  );
 			 }
-			  
 			 echo CJSON::encode($arr);
 			}
-			public function actionAutocompletef($term) 
+			public function actionAutocompleteC($term) 
+			{
+			 $criteria = new CDbCriteria;
+
+			 $criteria->compare('CONCAT(CONCAT(LOWER(primerApellidoResponsable)," "),primerNombreResponsable)', strtolower($_GET['term']), true);
+			 $criteria->compare('CONCAT(CONCAT(LOWER(primerNombreResponsable)," "),primerApellidoResponsable)', strtolower($_GET['term']), true, 'OR');
+			 $criteria->compare('instituciones_idInstitucion',6, true,'AND');
+			 $criteria->compare('tipoResponsable_idTipoResponsable',2,false,'AND');
+
+			// $criteria->addCondition('instituciones_idInstitucion IS NULL');
+			 $criteria->order = 'primerApellidoResponsable';
+			 $criteria->limit = 30; 
+			 $data = Responsables::model()->findAll($criteria);
+
+			 if (!empty($data))
+			 {
+			  $arr = array();
+			  foreach ($data as $item) {
+			   $arr[] = array(
+			    'id' => $item->idResponsable,
+			    'value' => $item->primerApellidoResponsable.' '.$item->primerNombreResponsable,
+			    'label' => $item->primerApellidoResponsable.' '.$item->primerNombreResponsable.' ('.$item->idResponsable.')',
+			   );
+			  }
+			 }
+			 else
+			 {
+			  $arr = array();
+			  $arr[] = array(
+			   'id' => ' ',
+			   'value' => 'No se han encontrado resultados para su búsqueda',
+			   'label' => 'No se han encontrado resultados para su búsqueda',
+			  );
+			 }
+			 echo CJSON::encode($arr);
+			}
+			public function actionAutocompletefC($term) 
 			{
 			 $criteria = new CDbCriteria;
 			$criteria->compare('CONCAT(CONCAT(LOWER(primerApellidoResponsable)," "),primerNombreResponsable)', strtolower($_GET['term']), true);
 			 $criteria->compare('CONCAT(CONCAT(LOWER(primerNombreResponsable)," "),primerApellidoResponsable)', strtolower($_GET['term']), true, 'OR');			// $criteria->compare('LOWER(primerNombreResponsable)'.' '.'LOWER(primerApellidoResponsable)', strtolower($_GET['term']), true, 'OR');
 			 $criteria->compare('instituciones_idInstitucion', $_COOKIE['cookinst'], true,'AND');
+			 $criteria->compare('tipoResponsable_idTipoResponsable',2,false,'AND');
+			
+			// $criteria->condition="instituciones_idInstitucion=:col_inst";
+			 //$criteria->params=array(':col_inst'=>$_COOKIE['cookinst']);
+			 $criteria->order = 'primerApellidoResponsable';
+			 $criteria->limit = 30; 
+			 $data = Responsables::model()->findAll($criteria);
+
+			 if (!empty($data))
+			 {
+			  $arr = array();
+			  foreach ($data as $item) {
+			   $arr[] = array(
+			    'id' => $item->idResponsable,
+				'value' => $item->primerApellidoResponsable.' '.$item->primerNombreResponsable,
+			    'label' => $item->primerApellidoResponsable.' '.$item->primerNombreResponsable.' ('.$item->idResponsable.')',
+			   );
+			  }
+			 }
+			 else
+			 {
+			  $arr = array();
+			  $arr[] = array(
+			   'id' => '',
+			   'value' => 'No se han encontrado resultados para su búsqueda',
+			   'label' => 'No se han encontrado resultados para su búsqueda',
+			  );
+			 }
+			  
+			 echo CJSON::encode($arr);
+			}
+			public function actionAutocompletefL($term) 
+			{
+			 $criteria = new CDbCriteria;
+			$criteria->compare('CONCAT(CONCAT(LOWER(primerApellidoResponsable)," "),primerNombreResponsable)', strtolower($_GET['term']), true);
+			 $criteria->compare('CONCAT(CONCAT(LOWER(primerNombreResponsable)," "),primerApellidoResponsable)', strtolower($_GET['term']), true, 'OR');			// $criteria->compare('LOWER(primerNombreResponsable)'.' '.'LOWER(primerApellidoResponsable)', strtolower($_GET['term']), true, 'OR');
+			 $criteria->compare('instituciones_idInstitucion', $_COOKIE['cookinst'], true,'AND');
+			 $criteria->compare('tipoResponsable_idTipoResponsable',1,false,'AND');
 			
 			// $criteria->condition="instituciones_idInstitucion=:col_inst";
 			 //$criteria->params=array(':col_inst'=>$_COOKIE['cookinst']);
@@ -2396,7 +2540,7 @@ public function actionGuardarestado(){
 
 			public function actionreiniciarVariables(){
 
-					 $_SESSION['idconvenio']="";
+				   $_SESSION['idconvenio']="";
 				   $_SESSION['tipo']="";
 	 			   $_SESSION['nombreconvenio']="";
 				   $_SESSION['fechainicioconvenio']="";
@@ -2418,11 +2562,14 @@ public function actionGuardarestado(){
 				   $_SESSION['aporte']="";
 				   $_SESSION['nombreresponsablelegal']="";
 				   $_SESSION['nombreresponsablecontacto']="";
+				   $_SESSION["aporte_editado"]="";
+
 				    
                     $value=0;
                     $value1="";
                     setcookie("responsable_legal_unet", $value1);
                     setcookie("responsable_contacto_unet",$value1);
+                    setcookie("aportes",$value1);
 
 
 			}
