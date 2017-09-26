@@ -591,7 +591,7 @@ class ConveniosController extends Controller
 			}
 		$_SESSION['tipo']="2";
 		$this->render('create',array(
-			"model"=>$model,"pasouno"=>$pasouno,"dep"=>$dep,"clas"=>$clas,"est"=>$est
+			"model"=>$model,"pasouno"=>$pasouno,"dep"=>$dep,"clas"=>$clas,"est"=>$est,"idc"=>$id
 		));
 
 	}
