@@ -153,6 +153,14 @@ $this->menu=array(
 			      	 ?>
 				</li>
 				<li><strong  class='text-info'>Alcance: </strong><?php echo $model->alcanceConvenios; ?></li>
+				<?php if(isset($urlActa[0]->urlActaIntencion)){ ?>
+					<div class="text-right">
+							Descargar Acta Intención
+							<a href="<?php  echo $urlActa[0]->urlActaIntencion; ?>" download="ActaIntencion.pdf"><span class="glyphicon glyphicon-arrow-down"></span></a>
+					</div>
+			
+				<?php } ?>
+				
 			</ul>
 		</div>
 	</div>

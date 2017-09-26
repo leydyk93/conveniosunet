@@ -424,7 +424,7 @@ class SiteController extends Controller
 										$aleatorio=rand(10000,99999);
 										$docu=$aleatorio."-".$i->name;
 										$modelo->NOMBRE=$docu;
-										$modelo->save();
+										//$modelo->save();
 									$i->saveAs($path.$docu);
 							//	rename(Yii::app()->request->baseUrl."/archivos/formatos/".$docu,Yii::app()->request->baseUrl."/archivos/formatos/acta.pdf");
 								rename($path.$docu,$path."acta.pdf");
@@ -436,7 +436,7 @@ class SiteController extends Controller
 										$aleatorio=rand(10000,99999);
 										$docu=$aleatorio."-".$i->name;
 										$modelo->NOMBRE=$docu;
-										$modelo->save();
+										//$modelo->save();
 									    $i->saveAs($path.$docu);
 							//	rename(Yii::app()->request->baseUrl."/archivos/formatos/".$docu,Yii::app()->request->baseUrl."/archivos/formatos/acta.pdf");
 								rename($path.$docu,$path."convenioMarco.pdf");
@@ -449,7 +449,7 @@ class SiteController extends Controller
 										$aleatorio=rand(10000,99999);
 										$docu=$aleatorio."-".$i->name;
 										$modelo->NOMBRE=$docu;
-										$modelo->save();
+										//$modelo->save();
 									$i->saveAs($path.$docu);
 							//	rename(Yii::app()->request->baseUrl."/archivos/formatos/".$docu,Yii::app()->request->baseUrl."/archivos/formatos/acta.pdf");
 								rename($path.$docu,$path."convenioEspecifico.pdf");
@@ -462,10 +462,10 @@ class SiteController extends Controller
 										$aleatorio=rand(10000,99999);
 										$docu=$aleatorio."-".$i->name;
 										$modelo->NOMBRE=$docu;
-										$modelo->save();
+										//$modelo->save();
 									$i->saveAs($path.$docu);
 							//	rename(Yii::app()->request->baseUrl."/archivos/formatos/".$docu,Yii::app()->request->baseUrl."/archivos/formatos/acta.pdf");
-								rename($path.$docu,$path."normasProcedimeintos.pdf");
+								rename($path.$docu,$path."normasProcedimientos.pdf");
 									}	
 						  		
 						break;

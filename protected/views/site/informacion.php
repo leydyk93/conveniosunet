@@ -103,7 +103,7 @@
 		Si desea establecer un convenio con la UNET le invitamos a leer las normas y procedimientos 
 		<div class="text-right">
 						Descargar formato
-						<a href="<?php  echo Yii::app()->request->baseUrl."/archivos/formatos/normasProcedimeintos.pdf" ?>" download="UNETnormasProcedimientos.pdf"><span class="glyphicon glyphicon-arrow-down"></span></a>
+						<a href="<?php  echo Yii::app()->request->baseUrl."/archivos/formatos/normasProcedimientos.pdf" ?>" download="UNETnormasProcedimientos.pdf"><span class="glyphicon glyphicon-arrow-down"></span></a>
 		</div>
 	</li>
 	</ul>
