@@ -33,7 +33,7 @@ if(!isset($_SESSION['url_acta'])){
 
 <?php 
 //campos del formulario 
-	 			echo "<br>";
+	 			/*echo "<br>";
 	 			echo "id_convenio: ".$_SESSION['idconvenio'];
 	 			echo "<br>";
 	 			echo "tipo : ".$_SESSION['tipo'];
@@ -70,7 +70,7 @@ if(!isset($_SESSION['url_acta'])){
 				echo "responsable legal contraparte: ".$_SESSION['responsable_legal_contraparte'];
 				echo "<br>";
 				echo "responsable contacto contraparte ".$_SESSION['responsable_contacto_contraparte'];
-				echo "<br>";
+				echo "<br>";*/
 				//echo "cookie contra ".$_COOKIE['contra'];
 
 ?>
@@ -86,7 +86,7 @@ if(!isset($_SESSION['url_acta'])){
 			    <a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 2</h5></a>
 			    <a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion_selected text-center"><h5>Paso 3</h5></a>
 			    <a class="list-group-item opcion_disabled text-center"><h5>Paso 4</h5></a>
-			    <a class="list-group-item opcion_disabled text-center" ><h5>Paso 5</h5></a>
+			    <a class="list-group-item opcion_disabled text-center" ><h5>Paso 5</h5></a>   
 			    
 			    </div>
 
@@ -95,11 +95,11 @@ if(!isset($_SESSION['url_acta'])){
 			    <?php if($_SESSION["isNewRecord"]==0){ ?>
 			   <div class="list-group panel">
 			    <a href="" class="list-group-item"><h4>Nuevo Convenio</h4></a>
-			    <a href="index.php?r=convenios/updateConvenio" class="list-group-item opcion_selected text-center"><h5>Paso 1</h5></a>
+			     <a href="<?php echo $this->createUrl( '/convenios/updateConvenio' )."&id=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 1</h5></a>
 			  <a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 2</h5></a>
-                <a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 3</h5></a>
-                <a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 4</h5></a>
-                <a href="<?php echo $this->createUrl( '/convenios/pasocinco' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center" ><h5>Paso 5</h5></a>        
+                <a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion_selected text-center"><h5>Paso 3</h5></a>
+                <a class="list-group-item opcion_disabled text-center"><h5>Paso 4</h5></a>
+			    <a class="list-group-item opcion_disabled text-center" ><h5>Paso 5</h5></a>     
 						    </div>
     <?php }?>
             

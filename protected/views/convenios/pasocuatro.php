@@ -27,7 +27,7 @@
 			));
  ?>
 
-<?php 
+<?php /*
 echo "<br>";
 	 			echo "id_convenio: ".$_SESSION['idconvenio'];
 	 			echo "<br>";
@@ -74,7 +74,7 @@ echo "<br>";
 				echo "fecha_acta ".$_SESSION['fecha_acta'];
 				echo "<br>";
 				echo "url_acta ".$_SESSION['url_acta'];
-
+*/
 				/*foreach ($_SESSION['documento'] as $doc => $i) {
 				 					
 					$docu="ActaIntencion".$i->name;
@@ -122,12 +122,12 @@ $variable="hola";
 			    <?php if($_SESSION["isNewRecord"]==0){ ?>
 			   <div class="list-group panel">
 			    <a href="" class="list-group-item"><h4>Nuevo Convenio</h4></a>
-			    <a href="index.php?r=convenios/create" class="list-group-item opcion_selected text-center"><h5>Paso 1</h5></a>
+			    <a href="<?php echo $this->createUrl( '/convenios/updateConvenio' )."&id=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 1</h5></a>
 			  <a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 2</h5></a>
                 <a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 3</h5></a>
-                <a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 4</h5></a>
-                <a href="<?php echo $this->createUrl( '/convenios/pasocinco' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center" ><h5>Paso 5</h5></a>        
-						    </div>
+                <a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion_selected text-center"><h5>Paso 4</h5></a>
+			    <a class="list-group-item opcion_disabled text-center" ><h5>Paso 5</h5></a>       
+				</div>
     <?php }?>
             
                    		<!--<ul id="navi">
@@ -221,6 +221,7 @@ $variable="hola";
 						echo '<td> <a id=b-a'.$i.'-'.'o'.$i.'-'.$aporteA[0].'.'.$moneda->idMoneda.'.'.$aporteA[2].'.'.$aporteA[3].' onclick=eliminarfilap(this.id)> <span class="glyphicon glyphicon-remove"></span> </a>';
 						echo '</tr>';
 						setcookie("nrofilap",$i); //agregado reciente
+						//impresion de lo agregado en la tabla
 						echo '<div id=o'.$i.'>'.$aporteA[0].'.'.$moneda->idMoneda.'.'.$aporteA[2].'.'.$aporteA[3].'</div>';
 
 					}

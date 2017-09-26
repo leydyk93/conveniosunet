@@ -55,8 +55,8 @@
 
 			<?php 
 		//campos del formulario 
-			
-			 echo "<br>";
+			/*
+			echo "<br>";
 			echo "id_convenio: ".$_SESSION['idconvenio'];
 			echo "<br>";
 			echo "tipo : ".$_SESSION['tipo'];
@@ -82,7 +82,7 @@
 
 			//echo "idpapa: ".$_SESSION['idpapa'];
 			echo "<br>";
- 
+ 			*/
 			?>
 			<?php 
 				if(!isset($_SESSION['responsable_legal_unet'])){
@@ -118,11 +118,11 @@
 			    <?php if($_SESSION["isNewRecord"]==0){ ?>
 			   <div class="list-group panel">
 			    <a href="" class="list-group-item"><h4>Nuevo Convenio</h4></a>
-			    <a href="index.php?r=convenios/create" class="list-group-item opcion_selected text-center"><h5>Paso 1</h5></a>
-			  <a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 2</h5></a>
-                <a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 3</h5></a>
-                <a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 4</h5></a>
-                <a href="<?php echo $this->createUrl( '/convenios/pasocinco' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center" ><h5>Paso 5</h5></a>        
+			    <a href="<?php echo $this->createUrl( '/convenios/updateConvenio' )."&id=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 1</h5></a>
+			  <a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion_selected text-center"><h5>Paso 2</h5></a>
+                <a class="list-group-item opcion_disabled text-center"><h5>Paso 3</h5></a>
+			    <a class="list-group-item opcion_disabled text-center"><h5>Paso 4</h5></a>
+			    <a class="list-group-item opcion_disabled text-center" ><h5>Paso 5</h5></a>      
 						    </div>
     <?php }?>
    
@@ -135,6 +135,14 @@
 						
 
 						<br>
+						<?php 
+						if(isset($_COOKIE["errorc"]))
+						echo("<script>console.log('error ".$_SESSION["errorc"]."');</script>"); 
+						 ?>
+						<?php if(isset($_SESSION["errorc"])&&$_SESSION["errorc"]=="1"){ ?>
+						<legend class="text-center header"><h4>Ingrese almenos una institucion contraparte</h4></legend>  
+						<?php } ?>
+
 				<!--		<div class="form-group">
 				 	<?php //echo $form->labelEx($pasodos,'instanciaunet',array('class'=>'control-label col-sm-2')); ?>
 							<div class="col-sm-9"> 
@@ -746,35 +754,33 @@
 
 				function recolectar(){
 
-					
 					var respl=document.getElementById("apellidos_nombres");
 					//document.cookie="responsable_legal_unet="+respl.value;
-
 					var respc=document.getElementById("apellidos_nombres1");
 					//document.cookie="responsable_contacto_unet="+respc.value;
-					
+					document.cookie="accion=1"
 				
-
-
 				}
-
+				
 				 function asignar(){
-        		 
+
+
+        		 	if(getCookie("contra")==""&&getCookie("accion")!=""){
+						alert("Introduzca una institución Contraparte")
+					}
         
          		 	var resp=document.getElementById("PasodosForm_responsable_legal_unet");
          		 	var respc=document.getElementById("PasodosForm_responsable_contacto_unet");
          			
          		 	var resp_legal_contraparte=document.getElementById("PasodosForm_responsable_legal_contraparte");
          		 	var resp_contacto_contraparte=document.getElementById("PasodosForm_responsable_contacto_contraparte");
-         		 //	resp.innerHTML="holaaa";
 
          		 	resp.value=getCookie("responsable_legal_unet");
          		    respc.value=getCookie("responsable_contacto_unet");
 
          		    resp_legal_contraparte.value=getCookie("responsable_legal_contraparate");
          		    resp_contacto_contraparte.value=getCookie("responsable_contacto_contraparate");
-         		 //console.log("responsable legal en vista"+getCookie("responsable_legal_unet"))
-         		 //resp.value="Raúl Casanova";
+
 
      			   }
 				function fagregar(){

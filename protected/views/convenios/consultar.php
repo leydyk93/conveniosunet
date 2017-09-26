@@ -272,7 +272,15 @@
 
   <?php $this->endWidget(); ?> 
 </div>
-
+<?php 
+                    $value=0;
+                    $value1="";
+                    setcookie("nrofila", $value);
+                    setcookie("contra",$value1);
+                    setcookie("nrofilap",$value);
+                    setcookie("aportes",$value1);
+                    $_SESSION["aporte_editado"]="";
+ ?>
 <ul class="breadcrumb text-right">
   <li><a href="<?php echo $this->createUrl("site/index"); ?>">Home</a></li>
  <?php  if(!Yii::app()->user->isGuest){?>

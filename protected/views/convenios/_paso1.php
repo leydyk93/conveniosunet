@@ -65,11 +65,11 @@ if(!isset($_SESSION['alcance'])){
     <?php if($_SESSION["isNewRecord"]==0){ ?>
    <div class="list-group panel">
     <a href="" class="list-group-item"><h4>Nuevo Convenio</h4></a>
-    <a href="index.php?r=convenios/create" class="list-group-item opcion_selected text-center"><h5>Paso 1</h5></a>
-  <a href="<?php echo $this->createUrl( '/convenios/pasodos' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 2</h5></a>
-                <a href="<?php echo $this->createUrl( '/convenios/pasotres' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 3</h5></a>
-                <a href="<?php echo $this->createUrl( '/convenios/pasocuatro' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center"><h5>Paso 4</h5></a>
-                <a href="<?php echo $this->createUrl( '/convenios/pasocinco' )."&idconvenio=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion text-center" ><h5>Paso 5</h5></a>        
+    <a href="<?php echo $this->createUrl( '/convenios/updateConvenio' )."&id=".$_SESSION['idconvenio']; ?>" class="list-group-item opcion_selected text-center"><h5>Paso 1</h5></a>
+    <a class="list-group-item opcion_disabled text-center"><h5>Paso 2</h5></a>
+    <a class="list-group-item opcion_disabled text-center"><h5>Paso 3</h5></a>
+    <a class="list-group-item opcion_disabled text-center"><h5>Paso 4</h5></a>
+    <a class="list-group-item opcion_disabled text-center" ><h5>Paso 5</h5></a>   
     </div>
     <?php }?>
      <!--  <ul id="navi">
@@ -430,13 +430,13 @@ if(!isset($_SESSION['alcance'])){
                   
         
                     <?php 
-                    $value=0;
-                    $value1="";
-                    setcookie("nrofila", $value);
-                    setcookie("contra",$value1);
-                    setcookie("nrofilap",$value);
-                    setcookie("aportes",$value1);
-                    $_SESSION["aporte_editado"]="";
+                    //$value=0;
+                    //$value1="";
+                    //setcookie("nrofila", $value);
+                    //setcookie("contra",$value1);
+                    //setcookie("nrofilap",$value);
+                    //setcookie("aportes",$value1);
+                    //$_SESSION["aporte_editado"]="";
                      ?>
 
                 <?php //$this->endWidget(); ?>
@@ -689,7 +689,7 @@ if(!isset($_SESSION['alcance'])){
 
              var selec=document.getElementById("PasounoForm_tipo");
              selec.selectedIndex=getCookie("tipo");
-
+             document.cookie="accion=";
 
              var depselec=document.getElementById("PasounoForm_dependencia");
              depselec.selectedIndex=getCookie("dependencia");

@@ -532,6 +532,12 @@ class ConveniosController extends Controller
 
 		$dep=new Dependencias;
 
+		$dep=new Dependencias;
+
+		$clas= new Clasificacionconvenios;
+
+		$est= new Estadoconvenios;
+
 		//logic del formulario 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -585,7 +591,7 @@ class ConveniosController extends Controller
 			}
 		$_SESSION['tipo']="2";
 		$this->render('create',array(
-			"pasouno"=>$pasouno,"dep"=>$dep
+			"model"=>$model,"pasouno"=>$pasouno,"dep"=>$dep,"clas"=>$clas,"est"=>$est
 		));
 
 	}
@@ -802,7 +808,7 @@ class ConveniosController extends Controller
 
 		}
 		
-		if(isset($_POST["PasodosForm"])){
+		if(isset($_POST["PasodosForm"]) && isset($_COOKIE["contra"])){
 
 			$pasodos->attributes=$_POST["PasodosForm"];
 			if($pasodos->validate()){
@@ -922,12 +928,12 @@ class ConveniosController extends Controller
 
 					$_SESSION["idconvenio"]=$idconvenio;
 				} //if de isnuewrecord
-
+				$this->redirect(array('convenios/pasotres',"idconvenio"=>$_SESSION['idconvenio']));
 			}
-
-			$this->redirect(array('convenios/pasotres',"idconvenio"=>$_SESSION['idconvenio']));
+				
+			//$this->redirect(array('convenios/pasotres',"idconvenio"=>$_SESSION['idconvenio']));
 		}
-
+		
 		$this->render('pasodos',array(
 			"model"=>$model,"pasodos"=>$pasodos,"instituciones"=>$instituciones,"paises"=>$paises,"estados"=>$estados, "responsable"=>$responsable));
 
@@ -941,9 +947,9 @@ class ConveniosController extends Controller
 
 
 	    echo("<script>console.log('idInstitucionesConvenios ".$_COOKIE["contra"]."');</script>"); 
-		echo("<script>console.log('IDCONVENIOS ".$idconvenio."');</script>"); 
-	    $modelActa=Actaintencion::model()->find('convenios_idConvenio=:convenios_idConvenio', array(':convenios_idConvenio'=>$idconvenio));
-	    echo("<script>console.log('IDACTA ".$modelActa->idActaIntencion."');</script>"); 
+		//echo("<script>console.log('IDCONVENIOS ".$idconvenio."');</script>"); 
+	    //$modelActa=Actaintencion::model()->find('convenios_idConvenio=:convenios_idConvenio', array(':convenios_idConvenio'=>$idconvenio));
+	    //echo("<script>console.log('IDACTA ".$modelActa->idActaIntencion."');</script>"); 
 
 
 		if(isset($_POST["PasotresForm"])){
