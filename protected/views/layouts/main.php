@@ -84,7 +84,7 @@
   </div>
 </nav>
 
-	<div id="navegabilidadbreadcrumbs" class="container-fluid" style="margin-top: 70px;">
+	<div id="navegabilidadbreadcrumbs" class="container-fluid">
 
 		<div class="row">
 

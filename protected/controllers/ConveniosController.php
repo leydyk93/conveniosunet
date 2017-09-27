@@ -433,6 +433,7 @@ class ConveniosController extends Controller
 				$_SESSION['tipo']=$model->tipoConvenios_idTipoConvenio;
 				$_SESSION['clasificacion']=$model->clasificacionConvenios_idTipoConvenio;
 				
+				
 				$fecha=Yii::app()->db->createCommand()
 	                  ->select('MAX(fechaCambioEstado)')
 	                  ->from('convenio_estados')
@@ -950,7 +951,7 @@ class ConveniosController extends Controller
 
 		$pasotres=new PasotresForm;
 		$modelArchivo= new ArchivosForm;
-
+		$modelConvenio= new ArchivoConvenio;
 		$modelActa= new Actaintencion;
 
 
@@ -975,6 +976,26 @@ class ConveniosController extends Controller
 
 			}
 		}
+		if(isset($_POST["ArchivoConvenio"])){
+			$modelConvenio->attributes=$_POST["ArchivosForm"];
+			$modelConvenio->titulo="convenios";	// este es el nombre de la carpeta donde se almacenara el acta
+
+			$archivec=CUploadedFile::getInstancesByName('archivec');	//este es el documento como tal.
+			if(count($archivec)===0){
+				//no ha subido ningun archivo
+			}else if(!$modelConvenio->validate()){
+				//informacion invalida
+			}else{
+				$path = Yii::getPathOfAlias('webroot').'/archivos/'.$modelConvenio->titulo."/";
+				foreach ($archivec as $doc => $i) {				
+					$docu="convenio-".$idconvenio."-".$i->name;
+					$_SESSION["url_convenio"]=Yii::app()->request->baseUrl."/archivos/convenios/".$docu;
+					//$model->urlConvenio=$path.$docu;
+					$i->saveAs($path.$docu);
+				}
+			}
+		}
+
 		if(isset($_POST["ArchivosForm"])){
 			$modelArchivo->attributes=$_POST["ArchivosForm"];
 
@@ -988,14 +1009,12 @@ class ConveniosController extends Controller
 				//informacion invalida
 			}else{
 
-
-
 				//creo la direccion donde se almacenrá
 				$path = Yii::getPathOfAlias('webroot').'/archivos/'.$modelArchivo->titulo."/";
 				foreach ($documento as $doc => $i) {
 
 				 					
-					$docu="Acta-".$i->name."-convenio-".$idconvenio;
+					$docu="Acta-convenio-".$idconvenio."-".$i->name;
 
 					$_SESSION['url_acta']=Yii::app()->request->baseUrl."/archivos/actaIntencion/".$docu;
 
@@ -1017,14 +1036,14 @@ class ConveniosController extends Controller
 			}
 
 			//-----------------AQUI EL ARCHIVO DEL CONVENIO---------------------
-			$_SESSION["url_convenio"]="Sin URL";
+			//$_SESSION["url_convenio"]="Sin URL";
 
 				//echo "existe formularioi de archivo";
 				//echo $modelArchivo->titulo;
 				$this->redirect(array('convenios/pasocuatro',"idconvenio"=>$_SESSION['idconvenio']));
 		}
 
-		$this->render('pasotres',array("pasotres"=>$pasotres,"modelArchivo"=>$modelArchivo));
+		$this->render('pasotres',array("pasotres"=>$pasotres,"modelArchivo"=>$modelArchivo, "modelConvenio"=>$modelConvenio));
 	}
 
 	public function actionPasocuatro($idconvenio){

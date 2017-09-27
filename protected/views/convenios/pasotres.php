@@ -118,7 +118,6 @@ if(!isset($_SESSION['url_acta'])){
 <section class="datos col-xs-9">     
 
 <h4>Acta de Intención </h4> 
-	
 
 <div class="form-group">
         <?php echo $form->labelEx($pasotres,"fecha_acta",array('class'=>'control-label col-sm-2')); ?>
@@ -150,7 +149,7 @@ if(!isset($_SESSION['url_acta'])){
         <?php echo $form->error($pasotres,"fecha_acta"); ?>
 
         </div>
-      </div>
+</div>
 <!--
 <div class="form-group">
 
@@ -161,47 +160,85 @@ if(!isset($_SESSION['url_acta'])){
 </div>
 </div>
 -->
+
+
 <?php echo "<br>"; ?>
 
-            		<?php 
-	                     echo $form->labelEx($modelArchivo,'titulo',array('class'=>"modelArchivo"));
-	                     echo $form->textField($modelArchivo,'titulo',array('class'=>"modelArchivo"));
-	                     echo $form->error($modelArchivo,'titulo');
-	               
- 						?>
-
+	<?php 
+			echo $form->labelEx($modelArchivo,'titulo',array('class'=>"modelArchivo"));
+			echo $form->textField($modelArchivo,'titulo',array('class'=>"modelArchivo"));
+			echo $form->error($modelArchivo,'titulo');
+	
+	?>
 
   <div class="form-group">
-                          <span class="col-md-2 col-md-offset-2 text-center"><?php ?></span>
-                          <div class="col-md-7">
-                          <label class="btn btn-conv btn-sm"> <span class="glyphicon glyphicon-open-file"></span> Subir Archivo del Convenio
- <?php 	
-               $this->widget('CMultiFileUpload',
-              array(
-                'model'=>$modelArchivo,
-                'name'=>'documento',
-                'attribute'=>'documento',
-                'accept'=> 'pdf',
-                'denied'=>'El documento debe estar en formato PDF',
-                'max'=>1,
-                'duplicate'=>'archivo duplicado',
-                 'htmlOptions'=>array(
-                                    'style'=>"display: none;"     
-                                  ),
-                ));
-              
-                echo $form->error($modelArchivo,'documento');
-         
+		<span class="col-md-2 col-md-offset-2 text-center"><?php ?></span>
+		<div class="col-md-7">
+		<label class="btn btn-conv btn-sm"> <span class="glyphicon glyphicon-open-file"></span> Subir Acta de intención
+			<?php 	
+				$this->widget('CMultiFileUpload',
+				array(
+					'model'=>$modelArchivo,
+					'name'=>'documento',
+					'attribute'=>'documento',
+					'accept'=> 'pdf',
+					'denied'=>'El documento debe estar en formato PDF',
+					'max'=>1,
+					'duplicate'=>'archivo duplicado',
+					'htmlOptions'=>array(
+										'style'=>"display: none;"     
+									),
+					));
+				
+					echo $form->error($modelArchivo,'documento');
+			
 
-             // echo Yii::app()->request->baseUrl."/archivos/"."/".$modelArchivo->documento;
-             
-          //    $this->endWidget();
-       
+				// echo Yii::app()->request->baseUrl."/archivos/"."/".$modelArchivo->documento;
+				
+			//    $this->endWidget();
+		
 
-                ?>
-            </label>
-            </div>
-            </div>
+			?>
+        </label>
+        </div>
+ </div>
+
+ <h4>Archivo del convenio</h4>
+ <?php 
+	echo $form->labelEx($modelConvenio,'titulo',array('class'=>"modelArchivo"));
+	echo $form->textField($modelConvenio,'titulo',array('class'=>"modelArchivo"));
+	echo $form->error($modelConvenio,'titulo');
+?>
+
+  <div class="form-group">
+		<span class="col-md-2 col-md-offset-2 text-center"><?php ?></span>
+		<div class="col-md-7">
+		<label class="btn btn-conv btn-sm"> <span class="glyphicon glyphicon-open-file"></span> Subir Archivo del Convenio
+			<?php 	
+				$this->widget('CMultiFileUpload',
+				array(
+					'model'=>$modelConvenio,
+					'name'=>'archivec',
+					'attribute'=>'archivec',
+					'accept'=> 'pdf',
+					'denied'=>'El archivec debe estar en formato PDF',
+					'max'=>1,
+					'duplicate'=>'archivo duplicado',
+					'htmlOptions'=>array(
+										'style'=>"display: none;"     
+									),
+					));
+				
+					echo $form->error($modelConvenio,'archivec');
+			
+
+				// echo Yii::app()->request->baseUrl."/archivos/"."/".$modelArchivo->documento;
+				
+			//    $this->endWidget();
+		?>
+        </label>
+        </div>
+ </div>
 
 <?php echo CHtml::submitButton("siguiente",array("class"=>'btn btn-conv')); ?>
 
