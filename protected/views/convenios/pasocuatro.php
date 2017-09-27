@@ -180,7 +180,9 @@ $variable="hola";
 	
 </div>
 </div>
-<div class="text-right"><a onclick="aporte_agregar()"> <span class="glyphicon glyphicon-plus"></span></a></div>
+<!--<div class="text-right"><a onclick="aporte_agregar()"> <span class="glyphicon glyphicon-plus"></span></a></div>-->
+<div class="text-right"><a class="btn btn-conv" onclick="aporte_agregar()"> <span > Agregar Aporte</span></a></div>	
+
 
 <?php echo "<br>"; ?>
 
@@ -198,7 +200,8 @@ $variable="hola";
 			
 			<?php 
 					$varia="variable";
-					echo '<div id="papa">';
+					//impresion dle id del papa
+					//echo '<div id="papa">';
 		  			if(isset($_SESSION['aporte'])){
 					for ($i=1; $i <count($_SESSION['aporte']) ; $i++) {
 
@@ -222,7 +225,7 @@ $variable="hola";
 						echo '</tr>';
 						setcookie("nrofilap",$i); //agregado reciente
 						//impresion de lo agregado en la tabla
-						echo '<div id=o'.$i.'>'.$aporteA[0].'.'.$moneda->idMoneda.'.'.$aporteA[2].'.'.$aporteA[3].'</div>';
+						//echo '<div id=o'.$i.'>'.$aporteA[0].'.'.$moneda->idMoneda.'.'.$aporteA[2].'.'.$aporteA[3].'</div>';
 
 					}
 					

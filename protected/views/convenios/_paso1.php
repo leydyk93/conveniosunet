@@ -323,7 +323,7 @@ if(!isset($_SESSION['alcance'])){
 
  <div class="form-group "> 
         <div class="col-sm-6 text-left">
-           <?php echo CHtml::submitButton("Guardar Paso 1",array("class"=>'btn btn-conv',"onclick"=>'recolectar()',"name"=>'enviar')); ?> 
+           <?php echo CHtml::submitButton("Guardar Paso 1",array("class"=>'btn btn-conv disable',"onclick"=>'recolectar()',"name"=>'enviar','id'=>'botonpasouno','disabled'=>'disabled')); ?> 
         </div>
 
         <div class="col-sm-6 text-right">
@@ -631,9 +631,11 @@ if(!isset($_SESSION['alcance'])){
                 if(estado==5){
                    
                     var boton= document.getElementById("botonsiguiente").disabled=false;
+                    var boton= document.getElementById("botonpasouno").disabled=true;
                 }
                 else{
                    var boton= document.getElementById("botonsiguiente").disabled=true;
+                   var boton= document.getElementById("botonpasouno").disabled=false;
                 }
         })
 

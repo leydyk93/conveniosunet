@@ -22,7 +22,7 @@
 						 	<ul class='list-inline'>
 						 	<?php if(strcmp($resull3->tipo_convenio,"Marco")==0){ ?>
 						 		<?php if(!Yii::app()->user->isGuest):?>
-						 	  		<li><a href="<?php echo $this->createUrl("/convenios/createEspecifico",array('id'=>$resull3->id_convenio)); ?>" data-toggle='tooltip' title='Agregar Específico'><span class='glyphicon glyphicon-plus'></span><a/></li>
+						 	  		<li><a onclick="sesionnew()" href="<?php echo $this->createUrl("/convenios/createEspecifico",array('id'=>$resull3->id_convenio)); ?>" data-toggle='tooltip' title='Agregar Específico'><span class='glyphicon glyphicon-plus'></span><a/></li>
 						 		<?php endif?>
 						 	<?php } ?>
 
@@ -111,4 +111,20 @@
 			  <?php }else{?> 
 		 		<h4 class="text-center">" No hay convenios Registrados con las características seleccionadas "</h4>
 		   	<?php } ?>
- 
+		   	
+<script type="text/javascript">
+   function sesionnew(){
+  
+        var url='<?php echo Yii::app()->createUrl("convenios/reiniciarVariables"); ?>';
+
+        $.ajax({
+            type: "post",
+            url: url,
+
+            success: function(){
+
+            }
+        })
+
+    }
+  </script>

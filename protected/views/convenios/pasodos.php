@@ -135,13 +135,8 @@
 						
 
 						<br>
-						<?php 
-						if(isset($_COOKIE["errorc"]))
-						echo("<script>console.log('error ".$_SESSION["errorc"]."');</script>"); 
-						 ?>
-						<?php if(isset($_SESSION["errorc"])&&$_SESSION["errorc"]=="1"){ ?>
-						<legend class="text-center header"><h4>Ingrese almenos una institucion contraparte</h4></legend>  
-						<?php } ?>
+					
+				
 
 				<!--		<div class="form-group">
 				 	<?php //echo $form->labelEx($pasodos,'instanciaunet',array('class'=>'control-label col-sm-2')); ?>
@@ -169,7 +164,7 @@
 			<?php echo $form->labelEx($pasodos,'responsable_legal_unet',array('class'=>'control-label col-sm-2')); ?>
 			<div class="col-sm-9">
 				<?php
-			  echo $form->TextField($pasodos,'responsable_legal_unet',array()); // Campo oculto para guardar el ID de la persona seleccionada
+			  echo $form->HiddenField($pasodos,'responsable_legal_unet',array()); // Campo oculto para guardar el ID de la persona seleccionada
 
 			  $this->widget('zii.widgets.jui.CJuiAutoComplete',
 			  	array(
@@ -216,7 +211,7 @@
 			<?php echo $form->labelEx($pasodos,'responsable_contacto_unet',array('class'=>'control-label col-sm-2')); ?>
 			<div class="col-sm-9">
 				<?php
-			  echo $form->TextField($pasodos,'responsable_contacto_unet',array()); // Campo oculto para guardar el ID de la persona seleccionada
+			  echo $form->HiddenField($pasodos,'responsable_contacto_unet',array()); // Campo oculto para guardar el ID de la persona seleccionada
 			  $this->widget('zii.widgets.jui.CJuiAutoComplete',
 			  	array(
 			    'name'=>'apellidos_nombres1', // Nombre para el campo de autocompletar
@@ -277,7 +272,7 @@
 			<?php echo $form->labelEx($pasodos,'responsable_legal_contraparte',array('class'=>'control-label col-sm-2')); ?>
 			<div class="col-sm-9">
 			<?php
-			  echo $form->TextField($pasodos,'responsable_legal_contraparte',array()); // Campo oculto para guardar el ID de la persona seleccionada
+			  echo $form->HiddenField($pasodos,'responsable_legal_contraparte',array()); // Campo oculto para guardar el ID de la persona seleccionada
 			  $this->widget('zii.widgets.jui.CJuiAutoComplete',
 			  	array(
 			    'name'=>'apellidos_nombres2', // Nombre para el campo de autocompletar
@@ -318,7 +313,7 @@
 				<?php echo $form->labelEx($pasodos,'responsable_contacto_contraparte',array('class'=>'control-label col-sm-2')); ?>
 				<div class="col-sm-9">
 				<?php
-			  echo $form->TextField($pasodos,'responsable_contacto_contraparte',array()); // Campo oculto para guardar el ID de la persona seleccionada
+			  echo $form->HiddenField($pasodos,'responsable_contacto_contraparte',array()); // Campo oculto para guardar el ID de la persona seleccionada
 
 			  $this->widget('zii.widgets.jui.CJuiAutoComplete',
 			  	array(
@@ -934,6 +929,7 @@
 		function institucion_unet(){
 				var valselc=6;
 				document.cookie="cookinst="+valselc;
+				limpiarmodalresponsable();
 		}
 		function capturar_institucion(){
 
@@ -941,10 +937,32 @@
 			var seleci=selec.options[selec.selectedIndex].text;
 			var valselc=selec.options[selec.selectedIndex].value;
 			document.cookie="cookinst="+valselc;
+			limpiarmodalresponsable();
 			//alert(valselc);
 
 			
 		}
+		function limpiarmodalresponsable(){
+
+          var id=document.getElementById("Responsables_idResponsable");
+          id.value="";
+          var nom=document.getElementById("Responsables_primerNombreResponsable");
+          nom.value="";
+          var seg=document.getElementById("Responsables_segundoNombreResponsable");
+          seg.value="";
+          var ap=document.getElementById("Responsables_primerApellidoResponsable");
+          ap.value="";
+		  var sap=document.getElementById("Responsables_segundoApellidoResponsable");
+          sap.value="";
+          var tel=document.getElementById("Responsables_telefonoResponsable");
+          tel.value="";
+          var cor=document.getElementById("Responsables_correoElectronicoResponsable");
+          cor.value="";
+          var msj=document.getElementById("MensajeResponsable");
+          msj.innerHTML="";
+         
+
+        }
 		function limpiar_institucion(){
 
 			document.cookie="cookinst="+" ";
